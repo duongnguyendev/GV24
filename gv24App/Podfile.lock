@@ -1,0 +1,12 @@
+PODS:
+  - IoniconsSwift (2.1.4)
+
+DEPENDENCIES:
+  - IoniconsSwift
+
+SPEC CHECKSUMS:
+  IoniconsSwift: a9034803dfe59ec48a73c95b812c67afdfa3ed08
+
+PODFILE CHECKSUM: f390576c1d509bd9bb5665ee7472e89db9159d67
+
+COCOAPODS: 1.1.1
