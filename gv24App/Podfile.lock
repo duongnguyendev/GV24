@@ -1,12 +1,18 @@
 PODS:
+  - Alamofire (4.4.0)
   - IoniconsSwift (2.1.4)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
+  - Alamofire
   - IoniconsSwift
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   IoniconsSwift: a9034803dfe59ec48a73c95b812c67afdfa3ed08
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: f390576c1d509bd9bb5665ee7472e89db9159d67
+PODFILE CHECKSUM: e07fa3ff3a18d113b590228566be7e3393c4b2c6
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

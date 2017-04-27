@@ -7,5 +7,7 @@ target 'gv24App' do
 
   # Pods for gv24App
 pod 'IoniconsSwift'
+pod ‘Alamofire’
+pod ‘SwiftyJSON’
 
 end

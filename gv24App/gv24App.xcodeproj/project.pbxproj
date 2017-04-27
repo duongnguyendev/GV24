@@ -12,6 +12,24 @@
 		4E4DD6C81EB0A0C5001B4936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C61EB0A0C5001B4936 /* Main.storyboard */; };
 		4E4DD6CA1EB0A0C5001B4936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C91EB0A0C5001B4936 /* Assets.xcassets */; };
 		4E4DD6CD1EB0A0C5001B4936 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6CB1EB0A0C5001B4936 /* LaunchScreen.storyboard */; };
+		4E4DD6E51EB0A838001B4936 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6E41EB0A838001B4936 /* Icon.swift */; };
+		4E8E8F9F1EB1E9D90030B334 /* IoniconsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8E8F9C1EB1E9D90030B334 /* IoniconsSwift.framework */; };
+		4ECD1D3A1EB18743007DEF88 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD1D391EB18743007DEF88 /* Font.swift */; };
+		4ECD1D3B1EB19314007DEF88 /* SFUIText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6D81EB0A76B001B4936 /* SFUIText-Bold.ttf */; };
+		4ECD1D3C1EB19314007DEF88 /* SFUIText-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6D91EB0A76B001B4936 /* SFUIText-BoldItalic.ttf */; };
+		4ECD1D3D1EB19314007DEF88 /* SFUIText-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6DA1EB0A76B001B4936 /* SFUIText-Heavy.ttf */; };
+		4ECD1D3E1EB19314007DEF88 /* SFUIText-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6DB1EB0A76B001B4936 /* SFUIText-HeavyItalic.ttf */; };
+		4ECD1D3F1EB19314007DEF88 /* SFUIText-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6DC1EB0A76B001B4936 /* SFUIText-Light.ttf */; };
+		4ECD1D401EB19314007DEF88 /* SFUIText-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6DD1EB0A76B001B4936 /* SFUIText-LightItalic.ttf */; };
+		4ECD1D411EB19314007DEF88 /* SFUIText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6DE1EB0A76B001B4936 /* SFUIText-Medium.ttf */; };
+		4ECD1D421EB19314007DEF88 /* SFUIText-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6DF1EB0A76B001B4936 /* SFUIText-MediumItalic.ttf */; };
+		4ECD1D431EB19314007DEF88 /* SFUIText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6E01EB0A76B001B4936 /* SFUIText-Regular.ttf */; };
+		4ECD1D441EB19314007DEF88 /* SFUIText-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6E11EB0A76B001B4936 /* SFUIText-RegularItalic.ttf */; };
+		4ECD1D451EB19314007DEF88 /* SFUIText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6E21EB0A76B001B4936 /* SFUIText-Semibold.ttf */; };
+		4ECD1D461EB19314007DEF88 /* SFUIText-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6E31EB0A76B001B4936 /* SFUIText-SemiboldItalic.ttf */; };
+		4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD1D471EB1986C007DEF88 /* LanguageManager.swift */; };
+		4ECD1D531EB19DE4007DEF88 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4ECD1D551EB19DE4007DEF88 /* Localizable.strings */; };
+		4ECD1D5A1EB1AFF4007DEF88 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD1D591EB1AFF4007DEF88 /* ApiService.swift */; };
 		71C0FCB96E162AFAC6F40C6E /* Pods_gv24App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8412861DBAF8464BF1BB89 /* Pods_gv24App.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +42,30 @@
 		4E4DD6C91EB0A0C5001B4936 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E4DD6CC1EB0A0C5001B4936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E4DD6CE1EB0A0C5001B4936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E4DD6D81EB0A76B001B4936 /* SFUIText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Bold.ttf"; sourceTree = "<group>"; };
+		4E4DD6D91EB0A76B001B4936 /* SFUIText-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4E4DD6DA1EB0A76B001B4936 /* SFUIText-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Heavy.ttf"; sourceTree = "<group>"; };
+		4E4DD6DB1EB0A76B001B4936 /* SFUIText-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-HeavyItalic.ttf"; sourceTree = "<group>"; };
+		4E4DD6DC1EB0A76B001B4936 /* SFUIText-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Light.ttf"; sourceTree = "<group>"; };
+		4E4DD6DD1EB0A76B001B4936 /* SFUIText-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-LightItalic.ttf"; sourceTree = "<group>"; };
+		4E4DD6DE1EB0A76B001B4936 /* SFUIText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Medium.ttf"; sourceTree = "<group>"; };
+		4E4DD6DF1EB0A76B001B4936 /* SFUIText-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-MediumItalic.ttf"; sourceTree = "<group>"; };
+		4E4DD6E01EB0A76B001B4936 /* SFUIText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Regular.ttf"; sourceTree = "<group>"; };
+		4E4DD6E11EB0A76B001B4936 /* SFUIText-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-RegularItalic.ttf"; sourceTree = "<group>"; };
+		4E4DD6E21EB0A76B001B4936 /* SFUIText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.ttf"; sourceTree = "<group>"; };
+		4E4DD6E31EB0A76B001B4936 /* SFUIText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		4E4DD6E41EB0A838001B4936 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		4E8E8F9B1EB1E9D90030B334 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		4E8E8F9C1EB1E9D90030B334 /* IoniconsSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IoniconsSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/IoniconsSwift/IoniconsSwift.framework"; sourceTree = "<group>"; };
+		4E8E8F9D1EB1E9D90030B334 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		4ECD1D391EB18743007DEF88 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Font.swift; path = Fonts/Font.swift; sourceTree = "<group>"; };
+		4ECD1D471EB1986C007DEF88 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageManager.swift; path = Fonts/LanguageManager.swift; sourceTree = "<group>"; };
+		4ECD1D491EB19AC4007DEF88 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		4ECD1D4A1EB19AC4007DEF88 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4ECD1D541EB19DE4007DEF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4ECD1D561EB19DE6007DEF88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4ECD1D571EB19DE8007DEF88 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4ECD1D591EB1AFF4007DEF88 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		B7A145D50B862F48F237BC69 /* Pods-gv24App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.debug.xcconfig"; sourceTree = "<group>"; };
 		FF86EA0F498E6DD9B5C0B5BF /* Pods-gv24App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.release.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E8E8F9F1EB1E9D90030B334 /* IoniconsSwift.framework in Frameworks */,
 				71C0FCB96E162AFAC6F40C6E /* Pods_gv24App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,6 +86,9 @@
 		387D039E8EB683F4FCE8D6B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E8E8F9B1EB1E9D90030B334 /* Alamofire.framework */,
+				4E8E8F9C1EB1E9D90030B334 /* IoniconsSwift.framework */,
+				4E8E8F9D1EB1E9D90030B334 /* SwiftyJSON.framework */,
 				4B8412861DBAF8464BF1BB89 /* Pods_gv24App.framework */,
 			);
 			name = Frameworks;
@@ -69,14 +115,63 @@
 		4E4DD6C11EB0A0C5001B4936 /* gv24App */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD1D581EB1AFDF007DEF88 /* AppService */,
+				4E4DD6D61EB0A71D001B4936 /* Resource */,
+				4E4DD6D41EB0A675001B4936 /* Controller */,
 				4E4DD6C21EB0A0C5001B4936 /* AppDelegate.swift */,
 				4E4DD6C41EB0A0C5001B4936 /* ViewController.swift */,
 				4E4DD6C61EB0A0C5001B4936 /* Main.storyboard */,
 				4E4DD6C91EB0A0C5001B4936 /* Assets.xcassets */,
 				4E4DD6CB1EB0A0C5001B4936 /* LaunchScreen.storyboard */,
 				4E4DD6CE1EB0A0C5001B4936 /* Info.plist */,
+				4ECD1D551EB19DE4007DEF88 /* Localizable.strings */,
 			);
 			path = gv24App;
+			sourceTree = "<group>";
+		};
+		4E4DD6D41EB0A675001B4936 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4E4DD6D61EB0A71D001B4936 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4E4DD6D71EB0A72B001B4936 /* Fonts */,
+				4E4DD6E41EB0A838001B4936 /* Icon.swift */,
+				4ECD1D391EB18743007DEF88 /* Font.swift */,
+				4ECD1D471EB1986C007DEF88 /* LanguageManager.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4E4DD6D71EB0A72B001B4936 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4E4DD6D81EB0A76B001B4936 /* SFUIText-Bold.ttf */,
+				4E4DD6D91EB0A76B001B4936 /* SFUIText-BoldItalic.ttf */,
+				4E4DD6DA1EB0A76B001B4936 /* SFUIText-Heavy.ttf */,
+				4E4DD6DB1EB0A76B001B4936 /* SFUIText-HeavyItalic.ttf */,
+				4E4DD6DC1EB0A76B001B4936 /* SFUIText-Light.ttf */,
+				4E4DD6DD1EB0A76B001B4936 /* SFUIText-LightItalic.ttf */,
+				4E4DD6DE1EB0A76B001B4936 /* SFUIText-Medium.ttf */,
+				4E4DD6DF1EB0A76B001B4936 /* SFUIText-MediumItalic.ttf */,
+				4E4DD6E01EB0A76B001B4936 /* SFUIText-Regular.ttf */,
+				4E4DD6E11EB0A76B001B4936 /* SFUIText-RegularItalic.ttf */,
+				4E4DD6E21EB0A76B001B4936 /* SFUIText-Semibold.ttf */,
+				4E4DD6E31EB0A76B001B4936 /* SFUIText-SemiboldItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4ECD1D581EB1AFDF007DEF88 /* AppService */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD1D591EB1AFF4007DEF88 /* ApiService.swift */,
+			);
+			path = AppService;
 			sourceTree = "<group>";
 		};
 		7C3BF9740AD4227950B5FE9B /* Pods */ = {
@@ -119,7 +214,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = HBB;
+				ORGANIZATIONNAME = HBBs;
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -130,11 +225,12 @@
 			};
 			buildConfigurationList = 4E4DD6BA1EB0A0C5001B4936 /* Build configuration list for PBXProject "gv24App" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = Vi;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				vi,
 				Base,
+				en,
 			);
 			mainGroup = 4E4DD6B61EB0A0C5001B4936;
 			productRefGroup = 4E4DD6C01EB0A0C5001B4936 /* Products */;
@@ -151,7 +247,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECD1D3B1EB19314007DEF88 /* SFUIText-Bold.ttf in Resources */,
+				4ECD1D3C1EB19314007DEF88 /* SFUIText-BoldItalic.ttf in Resources */,
+				4ECD1D3D1EB19314007DEF88 /* SFUIText-Heavy.ttf in Resources */,
+				4ECD1D3E1EB19314007DEF88 /* SFUIText-HeavyItalic.ttf in Resources */,
+				4ECD1D3F1EB19314007DEF88 /* SFUIText-Light.ttf in Resources */,
+				4ECD1D401EB19314007DEF88 /* SFUIText-LightItalic.ttf in Resources */,
+				4ECD1D411EB19314007DEF88 /* SFUIText-Medium.ttf in Resources */,
+				4ECD1D421EB19314007DEF88 /* SFUIText-MediumItalic.ttf in Resources */,
+				4ECD1D431EB19314007DEF88 /* SFUIText-Regular.ttf in Resources */,
+				4ECD1D441EB19314007DEF88 /* SFUIText-RegularItalic.ttf in Resources */,
+				4ECD1D451EB19314007DEF88 /* SFUIText-Semibold.ttf in Resources */,
+				4ECD1D461EB19314007DEF88 /* SFUIText-SemiboldItalic.ttf in Resources */,
 				4E4DD6CD1EB0A0C5001B4936 /* LaunchScreen.storyboard in Resources */,
+				4ECD1D531EB19DE4007DEF88 /* Localizable.strings in Resources */,
 				4E4DD6CA1EB0A0C5001B4936 /* Assets.xcassets in Resources */,
 				4E4DD6C81EB0A0C5001B4936 /* Main.storyboard in Resources */,
 			);
@@ -187,7 +296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -212,8 +321,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECD1D3A1EB18743007DEF88 /* Font.swift in Sources */,
+				4ECD1D5A1EB1AFF4007DEF88 /* ApiService.swift in Sources */,
+				4E4DD6E51EB0A838001B4936 /* Icon.swift in Sources */,
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
 				4E4DD6C31EB0A0C5001B4936 /* AppDelegate.swift in Sources */,
+				4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +337,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E4DD6C71EB0A0C5001B4936 /* Base */,
+				4ECD1D491EB19AC4007DEF88 /* vi */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -232,8 +346,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E4DD6CC1EB0A0C5001B4936 /* Base */,
+				4ECD1D4A1EB19AC4007DEF88 /* vi */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4ECD1D551EB19DE4007DEF88 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4ECD1D541EB19DE4007DEF88 /* Base */,
+				4ECD1D561EB19DE6007DEF88 /* en */,
+				4ECD1D571EB19DE8007DEF88 /* vi */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -243,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -294,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -338,13 +465,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7A145D50B862F48F237BC69 /* Pods-gv24App.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FE5FXN233L;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HBB.gv24App;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -353,13 +483,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF86EA0F498E6DD9B5C0B5BF /* Pods-gv24App.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FE5FXN233L;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HBB.gv24App;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -383,6 +516,7 @@
 				4E4DD6D31EB0A0C5001B4936 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
