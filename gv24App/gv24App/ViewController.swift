@@ -7,25 +7,24 @@
 //
 
 import UIKit
-import IoniconsSwift
 
-class ViewController: UIViewController {
-
+class ViewController: BaseVC {
+    
     @IBOutlet weak var imageTest: UIImageView!
     @IBOutlet weak var labelTest: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        imageTest.image = Icon.by(name: .androidAlarmClock)
+
         labelTest.font = Fonts.by(name: .boldItalic, size: 17)
         labelTest.text = LanguageManager.shared.localized(string: "English")
+        imageTest.image = Icon.by(name: .androidAdd, collor: UIColor.blue)
+        title = "English"
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 

@@ -15,7 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // Override point for customization after application launch.
+        
+        Thread.sleep(forTimeInterval: 2)
+//        let signInVC = SignInVC()
+        window = UIWindow(frame: UIScreen.main.bounds);
+        window?.makeKeyAndVisible()
+        let nav = UINavigationController(rootViewController: HomeVC())
+        window?.rootViewController = nav
+
         return true
     }
 

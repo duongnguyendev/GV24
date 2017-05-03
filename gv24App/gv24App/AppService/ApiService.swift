@@ -40,13 +40,11 @@ class APIService: NSObject {
         
     }
     
-    func upload(images: UIImage..., parameters : Dictionary<String, String>?, url: String, completion:@escaping ((JSON?,Error?)->())){
+    func upload(image: UIImage, name: String, parameters : Dictionary<String, String>?, url: String, completion:@escaping ((JSON?,Error?)->())){
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                for (index, image) in images.enumerated(){
-                    if let imageData = UIImagePNGRepresentation(image){
-                        multipartFormData.append(imageData, withName: "image\(index)", fileName: "image\(index).jpeg", mimeType: "image/jpeg")
-                    }
+                if let imageData = UIImagePNGRepresentation(image){
+                    multipartFormData.append(imageData, withName: name, fileName: "\(name).jpeg", mimeType: "image/jpeg")
                 }
                 if let params = parameters{
                     for (key,value) in params{
@@ -69,37 +67,37 @@ class APIService: NSObject {
         )
     }
     
-    func upload(datas: Data..., parameters : Dictionary<String, String>?, url: String, completion:@escaping ((JSON?,Error?)->())){
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                for (index, data) in datas.enumerated(){
-                    multipartFormData.append(data, withName: "data\(index)")
-                    if let params = parameters{
-                        for (key,value) in params{
-                            multipartFormData.append((value.data(using: .utf8))!, withName: key)
-                        }
-                    }
-                }
-                if let params = parameters{
-                    for (key,value) in params{
-                        multipartFormData.append((value.data(using: .utf8))!, withName: key)
-                    }
-                }
-        },
-            to: urlFrom(request: url),
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.responseJSON { response in
-                        let json = JSON(response)
-                        completion(json, nil)
-                    }
-                case .failure(let encodingError):
-                    completion(nil, encodingError)
-                }
-        }
-        )
-    }
+//    func upload(datas: Data..., parameters : Dictionary<String, String>?, url: String, completion:@escaping ((JSON?,Error?)->())){
+//        Alamofire.upload(
+//            multipartFormData: { multipartFormData in
+//                for (index, data) in datas.enumerated(){
+//                    multipartFormData.append(data, withName: "data\(index)")
+//                    if let params = parameters{
+//                        for (key,value) in params{
+//                            multipartFormData.append((value.data(using: .utf8))!, withName: key)
+//                        }
+//                    }
+//                }
+//                if let params = parameters{
+//                    for (key,value) in params{
+//                        multipartFormData.append((value.data(using: .utf8))!, withName: key)
+//                    }
+//                }
+//        },
+//            to: urlFrom(request: url),
+//            encodingCompletion: { encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.responseJSON { response in
+//                        let json = JSON(response)
+//                        completion(json, nil)
+//                    }
+//                case .failure(let encodingError):
+//                    completion(nil, encodingError)
+//                }
+//        }
+//        )
+//    }
     
     func urlFrom(request: String) -> String{
         return LanguageManager.shared.localized(string: "domainGV24")! + request
