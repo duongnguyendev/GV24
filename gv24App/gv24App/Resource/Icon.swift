@@ -11,6 +11,7 @@ import IoniconsSwift
 
 class Icon: NSObject {
     
+    
     static let iconSizeDefault : CGFloat = 44
     
     static func by(name : Ionicons) -> UIImage{
@@ -22,11 +23,12 @@ class Icon: NSObject {
     static func by(name : Ionicons, size : CGFloat, collor : UIColor) -> UIImage {
         return name.image(size, color: collor)
     }
-    static func by(name: Ionicons, collor : UIColor) -> UIImage{
-       return name.image(iconSizeDefault, color: collor)
+    static func by(name: Ionicons, color : UIColor) -> UIImage{
+       return name.image(iconSizeDefault, color: color)
     }
     static func by(imageName: String) -> UIImage?{
         return UIImage(named: imageName)
         
     }
 }
+

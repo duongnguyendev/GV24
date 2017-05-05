@@ -20,4 +20,19 @@ extension UIView{
         }
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
+    static func verticalLine() -> UIView{
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = AppColor.lightGray
+        view.widthAnchor.constraint(equalToConstant: 1).isActive = true
+        return view
+    }
+    
+    static func horizontalLine() -> UIView{
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = AppColor.lightGray
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return view
+    }
 }

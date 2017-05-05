@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 class BackButton: BaseButton {
-    let iconImageView : UIImageView = {
-        let iv = UIImageView(image: Icon.by(name: .iosArrowBack, collor: AppColor.backButton))
+    private let iconImageView : UIImageView = {
+        let iv = UIImageView(image: Icon.by(name: .iosArrowBack, color: AppColor.backButton))
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
         return iv
     }()
-    let titleView : UILabel = {
+    private let titleView : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .regular, size: 16)
         lb.text = LanguageManager.shared.localized(string: "Back")

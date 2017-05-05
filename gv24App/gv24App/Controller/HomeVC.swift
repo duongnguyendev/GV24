@@ -83,8 +83,8 @@ class HomeVC: BaseVC {
     override func setupRightNavButton() {
         let buttonMore = UIButton(type: .custom)
         buttonMore.addTarget(self, action: #selector(handleButtonMore(sender:)), for: .touchUpInside)
-        buttonMore.setBackgroundImage(Icon.by(name: .more, collor: AppColor.backButton), for: .normal)
-        buttonMore.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        buttonMore.setBackgroundImage(Icon.by(name: .more, color: AppColor.backButton), for: .normal)
+        buttonMore.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         let btn = UIBarButtonItem(customView: buttonMore)
         self.navigationItem.rightBarButtonItem = btn
     }
@@ -102,7 +102,8 @@ class HomeVC: BaseVC {
     }
     //MARK: - Handle button
     func handleButtonMore(sender : UIButton) {
-        print("more clicked")
+        let moreVC = MoreVC()
+        present(viewController: moreVC)
     }
     
     func handleButtonAround(sender : UIButton){

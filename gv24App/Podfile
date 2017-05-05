@@ -9,5 +9,11 @@ target 'gv24App' do
 pod 'IoniconsSwift'
 pod ‘Alamofire’
 pod ‘SwiftyJSON’
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare'
+pod 'Google/SignIn'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
 
 end

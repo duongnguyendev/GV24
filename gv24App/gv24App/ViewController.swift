@@ -18,7 +18,7 @@ class ViewController: BaseVC {
 
         labelTest.font = Fonts.by(name: .boldItalic, size: 17)
         labelTest.text = LanguageManager.shared.localized(string: "English")
-        imageTest.image = Icon.by(name: .androidAdd, collor: UIColor.blue)
+        imageTest.image = Icon.by(name: .androidAdd, color: UIColor.blue)
         title = "English"
     }
     
