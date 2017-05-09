@@ -32,7 +32,7 @@ extension UIView{
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = AppColor.lightGray
-        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         return view
     }
 }

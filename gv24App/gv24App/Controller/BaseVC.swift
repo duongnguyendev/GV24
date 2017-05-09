@@ -12,6 +12,16 @@ import IoniconsSwift
 class BaseVC: UIViewController {
 
     var isPresented : Bool?
+    let margin : CGFloat = 30
+    var hideKeyboardWhenTouchUpOutSize : Bool?{
+        didSet{
+            if hideKeyboardWhenTouchUpOutSize == true {
+                let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+                view.addGestureRecognizer(tap)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = AppColor.backGround
@@ -66,5 +76,9 @@ class BaseVC: UIViewController {
     
     func setupView(){
         
+    }
+    
+    func hideKeyboard(){
+        view.endEditing(true)
     }
 }

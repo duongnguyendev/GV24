@@ -13,15 +13,13 @@ import FacebookLogin
 
 class SignInVC: BaseVC {
     
-    private let margin : CGFloat = 25
     private var itemHeight : CGFloat = 0
     
     override func viewDidLoad() {
         itemHeight = self.view.frame.size.height / 15
         super.viewDidLoad()
+        hideKeyboardWhenTouchUpOutSize = true
         title = LanguageManager.shared.localized(string: "SignIn")
-        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        view.addGestureRecognizer(tap)
     }
     private let topBackGround : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "top_bg"))
@@ -109,19 +107,18 @@ class SignInVC: BaseVC {
         view.addSubview(topBackGround)
         view.addSubview(workAroundButton)
         
-        let imageHeight = (self.view.bounds.size.height - 64) / 7 * 3
-        topBackGround.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        let imageHeight = (self.view.bounds.size.height) / 8 * 3 - 20
+        view.addConstraintWithFormat(format: "V:|[v0(\(imageHeight))]", views: topBackGround)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: topBackGround)
-        topBackGround.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
         
         view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: workAroundButton)
         workAroundButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
-        workAroundButton.bottomAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: -20).isActive = true
+        workAroundButton.bottomAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: -margin).isActive = true
         
         let logoView = IconView(image: "logo2", size: imageHeight / 3)
         view.addSubview(logoView)
         logoView.centerXAnchor.constraint(equalTo: topBackGround.centerXAnchor, constant: 0).isActive = true
-        logoView.centerYAnchor.constraint(equalTo: topBackGround.centerYAnchor, constant: -20).isActive = true
+        logoView.centerYAnchor.constraint(equalTo: topBackGround.centerYAnchor, constant: -30).isActive = true
     }
     
     private func setupBottomView(){
@@ -147,7 +144,7 @@ class SignInVC: BaseVC {
         emailTextField.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         passTextField.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         
-        emailTextField.topAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: 0).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: 20).isActive = true
         view.addConstraintWithFormat(format: "V:[v0][v1][v2][v3]", views: emailTextField, line1, passTextField, line2)
         
         view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: line1)
@@ -241,7 +238,7 @@ class SignInVC: BaseVC {
         print("handleSignInButton")
     }
     func handleSignUpButton(_ sender : UIButton) {
-        push(viewController: SignUpVC())
+        push(viewController: SignUpVC_1())
     }
     func handleForgotPassButton(_ sender : UIButton) {
         push(viewController: ForgotPassVC())
@@ -264,10 +261,5 @@ class SignInVC: BaseVC {
         
         
     }
-    
-    func hideKeyboard(){
-        self.view.endEditing(true)
-    }
-    
 }
 

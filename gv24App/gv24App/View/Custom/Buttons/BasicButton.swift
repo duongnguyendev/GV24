@@ -15,6 +15,11 @@ class BasicButton: BaseButton {
             self.backgroundColor = color
         }
     }
+    var titleCollor : UIColor?{
+        didSet{
+            self.setTitleColor(titleCollor, for: .normal)
+        }
+    }
     var title : String?{
         didSet{
             self.setTitle(LanguageManager.shared.localized(string: title!), for: .normal)
@@ -22,7 +27,7 @@ class BasicButton: BaseButton {
     }
     var titleFont : Fonts?{
         didSet{
-        
+            self.titleLabel?.font = titleFont
         }
     }
     override func setupView() {

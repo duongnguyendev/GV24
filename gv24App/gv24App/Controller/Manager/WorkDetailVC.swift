@@ -1,5 +1,5 @@
 //
-//  ForgotPassVC.swift
+//  WorkDetailVC.swift
 //  gv24App
 //
 //  Created by Nguyen Duy Duong on 5/5/17.
@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ForgotPassVC: BaseVC {
+class WorkDetailVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        title = "Chi tiết công việc"
     }
 }
