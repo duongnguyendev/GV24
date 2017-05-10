@@ -235,7 +235,11 @@ class SignInVC: BaseVC {
         push(viewController: MaidAroundVC())
     }
     func handleSignInButton(_ sender : UIButton) {
-        print("handleSignInButton")
+        
+        let nav = UINavigationController(rootViewController: HomeVC())
+        present(nav, animated: true, completion: nil)
+        
+//        present(viewController: HomeVC())
     }
     func handleSignUpButton(_ sender : UIButton) {
         push(viewController: SignUpVC_1())
