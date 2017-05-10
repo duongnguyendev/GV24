@@ -24,6 +24,7 @@
 		4E61E3E11EC1A33800E6C8C5 /* MaidProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3DF1EC1A33800E6C8C5 /* MaidProfileVC.swift */; };
 		4E87A54C1EBB64F100EDA0D1 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87A54B1EBB64F100EDA0D1 /* IconView.swift */; };
 		4E8E8F9F1EB1E9D90030B334 /* IoniconsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8E8F9C1EB1E9D90030B334 /* IoniconsSwift.framework */; };
+		4EA5E6BD1EC2ABED007761D8 /* TermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5E6BC1EC2ABED007761D8 /* TermVC.swift */; };
 		4EA7A8381EBAC8DA00CA7F37 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */; };
 		4EA7A83E1EBACF6F00CA7F37 /* MoreUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */; };
 		4EA7A8401EBAD5D000CA7F37 /* BaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */; };
@@ -93,6 +94,7 @@
 		4E8E8F9B1EB1E9D90030B334 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		4E8E8F9C1EB1E9D90030B334 /* IoniconsSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IoniconsSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/IoniconsSwift/IoniconsSwift.framework"; sourceTree = "<group>"; };
 		4E8E8F9D1EB1E9D90030B334 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		4EA5E6BC1EC2ABED007761D8 /* TermVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermVC.swift; sourceTree = "<group>"; };
 		4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreUserCell.swift; sourceTree = "<group>"; };
 		4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeaderView.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				4E61E3D71EC1A31C00E6C8C5 /* SignInVC.swift */,
 				4E61E3D81EC1A31C00E6C8C5 /* SignUpVC_1.swift */,
 				4E61E3D91EC1A31C00E6C8C5 /* SignUpVC_2.swift */,
+				4EA5E6BC1EC2ABED007761D8 /* TermVC.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
 				4E4DD6C31EB0A0C5001B4936 /* AppDelegate.swift in Sources */,
+				4EA5E6BD1EC2ABED007761D8 /* TermVC.swift in Sources */,
 				4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */,
 				4E61E3E11EC1A33800E6C8C5 /* MaidProfileVC.swift in Sources */,
 				4ED2317A1EB98D6300592842 /* NavigationButton.swift in Sources */,

@@ -28,7 +28,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     
     private let imageAvatar : CustomImageView = {
         let iv = CustomImageView()
-        iv.image = Icon.by(name: .iosCamera, size: 100, collor: AppColor.lightGray)
+        iv.image = Icon.by(imageName: "camera")
         iv.contentMode = .scaleAspectFit
         iv.layer.cornerRadius = 50
         iv.layer.masksToBounds = true
@@ -38,7 +38,6 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         iv.translatesAutoresizingMaskIntoConstraints = false
         
         return iv
-        
     }()
     
     private let emailTextField : UITextField = {
@@ -85,7 +84,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     
     private let buttonComplate : BasicButton = {
         let btn = BasicButton()
-        btn.title = "Hoàn tất"
+        btn.title = "Tiếp tục"
         btn.color = AppColor.homeButton3
         btn.addTarget(self, action: #selector(handleComplateButton(_:)), for: .touchUpInside)
         return btn
@@ -222,7 +221,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     }
     
     func handleComplateButton(_ sender : UIButton){
-        print("handleComplateButton")
+        push(viewController: TermVC())
     }
     
     func handleGenderButton(_ sender : UIButton){
