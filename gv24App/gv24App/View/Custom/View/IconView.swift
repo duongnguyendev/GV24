@@ -27,7 +27,7 @@ class IconView: UIImageView {
         contentMode = .scaleAspectFit
         image = Icon.by(name: icon, color: color)
     }
-    init(image : String,size : CGFloat) {
+    init(image : String, size : CGFloat) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: size).isActive = true

@@ -27,6 +27,14 @@ extension UIView{
         view.widthAnchor.constraint(equalToConstant: 1).isActive = true
         return view
     }
+    static func verticalLine(height : CGFloat) -> UIView{
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = AppColor.lightGray
+        view.widthAnchor.constraint(equalToConstant: 1).isActive = true
+        view.heightAnchor.constraint(equalToConstant: height).isActive = true
+        return view
+    }
     
     static func horizontalLine() -> UIView{
         let view = UIView()

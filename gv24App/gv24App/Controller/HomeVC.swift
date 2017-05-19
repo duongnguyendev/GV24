@@ -30,7 +30,7 @@ class HomeVC: BaseVC {
         bt.backgroundColor = AppColor.homeButton1
         bt.iconName = .iosLocation
         bt.title = "Người giúp việc\nquanh đây"
-        bt.addTarget(self, action: #selector(handleButtonAround(sender:)), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(handleButtonAround(_:)), for: .touchUpInside)
         return bt
     }()
     let taskManagerButton : HomeFunctButton = {
@@ -38,7 +38,7 @@ class HomeVC: BaseVC {
         bt.backgroundColor =  AppColor.homeButton2
         bt.iconName = .iosLocation
         bt.title = "Quản lý\ncông việc"
-        bt.addTarget(self, action: #selector(handleButtonTaskManager(sender:)), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(handleButtonTaskManagement(_:)), for: .touchUpInside)
         return bt
     }()
     let historyButton : HomeFunctButton = {
@@ -46,7 +46,7 @@ class HomeVC: BaseVC {
         bt.backgroundColor =  AppColor.homeButton3
         bt.iconName = .iosLocation
         bt.title = "Lịch sử\ncông việc"
-        bt.addTarget(self, action: #selector(handleButtonHistory(sender:)), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(handleButtonHistory(_:)), for: .touchUpInside)
         return bt
     }()
     let sloganView : HomeBottomView = {
@@ -82,7 +82,7 @@ class HomeVC: BaseVC {
     
     override func setupRightNavButton() {
         let buttonMore = UIButton(type: .custom)
-        buttonMore.addTarget(self, action: #selector(handleButtonMore(sender:)), for: .touchUpInside)
+        buttonMore.addTarget(self, action: #selector(handleButtonMore(_:)), for: .touchUpInside)
         buttonMore.setBackgroundImage(Icon.by(name: .more, color: AppColor.backButton), for: .normal)
         buttonMore.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         let btn = UIBarButtonItem(customView: buttonMore)
@@ -101,18 +101,18 @@ class HomeVC: BaseVC {
         title = LanguageManager.shared.localized(string: "Home")
     }
     //MARK: - Handle button
-    func handleButtonMore(sender : UIButton) {
+    func handleButtonMore(_ sender : UIButton) {
         let moreVC = MoreVC()
         present(viewController: moreVC)
     }
     
-    func handleButtonAround(sender : UIButton){
-        print("Around")
+    func handleButtonAround(_ sender : UIButton){
+        present(viewController: MaidAroundVC())
     }
-    func handleButtonTaskManager(sender : UIButton){
-        print("Task Manager")
+    func handleButtonTaskManagement(_ sender : UIButton){
+        present(viewController: TaskManagementVC())
     }
-    func handleButtonHistory(sender : UIButton){
-        print("History")
+    func handleButtonHistory(_ sender : UIButton){
+        present(viewController: HistoryVC())
     }
 }

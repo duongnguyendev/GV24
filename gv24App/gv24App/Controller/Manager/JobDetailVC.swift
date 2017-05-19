@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WorkDetailVC: BaseVC {
+class JobDetailVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()

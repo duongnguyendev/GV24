@@ -30,5 +30,6 @@ class Icon: NSObject {
         return UIImage(named: imageName)
         
     }
+    static var iconMarker = by(imageName: "marker_maid")?.resize(newWidth: 25)
 }
 

@@ -36,8 +36,6 @@
                         <color key="tintColor" red="0.74138641360000002" green="0.8550426364" blue="0.0072640366850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="1tI-AV-ycG"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageTest" destination="UOa-Qy-nMK" id="KtA-sa-p37"/>
                         <outlet property="labelTest" destination="Iaq-kH-Zmc" id="zl0-5A-Eur"/>
