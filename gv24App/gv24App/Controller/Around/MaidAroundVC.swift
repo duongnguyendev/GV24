@@ -101,7 +101,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     //MARK: - handle button
     
     func handleButtonFilter(_ sender: UIButton){
-        print("handleButtonFilter")
+        push(viewController: FilterVC())
     }
     //MARK: - search bar delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
