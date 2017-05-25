@@ -76,6 +76,9 @@
 		4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */; };
 		4ED231831EB9CEFD00592842 /* HomeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED231821EB9CEFD00592842 /* HomeBottomView.swift */; };
 		4EDDB4681ECED8A900AFFD1A /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */; };
+		4EE483DC1ED6CB88004BC615 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */; };
+		4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */; };
+		4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */; };
 		71C0FCB96E162AFAC6F40C6E /* Pods_gv24App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8412861DBAF8464BF1BB89 /* Pods_gv24App.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +161,9 @@
 		4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFunctButton.swift; sourceTree = "<group>"; };
 		4ED231821EB9CEFD00592842 /* HomeBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBottomView.swift; sourceTree = "<group>"; };
 		4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
+		4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralStatisticVC.swift; sourceTree = "<group>"; };
 		B7A145D50B862F48F237BC69 /* Pods-gv24App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.debug.xcconfig"; sourceTree = "<group>"; };
 		FF86EA0F498E6DD9B5C0B5BF /* Pods-gv24App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.release.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,13 +219,14 @@
 		4E3D09201EB3200400303AAD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4EAA97251ECADE550001FEB6 /* HistoryControlCell */,
 				4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */,
+				4EAA97251ECADE550001FEB6 /* HistoryControlCell */,
 				4E54F5931EC9A692007D15D6 /* TaskControll */,
 				4E54F5941EC9A6AC007D15D6 /* TaskControlCell.swift */,
 				4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */,
 				4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */,
 				4EA7A8411EBAD88000CA7F37 /* MoreItemCell.swift */,
+				4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -355,6 +362,7 @@
 				4E61E3D81EC1A31C00E6C8C5 /* SignUpVC_1.swift */,
 				4E61E3D91EC1A31C00E6C8C5 /* SignUpVC_2.swift */,
 				4EA5E6BC1EC2ABED007761D8 /* SignUpVC_3.swift */,
+				4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -364,6 +372,7 @@
 			children = (
 				4E61E3D41EC1A30B00E6C8C5 /* MoreVC.swift */,
 				4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */,
+				4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -587,6 +596,7 @@
 				4EBF04B21ED28FFF00F7E08B /* User.swift in Sources */,
 				4EDDB4681ECED8A900AFFD1A /* FilterVC.swift in Sources */,
 				4EBF04B81ED29D0C00F7E08B /* UserHelpers.swift in Sources */,
+				4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */,
 				4ECD1D3A1EB18743007DEF88 /* Font.swift in Sources */,
 				4ED231751EB980D000592842 /* BaseVC.swift in Sources */,
 				4EA7A8381EBAC8DA00CA7F37 /* BaseCell.swift in Sources */,
@@ -627,10 +637,12 @@
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
 				4EBF04B41ED2925200F7E08B /* WorkInfo.swift in Sources */,
 				4E4DD6C31EB0A0C5001B4936 /* AppDelegate.swift in Sources */,
+				4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */,
 				4EA5E6BD1EC2ABED007761D8 /* SignUpVC_3.swift in Sources */,
 				4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */,
 				4E54F5971EC9A6EE007D15D6 /* TaskNewCell.swift in Sources */,
 				4E61E3E11EC1A33800E6C8C5 /* MaidProfileVC.swift in Sources */,
+				4EE483DC1ED6CB88004BC615 /* SwitchCell.swift in Sources */,
 				4ED2317A1EB98D6300592842 /* NavigationButton.swift in Sources */,
 				4EA7A83E1EBACF6F00CA7F37 /* MoreUserCell.swift in Sources */,
 			);

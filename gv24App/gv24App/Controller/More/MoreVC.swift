@@ -16,6 +16,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         collectionMore.register(MoreItemCell.self, forCellWithReuseIdentifier: itemCellId)
         collectionMore.register(MoreUserCell.self, forCellWithReuseIdentifier: userCellId)
         collectionMore.register(MoreSocialCell.self, forCellWithReuseIdentifier: socialCellId)
+        collectionMore.register(SwitchCell.self, forCellWithReuseIdentifier: switchCellId)
         collectionMore.register(BaseHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
         
     }
@@ -23,6 +24,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     let userCellId = "userCellId"
     let itemCellId = "itemCellId"
     let socialCellId = "socialCellId"
+    let switchCellId = "switchCellId"
     let headerId = "headerId"
     lazy var collectionMore : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -75,17 +77,21 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             }
             
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
+            
             switch indexPath.item
             {
             case 0:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: switchCellId, for: indexPath) as! SwitchCell
                 cell.text = "Thông báo"
+                return cell
             case 1:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
                 cell.text = "Ngôn ngữ"
-            default: break
-                
+                return cell
+            default:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
+                return cell
             }
-            return cell
             
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
@@ -96,7 +102,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             case 1:
                 cell.text = "Điều khoản sử dụng"
             case 2:
-                cell.text = "Ngôn ngữ"
+                cell.text = "Liên hệ"
             default: break
                 
             }
@@ -145,6 +151,35 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? BaseHeaderView
         
         return headerView!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            if indexPath.item == 0 {
+                self.push(viewController: ProfileVC())
+            }else{
+                self.push(viewController: GeneralStatisticVC())
+            }
+            break
+        case 1:
+            if indexPath.item == 0 {
+                
+            }else{
+                self.push(viewController: LanguageVC())
+            }
+            break
+        case 2:
+            break
+        case 3:
+            break
+        case 4:
+            UserHelpers.logOut()
+            self.dismiss(animated: true, completion: nil)
+            break
+        default:
+            break
+        }
     }
     
 }

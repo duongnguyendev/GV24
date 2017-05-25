@@ -60,4 +60,9 @@ class UserHelpers: NSObject {
         UserDefaults.standard.set(token, forKey: TOKEN)
 
     }
+    
+    static func logOut(){
+        UserDefaults.standard.removeObject(forKey: TOKEN)
+        UserDefaults.standard.removeObject(forKey: CURRENT_USER)
+    }
 }

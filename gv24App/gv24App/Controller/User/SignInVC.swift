@@ -19,8 +19,12 @@ import FacebookLogin
 class SignInVC: BaseVC, UserEventDelegate {
     
     private var itemHeight : CGFloat = 0
-    
     override func viewDidLoad() {
+        
+        if UserHelpers.isLogin {
+            presentHome()
+        }
+        
         itemHeight = self.view.frame.size.height / 15
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
