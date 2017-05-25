@@ -5,7 +5,7 @@
   Created by Nguyen Duy Duong on 4/27/17.
   Copyright © 2017 HBBs. All rights reserved.
 */
-
+domainGV24 = "https://yukotest123.herokuapp.com/";
 English = "English";
 SignIn = "Sign in";
 Back = "Back";

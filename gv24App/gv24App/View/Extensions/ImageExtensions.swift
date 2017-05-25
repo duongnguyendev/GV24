@@ -20,6 +20,12 @@ extension UIImage{
         
         return newImage!
     }
+    
+    func toString() -> String?{
+        let imageData = UIImagePNGRepresentation(self)
+        let base64String = imageData?.base64EncodedString(options: .init(rawValue: 0))
+        return base64String
+    }
 }
 
 extension UIImageView{

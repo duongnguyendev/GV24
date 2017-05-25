@@ -28,10 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Override point for customization after application launch.
         
         Thread.sleep(forTimeInterval: 2)
-//        let signInVC = SignInVC()
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
-        let nav = UINavigationController(rootViewController: SignInVC())
+        var nav : UINavigationController?
+        if UserHelpers.isLogin{
+            nav = UINavigationController(rootViewController: HomeVC())
+        }else{
+            nav = UINavigationController(rootViewController: SignInVC())
+        }
+        
         window?.rootViewController = nav
 
         return true

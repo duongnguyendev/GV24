@@ -10,10 +10,14 @@ import UIKit
 
 class MaidProfileVC: BaseVC {
 
+    var maid : MaidProfile?{
+        didSet{
+            title = maid?.userName
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Nguyễn Văn A"
-        // Do any additional setup after loading the view.
     }
 }

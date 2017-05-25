@@ -11,6 +11,12 @@ import IoniconsSwift
 
 class MarkerInfoWindow: BaseView {
 
+    var user : MaidProfile?{
+        didSet{
+            self.labelName.text = user?.userName
+            self.labelPrice.text = "\(String(describing: (user?.workInfo?.price)!))"
+        }
+    }
     let margin : CGFloat = 5.0
     private let avatarImage : CustomImageView = {
         
@@ -25,7 +31,7 @@ class MarkerInfoWindow: BaseView {
         return iv
     }()
     
-    private let labelName : UIView = {
+    private let labelName : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .medium, size: 14)
@@ -33,7 +39,7 @@ class MarkerInfoWindow: BaseView {
         return lb
     }()
 
-    private let labelPrice : UIView = {
+    private let labelPrice : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .light, size: 12)

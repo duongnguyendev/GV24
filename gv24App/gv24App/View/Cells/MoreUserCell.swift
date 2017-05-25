@@ -9,6 +9,7 @@
 import UIKit
 
 class BaseMoreCell: BaseCollectionCell {
+    
     let cellMargin : CGFloat = 20
     let seqaratorView: UIView = {
         let view = UIView()

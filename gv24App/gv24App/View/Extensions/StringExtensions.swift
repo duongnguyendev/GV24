@@ -45,6 +45,4 @@ extension String {
         }
         return true
     }
-    
-    
 }
