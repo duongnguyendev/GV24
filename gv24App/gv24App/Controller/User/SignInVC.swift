@@ -11,11 +11,20 @@ import IoniconsSwift
 import FacebookCore
 import FacebookLogin
 
-class SignInVC: BaseVC {
+@objc protocol UserEventDelegate{
+    @objc optional func logedIn()
+    @objc optional func signUpComplete()
+}
+
+class SignInVC: BaseVC, UserEventDelegate {
     
     private var itemHeight : CGFloat = 0
-    
     override func viewDidLoad() {
+        
+        if UserHelpers.isLogin {
+            presentHome()
+        }
+        
         itemHeight = self.view.frame.size.height / 15
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
@@ -30,7 +39,7 @@ class SignInVC: BaseVC {
     }()
     private let emailTextField : UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
+        tf.placeholder = "User name"
         tf.font = Fonts.by(name: .light, size: 14)
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -235,35 +244,62 @@ class SignInVC: BaseVC {
         push(viewController: MaidAroundVC())
     }
     func handleSignInButton(_ sender : UIButton) {
-        
-        let nav = UINavigationController(rootViewController: HomeVC())
-        present(nav, animated: true, completion: nil)
-        
-//        present(viewController: HomeVC())
+        let alert = UIAlertController(title: "Lỗi", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        if (self.emailTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 && (self.passTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 {
+            UserService.shared.logIn(userName: emailTextField.text!, password: passTextField.text!, completion: { (userLogedIn, token, error) in
+                if error == nil{
+                    UserHelpers.save(user: userLogedIn!, token: token!)
+                    self.presentHome()
+                }
+                else{
+                    alert.title = "lỗi đăng nhập"
+                    alert.message = error
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
+        }else{
+            alert.title = "lỗi đăng nhập"
+            alert.message = "Tên đăng nhập hoặc mật khẩu không đúng"
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     func handleSignUpButton(_ sender : UIButton) {
-        push(viewController: SignUpVC_1())
+        let signUpVC_1 = SignUpVC_1()
+        signUpVC_1.delegate = self
+        present(viewController: signUpVC_1)
     }
     func handleForgotPassButton(_ sender : UIButton) {
-        push(viewController: ForgotPassVC())
+        present(viewController: ForgotPassVC())
     }
     func handleFaceBookButton(_ sender : UIButton) {
         
-//        let loginManager = LoginManager()
-//        loginManager.logIn([.publicProfile], viewController: self) { (loginResult) in
-//            switch loginResult {
-//            case .failed(let error):
-//                print(error)
-//            case .cancelled:
-//                print("User cancelled login.")
-//            case .success( _, _, let accessToken):
-//                print("Logged in! \(accessToken)")
-//            }
-//        }
+        //        let loginManager = LoginManager()
+        //        loginManager.logIn([.publicProfile], viewController: self) { (loginResult) in
+        //            switch loginResult {
+        //            case .failed(let error):
+        //                print(error)
+        //            case .cancelled:
+        //                print("User cancelled login.")
+        //            case .success( _, _, let accessToken):
+        //                print("Logged in! \(accessToken)")
+        //            }
+        //        }
     }
     func handleGoogleButton(_ sender : UIButton) {
         
         
     }
+    
+    func signUpComplete() {
+        presentHome()
+    }
+
+    func presentHome() {
+        let homeVC = HomeVC()
+        let nav = UINavigationController(rootViewController: homeVC)
+        present(nav, animated: true, completion: nil)
+    }
 }
+
 

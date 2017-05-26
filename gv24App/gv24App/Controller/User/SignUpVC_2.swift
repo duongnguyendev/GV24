@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import CoreLocation
 
 class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    var delegate : UserEventDelegate?
     let itemSize : CGFloat = 50
+    var userInfo : Dictionary<String, String>?
+    var gender : Int?
+    var avatarImage : UIImage?
+    var coordinate : CLLocationCoordinate2D?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +32,15 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     
     private let mainScrollView : UIScrollView = UIScrollView()
     private let mainView : UIView = UIView()
+    
+    let activity : UIActivityIndicatorView = {
+        let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        act.hidesWhenStopped = true
+        act.translatesAutoresizingMaskIntoConstraints = false
+        act.layer.zPosition = 1
+        return act
+        
+    }()
     
     private let imageAvatar : CustomImageView = {
         let iv = CustomImageView()
@@ -93,6 +109,12 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     
     
     override func setupView() {
+        
+        view.addSubview(activity)
+        
+        activity.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        activity.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        
         setupMainView()
         setupComponent()
         
@@ -221,7 +243,31 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     }
     
     func handleComplateButton(_ sender : UIButton){
-        push(viewController: TermVC())
+        activity.startAnimating()
+        buttonComplate.isUserInteractionEnabled = false
+        validate { (validateError) in
+            self.activity.stopAnimating()
+            self.buttonComplate.isUserInteractionEnabled = true
+            if validateError != nil{
+                let alert = UIAlertController(title: "", message: validateError, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                self.userInfo?["email"] = self.emailTextField.text
+                self.userInfo?["name"] = self.fullNameTextField.text
+                self.userInfo?["phone"] = self.phoneTextField.text
+                self.userInfo?["addressName"] = self.addressTextField.text
+                self.userInfo?["lat"] = "\(String(describing: (self.coordinate?.latitude)!))"
+                self.userInfo?["lng"] = "\(String(describing: (self.coordinate?.longitude)!))"
+                self.userInfo?["gender"] = "\(String(describing: (self.gender)!))"
+                let signUpVC_3 = SignUpVC_3()
+                signUpVC_3.user = self.userInfo
+                signUpVC_3.avatarImage = self.avatarImage
+                signUpVC_3.delegate = self.delegate
+                self.push(viewController: signUpVC_3)
+            }
+        }
+//        push(viewController: SignUpVC_3())
     }
     
     func handleGenderButton(_ sender : UIButton){
@@ -229,9 +275,11 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         
         actionSheet.addAction(UIAlertAction(title: "Huỷ bỏ", style: .cancel, handler: nil))
         actionSheet.addAction(UIAlertAction(title: "Nam", style: .default, handler: { (nil) in
+            self.gender = 0
             self.genderTextField.text = "Nam"
         }))
         actionSheet.addAction(UIAlertAction(title: "Nữ", style: .default, handler: { (nil) in
+            self.gender = 1
             self.genderTextField.text = "Nữ"
         }))
         
@@ -281,12 +329,9 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            let avatarImage = image.resize(newWidth: 500)
-            imageAvatar.image = avatarImage
-//            let imageData = UIImagePNGRepresentation(avatarImage)
-//            let base64String = imageData?.base64EncodedString(options: .init(rawValue: 0))
-//            self.user.avartarUrl = base64String
-            
+            let imageResized = image.resize(newWidth: 500)
+            imageAvatar.image = imageResized
+            self.avatarImage = imageResized
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -305,4 +350,87 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         self.mainScrollView.contentInset = contentInsets
         self.mainScrollView.scrollIndicatorInsets = contentInsets
     }
+    
+    //MARK: - Validate
+    
+    private func validate(completion: @escaping ((String?) -> ())){
+        
+        if let emailError = validateEmail(){
+            completion(emailError)
+            return
+        }
+        if let phoneError = validatePhone(){
+            completion(phoneError)
+            return
+        }
+        if let genderError = validateGender(){
+            completion(genderError)
+        }
+        if let avatarError = validateAvatar(){
+            completion(avatarError)
+            return
+        }
+        if let fullNameError = validateFullName(){
+            completion(fullNameError)
+            return
+        }
+        validateAddress { (addressError) in
+            if addressError != nil{
+                completion(addressError)
+            }else{
+                completion(nil)
+            }
+        }
+    }
+    
+    private func validateEmail() -> String?{
+        if (emailTextField.text?.isEmail)! {
+            return nil
+        }
+        return "Email không đúng"
+    }
+    private func validatePhone() -> String?{
+        if (phoneTextField.text?.isPhoneNumber)! {
+            return nil
+        }
+        return "Số điện thoại không đúng"
+    }
+    private func validateGender() -> String?{
+        if self.gender == nil {
+            return "Chưa chọn giới tính"
+        }
+        return nil
+    }
+    private func validateAddress(completion:@escaping (String?)->()){
+
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressTextField.text!) { (placeMarks, error) in
+            if error == nil{
+                if (placeMarks?.count)! > 0{
+                    let firstLocation = placeMarks?.first?.location
+                    self.coordinate = firstLocation?.coordinate
+                    completion(nil)
+                }
+                else{
+                    completion("Địa chỉ nhập không đúng")
+                }
+            }else{
+                completion("Địa chỉ nhập không đúng")
+            }
+        }
+    }
+    private func validateFullName()-> String?{
+        
+        if (self.fullNameTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! < 2{
+            return "Vui lòng nhập họ tên"
+        }
+        return nil
+    }
+    private func validateAvatar() -> String?{
+        if self.avatarImage == nil{
+            return "Chưa chọn hình đại diện"
+        }
+        return nil
+    }
+    
 }

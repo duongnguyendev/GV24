@@ -9,11 +9,11 @@
 import UIKit
 
 class BaseMoreCell: BaseCollectionCell {
+    
     let cellMargin : CGFloat = 20
     let seqaratorView: UIView = {
-        let view = UIView()
+        let view = UIView.horizontalLine()
         view.backgroundColor = AppColor.seqaratorView
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     let arrowRight : UIImageView = {
@@ -28,7 +28,6 @@ class BaseMoreCell: BaseCollectionCell {
         addSubview(seqaratorView)
         
         seqaratorView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        seqaratorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         addConstraintWithFormat(format: "|-\(cellMargin)-[v0]|", views: seqaratorView)
         
         arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true

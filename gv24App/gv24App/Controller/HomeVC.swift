@@ -103,7 +103,7 @@ class HomeVC: BaseVC {
     //MARK: - Handle button
     func handleButtonMore(_ sender : UIButton) {
         let moreVC = MoreVC()
-        present(viewController: moreVC)
+        push(viewController: moreVC)
     }
     
     func handleButtonAround(_ sender : UIButton){

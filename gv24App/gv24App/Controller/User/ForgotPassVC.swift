@@ -27,7 +27,7 @@ class ForgotPassVC: BaseVC {
     private let textFieldEmail : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .light, size: 14)
-        tf.placeholder = "Tên đăng nhập"
+        tf.placeholder = "Email"
         return tf
     }()
     private let buttonSend : BasicButton = {

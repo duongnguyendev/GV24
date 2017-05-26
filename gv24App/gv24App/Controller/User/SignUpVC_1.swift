@@ -10,6 +10,7 @@ import UIKit
 
 class SignUpVC_1: BaseVC {
     
+    var delegate : UserEventDelegate?
     let itemSize : CGFloat = 50.0
     
     override func viewDidLoad() {
@@ -29,12 +30,14 @@ class SignUpVC_1: BaseVC {
         let tf = UITextField()
         tf.font = Fonts.by(name: .light, size: 14)
         tf.placeholder = "Mật khẩu"
+        tf.isSecureTextEntry = true
         return tf
     }()
     private let textFieldConfirmPass : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .light, size: 14)
         tf.placeholder = "Xác nhận mật khẩu"
+        tf.isSecureTextEntry = true
         return tf
     }()
     
@@ -100,8 +103,41 @@ class SignUpVC_1: BaseVC {
     
     
     func handleNextButton(_ sender: UIButton){
-        push(viewController: SignUpVC_2())
+//        self.push(viewController: SignUpVC_2())
+     
+        if let validateError = validate(){
+            let alert = UIAlertController(title: "", message: validateError, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }else{
+            
+            let registerInfo : Dictionary<String, String> = ["username":textFieldUserName.text!, "password": textFieldPass.text!]
+            let signUpVC_2 = SignUpVC_2()
+            signUpVC_2.delegate = self.delegate
+            signUpVC_2.userInfo = registerInfo
+            push(viewController: signUpVC_2)
+        }
     }
+    
+    func validate() -> String?{
+        if (textFieldUserName.text?.characters.count)! < 6 {
+            return "Tên đăng nhập không đúng"
+        }else{
+            return confirmPass()
+        }
+    }
+    func confirmPass() -> String?{
+        
+        if (textFieldPass.text?.characters.count)! < 6 {
+            return "mật khẩu không đúng"
+        }else{
+            if textFieldConfirmPass.text != textFieldPass.text{
+                return "xác nhận mật khẩu không đúng"
+            }
+        }
+        return nil
+    }
+    
 }
 
 

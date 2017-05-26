@@ -10,30 +10,36 @@ import UIKit
 import IoniconsSwift
 
 class IconView: UIImageView {
+    
 
     init(icon : Ionicons,size : CGFloat) {
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: size).isActive = true
-        widthAnchor.constraint(equalToConstant: size).isActive = true
+        setUp(size: size)
         contentMode = .scaleAspectFit
         image = Icon.by(name: icon)
     }
     init(icon : Ionicons,size : CGFloat, color : UIColor) {
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: size).isActive = true
-        widthAnchor.constraint(equalToConstant: size).isActive = true
+        setUp(size: size)
         contentMode = .scaleAspectFit
         image = Icon.by(name: icon, color: color)
     }
     init(image : String, size : CGFloat) {
         super.init(frame: .zero)
+        setUp(size: size)
+        contentMode = .scaleAspectFit
+        self.image = Icon.by(imageName: image)
+    }
+    init(size: CGFloat){
+        super.init(frame: .zero)
+        setUp(size: size)
+        contentMode = .scaleAspectFit
+    }
+    
+    func setUp(size: CGFloat){
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: size).isActive = true
         widthAnchor.constraint(equalToConstant: size).isActive = true
-        contentMode = .scaleAspectFit
-        self.image = Icon.by(imageName: image)
     }
     
     required init?(coder aDecoder: NSCoder) {
