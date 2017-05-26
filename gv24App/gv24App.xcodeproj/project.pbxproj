@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		033D16A01ED41D8300EAD7CE /* IconTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D169F1ED41D8300EAD7CE /* IconTextButton.swift */; };
+		033D16A21ED43AB800EAD7CE /* ApplicantListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D16A11ED43AB800EAD7CE /* ApplicantListButton.swift */; };
+		033D16A41ED4414500EAD7CE /* DescTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D16A31ED4414500EAD7CE /* DescTaskView.swift */; };
+		034CE85D1ED7E99F00F90516 /* JobProgressDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034CE85C1ED7E99F00F90516 /* JobProgressDetailVC.swift */; };
+		03D71CC01ED7C83D006E78EF /* ProfileUserButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D71CBF1ED7C83D006E78EF /* ProfileUserButton.swift */; };
+		03D71CC21ED7D076006E78EF /* JobAssignedDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D71CC11ED7D076006E78EF /* JobAssignedDetailVC.swift */; };
+		03D96E281ED68B0300770663 /* DescInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D96E271ED68B0300770663 /* DescInfoView.swift */; };
+		03D96E2C1ED6DF3A00770663 /* DateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D96E2B1ED6DF3A00770663 /* DateTimeView.swift */; };
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
 		4E4DD6C31EB0A0C5001B4936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C21EB0A0C5001B4936 /* AppDelegate.swift */; };
@@ -24,7 +32,7 @@
 		4E54F59D1EC9A832007D15D6 /* TaskInProgressControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F59C1EC9A832007D15D6 /* TaskInProgressControlCell.swift */; };
 		4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F59E1EC9B173007D15D6 /* PostVC.swift */; };
 		4E5B162E1ECD943A00A5FC23 /* MarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */; };
-		4E61E3D31EC1A2FA00E6C8C5 /* JobDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D21EC1A2FA00E6C8C5 /* JobDetailVC.swift */; };
+		4E61E3D31EC1A2FA00E6C8C5 /* JobNewDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D21EC1A2FA00E6C8C5 /* JobNewDetailVC.swift */; };
 		4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D41EC1A30B00E6C8C5 /* MoreVC.swift */; };
 		4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D61EC1A31C00E6C8C5 /* ForgotPassVC.swift */; };
 		4E61E3DB1EC1A31C00E6C8C5 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D71EC1A31C00E6C8C5 /* SignInVC.swift */; };
@@ -73,6 +81,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		033D169F1ED41D8300EAD7CE /* IconTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTextButton.swift; sourceTree = "<group>"; };
+		033D16A11ED43AB800EAD7CE /* ApplicantListButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantListButton.swift; sourceTree = "<group>"; };
+		033D16A31ED4414500EAD7CE /* DescTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescTaskView.swift; sourceTree = "<group>"; };
+		034CE85C1ED7E99F00F90516 /* JobProgressDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobProgressDetailVC.swift; sourceTree = "<group>"; };
+		03D71CBF1ED7C83D006E78EF /* ProfileUserButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserButton.swift; sourceTree = "<group>"; };
+		03D71CC11ED7D076006E78EF /* JobAssignedDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobAssignedDetailVC.swift; sourceTree = "<group>"; };
+		03D96E271ED68B0300770663 /* DescInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescInfoView.swift; sourceTree = "<group>"; };
+		03D96E2B1ED6DF3A00770663 /* DateTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeView.swift; sourceTree = "<group>"; };
 		4B8412861DBAF8464BF1BB89 /* Pods_gv24App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gv24App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -105,7 +121,7 @@
 		4E54F59C1EC9A832007D15D6 /* TaskInProgressControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInProgressControlCell.swift; sourceTree = "<group>"; };
 		4E54F59E1EC9B173007D15D6 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindow.swift; sourceTree = "<group>"; };
-		4E61E3D21EC1A2FA00E6C8C5 /* JobDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailVC.swift; sourceTree = "<group>"; };
+		4E61E3D21EC1A2FA00E6C8C5 /* JobNewDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobNewDetailVC.swift; sourceTree = "<group>"; };
 		4E61E3D41EC1A30B00E6C8C5 /* MoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		4E61E3D61EC1A31C00E6C8C5 /* ForgotPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
 		4E61E3D71EC1A31C00E6C8C5 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -162,6 +178,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03D71CBE1ED7C4B7006E78EF /* JobDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4E61E3D21EC1A2FA00E6C8C5 /* JobNewDetailVC.swift */,
+				03D71CC11ED7D076006E78EF /* JobAssignedDetailVC.swift */,
+				034CE85C1ED7E99F00F90516 /* JobProgressDetailVC.swift */,
+			);
+			name = JobDetail;
+			sourceTree = "<group>";
+		};
 		387D039E8EB683F4FCE8D6B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,7 +377,7 @@
 		4E61E3CF1EC179DD00E6C8C5 /* Manage */ = {
 			isa = PBXGroup;
 			children = (
-				4E61E3D21EC1A2FA00E6C8C5 /* JobDetailVC.swift */,
+				03D71CBE1ED7C4B7006E78EF /* JobDetail */,
 				4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */,
 				4E54F59E1EC9B173007D15D6 /* PostVC.swift */,
 			);
@@ -400,6 +426,9 @@
 				4ED2317B1EB98FAC00592842 /* BaseButton.swift */,
 				4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */,
 				4EA7A8431EBB1E6600CA7F37 /* BasicButton.swift */,
+				033D169F1ED41D8300EAD7CE /* IconTextButton.swift */,
+				033D16A11ED43AB800EAD7CE /* ApplicantListButton.swift */,
+				03D71CBF1ED7C83D006E78EF /* ProfileUserButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -410,6 +439,9 @@
 				4ED231821EB9CEFD00592842 /* HomeBottomView.swift */,
 				4E87A54B1EBB64F100EDA0D1 /* IconView.swift */,
 				4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */,
+				033D16A31ED4414500EAD7CE /* DescTaskView.swift */,
+				03D96E271ED68B0300770663 /* DescInfoView.swift */,
+				03D96E2B1ED6DF3A00770663 /* DateTimeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,7 +490,7 @@
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = FE5FXN233L;
+						DevelopmentTeam = 7R93MWJ8VY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -567,7 +599,9 @@
 				4ED231751EB980D000592842 /* BaseVC.swift in Sources */,
 				4EA7A8381EBAC8DA00CA7F37 /* BaseCell.swift in Sources */,
 				4ED2316F1EB979AF00592842 /* Colors.swift in Sources */,
+				03D96E2C1ED6DF3A00770663 /* DateTimeView.swift in Sources */,
 				4EAA97271ECADED80001FEB6 /* MaidControlCell.swift in Sources */,
+				034CE85D1ED7E99F00F90516 /* JobProgressDetailVC.swift in Sources */,
 				4ED2316D1EB9797B00592842 /* ViewExtensions.swift in Sources */,
 				4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */,
 				4E54F59D1EC9A832007D15D6 /* TaskInProgressControlCell.swift in Sources */,
@@ -580,7 +614,8 @@
 				4EAA97291ECADEF90001FEB6 /* TaskHistoryControlCell.swift in Sources */,
 				4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */,
 				4E54F59B1EC9A751007D15D6 /* TaskAssignedControlCell.swift in Sources */,
-				4E61E3D31EC1A2FA00E6C8C5 /* JobDetailVC.swift in Sources */,
+				03D96E281ED68B0300770663 /* DescInfoView.swift in Sources */,
+				4E61E3D31EC1A2FA00E6C8C5 /* JobNewDetailVC.swift in Sources */,
 				4EAA97241ECAD99E0001FEB6 /* HistoryVC.swift in Sources */,
 				4EA7A8421EBAD88000CA7F37 /* MoreItemCell.swift in Sources */,
 				4E61E3E01EC1A33800E6C8C5 /* MaidAroundVC.swift in Sources */,
@@ -590,6 +625,7 @@
 				4E54F5901EC9811B007D15D6 /* TaskCell.swift in Sources */,
 				4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */,
 				4EA7A8401EBAD5D000CA7F37 /* BaseHeaderView.swift in Sources */,
+				03D71CC21ED7D076006E78EF /* JobAssignedDetailVC.swift in Sources */,
 				4E4DD6E51EB0A838001B4936 /* Icon.swift in Sources */,
 				4E61E3DB1EC1A31C00E6C8C5 /* SignInVC.swift in Sources */,
 				4E54F5951EC9A6AC007D15D6 /* TaskControlCell.swift in Sources */,
@@ -598,12 +634,16 @@
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
+				033D16A41ED4414500EAD7CE /* DescTaskView.swift in Sources */,
 				4E4DD6C31EB0A0C5001B4936 /* AppDelegate.swift in Sources */,
 				4EA5E6BD1EC2ABED007761D8 /* TermVC.swift in Sources */,
+				033D16A01ED41D8300EAD7CE /* IconTextButton.swift in Sources */,
 				4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */,
 				4E54F5971EC9A6EE007D15D6 /* TaskNewCell.swift in Sources */,
 				4E61E3E11EC1A33800E6C8C5 /* MaidProfileVC.swift in Sources */,
 				4ED2317A1EB98D6300592842 /* NavigationButton.swift in Sources */,
+				03D71CC01ED7C83D006E78EF /* ProfileUserButton.swift in Sources */,
+				033D16A21ED43AB800EAD7CE /* ApplicantListButton.swift in Sources */,
 				4EA7A83E1EBACF6F00CA7F37 /* MoreUserCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -746,9 +786,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FE5FXN233L;
+				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -764,9 +804,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FE5FXN233L;
+				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";

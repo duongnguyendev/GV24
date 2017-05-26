@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol TaskControlDelegate {
     @objc optional func didSelected(indexPath : IndexPath)
+    
 }
 
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

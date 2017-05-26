@@ -13,7 +13,6 @@ class MarkerInfoWindow: BaseView {
 
     let margin : CGFloat = 5.0
     private let avatarImage : CustomImageView = {
-        
         let iconSize : CGFloat = 40
         
         let iv = CustomImageView(image : UIImage(named: "avatar"))
@@ -114,6 +113,5 @@ class MarkerInfoWindow: BaseView {
         addConstraintWithFormat(format: "H:|[v0]|", views: buttonChoose)
         buttonChoose.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 0).isActive = true
         buttonChoose.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
-        
     }
 }

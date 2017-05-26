@@ -14,6 +14,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     private let cellNew = "cellNew"
     private let cellAssigned = "cellAssigned"
     private let cellInProgress = "cellInProgress"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Quản lý công việc"
@@ -23,8 +24,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         collectionType.register(TaskInProgressControlCell.self, forCellWithReuseIdentifier: cellInProgress)
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
     }
-    
-    
     
     private lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -69,8 +68,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         
         view.addConstraintWithFormat(format: "H:|-\(15)-[v0]-\(15)-|", views: segmentedControl)
         view.addConstraintWithFormat(format: "|[v0]|", views: collectionType)
-        
-        
     }
     
     
@@ -91,7 +88,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         cell.delegate = self
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -106,7 +102,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let index = targetContentOffset.pointee.x / view.frame.width
         segmentedControl.selectedSegmentIndex = Int(index)
-        
     }
     
     //MARK: - segmented Control
@@ -116,18 +111,24 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     //MARK: - hanlde event
-    
     func handleButtonPost(_ sender: UIButton){
-    
+        let postVC = PostVC()
+        present(viewController: postVC)
     }
     
     //MARK: - task control delegate
-    
     func didSelected(indexPath: IndexPath) {
-        print(indexPath)
-        
-        push(viewController: JobDetailVC())
-        
+        print("IndexPath\(indexPath)")
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            push(viewController: JobNewDetailVC())
+        case 1:
+            push(viewController: JobAssignedDetailVC())
+        case 2:
+            push(viewController: JobProgressDetailVC())
+        default:
+            break
+        }
     }
     
 }

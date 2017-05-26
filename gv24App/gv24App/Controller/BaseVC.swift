@@ -40,7 +40,6 @@ class BaseVC: UIViewController {
     }
     
     func setupBackButton() {
-        
         if isPresented != nil {
             let backButton = BackButton()
             backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)

@@ -22,8 +22,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
         collectionControl.register(TaskHistoryControlCell.self, forCellWithReuseIdentifier: taskHistoryCellId)
         collectionControl.register(MaidControlCell.self, forCellWithReuseIdentifier: maidHistoryCellId)
-        
-        
     }
     
     
