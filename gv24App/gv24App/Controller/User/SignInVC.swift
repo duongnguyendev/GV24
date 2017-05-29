@@ -298,7 +298,7 @@ class SignInVC: BaseVC, UserEventDelegate {
     func presentHome() {
         let homeVC = HomeVC()
         let nav = UINavigationController(rootViewController: homeVC)
-        present(nav, animated: true, completion: nil)
+        present(nav, animated: false, completion: nil)
     }
 }
 

@@ -146,90 +146,25 @@ class APIService: NSObject {
     }
     
     func getWithToken(url : String, completion:@escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth": "0eb910010d0252eb04296d7dc32e657b402290755a85367e8b7a806c7e8bd14b0902e541763a67ef41f2dfb3b9b4919869b609e34dbf6bace4525fa6731d1046"]
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                completion(json, nil)
+                let status = json["status"].bool
+                if !status!{
+                    if let message = json["message"].string{
+                        completion(nil, message)
+                    }
+                }else{
+                    completion(json["data"], nil)
+                }
             case .failure(let error):
                 completion(nil, error.localizedDescription)
                 print(error)
             }
         }
     }
-    
-    func upload(image: UIImage, name: String, parameters : Dictionary<String, String>?, url: String, completion:@escaping (ResponseCompletion)){
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                if let imageData = UIImagePNGRepresentation(image){
-                    multipartFormData.append(imageData, withName: name, fileName: "\(name).jpeg", mimeType: "image/jpeg")
-                }
-                if let params = parameters{
-                    for (key,value) in params{
-                        multipartFormData.append((value.data(using: .utf8))!, withName: key)
-                    }
-                }
-                
-        },
-            to: urlFrom(request: url),
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.responseJSON { response in
-                        let json = JSON(response.value as Any)
-                        let status = json["status"].bool
-                        if !status!{
-                            if let message = json["message"].string{
-                                completion(nil, message)
-                            }
-                            
-                        }else{
-                            completion(json["data"], nil)
-                        }
-                    }
-                    
-                case .failure(let encodingError):
-                    completion(nil, encodingError.localizedDescription)
-                }
-        }
-        )
-        
-    }
-    
-    //MARK: - Upload
-    func uploadWithToken(image: UIImage, name: String, parameters : Dictionary<String, String>?, url: String, completion:@escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth":UserHelpers.token]
-        
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-                if let imageData = UIImagePNGRepresentation(image){
-                    multipartFormData.append(imageData, withName: name, fileName: "\(name).jpeg", mimeType: "image/jpeg")
-                }
-                if let params = parameters{
-                    for (key,value) in params{
-                        multipartFormData.append((value.data(using: .utf8))!, withName: key)
-                    }
-                }
-                
-        },
-            to: urlFrom(request: url),
-            headers: header,
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.responseJSON { response in
-                        let json = JSON(response)
-                        completion(json, nil)
-                    }
-                case .failure(let encodingError):
-                    completion(nil, encodingError.localizedDescription)
-                }
-        }
-        )
-        
-    }
-    
     func urlFrom(request: String) -> String{
         return domain + request
     }

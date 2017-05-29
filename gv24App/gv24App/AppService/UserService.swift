@@ -41,6 +41,21 @@ class UserService: APIService {
         }
     }
     
+    func getComments(user : User, page : Int?){
+        var url = "maid/getComment?id=\((user.userId)!)"
+        if page != nil{
+            url = url + "&page=\(page!)"
+        }
+        
+        getWithToken(url: url) { (jsonData, error) in
+            if error == nil{
+                
+            }else{
+            
+            }
+        }
+    }
+    
     func register(info: Dictionary<String, String>, avatar: UIImage, completion : @escaping ((User?, String?, String?)->())){
         let url = "auth/register"
         postMultipart(url: url, image: avatar, name: "image", parameters: info) { (jsonData, error) in

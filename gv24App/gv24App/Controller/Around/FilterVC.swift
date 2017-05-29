@@ -14,4 +14,25 @@ class FilterVC: BaseVC {
         super.viewDidLoad()
         title = "Filter"
     }
+    
+    override func setupRightNavButton() {
+        let buttonSearch = NavButton(title: "Tìm kiếm")
+        buttonSearch.addTarget(self, action: #selector(handleSearchButton(_:)), for: .touchUpInside)
+        let btn = UIBarButtonItem(customView: buttonSearch)
+        self.navigationItem.rightBarButtonItem = btn
+
+    }
+    
+    override func setupView() {
+        super.setupView()
+    }
+    
+    
+    
+    
+    //MARK: - handle button
+    
+    func handleSearchButton(_ sender : UIButton){
+        print("handleSearchButton")
+    }
 }

@@ -50,10 +50,8 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - setup view
     override func setupRightNavButton() {
         
-        let buttonPost = UIButton(type: .custom)
+        let buttonPost = NavButton(icon: .compose)
         buttonPost.addTarget(self, action: #selector(handleButtonPost(_:)), for: .touchUpInside)
-        buttonPost.setBackgroundImage(Icon.by(name: .compose, color: AppColor.backButton), for: .normal)
-        buttonPost.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         let btn = UIBarButtonItem(customView: buttonPost)
         self.navigationItem.rightBarButtonItem = btn
         

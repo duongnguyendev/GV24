@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import IoniconsSwift
 
 class BackButton: BaseButton {
     private let iconImageView : UIImageView = {
@@ -36,3 +37,29 @@ class BackButton: BaseButton {
         titleView.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: -8).isActive = true
     }
 }
+
+class NavButton: BaseButton{
+    init(title : String) {
+        super.init(frame: CGRect(x: 0, y: 0, width: 70, height: 20))
+        self.titleLabel?.font = Fonts.by(name: .regular, size: 16)
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(AppColor.backButton, for: .normal)
+    }
+    init(icon: Ionicons) {
+        super.init(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        self.setBackgroundImage(Icon.by(name: icon, color: AppColor.backButton), for: .normal)
+    }
+    init(title: String, frame: CGRect) {
+        super.init(frame: frame)
+        self.titleLabel?.font = Fonts.by(name: .regular, size: 16)
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(AppColor.backButton, for: .normal)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+

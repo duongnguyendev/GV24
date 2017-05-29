@@ -43,6 +43,9 @@ PODS:
   - GoogleMaps/Base (2.2.0)
   - GoogleMaps/Maps (2.2.0):
     - GoogleMaps/Base
+  - GooglePlacePicker (2.2.0):
+    - GoogleMaps (= 2.2.0)
+    - GooglePlaces (= 2.2.0)
   - GooglePlaces (2.2.0):
     - GoogleMaps/Base (= 2.2.0)
   - GoogleSignIn (4.0.2):
@@ -77,6 +80,7 @@ DEPENDENCIES:
   - FacebookShare
   - Google/SignIn
   - GoogleMaps
+  - GooglePlacePicker
   - GooglePlaces
   - IoniconsSwift
   - SwiftyJSON
@@ -95,6 +99,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
+  GooglePlacePicker: 345b1aabd42c9d6d9bf2369c1bae1234d903e764
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
@@ -103,6 +108,6 @@ SPEC CHECKSUMS:
   IoniconsSwift: a9034803dfe59ec48a73c95b812c67afdfa3ed08
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 59fd5973743a6e211803c53a19dfcda7816afa36
+PODFILE CHECKSUM: 090342f9ef2d9732ef1e2c4af93e72248592157f
 
 COCOAPODS: 1.2.1

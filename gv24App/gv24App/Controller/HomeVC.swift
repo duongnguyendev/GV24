@@ -81,10 +81,8 @@ class HomeVC: BaseVC {
     }
     
     override func setupRightNavButton() {
-        let buttonMore = UIButton(type: .custom)
+        let buttonMore = NavButton(icon: .more)
         buttonMore.addTarget(self, action: #selector(handleButtonMore(_:)), for: .touchUpInside)
-        buttonMore.setBackgroundImage(Icon.by(name: .more, color: AppColor.backButton), for: .normal)
-        buttonMore.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         let btn = UIBarButtonItem(customView: buttonMore)
         self.navigationItem.rightBarButtonItem = btn
     }

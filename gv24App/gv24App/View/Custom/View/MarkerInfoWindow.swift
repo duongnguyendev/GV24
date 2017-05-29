@@ -47,34 +47,10 @@ class MarkerInfoWindow: BaseView {
         return lb
     }()
     
-    private let labelChoose : UILabel = {
-        let lb = UILabel()
-        lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = Fonts.by(name: .light, size: 14)
-        lb.text = "Chọn người giúp việc"
-        lb.textColor = AppColor.backButton
-        return lb
-    }()
     private let iconUSD : IconView = {
         let iv = IconView(icon: .socialUsd, size: 12, color: AppColor.backButton)
         
         return iv
-    }()
-    private let iconCheck : IconView = {
-        let iv = IconView(icon: .checkmark, size: 18, color: AppColor.backButton)
-        
-        return iv
-    }()
-    
-    private let buttonInfo : UIButton = {
-        let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
-    private let buttonChoose : UIButton = {
-        let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
     }()
     
     private let horizontalLine = UIView.horizontalLine()
@@ -85,11 +61,7 @@ class MarkerInfoWindow: BaseView {
         addSubview(labelName)
         addSubview(iconUSD)
         addSubview(labelPrice)
-        addSubview(labelChoose)
-        addSubview(iconCheck)
         addSubview(horizontalLine)
-        addSubview(buttonInfo)
-        addSubview(buttonChoose)
         
         avatarImage.topAnchor.constraint(equalTo: self.topAnchor, constant: margin).isActive = true
         avatarImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: margin).isActive = true
@@ -105,21 +77,6 @@ class MarkerInfoWindow: BaseView {
         
         horizontalLine.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: margin).isActive = true
         addConstraintWithFormat(format: "H:|[v0]|", views: horizontalLine)
-        
-        labelChoose.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 0).isActive = true
-        labelChoose.leftAnchor.constraint(equalTo: self.leftAnchor, constant: margin).isActive = true
-        labelChoose.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-        
-        iconCheck.centerYAnchor.constraint(equalTo: labelChoose.centerYAnchor, constant: 0).isActive = true
-        iconCheck.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -margin).isActive = true
-        
-        addConstraintWithFormat(format: "H:|[v0]|", views: buttonInfo)
-        buttonInfo.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
-        buttonInfo.bottomAnchor.constraint(equalTo: horizontalLine.topAnchor, constant: 0).isActive = true
-        
-        addConstraintWithFormat(format: "H:|[v0]|", views: buttonChoose)
-        buttonChoose.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 0).isActive = true
-        buttonChoose.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
         
     }
 }

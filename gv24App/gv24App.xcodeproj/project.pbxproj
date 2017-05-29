@@ -136,7 +136,7 @@
 		4EA5E6BC1EC2ABED007761D8 /* SignUpVC_3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC_3.swift; sourceTree = "<group>"; };
 		4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreUserCell.swift; sourceTree = "<group>"; };
-		4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeaderView.swift; sourceTree = "<group>"; };
+		4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseHeaderView.swift; path = ../BaseHeaderView.swift; sourceTree = "<group>"; };
 		4EA7A8411EBAD88000CA7F37 /* MoreItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreItemCell.swift; sourceTree = "<group>"; };
 		4EA7A8431EBB1E6600CA7F37 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		4EAA97231ECAD99E0001FEB6 /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
@@ -225,12 +225,12 @@
 		4E3D09201EB3200400303AAD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4E41F2211EDC0C14001F3CFE /* Headers */,
 				4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */,
 				4EAA97251ECADE550001FEB6 /* HistoryControlCell */,
 				4E54F5931EC9A692007D15D6 /* TaskControll */,
 				4E54F5941EC9A6AC007D15D6 /* TaskControlCell.swift */,
 				4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */,
-				4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */,
 				4EA7A8411EBAD88000CA7F37 /* MoreItemCell.swift */,
 				4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */,
 			);
@@ -262,6 +262,14 @@
 				4EBF04B71ED29D0C00F7E08B /* UserHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4E41F2211EDC0C14001F3CFE /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		4E4DD6B61EB0A0C5001B4936 = {

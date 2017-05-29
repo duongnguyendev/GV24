@@ -31,10 +31,8 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     }
     
     override func setupRightNavButton() {
-        let buttonFilter = UIButton(type: .custom)
+        let buttonFilter = NavButton(icon: .iosSettingsStrong)
         buttonFilter.addTarget(self, action: #selector(handleButtonFilter(_:)), for: .touchUpInside)
-        buttonFilter.setBackgroundImage(Icon.by(name: .iosSettingsStrong, color: AppColor.backButton), for: .normal)
-        buttonFilter.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         let btn = UIBarButtonItem(customView: buttonFilter)
         self.navigationItem.rightBarButtonItem = btn
     }
@@ -160,7 +158,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let index = Int(marker.title!)
-        let window = MarkerInfoWindow(frame: CGRect(x: 0, y: 0, width: 200, height: 90))
+        let window = MarkerInfoWindow(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         window.user = maids?[index!]
         return window
     }
