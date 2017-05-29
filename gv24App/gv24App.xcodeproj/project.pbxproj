@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
+		4E41F2231EDC0F7C001F3CFE /* HeaderWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */; };
 		4E4DD6C31EB0A0C5001B4936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C21EB0A0C5001B4936 /* AppDelegate.swift */; };
 		4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C41EB0A0C5001B4936 /* ViewController.swift */; };
 		4E4DD6C81EB0A0C5001B4936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C61EB0A0C5001B4936 /* Main.storyboard */; };
@@ -89,6 +90,7 @@
 		4B8412861DBAF8464BF1BB89 /* Pods_gv24App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gv24App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWithTitle.swift; sourceTree = "<group>"; };
 		4E4DD6BF1EB0A0C5001B4936 /* gv24App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gv24App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4DD6C21EB0A0C5001B4936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E4DD6C41EB0A0C5001B4936 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */,
+				4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				4EA7A8441EBB1E6600CA7F37 /* BasicButton.swift in Sources */,
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
+				4E41F2231EDC0F7C001F3CFE /* HeaderWithTitle.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
 				4EBF04BC1ED2C5A400F7E08B /* Entity.swift in Sources */,
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
