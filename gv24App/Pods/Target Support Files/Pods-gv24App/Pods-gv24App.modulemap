@@ -1,6 +1,0 @@
-framework module Pods_gv24App {
-  umbrella header "Pods-gv24App-umbrella.h"
-
-  export *
-  module * { export * }
-}

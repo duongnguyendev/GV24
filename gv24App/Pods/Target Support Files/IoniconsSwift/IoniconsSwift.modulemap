@@ -1,6 +1,0 @@
-framework module IoniconsSwift {
-  umbrella header "IoniconsSwift-umbrella.h"
-
-  export *
-  module * { export * }
-}

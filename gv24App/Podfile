@@ -6,15 +6,14 @@ target 'gv24App' do
   use_frameworks!
 
   # Pods for gv24App
-pod 'IoniconsSwift'
-pod ‘Alamofire’
-pod ‘SwiftyJSON’
-pod 'FacebookCore'
-pod 'FacebookLogin'
-pod 'FacebookShare'
-pod 'Google/SignIn'
-pod 'GoogleMaps'
-pod 'GooglePlaces'
-pod 'GooglePlacePicker'
-
+  pod 'IoniconsSwift'
+  pod ‘Alamofire’
+  pod ‘SwiftyJSON’
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+  pod 'Google/SignIn'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
 end
