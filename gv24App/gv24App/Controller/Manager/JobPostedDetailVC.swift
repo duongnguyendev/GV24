@@ -1,15 +1,16 @@
 //
-//  WorkDetailVC.swift
+//  JobPostedDetailVC.swift
 //  gv24App
 //
-//  Created by Nguyen Duy Duong on 5/5/17.
+//  Created by Macbook Solution on 5/26/17.
 //  Copyright © 2017 HBBs. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import IoniconsSwift
-class JobNewDetailVC: BaseVC {
-
+class JobPostedDetailVC: BaseVC{
+    
     let descTaskView: DescTaskView = {
         let view = DescTaskView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +38,7 @@ class JobNewDetailVC: BaseVC {
         button.backgroundColor = UIColor.white
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Chi tiết công việc"
@@ -70,4 +71,5 @@ class JobNewDetailVC: BaseVC {
     func handleAppListTask(_ sender: UIButton){
         print("Handle Applicant Task")
     }
+
 }

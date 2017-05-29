@@ -24,6 +24,11 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         collectionType.register(TaskInProgressControlCell.self, forCellWithReuseIdentifier: cellInProgress)
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        TaskManageService.shared.fetchTaskManagement(process: 000000000000000000000001) { (tasks, status, message) in
+            
+        }
+    }
     
     private lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -121,7 +126,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         print("IndexPath\(indexPath)")
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            push(viewController: JobNewDetailVC())
+            push(viewController: JobPostedDetailVC())
         case 1:
             push(viewController: JobAssignedDetailVC())
         case 2:

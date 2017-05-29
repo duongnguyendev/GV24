@@ -142,7 +142,6 @@ class APIService: NSObject {
                 print(error)
             }
         }
-        
     }
     
     func getWithToken(url : String, completion:@escaping (ResponseCompletion)){

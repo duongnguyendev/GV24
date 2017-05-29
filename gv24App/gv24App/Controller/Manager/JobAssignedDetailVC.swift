@@ -9,6 +9,19 @@
 import Foundation
 import UIKit
 class JobAssignedDetailVC: BaseVC{
+    
+    let mainScrollView : UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    let contentView : UIView = {
+        //content all view
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -58,25 +71,40 @@ class JobAssignedDetailVC: BaseVC{
     
     override func setupView() {
         super.setupView()
-        self.view.addSubview(profileButton)
-        self.view.addSubview(conformedMaid)
-        self.view.addSubview(descTaskView)
-        self.view.addSubview(deleteButton)
+        view.addSubview(mainScrollView)
+        self.mainScrollView.addSubview(contentView)
+        self.contentView.addSubview(profileButton)
+        self.contentView.addSubview(conformedMaid)
+        self.contentView.addSubview(descTaskView)
+        self.contentView.addSubview(deleteButton)
         
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: profileButton)
-        profileButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        mainScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        mainScrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+        contentView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        contentView.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 0).isActive = true
+        contentView.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor, constant: 0).isActive = true
+        contentView.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor, constant: 0).isActive = true
+
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: profileButton)
+        profileButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
         profileButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: conformedMaid)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: conformedMaid)
         conformedMaid.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 1).isActive = true
         conformedMaid.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         descTaskView.topAnchor.constraint(equalTo: conformedMaid.bottomAnchor, constant: 20).isActive = true
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
         descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
+        
     }
 }

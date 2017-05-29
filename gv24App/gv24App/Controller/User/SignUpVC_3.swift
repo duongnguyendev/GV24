@@ -7,8 +7,7 @@
 //
 
 import UIKit
-
-class SignUpVC_3: BaseVC {
+class SignUpVC_3: BaseVC{
     
     var delegate : UserEventDelegate?
     var user : Dictionary<String, String>?
@@ -84,12 +83,12 @@ class SignUpVC_3: BaseVC {
         view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: buttonComplate)
         view.addConstraintWithFormat(format: "V:[v0(40)]-\(margin)-|", views: buttonComplate)
         
-//        contentView.addSubview(logoImage)
+        //        contentView.addSubview(logoImage)
         contentView.addSubview(labelContent)
         
         //        contentView.addConstraintWithFormat(format: "V:|-\(margin)-[v0]-\(margin)-[v1]|", views: logoImage, labelContent)
         contentView.addConstraintWithFormat(format: "V:|[v0]|", views: labelContent)
-//        logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
+        //        logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
         
         labelContent.widthAnchor.constraint(equalToConstant: view.frame.size.width - (2 * margin)).isActive = true
         labelContent.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
@@ -105,7 +104,7 @@ class SignUpVC_3: BaseVC {
             self.buttonComplate.isUserInteractionEnabled = true
             if error == nil{
                 UserHelpers.save(user: userRegisted!, token: token!)
-//                self.delegate?.signUpComplete!()
+                //                self.delegate?.signUpComplete!()
                 self.navigationController?.dismiss(animated: true, completion: {
                     self.delegate?.signUpComplete!()
                 })

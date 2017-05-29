@@ -111,7 +111,7 @@ class DescTaskView: BaseView {
         self.setupLabelDescTask()
         
         addConstraintWithFormat(format: "H:|[v0]|", views: viewLine)
-        viewLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        viewLine.heightAnchor.constraint(equalToConstant: 1/2).isActive = true
         viewLine.bottomAnchor.constraint(equalTo: labelDescTask.bottomAnchor, constant: 10).isActive = true
         
         addConstraintWithFormat(format: "H:|[v0]|", views: moneyView)
@@ -120,7 +120,7 @@ class DescTaskView: BaseView {
         
         self.addConstraintWithFormat(format: "H:|-40-[v0]|", views: viewMoneyLine)
         viewMoneyLine.topAnchor.constraint(equalTo: moneyView.bottomAnchor, constant: 0).isActive = true
-        viewMoneyLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        viewMoneyLine.heightAnchor.constraint(equalToConstant: 1/2).isActive = true
         
         addConstraintWithFormat(format: "H:|[v0]|", views: datetimeView)
         datetimeView.topAnchor.constraint(equalTo: viewMoneyLine.bottomAnchor, constant: 0).isActive = true
@@ -128,7 +128,7 @@ class DescTaskView: BaseView {
         
         self.addConstraintWithFormat(format: "H:|-40-[v0]|", views: viewTimerLine)
         viewTimerLine.topAnchor.constraint(equalTo: datetimeView.bottomAnchor, constant: 0).isActive = true
-        viewTimerLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        viewTimerLine.heightAnchor.constraint(equalToConstant: 1/2).isActive = true
         
         addConstraintWithFormat(format: "H:|[v0]|", views: addressView)
         addressView.topAnchor.constraint(equalTo: viewTimerLine.bottomAnchor, constant: 0).isActive = true

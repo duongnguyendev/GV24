@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class JobProgressDetailVC: BaseVC {
+    
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +46,7 @@ class JobProgressDetailVC: BaseVC {
         self.view.addSubview(profileButton)
         self.view.addSubview(finishMaid)
         self.view.addSubview(descTaskView)
-        
+
         view.addConstraintWithFormat(format: "H:|[v0]|", views: profileButton)
         profileButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         profileButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
