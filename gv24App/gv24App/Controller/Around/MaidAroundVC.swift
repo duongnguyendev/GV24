@@ -163,10 +163,19 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         return window
     }
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        if let index = Int(marker.title!){
-            let maidProfileVC = MaidProfileVC()
-            maidProfileVC.maid = maids?[index]
-            self.push(viewController: maidProfileVC)
+        if UserHelpers.isLogin{
+            if let index = Int(marker.title!){
+                let maidProfileVC = MaidProfileVC()
+                maidProfileVC.maid = maids?[index]
+                self.push(viewController: maidProfileVC)
+            }
+        }else{
+            let alert = UIAlertController(title: "", message: "Vui lòng đăng nhập để xem thêm chi tiết", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
+
     }
 }
