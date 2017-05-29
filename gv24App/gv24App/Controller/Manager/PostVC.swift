@@ -12,7 +12,7 @@ class PostVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Post Task"
         // Do any additional setup after loading the view.
     }
 
@@ -31,5 +31,5 @@ class PostVC: BaseVC {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

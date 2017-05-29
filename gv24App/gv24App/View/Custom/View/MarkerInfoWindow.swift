@@ -19,7 +19,6 @@ class MarkerInfoWindow: BaseView {
     }
     let margin : CGFloat = 5.0
     private let avatarImage : CustomImageView = {
-        
         let iconSize : CGFloat = 40
         
         let iv = CustomImageView(image : UIImage(named: "avatar"))

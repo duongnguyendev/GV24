@@ -17,7 +17,6 @@ extension UIImage{
         self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
         return newImage!
     }
     
@@ -38,7 +37,6 @@ extension UIImageView{
                     }
                 }
             }
-            
             session.resume()
         }
     }

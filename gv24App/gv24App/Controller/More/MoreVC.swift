@@ -18,7 +18,6 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         collectionMore.register(MoreSocialCell.self, forCellWithReuseIdentifier: socialCellId)
         collectionMore.register(SwitchCell.self, forCellWithReuseIdentifier: switchCellId)
         collectionMore.register(BaseHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
-        
     }
     
     let userCellId = "userCellId"

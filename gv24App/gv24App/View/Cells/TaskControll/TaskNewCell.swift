@@ -32,4 +32,6 @@ class TaskNewCell: TaskCell {
         labelNumber.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelNumber.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
     }
+    
+    
 }
