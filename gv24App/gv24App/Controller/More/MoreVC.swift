@@ -68,7 +68,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         switch indexPath.section {
         case 0:
             if indexPath.item == 0{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: userCellId, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: userCellId, for: indexPath) as! MoreUserCell
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
@@ -156,22 +156,16 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            if indexPath.item == 0 {
-                self.push(viewController: ProfileVC())
-            }else{
-                self.push(viewController: GeneralStatisticVC())
-            }
+            handleSection0(item: indexPath.item)
             break
         case 1:
-            if indexPath.item == 0 {
-                
-            }else{
-                self.push(viewController: LanguageVC())
-            }
+            handleSection1(item: indexPath.item)
             break
         case 2:
+            handleSection2(item: indexPath.item)
             break
         case 3:
+            handleSection3(item: indexPath.item)
             break
         case 4:
             UserHelpers.logOut()
@@ -180,6 +174,39 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         default:
             break
         }
+    }
+    
+    func handleSection0(item : Int){
+        if item == 0 {
+            self.push(viewController: ProfileVC())
+        }else{
+            self.push(viewController: GeneralStatisticVC())
+        }
+    }
+    func handleSection1(item : Int){
+        if item == 0 {
+            
+        }else{
+            self.push(viewController: LanguageVC())
+        }
+    }
+    func handleSection2(item : Int){
+        switch item {
+        case 0:
+            push(viewController: AboutUsVC())
+            break
+        case 1:
+            push(viewController: TermsVC())
+            break
+        case 2:
+            push(viewController: ContactVC())
+            break
+        default:
+            break
+        }
+    }
+    func handleSection3(item : Int){
+        
     }
     
 }

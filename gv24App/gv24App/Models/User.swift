@@ -12,6 +12,7 @@ import SwiftyJSON
 class User: Entity {
     var userId : String?
     var userName : String?
+    var name : String?
     var email : String?
     var phone : String?
     var avatarUrl : String?
@@ -24,6 +25,7 @@ class User: Entity {
         super.init()
         self.userId = jsonData["_id"].string
         self.userName = jsonData["info"]["username"].string
+        self.name = jsonData["info"]["name"].string
         self.email = jsonData["info"]["email"].string
         self.phone = jsonData["info"]["phone"].string
         self.avatarUrl = jsonData["info"]["image"].string

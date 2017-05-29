@@ -29,6 +29,7 @@ class UserHelpers: NSObject {
             let user = User()
             user.userId = userDic["userId"] as? String
             user.userName = userDic["userName"] as? String
+            user.name = userDic["name"] as? String
             user.email = userDic["email"] as? String
             user.phone = userDic["phone"] as? String
             user.avatarUrl = userDic["avatarUrl"] as? String
@@ -49,6 +50,7 @@ class UserHelpers: NSObject {
     static func save(user : User, token: String){
         let dic = ["userId":user.userId!,
                    "userName":user.userName!,
+                   "name":user.name!,
                    "email":user.email!,
                    "phone":user.phone!,
                    "avatarUrl": user.avatarUrl!,

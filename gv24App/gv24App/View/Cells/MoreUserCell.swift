@@ -81,7 +81,17 @@ class MoreUserCell: BaseMoreCell {
         labelAddress.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin / 2).isActive = true
         labelAddress.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true
         labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
-    
+        
+        showUserInfo()
+        
+    }
+    private func showUserInfo(){
+        let user = UserHelpers.currentUser
+        let imageUrl = "http://res.cloudinary.com/einzweidrei2/image/upload/v1495614444/xm4zwh2fxm6tnpjhujhl.png"
+        self.avatarImageView.loadImageUsingUrlString(urlString: imageUrl)
+        self.labelName.text = user?.name
+        self.labelAddress.text = user?.address?.name
+        
     }
     
 

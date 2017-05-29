@@ -15,6 +15,9 @@
 		4E4DD6CA1EB0A0C5001B4936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C91EB0A0C5001B4936 /* Assets.xcassets */; };
 		4E4DD6CD1EB0A0C5001B4936 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6CB1EB0A0C5001B4936 /* LaunchScreen.storyboard */; };
 		4E4DD6E51EB0A838001B4936 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6E41EB0A838001B4936 /* Icon.swift */; };
+		4E4E358B1ED7D42C00D13EF5 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E358A1ED7D42C00D13EF5 /* AboutUsVC.swift */; };
+		4E4E358D1ED7E02100D13EF5 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E358C1ED7E02100D13EF5 /* TermsVC.swift */; };
+		4E4E358F1ED7E0C800D13EF5 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E358E1ED7E0C800D13EF5 /* ContactVC.swift */; };
 		4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */; };
 		4E54F5901EC9811B007D15D6 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F58F1EC9811B007D15D6 /* TaskCell.swift */; };
 		4E54F5951EC9A6AC007D15D6 /* TaskControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F5941EC9A6AC007D15D6 /* TaskControlCell.swift */; };
@@ -106,6 +109,9 @@
 		4E4DD6E21EB0A76B001B4936 /* SFUIText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.ttf"; sourceTree = "<group>"; };
 		4E4DD6E31EB0A76B001B4936 /* SFUIText-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		4E4DD6E41EB0A838001B4936 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		4E4E358A1ED7D42C00D13EF5 /* AboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
+		4E4E358C1ED7E02100D13EF5 /* TermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
+		4E4E358E1ED7E0C800D13EF5 /* ContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
 		4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManagementVC.swift; sourceTree = "<group>"; };
 		4E54F58F1EC9811B007D15D6 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = ../TaskCell.swift; sourceTree = "<group>"; };
 		4E54F5941EC9A6AC007D15D6 /* TaskControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskControlCell.swift; path = TaskControll/TaskControlCell.swift; sourceTree = "<group>"; };
@@ -373,6 +379,9 @@
 				4E61E3D41EC1A30B00E6C8C5 /* MoreVC.swift */,
 				4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */,
 				4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */,
+				4E4E358A1ED7D42C00D13EF5 /* AboutUsVC.swift */,
+				4E4E358C1ED7E02100D13EF5 /* TermsVC.swift */,
+				4E4E358E1ED7E0C800D13EF5 /* ContactVC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -603,8 +612,10 @@
 				4ED2316F1EB979AF00592842 /* Colors.swift in Sources */,
 				4EAA97271ECADED80001FEB6 /* MaidControlCell.swift in Sources */,
 				4ED2316D1EB9797B00592842 /* ViewExtensions.swift in Sources */,
+				4E4E358D1ED7E02100D13EF5 /* TermsVC.swift in Sources */,
 				4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */,
 				4E54F59D1EC9A832007D15D6 /* TaskInProgressControlCell.swift in Sources */,
+				4E4E358F1ED7E0C800D13EF5 /* ContactVC.swift in Sources */,
 				4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */,
 				4E61E3DC1EC1A31C00E6C8C5 /* SignUpVC_1.swift in Sources */,
 				4E54F5991EC9A723007D15D6 /* TaskNewControlCell.swift in Sources */,
@@ -645,6 +656,7 @@
 				4EE483DC1ED6CB88004BC615 /* SwitchCell.swift in Sources */,
 				4ED2317A1EB98D6300592842 /* NavigationButton.swift in Sources */,
 				4EA7A83E1EBACF6F00CA7F37 /* MoreUserCell.swift in Sources */,
+				4E4E358B1ED7D42C00D13EF5 /* AboutUsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
