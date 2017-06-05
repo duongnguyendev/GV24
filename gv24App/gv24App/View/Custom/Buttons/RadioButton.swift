@@ -22,6 +22,13 @@ class RadioButton: BaseButton, UITextFieldDelegate {
         }
     }
     
+    var unit : String?{
+        didSet{
+            labelUnit.isHidden = false
+            labelUnit.text = unit
+        }
+    }
+    
     var title: String?{
         didSet{
             let str = NSAttributedString(string: title!, attributes: [NSForegroundColorAttributeName:UIColor.black])
@@ -53,25 +60,44 @@ class RadioButton: BaseButton, UITextFieldDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isEnabled = false
         label.font = Fonts.by(name: .light, size: 15)
+        label.keyboardType = .numberPad
         label.delegate = self
         return label
+    }()
+    
+    private let labelUnit : UILabel = {
+        let lb = UILabel()
+        lb.isHidden = true
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.textColor = AppColor.lightGray
+        lb.font = Fonts.by(name: .regular, size: 15)
+        lb.textAlignment = .right
+        return lb
     }()
     override func setupView() {
         
         addSubview(statusIcon)
         addSubview(titleView)
         addSubview(bottomLine)
+        addSubview(labelUnit)
         
         titleView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         titleView.leftAnchor.constraint(equalTo: self.statusIcon.rightAnchor, constant: 10).isActive = true
-        titleView.rightAnchor.constraint(equalTo: rightAnchor, constant: -60).isActive = true
+        titleView.rightAnchor.constraint(equalTo: labelUnit.leftAnchor, constant: 0).isActive = true
         statusIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         statusIcon.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        
+        labelUnit.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        labelUnit.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        labelUnit.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         
         
         bottomLine.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         bottomLine.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         bottomLine.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        
+        
+        
         
     }
 

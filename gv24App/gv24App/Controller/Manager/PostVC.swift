@@ -101,6 +101,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         let rb = RadioButton()
         rb.showBottomLine = true
         rb.title = "Nhập số tiền công"
+        rb.unit = "VND"
         rb.addTarget(self, action: #selector(handleRadioButton(_:)), for: .touchUpInside)
         rb.isSelected = true
         return rb
@@ -234,6 +235,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         
         labelTo.bottomAnchor.constraint(equalTo: timeView.bottomAnchor, constant: -10).isActive = true
         labelTo.centerXAnchor.constraint(equalTo: timeView.centerXAnchor, constant: 0).isActive = true
+        labelTo.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         timeView.addSubview(buttonFrom)
         timeView.addSubview(buttonTo)

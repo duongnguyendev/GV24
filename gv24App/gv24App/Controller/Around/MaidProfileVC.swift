@@ -12,7 +12,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
 
     var maid : MaidProfile?{
         didSet{
-            title = maid?.userName
+            title = maid?.name
             UserService.shared.getComments(user: maid!, page: nil) { (comments, error) in
                 
             }

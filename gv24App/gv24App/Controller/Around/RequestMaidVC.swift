@@ -12,12 +12,9 @@ class RequestMaidVC: PostVC {
     
     var maid : MaidProfile?{
         didSet{
-            //            self.avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
-            //            self.labelName.text = maid?.name
-            //            self.labelAddress.text = maid?.address?.name
         }
     }
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Gửi yêu cầu"
