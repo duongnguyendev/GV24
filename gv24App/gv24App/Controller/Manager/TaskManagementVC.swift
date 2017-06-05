@@ -9,12 +9,10 @@
 import UIKit
 
 class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, TaskControlDelegate {
-    
     private let cellId = "cellId"
     private let cellNew = "cellNew"
     private let cellAssigned = "cellAssigned"
     private let cellInProgress = "cellInProgress"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Quản lý công việc"
@@ -25,9 +23,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
     }
     override func viewWillAppear(_ animated: Bool) {
-        TaskManageService.shared.fetchTaskManagement(process: 000000000000000000000001) { (tasks, status, message) in
-            
-        }
+        self.collectionType.reloadData()
     }
     
     private lazy var collectionType : UICollectionView = {
@@ -53,12 +49,10 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }()
     //MARK: - setup view
     override func setupRightNavButton() {
-        
         let buttonPost = NavButton(icon: .compose)
         buttonPost.addTarget(self, action: #selector(handleButtonPost(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonPost)
         self.navigationItem.rightBarButtonItem = btn
-        
     }
     
     override func setupView() {
@@ -72,8 +66,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         view.addConstraintWithFormat(format: "H:|-\(15)-[v0]-\(15)-|", views: segmentedControl)
         view.addConstraintWithFormat(format: "|[v0]|", views: collectionType)
     }
-    
-    
     //MARK: - collection view handle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -88,6 +80,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         default:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TaskControlCell
         }
+        cell.type = indexPath.item
         cell.delegate = self
         return cell
     }
@@ -101,8 +94,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
         let index = targetContentOffset.pointee.x / view.frame.width
         segmentedControl.selectedSegmentIndex = Int(index)
     }
@@ -118,20 +110,26 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         let postVC = PostVC()
         present(viewController: postVC)
     }
-    
     //MARK: - task control delegate
-    func didSelected(indexPath: IndexPath) {
-        print("IndexPath\(indexPath)")
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            push(viewController: JobPostedDetailVC())
-        case 1:
-            push(viewController: JobAssignedDetailVC())
-        case 2:
-            push(viewController: JobProgressDetailVC())
-        default:
-            break
+    func didSelected(task: Task) {
+        if (task.stakeholder?.request?.count)! > 0{
+            let jobApplicantVC = JobPostedDetailVC()
+            jobApplicantVC.task = task
+             push(viewController: jobApplicantVC)
+        }else{
+            let jobPostVC = JobAssignedDetailVC()
+            jobPostVC.task = task
+            push(viewController: jobPostVC)
         }
     }
-    
+    func longdidSelected(task: Task) {
+        let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ShowDeleteWork"), preferredStyle:UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default){ action -> Void in
+            
+        })
+        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel){ action -> Void in
+            
+        })
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

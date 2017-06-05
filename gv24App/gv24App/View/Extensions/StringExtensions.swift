@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-
 extension String {
     static func heightWith(string: String, size : CGSize, font : UIFont) -> CGFloat{
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
@@ -26,7 +25,6 @@ extension String {
     }
     
     var isEmail : Bool {
-        
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailFormat)
         let emailTestResult = emailTest.evaluate(with: self)
@@ -45,4 +43,7 @@ extension String {
         }
         return true
     }
+    
+
+    
 }

@@ -10,18 +10,21 @@ import UIKit
 import IoniconsSwift
 
 class TaskCell: BaseCollectionCell {
-    
     let margin : CGFloat = 10
-
-    private let iconType : IconView = {
+    var statusTask: String?{
+        didSet{
+            labelStatus.text = statusTask
+        }
+    }
+    let iconType : IconView = {
         let iv = IconView(image: "nau_an", size: 50)
         return iv
     }()
-    private let iconAlarmClock : IconView = {
+    let iconAlarmClock : IconView = {
         let iv = IconView(icon: .androidAlarmClock, size: 20, color: AppColor.backButton)
         return iv
     }()
-    private let labelTitle : UILabel = {
+    let labelTitle : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .medium, size: 17)
@@ -29,7 +32,7 @@ class TaskCell: BaseCollectionCell {
         return lb
     }()
     
-    private let labelStatus : UILabel = {
+    let labelStatus : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 12)
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +41,7 @@ class TaskCell: BaseCollectionCell {
         return lb
     }()
     
-    private let labelUploadAt : UILabel = {
+    let labelUploadAt : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 12)
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -47,16 +50,16 @@ class TaskCell: BaseCollectionCell {
         lb.textColor = UIColor.gray
         return lb
     }()
-    private let labelDate : UILabel = {
+    let labelDate : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 16)
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.text = "10/10/2017"
         return lb
     }()
-    private let labelTimes : UILabel = {
+    let labelTimes : UILabel = {
         let lb = UILabel()
-        lb.font = Fonts.by(name: .light, size: 12)
+        lb.font = Fonts.by(name: .light, size: 13)
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.text = "9h00 am - 12h00 am"
         lb.textColor = UIColor.gray
@@ -102,5 +105,14 @@ class TaskCell: BaseCollectionCell {
         labelTimes.centerYAnchor.constraint(equalTo: iconAlarmClock.centerYAnchor, constant: 0).isActive = true
         labelTimes.leftAnchor.constraint(equalTo: verticalLine.rightAnchor, constant: 0).isActive = true
         labelTimes.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+    }
+    
+    var task: Task?{
+        didSet{
+            labelTitle.text = task?.info?.title
+            iconType.loadImageurl(link: (task?.info?.work?.image)!)
+            labelDate.text = Date(isoDateString: (task?.info?.time?.startAt)!).dayMonthYear
+            labelTimes.text = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
+        }
     }
 }

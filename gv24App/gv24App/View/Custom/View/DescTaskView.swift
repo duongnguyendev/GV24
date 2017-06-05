@@ -12,7 +12,18 @@ import IoniconsSwift
 class DescTaskView: BaseView {
     
     let margin : CGFloat = 20
-    
+    var task: Task?{
+        didSet{
+            iconType.loadImageurl(link: (task?.info?.work?.image)!)
+            labelTitle.text = task?.info?.title
+            labelType.text = task?.info?.work?.name
+            labelDescTask.text = task?.info?.desc
+            moneyView.name = "\((task?.info?.price)!)"
+            datetimeView.name = Date(isoDateString: (task?.info?.time?.startAt)!).dayMonthYear
+            datetimeView.clock = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
+            addressView.name = task?.info?.address?.name
+        }
+    }
     private let iconType : IconView = {
         let iv = IconView(image: "nau_an", size: 50)
         return iv

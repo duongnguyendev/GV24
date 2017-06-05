@@ -11,15 +11,16 @@ import UIKit
 class TaskInProgressControlCell: TaskControlCell {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: progressCellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: progressCellId, for: indexPath) as! TaskCell
+        cell.task = tasks[indexPath.item]
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return tasks.count
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.delegate != nil {
-            self.delegate?.didSelected!(indexPath : indexPath)
+            self.delegate?.didSelected!(task : tasks[indexPath.item])
         }
     }
     let progressCellId = "progressCellId"

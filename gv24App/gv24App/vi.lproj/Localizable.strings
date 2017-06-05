@@ -18,4 +18,4 @@ Password = "Mật khẩu";
 RemoveTask = "Xoá công việc";
 ApplicantList = "Danh sách ứng tuyển";
 ConformedMaid = "Xác nhận người giúp việc";
-
+ShowDeleteWork = "Bạn muốn xoá công việc này không?";

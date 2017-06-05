@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 class JobAssignedDetailVC: BaseVC{
-    
+    var task = Task()
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class JobAssignedDetailVC: BaseVC{
     private let conformedMaid: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "ConformedMaid"
+        button.title = LanguageManager.shared.localized(string: "ConformedMaid")
         button.sizeImage = 20
         button.color = AppColor.backButton
         button.iconName = .logIn
@@ -50,7 +50,7 @@ class JobAssignedDetailVC: BaseVC{
         button.color = AppColor.homeButton1
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
         button.sizeImage = 30
-        button.title = "RemoveTask"
+        button.title = LanguageManager.shared.localized(string: "RemoveTask")
         button.backgroundColor = UIColor.white
         button.iconName = .iosTrash
         return button
@@ -66,7 +66,7 @@ class JobAssignedDetailVC: BaseVC{
          title = "Đã phân công"
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.descTaskView.task = task
     }
     
     override func setupView() {
