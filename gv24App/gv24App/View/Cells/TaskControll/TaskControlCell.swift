@@ -12,7 +12,6 @@ import UIKit
     @objc optional func didSelected(task : Task)
     @objc optional func longdidSelected(task : Task)
 }
-
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
 
     var delegate : TaskControlDelegate?

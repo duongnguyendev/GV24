@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */; };
+		03446A121EE53B35004DB193 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A111EE53B35004DB193 /* HistoryService.swift */; };
 		03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */; };
 		03BE7F2E1EE15B5100757BB8 /* ApplicantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */; };
 		03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2F1EE1677000757BB8 /* Applicant.swift */; };
@@ -118,6 +119,7 @@
 
 /* Begin PBXFileReference section */
 		0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		03446A111EE53B35004DB193 /* HistoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		03BBE29A1ED83948005B47B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
 		03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantCell.swift; sourceTree = "<group>"; };
@@ -330,7 +332,7 @@
 			children = (
 				4E41F2211EDC0C14001F3CFE /* Headers */,
 				4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */,
-				4EAA97251ECADE550001FEB6 /* HistoryControlCell */,
+				4EAA97251ECADE550001FEB6 /* HistoryControl */,
 				4E54F5931EC9A692007D15D6 /* TaskControll */,
 				4E54F5941EC9A6AC007D15D6 /* TaskControlCell.swift */,
 				4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */,
@@ -535,12 +537,13 @@
 			path = Around;
 			sourceTree = "<group>";
 		};
-		4EAA97251ECADE550001FEB6 /* HistoryControlCell */ = {
+		4EAA97251ECADE550001FEB6 /* HistoryControl */ = {
 			isa = PBXGroup;
 			children = (
 				4EAA97261ECADED80001FEB6 /* MaidControlCell.swift */,
 				4EAA97281ECADEF90001FEB6 /* TaskHistoryControlCell.swift */,
 			);
+			name = HistoryControl;
 			path = HistoryControlCell;
 			sourceTree = "<group>";
 		};
@@ -550,6 +553,7 @@
 				4E8D27591EDC152800872A61 /* TaskManageService.swift */,
 				4ECD1D591EB1AFF4007DEF88 /* ApiService.swift */,
 				4EBF04B91ED2BB7500F7E08B /* UserService.swift */,
+				03446A111EE53B35004DB193 /* HistoryService.swift */,
 			);
 			path = AppService;
 			sourceTree = "<group>";
@@ -709,7 +713,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -814,6 +818,7 @@
 				4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */,
 				4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */,
 				4E54F5971EC9A6EE007D15D6 /* TaskNewCell.swift in Sources */,
+				03446A121EE53B35004DB193 /* HistoryService.swift in Sources */,
 				4E61E3E11EC1A33800E6C8C5 /* MaidProfileVC.swift in Sources */,
 				4EE483DC1ED6CB88004BC615 /* SwitchCell.swift in Sources */,
 				4E8D27441EDC134B00872A61 /* SignUpVC_3.swift in Sources */,
