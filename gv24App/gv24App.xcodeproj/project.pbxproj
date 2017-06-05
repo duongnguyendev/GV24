@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */; };
+		03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */; };
+		03BE7F2E1EE15B5100757BB8 /* ApplicantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */; };
+		03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2F1EE1677000757BB8 /* Applicant.swift */; };
+		03F586D01EDD0C5200AE42EC /* TaskExpiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */; };
 		4E0B0A411EDE7ACC0043E38A /* RequestMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */; };
 		4E0B0A431EDE7AE40043E38A /* ReportMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */; };
 		4E0CACA11EDD074C00752BCC /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA01EDD074C00752BCC /* Comment.swift */; };
@@ -14,11 +19,6 @@
 		4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA41EDD18E800752BCC /* RatingStartView.swift */; };
 		4E0CACA71EDD293D00752BCC /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA61EDD293D00752BCC /* CommentCell.swift */; };
 		4E0CACA91EDD750B00752BCC /* MaidProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */; };
-		0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */; };
-		03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */; };
-		03BE7F2E1EE15B5100757BB8 /* ApplicantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */; };
-		03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2F1EE1677000757BB8 /* Applicant.swift */; };
-		03F586D01EDD0C5200AE42EC /* TaskExpiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */; };
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
 		4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBE29A1ED83948005B47B0 /* AppDelegate.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
@@ -117,6 +117,10 @@
 /* Begin PBXFileReference section */
 		0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		03BBE29A1ED83948005B47B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
+		03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantCell.swift; sourceTree = "<group>"; };
+		03BE7F2F1EE1677000757BB8 /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
+		03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExpiredCell.swift; sourceTree = "<group>"; };
 		4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaidVC.swift; sourceTree = "<group>"; };
 		4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMaidVC.swift; sourceTree = "<group>"; };
 		4E0CACA01EDD074C00752BCC /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -124,10 +128,6 @@
 		4E0CACA41EDD18E800752BCC /* RatingStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingStartView.swift; sourceTree = "<group>"; };
 		4E0CACA61EDD293D00752BCC /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidProfileCell.swift; sourceTree = "<group>"; };
-		03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
-		03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantCell.swift; sourceTree = "<group>"; };
-		03BE7F2F1EE1677000757BB8 /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
-		03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExpiredCell.swift; sourceTree = "<group>"; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWithTitle.swift; sourceTree = "<group>"; };
@@ -616,7 +616,7 @@
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 7R93MWJ8VY;
+						DevelopmentTeam = FE5FXN233L;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -694,7 +694,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -948,10 +948,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7R93MWJ8VY;
+				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -967,10 +967,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7R93MWJ8VY;
+				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
