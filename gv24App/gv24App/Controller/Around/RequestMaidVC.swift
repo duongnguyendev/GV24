@@ -22,4 +22,8 @@ class RequestMaidVC: PostVC {
         super.viewDidLoad()
         title = "Gửi yêu cầu"
     }
+    
+    override func handlePostButton(_ sender: UIButton) {
+        
+    }
 }

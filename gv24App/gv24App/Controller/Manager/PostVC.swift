@@ -10,10 +10,21 @@ import UIKit
 
 class PostVC: BaseVC, DateTimeLauncherDelegate {
 
-    var date : Date?
-    var timeStart : Date?
-    var timeEnd : Date?
-    
+    var date : Date? = Date(){
+        didSet{
+            buttonDate.valueString = date?.dayMonthYear
+        }
+    }
+    var timeStart : Date? = Date(){
+        didSet{
+            buttonFrom.title = timeStart?.hourMinute
+        }
+    }
+    var timeEnd : Date? = Date(){
+        didSet{
+            buttonTo.title = timeStart?.hourMinute
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -265,13 +276,13 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
     func selected(dateTime: Date, for sender: UIButton) {
         switch sender {
         case buttonDate:
-            buttonDate.valueString = dateTime.dayMonthYear
+            date = dateTime
             break
         case buttonFrom:
-            buttonFrom.title = dateTime.hourMinute
+            timeStart = dateTime
             break
         case buttonTo:
-            buttonTo.title = dateTime.hourMinute
+            timeEnd = dateTime
             break
         default:
             break
