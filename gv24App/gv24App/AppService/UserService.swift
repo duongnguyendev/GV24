@@ -41,7 +41,19 @@ class UserService: APIService {
         }
     }
     
-    func getComments(user : User, page : Int?){
+    func getMyInfo(completion : @escaping ((User?, String?)->())){
+        let url = "owner/getMyInfo"
+        getWithToken(url: url) { (jsonData, error) in
+            if error == nil{
+                let user = User(jsonData: jsonData!)
+                completion(user,nil)
+            }else{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func getComments(user : User, page : Int?, completion:@escaping (([Comment]?, String?)->())){
         var url = "maid/getComment?id=\((user.userId)!)"
         if page != nil{
             url = url + "&page=\(page!)"
@@ -49,9 +61,9 @@ class UserService: APIService {
         
         getWithToken(url: url) { (jsonData, error) in
             if error == nil{
-                
+                completion(self.getCommentsFrom(json: (jsonData?["docs"])!), nil)
             }else{
-            
+                completion(nil, error)
             }
         }
     }
@@ -68,7 +80,17 @@ class UserService: APIService {
             }
         }
     }
-    
+    func report(maidId: String, content: String, completion: @escaping ((String?)->())){
+        let url = "owner/report"
+        let params = ["toId":maidId, "content": content]
+        postWidthToken(url: url, parameters: params) { (jsonData, error) in
+            if error == nil{
+                completion(nil)
+            }else{
+                completion(error)
+            }
+        }
+    }
     
     private func getMaidProfileFrom(json : JSON) -> [MaidProfile]?{
         if let data = json.array{
@@ -82,6 +104,17 @@ class UserService: APIService {
         return nil
     }
     
-    
+    private func getCommentsFrom(json: JSON) ->[Comment]?{
+        
+        if let data = json.array{
+            var listComment : [Comment] = [Comment]()
+            for commentData in data{
+                listComment.append(Comment(jsonData: commentData))
+            }
+            return listComment
+        }
+        
+        return nil
+    }
     
 }

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0B0A411EDE7ACC0043E38A /* RequestMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */; };
+		4E0B0A431EDE7AE40043E38A /* ReportMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */; };
+		4E0CACA11EDD074C00752BCC /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA01EDD074C00752BCC /* Comment.swift */; };
+		4E0CACA31EDD12ED00752BCC /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA21EDD12ED00752BCC /* UserProfileCell.swift */; };
+		4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA41EDD18E800752BCC /* RatingStartView.swift */; };
+		4E0CACA71EDD293D00752BCC /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA61EDD293D00752BCC /* CommentCell.swift */; };
+		4E0CACA91EDD750B00752BCC /* MaidProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */; };
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
 		4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBE29A1ED83948005B47B0 /* AppDelegate.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
@@ -28,6 +35,7 @@
 		4E54F59D1EC9A832007D15D6 /* TaskInProgressControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F59C1EC9A832007D15D6 /* TaskInProgressControlCell.swift */; };
 		4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F59E1EC9B173007D15D6 /* PostVC.swift */; };
 		4E5B162E1ECD943A00A5FC23 /* MarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */; };
+		4E5F6C7E1EE11D7000B19C86 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F6C7D1EE11D7000B19C86 /* CheckBox.swift */; };
 		4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D41EC1A30B00E6C8C5 /* MoreVC.swift */; };
 		4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D61EC1A31C00E6C8C5 /* ForgotPassVC.swift */; };
 		4E61E3DB1EC1A31C00E6C8C5 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D71EC1A31C00E6C8C5 /* SignInVC.swift */; };
@@ -95,11 +103,21 @@
 		4EE483DC1ED6CB88004BC615 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */; };
 		4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */; };
 		4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */; };
+		4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35D1EE150CD00560C4A /* RadioButton.swift */; };
+		4EF1F3601EE1640600560C4A /* ButtonTitleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35F1EE1640600560C4A /* ButtonTitleValue.swift */; };
+		4EF8A14E1EE110CF002A5920 /* LabelButtomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8A14D1EE110CF002A5920 /* LabelButtomLine.swift */; };
 		CF334A489D0E0A4083BA94C8 /* Pods_gv24App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6048FD6ABBCEEABE41FA5CE8 /* Pods_gv24App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03BBE29A1ED83948005B47B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaidVC.swift; sourceTree = "<group>"; };
+		4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMaidVC.swift; sourceTree = "<group>"; };
+		4E0CACA01EDD074C00752BCC /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		4E0CACA21EDD12ED00752BCC /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
+		4E0CACA41EDD18E800752BCC /* RatingStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingStartView.swift; sourceTree = "<group>"; };
+		4E0CACA61EDD293D00752BCC /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidProfileCell.swift; sourceTree = "<group>"; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWithTitle.swift; sourceTree = "<group>"; };
@@ -134,6 +152,7 @@
 		4E54F59C1EC9A832007D15D6 /* TaskInProgressControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInProgressControlCell.swift; sourceTree = "<group>"; };
 		4E54F59E1EC9B173007D15D6 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindow.swift; sourceTree = "<group>"; };
+		4E5F6C7D1EE11D7000B19C86 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		4E61E3D41EC1A30B00E6C8C5 /* MoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		4E61E3D61EC1A31C00E6C8C5 /* ForgotPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
 		4E61E3D71EC1A31C00E6C8C5 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -195,6 +214,9 @@
 		4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralStatisticVC.swift; sourceTree = "<group>"; };
+		4EF1F35D1EE150CD00560C4A /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		4EF1F35F1EE1640600560C4A /* ButtonTitleValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTitleValue.swift; sourceTree = "<group>"; };
+		4EF8A14D1EE110CF002A5920 /* LabelButtomLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelButtomLine.swift; sourceTree = "<group>"; };
 		6048FD6ABBCEEABE41FA5CE8 /* Pods_gv24App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gv24App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D2C40D16D81184827E7734 /* Pods-gv24App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.release.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.release.xcconfig"; sourceTree = "<group>"; };
 		9E955963E9F84A771AF50D5E /* Pods-gv24App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +277,7 @@
 				4EBF04B31ED2925200F7E08B /* WorkInfo.swift */,
 				4EBF04B51ED292F100F7E08B /* Address.swift */,
 				4EBF04BB1ED2C5A400F7E08B /* Entity.swift */,
+				4E0CACA01EDD074C00752BCC /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +293,9 @@
 				4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */,
 				4EA7A8411EBAD88000CA7F37 /* MoreItemCell.swift */,
 				4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */,
+				4E0CACA21EDD12ED00752BCC /* UserProfileCell.swift */,
+				4E0CACA61EDD293D00752BCC /* CommentCell.swift */,
+				4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -457,6 +483,8 @@
 			children = (
 				4E61E3DE1EC1A33800E6C8C5 /* MaidAroundVC.swift */,
 				4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */,
+				4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */,
+				4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */,
 			);
 			path = Around;
 			sourceTree = "<group>";
@@ -491,6 +519,9 @@
 				4ED2317B1EB98FAC00592842 /* BaseButton.swift */,
 				4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */,
 				4EA7A8431EBB1E6600CA7F37 /* BasicButton.swift */,
+				4E5F6C7D1EE11D7000B19C86 /* CheckBox.swift */,
+				4EF1F35D1EE150CD00560C4A /* RadioButton.swift */,
+				4EF1F35F1EE1640600560C4A /* ButtonTitleValue.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -504,6 +535,8 @@
 				4ED231821EB9CEFD00592842 /* HomeBottomView.swift */,
 				4E87A54B1EBB64F100EDA0D1 /* IconView.swift */,
 				4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */,
+				4E0CACA41EDD18E800752BCC /* RatingStartView.swift */,
+				4EF8A14D1EE110CF002A5920 /* LabelButtomLine.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -666,12 +699,15 @@
 				4ECD1D3A1EB18743007DEF88 /* Font.swift in Sources */,
 				4ED231751EB980D000592842 /* BaseVC.swift in Sources */,
 				4EA7A8381EBAC8DA00CA7F37 /* BaseCell.swift in Sources */,
+				4E0B0A411EDE7ACC0043E38A /* RequestMaidVC.swift in Sources */,
 				4ED2316F1EB979AF00592842 /* Colors.swift in Sources */,
 				4EAA97271ECADED80001FEB6 /* MaidControlCell.swift in Sources */,
 				4E8D27501EDC142100872A61 /* DateTimeView.swift in Sources */,
 				4ED2316D1EB9797B00592842 /* ViewExtensions.swift in Sources */,
 				4E4E358D1ED7E02100D13EF5 /* TermsVC.swift in Sources */,
+				4E0CACA31EDD12ED00752BCC /* UserProfileCell.swift in Sources */,
 				4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */,
+				4EF8A14E1EE110CF002A5920 /* LabelButtomLine.swift in Sources */,
 				4E8D274F1EDC142100872A61 /* DescInfoView.swift in Sources */,
 				4E54F59D1EC9A832007D15D6 /* TaskInProgressControlCell.swift in Sources */,
 				4E4E358F1ED7E0C800D13EF5 /* ContactVC.swift in Sources */,
@@ -686,6 +722,7 @@
 				4E5B162E1ECD943A00A5FC23 /* MarkerInfoWindow.swift in Sources */,
 				4E8D27571EDC14F100872A61 /* ProfileButton.swift in Sources */,
 				4EAA97291ECADEF90001FEB6 /* TaskHistoryControlCell.swift in Sources */,
+				4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */,
 				4E8D27551EDC14F100872A61 /* ApplicantListButton.swift in Sources */,
 				4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */,
 				4E8D275C1EDC156100872A61 /* Task.swift in Sources */,
@@ -695,10 +732,13 @@
 				4EA7A8421EBAD88000CA7F37 /* MoreItemCell.swift in Sources */,
 				4E61E3E01EC1A33800E6C8C5 /* MaidAroundVC.swift in Sources */,
 				4E8D275E1EDC157E00872A61 /* BlockAlias.swift in Sources */,
+				4E5F6C7E1EE11D7000B19C86 /* CheckBox.swift in Sources */,
 				4ECD1D5A1EB1AFF4007DEF88 /* ApiService.swift in Sources */,
+				4E0B0A431EDE7AE40043E38A /* ReportMaidVC.swift in Sources */,
 				4E87A54C1EBB64F100EDA0D1 /* IconView.swift in Sources */,
 				4E8D27481EDC13B900872A61 /* JobProgressDetailVC.swift in Sources */,
 				4ED231731EB9803400592842 /* ImageExtensions.swift in Sources */,
+				4E0CACA71EDD293D00752BCC /* CommentCell.swift in Sources */,
 				4E54F5901EC9811B007D15D6 /* TaskCell.swift in Sources */,
 				4E8D275A1EDC152800872A61 /* TaskManageService.swift in Sources */,
 				4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */,
@@ -713,9 +753,12 @@
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
 				4E41F2231EDC0F7C001F3CFE /* HeaderWithTitle.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
+				4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */,
 				4EBF04BC1ED2C5A400F7E08B /* Entity.swift in Sources */,
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
+				4EF1F3601EE1640600560C4A /* ButtonTitleValue.swift in Sources */,
 				4EBF04B41ED2925200F7E08B /* WorkInfo.swift in Sources */,
+				4E0CACA11EDD074C00752BCC /* Comment.swift in Sources */,
 				4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */,
 				4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */,
 				4E54F5971EC9A6EE007D15D6 /* TaskNewCell.swift in Sources */,
@@ -724,6 +767,7 @@
 				4E8D27441EDC134B00872A61 /* SignUpVC_3.swift in Sources */,
 				4ED2317A1EB98D6300592842 /* NavigationButton.swift in Sources */,
 				4EA7A83E1EBACF6F00CA7F37 /* MoreUserCell.swift in Sources */,
+				4E0CACA91EDD750B00752BCC /* MaidProfileCell.swift in Sources */,
 				4E4E358B1ED7D42C00D13EF5 /* AboutUsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

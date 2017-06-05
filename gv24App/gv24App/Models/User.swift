@@ -18,6 +18,8 @@ class User: Entity {
     var avatarUrl : String?
     var address : Address?
     var gender : Int?
+    var evaluationPoint: Double?
+    var wallet: Double?
     override init() {
         super.init()
     }
@@ -30,11 +32,17 @@ class User: Entity {
         self.phone = jsonData["info"]["phone"].string
         self.avatarUrl = jsonData["info"]["image"].string
         self.gender = jsonData["info"]["gender"].int
+        self.evaluationPoint = jsonData["evaluation_point"].double
+        self.wallet = jsonData["wallet"].double
         self.address = Address(jsonData: jsonData["info"]["address"])
         
     }
 }
 class MaidProfile : User {
+    
+    override init() {
+        super.init()
+    }
     
     var workInfo : WorkInfo?
     override init(jsonData data: JSON) {

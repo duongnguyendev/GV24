@@ -23,7 +23,7 @@ class Task: Entity{
         id = jsonData["_id"].string ?? ""
         self.process = Process(jsonData: jsonData["process"])
         self.history = History(jsonData: jsonData["history"])
-        self.stakeholder = Stakeholder(jsonData: jsonData["stakeholder"])
+        self.stakeholder = Stakeholder(jsonData: jsonData["stakeholders"])
         self.info = Info(jsonData: jsonData["info"])
     }
 }

@@ -147,6 +147,7 @@ class APIService: NSObject {
     func getWithToken(url : String, completion:@escaping (ResponseCompletion)){
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), headers: header).responseJSON { (response) in
+    
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

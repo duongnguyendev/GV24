@@ -45,7 +45,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         return sB
     }()
     lazy var mapView : GMSMapView = {
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 12.0)
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 16.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self
         return mapView
@@ -108,7 +108,10 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     //MARK: - handle button
     
     func handleButtonFilter(_ sender: UIButton){
-        push(viewController: FilterVC())
+//        push(viewController: FilterVC())
+        let maidProfileVC = MaidProfileVC()
+        
+        push(viewController: maidProfileVC)
     }
     //MARK: - search bar delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

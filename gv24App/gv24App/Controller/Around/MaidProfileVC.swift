@@ -8,42 +8,31 @@
 
 import UIKit
 
-class MaidProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MaidProfileVC: ProfileVC, MaidProfileDelegate {
 
     var maid : MaidProfile?{
         didSet{
             title = maid?.userName
-            UserService.shared.getComments(user: maid!, page: nil)
+            UserService.shared.getComments(user: maid!, page: nil) { (comments, error) in
+                
+            }
         }
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        
+        mainCollectionView.register(MaidProfileCell.self, forCellWithReuseIdentifier: maidProfileCellId)
     }
-    let cellId = "cellId"
-    lazy var mainCollectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.delegate = self
-        cv.dataSource = self
-        return cv
-    }()
-    
-    override func setupView() {
-        view.addSubview(mainCollectionView)
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: mainCollectionView)
-        view.addConstraintWithFormat(format: "V:|[v0]|", views: mainCollectionView)
+    let maidProfileCellId = "maidProfileCellId"
+    override func setupRightNavButton() {
+        
     }
     
     //MARK: - Collection Delegate - Datasource
+
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }else{
@@ -51,13 +40,32 @@ class MaidProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSourc
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        return cell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: maidProfileCellId, for: indexPath) as! MaidProfileCell
+            cell.user = maid
+            cell.delegate = self
+            return cell
+        }
+        return super.collectionView(collectionView, cellForItemAt: indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: 100)
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0{
+            return CGSize(width: view.frame.size.width, height: 470)
+        }
+        return super.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
+    }
+    
+    func report() {
+        let repostVC = ReportMaidVC()
+        repostVC.maid = self.maid
+        push(viewController: repostVC)
+    }
+    func choose() {
+        let requestVC = RequestMaidVC()
+        requestVC.maid = self.maid
+        push(viewController: requestVC)
     }
 
 }

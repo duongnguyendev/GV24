@@ -15,6 +15,7 @@ class MarkerInfoWindow: BaseView {
         didSet{
             self.labelName.text = user?.userName
             self.labelPrice.text = "\(String(describing: (user?.workInfo?.price)!))"
+            self.avatarImage.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
         }
     }
     let margin : CGFloat = 5.0

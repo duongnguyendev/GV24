@@ -42,6 +42,7 @@ class NavButton: BaseButton{
     init(title : String) {
         super.init(frame: CGRect(x: 0, y: 0, width: 70, height: 20))
         self.titleLabel?.font = Fonts.by(name: .regular, size: 16)
+        self.contentHorizontalAlignment = .right
         self.setTitle(title, for: .normal)
         self.setTitleColor(AppColor.backButton, for: .normal)
     }

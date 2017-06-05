@@ -31,6 +31,7 @@ class BasicButton: BaseButton {
         }
     }
     override func setupView() {
+        translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel?.font = Fonts.by(name: .semibold, size: 15)
         self.setTitleColor(AppColor.white, for: .normal)
     }
