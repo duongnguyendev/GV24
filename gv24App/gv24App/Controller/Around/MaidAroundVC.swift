@@ -170,7 +170,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
             if let index = Int(marker.title!){
                 let maidProfileVC = MaidProfileVC()
                 maidProfileVC.maid = maids?[index]
-                self.push(viewController: maidProfileVC)
+                self.present(viewController: maidProfileVC)
             }
         }else{
             let alert = UIAlertController(title: "", message: "Vui lòng đăng nhập để xem thêm chi tiết", preferredStyle: .alert)
