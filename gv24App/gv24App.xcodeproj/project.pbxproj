@@ -14,6 +14,11 @@
 		4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA41EDD18E800752BCC /* RatingStartView.swift */; };
 		4E0CACA71EDD293D00752BCC /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA61EDD293D00752BCC /* CommentCell.swift */; };
 		4E0CACA91EDD750B00752BCC /* MaidProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */; };
+		0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */; };
+		03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */; };
+		03BE7F2E1EE15B5100757BB8 /* ApplicantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */; };
+		03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2F1EE1677000757BB8 /* Applicant.swift */; };
+		03F586D01EDD0C5200AE42EC /* TaskExpiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */; };
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
 		4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBE29A1ED83948005B47B0 /* AppDelegate.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
@@ -110,6 +115,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		03BBE29A1ED83948005B47B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaidVC.swift; sourceTree = "<group>"; };
 		4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMaidVC.swift; sourceTree = "<group>"; };
@@ -118,6 +124,10 @@
 		4E0CACA41EDD18E800752BCC /* RatingStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingStartView.swift; sourceTree = "<group>"; };
 		4E0CACA61EDD293D00752BCC /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidProfileCell.swift; sourceTree = "<group>"; };
+		03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
+		03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantCell.swift; sourceTree = "<group>"; };
+		03BE7F2F1EE1677000757BB8 /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
+		03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExpiredCell.swift; sourceTree = "<group>"; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWithTitle.swift; sourceTree = "<group>"; };
@@ -236,9 +246,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03BE7F291EE1525200757BB8 /* Applicants */ = {
+			isa = PBXGroup;
+			children = (
+				03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */,
+			);
+			name = Applicants;
+			sourceTree = "<group>";
+		};
+		03BE7F2C1EE15B3100757BB8 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		03D71CBE1ED7C4B7006E78EF /* JobDetail */ = {
 			isa = PBXGroup;
 			children = (
+				03BE7F291EE1525200757BB8 /* Applicants */,
 				4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */,
 				4E8D27461EDC13B900872A61 /* JobPostedDetailVC.swift */,
 				4E8D27471EDC13B900872A61 /* JobAssignedDetailVC.swift */,
@@ -278,6 +305,7 @@
 				4EBF04B51ED292F100F7E08B /* Address.swift */,
 				4EBF04BB1ED2C5A400F7E08B /* Entity.swift */,
 				4E0CACA01EDD074C00752BCC /* Comment.swift */,
+				03BE7F2F1EE1677000757BB8 /* Applicant.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -315,6 +343,7 @@
 				4ED2316C1EB9797B00592842 /* ViewExtensions.swift */,
 				4ED231701EB97D4100592842 /* StringExtensions.swift */,
 				4ED231721EB9803400592842 /* ImageExtensions.swift */,
+				0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,7 +452,9 @@
 		4E54F5931EC9A692007D15D6 /* TaskControll */ = {
 			isa = PBXGroup;
 			children = (
+				03BE7F2C1EE15B3100757BB8 /* Detail */,
 				4E54F58F1EC9811B007D15D6 /* TaskCell.swift */,
+				03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */,
 				4E54F5961EC9A6EE007D15D6 /* TaskNewCell.swift */,
 				4E54F5981EC9A723007D15D6 /* TaskNewControlCell.swift */,
 				4E54F59A1EC9A751007D15D6 /* TaskAssignedControlCell.swift */,
@@ -585,7 +616,7 @@
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = FE5FXN233L;
+						DevelopmentTeam = 7R93MWJ8VY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -663,7 +694,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -693,6 +724,7 @@
 				4ED231831EB9CEFD00592842 /* HomeBottomView.swift in Sources */,
 				4EBF04B21ED28FFF00F7E08B /* User.swift in Sources */,
 				4EDDB4681ECED8A900AFFD1A /* FilterVC.swift in Sources */,
+				0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */,
 				4E8D27581EDC14F100872A61 /* ProfileUserButton.swift in Sources */,
 				4EBF04B81ED29D0C00F7E08B /* UserHelpers.swift in Sources */,
 				4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */,
@@ -724,7 +756,9 @@
 				4EAA97291ECADEF90001FEB6 /* TaskHistoryControlCell.swift in Sources */,
 				4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */,
 				4E8D27551EDC14F100872A61 /* ApplicantListButton.swift in Sources */,
+				03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */,
 				4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */,
+				03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */,
 				4E8D275C1EDC156100872A61 /* Task.swift in Sources */,
 				4E54F59B1EC9A751007D15D6 /* TaskAssignedControlCell.swift in Sources */,
 				4EBF04BA1ED2BB7500F7E08B /* UserService.swift in Sources */,
@@ -750,6 +784,7 @@
 				4E54F5951EC9A6AC007D15D6 /* TaskControlCell.swift in Sources */,
 				4EA7A8441EBB1E6600CA7F37 /* BasicButton.swift in Sources */,
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
+				03F586D01EDD0C5200AE42EC /* TaskExpiredCell.swift in Sources */,
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
 				4E41F2231EDC0F7C001F3CFE /* HeaderWithTitle.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
@@ -768,6 +803,7 @@
 				4ED2317A1EB98D6300592842 /* NavigationButton.swift in Sources */,
 				4EA7A83E1EBACF6F00CA7F37 /* MoreUserCell.swift in Sources */,
 				4E0CACA91EDD750B00752BCC /* MaidProfileCell.swift in Sources */,
+				03BE7F2E1EE15B5100757BB8 /* ApplicantCell.swift in Sources */,
 				4E4E358B1ED7D42C00D13EF5 /* AboutUsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -912,10 +948,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FE5FXN233L;
+				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -931,10 +967,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FE5FXN233L;
+				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";

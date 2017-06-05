@@ -9,14 +9,17 @@
 import UIKit
 
 @objc protocol TaskControlDelegate {
-    @objc optional func didSelected(indexPath : IndexPath)
-    
+    @objc optional func didSelected(task : Task)
+    @objc optional func longdidSelected(task : Task)
 }
 
-class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
 
     var delegate : TaskControlDelegate?
     let cellId = "cellId"
+    var tasks = [Task]()
+    var indexPath = IndexPath(item: 0, section: 0)
+    var pointCell = CGPoint()
     lazy var taskCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -26,12 +29,40 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         return cv
     }()
     
+    var type: Int?{
+        didSet{
+            if type == 0{
+                fetchTypeTask(process: "000000000000000000000001")
+            }else if type == 1{
+                fetchTypeTask(process: "000000000000000000000003")
+            }else{
+                fetchTypeTask(process: "000000000000000000000004")
+            }
+        }
+    }
+    
+    func fetchTypeTask(process: String){
+        TaskManageService.shared.fetchTaskManagement(process: process) { (mTasks) in
+            if mTasks != nil{
+                self.tasks = mTasks!
+                self.taskCollectionView.reloadData()
+            }else{
+                //Mất kết nối
+            }
+        }
+    }
     override func setupView() {
         register()
         super.setupView()
         addSubview(taskCollectionView)
         addConstraintWithFormat(format: "V:|[v0]|", views: taskCollectionView)
         addConstraintWithFormat(format: "H:|[v0]|", views: taskCollectionView)
+        
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 1.0
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        self.taskCollectionView.addGestureRecognizer(lpgr)
     }
     
     func register(){
@@ -42,12 +73,10 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.frame.size.width, height: 90)
     }
@@ -57,7 +86,12 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.delegate != nil {
-            self.delegate?.didSelected!(indexPath : indexPath)
+            self.delegate?.didSelected!(task : tasks[indexPath.item])
+        }
+    }
+    func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+        if self.delegate != nil{
+            self.delegate?.longdidSelected!(task: tasks[indexPath.item])
         }
     }
 }

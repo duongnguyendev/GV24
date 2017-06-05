@@ -12,22 +12,40 @@ class TaskManageService: APIService{
     
     static let shared = TaskManageService()
     
-    func fetchTaskManagement(process: Int,callback: @escaping TaskManageCallback){
-        let url = "owner/getAllTasks?process=000000000000000000000001"
-        getWithToken(url: url) { (jsons, error) in
+    func fetchTaskManagement(process: String,completion:@escaping (TaskCompletion)){
+        let url = "owner/getAllTasks?process=\(process)"
+        getWithToken(url: url) { (jsons, message) in
+            if message == nil{
+                var tasks = [Task]()
+                jsons?.array?.forEach({ (json) in
+                    let task = Task(jsonData: json)
+                    tasks.append(task)
+                })
+                completion(tasks)
+            }else{
+                completion(nil)
+            }
+        }
+    }
+    
+    func deleteTask(task: Task,completion:@escaping (TaskCompletion)){
+        _ = "task/delete?id=\((task.id)!)?ownerId=\((task.stakeholder?.owner)!)"
+       
+    }
+    
+    func fetchApplicants(id: String,completion:@escaping (ApplicantCompletion)){
+        let url = "task/getRequest?id=\(id)"
+        getWithToken(url: url) { (json, error) in
             if error == nil{
-                let status = jsons?["status"].bool ?? false
-                let message = jsons? ["message"].string ?? ""
-                if (status){
-                    var tasks = [Task]()
-                    jsons?["data"].array?.forEach({ (json) in
-                        let task = Task(jsonData: json)
-                        tasks.append(task)
-                    })
-                    DispatchQueue.main.async {
-                        return callback(tasks,status,message)
-                    }
-                }
+                var applicants = [Applicant]()
+                json?.array?.forEach({ (json) in
+                    let applicant = Applicant(jsonData: json)
+                    applicants.append(applicant)
+
+                })
+                completion(applicants)
+            }else{
+                completion(nil)
             }
         }
     }

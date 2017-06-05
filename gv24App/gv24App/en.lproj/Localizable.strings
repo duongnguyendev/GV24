@@ -18,3 +18,4 @@ Password = "Password";
 RemoveTask = "Remove Task";
 ApplicantList = "Applicant List";
 ConformedMaid = "Conformed Maid";
+ShowDeleteWork = "Are you sure you want to work?";

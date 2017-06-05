@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import IoniconsSwift
 class JobPostedDetailVC: BaseVC{
-    
+    var task = Task()
     let descTaskView: DescTaskView = {
         let view = DescTaskView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,7 @@ class JobPostedDetailVC: BaseVC{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.color = AppColor.homeButton1
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
-        button.title = "RemoveTask"
+        button.title = LanguageManager.shared.localized(string: "RemoveTask")
         button.sizeImage = 30
         button.iconName = .iosTrash
         return button
@@ -33,8 +33,8 @@ class JobPostedDetailVC: BaseVC{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.color = AppColor.backButton
         button.addTarget(self, action: #selector(handleAppListTask(_:)), for: .touchUpInside)
-        button.status = "3"
-        button.title = "ApplicantList"
+        button.status = "2"
+        button.title = LanguageManager.shared.localized(string: "ApplicantList")
         button.backgroundColor = UIColor.white
         return button
     }()
@@ -43,6 +43,10 @@ class JobPostedDetailVC: BaseVC{
         super.viewDidLoad()
         title = "Chi tiết công việc"
         self.view.backgroundColor = AppColor.collection
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.descTaskView.task = task
+        self.appListButton.status = "\((task.stakeholder?.request?.count)!)"
     }
     
     override func setupView() {
@@ -69,7 +73,13 @@ class JobPostedDetailVC: BaseVC{
     }
     
     func handleAppListTask(_ sender: UIButton){
-        print("Handle Applicant Task")
+        TaskManageService.shared.fetchApplicants(id: task.id!) { (mApplicants) in
+            if (mApplicants?.count)! > 0{
+                let applicantVC = ApplicantsVC()
+                self.push(viewController: applicantVC)
+            }
+        }
+       
     }
 
 }

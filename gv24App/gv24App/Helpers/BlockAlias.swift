@@ -7,4 +7,5 @@
 //
 
 import Foundation
-typealias TaskManageCallback = (_ tasks: [Task],_ status: Bool?,_ message: String?) -> Void
+typealias TaskCompletion = (_ tasks: [Task]?) -> ()
+typealias ApplicantCompletion = (_ applicant: [Applicant]?) -> ()

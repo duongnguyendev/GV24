@@ -10,6 +10,11 @@ import UIKit
 
 class TaskNewCell: TaskCell {
 
+    var countNumber: Int?{
+        didSet{
+            labelNumber.text = "\((countNumber)!)"
+        }
+    }
     let labelNumber : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -18,20 +23,18 @@ class TaskNewCell: TaskCell {
         lb.font = Fonts.by(name: .light, size: 13)
         lb.textColor = UIColor.white
         lb.backgroundColor = UIColor.red
-        
         lb.layer.cornerRadius = 10
         lb.layer.masksToBounds = true
-        
         lb.textAlignment = .center
         lb.text = "2"
         return lb
     }()
     override func setupView() {
         super.setupView()
+        statusTask = "Có người ứng tuyển"
         addSubview(labelNumber)
         labelNumber.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelNumber.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
     }
-    
     
 }
