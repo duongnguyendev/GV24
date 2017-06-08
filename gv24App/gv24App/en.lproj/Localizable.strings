@@ -15,6 +15,7 @@ Around = "Maid around here";
 SignIn = "Sign In";
 Password = "Password";
 
+WorkHistory = "Work History";
 RemoveTask = "Remove Task";
 ApplicantList = "Applicant List";
 ConformedMaid = "Conformed Maid";

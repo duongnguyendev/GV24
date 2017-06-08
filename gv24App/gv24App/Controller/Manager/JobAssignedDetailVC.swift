@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 class JobAssignedDetailVC: BaseVC{
     var task = Task()
+    
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +26,7 @@ class JobAssignedDetailVC: BaseVC{
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleProfileButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -32,6 +34,7 @@ class JobAssignedDetailVC: BaseVC{
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.title = LanguageManager.shared.localized(string: "ConformedMaid")
+        button.addTarget(self, action: #selector(handleConformMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
         button.color = AppColor.backButton
         button.iconName = .logIn
@@ -56,6 +59,12 @@ class JobAssignedDetailVC: BaseVC{
         return button
     }()
     
+    func handleProfileButton(_ sender: UIButton){
+        print("Handle Profile Button")
+    }
+    func handleConformMaid(_ sender: UIButton){
+         print("Handle Comform Task")
+    }
     func handleRemoveTask(_ sender: UIButton){
         print("Handle Remove Task")
     }

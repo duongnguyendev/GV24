@@ -9,7 +9,6 @@
 import UIKit
 
 class TaskNewCell: TaskCell {
-
     var countNumber: Int?{
         didSet{
             labelNumber.text = "\((countNumber)!)"

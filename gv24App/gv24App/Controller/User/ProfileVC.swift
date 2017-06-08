@@ -9,8 +9,6 @@
 import UIKit
 
 class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Thông tin"

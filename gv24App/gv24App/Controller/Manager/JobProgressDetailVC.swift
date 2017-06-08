@@ -13,6 +13,7 @@ class JobProgressDetailVC: BaseVC {
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handleButtonProfile(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -20,6 +21,7 @@ class JobProgressDetailVC: BaseVC {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.title = "ConformedMaid"
+        button.addTarget(self, action: #selector(handleButtonConformMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
         button.color = AppColor.backButton
         button.iconName = .logOut
@@ -31,6 +33,13 @@ class JobProgressDetailVC: BaseVC {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    func handleButtonProfile(_ sender: UIButton){
+        print("Click Profile Button")
+    }
+    func handleButtonConformMaid(_ sender: IconTextButton){
+        print("Click Conform Maid Button")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

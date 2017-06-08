@@ -1,16 +1,33 @@
 //
-//  ProfileButton.swift
+//  ProfileRatingButton.swift
 //  gv24App
 //
-//  Created by Macbook Solution on 5/26/17.
+//  Created by Macbook Solution on 6/8/17.
 //  Copyright © 2017 HBBs. All rights reserved.
 //
 
 import Foundation
 import UIKit
-class ProfileUserButton: BaseButton{
+class ProfileRatingButton: BaseButton{
     let cellMargin : CGFloat = 20
     
+    var name: String?{
+        didSet{
+            labelName.text = name
+        }
+    }
+    
+    var date: String?{
+        didSet{
+            labelDate.text = date
+        }
+    }
+    
+    var str_Avatar: String?{
+        didSet{
+            avatarImageView.loadImageUsingUrlString(urlString: str_Avatar!)
+        }
+    }
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -27,10 +44,11 @@ class ProfileUserButton: BaseButton{
         return lb
     }()
     
-    private let labelAddress : UILabel = {
+    private let labelDate : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 13)
-        lb.text = "244 Cống Quỳnh, P. Phạm Ngũ Lão, Q.1"
+        lb.text = "12/03/2016"
+        lb.textColor = AppColor.lightGray
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()
@@ -40,15 +58,17 @@ class ProfileUserButton: BaseButton{
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
-
+    
+    let rattingView = RatingStartView()
+    
     override func setupView() {
         super.setupView()
         backgroundColor = UIColor.white
-        
         addSubview(avatarImageView)
         addSubview(labelName)
-        addSubview(labelAddress)
+        addSubview(labelDate)
         addSubview(arrowRight)
+        addSubview(rattingView)
         
         avatarImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         avatarImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
@@ -57,16 +77,18 @@ class ProfileUserButton: BaseButton{
         
         labelName.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin / 2).isActive = true
         labelName.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true
-        labelName.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 0).isActive = true
+        labelName.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: cellMargin / 4).isActive = true
         
-        arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
-        arrowRight.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -(cellMargin/2)).isActive = true
+        arrowRight.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 0).isActive = true
         arrowRight.widthAnchor.constraint(equalToConstant: 20).isActive = true
         arrowRight.heightAnchor.constraint(equalToConstant: 20).isActive = true
-
         
-        labelAddress.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin / 2).isActive = true
-        labelAddress.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true
-        labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
+        labelDate.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin / 2).isActive = true
+        labelDate.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true
+        labelDate.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -(cellMargin / 4)).isActive = true
+        
+        rattingView.rightAnchor.constraint(equalTo: rightAnchor, constant: -(cellMargin + 10)).isActive = true
+        rattingView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
     }
 }

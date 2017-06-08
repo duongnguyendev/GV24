@@ -17,7 +17,6 @@ class Task: Entity{
     override init() {
         super.init()
     }
-    
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
         id = jsonData["_id"].string ?? ""
@@ -28,10 +27,8 @@ class Task: Entity{
     }
 }
 class Process: Entity{
-    
     var id: String?
     var name: String?
-    
     override init() {
         super.init()
     }
@@ -44,7 +41,6 @@ class Process: Entity{
 class History: Entity{
     var createAt: String?
     var updateAt: String?
-    
     override init() {
         super.init()
     }
@@ -57,6 +53,7 @@ class History: Entity{
 class Stakeholder: Entity{
     var owner: String?
     var request: [Request]?
+    
     override init() {
         super.init()
     }
@@ -105,13 +102,11 @@ class Info: Entity {
             self.id = json["_id"].string ?? ""
             self.name = json["name"].string ?? ""
         }
-
     }
     struct Work {
         let id: String
         let name: String
         let image: String
-        
         init(json: JSON) {
             self.id = json["_id"].string ?? ""
             self.name = json["name"].string ?? ""

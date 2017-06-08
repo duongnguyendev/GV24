@@ -37,12 +37,9 @@ class TaskNewControlCell: TaskControlCell {
         }
         pointCell = gestureReconizer.location(in: taskCollectionView)
         indexPath = taskCollectionView.indexPathForItem(at: pointCell)!
-        if delegate != nil{
-            delegate?.longdidSelected!(task: tasks[indexPath.item])
+        if self.delegate != nil{
+            self.delegate?.remove!(task: tasks[indexPath.item])
         }
-     
-        let cell = taskCollectionView.cellForItem(at: indexPath)
-        print("Delete Item\(indexPath.item)")
     }
     let newCellId = "newCellId"
     let applicantCellId = "applicantCellId"

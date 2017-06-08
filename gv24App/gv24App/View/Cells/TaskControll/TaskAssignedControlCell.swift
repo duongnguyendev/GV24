@@ -32,7 +32,16 @@ class TaskAssignedControlCell: TaskControlCell {
     override func register() {
         taskCollectionView.register(TaskCell.self, forCellWithReuseIdentifier: assignedCellId)
         taskCollectionView.register(TaskExpiredCell.self, forCellWithReuseIdentifier: expiredCellId)
-        
+    }
+    override func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
+        if gestureReconizer.state != UIGestureRecognizerState.ended {
+            return
+        }
+        pointCell = gestureReconizer.location(in: taskCollectionView)
+        indexPath = taskCollectionView.indexPathForItem(at: pointCell)!
+        if self.delegate != nil{
+            self.delegate?.remove!(task: tasks[indexPath.item])
+        }
     }
     
 }

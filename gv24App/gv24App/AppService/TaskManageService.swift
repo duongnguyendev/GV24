@@ -9,9 +9,7 @@
 import Foundation
 import SwiftyJSON
 class TaskManageService: APIService{
-    
     static let shared = TaskManageService()
-    
     func fetchTaskManagement(process: String,completion:@escaping (TaskCompletion)){
         let url = "owner/getAllTasks?process=\(process)"
         getWithToken(url: url) { (jsons, message) in

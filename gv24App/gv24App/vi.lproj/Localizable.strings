@@ -15,6 +15,7 @@ Around = "Tìm quanh đây";
 SignIn = "Đăng nhập";
 Password = "Mật khẩu";
 
+WorkHistory = "Lịch sử công việc";
 RemoveTask = "Xoá công việc";
 ApplicantList = "Danh sách ứng tuyển";
 ConformedMaid = "Xác nhận người giúp việc";

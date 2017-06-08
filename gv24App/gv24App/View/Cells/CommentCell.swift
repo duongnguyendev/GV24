@@ -21,10 +21,10 @@ class CommentCell: BaseCollectionCell {
             labelTitle.text = comment?.task?.info?.title
             labelDate.text = comment?.createAt?.dayMonthYear
         }
-    }
-    
+    } 
     let avartaImage : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
+
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
