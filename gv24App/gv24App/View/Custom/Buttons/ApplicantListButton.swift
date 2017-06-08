@@ -8,14 +8,8 @@
 
 import Foundation
 import UIKit
-class ApplicantListButton: BaseButton{
+class ApplicantListButton: GeneralButton{
     
-    var color: UIColor?{
-        didSet{
-            self.titleView.textColor = color
-        }
-    }
-
     var status: String?{
         didSet{
             labelNumber.text = status
@@ -36,25 +30,10 @@ class ApplicantListButton: BaseButton{
         return lb
     }()
     
-    var title: String?{
-        didSet{
-            titleView.text = LanguageManager.shared.localized(string: title!)
-        }
-    }
-    let titleView: UILabel = {
-        let lablel = UILabel()
-        lablel.translatesAutoresizingMaskIntoConstraints = false
-        lablel.font = Fonts.by(name: .light, size: 16)
-        return lablel
-    }()
-    
     override func setupView() {
         super.setupView()
-        addSubview(titleView)
         addSubview(labelNumber)
-        
-        addConstraintWithFormat(format: "H:|-20-[v0]-10-[v1(20)]-10-|", views: titleView,labelNumber)
-        addConstraintWithFormat(format: "V:|-10-[v0]-10-|", views: titleView)
-        labelNumber.centerYAnchor.constraint(equalTo: titleView.centerYAnchor, constant: 0).isActive = true
+        labelNumber.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        labelNumber.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
     }
 }

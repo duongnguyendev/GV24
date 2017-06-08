@@ -8,14 +8,38 @@
 
 import UIKit
 
-class MaidControlCell: TaskControlCell {
+class MaidControlCell: HistoryControlCell {
+    
+    let maidCellId = "maidCellId"
     override func setupView() {
 //        backgroundColor = UIColor.blue
         super.setupView()
     }
+    
+    override func register() {
+        historyCollectionView.register(MaidCell.self, forCellWithReuseIdentifier: maidCellId)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: maidCellId, for: indexPath) as! MaidCell
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.frame.size.width, height: 110)
+    }
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
 
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if delegate != nil{
+            
+        }
     }
 
 }

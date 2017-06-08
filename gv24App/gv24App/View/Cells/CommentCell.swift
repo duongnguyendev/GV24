@@ -15,7 +15,6 @@ class CommentCell: BaseCollectionCell {
             
         }
     }
-    
     let avartaImage : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false

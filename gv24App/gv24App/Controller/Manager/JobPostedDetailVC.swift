@@ -11,6 +11,7 @@ import UIKit
 import IoniconsSwift
 class JobPostedDetailVC: BaseVC{
     var task = Task()
+    
     let descTaskView: DescTaskView = {
         let view = DescTaskView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +36,6 @@ class JobPostedDetailVC: BaseVC{
         button.addTarget(self, action: #selector(handleAppListTask(_:)), for: .touchUpInside)
         button.status = "2"
         button.title = LanguageManager.shared.localized(string: "ApplicantList")
-        button.backgroundColor = UIColor.white
         return button
     }()
     
@@ -73,13 +73,13 @@ class JobPostedDetailVC: BaseVC{
     }
     
     func handleAppListTask(_ sender: UIButton){
-        TaskManageService.shared.fetchApplicants(id: task.id!) { (mApplicants) in
+        /*TaskManageService.shared.fetchApplicants(id: task.id!) { (mApplicants) in
             if (mApplicants?.count)! > 0{
                 let applicantVC = ApplicantsVC()
                 self.push(viewController: applicantVC)
             }
-        }
-       
+        }*/
+       print("Handle List Applicant")
     }
 
 }

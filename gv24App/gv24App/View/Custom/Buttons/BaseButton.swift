@@ -16,7 +16,7 @@ class BaseButton: UIButton {
     }
     
     func setupView(){
-    
+        backgroundColor = AppColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {

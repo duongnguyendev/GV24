@@ -10,8 +10,9 @@ import UIKit
 
 @objc protocol TaskControlDelegate {
     @objc optional func didSelected(task : Task)
-    @objc optional func longdidSelected(task : Task)
+    @objc optional func remove(task : Task)
 }
+
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
 
     var delegate : TaskControlDelegate?
@@ -58,7 +59,7 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         addConstraintWithFormat(format: "H:|[v0]|", views: taskCollectionView)
         
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        lpgr.minimumPressDuration = 1.0
+        lpgr.minimumPressDuration = 0.5
         lpgr.delaysTouchesBegan = true
         lpgr.delegate = self
         self.taskCollectionView.addGestureRecognizer(lpgr)
@@ -72,10 +73,12 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.frame.size.width, height: 90)
     }
@@ -84,13 +87,10 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if self.delegate != nil {
-            self.delegate?.didSelected!(task : tasks[indexPath.item])
-        }
+        
     }
+    
     func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
-        if self.delegate != nil{
-            self.delegate?.longdidSelected!(task: tasks[indexPath.item])
-        }
+        
     }
 }

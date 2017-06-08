@@ -18,7 +18,6 @@ class BaseCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func setupView(){
         
     }

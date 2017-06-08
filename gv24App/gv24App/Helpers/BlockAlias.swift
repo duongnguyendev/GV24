@@ -9,3 +9,5 @@
 import Foundation
 typealias TaskCompletion = (_ tasks: [Task]?) -> ()
 typealias ApplicantCompletion = (_ applicant: [Applicant]?) -> ()
+typealias TaskHistoryCompletion = (_ task: TaskHistory?) -> ()
+typealias UnpaidWorkCompletion = (_ workUnpaids: [WorkUnpaid]?) -> ()

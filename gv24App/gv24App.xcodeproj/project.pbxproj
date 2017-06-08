@@ -8,24 +8,46 @@
 
 /* Begin PBXBuildFile section */
 		0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */; };
+		0319CFAD1EE6604100A4F157 /* DetailTaskHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */; };
 		03446A121EE53B35004DB193 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A111EE53B35004DB193 /* HistoryService.swift */; };
+		03446A571EE54F3D004DB193 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A451EE54F3D004DB193 /* BaseCell.swift */; };
+		03446A581EE54F3D004DB193 /* BaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A461EE54F3D004DB193 /* BaseHeaderView.swift */; };
+		03446A591EE54F3D004DB193 /* HeaderWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A481EE54F3D004DB193 /* HeaderWithTitle.swift */; };
+		03446A5A1EE54F3D004DB193 /* MaidControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A4A1EE54F3D004DB193 /* MaidControlCell.swift */; };
+		03446A5B1EE54F3D004DB193 /* TaskHistoryControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A4B1EE54F3D004DB193 /* TaskHistoryControlCell.swift */; };
+		03446A5C1EE54F3D004DB193 /* MoreItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A4C1EE54F3D004DB193 /* MoreItemCell.swift */; };
+		03446A5D1EE54F3D004DB193 /* MoreUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A4D1EE54F3D004DB193 /* MoreUserCell.swift */; };
+		03446A5E1EE54F3D004DB193 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A4E1EE54F3D004DB193 /* SwitchCell.swift */; };
+		03446A5F1EE54F3D004DB193 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A4F1EE54F3D004DB193 /* TaskCell.swift */; };
+		03446A601EE54F3D004DB193 /* TaskAssignedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A511EE54F3D004DB193 /* TaskAssignedControlCell.swift */; };
+		03446A611EE54F3D004DB193 /* TaskControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A521EE54F3D004DB193 /* TaskControlCell.swift */; };
+		03446A621EE54F3D004DB193 /* TaskExpiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A531EE54F3D004DB193 /* TaskExpiredCell.swift */; };
+		03446A631EE54F3D004DB193 /* TaskInProgressControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A541EE54F3D004DB193 /* TaskInProgressControlCell.swift */; };
+		03446A641EE54F3D004DB193 /* TaskNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A551EE54F3D004DB193 /* TaskNewCell.swift */; };
+		03446A651EE54F3D004DB193 /* TaskNewControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A561EE54F3D004DB193 /* TaskNewControlCell.swift */; };
+		03446A6A1EE5502C004DB193 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A671EE5502C004DB193 /* CommentCell.swift */; };
+		03446A6B1EE5502C004DB193 /* MaidProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A681EE5502C004DB193 /* MaidProfileCell.swift */; };
+		03446A6C1EE5502C004DB193 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A691EE5502C004DB193 /* UserProfileCell.swift */; };
+		03446A6E1EE5508C004DB193 /* HistoryControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A6D1EE5508C004DB193 /* HistoryControlCell.swift */; };
+		03446A701EE5530B004DB193 /* UnpaidWorkControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A6F1EE5530B004DB193 /* UnpaidWorkControlCell.swift */; };
+		03446A721EE55696004DB193 /* TaskHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A711EE55696004DB193 /* TaskHistoryCell.swift */; };
+		03446A741EE55A3F004DB193 /* TaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A731EE55A3F004DB193 /* TaskHistory.swift */; };
+		03446A7A1EE5666E004DB193 /* UnpaidWorkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A791EE5666E004DB193 /* UnpaidWorkCell.swift */; };
+		038152111EE7A4F20081FB33 /* GeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152101EE7A4F20081FB33 /* GeneralButton.swift */; };
+		038152151EE7DDF20081FB33 /* WorkUnpaid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152141EE7DDF20081FB33 /* WorkUnpaid.swift */; };
+		038152191EE803F90081FB33 /* MaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152181EE803F90081FB33 /* MaidCell.swift */; };
 		03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */; };
-		03BE7F2E1EE15B5100757BB8 /* ApplicantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */; };
 		03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2F1EE1677000757BB8 /* Applicant.swift */; };
-		03F586D01EDD0C5200AE42EC /* TaskExpiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */; };
+		03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */; };
 		4E0B0A411EDE7ACC0043E38A /* RequestMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */; };
 		4E0B0A431EDE7AE40043E38A /* ReportMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */; };
 		4E0CACA11EDD074C00752BCC /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA01EDD074C00752BCC /* Comment.swift */; };
-		4E0CACA31EDD12ED00752BCC /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA21EDD12ED00752BCC /* UserProfileCell.swift */; };
 		4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA41EDD18E800752BCC /* RatingStartView.swift */; };
-		4E0CACA71EDD293D00752BCC /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA61EDD293D00752BCC /* CommentCell.swift */; };
-		4E0CACA91EDD750B00752BCC /* MaidProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */; };
 		4E0F75C11EE5095200121113 /* BaseLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0F75C01EE5095200121113 /* BaseLauncher.swift */; };
 		4E0F75C31EE50C4D00121113 /* DateLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0F75C21EE50C4D00121113 /* DateLauncher.swift */; };
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
 		4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBE29A1ED83948005B47B0 /* AppDelegate.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
-		4E41F2231EDC0F7C001F3CFE /* HeaderWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */; };
 		4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C41EB0A0C5001B4936 /* ViewController.swift */; };
 		4E4DD6C81EB0A0C5001B4936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C61EB0A0C5001B4936 /* Main.storyboard */; };
 		4E4DD6CA1EB0A0C5001B4936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E4DD6C91EB0A0C5001B4936 /* Assets.xcassets */; };
@@ -35,12 +57,6 @@
 		4E4E358D1ED7E02100D13EF5 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E358C1ED7E02100D13EF5 /* TermsVC.swift */; };
 		4E4E358F1ED7E0C800D13EF5 /* ContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E358E1ED7E0C800D13EF5 /* ContactVC.swift */; };
 		4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */; };
-		4E54F5901EC9811B007D15D6 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F58F1EC9811B007D15D6 /* TaskCell.swift */; };
-		4E54F5951EC9A6AC007D15D6 /* TaskControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F5941EC9A6AC007D15D6 /* TaskControlCell.swift */; };
-		4E54F5971EC9A6EE007D15D6 /* TaskNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F5961EC9A6EE007D15D6 /* TaskNewCell.swift */; };
-		4E54F5991EC9A723007D15D6 /* TaskNewControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F5981EC9A723007D15D6 /* TaskNewControlCell.swift */; };
-		4E54F59B1EC9A751007D15D6 /* TaskAssignedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F59A1EC9A751007D15D6 /* TaskAssignedControlCell.swift */; };
-		4E54F59D1EC9A832007D15D6 /* TaskInProgressControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F59C1EC9A832007D15D6 /* TaskInProgressControlCell.swift */; };
 		4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F59E1EC9B173007D15D6 /* PostVC.swift */; };
 		4E5B162E1ECD943A00A5FC23 /* MarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */; };
 		4E5F6C7E1EE11D7000B19C86 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F6C7D1EE11D7000B19C86 /* CheckBox.swift */; };
@@ -61,20 +77,13 @@
 		4E8D27501EDC142100872A61 /* DateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D274D1EDC142100872A61 /* DateTimeView.swift */; };
 		4E8D27551EDC14F100872A61 /* ApplicantListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D27511EDC14F100872A61 /* ApplicantListButton.swift */; };
 		4E8D27561EDC14F100872A61 /* IconTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D27521EDC14F100872A61 /* IconTextButton.swift */; };
-		4E8D27571EDC14F100872A61 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D27531EDC14F100872A61 /* ProfileButton.swift */; };
 		4E8D27581EDC14F100872A61 /* ProfileUserButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D27541EDC14F100872A61 /* ProfileUserButton.swift */; };
 		4E8D275A1EDC152800872A61 /* TaskManageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D27591EDC152800872A61 /* TaskManageService.swift */; };
 		4E8D275C1EDC156100872A61 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D275B1EDC156100872A61 /* Task.swift */; };
 		4E8D275E1EDC157E00872A61 /* BlockAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D275D1EDC157E00872A61 /* BlockAlias.swift */; };
 		4E8E8F9F1EB1E9D90030B334 /* IoniconsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8E8F9C1EB1E9D90030B334 /* IoniconsSwift.framework */; };
-		4EA7A8381EBAC8DA00CA7F37 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */; };
-		4EA7A83E1EBACF6F00CA7F37 /* MoreUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */; };
-		4EA7A8401EBAD5D000CA7F37 /* BaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */; };
-		4EA7A8421EBAD88000CA7F37 /* MoreItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7A8411EBAD88000CA7F37 /* MoreItemCell.swift */; };
 		4EA7A8441EBB1E6600CA7F37 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA7A8431EBB1E6600CA7F37 /* BasicButton.swift */; };
 		4EAA97241ECAD99E0001FEB6 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA97231ECAD99E0001FEB6 /* HistoryVC.swift */; };
-		4EAA97271ECADED80001FEB6 /* MaidControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA97261ECADED80001FEB6 /* MaidControlCell.swift */; };
-		4EAA97291ECADEF90001FEB6 /* TaskHistoryControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA97281ECADEF90001FEB6 /* TaskHistoryControlCell.swift */; };
 		4EBF04B21ED28FFF00F7E08B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBF04B11ED28FFF00F7E08B /* User.swift */; };
 		4EBF04B41ED2925200F7E08B /* WorkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBF04B31ED2925200F7E08B /* WorkInfo.swift */; };
 		4EBF04B61ED292F100F7E08B /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBF04B51ED292F100F7E08B /* Address.swift */; };
@@ -108,7 +117,6 @@
 		4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */; };
 		4ED231831EB9CEFD00592842 /* HomeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED231821EB9CEFD00592842 /* HomeBottomView.swift */; };
 		4EDDB4681ECED8A900AFFD1A /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */; };
-		4EE483DC1ED6CB88004BC615 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */; };
 		4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */; };
 		4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */; };
 		4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35D1EE150CD00560C4A /* RadioButton.swift */; };
@@ -119,24 +127,46 @@
 
 /* Begin PBXFileReference section */
 		0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTaskHistoryVC.swift; sourceTree = "<group>"; };
 		03446A111EE53B35004DB193 /* HistoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
+		03446A451EE54F3D004DB193 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		03446A461EE54F3D004DB193 /* BaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeaderView.swift; sourceTree = "<group>"; };
+		03446A481EE54F3D004DB193 /* HeaderWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWithTitle.swift; sourceTree = "<group>"; };
+		03446A4A1EE54F3D004DB193 /* MaidControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidControlCell.swift; sourceTree = "<group>"; };
+		03446A4B1EE54F3D004DB193 /* TaskHistoryControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHistoryControlCell.swift; sourceTree = "<group>"; };
+		03446A4C1EE54F3D004DB193 /* MoreItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreItemCell.swift; path = Cells/MoreItemCell.swift; sourceTree = "<group>"; };
+		03446A4D1EE54F3D004DB193 /* MoreUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreUserCell.swift; path = Cells/MoreUserCell.swift; sourceTree = "<group>"; };
+		03446A4E1EE54F3D004DB193 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchCell.swift; path = Cells/SwitchCell.swift; sourceTree = "<group>"; };
+		03446A4F1EE54F3D004DB193 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = ../TaskCell.swift; sourceTree = "<group>"; };
+		03446A511EE54F3D004DB193 /* TaskAssignedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAssignedControlCell.swift; sourceTree = "<group>"; };
+		03446A521EE54F3D004DB193 /* TaskControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskControlCell.swift; sourceTree = "<group>"; };
+		03446A531EE54F3D004DB193 /* TaskExpiredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExpiredCell.swift; sourceTree = "<group>"; };
+		03446A541EE54F3D004DB193 /* TaskInProgressControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInProgressControlCell.swift; sourceTree = "<group>"; };
+		03446A551EE54F3D004DB193 /* TaskNewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNewCell.swift; sourceTree = "<group>"; };
+		03446A561EE54F3D004DB193 /* TaskNewControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNewControlCell.swift; sourceTree = "<group>"; };
+		03446A671EE5502C004DB193 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		03446A681EE5502C004DB193 /* MaidProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidProfileCell.swift; sourceTree = "<group>"; };
+		03446A691EE5502C004DB193 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
+		03446A6D1EE5508C004DB193 /* HistoryControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryControlCell.swift; sourceTree = "<group>"; };
+		03446A6F1EE5530B004DB193 /* UnpaidWorkControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnpaidWorkControlCell.swift; sourceTree = "<group>"; };
+		03446A711EE55696004DB193 /* TaskHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHistoryCell.swift; sourceTree = "<group>"; };
+		03446A731EE55A3F004DB193 /* TaskHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHistory.swift; sourceTree = "<group>"; };
+		03446A791EE5666E004DB193 /* UnpaidWorkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnpaidWorkCell.swift; sourceTree = "<group>"; };
+		038152101EE7A4F20081FB33 /* GeneralButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralButton.swift; sourceTree = "<group>"; };
+		038152141EE7DDF20081FB33 /* WorkUnpaid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkUnpaid.swift; sourceTree = "<group>"; };
+		038152181EE803F90081FB33 /* MaidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidCell.swift; sourceTree = "<group>"; };
 		03BBE29A1ED83948005B47B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
-		03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantCell.swift; sourceTree = "<group>"; };
 		03BE7F2F1EE1677000757BB8 /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
-		03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExpiredCell.swift; sourceTree = "<group>"; };
+		03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRatingButton.swift; sourceTree = "<group>"; };
 		4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaidVC.swift; sourceTree = "<group>"; };
 		4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMaidVC.swift; sourceTree = "<group>"; };
 		4E0CACA01EDD074C00752BCC /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		4E0CACA21EDD12ED00752BCC /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		4E0CACA41EDD18E800752BCC /* RatingStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingStartView.swift; sourceTree = "<group>"; };
-		4E0CACA61EDD293D00752BCC /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
-		4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidProfileCell.swift; sourceTree = "<group>"; };
 		4E0F75C01EE5095200121113 /* BaseLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLauncher.swift; sourceTree = "<group>"; };
 		4E0F75C21EE50C4D00121113 /* DateLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateLauncher.swift; sourceTree = "<group>"; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWithTitle.swift; sourceTree = "<group>"; };
 		4E4DD6BF1EB0A0C5001B4936 /* gv24App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gv24App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E4DD6C41EB0A0C5001B4936 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4E4DD6C71EB0A0C5001B4936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,12 +190,6 @@
 		4E4E358C1ED7E02100D13EF5 /* TermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
 		4E4E358E1ED7E0C800D13EF5 /* ContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactVC.swift; sourceTree = "<group>"; };
 		4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManagementVC.swift; sourceTree = "<group>"; };
-		4E54F58F1EC9811B007D15D6 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = ../TaskCell.swift; sourceTree = "<group>"; };
-		4E54F5941EC9A6AC007D15D6 /* TaskControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskControlCell.swift; path = TaskControll/TaskControlCell.swift; sourceTree = "<group>"; };
-		4E54F5961EC9A6EE007D15D6 /* TaskNewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNewCell.swift; sourceTree = "<group>"; };
-		4E54F5981EC9A723007D15D6 /* TaskNewControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNewControlCell.swift; sourceTree = "<group>"; };
-		4E54F59A1EC9A751007D15D6 /* TaskAssignedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAssignedControlCell.swift; sourceTree = "<group>"; };
-		4E54F59C1EC9A832007D15D6 /* TaskInProgressControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInProgressControlCell.swift; sourceTree = "<group>"; };
 		4E54F59E1EC9B173007D15D6 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindow.swift; sourceTree = "<group>"; };
 		4E5F6C7D1EE11D7000B19C86 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -186,7 +210,6 @@
 		4E8D274D1EDC142100872A61 /* DateTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeView.swift; sourceTree = "<group>"; };
 		4E8D27511EDC14F100872A61 /* ApplicantListButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantListButton.swift; sourceTree = "<group>"; };
 		4E8D27521EDC14F100872A61 /* IconTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconTextButton.swift; sourceTree = "<group>"; };
-		4E8D27531EDC14F100872A61 /* ProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		4E8D27541EDC14F100872A61 /* ProfileUserButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserButton.swift; sourceTree = "<group>"; };
 		4E8D27591EDC152800872A61 /* TaskManageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManageService.swift; sourceTree = "<group>"; };
 		4E8D275B1EDC156100872A61 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -194,14 +217,8 @@
 		4E8E8F9B1EB1E9D90030B334 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		4E8E8F9C1EB1E9D90030B334 /* IoniconsSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IoniconsSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/IoniconsSwift/IoniconsSwift.framework"; sourceTree = "<group>"; };
 		4E8E8F9D1EB1E9D90030B334 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/gv24App-fmxaufovrxqrhkauwtqmyzjygxeh/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
-		4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
-		4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreUserCell.swift; sourceTree = "<group>"; };
-		4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseHeaderView.swift; path = ../BaseHeaderView.swift; sourceTree = "<group>"; };
-		4EA7A8411EBAD88000CA7F37 /* MoreItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreItemCell.swift; sourceTree = "<group>"; };
 		4EA7A8431EBB1E6600CA7F37 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		4EAA97231ECAD99E0001FEB6 /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
-		4EAA97261ECADED80001FEB6 /* MaidControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidControlCell.swift; sourceTree = "<group>"; };
-		4EAA97281ECADEF90001FEB6 /* TaskHistoryControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHistoryControlCell.swift; sourceTree = "<group>"; };
 		4EBF04B11ED28FFF00F7E08B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4EBF04B31ED2925200F7E08B /* WorkInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkInfo.swift; sourceTree = "<group>"; };
 		4EBF04B51ED292F100F7E08B /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -227,7 +244,6 @@
 		4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFunctButton.swift; sourceTree = "<group>"; };
 		4ED231821EB9CEFD00592842 /* HomeBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBottomView.swift; sourceTree = "<group>"; };
 		4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
-		4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralStatisticVC.swift; sourceTree = "<group>"; };
 		4EF1F35D1EE150CD00560C4A /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
@@ -252,20 +268,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0319CFAB1EE65F2900A4F157 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		03446A441EE54F3D004DB193 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				03446A671EE5502C004DB193 /* CommentCell.swift */,
+				03446A681EE5502C004DB193 /* MaidProfileCell.swift */,
+				03446A691EE5502C004DB193 /* UserProfileCell.swift */,
+				03446A451EE54F3D004DB193 /* BaseCell.swift */,
+				03446A461EE54F3D004DB193 /* BaseHeaderView.swift */,
+				03446A471EE54F3D004DB193 /* Headers */,
+				03446A491EE54F3D004DB193 /* HistoryControlCell */,
+				03446A501EE54F3D004DB193 /* TaskControll */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		03446A471EE54F3D004DB193 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				03446A481EE54F3D004DB193 /* HeaderWithTitle.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		03446A491EE54F3D004DB193 /* HistoryControlCell */ = {
+			isa = PBXGroup;
+			children = (
+				038152181EE803F90081FB33 /* MaidCell.swift */,
+				03446A4A1EE54F3D004DB193 /* MaidControlCell.swift */,
+				03446A711EE55696004DB193 /* TaskHistoryCell.swift */,
+				03446A4B1EE54F3D004DB193 /* TaskHistoryControlCell.swift */,
+				03446A791EE5666E004DB193 /* UnpaidWorkCell.swift */,
+				03446A6F1EE5530B004DB193 /* UnpaidWorkControlCell.swift */,
+				03446A6D1EE5508C004DB193 /* HistoryControlCell.swift */,
+			);
+			path = HistoryControlCell;
+			sourceTree = "<group>";
+		};
+		03446A501EE54F3D004DB193 /* TaskControll */ = {
+			isa = PBXGroup;
+			children = (
+				03446A4F1EE54F3D004DB193 /* TaskCell.swift */,
+				03446A531EE54F3D004DB193 /* TaskExpiredCell.swift */,
+				03446A551EE54F3D004DB193 /* TaskNewCell.swift */,
+				03446A511EE54F3D004DB193 /* TaskAssignedControlCell.swift */,
+				03446A541EE54F3D004DB193 /* TaskInProgressControlCell.swift */,
+				03446A561EE54F3D004DB193 /* TaskNewControlCell.swift */,
+				03446A521EE54F3D004DB193 /* TaskControlCell.swift */,
+			);
+			path = TaskControll;
+			sourceTree = "<group>";
+		};
 		03BE7F291EE1525200757BB8 /* Applicants */ = {
 			isa = PBXGroup;
 			children = (
 				03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */,
 			);
 			name = Applicants;
-			sourceTree = "<group>";
-		};
-		03BE7F2C1EE15B3100757BB8 /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				03BE7F2D1EE15B5100757BB8 /* ApplicantCell.swift */,
-			);
-			name = Detail;
 			sourceTree = "<group>";
 		};
 		03D71CBE1ED7C4B7006E78EF /* JobDetail */ = {
@@ -304,10 +371,13 @@
 		4E3D091E1EB31FB400303AAD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				03446A441EE54F3D004DB193 /* Cells */,
+				03446A4C1EE54F3D004DB193 /* MoreItemCell.swift */,
+				03446A4D1EE54F3D004DB193 /* MoreUserCell.swift */,
+				03446A4E1EE54F3D004DB193 /* SwitchCell.swift */,
 				4E0F75BF1EE5082800121113 /* Launcher */,
 				4E3D09221EB320BE00303AAD /* Extensions */,
 				4E3D09211EB3202700303AAD /* Custom */,
-				4E3D09201EB3200400303AAD /* Cells */,
 			);
 			name = Views;
 			path = View;
@@ -323,26 +393,10 @@
 				4EBF04BB1ED2C5A400F7E08B /* Entity.swift */,
 				4E0CACA01EDD074C00752BCC /* Comment.swift */,
 				03BE7F2F1EE1677000757BB8 /* Applicant.swift */,
+				03446A731EE55A3F004DB193 /* TaskHistory.swift */,
+				038152141EE7DDF20081FB33 /* WorkUnpaid.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		4E3D09201EB3200400303AAD /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				4E41F2211EDC0C14001F3CFE /* Headers */,
-				4EA7A8371EBAC8DA00CA7F37 /* BaseCell.swift */,
-				4EAA97251ECADE550001FEB6 /* HistoryControl */,
-				4E54F5931EC9A692007D15D6 /* TaskControll */,
-				4E54F5941EC9A6AC007D15D6 /* TaskControlCell.swift */,
-				4EA7A83D1EBACF6F00CA7F37 /* MoreUserCell.swift */,
-				4EA7A8411EBAD88000CA7F37 /* MoreItemCell.swift */,
-				4EE483DB1ED6CB88004BC615 /* SwitchCell.swift */,
-				4E0CACA21EDD12ED00752BCC /* UserProfileCell.swift */,
-				4E0CACA61EDD293D00752BCC /* CommentCell.swift */,
-				4E0CACA81EDD750B00752BCC /* MaidProfileCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		4E3D09211EB3202700303AAD /* Custom */ = {
@@ -372,15 +426,6 @@
 				4EBF04B71ED29D0C00F7E08B /* UserHelpers.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		4E41F2211EDC0C14001F3CFE /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				4EA7A83F1EBAD5D000CA7F37 /* BaseHeaderView.swift */,
-				4E41F2221EDC0F7C001F3CFE /* HeaderWithTitle.swift */,
-			);
-			path = Headers;
 			sourceTree = "<group>";
 		};
 		4E4DD6B61EB0A0C5001B4936 = {
@@ -466,20 +511,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		4E54F5931EC9A692007D15D6 /* TaskControll */ = {
-			isa = PBXGroup;
-			children = (
-				03BE7F2C1EE15B3100757BB8 /* Detail */,
-				4E54F58F1EC9811B007D15D6 /* TaskCell.swift */,
-				03F586CF1EDD0C5200AE42EC /* TaskExpiredCell.swift */,
-				4E54F5961EC9A6EE007D15D6 /* TaskNewCell.swift */,
-				4E54F5981EC9A723007D15D6 /* TaskNewControlCell.swift */,
-				4E54F59A1EC9A751007D15D6 /* TaskAssignedControlCell.swift */,
-				4E54F59C1EC9A832007D15D6 /* TaskInProgressControlCell.swift */,
-			);
-			path = TaskControll;
-			sourceTree = "<group>";
-		};
 		4E61E3CD1EC1798600E6C8C5 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +552,7 @@
 		4E61E3D01EC1A24F00E6C8C5 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				0319CFAB1EE65F2900A4F157 /* Detail */,
 				4EAA97231ECAD99E0001FEB6 /* HistoryVC.swift */,
 			);
 			path = History;
@@ -535,16 +567,6 @@
 				4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */,
 			);
 			path = Around;
-			sourceTree = "<group>";
-		};
-		4EAA97251ECADE550001FEB6 /* HistoryControl */ = {
-			isa = PBXGroup;
-			children = (
-				4EAA97261ECADED80001FEB6 /* MaidControlCell.swift */,
-				4EAA97281ECADEF90001FEB6 /* TaskHistoryControlCell.swift */,
-			);
-			name = HistoryControl;
-			path = HistoryControlCell;
 			sourceTree = "<group>";
 		};
 		4ECD1D581EB1AFDF007DEF88 /* AppService */ = {
@@ -563,7 +585,6 @@
 			children = (
 				4E8D27511EDC14F100872A61 /* ApplicantListButton.swift */,
 				4E8D27521EDC14F100872A61 /* IconTextButton.swift */,
-				4E8D27531EDC14F100872A61 /* ProfileButton.swift */,
 				4E8D27541EDC14F100872A61 /* ProfileUserButton.swift */,
 				4ED231791EB98D6300592842 /* NavigationButton.swift */,
 				4ED2317B1EB98FAC00592842 /* BaseButton.swift */,
@@ -572,6 +593,8 @@
 				4E5F6C7D1EE11D7000B19C86 /* CheckBox.swift */,
 				4EF1F35D1EE150CD00560C4A /* RadioButton.swift */,
 				4EF1F35F1EE1640600560C4A /* ButtonTitleValue.swift */,
+				038152101EE7A4F20081FB33 /* GeneralButton.swift */,
+				03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -635,7 +658,7 @@
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = FE5FXN233L;
+						DevelopmentTeam = 7R93MWJ8VY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -738,94 +761,102 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03446A571EE54F3D004DB193 /* BaseCell.swift in Sources */,
 				4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */,
 				4E61E3DD1EC1A31C00E6C8C5 /* SignUpVC_2.swift in Sources */,
 				4ED231831EB9CEFD00592842 /* HomeBottomView.swift in Sources */,
 				4EBF04B21ED28FFF00F7E08B /* User.swift in Sources */,
 				4EDDB4681ECED8A900AFFD1A /* FilterVC.swift in Sources */,
 				0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */,
+				03446A5C1EE54F3D004DB193 /* MoreItemCell.swift in Sources */,
 				4E8D27581EDC14F100872A61 /* ProfileUserButton.swift in Sources */,
 				4EBF04B81ED29D0C00F7E08B /* UserHelpers.swift in Sources */,
 				4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */,
+				03446A5B1EE54F3D004DB193 /* TaskHistoryControlCell.swift in Sources */,
 				4ECD1D3A1EB18743007DEF88 /* Font.swift in Sources */,
+				03446A611EE54F3D004DB193 /* TaskControlCell.swift in Sources */,
 				4ED231751EB980D000592842 /* BaseVC.swift in Sources */,
-				4EA7A8381EBAC8DA00CA7F37 /* BaseCell.swift in Sources */,
 				4E0B0A411EDE7ACC0043E38A /* RequestMaidVC.swift in Sources */,
 				4ED2316F1EB979AF00592842 /* Colors.swift in Sources */,
-				4EAA97271ECADED80001FEB6 /* MaidControlCell.swift in Sources */,
 				4E8D27501EDC142100872A61 /* DateTimeView.swift in Sources */,
 				4ED2316D1EB9797B00592842 /* ViewExtensions.swift in Sources */,
 				4E4E358D1ED7E02100D13EF5 /* TermsVC.swift in Sources */,
-				4E0CACA31EDD12ED00752BCC /* UserProfileCell.swift in Sources */,
 				4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */,
+				03446A641EE54F3D004DB193 /* TaskNewCell.swift in Sources */,
 				4EF8A14E1EE110CF002A5920 /* LabelButtomLine.swift in Sources */,
 				4E0F75C31EE50C4D00121113 /* DateLauncher.swift in Sources */,
 				4E8D274F1EDC142100872A61 /* DescInfoView.swift in Sources */,
-				4E54F59D1EC9A832007D15D6 /* TaskInProgressControlCell.swift in Sources */,
+				03446A5E1EE54F3D004DB193 /* SwitchCell.swift in Sources */,
 				4E4E358F1ED7E0C800D13EF5 /* ContactVC.swift in Sources */,
 				4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */,
+				03446A6B1EE5502C004DB193 /* MaidProfileCell.swift in Sources */,
 				4E61E3DC1EC1A31C00E6C8C5 /* SignUpVC_1.swift in Sources */,
 				4E8D274A1EDC13B900872A61 /* JobAssignedDetailVC.swift in Sources */,
-				4E54F5991EC9A723007D15D6 /* TaskNewControlCell.swift in Sources */,
+				0319CFAD1EE6604100A4F157 /* DetailTaskHistoryVC.swift in Sources */,
+				038152111EE7A4F20081FB33 /* GeneralButton.swift in Sources */,
 				4ED231711EB97D4100592842 /* StringExtensions.swift in Sources */,
+				03446A6A1EE5502C004DB193 /* CommentCell.swift in Sources */,
 				4ED2317E1EB9B15E00592842 /* HomeVC.swift in Sources */,
+				038152191EE803F90081FB33 /* MaidCell.swift in Sources */,
 				4E8D274E1EDC142100872A61 /* DescTaskView.swift in Sources */,
 				4E8D27561EDC14F100872A61 /* IconTextButton.swift in Sources */,
 				4E5B162E1ECD943A00A5FC23 /* MarkerInfoWindow.swift in Sources */,
-				4E8D27571EDC14F100872A61 /* ProfileButton.swift in Sources */,
-				4EAA97291ECADEF90001FEB6 /* TaskHistoryControlCell.swift in Sources */,
+				038152151EE7DDF20081FB33 /* WorkUnpaid.swift in Sources */,
 				4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */,
+				03446A5A1EE54F3D004DB193 /* MaidControlCell.swift in Sources */,
 				4E8D27551EDC14F100872A61 /* ApplicantListButton.swift in Sources */,
 				03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */,
 				4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */,
 				03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */,
+				03446A7A1EE5666E004DB193 /* UnpaidWorkCell.swift in Sources */,
 				4E8D275C1EDC156100872A61 /* Task.swift in Sources */,
-				4E54F59B1EC9A751007D15D6 /* TaskAssignedControlCell.swift in Sources */,
 				4EBF04BA1ED2BB7500F7E08B /* UserService.swift in Sources */,
+				03446A601EE54F3D004DB193 /* TaskAssignedControlCell.swift in Sources */,
+				03446A651EE54F3D004DB193 /* TaskNewControlCell.swift in Sources */,
 				4EAA97241ECAD99E0001FEB6 /* HistoryVC.swift in Sources */,
-				4EA7A8421EBAD88000CA7F37 /* MoreItemCell.swift in Sources */,
+				03446A6E1EE5508C004DB193 /* HistoryControlCell.swift in Sources */,
 				4E0F75C11EE5095200121113 /* BaseLauncher.swift in Sources */,
+				03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */,
 				4E61E3E01EC1A33800E6C8C5 /* MaidAroundVC.swift in Sources */,
 				4E8D275E1EDC157E00872A61 /* BlockAlias.swift in Sources */,
 				4E5F6C7E1EE11D7000B19C86 /* CheckBox.swift in Sources */,
+				03446A631EE54F3D004DB193 /* TaskInProgressControlCell.swift in Sources */,
 				4ECD1D5A1EB1AFF4007DEF88 /* ApiService.swift in Sources */,
 				4E0B0A431EDE7AE40043E38A /* ReportMaidVC.swift in Sources */,
+				03446A591EE54F3D004DB193 /* HeaderWithTitle.swift in Sources */,
+				03446A741EE55A3F004DB193 /* TaskHistory.swift in Sources */,
+				03446A5F1EE54F3D004DB193 /* TaskCell.swift in Sources */,
 				4E87A54C1EBB64F100EDA0D1 /* IconView.swift in Sources */,
+				03446A721EE55696004DB193 /* TaskHistoryCell.swift in Sources */,
 				4E8D27481EDC13B900872A61 /* JobProgressDetailVC.swift in Sources */,
 				4ED231731EB9803400592842 /* ImageExtensions.swift in Sources */,
-				4E0CACA71EDD293D00752BCC /* CommentCell.swift in Sources */,
-				4E54F5901EC9811B007D15D6 /* TaskCell.swift in Sources */,
 				4E8D275A1EDC152800872A61 /* TaskManageService.swift in Sources */,
+				03446A701EE5530B004DB193 /* UnpaidWorkControlCell.swift in Sources */,
+				03446A5D1EE54F3D004DB193 /* MoreUserCell.swift in Sources */,
 				4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */,
-				4EA7A8401EBAD5D000CA7F37 /* BaseHeaderView.swift in Sources */,
 				4E4DD6E51EB0A838001B4936 /* Icon.swift in Sources */,
 				4E61E3DB1EC1A31C00E6C8C5 /* SignInVC.swift in Sources */,
 				4E8D27491EDC13B900872A61 /* JobPostedDetailVC.swift in Sources */,
 				4EBF04B61ED292F100F7E08B /* Address.swift in Sources */,
-				4E54F5951EC9A6AC007D15D6 /* TaskControlCell.swift in Sources */,
 				4EA7A8441EBB1E6600CA7F37 /* BasicButton.swift in Sources */,
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
-				03F586D01EDD0C5200AE42EC /* TaskExpiredCell.swift in Sources */,
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
-				4E41F2231EDC0F7C001F3CFE /* HeaderWithTitle.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
 				4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */,
 				4EBF04BC1ED2C5A400F7E08B /* Entity.swift in Sources */,
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
 				4EF1F3601EE1640600560C4A /* ButtonTitleValue.swift in Sources */,
+				03446A581EE54F3D004DB193 /* BaseHeaderView.swift in Sources */,
 				4EBF04B41ED2925200F7E08B /* WorkInfo.swift in Sources */,
 				4E0CACA11EDD074C00752BCC /* Comment.swift in Sources */,
+				03446A621EE54F3D004DB193 /* TaskExpiredCell.swift in Sources */,
+				03446A6C1EE5502C004DB193 /* UserProfileCell.swift in Sources */,
 				4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */,
 				4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */,
-				4E54F5971EC9A6EE007D15D6 /* TaskNewCell.swift in Sources */,
 				03446A121EE53B35004DB193 /* HistoryService.swift in Sources */,
 				4E61E3E11EC1A33800E6C8C5 /* MaidProfileVC.swift in Sources */,
-				4EE483DC1ED6CB88004BC615 /* SwitchCell.swift in Sources */,
 				4E8D27441EDC134B00872A61 /* SignUpVC_3.swift in Sources */,
 				4ED2317A1EB98D6300592842 /* NavigationButton.swift in Sources */,
-				4EA7A83E1EBACF6F00CA7F37 /* MoreUserCell.swift in Sources */,
-				4E0CACA91EDD750B00752BCC /* MaidProfileCell.swift in Sources */,
-				03BE7F2E1EE15B5100757BB8 /* ApplicantCell.swift in Sources */,
 				4E4E358B1ED7D42C00D13EF5 /* AboutUsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -970,7 +1001,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FE5FXN233L;
+				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -989,7 +1020,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FE5FXN233L;
+				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

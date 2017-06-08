@@ -9,7 +9,6 @@
 import UIKit
 
 class ReportMaidVC: BaseVC, UITextViewDelegate {
-    
     var maid : MaidProfile?{
         didSet{
             self.avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
@@ -115,8 +114,6 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     func handleSendButton(_ sender: UIButton){
         let alert = UIAlertController(title: "", message: "Báo cáo thành công", preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        
-        
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
             UserService.shared.report(maidId: (maid?.userId)!, content: textViewdContent.text, completion: { (error) in
                 if error != nil{

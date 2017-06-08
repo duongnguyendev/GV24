@@ -112,17 +112,29 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     //MARK: - task control delegate
     func didSelected(task: Task) {
-        if (task.stakeholder?.request?.count)! > 0{
-            let jobApplicantVC = JobPostedDetailVC()
-            jobApplicantVC.task = task
-             push(viewController: jobApplicantVC)
-        }else{
+        if task.process?.id == "000000000000000000000001"{
+            if (task.stakeholder?.request?.count)! > 0{
+                let jobApplicantVC = JobPostedDetailVC()
+                jobApplicantVC.task = task
+                push(viewController: jobApplicantVC)
+            }else{
+                let jobPostVC = JobAssignedDetailVC()
+                jobPostVC.task = task
+                push(viewController: jobPostVC)
+            }
+
+        }else if task.process?.id == "000000000000000000000003"{
             let jobPostVC = JobAssignedDetailVC()
             jobPostVC.task = task
             push(viewController: jobPostVC)
+        }else{
+            let jobProgressVC = JobProgressDetailVC()
+            //jobProgressVC.task = task
+            push(viewController: jobProgressVC)
         }
+        
     }
-    func longdidSelected(task: Task) {
+    func remove(task: Task) {
         let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ShowDeleteWork"), preferredStyle:UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default){ action -> Void in
             

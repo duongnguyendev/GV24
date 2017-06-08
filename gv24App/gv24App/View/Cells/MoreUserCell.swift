@@ -41,8 +41,6 @@ class MoreUserCell: BaseMoreCell {
     
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
-        iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 25
         iv.layer.masksToBounds = true
@@ -71,6 +69,8 @@ class MoreUserCell: BaseMoreCell {
         addSubview(labelName)
         addSubview(labelAddress)
         
+        avatarImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        avatarImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         avatarImageView.leftAnchor.constraint(equalTo: seqaratorView.leftAnchor, constant: 0).isActive = true
         avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         
@@ -87,7 +87,8 @@ class MoreUserCell: BaseMoreCell {
     }
     private func showUserInfo(){
         let user = UserHelpers.currentUser
-        self.avatarImageView.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
+        let imageUrl = "http://res.cloudinary.com/einzweidrei2/image/upload/v1495614444/xm4zwh2fxm6tnpjhujhl.png"
+        self.avatarImageView.loadImageUsingUrlString(urlString: imageUrl)
         self.labelName.text = user?.name
         self.labelAddress.text = user?.address?.name
         
