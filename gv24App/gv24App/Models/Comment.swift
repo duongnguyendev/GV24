@@ -13,10 +13,10 @@ class Comment: Entity {
 
     var commentId : String?
     var createAt: Date?
-    var evaluationPoint : Int?
+    var evaluationPoint : Double?
     var content: String?
     var task: Task?
-    var userComment: User?
+    var fromUser: User?
     
     override init() {
         super .init()
@@ -25,10 +25,10 @@ class Comment: Entity {
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
         commentId = jsonData["_id"].string
-        let createAtString = jsonData["createAt"].string
-        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = ""
-        let date = dateFormatter.date(from: createAtString!)
-        createAt = date
+        createAt = Date(isoDateString: jsonData["createAt"].string!)
+        evaluationPoint = jsonData["evaluation_point"].double
+        content = jsonData["content"].string
+        task = Task(jsonData: jsonData["task"])
+        fromUser = User(jsonData: jsonData["fromId"])
     }
 }

@@ -53,19 +53,36 @@ class UserService: APIService {
         }
     }
     
-    func getComments(user : User, page : Int?, completion:@escaping (([Comment]?, String?)->())){
-        var url = "maid/getComment?id=\((user.userId)!)"
+    func getComments(user : User?, page : Int?, completion:@escaping (([Comment]?, Int?, Int?, String?)->())){
+        
+        var url = "maid/getComment"
+        
+        if user == nil {
+            url = url + "?id=\((UserHelpers.currentUser?.userId)!)"
+        }else{
+            url = url + "?id=\((user?.userId)!)"
+        }
         if page != nil{
             url = url + "&page=\(page!)"
         }
-        
         getWithToken(url: url) { (jsonData, error) in
             if error == nil{
-                completion(self.getCommentsFrom(json: (jsonData?["docs"])!), nil)
+                let page = jsonData?["page"].int
+                let pages = jsonData?["pages"].int
+                completion(self.getCommentsFrom(json: (jsonData?["docs"])!), page, pages, nil)
             }else{
-                completion(nil, error)
+                completion(nil, nil, nil, error)
             }
         }
+    }
+    
+    func filter(params : Parameters, completion : @escaping (([MaidProfile]?, String?) -> ())){
+        let url = "more/getAllMaids?"
+        
+        getWithToken(url: url) { (jsonData, error) in
+            
+        }
+        
     }
     
     func register(info: Dictionary<String, String>, avatar: UIImage, completion : @escaping ((User?, String?, String?)->())){

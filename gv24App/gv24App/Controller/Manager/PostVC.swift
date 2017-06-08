@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreLocation
 
-class PostVC: BaseVC, DateTimeLauncherDelegate {
-
+class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
+    
     var date : Date? = Date(){
         didSet{
             buttonDate.valueString = date?.dayMonthYear
+            timeStart = date
+            timeEnd = date
         }
     }
     var timeStart : Date? = Date(){
@@ -22,9 +25,17 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
     }
     var timeEnd : Date? = Date(){
         didSet{
-            buttonTo.title = timeStart?.hourMinute
+            buttonTo.title = timeEnd?.hourMinute
         }
     }
+    var workType : WorkType?{
+        didSet{
+            typeTextField.text = workType?.name
+        }
+    }
+    
+    var workTypes : [WorkType]?
+    var params = Dictionary<String, Any>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,11 +87,12 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         tF.placeholder = "Loại công việc"
         return tF
     }()
-    let descriptionTextField : UITextFieldButtomLine = {
+    lazy var descriptionTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
         tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
         tF.placeholder = "Mô tả công việc"
+        tF.delegate = self
         return tF
     }()
     let addressTextField : UITextFieldButtomLine = {
@@ -111,6 +123,12 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         rb.title = "Khoán theo thời gian"
         rb.addTarget(self, action: #selector(handleRadioButton(_:)), for: .touchUpInside)
         return rb
+    }()
+    let buttonWorkTypes : UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(handleButtonWorkTypes(_:)), for: .touchUpInside)
+        return btn
     }()
     
     let buttonDate : ButtonTitleValue = {
@@ -191,6 +209,8 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         infoView.addSubview(descriptionTextField)
         infoView.addSubview(addressTextField)
         infoView.addSubview(checkBoxTool)
+        infoView.addSubview(buttonWorkTypes)
+        
         
         infoView.addConstraintWithFormat(format: "V:|[v0][v1][v2][v3][v4]", views: titleTextField, typeTextField, descriptionTextField, addressTextField, checkBoxTool)
         mainView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: titleTextField)
@@ -199,6 +219,10 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         mainView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: addressTextField)
         mainView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: checkBoxTool)
         
+        buttonWorkTypes.topAnchor.constraint(equalTo: typeTextField.topAnchor, constant: 0).isActive = true
+        buttonWorkTypes.leftAnchor.constraint(equalTo: typeTextField.leftAnchor, constant: 0).isActive = true
+        buttonWorkTypes.rightAnchor.constraint(equalTo: typeTextField.rightAnchor, constant: 0).isActive = true
+        buttonWorkTypes.bottomAnchor.constraint(equalTo: typeTextField.bottomAnchor, constant: 0).isActive = true
         
     }
     func setupTypeView(){
@@ -252,6 +276,8 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         
     }
     
+    //MARK: - handle button
+    
     func handleCheckBoxToolButton(_ sender: UIButton){
         if checkBoxTool.isSelected{
             checkBoxTool.isSelected = false
@@ -275,10 +301,186 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         }
     }
     
+    func handleButtonDate(_ sender : UIButton){
+        showDatePickerWith(mode: .date, sender: sender)
+    }
+    func handleButtonWorkTypes(_ sender: UIButton){
+        
+        if self.workTypes == nil{
+            TaskService.shared.getWorkTypes { (workTypes, error) in
+                if error == nil{
+                    self.workTypes = workTypes
+                    self.handleActionSheet()
+                }
+            }
+        }else{
+            handleActionSheet()
+        }
+    }
+    
+    func handlePostButton(_ sender: UIButton){
+        
+        validate { (errorString) in
+            if errorString == nil{
+                self.params["tools"] = self.checkBoxTool.isSelected
+                TaskService.shared.postTask(params: self.params) { (error) in
+                    if error == nil{
+                        self.showAlertWith(message: "Đăng bài thành công", completion: {
+                            self.goBack()
+                        })
+                    }else{
+                        self.showAlertWith(message: error!, completion: {})
+                    }
+                }
+            }
+            else{
+                self.showAlertWith(message: errorString!, completion: {})
+            }
+        }
+    }
+    
+    func showAlertWith(message: String, completion: @escaping (()->())){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+            completion()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func handleButtonFrom(_ sender: UIButton){
+        dateLauncher.startDate = timeStart
+        showDatePickerWith(mode: .time, sender: sender)
+        
+    }
+    func handleButtonTo(_ sender: UIButton){
+        dateLauncher.startDate = timeEnd
+        showDatePickerWith(mode: .time, sender: sender)
+    }
+    
+    func showDatePickerWith(mode : UIDatePickerMode, sender : UIButton){
+        dateLauncher.pickerMode = mode
+        dateLauncher.sender = sender
+        dateLauncher.show()
+    }
+    
+    func handleActionSheet(){
+        let actionSheet = UIAlertController(title: nil, message: "loại công việc", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Huỷ bỏ", style: .cancel, handler: nil))
+        for workType in workTypes!{
+            actionSheet.addAction(UIAlertAction(title: workType.name, style: .default, handler: { (nil) in
+                self.workType = workType
+            }))
+        }
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    //MARK: - validate
+    func validate(completion: @escaping ((String?)->())){
+        if let titleError = validateTitle() {
+            completion(titleError)
+            return
+        }
+        if let typeError = validateType(){
+            completion(typeError)
+            return
+        }
+        if let descriptionError = validateDescription() {
+            completion(descriptionError)
+            return
+        }
+        if let dateError = validateDate(){
+            completion(dateError)
+            return
+        }
+        if let packageError = validatePackage(){
+            completion(packageError)
+            return
+        }
+        validateAddress { (addressError) in
+            if addressError != nil{
+                completion(addressError)
+            }
+            else{
+                completion(nil)
+            }
+        }
+    }
+    
+    private func validateTitle() -> String?{
+        if (titleTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5   {
+            params["title"] = typeTextField.text
+            return nil
+        }
+        return "Vui lòng nhập title"
+    }
+    private func validateType() -> String?{
+        if self.workType != nil   {
+            params["work"] = workType?.id
+            return nil
+        }
+        return "Vui lòng chọn Loại công việc"
+    }
+    private func validateDescription() -> String?{
+        let numberChar = (descriptionTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)!
+        if  numberChar > 20 {
+            params["description"] = descriptionTextField.text
+            return nil
+        }
+        return "Vui lòng nhập mô tả công việc"
+    }
+    private func validateAddress(completion: @escaping ((String?)->())){
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressTextField.text!) { (placeMarks, error) in
+            if error == nil{
+                if (placeMarks?.count)! > 0{
+                    let firstLocation = placeMarks?.first?.location
+                    self.params["addressName"] = self.addressTextField.text
+                    self.params["lat"] = firstLocation?.coordinate.latitude
+                    self.params["lng"] = firstLocation?.coordinate.longitude
+                    completion(nil)
+                }
+                else{
+                    completion("Địa chỉ nhập không đúng")
+                }
+            }else{
+                completion("Địa chỉ nhập không đúng")
+            }
+        }
+    }
+    
+    private func validatePackage()->String?{
+        if self.radioButtonMoney.isSelected {
+            self.params["package"] = "000000000000000000000001"
+            if let priceNumber = Double(self.radioButtonMoney.titleView.text!){
+                self.params["price"] = priceNumber
+                return nil
+            }else{
+                return "Vui lòng chọn giá tiền"
+            }
+        }else{
+            self.params["package"] = "000000000000000000000002"
+            return nil
+        }
+        
+    }
+    
+    private func validateDate() -> String?{
+        if self.timeStart! < self.timeEnd!   {
+            params["startAt"] = timeStart
+            params["endAt"] = timeEnd
+            return nil
+        }
+        return "Giờ bắt đầu phải nhỏ hơn giờ kết thúc"
+    }
+    
+    //MARK: - delegate
+    
     func selected(dateTime: Date, for sender: UIButton) {
         switch sender {
         case buttonDate:
-            date = dateTime
+            if dateTime != date{
+                date = dateTime
+            }
             break
         case buttonFrom:
             timeStart = dateTime
@@ -291,26 +493,13 @@ class PostVC: BaseVC, DateTimeLauncherDelegate {
         }
     }
     
-    func handleButtonDate(_ sender : UIButton){
-        showDatePickerWith(mode: .date, sender: sender)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.descriptionTextField {
+            if (textField.text?.characters.count)! <= 200{
+                return true
+            }
+        }
+        return false
     }
-    func handleButtonTime(_ sender: UIButton){
-        print("handleButtonTime")
-    }
-    
-    func handlePostButton(_ sender: UIButton){
-        self.dismiss(animated: true, completion: nil)
-    }
-    func handleButtonFrom(_ sender: UIButton){
-        showDatePickerWith(mode: .time, sender: sender)
-    }
-    func handleButtonTo(_ sender: UIButton){
-        showDatePickerWith(mode: .time, sender: sender)
-    }
-    
-    func showDatePickerWith(mode : UIDatePickerMode, sender : UIButton){
-        dateLauncher.pickerMode = mode
-        dateLauncher.sender = sender
-        dateLauncher.show()
-    }
+
 }

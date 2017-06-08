@@ -21,7 +21,11 @@ class DateLauncher: BaseLauncher {
         }
     }
     var sender : UIButton?
-    
+    var startDate : Date?{
+        didSet{
+            datePicker.date = startDate!
+        }
+    }
     let datePicker : UIDatePicker = {
         let picker = UIDatePicker()
         picker.date = Date()
@@ -29,18 +33,21 @@ class DateLauncher: BaseLauncher {
         return picker
     }()
     
-    override func setupContent() {
-        super.setupContent()
-        contentView.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+    override func setupMainView() {
+        super.setupMainView()
+        mainView.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        mainView.heightAnchor.constraint(equalToConstant: 300).isActive = true
     }
     
-    override func setupComponent() {
-        super.setupComponent()
-        contentView.addSubview(datePicker)
-        datePicker.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
-        datePicker.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
-        datePicker.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0).isActive = true
+    override func addContentView() {
+        super.addContentView()
+        mainView.addSubview(datePicker)
+    }
+    override func setupSubView() {
+        super.setupSubView()
+        datePicker.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 0).isActive = true
+        datePicker.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 0).isActive = true
+        datePicker.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: 0).isActive = true
         datePicker.bottomAnchor.constraint(equalTo: buttonOK.topAnchor, constant: 0).isActive = true
     }
     override func handleButtonOK(_ sender: UIButton) {

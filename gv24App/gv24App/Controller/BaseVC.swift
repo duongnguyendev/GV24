@@ -30,6 +30,11 @@ class BaseVC: UIViewController {
         setupRightNavButton()
         setupView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        localized()
+    }
+    
     //MARK: - Setup navigation bar
     
     func setupNav(){
@@ -79,5 +84,9 @@ class BaseVC: UIViewController {
     
     func hideKeyboard(){
         view.endEditing(true)
+    }
+    
+    func localized(){
+        
     }
 }

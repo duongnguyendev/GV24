@@ -28,6 +28,7 @@ class UserProfileCell: BaseCollectionCell {
     let ratingView = RatingStartView()
     let imageBackGround : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "top_bg"))
+        iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -35,9 +36,9 @@ class UserProfileCell: BaseCollectionCell {
         let iv = UIImageView(image: UIImage(named: "avatar"))
         iv.contentMode = .scaleAspectFit
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        iv.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        iv.layer.cornerRadius = 50
+        iv.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        iv.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        iv.layer.cornerRadius = 40
         iv.layer.masksToBounds = true
         iv.layer.borderColor = UIColor.white.cgColor
         iv.layer.borderWidth = 2
@@ -104,15 +105,15 @@ class UserProfileCell: BaseCollectionCell {
         imageBackGround.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         imageBackGround.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         imageBackGround.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        imageBackGround.heightAnchor.constraint(equalToConstant: 220).isActive = true
+        imageBackGround.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
-        avatarImageView.topAnchor.constraint(equalTo: imageBackGround.topAnchor, constant: 20).isActive = true
+        avatarImageView.topAnchor.constraint(equalTo: imageBackGround.topAnchor, constant: 15).isActive = true
         avatarImageView.centerXAnchor.constraint(equalTo: imageBackGround.centerXAnchor, constant: 0).isActive = true
         
         labelName.centerXAnchor.constraint(equalTo: imageBackGround.centerXAnchor, constant: 0).isActive = true
         labelName.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 10).isActive = true
         
-        ratingView.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 15).isActive = true
+        ratingView.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 10).isActive = true
         ratingView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
     }
     

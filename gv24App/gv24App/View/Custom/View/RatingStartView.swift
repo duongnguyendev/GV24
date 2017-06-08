@@ -17,9 +17,12 @@ class RatingStartView: BaseView {
     let button5 = StartButton()
     var arrayButton : [StartButton] = [StartButton]()
     
-    var point : Double = 0{
+    var point : Double? = 0{
         didSet{
-            handle(point: point)
+            if point != nil{
+                handle(point: point!)
+            }
+            
         }
     }
     override func setupView() {

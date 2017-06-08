@@ -123,7 +123,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
                     alert.message = error
                 }else{
                     alertAction = UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
-                        self.goBack()
+                        self.dismiss(animated: true, completion: nil)
                     })
                     alert.addAction(alertAction)
                 }

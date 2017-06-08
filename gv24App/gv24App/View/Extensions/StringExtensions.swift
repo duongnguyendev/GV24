@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 extension String {
+    
     static func heightWith(string: String, size : CGSize, font : UIFont) -> CGFloat{
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let estimatedRect = NSString(string: string).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : font], context: nil)

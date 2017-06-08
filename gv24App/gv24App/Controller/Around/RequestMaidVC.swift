@@ -21,6 +21,23 @@ class RequestMaidVC: PostVC {
     }
     
     override func handlePostButton(_ sender: UIButton) {
-        
+        validate { (errorString) in
+            if errorString == nil{
+                self.params["tools"] = self.checkBoxTool.isSelected
+                self.params["maidId"] = self.maid?.userId
+                TaskService.shared.sendRequestToMaid(params: self.params) { (error) in
+                    if error == nil{
+                        self.showAlertWith(message: "Đăng bài thành công", completion: {
+                            self.goBack()
+                        })
+                    }else{
+                        self.showAlertWith(message: error!, completion: {})
+                    }
+                }
+            }
+            else{
+                self.showAlertWith(message: errorString!, completion: {})
+            }
+        }
     }
 }

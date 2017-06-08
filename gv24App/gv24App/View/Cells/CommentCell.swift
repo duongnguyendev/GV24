@@ -12,12 +12,19 @@ class CommentCell: BaseCollectionCell {
     
     var comment : Comment?{
         didSet{
-            
+            if comment?.fromUser?.avatarUrl != nil{
+                avartaImage.loadImageUsingUrlString(urlString: (comment?.fromUser?.avatarUrl)!)
+            }
+            ratingView.point = comment?.evaluationPoint
+            labelName.text = comment?.fromUser?.name
+            labelContent.text = comment?.content
+            labelTitle.text = comment?.task?.info?.title
+            labelDate.text = comment?.createAt?.dayMonthYear
         }
     }
     
-    let avartaImage : UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "avatar"))
+    let avartaImage : CustomImageView = {
+        let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -86,9 +93,6 @@ class CommentCell: BaseCollectionCell {
         labelContent.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         labelContent.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         labelContent.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 0).isActive = true
-//        labelContent.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
-        
-        
     }
 
 }

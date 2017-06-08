@@ -14,11 +14,6 @@ class HomeVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        localized()
-    }
-    
     let backGroundView : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "bg_app"))
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -95,9 +90,6 @@ class HomeVC: BaseVC {
         view.addConstraintWithFormat(format: "V:|[v0]|", views: backGroundView)
     }
     
-    func localized(){
-        title = LanguageManager.shared.localized(string: "Home")
-    }
     //MARK: - Handle button
     func handleButtonMore(_ sender : UIButton) {
         let moreVC = MoreVC()
@@ -112,5 +104,10 @@ class HomeVC: BaseVC {
     }
     func handleButtonHistory(_ sender : UIButton){
         present(viewController: HistoryVC())
+    }
+    
+    //MARK: - localize
+    override func localized(){
+        title = LanguageManager.shared.localized(string: "Home")
     }
 }

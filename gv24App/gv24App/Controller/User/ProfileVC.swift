@@ -18,12 +18,21 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         mainCollectionView.register(UserProfileCell.self, forCellWithReuseIdentifier: profileCellId)
         mainCollectionView.register(CommentCell.self, forCellWithReuseIdentifier: commentCellId)
         mainCollectionView.register(HeaderWithTitle.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
+        loadComment()
         
     }
     let cellId = "cellId"
     let profileCellId = "profileCellId"
     let commentCellId = "commentCellId"
     let headerId = "headerId"
+    var currentCommentPage : Int?
+    var totalCommentPages : Int?
+    var comments : [Comment] = [Comment](){
+        didSet{
+            self.mainCollectionView.reloadData()
+        }
+    }
+    
     lazy var mainCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -33,6 +42,7 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
+    
     override func setupRightNavButton() {
         let updateButton = NavButton(title: "Cập nhật")
         updateButton.addTarget(self, action: #selector(handleUpdateButton(_:)), for: .touchUpInside)
@@ -52,6 +62,23 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         print("handleUpdateButton")
     }
     
+    //MARK: - load comment
+    
+    func loadComment(){
+        if currentCommentPage == nil || currentCommentPage! < totalCommentPages!{
+            UserService.shared.getComments(user: nil, page: currentCommentPage) { (comments, page, totalPage, error) in
+                if error == nil{
+                    self.currentCommentPage = page
+                    self.totalCommentPages = totalPage
+                    self.comments = self.comments + comments!
+                }else{
+                    
+                }
+            }
+        }
+        
+    }
+    
     //MARK: - Collection Delegate - Datasource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -62,7 +89,7 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         if section == 0 {
             return 1
         }else{
-            return 10
+            return comments.count
         }
     }
     
@@ -71,15 +98,19 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: profileCellId, for: indexPath) as! UserProfileCell
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: commentCellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: commentCellId, for: indexPath) as! CommentCell
+        cell.comment = comments[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0{
-            return CGSize(width: view.frame.size.width, height: 360)
+            return CGSize(width: view.frame.size.width, height: 320)
         }
-        return CGSize(width: view.frame.size.width, height: 150)
+        let text = comments[indexPath.item].content
+        let size = CGSize(width: view.frame.width, height: 1000)
+        let height = String.heightWith(string: text!, size: size, font: Fonts.by(name: .regular, size: 12))
+        return CGSize(width: view.frame.size.width, height: 90 + height)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0{
@@ -101,5 +132,12 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         return headerView!
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.section == 1{
+            if indexPath.item < comments.count - 1{
+                loadComment()
+            }
+        }
+    }
     
 }

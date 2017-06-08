@@ -10,9 +10,14 @@ import UIKit
 
 class UITextFieldButtomLine: UITextField {
 
+    var hideLine : Bool?{
+        didSet{
+            bottomLine.isHidden = hideLine!
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addSubview(bottomLine)
         self.translatesAutoresizingMaskIntoConstraints = false
         bottomLine.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
