@@ -11,7 +11,6 @@ import UIKit
 class DetailTaskHistoryVC: BaseVC{
     
     var taskHistory = Task()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainScrollView.backgroundColor = AppColor.collection
