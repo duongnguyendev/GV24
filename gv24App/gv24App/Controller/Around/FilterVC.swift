@@ -8,15 +8,18 @@
 
 import UIKit
 import IoniconsSwift
+import GoogleMaps
 
 class FilterVC: BaseVC, AgeLauncherDelegate {
-
+ 
+    var delegate : FilterDelegate?
     var distance : Int = 5{
         didSet{
             labelNumberDistance.text = "\(distance)km"
             
         }
     }
+    
     var params = Dictionary<String, Any>()
     var workTypes : [WorkType]?
     var workType : WorkType?
@@ -214,11 +217,8 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
         self.params["maxDistance"] = distance
     }
     func handleSearchButton(_ sender : UIButton){
-        UserService.shared.filter(params: self.params) { (maids, error) in
-            if error == nil{
-            
-            }
-        }
+        self.delegate?.filter!(params: params)
+        self.goBack()
     }
     
     func handleButtonPrice(_ sender: UIButton){

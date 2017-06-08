@@ -12,7 +12,7 @@ import SwiftyJSON
 import Alamofire
 
 class UserService: APIService {
-
+    
     static let shared = UserService()
     
     func getMaidAround(location : CLLocationCoordinate2D, completion : @escaping (([MaidProfile]?, String?) -> ())){
@@ -76,11 +76,20 @@ class UserService: APIService {
         }
     }
     
-    func filter(params : Parameters, completion : @escaping (([MaidProfile]?, String?) -> ())){
-        let url = "more/getAllMaids?"
+    func filter(params : Parameters, location : CLLocationCoordinate2D, completion : @escaping (([MaidProfile]?, String?) -> ())){
+        var url = "more/getAllMaids?lat=\(location.latitude)&lng=\(location.longitude)"
+        var paramsString : String = ""
+        for (key,value) in params{
+                paramsString = paramsString + "&\(key)=\(value)"
+        }
+        url = url + paramsString
         
-        getWithToken(url: url) { (jsonData, error) in
-            
+        get(url: url) { (jsonData, error) in
+            if error == nil {
+                completion(self.getMaidProfileFrom(json: jsonData!), nil)
+            }else{
+                completion(nil, error)
+            }
         }
         
     }

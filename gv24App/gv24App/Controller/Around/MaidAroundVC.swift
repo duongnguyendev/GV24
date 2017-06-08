@@ -9,9 +9,14 @@
 import UIKit
 import GoogleMaps
 
-class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
+@objc protocol FilterDelegate{
+    @objc optional func filter(params : Dictionary<String, Any>?)
+}
+
+class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSMapViewDelegate, FilterDelegate {
     
     let locationManager = CLLocationManager()
+    var currentLocation : CLLocationCoordinate2D?
     lazy var geocoder = CLGeocoder()
     var maids : [MaidProfile]?{
         didSet{
@@ -108,7 +113,9 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     //MARK: - handle button
     
     func handleButtonFilter(_ sender: UIButton){
-        push(viewController: FilterVC())
+        let filterVC = FilterVC()
+        filterVC.delegate = self
+        push(viewController: filterVC)
     }
     //MARK: - search bar delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -139,6 +146,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     func handle(location : CLLocationCoordinate2D){
         self.hideKeyboard()
         self.mapView.animate(toLocation: location)
+        self.currentLocation = location
         UserService.shared.getMaidAround(location: location) { (response, error) in
             if error == nil{
                 self.maids = response
@@ -177,5 +185,14 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
             self.present(alert, animated: true, completion: nil)
         }
 
+    }
+    
+    func filter(params: Dictionary<String, Any>?) {
+        
+        UserService.shared.filter(params: params!, location: self.currentLocation!, completion: { (response, error) in
+            if error == nil{
+                self.maids = response
+            }
+        })
     }
 }

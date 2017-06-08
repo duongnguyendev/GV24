@@ -140,9 +140,9 @@
 		03446A481EE54F3D004DB193 /* HeaderWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWithTitle.swift; sourceTree = "<group>"; };
 		03446A4A1EE54F3D004DB193 /* MaidControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidControlCell.swift; sourceTree = "<group>"; };
 		03446A4B1EE54F3D004DB193 /* TaskHistoryControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHistoryControlCell.swift; sourceTree = "<group>"; };
-		03446A4C1EE54F3D004DB193 /* MoreItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreItemCell.swift; path = Cells/MoreItemCell.swift; sourceTree = "<group>"; };
-		03446A4D1EE54F3D004DB193 /* MoreUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreUserCell.swift; path = Cells/MoreUserCell.swift; sourceTree = "<group>"; };
-		03446A4E1EE54F3D004DB193 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwitchCell.swift; path = Cells/SwitchCell.swift; sourceTree = "<group>"; };
+		03446A4C1EE54F3D004DB193 /* MoreItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreItemCell.swift; sourceTree = "<group>"; };
+		03446A4D1EE54F3D004DB193 /* MoreUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreUserCell.swift; sourceTree = "<group>"; };
+		03446A4E1EE54F3D004DB193 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		03446A4F1EE54F3D004DB193 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = ../TaskCell.swift; sourceTree = "<group>"; };
 		03446A511EE54F3D004DB193 /* TaskAssignedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAssignedControlCell.swift; sourceTree = "<group>"; };
 		03446A521EE54F3D004DB193 /* TaskControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskControlCell.swift; sourceTree = "<group>"; };
@@ -291,6 +291,9 @@
 		03446A441EE54F3D004DB193 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				03446A4C1EE54F3D004DB193 /* MoreItemCell.swift */,
+				03446A4D1EE54F3D004DB193 /* MoreUserCell.swift */,
+				03446A4E1EE54F3D004DB193 /* SwitchCell.swift */,
 				4E57F9C11EE90AEC00C02EF2 /* MaidWorkInfoCell.swift */,
 				03446A671EE5502C004DB193 /* CommentCell.swift */,
 				03446A681EE5502C004DB193 /* MaidProfileCell.swift */,
@@ -386,9 +389,6 @@
 			isa = PBXGroup;
 			children = (
 				03446A441EE54F3D004DB193 /* Cells */,
-				03446A4C1EE54F3D004DB193 /* MoreItemCell.swift */,
-				03446A4D1EE54F3D004DB193 /* MoreUserCell.swift */,
-				03446A4E1EE54F3D004DB193 /* SwitchCell.swift */,
 				4E0F75BF1EE5082800121113 /* Launcher */,
 				4E3D09221EB320BE00303AAD /* Extensions */,
 				4E3D09211EB3202700303AAD /* Custom */,
