@@ -9,14 +9,17 @@
 import UIKit
 
 class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+    var maid : MaidProfile?{
+        didSet{
+            self.labelPrice.text = "\(maid?.workInfo?.price ?? 0)"
+        }
+    }
     var delegate : MaidProfileDelegate?
     let workInfoCellId = "workInfoCellId"
     
     let labelPrice : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 15)
-        lb.text = "abc"
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()

@@ -12,7 +12,7 @@ class HeaderWithTitle: BaseHeaderView {
 
     var title : String?{
         didSet{
-            
+            self.labelTitle.text = title
         }
     }
     
@@ -20,11 +20,10 @@ class HeaderWithTitle: BaseHeaderView {
     override func setupView() {
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
         addSubview(labelTitle)
-        addConstraintWithFormat(format: "H:|[v0]|", views: labelTitle)
-        labelTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 5).isActive = true
-        
-        
-        
+        addConstraintWithFormat(format: "H:|-20-[v0]|", views: labelTitle)
+        labelTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
+        labelTitle.textColor = UIColor.gray
+        labelTitle.font = Fonts.by(name: .light, size: 15)
     }
 
 }

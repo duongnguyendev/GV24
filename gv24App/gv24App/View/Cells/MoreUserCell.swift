@@ -23,7 +23,7 @@ class BaseMoreCell: BaseCollectionCell {
     }()
     override func setupView() {
         backgroundColor = UIColor.white
-
+        
         addSubview(arrowRight)
         addSubview(seqaratorView)
         
@@ -87,12 +87,14 @@ class MoreUserCell: BaseMoreCell {
     }
     private func showUserInfo(){
         let user = UserHelpers.currentUser
-        let imageUrl = "http://res.cloudinary.com/einzweidrei2/image/upload/v1495614444/xm4zwh2fxm6tnpjhujhl.png"
-        self.avatarImageView.loadImageUsingUrlString(urlString: imageUrl)
+        if let imageUrl = user?.avatarUrl{
+            self.avatarImageView.loadImageUsingUrlString(urlString: imageUrl)
+        }
+        
         self.labelName.text = user?.name
         self.labelAddress.text = user?.address?.name
         
     }
     
-
+    
 }

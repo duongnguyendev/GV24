@@ -55,6 +55,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: maidWorkInfoCellId, for: indexPath) as! MaidWorkInfoCell
+            cell.maid = maid
             cell.delegate = self
             return cell
         default:
@@ -114,7 +115,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? HeaderWithTitle
             switch indexPath.section {
             case 1:
-                headerView?.title = "Năn lực làm việc"
+                headerView?.title = "Năng lực làm việc"
                 return headerView!
             case 2:
                 headerView?.title = "Nhận xét"
