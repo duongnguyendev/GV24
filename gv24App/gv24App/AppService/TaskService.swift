@@ -11,8 +11,8 @@ import SwiftyJSON
 import Alamofire
 
 class TaskService: APIService {
-
     static let shared = TaskService()
+    
     func postTask(params : Parameters, completion:@escaping ((String?)->())){
         let url = "task/create"
         postWidthToken(url: url, parameters: params) { (response, error) in

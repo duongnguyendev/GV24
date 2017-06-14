@@ -14,7 +14,6 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
         didSet{
             title = maid?.name
         }
-        
     }
     
     override func viewDidLoad() {
@@ -60,8 +59,6 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
         default:
             return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
-        
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

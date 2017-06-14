@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 class JobAssignedDetailVC: BaseVC{
-    var task = Task()
-    
+    var taskAssigned = TaskAssigned()
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +74,8 @@ class JobAssignedDetailVC: BaseVC{
          title = "Đã phân công"
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.descTaskView.task = task
+        self.descTaskView.task = taskAssigned
+        self.profileButton.received = taskAssigned.received
     }
     
     override func setupView() {

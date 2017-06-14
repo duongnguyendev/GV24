@@ -7,7 +7,10 @@
 //
 
 import Foundation
-typealias TaskCompletion = (_ tasks: [Task]?) -> ()
-typealias ApplicantCompletion = (_ applicant: [Applicant]?) -> ()
+typealias TaskNewCompletion = (_ tasks: [Task]?) -> ()
+typealias ApplicantCompletion = (_ applicant: [Applicant]?,_ error: String?) -> ()
 typealias TaskHistoryCompletion = (_ task: TaskHistory?) -> ()
 typealias UnpaidWorkCompletion = (_ workUnpaids: [WorkUnpaid]?) -> ()
+typealias MaidHistoryCompletion = (_ maids: [MaidHistory]?) -> ()
+typealias MaidTaskCompletion = (_ maidTask: MaidTask?) -> ()
+typealias TaskAssignedCompletion = (_ taskAssigned: [TaskAssigned]?) -> ()

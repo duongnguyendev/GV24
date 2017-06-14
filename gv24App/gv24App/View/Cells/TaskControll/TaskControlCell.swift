@@ -7,17 +7,17 @@
 //
 
 import UIKit
-
 @objc protocol TaskControlDelegate {
     @objc optional func didSelected(task : Task)
     @objc optional func remove(task : Task)
+    @objc optional func selectedTask(task : TaskAssigned)
 }
 
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
-
     var delegate : TaskControlDelegate?
     let cellId = "cellId"
-    var tasks = [Task]()
+    var tasksNew = [Task]()
+    var taskAssigned = [TaskAssigned]()
     var indexPath = IndexPath(item: 0, section: 0)
     var pointCell = CGPoint()
     lazy var taskCollectionView : UICollectionView = {
@@ -32,25 +32,24 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     var type: Int?{
         didSet{
             if type == 0{
-                fetchTypeTask(process: "000000000000000000000001")
+                TaskManageService.shared.fetchTaskNew(completion: { (taksNew) in
+                    self.tasksNew = taksNew!
+                    self.taskCollectionView.reloadData()
+                })
             }else if type == 1{
-                fetchTypeTask(process: "000000000000000000000003")
+                TaskManageService.shared.fetchTaskAssiged(process: "000000000000000000000003",completion: { (tasksAssigned) in
+                    self.taskAssigned = tasksAssigned!
+                    self.taskCollectionView.reloadData()
+                })
             }else{
-                fetchTypeTask(process: "000000000000000000000004")
+                TaskManageService.shared.fetchTaskAssiged(process: "000000000000000000000004",completion: { (tasksProgress) in
+                    self.taskAssigned = tasksProgress!
+                    self.taskCollectionView.reloadData()
+                })
             }
         }
     }
     
-    func fetchTypeTask(process: String){
-        TaskManageService.shared.fetchTaskManagement(process: process) { (mTasks) in
-            if mTasks != nil{
-                self.tasks = mTasks!
-                self.taskCollectionView.reloadData()
-            }else{
-                //Mất kết nối
-            }
-        }
-    }
     override func setupView() {
         register()
         super.setupView()

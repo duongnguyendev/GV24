@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import IoniconsSwift
 class DescTaskView: BaseView {
-    
     let margin : CGFloat = 20
     var task: Task?{
         didSet{

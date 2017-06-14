@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 class DetailTaskHistoryVC: BaseVC{
-    
     var taskHistory = Task()
     override func viewDidLoad() {
         super.viewDidLoad()

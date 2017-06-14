@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyJSON
-
 class User: Entity {
     var userId : String?
     var userName : String?
@@ -20,6 +19,7 @@ class User: Entity {
     var gender : Int?
     var evaluationPoint: Double?
     var wallet: Double?
+    
     override init() {
         super.init()
     }
@@ -35,8 +35,8 @@ class User: Entity {
         self.evaluationPoint = jsonData["evaluation_point"].double
         self.wallet = jsonData["wallet"].double
         self.address = Address(jsonData: jsonData["info"]["address"])
-        
     }
+    
 }
 class MaidProfile : User {
     
@@ -45,10 +45,10 @@ class MaidProfile : User {
     }
     var age : Int?
     var workInfo : WorkInfo?
-    override init(jsonData data: JSON) {
-        super.init(jsonData: data)
-        self.age = data["info"]["age"].int
-        self.workInfo = WorkInfo(jsonData: data["work_info"])
+    override init(jsonData: JSON) {
+        super.init(jsonData: jsonData)
+        self.age = jsonData["info"]["age"].int
+        self.workInfo = WorkInfo(jsonData: jsonData["work_info"])
     }
 }
 

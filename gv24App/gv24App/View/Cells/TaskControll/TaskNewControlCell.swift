@@ -9,26 +9,25 @@
 import UIKit
 
 class TaskNewControlCell: TaskControlCell {
-    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (tasks[indexPath.item].stakeholder?.request?.count)! > 0{
+        if (tasksNew[indexPath.item].stakeholder?.request?.count)! > 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: applicantCellId, for: indexPath) as! TaskNewCell
-            let task = tasks[indexPath.item]
-            cell.countNumber = task.stakeholder?.request?.count
-            cell.task = task
+            let taskNew = tasksNew[indexPath.item]
+            cell.countNumber = taskNew.stakeholder?.request?.count
+            cell.task = taskNew
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newCellId, for: indexPath) as! TaskCell
-            cell.task = tasks[indexPath.item]
+            cell.task = tasksNew[indexPath.item]
             return cell
         }
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tasks.count
+        return tasksNew.count
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.delegate != nil {
-            self.delegate?.didSelected!(task: tasks[indexPath.item])
+            self.delegate?.didSelected!(task: tasksNew[indexPath.item])
         }
     }
     override func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
@@ -38,7 +37,7 @@ class TaskNewControlCell: TaskControlCell {
         pointCell = gestureReconizer.location(in: taskCollectionView)
         indexPath = taskCollectionView.indexPathForItem(at: pointCell)!
         if self.delegate != nil{
-            self.delegate?.remove!(task: tasks[indexPath.item])
+            self.delegate?.remove!(task: tasksNew[indexPath.item])
         }
     }
     let newCellId = "newCellId"

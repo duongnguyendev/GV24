@@ -9,7 +9,6 @@
 import UIKit
 
 class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     var delegate : MaidProfileDelegate?
     let workInfoCellId = "workInfoCellId"
     
@@ -75,8 +74,6 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
         addSubview(chooseLine)
         addSubview(buttonReport)
         addSubview(buttonChoose)
-        
-        
         
         iconPrice.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         iconPrice.rightAnchor.constraint(equalTo: labelPrice.leftAnchor, constant: -10).isActive = true
