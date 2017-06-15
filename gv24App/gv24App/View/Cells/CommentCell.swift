@@ -9,7 +9,6 @@
 import UIKit
 
 class CommentCell: BaseCollectionCell {
-    
     var comment : Comment?{
         didSet{
             if comment?.fromUser?.avatarUrl != nil{

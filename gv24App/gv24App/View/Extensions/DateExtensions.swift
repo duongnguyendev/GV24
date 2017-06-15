@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 extension Date{
-    
     init(isoDateString: String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         let date = dateFormatter.date(from: isoDateString)!
         self = date
     }
+    
     var year : String{
         let calendar = Calendar(identifier: .gregorian)
         let year = calendar.component(.year, from: self)

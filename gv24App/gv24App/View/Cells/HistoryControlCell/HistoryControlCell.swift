@@ -7,16 +7,18 @@
 //
 
 import UIKit
-
 @objc protocol HistoryVCDelegate {
     @objc optional func selectedTaskHistory(task : Task)
-    
+    @objc optional func selectedProfile(maid : MaidHistory)
+    @objc optional func selectedTaskMaid(list : MaidHistory)
 }
 class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
     var delegate : HistoryVCDelegate?
     let cellId = "cellId"
     var taskHistory: TaskHistory?
     var workUnpaids = [WorkUnpaid]()
+    var maidsHistory = [MaidHistory]()
+    
     var indexPath = IndexPath(item: 0, section: 0)
     var pointCell = CGPoint()
     lazy var historyCollectionView : UICollectionView = {
@@ -36,7 +38,13 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
                     self.historyCollectionView.reloadData()
                 })
             }else if type == 1{
-                self.historyCollectionView.reloadData()
+                HistoryService.shared.fetchMaidHistory(completion: { (maids) in
+                    if let maids = maids{
+                        self.maidsHistory = maids
+                        self.historyCollectionView.reloadData()
+                    }
+                })
+                
             }else if type == 2{
                 HistoryService.shared.fetchUnpaidWork(completion: { (mWorkUnpaids) in
                     if let worksUnpaid = mWorkUnpaids{

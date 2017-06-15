@@ -11,6 +11,14 @@ import UIKit
 class ProfileUserButton: BaseButton{
     let cellMargin : CGFloat = 20
     
+    var received: Receive?{
+        didSet{
+            avatarImageView.loadImageUsingUrlString(urlString: (received?.user_info?.avatarUrl)!)
+            labelName.text = received?.user_info?.userName
+            labelAddress.text = received?.user_info?.address?.name
+            
+        }
+    }
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +43,7 @@ class ProfileUserButton: BaseButton{
         return lb
     }()
     
-    let arrowRight : UIImageView = {
+    private let arrowRight : UIImageView = {
         let iv = UIImageView(image: Icon.by(name: .iosArrowRight, color: AppColor.arrowRight))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv

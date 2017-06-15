@@ -160,8 +160,6 @@ class UserProfileCell: BaseCollectionCell {
         getUserInfo()
         addSubview()
         setupComponent()
-        
-        
     }
     func getUserInfo(){
         UserService.shared.getMyInfo { (user, error) in

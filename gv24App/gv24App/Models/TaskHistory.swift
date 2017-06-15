@@ -9,7 +9,6 @@
 import Foundation
 import SwiftyJSON
 class TaskHistory: Entity{
-    
     var total: Int?
     var limit: Int?
     var page: Int?

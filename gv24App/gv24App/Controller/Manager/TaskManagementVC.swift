@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, TaskControlDelegate {
+class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, TaskControlDelegate{
+    
     private let cellId = "cellId"
     private let cellNew = "cellNew"
     private let cellAssigned = "cellAssigned"
@@ -26,7 +26,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         self.collectionType.reloadData()
     }
     
-    private lazy var collectionType : UICollectionView = {
+    lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -37,7 +37,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         cv.contentInset.top = 20
         return cv
     }()
-    private let segmentedControl : UISegmentedControl = {
+    let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: "Đã đăng", at: 0, animated: true)
         sc.insertSegment(withTitle: "Đã giao", at: 1, animated: true)
@@ -54,7 +54,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         let btn = UIBarButtonItem(customView: buttonPost)
         self.navigationItem.rightBarButtonItem = btn
     }
-    
     override func setupView() {
         super.setupView()
         
@@ -110,30 +109,33 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         let postVC = PostVC()
         present(viewController: postVC)
     }
+    
     //MARK: - task control delegate
     func didSelected(task: Task) {
         if task.process?.id == "000000000000000000000001"{
             if (task.stakeholder?.request?.count)! > 0{
-                let jobApplicantVC = JobPostedDetailVC()
-                jobApplicantVC.task = task
-                push(viewController: jobApplicantVC)
-            }else{
-                let jobPostVC = JobAssignedDetailVC()
+                let jobPostVC = JobPostedDetailVC()
                 jobPostVC.task = task
-                push(viewController: jobPostVC)
+                present(viewController: jobPostVC)
+            }else{
+                let jobNewDetailVC = JobExpiredDetailVC()
+                push(viewController: jobNewDetailVC)
             }
-
-        }else if task.process?.id == "000000000000000000000003"{
+        }
+    }
+    
+    func selectedTask(task: TaskAssigned) {
+        if task.process?.id == "000000000000000000000003"{
             let jobPostVC = JobAssignedDetailVC()
-            jobPostVC.task = task
+            jobPostVC.taskAssigned = task
             push(viewController: jobPostVC)
         }else{
             let jobProgressVC = JobProgressDetailVC()
-            //jobProgressVC.task = task
+            jobProgressVC.taskProgress = task
             push(viewController: jobProgressVC)
         }
-        
     }
+    
     func remove(task: Task) {
         let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ShowDeleteWork"), preferredStyle:UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default){ action -> Void in

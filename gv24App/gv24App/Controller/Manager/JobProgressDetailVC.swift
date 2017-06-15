@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 class JobProgressDetailVC: BaseVC {
-    
+    var taskProgress = TaskAssigned()
+
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +48,8 @@ class JobProgressDetailVC: BaseVC {
         title = "Đang làm"
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.descTaskView.task = taskProgress
+        self.profileButton.received = taskProgress.received
     }
     
     override func setupView() {

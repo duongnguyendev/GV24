@@ -9,14 +9,8 @@
 import Foundation
 import UIKit
 import IoniconsSwift
-class JobPostedDetailVC: BaseVC{
+class JobPostedDetailVC: JobDetailVC{
     var task = Task()
-    
-    let descTaskView: DescTaskView = {
-        let view = DescTaskView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
     
     let deleteButton: IconTextButton = {
         let button = IconTextButton()
@@ -39,11 +33,6 @@ class JobPostedDetailVC: BaseVC{
         return button
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "Chi tiết công việc"
-        self.view.backgroundColor = AppColor.collection
-    }
     override func viewWillAppear(_ animated: Bool) {
         self.descTaskView.task = task
         self.appListButton.status = "\((task.stakeholder?.request?.count)!)"
@@ -53,11 +42,6 @@ class JobPostedDetailVC: BaseVC{
         super.setupView()
         self.view.addSubview(deleteButton)
         self.view.addSubview(appListButton)
-        self.view.addSubview(descTaskView)
-        
-        descTaskView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
-        descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
         appListButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 20).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: appListButton)
@@ -73,13 +57,14 @@ class JobPostedDetailVC: BaseVC{
     }
     
     func handleAppListTask(_ sender: UIButton){
-        /*TaskManageService.shared.fetchApplicants(id: task.id!) { (mApplicants) in
-            if (mApplicants?.count)! > 0{
+        TaskManageService.shared.fetchApplicants(id: task.id!) { (applicants, error) in
+            if error == nil{
                 let applicantVC = ApplicantsVC()
+                applicantVC.applicants = applicants!
                 self.push(viewController: applicantVC)
             }
-        }*/
-       print("Handle List Applicant")
+        }
+       
     }
 
 }

@@ -9,30 +9,36 @@
 import Foundation
 import UIKit
 class MaidCell: BaseCollectionCell{
-    let cellMargin : CGFloat = 20
     
+    let cellMargin : CGFloat = 20
+    var delegate: HistoryVCDelegate?
+    var title: String?{
+        didSet{
+            tasksButton.title = title
+        }
+    }
     let profileRatingButton: ProfileRatingButton = {
         let button = ProfileRatingButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleButtonProfile(_:)), for: .touchUpInside)
         return button
     }()
-    
     let horizontalLine = UIView.horizontalLine()
     
     let tasksButton: GeneralButton = {
        let button = GeneralButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleButtonTasks(_:)), for: .touchUpInside)
         button.title = "Danh sách công việc"
         button.color = AppColor.backButton
         return button
     }()
     
-    
     override func setupView() {
         super.setupView()
         backgroundColor = UIColor.white
+        
+        profileRatingButton.addTarget(self, action: #selector(handleButtonProfile(_:)), for: .touchUpInside)
+        tasksButton.addTarget(self, action: #selector(handleButtonTasks(_:)), for: .touchUpInside)
+        
         addSubview(profileRatingButton)
         addSubview(horizontalLine)
         addSubview(tasksButton)
@@ -49,10 +55,22 @@ class MaidCell: BaseCollectionCell{
     }
     
     func handleButtonTasks(_ sender: UIButton){
-        print("Click Button Comment")
+        if delegate != nil{
+            delegate?.selectedTaskMaid!(list: maidHistory!)
+        }
     }
     
     func handleButtonProfile(_ sender: UIButton){
-        print("Click Button Profile Ratting")
+        if delegate != nil{
+            delegate?.selectedProfile!(maid: maidHistory!)
+        }
+    }
+    
+    var maidHistory: MaidHistory?{
+        didSet{
+            profileRatingButton.str_Avatar = maidHistory?.avatarUrl
+            profileRatingButton.name = maidHistory?.userName
+            profileRatingButton.date = Date(isoDateString: (maidHistory?.times?[0])!).dayMonthYear
+        }
     }
 }

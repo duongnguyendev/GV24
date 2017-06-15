@@ -79,8 +79,6 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
         addSubview(buttonReport)
         addSubview(buttonChoose)
         
-        
-        
         iconPrice.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         iconPrice.rightAnchor.constraint(equalTo: labelPrice.leftAnchor, constant: -10).isActive = true
         iconPrice.centerYAnchor.constraint(equalTo: labelPrice.centerYAnchor, constant: 0).isActive = true

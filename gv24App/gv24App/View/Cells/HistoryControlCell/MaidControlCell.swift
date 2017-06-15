@@ -9,19 +9,19 @@
 import UIKit
 
 class MaidControlCell: HistoryControlCell {
-    
     let maidCellId = "maidCellId"
     override func setupView() {
 //        backgroundColor = UIColor.blue
         super.setupView()
     }
-    
     override func register() {
         historyCollectionView.register(MaidCell.self, forCellWithReuseIdentifier: maidCellId)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: maidCellId, for: indexPath) as! MaidCell
+        cell.delegate = delegate
+        cell.maidHistory = maidsHistory[indexPath.item]
         return cell
     }
     
@@ -31,9 +31,11 @@ class MaidControlCell: HistoryControlCell {
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
     }
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if maidsHistory.count > 0{
+            return maidsHistory.count
+        }
+        return 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

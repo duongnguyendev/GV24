@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */; };
 		0319CFAD1EE6604100A4F157 /* DetailTaskHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */; };
+		0337FBCF1EEA43E800077A7E /* MaidHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337FBCE1EEA43E800077A7E /* MaidHistory.swift */; };
+		033DC7341EF0D4BE0093EE8F /* JobDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC7331EF0D4BE0093EE8F /* JobDetailVC.swift */; };
+		033DC7361EF0DCD70093EE8F /* JobNewDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC7351EF0DCD70093EE8F /* JobNewDetailVC.swift */; };
+		033DC7381EF0E0600093EE8F /* JobExpiredDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC7371EF0E0600093EE8F /* JobExpiredDetailVC.swift */; };
 		03446A121EE53B35004DB193 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A111EE53B35004DB193 /* HistoryService.swift */; };
 		03446A571EE54F3D004DB193 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A451EE54F3D004DB193 /* BaseCell.swift */; };
 		03446A581EE54F3D004DB193 /* BaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A461EE54F3D004DB193 /* BaseHeaderView.swift */; };
@@ -36,8 +40,13 @@
 		038152111EE7A4F20081FB33 /* GeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152101EE7A4F20081FB33 /* GeneralButton.swift */; };
 		038152151EE7DDF20081FB33 /* WorkUnpaid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152141EE7DDF20081FB33 /* WorkUnpaid.swift */; };
 		038152191EE803F90081FB33 /* MaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152181EE803F90081FB33 /* MaidCell.swift */; };
-		03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */; };
+		038987391EEE4F8100DA5293 /* ApplicantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038987381EEE4F8100DA5293 /* ApplicantCell.swift */; };
+		03B762A21EEE8B620006A2BC /* TaskAssigned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762A11EEE8B620006A2BC /* TaskAssigned.swift */; };
+		03B762AC1EEEA12D0006A2BC /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762AB1EEEA12D0006A2BC /* ApplicantsVC.swift */; };
+		03B762AE1EEEA1410006A2BC /* ListTaskMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762AD1EEEA1410006A2BC /* ListTaskMaidVC.swift */; };
 		03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2F1EE1677000757BB8 /* Applicant.swift */; };
+		03D3103B1EEA7F4F00CF53C3 /* MaidTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */; };
+		03D3103E1EEA924700CF53C3 /* MaidTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */; };
 		03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */; };
 		4E01542C1EE6A98E00529F4F /* MaidProfileHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01542B1EE6A98E00529F4F /* MaidProfileHistoryVC.swift */; };
 		4E0B0A411EDE7ACC0043E38A /* RequestMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */; };
@@ -140,6 +149,10 @@
 /* Begin PBXFileReference section */
 		0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTaskHistoryVC.swift; sourceTree = "<group>"; };
+		0337FBCE1EEA43E800077A7E /* MaidHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidHistory.swift; sourceTree = "<group>"; };
+		033DC7331EF0D4BE0093EE8F /* JobDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailVC.swift; sourceTree = "<group>"; };
+		033DC7351EF0DCD70093EE8F /* JobNewDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobNewDetailVC.swift; sourceTree = "<group>"; };
+		033DC7371EF0E0600093EE8F /* JobExpiredDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobExpiredDetailVC.swift; sourceTree = "<group>"; };
 		03446A111EE53B35004DB193 /* HistoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		03446A451EE54F3D004DB193 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		03446A461EE54F3D004DB193 /* BaseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeaderView.swift; sourceTree = "<group>"; };
@@ -167,9 +180,14 @@
 		038152101EE7A4F20081FB33 /* GeneralButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralButton.swift; sourceTree = "<group>"; };
 		038152141EE7DDF20081FB33 /* WorkUnpaid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkUnpaid.swift; sourceTree = "<group>"; };
 		038152181EE803F90081FB33 /* MaidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidCell.swift; sourceTree = "<group>"; };
+		038987381EEE4F8100DA5293 /* ApplicantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantCell.swift; sourceTree = "<group>"; };
+		03B762A11EEE8B620006A2BC /* TaskAssigned.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAssigned.swift; sourceTree = "<group>"; };
+		03B762AB1EEEA12D0006A2BC /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
+		03B762AD1EEEA1410006A2BC /* ListTaskMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTaskMaidVC.swift; sourceTree = "<group>"; };
 		03BBE29A1ED83948005B47B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
 		03BE7F2F1EE1677000757BB8 /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
+		03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidTask.swift; sourceTree = "<group>"; };
+		03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidTaskCell.swift; sourceTree = "<group>"; };
 		03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRatingButton.swift; sourceTree = "<group>"; };
 		4E01542B1EE6A98E00529F4F /* MaidProfileHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidProfileHistoryVC.swift; sourceTree = "<group>"; };
 		4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaidVC.swift; sourceTree = "<group>"; };
@@ -226,9 +244,9 @@
 		4E61E3DF1EC1A33800E6C8C5 /* MaidProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaidProfileVC.swift; path = ../Around/MaidProfileVC.swift; sourceTree = "<group>"; };
 		4E87A54B1EBB64F100EDA0D1 /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		4E8D27431EDC134B00872A61 /* SignUpVC_3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC_3.swift; sourceTree = "<group>"; };
-		4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobProgressDetailVC.swift; sourceTree = "<group>"; };
-		4E8D27461EDC13B900872A61 /* JobPostedDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobPostedDetailVC.swift; sourceTree = "<group>"; };
-		4E8D27471EDC13B900872A61 /* JobAssignedDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobAssignedDetailVC.swift; sourceTree = "<group>"; };
+		4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobProgressDetailVC.swift; path = ../JobProgressDetailVC.swift; sourceTree = "<group>"; };
+		4E8D27461EDC13B900872A61 /* JobPostedDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobPostedDetailVC.swift; path = ../JobPostedDetailVC.swift; sourceTree = "<group>"; };
+		4E8D27471EDC13B900872A61 /* JobAssignedDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobAssignedDetailVC.swift; path = ../JobAssignedDetailVC.swift; sourceTree = "<group>"; };
 		4E8D274B1EDC142100872A61 /* DescTaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescTaskView.swift; sourceTree = "<group>"; };
 		4E8D274C1EDC142100872A61 /* DescInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescInfoView.swift; sourceTree = "<group>"; };
 		4E8D274D1EDC142100872A61 /* DateTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeView.swift; sourceTree = "<group>"; };
@@ -295,6 +313,7 @@
 		0319CFAB1EE65F2900A4F157 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				03B762AD1EEEA1410006A2BC /* ListTaskMaidVC.swift */,
 				0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */,
 			);
 			path = Detail;
@@ -330,6 +349,7 @@
 		03446A491EE54F3D004DB193 /* HistoryControlCell */ = {
 			isa = PBXGroup;
 			children = (
+				03D3103C1EEA923400CF53C3 /* Detail */,
 				038152181EE803F90081FB33 /* MaidCell.swift */,
 				03446A4A1EE54F3D004DB193 /* MaidControlCell.swift */,
 				03446A711EE55696004DB193 /* TaskHistoryCell.swift */,
@@ -344,6 +364,7 @@
 		03446A501EE54F3D004DB193 /* TaskControll */ = {
 			isa = PBXGroup;
 			children = (
+				038987371EEE4F6500DA5293 /* Detail */,
 				03446A4F1EE54F3D004DB193 /* TaskCell.swift */,
 				03446A531EE54F3D004DB193 /* TaskExpiredCell.swift */,
 				03446A551EE54F3D004DB193 /* TaskNewCell.swift */,
@@ -355,23 +376,42 @@
 			path = TaskControll;
 			sourceTree = "<group>";
 		};
-		03BE7F291EE1525200757BB8 /* Applicants */ = {
+		038987371EEE4F6500DA5293 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				03BE7F2A1EE1532500757BB8 /* ApplicantsVC.swift */,
+				038987381EEE4F8100DA5293 /* ApplicantCell.swift */,
 			);
-			name = Applicants;
+			path = Detail;
 			sourceTree = "<group>";
 		};
-		03D71CBE1ED7C4B7006E78EF /* JobDetail */ = {
+		03B762A91EEEA0770006A2BC /* JobDetail */ = {
 			isa = PBXGroup;
 			children = (
-				03BE7F291EE1525200757BB8 /* Applicants */,
+				03B762AA1EEEA0950006A2BC /* Applicant */,
 				4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */,
 				4E8D27461EDC13B900872A61 /* JobPostedDetailVC.swift */,
 				4E8D27471EDC13B900872A61 /* JobAssignedDetailVC.swift */,
+				033DC7331EF0D4BE0093EE8F /* JobDetailVC.swift */,
+				033DC7351EF0DCD70093EE8F /* JobNewDetailVC.swift */,
+				033DC7371EF0E0600093EE8F /* JobExpiredDetailVC.swift */,
 			);
-			name = JobDetail;
+			path = JobDetail;
+			sourceTree = "<group>";
+		};
+		03B762AA1EEEA0950006A2BC /* Applicant */ = {
+			isa = PBXGroup;
+			children = (
+				03B762AB1EEEA12D0006A2BC /* ApplicantsVC.swift */,
+			);
+			path = Applicant;
+			sourceTree = "<group>";
+		};
+		03D3103C1EEA923400CF53C3 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		387D039E8EB683F4FCE8D6B8 /* Frameworks */ = {
@@ -422,7 +462,13 @@
 				4E0F75C61EE54A6300121113 /* WorkType.swift */,
 				03446A731EE55A3F004DB193 /* TaskHistory.swift */,
 				038152141EE7DDF20081FB33 /* WorkUnpaid.swift */,
+<<<<<<< HEAD
 				4E58A7A11EEE8F1D0088FC1D /* GeneralStatistic.swift */,
+=======
+				0337FBCE1EEA43E800077A7E /* MaidHistory.swift */,
+				03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */,
+				03B762A11EEE8B620006A2BC /* TaskAssigned.swift */,
+>>>>>>> f3df83f077a3cc2d6c6856d91856e1bf54bff4d5
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -546,8 +592,8 @@
 				4E61E3DF1EC1A33800E6C8C5 /* MaidProfileVC.swift */,
 				4E61E3D61EC1A31C00E6C8C5 /* ForgotPassVC.swift */,
 				4E61E3D71EC1A31C00E6C8C5 /* SignInVC.swift */,
-				4E61E3D81EC1A31C00E6C8C5 /* SignUpVC_1.swift */,
 				4E61E3D91EC1A31C00E6C8C5 /* SignUpVC_2.swift */,
+				4E61E3D81EC1A31C00E6C8C5 /* SignUpVC_1.swift */,
 				4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */,
 				4E8D27431EDC134B00872A61 /* SignUpVC_3.swift */,
 				4E01542B1EE6A98E00529F4F /* MaidProfileHistoryVC.swift */,
@@ -574,7 +620,7 @@
 		4E61E3CF1EC179DD00E6C8C5 /* Manage */ = {
 			isa = PBXGroup;
 			children = (
-				03D71CBE1ED7C4B7006E78EF /* JobDetail */,
+				03B762A91EEEA0770006A2BC /* JobDetail */,
 				4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */,
 				4E54F59E1EC9B173007D15D6 /* PostVC.swift */,
 			);
@@ -694,7 +740,7 @@
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = FE5FXN233L;
+						DevelopmentTeam = 7R93MWJ8VY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -772,7 +818,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -837,10 +883,13 @@
 				4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */,
 				03446A6A1EE5502C004DB193 /* CommentCell.swift in Sources */,
 				4ED2317E1EB9B15E00592842 /* HomeVC.swift in Sources */,
+				0337FBCF1EEA43E800077A7E /* MaidHistory.swift in Sources */,
 				038152191EE803F90081FB33 /* MaidCell.swift in Sources */,
+				038987391EEE4F8100DA5293 /* ApplicantCell.swift in Sources */,
 				4E8D274E1EDC142100872A61 /* DescTaskView.swift in Sources */,
 				4E8D27561EDC14F100872A61 /* IconTextButton.swift in Sources */,
 				4E5B162E1ECD943A00A5FC23 /* MarkerInfoWindow.swift in Sources */,
+				033DC7341EF0D4BE0093EE8F /* JobDetailVC.swift in Sources */,
 				4E01542C1EE6A98E00529F4F /* MaidProfileHistoryVC.swift in Sources */,
 				038152151EE7DDF20081FB33 /* WorkUnpaid.swift in Sources */,
 				4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */,
@@ -848,12 +897,12 @@
 				4E8D27551EDC14F100872A61 /* ApplicantListButton.swift in Sources */,
 				03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */,
 				4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */,
-				03BE7F2B1EE1532500757BB8 /* ApplicantsVC.swift in Sources */,
 				03446A7A1EE5666E004DB193 /* UnpaidWorkCell.swift in Sources */,
 				4E8D275C1EDC156100872A61 /* Task.swift in Sources */,
 				4EBF04BA1ED2BB7500F7E08B /* UserService.swift in Sources */,
 				03446A601EE54F3D004DB193 /* TaskAssignedControlCell.swift in Sources */,
 				03446A651EE54F3D004DB193 /* TaskNewControlCell.swift in Sources */,
+				03B762AE1EEEA1410006A2BC /* ListTaskMaidVC.swift in Sources */,
 				4EAA97241ECAD99E0001FEB6 /* HistoryVC.swift in Sources */,
 				03446A6E1EE5508C004DB193 /* HistoryControlCell.swift in Sources */,
 				4E5C04CB1EF1340A00470C8C /* LaunchScreenVC.swift in Sources */,
@@ -888,8 +937,10 @@
 				4EA7A8441EBB1E6600CA7F37 /* BasicButton.swift in Sources */,
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
 				4E58A7A01EEE49B30088FC1D /* GeneralStatisticInfoView.swift in Sources */,
+				033DC7381EF0E0600093EE8F /* JobExpiredDetailVC.swift in Sources */,
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
+				03D3103B1EEA7F4F00CF53C3 /* MaidTask.swift in Sources */,
 				4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */,
 				4EBF04BC1ED2C5A400F7E08B /* Entity.swift in Sources */,
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
@@ -903,6 +954,7 @@
 				4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */,
 				03446A121EE53B35004DB193 /* HistoryService.swift in Sources */,
 				4E61E3E11EC1A33800E6C8C5 /* MaidProfileVC.swift in Sources */,
+				03D3103E1EEA924700CF53C3 /* MaidTaskCell.swift in Sources */,
 				4E8D27441EDC134B00872A61 /* SignUpVC_3.swift in Sources */,
 				4ED2317A1EB98D6300592842 /* NavigationButton.swift in Sources */,
 				4E4E358B1ED7D42C00D13EF5 /* AboutUsVC.swift in Sources */,
@@ -1049,7 +1101,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FE5FXN233L;
+				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1068,7 +1120,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = FE5FXN233L;
+				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

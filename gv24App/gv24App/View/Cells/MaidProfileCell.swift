@@ -12,7 +12,6 @@ import UIKit
     func report()
     func choose()
 }
-
 class MaidProfileCell: UserProfileCell {
     var user: MaidProfile?{
         didSet{
@@ -47,6 +46,7 @@ class MaidProfileCell: UserProfileCell {
         addSubview(ageLine)
         addSubview(addressLine)
     }
+    
     override func setupIcon() {
         super.setupIcon()
         

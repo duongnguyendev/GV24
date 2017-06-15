@@ -156,6 +156,17 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         push(viewController: detailTaskHistory)
 
     }
+    
+    func selectedProfile(maid: MaidHistory) {
+        let maidProfileVC = MaidProfileHistoryVC()
+        maidProfileVC.maidHistory = maid
+        push(viewController: maidProfileVC)
+    }
+    func selectedTaskMaid(list: MaidHistory) {
+        let taskMaidVC = ListTaskMaidVC()
+        taskMaidVC.id = list.userId
+        push(viewController: taskMaidVC)
+    }
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){
         let index = IndexPath(item: sender.selectedSegmentIndex, section: 0)

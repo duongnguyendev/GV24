@@ -10,7 +10,6 @@ import UIKit
 import SwiftyJSON
 
 class Comment: Entity {
-
     var commentId : String?
     var createAt: Date?
     var evaluationPoint : Double?

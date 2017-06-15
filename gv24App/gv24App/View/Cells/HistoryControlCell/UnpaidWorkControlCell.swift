@@ -16,17 +16,15 @@ class UnpaidWorkControlCell: HistoryControlCell{
     override func register() {
         historyCollectionView.register(UnpaidWorkCell.self, forCellWithReuseIdentifier: unpaidCellId)
     }
-    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: unpaidCellId, for: indexPath) as! UnpaidWorkCell
-        cell.taskInfo = workUnpaids[indexPath.item].task?.infoTask
+        cell.taskUnpaid = workUnpaids[indexPath.item].task
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if workUnpaids.count > 0{
-            return workUnpaids.count
-        }
-        return 0
+
+            return workUnpaids.count  
+
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if delegate != nil{
