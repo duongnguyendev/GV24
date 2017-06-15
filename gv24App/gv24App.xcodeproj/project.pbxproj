@@ -462,13 +462,10 @@
 				4E0F75C61EE54A6300121113 /* WorkType.swift */,
 				03446A731EE55A3F004DB193 /* TaskHistory.swift */,
 				038152141EE7DDF20081FB33 /* WorkUnpaid.swift */,
-<<<<<<< HEAD
 				4E58A7A11EEE8F1D0088FC1D /* GeneralStatistic.swift */,
-=======
 				0337FBCE1EEA43E800077A7E /* MaidHistory.swift */,
 				03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */,
 				03B762A11EEE8B620006A2BC /* TaskAssigned.swift */,
->>>>>>> f3df83f077a3cc2d6c6856d91856e1bf54bff4d5
 			);
 			path = Models;
 			sourceTree = "<group>";
