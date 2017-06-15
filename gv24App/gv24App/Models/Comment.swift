@@ -18,7 +18,7 @@ class Comment: Entity {
     var fromUser: User?
     
     override init() {
-        super .init()
+        super.init()
     }
     
     override init(jsonData: JSON) {

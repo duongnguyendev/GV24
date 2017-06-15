@@ -9,7 +9,6 @@
 import UIKit
 
 class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = LanguageManager.shared.localized(string: "More")

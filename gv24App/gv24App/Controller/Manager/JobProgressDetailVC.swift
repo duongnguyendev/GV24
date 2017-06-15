@@ -21,7 +21,7 @@ class JobProgressDetailVC: BaseVC {
     private let finishMaid: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "ConformedMaid"
+        button.title = "Hoàn tất công việc"
         button.addTarget(self, action: #selector(handleButtonConformMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
         button.color = AppColor.backButton
