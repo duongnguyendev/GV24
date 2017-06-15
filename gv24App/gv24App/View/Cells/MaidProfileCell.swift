@@ -21,9 +21,9 @@ class MaidProfileCell: UserProfileCell {
             self.labelAddress.text = user?.address?.name
             self.labelName.text = user?.name
             if user?.gender == 0{
-                labelGender.text = "Nam"
+                labelGender.text = LanguageManager.shared.localized(string: "Male")
             }else{
-                labelGender.text = "Nữ"
+                labelGender.text = LanguageManager.shared.localized(string: "Female")
             }
             self.avatarImageView.loadImageurl(link: (user?.avatarUrl)!)
         }

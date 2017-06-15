@@ -22,10 +22,13 @@ class LaunchScreenVC: BaseVC {
     }
     
     private func showSign(){
+        appStarted = true
         let nav = UINavigationController(rootViewController: SignInVC())
         self.present(nav, animated: true, completion: nil)
+        
     }
     private func showHome(){
+        appStarted = true
         let nav = UINavigationController(rootViewController: HomeVC())
         self.present(nav, animated: true, completion: nil)
     }
@@ -38,8 +41,8 @@ class LaunchScreenVC: BaseVC {
         }
     }
     func handleLogedIn() {
-        activity.startAnimating()
-        if appStarted{
+        if !appStarted{
+            activity.startAnimating()
             UserService.shared.checkStatus { (error) in
                 self.activity.stopAnimating()
                 if error != nil{

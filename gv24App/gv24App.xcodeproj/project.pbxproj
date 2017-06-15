@@ -11,7 +11,6 @@
 		0319CFAD1EE6604100A4F157 /* DetailTaskHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */; };
 		0337FBCF1EEA43E800077A7E /* MaidHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337FBCE1EEA43E800077A7E /* MaidHistory.swift */; };
 		033DC7341EF0D4BE0093EE8F /* JobDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC7331EF0D4BE0093EE8F /* JobDetailVC.swift */; };
-		033DC7361EF0DCD70093EE8F /* JobNewDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC7351EF0DCD70093EE8F /* JobNewDetailVC.swift */; };
 		033DC7381EF0E0600093EE8F /* JobExpiredDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033DC7371EF0E0600093EE8F /* JobExpiredDetailVC.swift */; };
 		03446A121EE53B35004DB193 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A111EE53B35004DB193 /* HistoryService.swift */; };
 		03446A571EE54F3D004DB193 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A451EE54F3D004DB193 /* BaseCell.swift */; };
@@ -41,8 +40,6 @@
 		038152151EE7DDF20081FB33 /* WorkUnpaid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152141EE7DDF20081FB33 /* WorkUnpaid.swift */; };
 		038152191EE803F90081FB33 /* MaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152181EE803F90081FB33 /* MaidCell.swift */; };
 		038987391EEE4F8100DA5293 /* ApplicantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038987381EEE4F8100DA5293 /* ApplicantCell.swift */; };
-		03B762A21EEE8B620006A2BC /* TaskAssigned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762A11EEE8B620006A2BC /* TaskAssigned.swift */; };
-		03B762AC1EEEA12D0006A2BC /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762AB1EEEA12D0006A2BC /* ApplicantsVC.swift */; };
 		03B762AE1EEEA1410006A2BC /* ListTaskMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762AD1EEEA1410006A2BC /* ListTaskMaidVC.swift */; };
 		03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2F1EE1677000757BB8 /* Applicant.swift */; };
 		03D3103B1EEA7F4F00CF53C3 /* MaidTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */; };
@@ -138,6 +135,8 @@
 		4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */; };
 		4ED231831EB9CEFD00592842 /* HomeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED231821EB9CEFD00592842 /* HomeBottomView.swift */; };
 		4EDDB4681ECED8A900AFFD1A /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */; };
+		4EDDDB111EF21F79002E28AB /* TaskAssigned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762A11EEE8B620006A2BC /* TaskAssigned.swift */; };
+		4EDDDB121EF21FA8002E28AB /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762AB1EEEA12D0006A2BC /* ApplicantsVC.swift */; };
 		4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */; };
 		4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */; };
 		4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35D1EE150CD00560C4A /* RadioButton.swift */; };
@@ -272,8 +271,6 @@
 		4ECD1D491EB19AC4007DEF88 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		4ECD1D4A1EB19AC4007DEF88 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4ECD1D541EB19DE4007DEF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4ECD1D561EB19DE6007DEF88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4ECD1D571EB19DE8007DEF88 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4ECD1D591EB1AFF4007DEF88 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		4ED2316C1EB9797B00592842 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		4ED2316E1EB979AF00592842 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -286,6 +283,8 @@
 		4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFunctButton.swift; sourceTree = "<group>"; };
 		4ED231821EB9CEFD00592842 /* HomeBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeBottomView.swift; sourceTree = "<group>"; };
 		4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
+		4EDDDB171EF23C74002E28AB /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4EDDDB181EF23C93002E28AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralStatisticVC.swift; sourceTree = "<group>"; };
 		4EF1F35D1EE150CD00560C4A /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
@@ -840,6 +839,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EDDDB121EF21FA8002E28AB /* ApplicantsVC.swift in Sources */,
+				4EDDDB111EF21F79002E28AB /* TaskAssigned.swift in Sources */,
 				03446A571EE54F3D004DB193 /* BaseCell.swift in Sources */,
 				4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */,
 				4E61E3DD1EC1A31C00E6C8C5 /* SignUpVC_2.swift in Sources */,
@@ -983,8 +984,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				4ECD1D541EB19DE4007DEF88 /* Base */,
-				4ECD1D561EB19DE6007DEF88 /* en */,
-				4ECD1D571EB19DE8007DEF88 /* vi */,
+				4EDDDB171EF23C74002E28AB /* vi */,
+				4EDDDB181EF23C93002E28AB /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

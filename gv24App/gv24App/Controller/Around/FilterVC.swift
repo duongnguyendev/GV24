@@ -28,11 +28,11 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
         sliderDistance.value = 5
-        title = "Filter"
+        title = LanguageManager.shared.localized(string: "Filter")
     }
     
     override func setupRightNavButton() {
-        let buttonSearch = NavButton(title: "Tìm kiếm")
+        let buttonSearch = NavButton(title: "Search")
         buttonSearch.addTarget(self, action: #selector(handleSearchButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSearch)
         self.navigationItem.rightBarButtonItem = btn
@@ -93,7 +93,7 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     private let buttonType : InputButonWithIcon = {
         let btn = InputButonWithIcon()
         btn.iconName = Ionicons.gearA
-        btn.title = "Loại công việc"
+        btn.title = "TypesOfWork"
         btn.color = AppColor.backButton
         btn.addTarget(self, action: #selector(handleButtonType(_:)), for: .touchUpInside)
         return btn
@@ -101,7 +101,7 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     private let buttonGender : InputButonWithIcon = {
         let btn = InputButonWithIcon()
         btn.iconName = Ionicons.transgender
-        btn.title = "Giới tính"
+        btn.title = "Gender"
         btn.color = AppColor.backButton
         btn.addTarget(self, action: #selector(handleButtonGender(_:)), for: .touchUpInside)
         return btn
@@ -109,7 +109,7 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     private let buttonAge : InputButonWithIcon = {
         let btn = InputButonWithIcon()
         btn.iconName = Ionicons.androidCalendar
-        btn.title = "Tuổi"
+        btn.title = "Age"
         btn.color = AppColor.backButton
         btn.addTarget(self, action: #selector(handleButtonAge(_:)), for: .touchUpInside)
         return btn
@@ -270,7 +270,8 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     }
     
     func handleWorkTypes(){
-        let actionSheet = UIAlertController(title: nil, message: "Loại công việc", preferredStyle: .actionSheet)
+        let typesOfWorkString = LanguageManager.shared.localized(string: "TypesOfWork")
+        let actionSheet = UIAlertController(title: nil, message: typesOfWorkString, preferredStyle: .actionSheet)
         for workType in workTypes!{
             actionSheet.addAction(UIAlertAction(title: workType.name, style: .default, handler: { (nil) in
                 self.params["work"] = workType.id
@@ -280,14 +281,19 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
         showAlert(alert: actionSheet)
     }
     func handleButtonGender(_ sender: UIButton){
-        let actionSheet = UIAlertController(title: nil, message: "Giới tính", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Nam", style: .default, handler: { (nil) in
+        let genderString = LanguageManager.shared.localized(string: "Gender")
+        let maleString = LanguageManager.shared.localized(string: "Male")
+        let femaleString = LanguageManager.shared.localized(string: "Female")
+
+        
+        let actionSheet = UIAlertController(title: nil, message: genderString, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: maleString, style: .default, handler: { (nil) in
             self.params["gender"] = 0
-            self.buttonGender.title = "Nam"
+            self.buttonGender.title = "Male"
         }))
-        actionSheet.addAction(UIAlertAction(title: "Nữ", style: .default, handler: { (nil) in
+        actionSheet.addAction(UIAlertAction(title: femaleString, style: .default, handler: { (nil) in
             self.params["gender"] = 1
-            self.buttonGender.title = "Nữ"
+            self.buttonGender.title = "Female"
         }))
         showAlert(alert: actionSheet)
     }
@@ -296,7 +302,8 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     }
     
     func showAlert(alert : UIAlertController){
-        alert.addAction(UIAlertAction(title: "Huỷ bỏ", style: .cancel, handler: nil))
+        let cancelString = LanguageManager.shared.localized(string: "Cancel")
+        alert.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

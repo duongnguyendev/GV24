@@ -16,9 +16,9 @@ class UserProfileCell: BaseCollectionCell {
             avatarImageView.loadImageurl(link: (user?.avatarUrl)!)
             labelName.text = user?.name
             if user?.gender == 0{
-                labelGender.text = "Nam"
+                labelGender.text = LanguageManager.shared.localized(string: "Male")
             }else{
-                labelGender.text = "Nữ"
+                labelGender.text = LanguageManager.shared.localized(string: "Female")
             }
             labelPhone.text = user?.phone
             labelAddress.text = user?.address?.name

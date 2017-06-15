@@ -58,7 +58,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     }()
     
     override func setupRightNavButton() {
-        let buttonSend = NavButton(title: "Gửi")
+        let buttonSend = NavButton(title: "Send")
         buttonSend.addTarget(self, action: #selector(handleSendButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn

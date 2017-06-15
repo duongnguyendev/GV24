@@ -19,7 +19,7 @@ class RechargeVC: BaseVC {
     let buttonRecharge : RechargeButton = {
         let btn = RechargeButton()
         btn.iconName = "thanhtoan-1"
-        btn.title = "Nạp tiền trực tuyến"
+        btn.title = "OnlinePayment"
         btn.addTarget(self, action: #selector(handleButtonRecharge(_:)), for: .touchUpInside)
         return btn
     }()
@@ -55,7 +55,7 @@ class RechargeVC: BaseVC {
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "CÁCH NẠP TIỀN VÀO TÀI KHOẢN"
+        label.text = LanguageManager.shared.localized(string: "Recharge")
         label.font = Fonts.by(name: .light, size: 15)
         label.textColor = UIColor.darkGray
         view.addSubview(label)
@@ -158,7 +158,7 @@ class RechargeButton: BaseButton {
     }
     var title: String?{
         didSet{
-            titleView.text = title
+            titleView.text = LanguageManager.shared.localized(string: title!)
         }
     }
     private let iconView : UIImageView = {

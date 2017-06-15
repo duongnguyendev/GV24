@@ -26,7 +26,6 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = AppColor.backGround
         setupNav()
-        setupBackButton()
         setupRightNavButton()
         setupView()
     }
@@ -39,6 +38,7 @@ class BaseVC: UIViewController {
         
     }()
     override func viewWillAppear(_ animated: Bool) {
+        setupBackButton()
         localized()
     }
     

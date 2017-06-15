@@ -17,12 +17,12 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     var gender : Int?
     var avatarImage : UIImage?
     var coordinate : CLLocationCoordinate2D?
-    
+    private let invalidateString = LanguageManager.shared.localized(string: "PleaseCompleteAllInformation")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
-        title = "Đăng ký"
+        title = LanguageManager.shared.localized(string: "SingUp")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(handleImageAvatarTap))
@@ -50,48 +50,48 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     let emailTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
-        tf.placeholder = "Email"
+        tf.placeholder = LanguageManager.shared.localized(string: "EmailAddress")
         return tf
     }()
     
     let fullNameTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
-        tf.placeholder = "Tên đầy đủ"
+        tf.placeholder = LanguageManager.shared.localized(string: "FullName")
         return tf
     }()
     
     let genderTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
-        tf.placeholder = "Giới tính"
+        tf.placeholder = LanguageManager.shared.localized(string: "Gender")
         return tf
     }()
     
     let ageTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
-        tf.placeholder = "Tuổi"
+        tf.placeholder = LanguageManager.shared.localized(string: "Age")
         return tf
     }()
     
     let phoneTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
-        tf.placeholder = "Số điện thoại"
+        tf.placeholder = LanguageManager.shared.localized(string: "PhoneNumber")
         return tf
     }()
     
     let addressTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
-        tf.placeholder = "Địa chỉ"
+        tf.placeholder = LanguageManager.shared.localized(string: "Address")
         return tf
     }()
     
     let buttonComplate : BasicButton = {
         let btn = BasicButton()
-        btn.title = "Tiếp tục"
+        btn.title = LanguageManager.shared.localized(string: "Next")
         btn.color = AppColor.homeButton3
         btn.addTarget(self, action: #selector(handleComplateButton(_:)), for: .touchUpInside)
         return btn
@@ -257,16 +257,21 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     }
     
     func handleGenderButton(_ sender : UIButton){
-        let actionSheet = UIAlertController(title: "", message: "Giới tính", preferredStyle: .actionSheet)
+        let maleString = LanguageManager.shared.localized(string: "Male")
+        let femaleString = LanguageManager.shared.localized(string: "Female")
+        let genderString = LanguageManager.shared.localized(string: "Gender")
+        let cancelString = LanguageManager.shared.localized(string: "Cancel")
         
-        actionSheet.addAction(UIAlertAction(title: "Huỷ bỏ", style: .cancel, handler: nil))
-        actionSheet.addAction(UIAlertAction(title: "Nam", style: .default, handler: { (nil) in
+        let actionSheet = UIAlertController(title: "", message: genderString, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: maleString, style: .default, handler: { (nil) in
             self.gender = 0
-            self.genderTextField.text = "Nam"
+            self.genderTextField.text = maleString
         }))
-        actionSheet.addAction(UIAlertAction(title: "Nữ", style: .default, handler: { (nil) in
+        actionSheet.addAction(UIAlertAction(title: femaleString, style: .default, handler: { (nil) in
             self.gender = 1
-            self.genderTextField.text = "Nữ"
+            self.genderTextField.text = femaleString
         }))
         
         self.present(actionSheet, animated: true, completion: nil)
@@ -274,13 +279,18 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     //MARK: - handle image
     
     func handleImageAvatarTap(){
-        let actionSheet = UIAlertController(title: "", message: "Chọn hình", preferredStyle: .actionSheet)
+        let takePhotoString = LanguageManager.shared.localized(string: "TakePhoto")
+        let galleryString = LanguageManager.shared.localized(string: "Gallery")
+        let cancelString = LanguageManager.shared.localized(string: "Cancel")
+        let selectImage = LanguageManager.shared.localized(string: "SelectImage")
         
-        actionSheet.addAction(UIAlertAction(title: "Huỷ bỏ", style: .cancel, handler: nil))
-        actionSheet.addAction(UIAlertAction(title: "Chụp hình", style: .default, handler: { (nil) in
+        let actionSheet = UIAlertController(title: "", message: selectImage, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: takePhotoString, style: .default, handler: { (nil) in
             self.handleTakePhoto()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Thư viện hình", style: .default, handler: { (nil) in
+        actionSheet.addAction(UIAlertAction(title: galleryString, style: .default, handler: { (nil) in
             self.handleSelectFromGallery()
         }))
         
@@ -373,17 +383,17 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         if (emailTextField.text?.isEmail)! {
             return nil
         }
-        return "Email không đúng"
+        return invalidateString
     }
     private func validatePhone() -> String?{
         if (phoneTextField.text?.isPhoneNumber)! {
             return nil
         }
-        return "Số điện thoại không đúng"
+        return invalidateString
     }
     private func validateGender() -> String?{
         if self.gender == nil {
-            return "Chưa chọn giới tính"
+            return invalidateString
         }
         return nil
     }
@@ -398,23 +408,23 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
                     completion(nil)
                 }
                 else{
-                    completion("Địa chỉ nhập không đúng")
+                    completion(self.invalidateString)
                 }
             }else{
-                completion("Địa chỉ nhập không đúng")
+                completion(self.invalidateString)
             }
         }
     }
     private func validateFullName()-> String?{
         
         if (self.fullNameTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! < 2{
-            return "Vui lòng nhập họ tên"
+            return invalidateString
         }
         return nil
     }
     func validateAvatar() -> String?{
         if self.avatarImage == nil{
-            return "Chưa chọn hình đại diện"
+            return invalidateString
         }
         return nil
     }

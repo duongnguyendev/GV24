@@ -36,7 +36,7 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
         lb.font = Fonts.by(name: .light, size: 15)
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textColor = AppColor.backButton
-        lb.text = "Chọn người giúp việc"
+        lb.text = LanguageManager.shared.localized(string: "SelectYourApplicants")
         return lb
     }()
     lazy var collectionWorkInfo : UICollectionView = {

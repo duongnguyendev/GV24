@@ -13,7 +13,7 @@ class ContactVC: BaseVC, MFMailComposeViewControllerDelegate  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Liên hệ"
+        title = LanguageManager.shared.localized(string: "Contact")
     }
 
     private let logoView : IconView = {
@@ -41,7 +41,7 @@ class ContactVC: BaseVC, MFMailComposeViewControllerDelegate  {
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.color = AppColor.backButton
         btn.addTarget(self, action: #selector(handleCall(_:)), for: .touchUpInside)
-        btn.title = "Gọi điện"
+        btn.title = "Call"
         return btn
     }()
     private let buttonMail : BasicButton = {

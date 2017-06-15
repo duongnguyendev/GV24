@@ -20,8 +20,8 @@ class BackButton: BaseButton {
     private let titleView : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .regular, size: 16)
-        lb.text = LanguageManager.shared.localized(string: "Back")
         lb.textColor = AppColor.backButton
+        lb.text = LanguageManager.shared.localized(string: "Back")
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()
@@ -43,7 +43,7 @@ class NavButton: BaseButton{
         super.init(frame: CGRect(x: 0, y: 0, width: 70, height: 20))
         self.titleLabel?.font = Fonts.by(name: .regular, size: 16)
         self.contentHorizontalAlignment = .right
-        self.setTitle(title, for: .normal)
+        self.setTitle(LanguageManager.shared.localized(string: title), for: .normal)
         self.setTitleColor(AppColor.backButton, for: .normal)
     }
     init(icon: Ionicons) {
