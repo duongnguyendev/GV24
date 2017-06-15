@@ -113,9 +113,14 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     //MARK: - handle button
     
     func handleButtonFilter(_ sender: UIButton){
-        let filterVC = FilterVC()
-        filterVC.delegate = self
-        push(viewController: filterVC)
+        if UserHelpers.isLogin{
+            let filterVC = FilterVC()
+            filterVC.delegate = self
+            push(viewController: filterVC)
+        }else{
+            showAlertLogin()
+        }
+
     }
     //MARK: - search bar delegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -178,15 +183,17 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
                 self.present(viewController: maidProfileVC)
             }
         }else{
-            let alert = UIAlertController(title: "", message: "Vui lòng đăng nhập để xem thêm chi tiết", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
+            showAlertLogin()
         }
 
     }
-    
+    func showAlertLogin(){
+        let alert = UIAlertController(title: "", message: "Vui lòng đăng nhập để xem thêm chi tiết", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     func filter(params: Dictionary<String, Any>?) {
         
         UserService.shared.filter(params: params!, location: self.currentLocation!, completion: { (response, error) in

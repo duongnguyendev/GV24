@@ -106,6 +106,23 @@ class UserService: APIService {
             }
         }
     }
+    
+    func updateProfile(info: Dictionary<String, String>, avatar: UIImage?, completion : @escaping ((User?, String?)->())){
+        let url = "owner/update"
+        var imageName : String?
+        if avatar != nil{
+            imageName = "image"
+        }
+        putMultipartWithToken(url: url, image: avatar, name: imageName, parameters: info) { (jsonData, error) in
+            if error == nil{
+                let user = User(jsonData: jsonData!)
+                completion(user , nil)
+            }else{
+                completion(nil, error)
+            }
+        }
+    }
+    
     func report(maidId: String, content: String, completion: @escaping ((String?)->())){
         let url = "owner/report"
         let params = ["toId":maidId, "content": content]
@@ -115,6 +132,12 @@ class UserService: APIService {
             }else{
                 completion(error)
             }
+        }
+    }
+    func checkStatus(completion: @escaping ((String?)->())){
+        let url = "owner/statistical"
+        getWithToken(url: url) { (jsonData, error) in
+            completion(error)
         }
     }
     

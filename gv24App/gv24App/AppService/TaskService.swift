@@ -35,7 +35,6 @@ class TaskService: APIService {
     }
     func getWorkTypes(completion: @escaping (([WorkType]?, String?)-> ())){
         let url = "work/getAll"
-        
         getWithToken(url: url) { (response, error) in
             if error == nil {
                 completion(self.getWorkTypesFrom(jsonData: response!), nil)
@@ -44,7 +43,28 @@ class TaskService: APIService {
             }
         }
     }
-    
+    func generalStatistic(startDate: Date?, endDate: Date?, completion: @escaping ((GeneralStatistic?, String?)->())){
+        var url = "owner/statistical"
+        
+        if startDate != nil && endDate != nil{
+            url = url + "?startAt=\(startDate!.yearMonthDate)&endAt=\(endDate!.yearMonthDate)"
+        }else{
+            if startDate != nil {
+                url = url + "?startAt=\(startDate!.yearMonthDate)"
+            }
+            if endDate != nil{
+                url = url + "?endAt=\(endDate!.yearMonthDate)"
+            }
+        }
+        getWithToken(url: url) { (jsonData, error) in
+            if error != nil{
+                completion(nil, error)
+            }else{
+                completion(GeneralStatistic(jsonData: jsonData!), error)
+            }
+        }
+        
+    }
     func getWorkTypesFrom(jsonData : JSON) -> [WorkType]?{
         if let jsonArray = jsonData.array{
             var works : [WorkType] = [WorkType]()

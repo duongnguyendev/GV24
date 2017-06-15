@@ -8,11 +8,249 @@
 
 import UIKit
 
-class GeneralStatisticVC: BaseVC {
-
+class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
+    
+    var user : User?{
+        didSet{
+            self.avatarImage.loadImageUsingUrlString(urlString: (self.user?.avatarUrl)!)
+        }
+    }
+    var starDate: Date?{
+        didSet{
+            loadData(startDate: starDate, endDate: endDate)
+        }
+    }
+    var endDate: Date?{
+        didSet{
+            loadData(startDate: starDate, endDate: endDate)
+        }
+    }
+    var generalStatisticData : GeneralStatistic?{
+        didSet{
+            infoView.generalStatisticData = generalStatisticData
+            labelNumberAccountBalance.text = "\(generalStatisticData?.wallet ?? 0) vnd"
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = AppColor.collection
         title = "Thống kê"
+        self.user = UserHelpers.currentUser
+        loadData(startDate: starDate, endDate: endDate)
+    }
+    
+    let buttonFrom: BasicButton = {
+        let btn = BasicButton()
+        btn.titleCollor = AppColor.backButton
+        btn.title = Date().dayMonthYear
+        btn.titleFont = Fonts.by(name: .regular, size: 15)
+        btn.addTarget(self, action: #selector(handleButtonFrom(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    let buttonTo: BasicButton = {
+        let btn = BasicButton()
+        btn.titleCollor = AppColor.backButton
+        btn.title = Date().dayMonthYear
+        btn.titleFont = Fonts.by(name: .regular, size: 15)
+        btn.addTarget(self, action: #selector(handleButtonTo(_:)), for: .touchUpInside)
+        return btn
+    }()
+    let avatarImage : CustomImageView = {
+        let iv = CustomImageView(image: UIImage(named: "avatar"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        iv.layer.cornerRadius = 25
+        iv.layer.masksToBounds = true
+        return iv
+    }()
+    
+    let buttonRecharge : BasicButton = {
+        let btn = BasicButton()
+        btn.contentHorizontalAlignment = .left
+        btn.titleFont = Fonts.by(name: .regular, size: 15)
+        btn.titleCollor = AppColor.backButton
+        btn.title = "Nạp tiền vào tài khoản"
+        btn.addTarget(self, action: #selector(handleRechargeButton(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    let dateView : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        
+        return view
+    }()
+    let accountView : UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = UIColor.white
+        let topLine = UIView.horizontalLine()
+        let bottomLine = UIView.horizontalLine()
+        v.addSubview(topLine)
+        v.addSubview(bottomLine)
+        
+        topLine.topAnchor.constraint(equalTo: v.topAnchor, constant: 0).isActive = true
+        topLine.leftAnchor.constraint(equalTo: v.leftAnchor, constant: 0).isActive = true
+        topLine.rightAnchor.constraint(equalTo: v.rightAnchor, constant: 0).isActive = true
+        
+        bottomLine.topAnchor.constraint(equalTo: v.bottomAnchor, constant: 0).isActive = true
+        bottomLine.leftAnchor.constraint(equalTo: v.leftAnchor, constant: 0).isActive = true
+        bottomLine.rightAnchor.constraint(equalTo: v.rightAnchor, constant: 0).isActive = true
+        
+        return v
+    }()
+    let labelNumberAccountBalance : UILabel = {
+        let lb = UILabel()
+        lb.font = Fonts.by(name: .light, size: 13)
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        return lb
+    }()
+    let infoView : GeneralStatisticInfoView = {
+        let view = GeneralStatisticInfoView()
+        return view
+    }()
+    
+    
+    
+    lazy var dateLaucher : DateLauncher = {
+        let launcher = DateLauncher()
+        launcher.pickerMode = .date
+        launcher.delegate = self
+        return launcher
+    }()
+    override func setupView() {
+        
+        view.addSubview(dateView)
+        view.addSubview(infoView)
+        view.addSubview(accountView)
+        
+        view.addConstraintWithFormat(format: "V:|[v0(40)][v1]-20-[v2(100)]-20-|", views: dateView, infoView, accountView)
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: dateView)
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: infoView)
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: accountView)
+        
+        setupDateView()
+        setupAccoutInfoView()
+    }
+    
+    func setupDateView(){
+        let labelTo = UILabel()
+        labelTo.font = Fonts.by(name: .light, size: 15)
+        labelTo.translatesAutoresizingMaskIntoConstraints = false
+        labelTo.textAlignment = .center
+        labelTo.text = "đến"
+        
+        let line = UIView.horizontalLine()
+        
+        dateView.addSubview(buttonFrom)
+        dateView.addSubview(buttonTo)
+        dateView.addSubview(labelTo)
+        dateView.addSubview(line)
+        
+        labelTo.centerXAnchor.constraint(equalTo: dateView.centerXAnchor, constant: 0).isActive = true
+        labelTo.centerYAnchor.constraint(equalTo: dateView.centerYAnchor, constant: 0).isActive = true
+        labelTo.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        dateView.addConstraintWithFormat(format: "H:|[v0][v1][v2]|", views: buttonFrom, labelTo, buttonTo)
+        
+        view.addConstraintWithFormat(format: "V:|[v0]|", views: buttonFrom)
+        view.addConstraintWithFormat(format: "V:|[v0]|", views: buttonTo)
+        
+        line.bottomAnchor.constraint(equalTo: buttonFrom.bottomAnchor, constant: 0).isActive = true
+        line.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        line.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+    }
+    
+    func setupAccoutInfoView(){
+        super.setupView()
+        let labelAccount = UILabel()
+        labelAccount.font = Fonts.by(name: .medium, size: 16)
+        labelAccount.translatesAutoresizingMaskIntoConstraints = false
+        labelAccount.text = "Tài khoản NGV247"
+        
+        let labelAccountBalance = UILabel()
+        labelAccountBalance.font = Fonts.by(name: .light, size: 13)
+        labelAccountBalance.translatesAutoresizingMaskIntoConstraints = false
+        labelAccountBalance.text = "Số dư tài khoản: " // account balance
+        
+        accountView.addSubview(avatarImage)
+        accountView.addSubview(buttonRecharge)
+        accountView.addSubview(labelAccountBalance)
+        accountView.addSubview(labelAccount)
+        accountView.addSubview(labelNumberAccountBalance)
+        
+        avatarImage.topAnchor.constraint(equalTo: accountView.topAnchor, constant: 5).isActive = true
+        avatarImage.leftAnchor.constraint(equalTo: accountView.leftAnchor, constant: 10).isActive = true
+        
+        buttonRecharge.bottomAnchor.constraint(equalTo: accountView.bottomAnchor, constant: 0).isActive = true
+        buttonRecharge.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        accountView.addConstraintWithFormat(format: "H:|-10-[v0]|", views: buttonRecharge)
+        
+        labelAccount.leftAnchor.constraint(equalTo: avatarImage.rightAnchor, constant: 10).isActive = true
+        labelAccount.topAnchor.constraint(equalTo: avatarImage.topAnchor, constant: 5).isActive = true
+        
+        labelAccountBalance.leftAnchor.constraint(equalTo: avatarImage.rightAnchor, constant: 10).isActive = true
+        labelAccountBalance.bottomAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: -5).isActive = true
+        
+        labelNumberAccountBalance.centerYAnchor.constraint(equalTo: labelAccountBalance.centerYAnchor, constant: 0).isActive = true
+        labelNumberAccountBalance.leftAnchor.constraint(equalTo: labelAccountBalance.rightAnchor, constant: 0).isActive = true
+        
+        let line = UIView.horizontalLine()
+        accountView.addSubview(line)
+        line.bottomAnchor.constraint(equalTo: buttonRecharge.topAnchor, constant: 0).isActive = true
+        accountView.addConstraintWithFormat(format: "H:|[v0]|", views: line)
+        
+        
+    }
+    
+    func loadData(startDate : Date?, endDate: Date?){
+        activity.startAnimating()
+        TaskService.shared.generalStatistic(startDate: startDate, endDate: endDate) { (generalStatistic, error) in
+            self.activity.stopAnimating()
+            if error != nil{
+                print(error as Any)
+            }else{
+                self.generalStatisticData = generalStatistic
+            }
+        }
+    }
+    
+    func handleButtonFrom(_ sender: UIButton){
+        dateLaucher.sender = sender
+        if starDate == nil{
+            dateLaucher.startDate = Date()
+        }else{
+            dateLaucher.startDate = starDate
+        }
+        dateLaucher.show()
+        
+    }
+    func handleButtonTo(_ sender: UIButton){
+        dateLaucher.sender = sender
+        if endDate == nil{
+            dateLaucher.startDate = Date()
+        }else{
+            dateLaucher.startDate = endDate
+        }
+        
+        dateLaucher.show()
+    }
+    
+    func handleRechargeButton(_ sender : UIButton){
+        push(viewController: RechargeVC())
+    }
+    func selected(dateTime: Date, for sender: UIButton) {
+        if sender == buttonFrom {
+            buttonFrom.title = dateTime.dayMonthYear
+            starDate = dateTime
+        }else{
+            buttonTo.title = dateTime.dayMonthYear
+            endDate = dateTime
+        }
     }
 }

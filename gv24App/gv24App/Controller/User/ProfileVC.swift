@@ -12,7 +12,7 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Thông tin"
-        mainCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        mainCollectionView.register(CellWithTitle.self, forCellWithReuseIdentifier: cellId)
         mainCollectionView.register(UserProfileCell.self, forCellWithReuseIdentifier: profileCellId)
         mainCollectionView.register(CommentCell.self, forCellWithReuseIdentifier: commentCellId)
         mainCollectionView.register(HeaderWithTitle.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
@@ -57,7 +57,9 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     //MARK: - handleButton
     
     func handleUpdateButton(_ sender : UIButton){
-        print("handleUpdateButton")
+        let updateVC = UpdateProfileVC()
+        
+        self.push(viewController: updateVC)
     }
     
     //MARK: - load comment
@@ -84,16 +86,17 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        }else{
-            return comments.count
-        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: profileCellId, for: indexPath) as! UserProfileCell
+            return cell
+        }
+        if comments.count == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CellWithTitle
+            cell.title = "Không có nhận xét"
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: commentCellId, for: indexPath) as! CommentCell
@@ -105,10 +108,7 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         if indexPath.section == 0{
             return CGSize(width: view.frame.size.width, height: 320)
         }
-        let text = comments[indexPath.item].content
-        let size = CGSize(width: view.frame.width, height: 1000)
-        let height = String.heightWith(string: text!, size: size, font: Fonts.by(name: .regular, size: 12))
-        return CGSize(width: view.frame.size.width, height: 90 + height)
+        return CGSize(width: view.frame.size.width, height: 70)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0{

@@ -10,10 +10,15 @@ import UIKit
 import IoniconsSwift
 
 class HomeFunctButton: BaseButton {
-
+    
     var iconName : Ionicons? {
         didSet{
             iconView.image = Icon.by(name: iconName!, size: 50, collor: UIColor.white)
+        }
+    }
+    var imageName : String?{
+        didSet{
+            iconView.image = UIImage(named: imageName!)
         }
     }
     var title: String?{
@@ -49,5 +54,5 @@ class HomeFunctButton: BaseButton {
         self.addConstraint(NSLayoutConstraint(item: iconView, attribute: .height, relatedBy: .equal, toItem: titleView, attribute: .height, multiplier: 1, constant: 0))
     }
     
-
+    
 }

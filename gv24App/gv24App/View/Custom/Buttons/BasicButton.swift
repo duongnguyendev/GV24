@@ -25,7 +25,7 @@ class BasicButton: BaseButton {
             self.setTitle(LanguageManager.shared.localized(string: title!), for: .normal)
         }
     }
-    var titleFont : Fonts?{
+    var titleFont : UIFont?{
         didSet{
             self.titleLabel?.font = titleFont
         }

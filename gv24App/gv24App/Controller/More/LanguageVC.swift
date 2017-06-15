@@ -31,13 +31,22 @@ class LanguageVC: BaseVC, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return LanguageManager.shared.listLanguage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: languageCellId, for: indexPath)
         cell.textLabel?.font = Fonts.by(name: .regular, size: 15)
-        cell.textLabel?.text = "Ngôn ngữ \(indexPath.row)"
+        cell.textLabel?.text = LanguageManager.shared.listLanguage[indexPath.row].language
+        if indexPath.row == LanguageManager.shared.current{
+            cell.accessoryType = .checkmark
+        }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let language = LanguageManager.shared.listLanguage[indexPath.row]
+        LanguageManager.shared.setCurrent(language: language)
+        LanguageManager.shared.current = indexPath.row
+        goBack()
     }
 }

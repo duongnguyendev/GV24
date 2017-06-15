@@ -37,4 +37,23 @@ class BaseTableCell: UITableViewCell {
     }
     
 }
+class CellWithTitle: BaseCollectionCell {
+    var title : String?{
+        didSet{
+            titleView.text = title
+        }
+    }
+    private let titleView : UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = Fonts.by(name: .light, size: 15)
+        return lb
+    }()
+    override func setupView() {
+        addSubview(titleView)
+        backgroundColor = UIColor.white
+        addConstraintWithFormat(format: "V:|[v0]|", views: titleView)
+        addConstraintWithFormat(format: "H:|-20-[v0]|", views: titleView)
+    }
+}
 

@@ -70,3 +70,4 @@ class ProfileUserButton: BaseButton{
         labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
     }
 }
+

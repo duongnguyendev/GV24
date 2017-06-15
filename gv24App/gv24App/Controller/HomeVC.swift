@@ -20,18 +20,26 @@ class HomeVC: BaseVC {
         iv.contentMode = .scaleAspectFill
         return iv
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !UserHelpers.isLogin {
+            self.dismiss(animated: false, completion: nil)
+        }
+    }
+    
     let aroundButton : HomeFunctButton = {
         let bt = HomeFunctButton()
         bt.backgroundColor = AppColor.homeButton1
-        bt.iconName = .iosLocation
-        bt.title = "Người giúp việc\nquanh đây"
+        bt.imageName = "quanh_day"
+        bt.title = "giúp việc\nquanh đây"
         bt.addTarget(self, action: #selector(handleButtonAround(_:)), for: .touchUpInside)
         return bt
     }()
     let taskManagerButton : HomeFunctButton = {
         let bt = HomeFunctButton()
         bt.backgroundColor =  AppColor.homeButton2
-        bt.iconName = .iosLocation
+        bt.imageName = "quan_ly"
         bt.title = "Quản lý\ncông việc"
         bt.addTarget(self, action: #selector(handleButtonTaskManagement(_:)), for: .touchUpInside)
         return bt
@@ -39,7 +47,7 @@ class HomeVC: BaseVC {
     let historyButton : HomeFunctButton = {
         let bt = HomeFunctButton()
         bt.backgroundColor =  AppColor.homeButton3
-        bt.iconName = .iosLocation
+        bt.imageName = "lich_su"
         bt.title = "Lịch sử\ncông việc"
         bt.addTarget(self, action: #selector(handleButtonHistory(_:)), for: .touchUpInside)
         return bt
@@ -93,7 +101,7 @@ class HomeVC: BaseVC {
     //MARK: - Handle button
     func handleButtonMore(_ sender : UIButton) {
         let moreVC = MoreVC()
-        push(viewController: moreVC)
+        present(viewController: moreVC)
     }
     
     func handleButtonAround(_ sender : UIButton){

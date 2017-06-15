@@ -33,16 +33,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     private let mainScrollView : UIScrollView = UIScrollView()
     private let mainView : UIView = UIView()
     
-    let activity : UIActivityIndicatorView = {
-        let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        act.hidesWhenStopped = true
-        act.translatesAutoresizingMaskIntoConstraints = false
-        act.layer.zPosition = 1
-        return act
-        
-    }()
-    
-    private let imageAvatar : CustomImageView = {
+    let imageAvatar : CustomImageView = {
         let iv = CustomImageView()
         iv.image = Icon.by(imageName: "camera")
         iv.contentMode = .scaleAspectFit
@@ -56,49 +47,49 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         return iv
     }()
     
-    private let emailTextField : UITextField = {
+    let emailTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
         tf.placeholder = "Email"
         return tf
     }()
     
-    private let fullNameTextField : UITextField = {
+    let fullNameTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
         tf.placeholder = "Tên đầy đủ"
         return tf
     }()
     
-    private let genderTextField : UITextField = {
+    let genderTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
         tf.placeholder = "Giới tính"
         return tf
     }()
     
-    private let ageTextField : UITextField = {
+    let ageTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
         tf.placeholder = "Tuổi"
         return tf
     }()
     
-    private let phoneTextField : UITextField = {
+    let phoneTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
         tf.placeholder = "Số điện thoại"
         return tf
     }()
     
-    private let addressTextField : UITextField = {
+    let addressTextField : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
         tf.placeholder = "Địa chỉ"
         return tf
     }()
     
-    private let buttonComplate : BasicButton = {
+    let buttonComplate : BasicButton = {
         let btn = BasicButton()
         btn.title = "Tiếp tục"
         btn.color = AppColor.homeButton3
@@ -109,12 +100,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     
     
     override func setupView() {
-        
-        view.addSubview(activity)
-        
-        activity.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        activity.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        
+        super.setupView()
         setupMainView()
         setupComponent()
         
@@ -353,7 +339,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     
     //MARK: - Validate
     
-    private func validate(completion: @escaping ((String?) -> ())){
+    func validate(completion: @escaping ((String?) -> ())){
         
         if let emailError = validateEmail(){
             completion(emailError)
@@ -426,7 +412,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         }
         return nil
     }
-    private func validateAvatar() -> String?{
+    func validateAvatar() -> String?{
         if self.avatarImage == nil{
             return "Chưa chọn hình đại diện"
         }

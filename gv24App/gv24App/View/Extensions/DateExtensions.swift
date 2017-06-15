@@ -44,6 +44,14 @@ extension Date{
         let day = calendar.component(.day, from: self)
         return "\(day)/\(month)/\(year)"
     }
+    var yearMonthDate : String{
+        let calendar = Calendar(identifier: .gregorian)
+        let month = calendar.component(.month, from: self)
+        let year = calendar.component(.year, from: self)
+        let day = calendar.component(.day, from: self)
+        return "\(year)/\(month)/\(day)"
+    }
+
     
     var hour : String{
         let calendar = Calendar(identifier: .gregorian)

@@ -50,6 +50,8 @@
 		4E0F75C71EE54A6300121113 /* WorkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0F75C61EE54A6300121113 /* WorkType.swift */; };
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
 		4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBE29A1ED83948005B47B0 /* AppDelegate.swift */; };
+		4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95A1EEF94390073BC7E /* RechargeVC.swift */; };
+		4E33F95D1EEFE7920073BC7E /* TransferInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
 		4E3D17621EE7BE5000C91D6B /* InputButonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D17611EE7BE5000C91D6B /* InputButonWithIcon.swift */; };
 		4E3D17641EE7F85D00C91D6B /* AgeLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D17631EE7F85D00C91D6B /* AgeLauncher.swift */; };
@@ -64,7 +66,11 @@
 		4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */; };
 		4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54F59E1EC9B173007D15D6 /* PostVC.swift */; };
 		4E57F9C21EE90AEC00C02EF2 /* MaidWorkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57F9C11EE90AEC00C02EF2 /* MaidWorkInfoCell.swift */; };
+		4E57F9C81EE9590200C02EF2 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57F9C71EE9590200C02EF2 /* UpdateProfileVC.swift */; };
+		4E58A7A01EEE49B30088FC1D /* GeneralStatisticInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58A79F1EEE49B30088FC1D /* GeneralStatisticInfoView.swift */; };
+		4E58A7A21EEE8F1D0088FC1D /* GeneralStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58A7A11EEE8F1D0088FC1D /* GeneralStatistic.swift */; };
 		4E5B162E1ECD943A00A5FC23 /* MarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */; };
+		4E5C04CB1EF1340A00470C8C /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C04CA1EF1340A00470C8C /* LaunchScreenVC.swift */; };
 		4E5F6C7E1EE11D7000B19C86 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5F6C7D1EE11D7000B19C86 /* CheckBox.swift */; };
 		4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D41EC1A30B00E6C8C5 /* MoreVC.swift */; };
 		4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D61EC1A31C00E6C8C5 /* ForgotPassVC.swift */; };
@@ -175,6 +181,8 @@
 		4E0F75C41EE544EA00121113 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		4E0F75C61EE54A6300121113 /* WorkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkType.swift; sourceTree = "<group>"; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
+		4E33F95A1EEF94390073BC7E /* RechargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeVC.swift; sourceTree = "<group>"; };
+		4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferInfoVC.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		4E3D17611EE7BE5000C91D6B /* InputButonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputButonWithIcon.swift; sourceTree = "<group>"; };
 		4E3D17631EE7F85D00C91D6B /* AgeLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeLauncher.swift; sourceTree = "<group>"; };
@@ -203,7 +211,11 @@
 		4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManagementVC.swift; sourceTree = "<group>"; };
 		4E54F59E1EC9B173007D15D6 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		4E57F9C11EE90AEC00C02EF2 /* MaidWorkInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidWorkInfoCell.swift; sourceTree = "<group>"; };
+		4E57F9C71EE9590200C02EF2 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
+		4E58A79F1EEE49B30088FC1D /* GeneralStatisticInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralStatisticInfoView.swift; sourceTree = "<group>"; };
+		4E58A7A11EEE8F1D0088FC1D /* GeneralStatistic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralStatistic.swift; sourceTree = "<group>"; };
 		4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoWindow.swift; sourceTree = "<group>"; };
+		4E5C04CA1EF1340A00470C8C /* LaunchScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		4E5F6C7D1EE11D7000B19C86 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		4E61E3D41EC1A30B00E6C8C5 /* MoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		4E61E3D61EC1A31C00E6C8C5 /* ForgotPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
@@ -410,6 +422,7 @@
 				4E0F75C61EE54A6300121113 /* WorkType.swift */,
 				03446A731EE55A3F004DB193 /* TaskHistory.swift */,
 				038152141EE7DDF20081FB33 /* WorkUnpaid.swift */,
+				4E58A7A11EEE8F1D0088FC1D /* GeneralStatistic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -491,6 +504,7 @@
 				4E61E3CD1EC1798600E6C8C5 /* User */,
 				4ED231741EB980D000592842 /* BaseVC.swift */,
 				4ED2317D1EB9B15E00592842 /* HomeVC.swift */,
+				4E5C04CA1EF1340A00470C8C /* LaunchScreenVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -537,6 +551,7 @@
 				4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */,
 				4E8D27431EDC134B00872A61 /* SignUpVC_3.swift */,
 				4E01542B1EE6A98E00529F4F /* MaidProfileHistoryVC.swift */,
+				4E57F9C71EE9590200C02EF2 /* UpdateProfileVC.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -550,6 +565,8 @@
 				4E4E358A1ED7D42C00D13EF5 /* AboutUsVC.swift */,
 				4E4E358C1ED7E02100D13EF5 /* TermsVC.swift */,
 				4E4E358E1ED7E0C800D13EF5 /* ContactVC.swift */,
+				4E33F95A1EEF94390073BC7E /* RechargeVC.swift */,
+				4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -628,6 +645,7 @@
 				4E5B162D1ECD943A00A5FC23 /* MarkerInfoWindow.swift */,
 				4E0CACA41EDD18E800752BCC /* RatingStartView.swift */,
 				4EF8A14D1EE110CF002A5920 /* LabelButtomLine.swift */,
+				4E58A79F1EEE49B30088FC1D /* GeneralStatisticInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -816,6 +834,7 @@
 				0319CFAD1EE6604100A4F157 /* DetailTaskHistoryVC.swift in Sources */,
 				038152111EE7A4F20081FB33 /* GeneralButton.swift in Sources */,
 				4ED231711EB97D4100592842 /* StringExtensions.swift in Sources */,
+				4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */,
 				03446A6A1EE5502C004DB193 /* CommentCell.swift in Sources */,
 				4ED2317E1EB9B15E00592842 /* HomeVC.swift in Sources */,
 				038152191EE803F90081FB33 /* MaidCell.swift in Sources */,
@@ -837,6 +856,7 @@
 				03446A651EE54F3D004DB193 /* TaskNewControlCell.swift in Sources */,
 				4EAA97241ECAD99E0001FEB6 /* HistoryVC.swift in Sources */,
 				03446A6E1EE5508C004DB193 /* HistoryControlCell.swift in Sources */,
+				4E5C04CB1EF1340A00470C8C /* LaunchScreenVC.swift in Sources */,
 				4E0F75C11EE5095200121113 /* BaseLauncher.swift in Sources */,
 				03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */,
 				4E61E3E01EC1A33800E6C8C5 /* MaidAroundVC.swift in Sources */,
@@ -848,11 +868,14 @@
 				03446A591EE54F3D004DB193 /* HeaderWithTitle.swift in Sources */,
 				03446A741EE55A3F004DB193 /* TaskHistory.swift in Sources */,
 				03446A5F1EE54F3D004DB193 /* TaskCell.swift in Sources */,
+				4E57F9C81EE9590200C02EF2 /* UpdateProfileVC.swift in Sources */,
 				4E87A54C1EBB64F100EDA0D1 /* IconView.swift in Sources */,
 				03446A721EE55696004DB193 /* TaskHistoryCell.swift in Sources */,
+				4E33F95D1EEFE7920073BC7E /* TransferInfoVC.swift in Sources */,
 				4E8D27481EDC13B900872A61 /* JobProgressDetailVC.swift in Sources */,
 				4ED231731EB9803400592842 /* ImageExtensions.swift in Sources */,
 				4E3D17641EE7F85D00C91D6B /* AgeLauncher.swift in Sources */,
+				4E58A7A21EEE8F1D0088FC1D /* GeneralStatistic.swift in Sources */,
 				4E8D275A1EDC152800872A61 /* TaskManageService.swift in Sources */,
 				03446A701EE5530B004DB193 /* UnpaidWorkControlCell.swift in Sources */,
 				03446A5D1EE54F3D004DB193 /* MoreUserCell.swift in Sources */,
@@ -864,6 +887,7 @@
 				4EBF04B61ED292F100F7E08B /* Address.swift in Sources */,
 				4EA7A8441EBB1E6600CA7F37 /* BasicButton.swift in Sources */,
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
+				4E58A7A01EEE49B30088FC1D /* GeneralStatisticInfoView.swift in Sources */,
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
 				4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */,

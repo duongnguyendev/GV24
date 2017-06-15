@@ -19,6 +19,13 @@ class Language: NSObject {
 }
 class LanguageManager: NSObject {
     static let shared = LanguageManager()
+    var listLanguage : [Language]{
+        let vi = Language(languageCode: "vi", language: "Tiếng Việt")
+        let en = Language(languageCode: "en", language: "English")
+        return [en,vi]
+    }
+    var current = 0
+    
     var bundle : Bundle?
     override init() {
         super.init()
@@ -41,8 +48,10 @@ class LanguageManager: NSObject {
         var language : Language?
         if languageCode == "vi" || languageCode == "vi-VN" || languageCode == "vi-US"{
             language = Language(languageCode: "vi", language: "Tiếng Việt")
+            current = 1
         }else{
             language = Language(languageCode: "en", language: "English")
+            current = 0
         }
         return language!
     }

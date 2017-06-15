@@ -27,12 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //        GIDSignIn.sharedInstance().delegate = self
         // Override point for customization after application launch.
         
-        Thread.sleep(forTimeInterval: 2)
+//        Thread.sleep(forTimeInterval: 2)
         //        let signInVC = SignInVC()
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
-        let nav = UINavigationController(rootViewController: SignInVC())
-        window?.rootViewController = nav
+        window?.rootViewController = LaunchScreenVC()
         
         return true
     }

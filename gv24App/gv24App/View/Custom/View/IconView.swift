@@ -11,7 +11,6 @@ import IoniconsSwift
 
 class IconView: UIImageView {
     
-
     init(icon : Ionicons,size : CGFloat) {
         super.init(frame: .zero)
         setUp(size: size)

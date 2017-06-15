@@ -41,9 +41,12 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
         case 1:
             return 1
         case 2:
-            return comments.count
+            if comments.count != 0{
+                return comments.count
+            }
+            return 1
         default:
-            return 0
+            return 1
         }
     }
     
@@ -72,7 +75,13 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
         case 1:
             return CGSize(width: view.frame.size.width, height: 220)
         default:
-            return super.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
+            if comments.count == 0{
+                return CGSize(width: view.frame.size.width, height: 70)
+            }
+            let text = comments[indexPath.item].content
+            let size = CGSize(width: view.frame.width, height: 1000)
+            let height = String.heightWith(string: text!, size: size, font: Fonts.by(name: .regular, size: 12))
+            return CGSize(width: view.frame.size.width, height: 90 + height)
         }
     }
     

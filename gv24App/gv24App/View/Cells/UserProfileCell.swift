@@ -22,7 +22,7 @@ class UserProfileCell: BaseCollectionCell {
             }
             labelPhone.text = user?.phone
             labelAddress.text = user?.address?.name
-            self.ratingView.point = (user?.evaluationPoint)!
+            self.ratingView.point = 5
         }
     }
     let ratingView = RatingStartView()

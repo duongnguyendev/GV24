@@ -18,15 +18,6 @@ class SignUpVC_3: BaseVC{
         // Do any additional setup after loading the view.
     }
     
-    let activity : UIActivityIndicatorView = {
-        let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        act.hidesWhenStopped = true
-        act.translatesAutoresizingMaskIntoConstraints = false
-        act.layer.zPosition = 1
-        return act
-        
-    }()
-    
     let logoImage : IconView = {
         let iv = IconView(image: "logo2", size: 100)
         return iv
@@ -51,10 +42,6 @@ class SignUpVC_3: BaseVC{
     
     override func setupView() {
         super.setupView()
-        
-        view.addSubview(activity)
-        activity.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        activity.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
         
         let scrollViewContent = UIScrollView()
         let contentView = UIView()

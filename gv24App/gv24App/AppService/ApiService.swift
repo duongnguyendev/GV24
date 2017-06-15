@@ -97,14 +97,18 @@ class APIService: NSObject {
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                if let imageData = UIImagePNGRepresentation(image!){
-                    multipartFormData.append(imageData, withName: name!, fileName: "\(name!).jpeg", mimeType: "image/jpeg")
+                if image != nil{
+                    if let imageData = UIImagePNGRepresentation(image!){
+                        multipartFormData.append(imageData, withName: name!, fileName: "\(name!).jpeg", mimeType: "image/jpeg")
+                    }
                 }
+                
                 for (key,value) in parameters{
                     multipartFormData.append((value.data(using: .utf8))!, withName: key)
                 }
         },
             to: urlFrom(request: url),
+            method: .post,
             headers: header,
             encodingCompletion: { encodingResult in
                 switch encodingResult {
@@ -128,6 +132,46 @@ class APIService: NSObject {
         }
         )
         
+    }
+    func putMultipartWithToken(url : String, image: UIImage?, name: String?, parameters: Dictionary<String, String>, completion: @escaping (ResponseCompletion)){
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
+        
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                if image != nil{
+                    if let imageData = UIImagePNGRepresentation(image!){
+                        multipartFormData.append(imageData, withName: name!, fileName: "\(name!).jpeg", mimeType: "image/jpeg")
+                    }
+                }
+                
+                for (key,value) in parameters{
+                    multipartFormData.append((value.data(using: .utf8))!, withName: key)
+                }
+        },
+            to: urlFrom(request: url),
+            method: .put,
+            headers: header,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        let json = JSON(response.value as Any)
+                        let status = json["status"].bool
+                        if !status!{
+                            if let message = json["message"].string{
+                                completion(nil, message)
+                            }
+                            
+                        }else{
+                            completion(json["data"], nil)
+                        }
+                    }
+                    
+                case .failure(let encodingError):
+                    completion(nil, encodingError.localizedDescription)
+                }
+        }
+        )
     }
     //MARK: - GET
     func get(url : String, completion:@escaping (ResponseCompletion)){
@@ -154,6 +198,27 @@ class APIService: NSObject {
     func getWithToken(url : String, completion:@escaping (ResponseCompletion)){
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), headers: header).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let status = json["status"].bool
+                if !status!{
+                    if let message = json["message"].string{
+                        completion(nil, message)
+                    }
+                }else{
+                    completion(json["data"], nil)
+                }
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
+                print(error)
+            }
+        }
+    }
+    func getWithToken(url: String, params : Parameters, completion:@escaping (ResponseCompletion)){
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
+        
+        Alamofire.request(self.urlFrom(request: url),parameters: params, headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
