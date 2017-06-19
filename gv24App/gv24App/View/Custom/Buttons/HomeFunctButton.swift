@@ -23,7 +23,7 @@ class HomeFunctButton: BaseButton {
     }
     var title: String?{
         didSet{
-            self.titleView.text = title!
+            self.titleView.text = LanguageManager.shared.localized(string: title!)
         }
     }
     var textColor: UIColor? {

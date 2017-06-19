@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
+@objc protocol SwitchCellDelegate{
+    @objc optional func notification(isOn : Bool)
+}
 class SwitchCell: BaseCollectionCell {
     
+    var delegate : SwitchCellDelegate?
     var text : String?{
         didSet{
             self.labelView.text = LanguageManager.shared.localized(string: text!)
@@ -34,7 +37,7 @@ class SwitchCell: BaseCollectionCell {
         backgroundColor = AppColor.white
         addSubview(switchView)
         addSubview(labelView)
-        
+        switchView.addTarget(self, action: #selector(swithchChangeValue(_:)), for: .valueChanged)
         switchView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         switchView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         
@@ -43,6 +46,10 @@ class SwitchCell: BaseCollectionCell {
         
         setupSeqaratorView()
         
+    }
+    
+    func swithchChangeValue(_ sender : UISwitch){
+        self.delegate?.notification!(isOn: sender.isOn)
     }
     func setupSeqaratorView(){
         let view = UIView.horizontalLine()

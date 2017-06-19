@@ -23,7 +23,7 @@ class SignInVC: BaseVC, UserEventDelegate {
         itemHeight = self.view.frame.size.height / 15
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
-        title = LanguageManager.shared.localized(string: "SignIn")
+        title = LanguageManager.shared.localized(string: "Login")
     }
     private let topBackGround : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "top_bg"))
@@ -34,7 +34,7 @@ class SignInVC: BaseVC, UserEventDelegate {
     }()
     private let emailTextField : UITextField = {
         let tf = UITextField()
-        tf.placeholder = "User name"
+        tf.placeholder = LanguageManager.shared.localized(string: "Username")
         tf.font = Fonts.by(name: .light, size: 14)
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -58,14 +58,15 @@ class SignInVC: BaseVC, UserEventDelegate {
     private let signInButton : BasicButton = {
         let btn = BasicButton()
         btn.color = AppColor.homeButton3
-        btn.title = "SignIn"
+        btn.title = "Login"
         btn.addTarget(self, action: #selector(handleSignInButton(_:)), for: .touchUpInside)
         return btn
     }()
     
     private let signUpButton : UIButton = {
         let btn = UIButton()
-        btn.setTitle("Đăng ký ngay", for: .normal)
+        let title = LanguageManager.shared.localized(string: "SignUpNow")
+        btn.setTitle(title, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.titleLabel?.font = Fonts.by(name: .regular, size: 14)
         btn.setTitleColor(AppColor.homeButton3, for: .normal)
@@ -74,7 +75,8 @@ class SignInVC: BaseVC, UserEventDelegate {
     }()
     private let forgotPassButton : UIButton = {
         let btn = UIButton()
-        btn.setTitle("Quên mật khẩu", for: .normal)
+        let title = LanguageManager.shared.localized(string: "ForgotPassword")
+        btn.setTitle(title, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.titleLabel?.font = Fonts.by(name: .regular, size: 14)
         btn.setTitleColor(AppColor.homeButton3, for: .normal)
@@ -202,7 +204,7 @@ class SignInVC: BaseVC, UserEventDelegate {
         // label
         
         let lableSocial = UILabel()
-        lableSocial.text = "Đăng nhập bằng"
+        lableSocial.text = LanguageManager.shared.localized(string: "LoginWith")
         lableSocial.font = Fonts.by(name: .regular, size: 12)
         lableSocial.textColor = AppColor.lightGray
         lableSocial.textAlignment = .center
@@ -239,26 +241,29 @@ class SignInVC: BaseVC, UserEventDelegate {
         push(viewController: MaidAroundVC())
     }
     func handleSignInButton(_ sender : UIButton) {
-        let alert = UIAlertController(title: "Lỗi", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         if (self.emailTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 && (self.passTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 {
+            self.activity.startAnimating()
             UserService.shared.logIn(userName: emailTextField.text!, password: passTextField.text!, completion: { (userLogedIn, token, error) in
+                self.activity.startAnimating()
                 if error == nil{
                     UserHelpers.save(user: userLogedIn!, token: token!)
                     self.presentHome()
                 }
                 else{
-                    alert.title = "lỗi đăng nhập"
-                    alert.message = error
-                    self.present(alert, animated: true, completion: nil)
+                    self.showAlertWith(title: "Lỗi đăng nhập", mes: error)
                 }
             })
         }else{
-            alert.title = "lỗi đăng nhập"
-            alert.message = "Tên đăng nhập hoặc mật khẩu không đúng"
-            self.present(alert, animated: true, completion: nil)
+            showAlertWith(title: "Lỗi đăng nhập", mes: "Tên đăng nhập hoặc mật khẩu không đúng.")
         }
     }
+    
+    func showAlertWith(title: String?, mes: String?){
+        let alert = UIAlertController(title: title, message: mes, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func handleSignUpButton(_ sender : UIButton) {
         let signUpVC_1 = SignUpVC_1()
         signUpVC_1.delegate = self

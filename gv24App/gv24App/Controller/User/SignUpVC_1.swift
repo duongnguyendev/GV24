@@ -16,27 +16,27 @@ class SignUpVC_1: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
-        title = "Đăng ký"
+        title = LanguageManager.shared.localized(string: "SingUp")
     }
     
     private let textFieldUserName : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .light, size: 14)
-        tf.placeholder = "Tên đăng nhập"
+        tf.placeholder = LanguageManager.shared.localized(string: "Username")
         return tf
     }()
     
     private let textFieldPass : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .light, size: 14)
-        tf.placeholder = "Mật khẩu"
+        tf.placeholder = LanguageManager.shared.localized(string: "Password")
         tf.isSecureTextEntry = true
         return tf
     }()
     private let textFieldConfirmPass : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .light, size: 14)
-        tf.placeholder = "Xác nhận mật khẩu"
+        tf.placeholder = LanguageManager.shared.localized(string: "ConfirmPassword")
         tf.isSecureTextEntry = true
         return tf
     }()
@@ -44,7 +44,7 @@ class SignUpVC_1: BaseVC {
     private let buttonNext : BasicButton = {
         let btn = BasicButton()
         btn.color = AppColor.homeButton3
-        btn.title = "Next"
+        btn.title = LanguageManager.shared.localized(string: "Next")
         btn.addTarget(self, action: #selector(handleNextButton(_:)), for: .touchUpInside)
         return btn
         
@@ -121,7 +121,7 @@ class SignUpVC_1: BaseVC {
     
     func validate() -> String?{
         if (textFieldUserName.text?.characters.count)! < 6 {
-            return "Tên đăng nhập không đúng"
+            return "Tên đăng nhập không đúng."
         }else{
             return confirmPass()
         }
@@ -129,10 +129,10 @@ class SignUpVC_1: BaseVC {
     func confirmPass() -> String?{
         
         if (textFieldPass.text?.characters.count)! < 6 {
-            return "mật khẩu không đúng"
+            return "mật khẩu không đúng."
         }else{
             if textFieldConfirmPass.text != textFieldPass.text{
-                return "xác nhận mật khẩu không đúng"
+                return "xác nhận mật khẩu không đúng."
             }
         }
         return nil

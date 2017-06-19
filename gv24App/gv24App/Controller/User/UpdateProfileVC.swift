@@ -79,7 +79,7 @@ class UpdateProfileVC: SignUpVC_2 {
     }
     
     override func localized() {
-        buttonComplate.title = "Cập nhật"
+        buttonComplate.title = LanguageManager.shared.localized(string: "Update")
         
     }
 }

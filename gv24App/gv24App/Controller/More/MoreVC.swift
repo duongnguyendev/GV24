@@ -8,10 +8,10 @@
 
 import UIKit
 
-class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SwitchCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = LanguageManager.shared.localized(string: "More")
         collectionMore.register(MoreItemCell.self, forCellWithReuseIdentifier: itemCellId)
         collectionMore.register(MoreUserCell.self, forCellWithReuseIdentifier: userCellId)
         collectionMore.register(MoreSocialCell.self, forCellWithReuseIdentifier: socialCellId)
@@ -70,7 +70,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
-                cell.text = "Thống kê công việc"
+                cell.text = "GeneralStatistic"
                 return cell
             }
             
@@ -80,11 +80,12 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             {
             case 0:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: switchCellId, for: indexPath) as! SwitchCell
-                cell.text = "Thông báo"
+                cell.delegate = self
+                cell.text = "Announcement"
                 return cell
             case 1:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
-                cell.text = "Ngôn ngữ"
+                cell.text = "Language"
                 return cell
             default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
@@ -96,11 +97,11 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             switch indexPath.item
             {
             case 0:
-                cell.text = "Về chúng tôi"
+                cell.text = "AboutUs"
             case 1:
-                cell.text = "Điều khoản sử dụng"
+                cell.text = "TermsOfUse"
             case 2:
-                cell.text = "Liên hệ"
+                cell.text = "Contact"
             default: break
                 
             }
@@ -113,7 +114,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 cell.text = "Chia sẻ ứng dụng GV24"
                 cell.icon = .androidShareAlt
             case 1:
-                cell.text = "Theo dõi GV24 trên Facebook"
+                cell.text = "FollowUsOnFacebook"
                 cell.icon = .socialFacebook
             default: break
                 
@@ -121,7 +122,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             return cell
         case 4:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
-            cell.text = "Log out"
+            cell.text = "Logout"
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
@@ -205,5 +206,13 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func handleSection3(item : Int){
         
     }
+    func notification(isOn: Bool) {
+        print(isOn)
+    }
     
+    override func localized() {
+        super.localized()
+        self.collectionMore.reloadData()
+        title = LanguageManager.shared.localized(string: "More")
+    }
 }

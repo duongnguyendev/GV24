@@ -15,25 +15,25 @@ class ForgotPassVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Quên mật khẩu"
+        title = LanguageManager.shared.localized(string: "ForgotPassword")
     }
     
     private let textFieldUserName : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .light, size: 14)
-        tf.placeholder = "Tên đăng nhập"
+        tf.placeholder = LanguageManager.shared.localized(string: "Username")
         return tf
     }()
     private let textFieldEmail : UITextField = {
         let tf = UITextField()
         tf.font = Fonts.by(name: .light, size: 14)
-        tf.placeholder = "Email"
+        tf.placeholder = LanguageManager.shared.localized(string: "EmailAddress")
         return tf
     }()
     private let buttonSend : BasicButton = {
         let btn = BasicButton()
         btn.color = AppColor.homeButton3
-        btn.title = "Gửi yêu cầu"
+        btn.title = LanguageManager.shared.localized(string: "Request")
         btn.addTarget(self, action: #selector(handleSendButton(_:)), for: .touchUpInside)
         return btn
         

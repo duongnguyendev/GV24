@@ -14,7 +14,7 @@ class SignUpVC_3: BaseVC{
     var avatarImage : UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Điều khoản"
+        title = LanguageManager.shared.localized(string: "TermsOfUse")
         // Do any additional setup after loading the view.
     }
     
@@ -24,7 +24,7 @@ class SignUpVC_3: BaseVC{
     }()
     let buttonComplate : BasicButton = {
         let btn = BasicButton()
-        btn.title = "Hoàn thành"
+        btn.title = LanguageManager.shared.localized(string: "Complete")
         btn.addTarget(self, action: #selector(handleButtonComplate(_:)), for: .touchUpInside)
         btn.color = AppColor.homeButton3
         return btn
@@ -32,7 +32,7 @@ class SignUpVC_3: BaseVC{
     let labelContent : UILabel = {
         let lb = UILabel()
         lb.textAlignment = .justified
-        lb.text = "\tThe world cellular, as it describes phone technology, was used by engineers Douglas H. Ring and W. Rae Young at Bell Labs. They diagrammed a network of wireless towers into what they called a cellular layout. Cellular was the chosen term because each tower and its coverage map looked like a biological cell. Eventually, phones that operated on this type of wireless network were called cellular phones.\n\n\tThe term mobile phone predates its cellular counterpart. The first mobile phone call was placed in 1946 over Bell System's Mobile telephone service, a closed radiotelephone system. And the first commercial mobile phones were installed cars in the 1970s.\n\n\tEventually, the two names, mobile phone and cellular phone, became synonymous, especially here in the US. But some people disagree with that usage. They consider the term \"cellular phone\" to be a misnomer because the phone is not cellular, the network is. The phone is a mobile phone and it operates on a cellular network."
+        lb.text = LanguageManager.shared.localized(string: "Terms")
         lb.numberOfLines = 0
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .regular, size: 14)

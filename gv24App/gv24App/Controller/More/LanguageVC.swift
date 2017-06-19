@@ -12,7 +12,7 @@ class LanguageVC: BaseVC, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Ngôn ngữ"
+        title = LanguageManager.shared.localized(string: "Language")
         tableViewLanguage.register(UITableViewCell.self, forCellReuseIdentifier: languageCellId)
         // Do any additional setup after loading the view.
     }

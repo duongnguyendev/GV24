@@ -17,7 +17,7 @@ class RequestMaidVC: PostVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Gửi yêu cầu"
+        title = LanguageManager.shared.localized(string: "Request")
     }
     
     override func handlePostButton(_ sender: UIButton) {
@@ -27,7 +27,7 @@ class RequestMaidVC: PostVC {
                 self.params["maidId"] = self.maid?.userId
                 TaskService.shared.sendRequestToMaid(params: self.params) { (error) in
                     if error == nil{
-                        self.showAlertWith(message: "Đăng bài thành công", completion: {
+                        self.showAlertWith(message: LanguageManager.shared.localized(string: "PostSuccessfully")!, completion: {
                             self.goBack()
                         })
                     }else{

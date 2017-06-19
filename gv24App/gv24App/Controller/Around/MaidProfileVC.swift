@@ -17,6 +17,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainCollectionView.register(MaidProfileCell.self, forCellWithReuseIdentifier: maidProfileCellId)
         mainCollectionView.register(MaidWorkInfoCell.self, forCellWithReuseIdentifier: maidWorkInfoCellId)
     }
@@ -122,7 +123,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
                 headerView?.title = "Năng lực làm việc"
                 return headerView!
             case 2:
-                headerView?.title = "Nhận xét"
+                headerView?.title = "Comment"
                 headerView?.backgroundColor = AppColor.collection
             default:
                 return headerView!

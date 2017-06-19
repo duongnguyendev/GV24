@@ -36,7 +36,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
-        title = "Thống kê"
+        title = LanguageManager.shared.localized(string: "GeneralStatistic")
         self.user = UserHelpers.currentUser
         loadData(startDate: starDate, endDate: endDate)
     }
@@ -73,7 +73,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         btn.contentHorizontalAlignment = .left
         btn.titleFont = Fonts.by(name: .regular, size: 15)
         btn.titleCollor = AppColor.backButton
-        btn.title = "Nạp tiền vào tài khoản"
+        btn.title = "Recharge"
         btn.addTarget(self, action: #selector(handleRechargeButton(_:)), for: .touchUpInside)
         return btn
     }()
@@ -143,7 +143,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         labelTo.font = Fonts.by(name: .light, size: 15)
         labelTo.translatesAutoresizingMaskIntoConstraints = false
         labelTo.textAlignment = .center
-        labelTo.text = "đến"
+        labelTo.text = LanguageManager.shared.localized(string: "To")
         
         let line = UIView.horizontalLine()
         
@@ -171,12 +171,12 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         let labelAccount = UILabel()
         labelAccount.font = Fonts.by(name: .medium, size: 16)
         labelAccount.translatesAutoresizingMaskIntoConstraints = false
-        labelAccount.text = "Tài khoản NGV247"
+        labelAccount.text = LanguageManager.shared.localized(string: "NGV247Account")
         
         let labelAccountBalance = UILabel()
         labelAccountBalance.font = Fonts.by(name: .light, size: 13)
         labelAccountBalance.translatesAutoresizingMaskIntoConstraints = false
-        labelAccountBalance.text = "Số dư tài khoản: " // account balance
+        labelAccountBalance.text = LanguageManager.shared.localized(string: "AccountBalance")
         
         accountView.addSubview(avatarImage)
         accountView.addSubview(buttonRecharge)

@@ -25,7 +25,7 @@ class HomeBottomView: BaseView {
     
     var slogan : String?{
         didSet{
-            sloganLabel.text = slogan
+            sloganLabel.text = LanguageManager.shared.localized(string: slogan!)
         }
     }
     

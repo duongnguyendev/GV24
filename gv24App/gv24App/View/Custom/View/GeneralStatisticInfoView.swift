@@ -65,9 +65,9 @@ class GeneralStatisticInfoView: BaseView {
         super.setupView()
         backgroundColor = UIColor.white
         
-        let labelPosted = labelWith(title: "Công việc đã đăng", textSize: 15)
-        let labelRuningWork = labelWith(title: "Công việc đang xử lý", textSize: 15)
-        let labelDone = labelWith(title: "Công việc đã hoàn thành", textSize: 15)
+        let labelPosted = labelWith(title: "PostedWork", textSize: 15)
+        let labelRuningWork = labelWith(title: "WorkInProcess", textSize: 15)
+        let labelDone = labelWith(title: "WorkDone", textSize: 15)
         let labelUnit = labelWith(title: "VND", textSize: 20)
         let labelTotalCost = labelWith(title: "Tổng chi phí", textSize: 18)
         
@@ -143,7 +143,7 @@ class GeneralStatisticInfoView: BaseView {
         label.textAlignment = .center
         label.font = Fonts.by(name: .light, size: textSize)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = title
+        label.text = LanguageManager.shared.localized(string: title)
         label.textColor = UIColor.lightGray
         return label
     }

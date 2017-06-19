@@ -12,7 +12,7 @@ class HeaderWithTitle: BaseHeaderView {
 
     var title : String?{
         didSet{
-            self.labelTitle.text = title
+            self.labelTitle.text = LanguageManager.shared.localized(string: title!)
         }
     }
     

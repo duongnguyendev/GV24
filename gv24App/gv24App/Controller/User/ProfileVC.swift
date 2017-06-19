@@ -11,7 +11,7 @@ import UIKit
 class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Thông tin"
+        title = LanguageManager.shared.localized(string: "Profile")
         mainCollectionView.register(CellWithTitle.self, forCellWithReuseIdentifier: cellId)
         mainCollectionView.register(UserProfileCell.self, forCellWithReuseIdentifier: profileCellId)
         mainCollectionView.register(CommentCell.self, forCellWithReuseIdentifier: commentCellId)
@@ -123,7 +123,7 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         if kind == UICollectionElementKindSectionHeader {
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? HeaderWithTitle
             if indexPath.section == 1 {
-                headerView?.title = "Nhận xét"
+                headerView?.title = "Comment"
             }
             return headerView!
         }

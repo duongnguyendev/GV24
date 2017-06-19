@@ -41,7 +41,6 @@ class HomeVC: BaseVC {
         let bt = HomeFunctButton()
         bt.backgroundColor =  AppColor.homeButton2
         bt.imageName = "quan_ly"
-        bt.title = "Quản lý\ncông việc"
         bt.addTarget(self, action: #selector(handleButtonTaskManagement(_:)), for: .touchUpInside)
         return bt
     }()
@@ -49,13 +48,11 @@ class HomeVC: BaseVC {
         let bt = HomeFunctButton()
         bt.backgroundColor =  AppColor.homeButton3
         bt.imageName = "lich_su"
-        bt.title = "Lịch sử\ncông việc"
         bt.addTarget(self, action: #selector(handleButtonHistory(_:)), for: .touchUpInside)
         return bt
     }()
     let sloganView : HomeBottomView = {
         let v = HomeBottomView()
-        v.slogan = "Niềm tin - Chất lượng"
         return v
     }()
     
@@ -117,5 +114,9 @@ class HomeVC: BaseVC {
     //MARK: - localize
     override func localized(){
         title = LanguageManager.shared.localized(string: "Home")
+        aroundButton.title = "Around"
+        historyButton.title = "WorkHistory"
+        taskManagerButton.title = "WorkManagement"
+        sloganView.slogan = "TrustQuality"
     }
 }
