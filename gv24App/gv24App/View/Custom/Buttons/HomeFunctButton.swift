@@ -26,6 +26,11 @@ class HomeFunctButton: BaseButton {
             self.titleView.text = title!
         }
     }
+    var textColor: UIColor? {
+        didSet{
+            titleView.textColor = textColor
+        }
+    }
     
     private let iconView : UIImageView = {
         let iv = UIImageView()

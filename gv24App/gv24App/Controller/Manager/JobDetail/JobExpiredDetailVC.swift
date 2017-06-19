@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class JobExpiredDetailVC: JobDetailVC{
+    var task = Task()
     
     let labelExpired : UILabel = {
         let lb = UILabel()
@@ -48,6 +49,9 @@ class JobExpiredDetailVC: JobDetailVC{
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.descTaskView.task = task
     }
     
     func handleRemoveTask(_ sender: UIButton){

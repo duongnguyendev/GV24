@@ -64,6 +64,7 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func selectedMaid(maid: MaidProfile) {
+        
         self.dismiss(animated: true, completion: nil)
     }
 }

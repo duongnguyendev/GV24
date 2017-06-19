@@ -26,13 +26,14 @@ class HomeVC: BaseVC {
         if !UserHelpers.isLogin {
             self.dismiss(animated: false, completion: nil)
         }
+
     }
     
     let aroundButton : HomeFunctButton = {
         let bt = HomeFunctButton()
         bt.backgroundColor = AppColor.homeButton1
         bt.imageName = "quanh_day"
-        bt.title = "giúp việc\nquanh đây"
+        bt.title = "Giúp việc\nquanh đây"
         bt.addTarget(self, action: #selector(handleButtonAround(_:)), for: .touchUpInside)
         return bt
     }()
@@ -75,7 +76,6 @@ class HomeVC: BaseVC {
         aroundButton.heightAnchor.constraint(equalToConstant: buttonSize - 20).isActive = true
         taskManagerButton.heightAnchor.constraint(equalToConstant: buttonSize - 20).isActive = true
         historyButton.heightAnchor.constraint(equalToConstant: buttonSize - 20).isActive = true
-        
         
         aroundButton.bottomAnchor.constraint(equalTo: sloganView.topAnchor, constant: 0).isActive = true
         taskManagerButton.bottomAnchor.constraint(equalTo: sloganView.topAnchor, constant: 0).isActive = true

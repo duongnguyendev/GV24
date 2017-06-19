@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 class JobAssignedDetailVC: BaseVC{
-    var taskAssigned = TaskAssigned()
+    var taskAssigned = Task()
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +59,9 @@ class JobAssignedDetailVC: BaseVC{
     }()
     
     func handleProfileButton(_ sender: UIButton){
+        let maidProfileVC = MaidProfileVC()
+        maidProfileVC.maid = taskAssigned.stakeholder?.receivced
+        push(viewController: maidProfileVC)
         print("Handle Profile Button")
     }
     func handleConformMaid(_ sender: UIButton){
@@ -75,7 +78,7 @@ class JobAssignedDetailVC: BaseVC{
     }
     override func viewWillAppear(_ animated: Bool) {
         self.descTaskView.task = taskAssigned
-        self.profileButton.received = taskAssigned.received
+        self.profileButton.received = taskAssigned.stakeholder?.receivced
     }
     
     override func setupView() {
@@ -112,7 +115,7 @@ class JobAssignedDetailVC: BaseVC{
         
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
-        deleteButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
         
     }

@@ -77,6 +77,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     
     let phoneTextField : UITextField = {
         let tf = UITextField()
+        tf.keyboardType = .numberPad
         tf.font = Fonts.by(name: .regular, size: 14)
         tf.placeholder = "Số điện thoại"
         return tf

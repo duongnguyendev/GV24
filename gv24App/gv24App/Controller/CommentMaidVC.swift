@@ -1,28 +1,14 @@
 //
-//  ReportMaidVC.swift
+//  CommentMaidVC.swift
 //  gv24App
 //
-//  Created by Nguyen Duy Duong on 5/31/17.
+//  Created by dinhphong on 6/16/17.
 //  Copyright © 2017 HBBs. All rights reserved.
 //
 
+import Foundation
 import UIKit
-
-class ReportMaidVC: BaseVC, UITextViewDelegate {
-    
-    var maid : MaidProfile?{
-        didSet{
-            self.avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
-            self.labelName.text = maid?.name
-            self.labelAddress.text = maid?.address?.name
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = AppColor.collection
-        title = "Báo cáo"
-    }
+class CommentMaidVC: BaseVC{
     
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
@@ -53,10 +39,29 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     private let textViewdContent : UITextView = {
         let tF = UITextView()
         tF.translatesAutoresizingMaskIntoConstraints = false
-        tF.text = "Báo cáo"
+        tF.text = "Bình luận"
         tF.font = Fonts.by(name: .regular, size: 15)
         return tF
     }()
+    
+    let labelRaiting: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.text = "Đánh giá"
+        lb.font = Fonts.by(name: .regular, size: 15)
+        lb.textColor = AppColor.lightGray
+        return lb
+    }()
+    let raitingView = RatingStartView()
+    
+    override func viewDidLoad() {
+        view.backgroundColor = AppColor.collection
+        title = "Nhận xét của bạn"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     
     override func setupRightNavButton() {
         let buttonSend = NavButton(title: "Gửi")
@@ -66,6 +71,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     }
     
     override func setupView() {
+        super.setupView()
         let userView = UIView()
         userView.backgroundColor = UIColor.white
         userView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +81,29 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
         view.addSubview(labelName)
         view.addSubview(labelAddress)
         
+        avatarImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        avatarImageView.centerYAnchor.constraint(equalTo: userView.centerYAnchor, constant: 0).isActive = true
+        
+        labelName.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20).isActive = true
+        labelName.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 0).isActive = true
+        
+        labelAddress.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20).isActive = true
+        labelAddress.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
+        
+    }
+    /*override func setupView() {
+        super.setupView()
+        
+        let userView = UIView()
+        userView.backgroundColor = UIColor.white
+        userView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(userView)
+        
+        view.addSubview(avatarImageView)
+        view.addSubview(labelName)
+        view.addSubview(labelAddress)
+       
         userView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         userView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         userView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
@@ -90,6 +119,19 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
         labelAddress.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
         
+        /*let viewRaiting = UIView()
+        viewRaiting.translatesAutoresizingMaskIntoConstraints = false
+        viewRaiting.backgroundColor = .white
+        view.addSubview(viewRaiting)
+        viewRaiting.addSubview(labelRaiting)
+        viewRaiting.addSubview(raitingView)
+        
+        labelRaiting.leftAnchor.constraint(equalTo: viewRaiting.leftAnchor, constant: 20).isActive = true
+        labelRaiting.centerYAnchor.constraint(equalTo: viewRaiting.centerYAnchor).isActive = true
+        
+        raitingView.centerYAnchor.constraint(equalTo: viewRaiting.centerYAnchor).isActive = true
+        raitingView.leftAnchor.constraint(equalTo: labelRaiting.leftAnchor, constant: 20).isActive = true*/
+        
         let viewConent = UIView()
         viewConent.translatesAutoresizingMaskIntoConstraints = false
         viewConent.backgroundColor = UIColor.white
@@ -104,38 +146,8 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
         textViewdContent.leftAnchor.constraint(equalTo: viewConent.leftAnchor, constant: 20).isActive = true
         textViewdContent.rightAnchor.constraint(equalTo: viewConent.rightAnchor, constant: -20).isActive = true
         textViewdContent.bottomAnchor.constraint(equalTo: viewConent.bottomAnchor, constant: 0).isActive = true
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        
-    }
-    
-    //MARK: - handle button
-    
+    }*/
     func handleSendButton(_ sender: UIButton){
-        let alert = UIAlertController(title: "", message: "Báo cáo thành công", preferredStyle: .alert)
-        var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
-            UserService.shared.report(maidId: (maid?.userId)!, content: textViewdContent.text, completion: { (error) in
-                if error != nil{
-                    alert.message = error
-                }else{
-                    alertAction = UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
-                        self.dismiss(animated: true, completion: nil)
-                    })
-                    alert.addAction(alertAction)
-                }
-                self.present(alert: alert)
-            })
-        }else{
-            alert.message = "Vui lòng nhập nội dung cần báo cáo"
-            alert.addAction(alertAction)
-            self.present(alert: alert)
-        }
-    }
-    
-    func present(alert : UIAlertController){
-        
-        self.present(alert, animated: true, completion: nil)
+        print("Send Comment Maid ")
     }
 }

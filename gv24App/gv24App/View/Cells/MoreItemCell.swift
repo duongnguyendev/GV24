@@ -31,7 +31,6 @@ class MoreItemCell: BaseMoreCell {
         labelView.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true
     }
 }
-
 class MoreSocialCell: BaseMoreCell{
     var text : String?{
         didSet{

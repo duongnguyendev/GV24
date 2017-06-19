@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 class DetailTaskHistoryVC: BaseVC{
     var taskHistory = Task()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainScrollView.backgroundColor = AppColor.collection
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -78,9 +78,13 @@ class DetailTaskHistoryVC: BaseVC{
     private let horizontalStatusTaskLine = UIView.horizontalLine()
     
     func handleButtonComment(_ sender: UIButton){
+        let commentVC = CommentMaidVC()
+        push(viewController: commentVC)
         print("Click Button Comment")
     }
     func handleButtonProfile(_ sender: UIButton){
+        //let maidHistoryProfileVC = MaidProfileHistoryVC()
+        //push(viewController: maidHistoryProfileVC)
         print("Click Button Profile")
     }
     override func setupView() {

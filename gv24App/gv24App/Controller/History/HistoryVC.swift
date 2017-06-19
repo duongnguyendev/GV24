@@ -150,13 +150,13 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         segmentedControl.selectedSegmentIndex = Int(index)
     }
     
+    //MARK: - Delegate-
     func selectedTaskHistory(task: Task) {
         let detailTaskHistory = DetailTaskHistoryVC()
         detailTaskHistory.taskHistory = task
         push(viewController: detailTaskHistory)
 
     }
-    
     func selectedProfile(maid: MaidHistory) {
         let maidProfileVC = MaidProfileHistoryVC()
         maidProfileVC.maidHistory = maid
@@ -166,6 +166,10 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         let taskMaidVC = ListTaskMaidVC()
         taskMaidVC.id = list.userId
         push(viewController: taskMaidVC)
+    }
+    func selectedTaskUnpaid() {
+        let paymentVC = PaymentVC()
+        push(viewController: paymentVC)
     }
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){

@@ -28,7 +28,7 @@ class UnpaidWorkControlCell: HistoryControlCell{
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if delegate != nil{
-            
+            delegate?.selectedTaskUnpaid!()
         }
     }
 }

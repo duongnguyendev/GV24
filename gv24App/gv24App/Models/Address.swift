@@ -28,7 +28,7 @@ class Address: Entity {
         super.init(jsonData: jsonData)
         self.name = jsonData["name"].string
         self.location = CLLocationCoordinate2D()
-        self.location?.latitude = jsonData["coordinates"]["lat"].double!
-        self.location?.longitude = jsonData["coordinates"]["lng"].double!
+        self.location?.latitude = jsonData["coordinates"]["lat"].double ?? 0.0
+        self.location?.longitude = jsonData["coordinates"]["lng"].double ?? 0.0
     }
 }

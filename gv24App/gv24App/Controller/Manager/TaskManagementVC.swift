@@ -13,6 +13,8 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     private let cellNew = "cellNew"
     private let cellAssigned = "cellAssigned"
     private let cellInProgress = "cellInProgress"
+    
+    var indexPath: IndexPath?
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Quản lý công việc"
@@ -40,7 +42,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: "Đã đăng", at: 0, animated: true)
-        sc.insertSegment(withTitle: "Đã giao", at: 1, animated: true)
+        sc.insertSegment(withTitle: "Đã phân công", at: 1, animated: true)
         sc.insertSegment(withTitle: "Đang làm", at: 2, animated: true)
         sc.selectedSegmentIndex = 0
         sc.tintColor = AppColor.backButton
@@ -95,13 +97,14 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
         let index = targetContentOffset.pointee.x / view.frame.width
+        indexPath = IndexPath(item: Int(index), section: 0)
         segmentedControl.selectedSegmentIndex = Int(index)
     }
     
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){
-        let index = IndexPath(item: sender.selectedSegmentIndex, section: 0)
-        self.collectionType.scrollToItem(at: index, at: .left, animated: true)
+        indexPath = IndexPath(item: sender.selectedSegmentIndex, section: 0)
+        self.collectionType.scrollToItem(at: indexPath!, at: .left, animated: true)
     }
     
     //MARK: - hanlde event
@@ -111,20 +114,18 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     //MARK: - task control delegate
-    func didSelected(task: Task) {
-        if task.process?.id == "000000000000000000000001"{
-            if (task.stakeholder?.request?.count)! > 0{
-                let jobPostVC = JobPostedDetailVC()
-                jobPostVC.task = task
-                present(viewController: jobPostVC)
-            }else{
-                let jobNewDetailVC = JobExpiredDetailVC()
-                push(viewController: jobNewDetailVC)
-            }
+    func selectedPosted(task: Task, deadline: Bool) {
+        if deadline{
+            let jobNewDetailVC = JobExpiredDetailVC()
+            jobNewDetailVC.task = task
+            push(viewController: jobNewDetailVC)
+        }else{
+            let jobPostVC = JobPostedDetailVC()
+            jobPostVC.task = task
+            present(viewController: jobPostVC)
         }
     }
-    
-    func selectedTask(task: TaskAssigned) {
+    func selectedAssigned(task: Task) {
         if task.process?.id == "000000000000000000000003"{
             let jobPostVC = JobAssignedDetailVC()
             jobPostVC.taskAssigned = task
@@ -135,11 +136,16 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
             push(viewController: jobProgressVC)
         }
     }
-    
     func remove(task: Task) {
         let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ShowDeleteWork"), preferredStyle:UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default){ action -> Void in
-            
+            TaskManageService.shared.deleteTask(task: task, completion: { (flag) in
+                if (flag!){
+                    
+                }else{
+                    
+                }
+            })
         })
         alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel){ action -> Void in
             

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 class JobProgressDetailVC: BaseVC {
-    var taskProgress = TaskAssigned()
+    var taskProgress = Task()
 
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
@@ -22,7 +22,7 @@ class JobProgressDetailVC: BaseVC {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.title = "Hoàn tất công việc"
-        button.addTarget(self, action: #selector(handleButtonConformMaid(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleButtonFinishMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
         button.color = AppColor.backButton
         button.iconName = .logOut
@@ -36,10 +36,15 @@ class JobProgressDetailVC: BaseVC {
     }()
     
     func handleButtonProfile(_ sender: UIButton){
+        let maidProfileVC = MaidProfileVC()
+        maidProfileVC.maid = taskProgress.stakeholder?.receivced
+        push(viewController: maidProfileVC)
         print("Click Profile Button")
     }
-    func handleButtonConformMaid(_ sender: IconTextButton){
-        print("Click Conform Maid Button")
+    func handleButtonFinishMaid(_ sender: UIButton){
+        let paymentVC = PaymentVC()
+        push(viewController: paymentVC)
+        print("Click Finish Maid Button")
     }
     
     override func viewDidLoad() {
@@ -49,7 +54,7 @@ class JobProgressDetailVC: BaseVC {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.descTaskView.task = taskProgress
-        self.profileButton.received = taskProgress.received
+        self.profileButton.received = taskProgress.stakeholder?.receivced
     }
     
     override func setupView() {

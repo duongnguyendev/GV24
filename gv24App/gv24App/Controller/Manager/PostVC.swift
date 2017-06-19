@@ -422,7 +422,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     private func validateDescription() -> String?{
         let numberChar = (descriptionTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)!
-        if  numberChar > 20 {
+        if  numberChar > 10 {
             params["description"] = descriptionTextField.text
             return nil
         }

@@ -140,9 +140,15 @@
 		4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35D1EE150CD00560C4A /* RadioButton.swift */; };
 		4EF1F3601EE1640600560C4A /* ButtonTitleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35F1EE1640600560C4A /* ButtonTitleValue.swift */; };
 		4EF8A14E1EE110CF002A5920 /* LabelButtomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8A14D1EE110CF002A5920 /* LabelButtomLine.swift */; };
-		A6D471261EF225E900F8A5BA /* TaskAssigned.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471251EF225E900F8A5BA /* TaskAssigned.swift */; };
+		A61F96C51EF3EBD900CE5A2E /* CommentMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F96C41EF3EBD900CE5A2E /* CommentMaidVC.swift */; };
 		A6D471281EF2262A00F8A5BA /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471271EF2262A00F8A5BA /* ApplicantsVC.swift */; };
 		A6D4712B1EF2284900F8A5BA /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4712A1EF2284900F8A5BA /* PaymentVC.swift */; };
+		A6D4712E1EF24AD800F8A5BA /* JobTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4712D1EF24AD800F8A5BA /* JobTypeCell.swift */; };
+		A6D471301EF25ECA00F8A5BA /* KeyBillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4712F1EF25ECA00F8A5BA /* KeyBillCell.swift */; };
+		A6D471321EF2614A00F8A5BA /* ProfileMaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471311EF2614A00F8A5BA /* ProfileMaidCell.swift */; };
+		A6D471341EF2621D00F8A5BA /* MoneyMaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471331EF2621D00F8A5BA /* MoneyMaidCell.swift */; };
+		A6D471361EF2721A00F8A5BA /* BankOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471351EF2721A00F8A5BA /* BankOwnerCell.swift */; };
+		A6D471381EF273CA00F8A5BA /* TotalMaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471371EF273CA00F8A5BA /* TotalMaidCell.swift */; };
 		CF334A489D0E0A4083BA94C8 /* Pods_gv24App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6048FD6ABBCEEABE41FA5CE8 /* Pods_gv24App.framework */; };
 /* End PBXBuildFile section */
 
@@ -292,9 +298,15 @@
 		6048FD6ABBCEEABE41FA5CE8 /* Pods_gv24App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gv24App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D2C40D16D81184827E7734 /* Pods-gv24App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.release.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.release.xcconfig"; sourceTree = "<group>"; };
 		9E955963E9F84A771AF50D5E /* Pods-gv24App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.debug.xcconfig"; sourceTree = "<group>"; };
-		A6D471251EF225E900F8A5BA /* TaskAssigned.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAssigned.swift; sourceTree = "<group>"; };
+		A61F96C41EF3EBD900CE5A2E /* CommentMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentMaidVC.swift; sourceTree = "<group>"; };
 		A6D471271EF2262A00F8A5BA /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
 		A6D4712A1EF2284900F8A5BA /* PaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
+		A6D4712D1EF24AD800F8A5BA /* JobTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTypeCell.swift; sourceTree = "<group>"; };
+		A6D4712F1EF25ECA00F8A5BA /* KeyBillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBillCell.swift; sourceTree = "<group>"; };
+		A6D471311EF2614A00F8A5BA /* ProfileMaidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMaidCell.swift; sourceTree = "<group>"; };
+		A6D471331EF2621D00F8A5BA /* MoneyMaidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyMaidCell.swift; sourceTree = "<group>"; };
+		A6D471351EF2721A00F8A5BA /* BankOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankOwnerCell.swift; sourceTree = "<group>"; };
+		A6D471371EF273CA00F8A5BA /* TotalMaidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalMaidCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +335,7 @@
 		03446A441EE54F3D004DB193 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A6D4712C1EF24A7400F8A5BA /* Payment */,
 				03446A4C1EE54F3D004DB193 /* MoreItemCell.swift */,
 				03446A4D1EE54F3D004DB193 /* MoreUserCell.swift */,
 				03446A4E1EE54F3D004DB193 /* SwitchCell.swift */,
@@ -453,7 +466,6 @@
 		4E3D091F1EB31FDB00303AAD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A6D471251EF225E900F8A5BA /* TaskAssigned.swift */,
 				4E8D275B1EDC156100872A61 /* Task.swift */,
 				4EBF04B11ED28FFF00F7E08B /* User.swift */,
 				4EBF04B31ED2925200F7E08B /* WorkInfo.swift */,
@@ -550,6 +562,7 @@
 				4ED231741EB980D000592842 /* BaseVC.swift */,
 				4ED2317D1EB9B15E00592842 /* HomeVC.swift */,
 				4E5C04CA1EF1340A00470C8C /* LaunchScreenVC.swift */,
+				A61F96C41EF3EBD900CE5A2E /* CommentMaidVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -703,6 +716,19 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		A6D4712C1EF24A7400F8A5BA /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				A6D4712D1EF24AD800F8A5BA /* JobTypeCell.swift */,
+				A6D4712F1EF25ECA00F8A5BA /* KeyBillCell.swift */,
+				A6D471311EF2614A00F8A5BA /* ProfileMaidCell.swift */,
+				A6D471331EF2621D00F8A5BA /* MoneyMaidCell.swift */,
+				A6D471351EF2721A00F8A5BA /* BankOwnerCell.swift */,
+				A6D471371EF273CA00F8A5BA /* TotalMaidCell.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		F9D1FBA244296AEB06CA2D41 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +877,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03446A571EE54F3D004DB193 /* BaseCell.swift in Sources */,
+				A6D471381EF273CA00F8A5BA /* TotalMaidCell.swift in Sources */,
 				4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */,
 				4E61E3DD1EC1A31C00E6C8C5 /* SignUpVC_2.swift in Sources */,
 				4ED231831EB9CEFD00592842 /* HomeBottomView.swift in Sources */,
@@ -860,6 +887,7 @@
 				03446A5C1EE54F3D004DB193 /* MoreItemCell.swift in Sources */,
 				4E8D27581EDC14F100872A61 /* ProfileUserButton.swift in Sources */,
 				4EBF04B81ED29D0C00F7E08B /* UserHelpers.swift in Sources */,
+				A61F96C51EF3EBD900CE5A2E /* CommentMaidVC.swift in Sources */,
 				4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */,
 				03446A5B1EE54F3D004DB193 /* TaskHistoryControlCell.swift in Sources */,
 				4ECD1D3A1EB18743007DEF88 /* Font.swift in Sources */,
@@ -869,6 +897,7 @@
 				4ED2316F1EB979AF00592842 /* Colors.swift in Sources */,
 				4E8D27501EDC142100872A61 /* DateTimeView.swift in Sources */,
 				4ED2316D1EB9797B00592842 /* ViewExtensions.swift in Sources */,
+				A6D471341EF2621D00F8A5BA /* MoneyMaidCell.swift in Sources */,
 				4E57F9C21EE90AEC00C02EF2 /* MaidWorkInfoCell.swift in Sources */,
 				4E4E358D1ED7E02100D13EF5 /* TermsVC.swift in Sources */,
 				4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */,
@@ -877,6 +906,7 @@
 				4E0F75C31EE50C4D00121113 /* DateLauncher.swift in Sources */,
 				4E8D274F1EDC142100872A61 /* DescInfoView.swift in Sources */,
 				4E3D17621EE7BE5000C91D6B /* InputButonWithIcon.swift in Sources */,
+				A6D471321EF2614A00F8A5BA /* ProfileMaidCell.swift in Sources */,
 				03446A5E1EE54F3D004DB193 /* SwitchCell.swift in Sources */,
 				4E4E358F1ED7E0C800D13EF5 /* ContactVC.swift in Sources */,
 				4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */,
@@ -909,7 +939,6 @@
 				4E8D275C1EDC156100872A61 /* Task.swift in Sources */,
 				4EBF04BA1ED2BB7500F7E08B /* UserService.swift in Sources */,
 				03446A601EE54F3D004DB193 /* TaskAssignedControlCell.swift in Sources */,
-				A6D471261EF225E900F8A5BA /* TaskAssigned.swift in Sources */,
 				03446A651EE54F3D004DB193 /* TaskNewControlCell.swift in Sources */,
 				03B762AE1EEEA1410006A2BC /* ListTaskMaidVC.swift in Sources */,
 				4EAA97241ECAD99E0001FEB6 /* HistoryVC.swift in Sources */,
@@ -938,6 +967,7 @@
 				4E8D275A1EDC152800872A61 /* TaskManageService.swift in Sources */,
 				03446A701EE5530B004DB193 /* UnpaidWorkControlCell.swift in Sources */,
 				03446A5D1EE54F3D004DB193 /* MoreUserCell.swift in Sources */,
+				A6D471361EF2721A00F8A5BA /* BankOwnerCell.swift in Sources */,
 				4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */,
 				4E4DD6E51EB0A838001B4936 /* Icon.swift in Sources */,
 				4E0F75C71EE54A6300121113 /* WorkType.swift in Sources */,
@@ -946,11 +976,13 @@
 				4EBF04B61ED292F100F7E08B /* Address.swift in Sources */,
 				4EA7A8441EBB1E6600CA7F37 /* BasicButton.swift in Sources */,
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
+				A6D471301EF25ECA00F8A5BA /* KeyBillCell.swift in Sources */,
 				4E58A7A01EEE49B30088FC1D /* GeneralStatisticInfoView.swift in Sources */,
 				033DC7381EF0E0600093EE8F /* JobExpiredDetailVC.swift in Sources */,
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
 				03D3103B1EEA7F4F00CF53C3 /* MaidTask.swift in Sources */,
+				A6D4712E1EF24AD800F8A5BA /* JobTypeCell.swift in Sources */,
 				4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */,
 				4EBF04BC1ED2C5A400F7E08B /* Entity.swift in Sources */,
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
@@ -1114,7 +1146,7 @@
 				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1133,7 +1165,7 @@
 				DEVELOPMENT_TEAM = 7R93MWJ8VY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
 				PRODUCT_NAME = "$(TARGET_NAME)";

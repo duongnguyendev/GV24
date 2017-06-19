@@ -15,7 +15,6 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
             title = maid?.name
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainCollectionView.register(MaidProfileCell.self, forCellWithReuseIdentifier: maidProfileCellId)
@@ -26,7 +25,6 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
     override func setupRightNavButton() {
         
     }
-    
     //MARK: - Collection Delegate - Datasource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

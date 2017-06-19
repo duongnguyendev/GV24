@@ -11,6 +11,7 @@ import UIKit
     @objc optional func selectedTaskHistory(task : Task)
     @objc optional func selectedProfile(maid : MaidHistory)
     @objc optional func selectedTaskMaid(list : MaidHistory)
+    @objc optional func selectedTaskUnpaid()
 }
 class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
     var delegate : HistoryVCDelegate?

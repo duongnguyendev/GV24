@@ -19,7 +19,6 @@ class Task: Entity{
     override init() {
         super.init()
     }
-    
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
         id = jsonData["_id"].string ?? ""
@@ -56,7 +55,7 @@ class History: Entity{
 class Stakeholder: Entity{
     var owner: String?
     var request: [Request]?
-    //var receive: Receive?
+    var receivced: MaidProfile?
     
     override init() {
         super.init()
@@ -65,7 +64,7 @@ class Stakeholder: Entity{
         super.init(jsonData: jsonData)
         self.owner = jsonData["owner"].string ?? ""
         self.request = jsonData["request"].array?.map { return Request(json: $0) } ?? []
-        //self.receive = Receive(jsonData: jsonData["received"])
+        self.receivced = MaidProfile(jsonData: jsonData["received"])
     }
     struct Request {
         let maid: String?
@@ -74,22 +73,6 @@ class Stakeholder: Entity{
             maid = json["maid"].string ?? ""
             time = json["time"].string ?? ""
         }
-    }
-}
-class Receive: Entity{
-    var id: String?
-    var work_info: WorkInfo?
-    var user_info: User?
-    
-    override init() {
-        super.init()
-    }
-    
-    override init(jsonData: JSON) {
-        super.init(jsonData: jsonData)
-        self.id = jsonData["_id"].string ?? ""
-        self.work_info = WorkInfo(jsonData: jsonData["work_info"])
-        self.user_info = User(jsonData: jsonData)
     }
 }
 class Info: Entity {

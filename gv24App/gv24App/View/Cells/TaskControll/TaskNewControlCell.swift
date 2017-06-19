@@ -10,24 +10,32 @@ import UIKit
 
 class TaskNewControlCell: TaskControlCell {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (tasksNew[indexPath.item].stakeholder?.request?.count)! > 0{
+        let endTime = tasks[indexPath.item].info?.time?.endAt
+        let deadlinePosted = Date(isoDateString: endTime!).compareDate
+        if deadlinePosted{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: expiredCellId, for: indexPath) as! TaskExpiredCell
+            cell.task = tasks[indexPath.item]
+            return cell
+        }else if (tasks[indexPath.item].stakeholder?.request?.count)! > 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: applicantCellId, for: indexPath) as! TaskNewCell
-            let taskNew = tasksNew[indexPath.item]
+            let taskNew = tasks[indexPath.item]
             cell.countNumber = taskNew.stakeholder?.request?.count
             cell.task = taskNew
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newCellId, for: indexPath) as! TaskCell
-            cell.task = tasksNew[indexPath.item]
+            cell.task = tasks[indexPath.item]
             return cell
         }
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tasksNew.count
+        return tasks.count
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let endTime = tasks[indexPath.item].info?.time?.endAt
+        let deadlinePosted = Date(isoDateString: endTime!).compareDate
         if self.delegate != nil {
-            self.delegate?.didSelected!(task: tasksNew[indexPath.item])
+            self.delegate?.selectedPosted!(task: tasks[indexPath.item],deadline: deadlinePosted)
         }
     }
     override func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
@@ -37,7 +45,7 @@ class TaskNewControlCell: TaskControlCell {
         pointCell = gestureReconizer.location(in: taskCollectionView)
         indexPath = taskCollectionView.indexPathForItem(at: pointCell)!
         if self.delegate != nil{
-            self.delegate?.remove!(task: tasksNew[indexPath.item])
+            self.delegate?.remove!(task: tasks[indexPath.item])
         }
     }
     let newCellId = "newCellId"
@@ -46,7 +54,6 @@ class TaskNewControlCell: TaskControlCell {
     override func setupView() {
         super.setupView()
     }
-    
     override func register() {
         taskCollectionView.register(TaskNewCell.self, forCellWithReuseIdentifier: applicantCellId)
         taskCollectionView.register(TaskCell.self, forCellWithReuseIdentifier: newCellId)

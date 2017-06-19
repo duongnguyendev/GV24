@@ -13,6 +13,7 @@ import UIKit
     func choose()
 }
 class MaidProfileCell: UserProfileCell {
+    
     var user: MaidProfile?{
         didSet{
             self.ratingView.point = user!.workInfo?.evaluationPoint as? Double

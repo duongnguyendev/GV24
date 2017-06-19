@@ -10,9 +10,8 @@ import Foundation
 import SwiftyJSON
 class TaskManageService: APIService{
     static let shared = TaskManageService()
-    
-    func fetchTaskNew(completion:@escaping (TaskNewCompletion)){
-        let url = "owner/getAllTasks?process=000000000000000000000001"
+    func fetchTask(process: String,completion:@escaping (TaskCompletion)){
+        let url = "owner/getAllTasks?process=\(process)"
         getWithToken(url: url) { (jsons, message) in
             if message == nil{
                 var tasks = [Task]()
@@ -26,27 +25,17 @@ class TaskManageService: APIService{
             }
         }
     }
-    func fetchTaskAssiged(process: String,completion:@escaping (TaskAssignedCompletion)){
-        let url = "owner/getAllTasks?process=\(process)"
-        getWithToken(url: url) { (jsons, error) in
-            if error == nil{
-                var tasksAssigned = [TaskAssigned]()
-                jsons?.array?.forEach({ (json) in
-                    let assigned = TaskAssigned(jsonData: json)
-                    tasksAssigned.append(assigned)
-                })
-                completion(tasksAssigned)
+    func deleteTask(task: Task,completion: @escaping (DeleteTaskCompletion)){
+        let url = "task/delete?id=\((task.id)!)"
+        let params : Dictionary<String,String> = ["id": "593f93d87a7116000498565f"]
+        deleteWithToken(url: url, parameters: params) { (json, message) in
+            if json == nil{
+                completion(false)
             }else{
-                completion(nil)
+                completion(true)
             }
         }
-        
     }
-    
-   /* func deleteTask(task: Task,completion:@escaping (TaskCompletion)){
-        _ = "task/delete?id=\((task.id)!)?ownerId=\((task.stakeholder?.owner)!)"
-    }*/
-    
     func fetchApplicants(id: String,completion:@escaping (ApplicantCompletion)){
         let url = "task/getRequest?id=\(id)"
         getWithToken(url: url) { (json, error) in
@@ -62,4 +51,5 @@ class TaskManageService: APIService{
             }
         }
     }
+    
 }

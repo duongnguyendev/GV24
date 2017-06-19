@@ -235,7 +235,26 @@ class APIService: NSObject {
             }
         }
     }
-    
+    func deleteWithToken(url: String,parameters: Dictionary<String, String>,completion:@escaping (ResponseCompletion)){
+        let header: HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
+        Alamofire.request(self.urlFrom(request: url), method: .delete, parameters: parameters,headers: header).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let status = json["status"].bool
+                if !status!{
+                    if let message = json["message"].string{
+                        completion(nil, message)
+                    }
+                }else{
+                    completion(json["data"], nil)
+                }
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
+                print(error)
+            }
+        }
+    }
     func urlFrom(request: String) -> String{
         return domain + request
     }

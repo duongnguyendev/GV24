@@ -16,7 +16,6 @@ class UserService: APIService {
     static let shared = UserService()
     
     func getMaidAround(location : CLLocationCoordinate2D, completion : @escaping (([MaidProfile]?, String?) -> ())){
-        
         let url = "more/getAllMaids?lat=\(location.latitude)&lng=\(location.longitude)"
         get(url: url) { (response, error) in
             if error == nil {

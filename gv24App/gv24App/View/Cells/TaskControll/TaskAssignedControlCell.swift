@@ -9,18 +9,26 @@
 import UIKit
 
 class TaskAssignedControlCell: TaskControlCell {
-
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: assignedCellId, for: indexPath) as! TaskCell
-        cell.task = taskAssigned[indexPath.item]
-        return cell
+        let endTime = tasks[indexPath.item].info?.time?.endAt
+        let deadlinePosted = Date(isoDateString: endTime!).compareDate
+        if deadlinePosted {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: assignedCellId, for: indexPath) as! TaskCell
+            cell.task = tasks[indexPath.item]
+            return cell
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: expiredCellId, for: indexPath) as! TaskExpiredCell
+            cell.task = tasks[indexPath.item]
+            return cell
+        }
+        
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return taskAssigned.count
+        return tasks.count
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.delegate != nil {
-            self.delegate?.selectedTask!(task: taskAssigned[indexPath.item])
+            self.delegate?.selectedAssigned!(task: tasks[indexPath.item])
         }
     }
     let assignedCellId = "assignedCellId"
@@ -40,7 +48,7 @@ class TaskAssignedControlCell: TaskControlCell {
         pointCell = gestureReconizer.location(in: taskCollectionView)
         indexPath = taskCollectionView.indexPathForItem(at: pointCell)!
         if self.delegate != nil{
-            self.delegate?.remove!(task: taskAssigned[indexPath.item])
+            self.delegate?.remove!(task: tasks[indexPath.item])
         }
     }
     

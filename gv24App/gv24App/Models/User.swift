@@ -36,7 +36,6 @@ class User: Entity {
         self.wallet = jsonData["wallet"].double
         self.address = Address(jsonData: jsonData["info"]["address"])
     }
-    
 }
 class MaidProfile : User {
     

@@ -1,23 +1,15 @@
 //
-//  ProfileButton.swift
+//  ProfileMaidCell.swift
 //  gv24App
 //
-//  Created by Macbook Solution on 5/26/17.
+//  Created by dinhphong on 6/15/17.
 //  Copyright © 2017 HBBs. All rights reserved.
 //
 
 import Foundation
 import UIKit
-class ProfileUserButton: BaseButton{
-    let cellMargin : CGFloat = 20
-    
-    var received: MaidProfile?{
-        didSet{
-            avatarImageView.loadImageUsingUrlString(urlString: (received?.avatarUrl)!)
-            labelName.text = received?.userName
-            labelAddress.text = received?.address?.name
-        }
-    }
+class ProfileMaidCell: BaseCollectionCell{
+    let cellMargin: CGFloat = 20
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +28,7 @@ class ProfileUserButton: BaseButton{
     
     private let labelAddress : UILabel = {
         let lb = UILabel()
-        lb.font = Fonts.by(name: .light, size: 13)
+        lb.font = Fonts.by(name: .light, size: 12)
         lb.text = "244 Cống Quỳnh, P. Phạm Ngũ Lão, Q.1"
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -47,7 +39,7 @@ class ProfileUserButton: BaseButton{
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
-
+    
     override func setupView() {
         super.setupView()
         backgroundColor = UIColor.white
@@ -70,11 +62,10 @@ class ProfileUserButton: BaseButton{
         arrowRight.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         arrowRight.widthAnchor.constraint(equalToConstant: 20).isActive = true
         arrowRight.heightAnchor.constraint(equalToConstant: 20).isActive = true
-
         
-        labelAddress.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin / 2).isActive = true
-        labelAddress.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true
-        labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
-    }
-}
+        labelAddress.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin/2).isActive = true
+        labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -cellMargin/4).isActive = true
 
+    }
+    
+}

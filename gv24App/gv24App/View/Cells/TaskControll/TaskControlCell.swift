@@ -8,18 +8,18 @@
 
 import UIKit
 @objc protocol TaskControlDelegate {
-    @objc optional func didSelected(task : Task)
+    @objc optional func selectedPosted(task : Task,deadline: Bool)
     @objc optional func remove(task : Task)
-    @objc optional func selectedTask(task : TaskAssigned)
+    @objc optional func selectedAssigned(task : Task)
 }
 
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
     var delegate : TaskControlDelegate?
     let cellId = "cellId"
-    var tasksNew = [Task]()
-    var taskAssigned = [TaskAssigned]()
+    var tasks = [Task]()
     var indexPath = IndexPath(item: 0, section: 0)
     var pointCell = CGPoint()
+    
     lazy var taskCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -32,18 +32,19 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     var type: Int?{
         didSet{
             if type == 0{
-                TaskManageService.shared.fetchTaskNew(completion: { (taksNew) in
-                    self.tasksNew = taksNew!
+                TaskManageService.shared.fetchTask(process: "000000000000000000000001&sortByTaskTime=true", completion: { (tasksNew) in
+                    self.tasks = tasksNew!
                     self.taskCollectionView.reloadData()
                 })
             }else if type == 1{
-                TaskManageService.shared.fetchTaskAssiged(process: "000000000000000000000003",completion: { (tasksAssigned) in
-                    self.taskAssigned = tasksAssigned!
+                TaskManageService.shared.fetchTask(process: "000000000000000000000003", completion: { (tasksAssigned) in
+                    self.tasks = tasksAssigned!
                     self.taskCollectionView.reloadData()
                 })
+
             }else{
-                TaskManageService.shared.fetchTaskAssiged(process: "000000000000000000000004",completion: { (tasksProgress) in
-                    self.taskAssigned = tasksProgress!
+                TaskManageService.shared.fetchTask(process: "000000000000000000000004", completion: { (tasksProgress) in
+                    self.tasks = tasksProgress!
                     self.taskCollectionView.reloadData()
                 })
             }

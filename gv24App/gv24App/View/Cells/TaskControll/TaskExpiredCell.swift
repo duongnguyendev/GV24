@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 class TaskExpiredCell: TaskCell{
+    
     let labelExpired : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        lb.widthAnchor.constraint(equalToConstant: 70).isActive = true
         lb.heightAnchor.constraint(equalToConstant: 20).isActive = true
         lb.font = Fonts.by(name: .light, size: 13)
         lb.textColor = UIColor.white
