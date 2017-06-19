@@ -14,5 +14,7 @@ target 'gv24App' do
   pod 'Google/SignIn'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
   
 end

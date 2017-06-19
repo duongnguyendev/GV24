@@ -55,6 +55,7 @@
 		4E0F75C51EE544EA00121113 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0F75C41EE544EA00121113 /* TaskService.swift */; };
 		4E0F75C71EE54A6300121113 /* WorkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0F75C61EE54A6300121113 /* WorkType.swift */; };
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
+		4E250E481EF3D1B100CCDE61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E250E471EF3D1B100CCDE61 /* GoogleService-Info.plist */; };
 		4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBE29A1ED83948005B47B0 /* AppDelegate.swift */; };
 		4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95A1EEF94390073BC7E /* RechargeVC.swift */; };
 		4E33F95D1EEFE7920073BC7E /* TransferInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */; };
@@ -198,6 +199,8 @@
 		4E0F75C41EE544EA00121113 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		4E0F75C61EE54A6300121113 /* WorkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkType.swift; sourceTree = "<group>"; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
+		4E250E461EF3C02E00CCDE61 /* gv24App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gv24App.entitlements; sourceTree = "<group>"; };
+		4E250E471EF3D1B100CCDE61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E33F95A1EEF94390073BC7E /* RechargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeVC.swift; sourceTree = "<group>"; };
 		4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferInfoVC.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -519,6 +522,7 @@
 		4E4DD6C11EB0A0C5001B4936 /* gv24App */ = {
 			isa = PBXGroup;
 			children = (
+				4E250E461EF3C02E00CCDE61 /* gv24App.entitlements */,
 				4E3D09231EB320DD00303AAD /* Helpers */,
 				4E3D091F1EB31FDB00303AAD /* Models */,
 				4E3D091E1EB31FB400303AAD /* Views */,
@@ -530,6 +534,7 @@
 				4E4DD6C91EB0A0C5001B4936 /* Assets.xcassets */,
 				4E4DD6CB1EB0A0C5001B4936 /* LaunchScreen.storyboard */,
 				4E4DD6CE1EB0A0C5001B4936 /* Info.plist */,
+				4E250E471EF3D1B100CCDE61 /* GoogleService-Info.plist */,
 				4ECD1D551EB19DE4007DEF88 /* Localizable.strings */,
 				03BBE29A1ED83948005B47B0 /* AppDelegate.swift */,
 			);
@@ -736,8 +741,13 @@
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 7R93MWJ8VY;
+						DevelopmentTeam = FE5FXN233L;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -777,6 +787,7 @@
 				4ECD1D441EB19314007DEF88 /* SFUIText-RegularItalic.ttf in Resources */,
 				4ECD1D451EB19314007DEF88 /* SFUIText-Semibold.ttf in Resources */,
 				4ECD1D461EB19314007DEF88 /* SFUIText-SemiboldItalic.ttf in Resources */,
+				4E250E481EF3D1B100CCDE61 /* GoogleService-Info.plist in Resources */,
 				4E4DD6CD1EB0A0C5001B4936 /* LaunchScreen.storyboard in Resources */,
 				4ECD1D531EB19DE4007DEF88 /* Localizable.strings in Resources */,
 				4E4DD6CA1EB0A0C5001B4936 /* Assets.xcassets in Resources */,
@@ -814,7 +825,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -1098,13 +1109,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7R93MWJ8VY;
+				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv247App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -1117,13 +1129,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7R93MWJ8VY;
+				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv24App;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv247App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;

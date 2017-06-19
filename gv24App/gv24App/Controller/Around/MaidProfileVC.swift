@@ -18,6 +18,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainCollectionView.register(MaidProfileCell.self, forCellWithReuseIdentifier: maidProfileCellId)
         mainCollectionView.register(MaidWorkInfoCell.self, forCellWithReuseIdentifier: maidWorkInfoCellId)
     }

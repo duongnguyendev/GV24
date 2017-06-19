@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SwitchCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +80,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             {
             case 0:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: switchCellId, for: indexPath) as! SwitchCell
+                cell.delegate = self
                 cell.text = "Announcement"
                 return cell
             case 1:
@@ -205,6 +206,10 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func handleSection3(item : Int){
         
     }
+    func notification(isOn: Bool) {
+        print(isOn)
+    }
+    
     override func localized() {
         super.localized()
         self.collectionMore.reloadData()
