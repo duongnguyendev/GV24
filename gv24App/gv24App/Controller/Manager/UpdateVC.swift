@@ -1,15 +1,17 @@
 //
-//  PostVC.swift
+//  UpdateVC.swift
 //  gv24App
 //
-//  Created by Nguyen Duy Duong on 5/15/17.
+//  Created by dinhphong on 6/21/17.
 //  Copyright © 2017 HBBs. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import CoreLocation
 
-class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
+class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
+    var task = Task()
     var date : Date? = Date(){
         didSet{
             buttonDate.valueString = date?.dayMonthYear
@@ -40,16 +42,33 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
         hideKeyboardWhenTouchUpOutSize = true
-        title = "Đăng công việc"
+        title = "Chỉnh sửa công việc"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.titleTextField.text = task.info?.title
+        self.workType = task.info?.work
+        self.descriptionTextField.text = task.info?.desc
+        self.addressTextField.text = task.info?.address?.name
+        self.checkBoxTool.isSelected = (task.info?.tool)!
+        if task.info?.package?.id == "000000000000000000000001"{
+            radioButtonMoney.titleView.text = "\((task.info?.price)!)"
+            radioButtonMoney.isSelected = true
+            radioButtonTime.isSelected = false
+        }else{
+            radioButtonTime.isSelected = true
+            radioButtonMoney.isSelected = false
+        }
+        self.timeStart = Date(isoDateString: (task.info?.time?.startAt)!)
+        self.buttonFrom.title = timeStart?.hourMinute
+        self.timeEnd = Date(isoDateString: (task.info?.time?.endAt)!)
+        self.buttonTo.title = timeEnd?.hourMinute
     }
     
     override func setupRightNavButton() {
-        let buttonSend = NavButton(title: "Đăng bài")
-        buttonSend.addTarget(self, action: #selector(handlePostButton(_:)), for: .touchUpInside)
+        let buttonSend = NavButton(title: "Sửa bài")
+        buttonSend.addTarget(self, action: #selector(handleUpdateButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn
     }
@@ -319,14 +338,16 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         }
     }
     
-    func handlePostButton(_ sender: UIButton){
+    func handleUpdateButton(_ sender: UIButton){
         validate { (errorString) in
             if errorString == nil{
                 self.params["tools"] = self.checkBoxTool.isSelected
-                TaskService.shared.postTask(params: self.params) { (error) in
+                self.params["id"] = self.task.id
+                self.params["process"] = self.task.process?.id
+                TaskService.shared.updateTask(params: self.params) { (error) in
                     if error == nil{
-                        self.showAlertWith(message: "Đăng bài thành công", completion: {
-                            self.goBack()
+                        self.showAlertWith(message: "Chỉnh sửa thành công", completion: {
+                            self.dismiss(animated: true, completion: nil)
                         })
                     }else{
                         self.showAlertWith(message: error!, completion: {})
@@ -501,5 +522,6 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         }
         return false
     }
+    
 
 }

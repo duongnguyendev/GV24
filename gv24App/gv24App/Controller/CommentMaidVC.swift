@@ -60,7 +60,7 @@ class CommentMaidVC: BaseVC{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
     }
     
     override func setupRightNavButton() {
@@ -72,17 +72,13 @@ class CommentMaidVC: BaseVC{
     
     override func setupView() {
         super.setupView()
-        let userView = UIView()
-        userView.backgroundColor = UIColor.white
-        userView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(userView)
         
-        view.addSubview(avatarImageView)
+        ///view.addSubview(avatarImageView)
         view.addSubview(labelName)
         view.addSubview(labelAddress)
         
-        avatarImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        avatarImageView.centerYAnchor.constraint(equalTo: userView.centerYAnchor, constant: 0).isActive = true
+        //avatarImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        //avatarImageView.centerYAnchor.constraint(equalTo: userView.centerYAnchor, constant: 0).isActive = true
         
         labelName.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20).isActive = true
         labelName.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 0).isActive = true
@@ -92,61 +88,7 @@ class CommentMaidVC: BaseVC{
         labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
         
     }
-    /*override func setupView() {
-        super.setupView()
-        
-        let userView = UIView()
-        userView.backgroundColor = UIColor.white
-        userView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(userView)
-        
-        view.addSubview(avatarImageView)
-        view.addSubview(labelName)
-        view.addSubview(labelAddress)
-       
-        userView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-        userView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        userView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        userView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        
-        avatarImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        avatarImageView.centerYAnchor.constraint(equalTo: userView.centerYAnchor, constant: 0).isActive = true
-        
-        labelName.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20).isActive = true
-        labelName.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 0).isActive = true
-        
-        labelAddress.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 20).isActive = true
-        labelAddress.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0).isActive = true
-        
-        /*let viewRaiting = UIView()
-        viewRaiting.translatesAutoresizingMaskIntoConstraints = false
-        viewRaiting.backgroundColor = .white
-        view.addSubview(viewRaiting)
-        viewRaiting.addSubview(labelRaiting)
-        viewRaiting.addSubview(raitingView)
-        
-        labelRaiting.leftAnchor.constraint(equalTo: viewRaiting.leftAnchor, constant: 20).isActive = true
-        labelRaiting.centerYAnchor.constraint(equalTo: viewRaiting.centerYAnchor).isActive = true
-        
-        raitingView.centerYAnchor.constraint(equalTo: viewRaiting.centerYAnchor).isActive = true
-        raitingView.leftAnchor.constraint(equalTo: labelRaiting.leftAnchor, constant: 20).isActive = true*/
-        
-        let viewConent = UIView()
-        viewConent.translatesAutoresizingMaskIntoConstraints = false
-        viewConent.backgroundColor = UIColor.white
-        view.addSubview(viewConent)
-        viewConent.addSubview(textViewdContent)
-        
-        viewConent.topAnchor.constraint(equalTo: userView.bottomAnchor, constant: 1).isActive = true
-        viewConent.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        viewConent.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        viewConent.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        textViewdContent.topAnchor.constraint(equalTo: viewConent.topAnchor, constant: 5).isActive = true
-        textViewdContent.leftAnchor.constraint(equalTo: viewConent.leftAnchor, constant: 20).isActive = true
-        textViewdContent.rightAnchor.constraint(equalTo: viewConent.rightAnchor, constant: -20).isActive = true
-        textViewdContent.bottomAnchor.constraint(equalTo: viewConent.bottomAnchor, constant: 0).isActive = true
-    }*/
+
     func handleSendButton(_ sender: UIButton){
         print("Send Comment Maid ")
     }

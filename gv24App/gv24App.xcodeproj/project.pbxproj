@@ -41,7 +41,6 @@
 		038152191EE803F90081FB33 /* MaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038152181EE803F90081FB33 /* MaidCell.swift */; };
 		038987391EEE4F8100DA5293 /* ApplicantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038987381EEE4F8100DA5293 /* ApplicantCell.swift */; };
 		03B762AE1EEEA1410006A2BC /* ListTaskMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762AD1EEEA1410006A2BC /* ListTaskMaidVC.swift */; };
-		03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE7F2F1EE1677000757BB8 /* Applicant.swift */; };
 		03D3103B1EEA7F4F00CF53C3 /* MaidTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */; };
 		03D3103E1EEA924700CF53C3 /* MaidTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */; };
 		03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */; };
@@ -136,14 +135,20 @@
 		4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */; };
 		4ED231831EB9CEFD00592842 /* HomeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED231821EB9CEFD00592842 /* HomeBottomView.swift */; };
 		4EDDB4681ECED8A900AFFD1A /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */; };
-		4EDDDB111EF21F79002E28AB /* TaskAssigned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762A11EEE8B620006A2BC /* TaskAssigned.swift */; };
-		4EDDDB121EF21FA8002E28AB /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B762AB1EEEA12D0006A2BC /* ApplicantsVC.swift */; };
+		4EDDDB111EF21F79002E28AB /* (null) in Sources */ = {isa = PBXBuildFile; };
+		4EDDDB121EF21FA8002E28AB /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */; };
 		4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */; };
 		4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35D1EE150CD00560C4A /* RadioButton.swift */; };
 		4EF1F3601EE1640600560C4A /* ButtonTitleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35F1EE1640600560C4A /* ButtonTitleValue.swift */; };
 		4EF8A14E1EE110CF002A5920 /* LabelButtomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8A14D1EE110CF002A5920 /* LabelButtomLine.swift */; };
-		A61F96C51EF3EBD900CE5A2E /* CommentMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F96C41EF3EBD900CE5A2E /* CommentMaidVC.swift */; };
+		A6B4EE491EF8DC5E003997FD /* CommentMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B4EE481EF8DC5E003997FD /* CommentMaidVC.swift */; };
+		A6B4EE4B1EF9042C003997FD /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B4EE4A1EF9042C003997FD /* Applicant.swift */; };
+		A6B4EE4D1EF916BA003997FD /* AbilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B4EE4C1EF916BA003997FD /* AbilityCell.swift */; };
+		A6C826971EFB6ACF0017FD0F /* ManagerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C8268F1EFB6ACF0017FD0F /* ManagerAPI.m */; };
+		A6C826981EFB6ACF0017FD0F /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C826911EFB6ACF0017FD0F /* NSString+MD5.m */; };
+		A6C826991EFB6ACF0017FD0F /* ToolFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C826931EFB6ACF0017FD0F /* ToolFunctions.m */; };
+		A6C8269A1EFB6ACF0017FD0F /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C826951EFB6ACF0017FD0F /* UIView+Toast.m */; };
 		A6D471281EF2262A00F8A5BA /* ApplicantsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471271EF2262A00F8A5BA /* ApplicantsVC.swift */; };
 		A6D4712B1EF2284900F8A5BA /* PaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4712A1EF2284900F8A5BA /* PaymentVC.swift */; };
 		A6D4712E1EF24AD800F8A5BA /* JobTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D4712D1EF24AD800F8A5BA /* JobTypeCell.swift */; };
@@ -152,6 +157,8 @@
 		A6D471341EF2621D00F8A5BA /* MoneyMaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471331EF2621D00F8A5BA /* MoneyMaidCell.swift */; };
 		A6D471361EF2721A00F8A5BA /* BankOwnerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471351EF2721A00F8A5BA /* BankOwnerCell.swift */; };
 		A6D471381EF273CA00F8A5BA /* TotalMaidCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D471371EF273CA00F8A5BA /* TotalMaidCell.swift */; };
+		A6D487FF1EF7C9EA0059CC8A /* JobNewDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D487FE1EF7C9EA0059CC8A /* JobNewDetailVC.swift */; };
+		A6D8F5DF1EFA70DF001FC0BF /* UpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F5DE1EFA70DF001FC0BF /* UpdateVC.swift */; };
 		CF334A489D0E0A4083BA94C8 /* Pods_gv24App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6048FD6ABBCEEABE41FA5CE8 /* Pods_gv24App.framework */; };
 /* End PBXBuildFile section */
 
@@ -160,7 +167,6 @@
 		0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTaskHistoryVC.swift; sourceTree = "<group>"; };
 		0337FBCE1EEA43E800077A7E /* MaidHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidHistory.swift; sourceTree = "<group>"; };
 		033DC7331EF0D4BE0093EE8F /* JobDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobDetailVC.swift; sourceTree = "<group>"; };
-		033DC7351EF0DCD70093EE8F /* JobNewDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobNewDetailVC.swift; sourceTree = "<group>"; };
 		033DC7371EF0E0600093EE8F /* JobExpiredDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobExpiredDetailVC.swift; sourceTree = "<group>"; };
 		03446A111EE53B35004DB193 /* HistoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		03446A451EE54F3D004DB193 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
@@ -192,7 +198,6 @@
 		038987381EEE4F8100DA5293 /* ApplicantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantCell.swift; sourceTree = "<group>"; };
 		03B762AD1EEEA1410006A2BC /* ListTaskMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTaskMaidVC.swift; sourceTree = "<group>"; };
 		03BBE29A1ED83948005B47B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03BE7F2F1EE1677000757BB8 /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
 		03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidTask.swift; sourceTree = "<group>"; };
 		03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidTaskCell.swift; sourceTree = "<group>"; };
 		03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRatingButton.swift; sourceTree = "<group>"; };
@@ -303,7 +308,20 @@
 		6048FD6ABBCEEABE41FA5CE8 /* Pods_gv24App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gv24App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D2C40D16D81184827E7734 /* Pods-gv24App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.release.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.release.xcconfig"; sourceTree = "<group>"; };
 		9E955963E9F84A771AF50D5E /* Pods-gv24App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.debug.xcconfig"; sourceTree = "<group>"; };
-		A61F96C41EF3EBD900CE5A2E /* CommentMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentMaidVC.swift; sourceTree = "<group>"; };
+		A6B4EE481EF8DC5E003997FD /* CommentMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentMaidVC.swift; sourceTree = "<group>"; };
+		A6B4EE4A1EF9042C003997FD /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
+		A6B4EE4C1EF916BA003997FD /* AbilityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbilityCell.swift; sourceTree = "<group>"; };
+		A6C8268C1EFB6ACE0017FD0F /* gv24App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gv24App-Bridging-Header.h"; sourceTree = "<group>"; };
+		A6C8268D1EFB6ACF0017FD0F /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		A6C8268E1EFB6ACF0017FD0F /* ManagerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagerAPI.h; sourceTree = "<group>"; };
+		A6C8268F1EFB6ACF0017FD0F /* ManagerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerAPI.m; sourceTree = "<group>"; };
+		A6C826901EFB6ACF0017FD0F /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		A6C826911EFB6ACF0017FD0F /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		A6C826921EFB6ACF0017FD0F /* ToolFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolFunctions.h; sourceTree = "<group>"; };
+		A6C826931EFB6ACF0017FD0F /* ToolFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolFunctions.m; sourceTree = "<group>"; };
+		A6C826941EFB6ACF0017FD0F /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		A6C826951EFB6ACF0017FD0F /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		A6C8269C1EFB6B210017FD0F /* Prefix_DemoNganLuong.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix_DemoNganLuong.pch; sourceTree = "<group>"; };
 		A6D471271EF2262A00F8A5BA /* ApplicantsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicantsVC.swift; sourceTree = "<group>"; };
 		A6D4712A1EF2284900F8A5BA /* PaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentVC.swift; sourceTree = "<group>"; };
 		A6D4712D1EF24AD800F8A5BA /* JobTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobTypeCell.swift; sourceTree = "<group>"; };
@@ -312,6 +330,8 @@
 		A6D471331EF2621D00F8A5BA /* MoneyMaidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyMaidCell.swift; sourceTree = "<group>"; };
 		A6D471351EF2721A00F8A5BA /* BankOwnerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankOwnerCell.swift; sourceTree = "<group>"; };
 		A6D471371EF273CA00F8A5BA /* TotalMaidCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalMaidCell.swift; sourceTree = "<group>"; };
+		A6D487FE1EF7C9EA0059CC8A /* JobNewDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobNewDetailVC.swift; sourceTree = "<group>"; };
+		A6D8F5DE1EFA70DF001FC0BF /* UpdateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +353,7 @@
 			children = (
 				03B762AD1EEEA1410006A2BC /* ListTaskMaidVC.swift */,
 				0319CFAC1EE6604100A4F157 /* DetailTaskHistoryVC.swift */,
+				A6B4EE481EF8DC5E003997FD /* CommentMaidVC.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -348,6 +369,7 @@
 				03446A671EE5502C004DB193 /* CommentCell.swift */,
 				03446A681EE5502C004DB193 /* MaidProfileCell.swift */,
 				03446A691EE5502C004DB193 /* UserProfileCell.swift */,
+				A6B4EE4C1EF916BA003997FD /* AbilityCell.swift */,
 				03446A451EE54F3D004DB193 /* BaseCell.swift */,
 				03446A461EE54F3D004DB193 /* BaseHeaderView.swift */,
 				03446A471EE54F3D004DB193 /* Headers */,
@@ -408,11 +430,11 @@
 			children = (
 				03B762AA1EEEA0950006A2BC /* Applicant */,
 				4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */,
-				4E8D27461EDC13B900872A61 /* JobPostedDetailVC.swift */,
 				4E8D27471EDC13B900872A61 /* JobAssignedDetailVC.swift */,
-				033DC7331EF0D4BE0093EE8F /* JobDetailVC.swift */,
-				033DC7351EF0DCD70093EE8F /* JobNewDetailVC.swift */,
+				4E8D27461EDC13B900872A61 /* JobPostedDetailVC.swift */,
 				033DC7371EF0E0600093EE8F /* JobExpiredDetailVC.swift */,
+				033DC7331EF0D4BE0093EE8F /* JobDetailVC.swift */,
+				A6D487FE1EF7C9EA0059CC8A /* JobNewDetailVC.swift */,
 			);
 			path = JobDetail;
 			sourceTree = "<group>";
@@ -471,13 +493,13 @@
 		4E3D091F1EB31FDB00303AAD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A6B4EE4A1EF9042C003997FD /* Applicant.swift */,
 				4E8D275B1EDC156100872A61 /* Task.swift */,
 				4EBF04B11ED28FFF00F7E08B /* User.swift */,
 				4EBF04B31ED2925200F7E08B /* WorkInfo.swift */,
 				4EBF04B51ED292F100F7E08B /* Address.swift */,
 				4EBF04BB1ED2C5A400F7E08B /* Entity.swift */,
 				4E0CACA01EDD074C00752BCC /* Comment.swift */,
-				03BE7F2F1EE1677000757BB8 /* Applicant.swift */,
 				4E0F75C61EE54A6300121113 /* WorkType.swift */,
 				03446A731EE55A3F004DB193 /* TaskHistory.swift */,
 				038152141EE7DDF20081FB33 /* WorkUnpaid.swift */,
@@ -569,7 +591,6 @@
 				4ED231741EB980D000592842 /* BaseVC.swift */,
 				4ED2317D1EB9B15E00592842 /* HomeVC.swift */,
 				4E5C04CA1EF1340A00470C8C /* LaunchScreenVC.swift */,
-				A61F96C41EF3EBD900CE5A2E /* CommentMaidVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -577,6 +598,7 @@
 		4E4DD6D61EB0A71D001B4936 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A6C8268B1EFB6AAB0017FD0F /* FrameworkPayment */,
 				4E4DD6D71EB0A72B001B4936 /* Fonts */,
 				4E4DD6E41EB0A838001B4936 /* Icon.swift */,
 				4ECD1D391EB18743007DEF88 /* Font.swift */,
@@ -642,6 +664,7 @@
 				03B762A91EEEA0770006A2BC /* JobDetail */,
 				4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */,
 				4E54F59E1EC9B173007D15D6 /* PostVC.swift */,
+				A6D8F5DE1EFA70DF001FC0BF /* UpdateVC.swift */,
 			);
 			name = Manage;
 			path = Manager;
@@ -715,6 +738,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A6C8268B1EFB6AAB0017FD0F /* FrameworkPayment */ = {
+			isa = PBXGroup;
+			children = (
+				A6C8268D1EFB6ACF0017FD0F /* Constant.h */,
+				A6C8268E1EFB6ACF0017FD0F /* ManagerAPI.h */,
+				A6C8268F1EFB6ACF0017FD0F /* ManagerAPI.m */,
+				A6C826901EFB6ACF0017FD0F /* NSString+MD5.h */,
+				A6C826911EFB6ACF0017FD0F /* NSString+MD5.m */,
+				A6C826921EFB6ACF0017FD0F /* ToolFunctions.h */,
+				A6C826931EFB6ACF0017FD0F /* ToolFunctions.m */,
+				A6C826941EFB6ACF0017FD0F /* UIView+Toast.h */,
+				A6C826951EFB6ACF0017FD0F /* UIView+Toast.m */,
+				A6C8268C1EFB6ACE0017FD0F /* gv24App-Bridging-Header.h */,
+				A6C8269C1EFB6B210017FD0F /* Prefix_DemoNganLuong.pch */,
+			);
+			path = FrameworkPayment;
+			sourceTree = "<group>";
+		};
 		A6D471291EF2283800F8A5BA /* Payment */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,6 +822,7 @@
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = FE5FXN233L;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -889,8 +931,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EDDDB121EF21FA8002E28AB /* ApplicantsVC.swift in Sources */,
-				4EDDDB111EF21F79002E28AB /* TaskAssigned.swift in Sources */,
+				4EDDDB121EF21FA8002E28AB /* (null) in Sources */,
+				4EDDDB111EF21F79002E28AB /* (null) in Sources */,
 				03446A571EE54F3D004DB193 /* BaseCell.swift in Sources */,
 				A6D471381EF273CA00F8A5BA /* TotalMaidCell.swift in Sources */,
 				4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */,
@@ -902,7 +944,6 @@
 				03446A5C1EE54F3D004DB193 /* MoreItemCell.swift in Sources */,
 				4E8D27581EDC14F100872A61 /* ProfileUserButton.swift in Sources */,
 				4EBF04B81ED29D0C00F7E08B /* UserHelpers.swift in Sources */,
-				A61F96C51EF3EBD900CE5A2E /* CommentMaidVC.swift in Sources */,
 				4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */,
 				03446A5B1EE54F3D004DB193 /* TaskHistoryControlCell.swift in Sources */,
 				4ECD1D3A1EB18743007DEF88 /* Font.swift in Sources */,
@@ -927,10 +968,12 @@
 				4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */,
 				03446A6B1EE5502C004DB193 /* MaidProfileCell.swift in Sources */,
 				4E61E3DC1EC1A31C00E6C8C5 /* SignUpVC_1.swift in Sources */,
+				A6C826991EFB6ACF0017FD0F /* ToolFunctions.m in Sources */,
 				4E8D274A1EDC13B900872A61 /* JobAssignedDetailVC.swift in Sources */,
 				A6D471281EF2262A00F8A5BA /* ApplicantsVC.swift in Sources */,
 				4E0F75C51EE544EA00121113 /* TaskService.swift in Sources */,
 				0319CFAD1EE6604100A4F157 /* DetailTaskHistoryVC.swift in Sources */,
+				A6B4EE491EF8DC5E003997FD /* CommentMaidVC.swift in Sources */,
 				038152111EE7A4F20081FB33 /* GeneralButton.swift in Sources */,
 				4ED231711EB97D4100592842 /* StringExtensions.swift in Sources */,
 				4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */,
@@ -939,6 +982,7 @@
 				0337FBCF1EEA43E800077A7E /* MaidHistory.swift in Sources */,
 				038152191EE803F90081FB33 /* MaidCell.swift in Sources */,
 				038987391EEE4F8100DA5293 /* ApplicantCell.swift in Sources */,
+				A6B4EE4B1EF9042C003997FD /* Applicant.swift in Sources */,
 				4E8D274E1EDC142100872A61 /* DescTaskView.swift in Sources */,
 				4E8D27561EDC14F100872A61 /* IconTextButton.swift in Sources */,
 				4E5B162E1ECD943A00A5FC23 /* MarkerInfoWindow.swift in Sources */,
@@ -946,9 +990,9 @@
 				4E01542C1EE6A98E00529F4F /* MaidProfileHistoryVC.swift in Sources */,
 				038152151EE7DDF20081FB33 /* WorkUnpaid.swift in Sources */,
 				4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */,
+				A6B4EE4D1EF916BA003997FD /* AbilityCell.swift in Sources */,
 				03446A5A1EE54F3D004DB193 /* MaidControlCell.swift in Sources */,
 				4E8D27551EDC14F100872A61 /* ApplicantListButton.swift in Sources */,
-				03BE7F301EE1677000757BB8 /* Applicant.swift in Sources */,
 				4E54F59F1EC9B173007D15D6 /* PostVC.swift in Sources */,
 				03446A7A1EE5666E004DB193 /* UnpaidWorkCell.swift in Sources */,
 				4E8D275C1EDC156100872A61 /* Task.swift in Sources */,
@@ -957,12 +1001,14 @@
 				03446A651EE54F3D004DB193 /* TaskNewControlCell.swift in Sources */,
 				03B762AE1EEEA1410006A2BC /* ListTaskMaidVC.swift in Sources */,
 				4EAA97241ECAD99E0001FEB6 /* HistoryVC.swift in Sources */,
+				A6D8F5DF1EFA70DF001FC0BF /* UpdateVC.swift in Sources */,
 				03446A6E1EE5508C004DB193 /* HistoryControlCell.swift in Sources */,
 				4E5C04CB1EF1340A00470C8C /* LaunchScreenVC.swift in Sources */,
 				4E0F75C11EE5095200121113 /* BaseLauncher.swift in Sources */,
 				03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */,
 				4E61E3E01EC1A33800E6C8C5 /* MaidAroundVC.swift in Sources */,
 				4E8D275E1EDC157E00872A61 /* BlockAlias.swift in Sources */,
+				A6C826971EFB6ACF0017FD0F /* ManagerAPI.m in Sources */,
 				A6D4712B1EF2284900F8A5BA /* PaymentVC.swift in Sources */,
 				4E5F6C7E1EE11D7000B19C86 /* CheckBox.swift in Sources */,
 				03446A631EE54F3D004DB193 /* TaskInProgressControlCell.swift in Sources */,
@@ -979,6 +1025,7 @@
 				4ED231731EB9803400592842 /* ImageExtensions.swift in Sources */,
 				4E3D17641EE7F85D00C91D6B /* AgeLauncher.swift in Sources */,
 				4E58A7A21EEE8F1D0088FC1D /* GeneralStatistic.swift in Sources */,
+				A6C826981EFB6ACF0017FD0F /* NSString+MD5.m in Sources */,
 				4E8D275A1EDC152800872A61 /* TaskManageService.swift in Sources */,
 				03446A701EE5530B004DB193 /* UnpaidWorkControlCell.swift in Sources */,
 				03446A5D1EE54F3D004DB193 /* MoreUserCell.swift in Sources */,
@@ -986,6 +1033,7 @@
 				4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */,
 				4E4DD6E51EB0A838001B4936 /* Icon.swift in Sources */,
 				4E0F75C71EE54A6300121113 /* WorkType.swift in Sources */,
+				A6C8269A1EFB6ACF0017FD0F /* UIView+Toast.m in Sources */,
 				4E61E3DB1EC1A31C00E6C8C5 /* SignInVC.swift in Sources */,
 				4E8D27491EDC13B900872A61 /* JobPostedDetailVC.swift in Sources */,
 				4EBF04B61ED292F100F7E08B /* Address.swift in Sources */,
@@ -999,6 +1047,7 @@
 				03D3103B1EEA7F4F00CF53C3 /* MaidTask.swift in Sources */,
 				A6D4712E1EF24AD800F8A5BA /* JobTypeCell.swift in Sources */,
 				4E0CACA51EDD18E800752BCC /* RatingStartView.swift in Sources */,
+				A6D487FF1EF7C9EA0059CC8A /* JobNewDetailVC.swift in Sources */,
 				4EBF04BC1ED2C5A400F7E08B /* Entity.swift in Sources */,
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
 				4EF1F3601EE1640600560C4A /* ButtonTitleValue.swift in Sources */,
@@ -1157,16 +1206,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv247App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "gv24App/Resource/FrameworkPayment/gv24App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1177,16 +1229,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv247App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "gv24App/Resource/FrameworkPayment/gv24App-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

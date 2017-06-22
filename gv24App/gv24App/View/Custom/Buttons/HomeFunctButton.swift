@@ -32,8 +32,8 @@ class HomeFunctButton: BaseButton {
         }
     }
     
-    private let iconView : UIImageView = {
-        let iv = UIImageView()
+    private let iconView : CustomImageView = {
+        let iv = CustomImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
         return iv

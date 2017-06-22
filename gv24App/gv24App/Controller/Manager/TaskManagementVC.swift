@@ -14,10 +14,9 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     private let cellAssigned = "cellAssigned"
     private let cellInProgress = "cellInProgress"
     
-    var indexPath: IndexPath?
+    var indexPath: IndexPath = IndexPath(item: 0, section: 0)
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Quản lý công việc"
         collectionType.register(TaskControlCell.self, forCellWithReuseIdentifier: cellId)
         collectionType.register(TaskNewControlCell.self, forCellWithReuseIdentifier: cellNew)
         collectionType.register(TaskAssignedControlCell.self, forCellWithReuseIdentifier: cellAssigned)
@@ -25,6 +24,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.collectionType.reloadData()
     }
     
@@ -104,7 +104,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){
         indexPath = IndexPath(item: sender.selectedSegmentIndex, section: 0)
-        self.collectionType.scrollToItem(at: indexPath!, at: .left, animated: true)
+        self.collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }
     
     //MARK: - hanlde event
@@ -112,44 +112,70 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         let postVC = PostVC()
         present(viewController: postVC)
     }
-    
     //MARK: - task control delegate
     func selectedPosted(task: Task, deadline: Bool) {
         if deadline{
-            let jobNewDetailVC = JobExpiredDetailVC()
+            let jobExpiredDetailVC = JobExpiredDetailVC()
+            jobExpiredDetailVC.task = task
+            push(viewController: jobExpiredDetailVC)
+        }else if task.stakeholder?.request?.count == 0{
+            let jobNewDetailVC = JobNewDetailVC()
             jobNewDetailVC.task = task
-            push(viewController: jobNewDetailVC)
+            present(viewController: jobNewDetailVC)
         }else{
             let jobPostVC = JobPostedDetailVC()
             jobPostVC.task = task
+            jobPostVC.delegate = self
             present(viewController: jobPostVC)
         }
     }
-    func selectedAssigned(task: Task) {
-        if task.process?.id == "000000000000000000000003"{
+    func selectedAssigned(deadline: Bool, task: Task) {
+        if !deadline{
             let jobPostVC = JobAssignedDetailVC()
             jobPostVC.taskAssigned = task
             push(viewController: jobPostVC)
         }else{
-            let jobProgressVC = JobProgressDetailVC()
-            jobProgressVC.taskProgress = task
-            push(viewController: jobProgressVC)
+            let alertController = UIAlertController(title: "", message: "Công việc đã quá hạn", preferredStyle:UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel){ action -> Void in
+            })
+            self.present(alertController, animated: true, completion: nil)
         }
     }
+    func selectedProgress(task: Task) {
+        let jobProgressVC = JobProgressDetailVC()
+        jobProgressVC.taskProgress = task
+        push(viewController: jobProgressVC)
+    }
+
     func remove(task: Task) {
-        let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ShowDeleteWork"), preferredStyle:UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "AreYouSureYouWantToDeleteThisWork"), preferredStyle:UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default){ action -> Void in
-            TaskManageService.shared.deleteTask(task: task, completion: { (flag) in
+            TaskService.shared.deleteTask(task: task, completion: { (flag) in
                 if (flag!){
-                    
+                    let cell = self.collectionType.cellForItem(at: self.indexPath) as! TaskControlCell
+                    cell.removeObjectLocal(task: task)
                 }else{
                     
                 }
             })
         })
         alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel){ action -> Void in
-            
         })
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func localized() {
+        super.localized()
+        title = LanguageManager.shared.localized(string: "WorkManagement")
+        segmentedControl.setTitle(LanguageManager.shared.localized(string: "PostedWork"), forSegmentAt: 0)
+        segmentedControl.setTitle(LanguageManager.shared.localized(string: "InProcess"), forSegmentAt: 1)
+        segmentedControl.setTitle(LanguageManager.shared.localized(string: "RunningWork"), forSegmentAt: 2)
+    }
+}
+extension TaskManagementVC : TaskManageDelegate{
+    func selectedYourApplicants() {
+        indexPath = IndexPath(item: 1, section: 0)
+        segmentedControl.selectedSegmentIndex = 1
+        collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }
 }

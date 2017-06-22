@@ -25,17 +25,7 @@ class TaskManageService: APIService{
             }
         }
     }
-    func deleteTask(task: Task,completion: @escaping (DeleteTaskCompletion)){
-        let url = "task/delete?id=\((task.id)!)"
-        let params : Dictionary<String,String> = ["id": "593f93d87a7116000498565f"]
-        deleteWithToken(url: url, parameters: params) { (json, message) in
-            if json == nil{
-                completion(false)
-            }else{
-                completion(true)
-            }
-        }
-    }
+
     func fetchApplicants(id: String,completion:@escaping (ApplicantCompletion)){
         let url = "task/getRequest?id=\(id)"
         getWithToken(url: url) { (json, error) in

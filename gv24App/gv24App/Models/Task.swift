@@ -78,7 +78,7 @@ class Stakeholder: Entity{
 class Info: Entity {
     var title: String?
     var package: Package?
-    var work: Work?
+    var work: WorkType?
     var desc: String?
     var price: NSNumber?
     var tool: Bool?
@@ -92,10 +92,10 @@ class Info: Entity {
         super.init(jsonData: jsonData)
         self.title = jsonData["title"].string ?? ""
         self.package = Package(json: jsonData["package"])
-        self.work = Work(json: jsonData["work"])
+        self.work = WorkType(jsonData: jsonData["work"])
         self.desc = jsonData["description"].string ?? ""
         self.price = jsonData["price"].number ?? 0
-        self.tool  = jsonData["tool"].bool ?? false
+        self.tool  = jsonData["tools"].bool ?? false
         self.time = Time(json: jsonData["time"])
         self.address = Address(jsonData: jsonData["address"])
     }
@@ -105,16 +105,6 @@ class Info: Entity {
         init(json: JSON) {
             self.id = json["_id"].string ?? ""
             self.name = json["name"].string ?? ""
-        }
-    }
-    struct Work {
-        let id: String
-        let name: String
-        let image: String
-        init(json: JSON) {
-            self.id = json["_id"].string ?? ""
-            self.name = json["name"].string ?? ""
-            self.image = json["image"].string ?? ""
         }
     }
     struct Time {

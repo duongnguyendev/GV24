@@ -50,6 +50,10 @@ class NavButton: BaseButton{
         super.init(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         self.setBackgroundImage(Icon.by(name: icon, color: AppColor.backButton), for: .normal)
     }
+    init(icon: Ionicons, size : CGSize) {
+        super.init(frame: CGRect(origin: .zero, size: size))
+        self.setBackgroundImage(Icon.by(name: icon, color: AppColor.backButton), for: .normal)
+    }
     init(title: String, frame: CGRect) {
         super.init(frame: frame)
         self.titleLabel?.font = Fonts.by(name: .regular, size: 16)

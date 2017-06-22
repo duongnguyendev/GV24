@@ -16,5 +16,5 @@ target 'gv24App' do
   pod 'GooglePlaces'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
-  
+  pod 'AFNetworking', '~> 2.0’
 end

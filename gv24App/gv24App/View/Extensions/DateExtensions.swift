@@ -100,4 +100,16 @@ extension Date{
             return false
         }
     }
+    var periodTime: String{
+        let dateComponent = self.rangeDate
+        if dateComponent.month! > 0{
+            return "\((dateComponent.month)!) \((LanguageManager.shared.localized(string: "MonthBefore"))!)"
+        }else if dateComponent.day! > 0{
+            return "\((dateComponent.day)!) \((LanguageManager.shared.localized(string: "DayBefore"))!)"
+        }else if dateComponent.hour! > 0{
+            return "\((dateComponent.hour)!) \((LanguageManager.shared.localized(string: "HourBefore"))!)"
+        }
+        return "\((dateComponent.minute)!) \((LanguageManager.shared.localized(string: "MinuteBefore"))!)"
+
+    }
 }

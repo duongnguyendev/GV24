@@ -22,27 +22,17 @@ class Applicant: Entity{
 }
 class Request: Entity {
     var time: String?
-    var madid: Maid?
+    var madid: MaidProfile?
     var id: String?
     
     override init(){
         super.init()
     }
+    
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
         self.time = jsonData["time"].string ?? ""
         self.id = jsonData["_id"].string ?? ""
-        self.madid = Maid(jsonData: jsonData["maid"])
-    }
-}
-class Maid: MaidProfile{
-    var madid: String?
-    
-    override init() {
-        super.init()
-    }
-    override init(jsonData: JSON) {
-        super.init(jsonData: jsonData)
-        self.madid = jsonData["_id"].string ?? ""
+        self.madid = MaidProfile(jsonData: jsonData["maid"])
     }
 }

@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 import IoniconsSwift
+@objc protocol TaskManageDelegate {
+    @objc optional func selectedYourApplicants()
+}
 class JobPostedDetailVC: JobDetailVC{
+    
     var task = Task()
+    var delegate: TaskManageDelegate?
     
     let deleteButton: IconTextButton = {
         let button = IconTextButton()
@@ -34,6 +39,7 @@ class JobPostedDetailVC: JobDetailVC{
     }()
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.descTaskView.task = task
         self.appListButton.status = "\((task.stakeholder?.request?.count)!)"
     }
@@ -51,20 +57,27 @@ class JobPostedDetailVC: JobDetailVC{
         view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
-    
     func handleRemoveTask(_ sender: UIButton){
+        self.showAlertWith(task: task)
         print("Handle Remove Task")
     }
     
     func handleAppListTask(_ sender: UIButton){
+        activity.startAnimating()
         TaskManageService.shared.fetchApplicants(id: task.id!) { (applicants, error) in
             if error == nil{
+                self.activity.stopAnimating()
                 let applicantVC = ApplicantsVC()
+                applicantVC.delegate = self.delegate
                 applicantVC.applicants = applicants!
                 self.push(viewController: applicantVC)
+            }else{
+                
             }
         }
-       
     }
-
+    override func localized() {
+        super.localized()
+        title = LanguageManager.shared.localized(string: "Posted")
+    }
 }

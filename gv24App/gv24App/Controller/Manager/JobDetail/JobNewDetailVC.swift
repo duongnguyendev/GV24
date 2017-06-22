@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 class JobNewDetailVC: JobDetailVC{
-    
+    var task = Task()
     let deleteButton: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -20,9 +20,10 @@ class JobNewDetailVC: JobDetailVC{
         button.iconName = .iosTrash
         return button
     }()
-
+    
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
+        self.descTaskView.task = task
     }
     override func setupView() {
         super.setupView()
@@ -31,12 +32,30 @@ class JobNewDetailVC: JobDetailVC{
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-
+    }
+    
+    override func setupRightNavButton() {
+        let buttonSend = NavButton(icon: .edit, size: CGSize(width: 20, height: 20))
+        buttonSend.addTarget(self, action: #selector(handleUpdateButton(_:)), for: .touchUpInside)
+        let btn = UIBarButtonItem(customView: buttonSend)
+        self.navigationItem.rightBarButtonItem = btn
     }
     
     func handleRemoveTask(_ sender: UIButton){
+        self.showAlertWith(task: task)
         print("Handle Remove Task")
     }
     
-
+    func handleUpdateButton(_ sender: UIButton){
+        let updateVC = UpdateVC()
+        updateVC.task = task
+        push(viewController: updateVC)
+        print("Handle Update Task")
+    }
+    
+    override func localized() {
+        super.localized()
+        title = LanguageManager.shared.localized(string: "Posted")
+        
+    }
 }

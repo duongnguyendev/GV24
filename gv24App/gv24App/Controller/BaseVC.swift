@@ -21,7 +21,6 @@ class BaseVC: UIViewController {
             }
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = AppColor.backGround
@@ -83,7 +82,6 @@ class BaseVC: UIViewController {
         viewController.isPresented = false
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
     
     func setupView(){
         view.addSubview(activity)

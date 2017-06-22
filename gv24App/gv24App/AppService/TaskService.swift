@@ -23,6 +23,27 @@ class TaskService: APIService {
             }
         }
     }
+    func updateTask(params : Parameters, completion:@escaping ((String?)->())){
+        let url = "task/update"
+        putWithToken(url: url, parameters: params) { (jsons, error) in
+            if error == nil{
+                completion(nil)
+            }else{
+                completion(error)
+            }
+        }
+    }
+    func deleteTask(task: Task,completion: @escaping (DeleteTaskCompletion)){
+        let url = "task/delete"
+        let params : Dictionary<String,String> = ["id": task.id!]
+        deleteWithToken(url: url, parameters: params) { (json, message) in
+            if json == nil{
+                completion(false)
+            }else{
+                completion(true)
+            }
+        }
+    }
     func sendRequestToMaid(params : Parameters, completion:@escaping ((String?)->())){
         let url = "task/sendRequest"
         postWidthToken(url: url, parameters: params) { (response, error) in
@@ -74,5 +95,31 @@ class TaskService: APIService {
             return works
         }
         return nil
+    }
+    
+    func selectedMaid(id: String,maidId: String,completion:@escaping ((Bool?)->())){
+        let url = "task/submit"
+        let parameters = [
+            "id": id,
+            "maidId": maidId]
+        postWidthToken(url: url, parameters: parameters) { (json, error) in
+            if error == nil{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+    }
+    
+    func checkInMaid(task: Task,img_checkin: UIImage,completion:@escaping ((Bool?)->())){
+        let url = "task/checkin"
+        var params = Dictionary<String, String>()
+        params["ownerId"] = task.stakeholder?.owner
+        params["id"] = task.id
+        postMultipartWithToken(url: url, image: img_checkin, name: "checkin", parameters: params) { (json, error) in
+            if error == nil{
+                
+            }
+        }
     }
 }
