@@ -11,9 +11,25 @@ import MessageUI
 
 class ContactVC: BaseVC, MFMailComposeViewControllerDelegate  {
 
+    var contact : Contact?{
+        didSet{
+            let addressString = LanguageManager.shared.localized(string: "Address")
+            labelAddress.text = addressString! + ":\n" + (contact?.address)!
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = LanguageManager.shared.localized(string: "Contact")
+        
+        MoreService.shared.getContact { (contact, error) in
+            if error != nil{
+            
+            }else{
+                self.contact = contact
+            }
+        }
+        
     }
 
     private let logoView : IconView = {
@@ -24,7 +40,7 @@ class ContactVC: BaseVC, MFMailComposeViewControllerDelegate  {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .medium, size: 15)
-        lb.text = "Công ty TNHH GV24"
+        lb.text = "Công ty TNHH GV247"
         return lb
     }()
     private let labelAddress : UILabel = {
@@ -32,7 +48,6 @@ class ContactVC: BaseVC, MFMailComposeViewControllerDelegate  {
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .regular, size: 15)
         lb.textAlignment = .justified
-        lb.text = "Địa chỉ:\n123 đường số 1, phường Phạm Ngũ Lão, Quận 1, Thành Phố Hồ Chí Minh"
         lb.numberOfLines = 0
         return lb
     }()
@@ -101,27 +116,33 @@ class ContactVC: BaseVC, MFMailComposeViewControllerDelegate  {
     }
     
     func handleCall(_ sender : UIButton){
-        
-        if let url = URL(string: "tel://\(0906865192)") {
-            UIApplication.shared.openURL(url)
+        if let phone = contact?.phone{
+            if let url = URL(string: "tel://\(phone)") {
+                UIApplication.shared.openURL(url)
+            }
         }
+        
     }
     func handleMail(_ sender : UIButton){
         
-        if !MFMailComposeViewController.canSendMail() {
-            print("Mail services are not available")
-        }else{
-            let composeVC = MFMailComposeViewController()
-            composeVC.mailComposeDelegate = self
-            
-            // Configure the fields of the interface.
-            composeVC.setToRecipients(["address@example.com"])
-            composeVC.setSubject("Hello!")
-            composeVC.setMessageBody("Hello from California!", isHTML: false)
-            
-            // Present the view controller modally.
-            self.present(composeVC, animated: true, completion: nil)
+        if let email = contact?.email{
+            if !MFMailComposeViewController.canSendMail() {
+                print("Mail services are not available")
+            }else{
+                let composeVC = MFMailComposeViewController()
+                composeVC.mailComposeDelegate = self
+                
+                // Configure the fields of the interface.
+                composeVC.setToRecipients([email])
+                composeVC.setSubject("")
+                composeVC.setMessageBody("Dear GV247.\n", isHTML: false)
+                
+                // Present the view controller modally.
+                self.present(composeVC, animated: true, completion: nil)
+            }
         }
-
+    }
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

@@ -10,13 +10,18 @@ import UIKit
 import IoniconsSwift
 import FacebookCore
 import FacebookLogin
+import GoogleSignIn
+import SwiftyJSON
+import Firebase
+
 
 @objc protocol UserEventDelegate{
     @objc optional func logedIn()
     @objc optional func signUpComplete()
 }
 
-class SignInVC: BaseVC, UserEventDelegate {
+let DATA_NOT_EXIT = "Sorry! Data is not exist."
+class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     private var itemHeight : CGFloat = 0
     override func viewDidLoad() {
@@ -24,6 +29,8 @@ class SignInVC: BaseVC, UserEventDelegate {
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
         title = LanguageManager.shared.localized(string: "Login")
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
     }
     private let topBackGround : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "top_bg"))
@@ -273,33 +280,99 @@ class SignInVC: BaseVC, UserEventDelegate {
         present(viewController: ForgotPassVC())
     }
     func handleFaceBookButton(_ sender : UIButton) {
-        
-        //        let loginManager = LoginManager()
-        //        loginManager.logIn([.publicProfile], viewController: self) { (loginResult) in
-        //            switch loginResult {
-        //            case .failed(let error):
-        //                print(error)
-        //            case .cancelled:
-        //                print("User cancelled login.")
-        //            case .success( _, _, let accessToken):
-        //                print("Logged in! \(accessToken)")
-        //            }
-        //        }
+        let loginManager = LoginManager()
+        loginManager.logIn([.publicProfile, .email], viewController: self) { (loginResult) in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                
+                print("User cancelled login.")
+                
+            case .success( _, _, _):
+                self.handleFacebookAccount()
+            }
+        }
     }
     func handleGoogleButton(_ sender : UIButton) {
-        
+        GIDSignIn.sharedInstance().signIn()
         
     }
     
     func signUpComplete() {
         presentHome()
     }
-
+    
     func presentHome() {
-//        let homeVC = HomeVC()
-//        let nav = UINavigationController(rootViewController: homeVC)
-//        present(nav, animated: false, completion: nil)
         self.dismiss(animated: true, completion: nil)
+    }
+    func handleFacebookAccount(){
+        GraphRequest(graphPath: "me", parameters: ["field" : "id, name, email, phone"], accessToken: AccessToken.current, httpMethod: .GET).start { (response, result) in
+            switch result{
+            case .failed(let error):
+                print(error)
+            case .success(response: let res):
+                var userInfo = Dictionary<String, String>()
+                let id = res.dictionaryValue?["id"] as? String
+                userInfo["id"] = id
+                userInfo["username"] = "fb" + id!
+                userInfo["name"] = res.dictionaryValue?["name"] as? String
+                userInfo["email"] = res.dictionaryValue?["email"] as? String
+                userInfo["token"] = AccessToken.current?.authenticationToken
+                userInfo["image"] = "http://graph.facebook.com/\(((AccessToken.current?.userId)!))/picture?type=large"
+                self.loginSocial(userInfo: userInfo)
+            }
+        }
+    }
+    
+    func loginSocial(userInfo : Dictionary<String, String>){
+        activity.startAnimating()
+        UserService.shared.loginSocial(userInfo: userInfo) { (user, token, error) in
+            self.activity.stopAnimating()
+            if error != nil{
+                if error == DATA_NOT_EXIT{
+                    self.handleSignUpSocical(userInfo: userInfo)
+                }else{
+                    print(error!)
+                }
+            }else{
+                UserHelpers.save(user: user!, token: token!)
+                self.presentHome()
+            }
+        }
+    }
+    
+    func handleSignUpSocical(userInfo: Dictionary<String, String>){
+        let signUpSocialVC = SignUpSocialVC()
+        signUpSocialVC.userInfo = userInfo
+        signUpSocialVC.delegate = self
+        present(viewController: signUpSocialVC)
+    }
+    //MARK: -Google sign in delegate
+    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
+        
+    }
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        self.present(viewController, animated: true, completion: nil)
+    }
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        self.activity.stopAnimating()
+        self.dismiss(animated: true, completion: nil)
+    }
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil{
+        
+        }else{
+            var userInfo = Dictionary<String, String>()
+            userInfo["id"] = user.userID
+            userInfo["username"] = "gm" + user.userID
+            userInfo["name"] = user.profile.name
+            userInfo["email"] = user.profile.email
+            userInfo["token"] = user.authentication.accessToken
+            userInfo["image"] = user.profile.imageURL(withDimension: UInt.allZeros).absoluteString
+            loginSocial(userInfo: userInfo)
+        }
+        
     }
 }
 

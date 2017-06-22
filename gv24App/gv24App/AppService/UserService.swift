@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 import Alamofire
+import Firebase
 
 class UserService: APIService {
     
@@ -28,7 +29,10 @@ class UserService: APIService {
     
     func logIn(userName : String, password: String, completion : @escaping ((User?, String?, String?)->())){
         let url = "auth/login"
-        let params : Dictionary<String, String> = ["username": userName, "password": password]
+        var params : Dictionary<String, String> = ["username": userName, "password": password]
+        if let token = FIRInstanceID.instanceID().token(){
+            params["device_token"] = token
+        }
         postMultipart(url: url, image: nil, name: nil, parameters: params) { (jsonData, error) in
             if error == nil{
                 let token = jsonData?["token"].string
@@ -51,7 +55,36 @@ class UserService: APIService {
             }
         }
     }
-    
+    func loginSocial(userInfo : Dictionary<String, String>, completion : @escaping ((User?, String?, String?)->())){
+        let url = "auth/thirdLogin"
+        let params : Dictionary<String, String> = ["id": userInfo["id"]!,
+                                                   "token": userInfo["token"]!,
+                                                   "device_token" : FIRInstanceID.instanceID().token()!]
+        postMultipart(url: url, image: nil, name: nil, parameters: params) { (response, error) in
+            if error == nil{
+                let token = response?["token"].string
+                let user = User(jsonData: (response?["user"])!)
+                completion(user,token , nil)
+            }else{
+                completion(nil, nil, error)
+            }        }
+    }
+    func signUpSocical(userInfo : Dictionary<String, String>, completion : @escaping ((User?, String?, String?)->())){
+        var params = userInfo
+        let url = "auth/thirdRegister"
+        params["device_token"] = FIRInstanceID.instanceID().token()!
+        
+        postMultipart(url: url, image: nil, name: nil, parameters: params) { (jsonData, error) in
+            if error == nil{
+                let token = jsonData?["token"].string
+                let user = User(jsonData: (jsonData?["user"])!)
+                completion(user,token , nil)
+            }else{
+                completion(nil, nil, error)
+            }
+        }
+        
+    }
     func getComments(user : User?, page : Int?, completion:@escaping (([Comment]?, Int?, Int?, String?)->())){
         
         var url = "maid/getComment"

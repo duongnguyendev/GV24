@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import FacebookCore
+import FacebookLogin
+import GoogleSignIn
 
 class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SwitchCellDelegate {
     override func viewDidLoad() {
@@ -166,12 +168,21 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             handleSection3(item: indexPath.item)
             break
         case 4:
-            UserHelpers.logOut()
-            self.dismiss(animated: true, completion: nil)
+            logOut()
             break
         default:
             break
         }
+    }
+    
+    func logOut() {
+        UserHelpers.logOut()
+        GIDSignIn.sharedInstance().signOut()
+        if AccessToken.current != nil{
+            let facebookLoginManager = LoginManager()
+            facebookLoginManager.logOut()
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     func handleSection0(item : Int){

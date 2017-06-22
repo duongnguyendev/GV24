@@ -17,7 +17,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     var gender : Int?
     var avatarImage : UIImage?
     var coordinate : CLLocationCoordinate2D?
-    private let invalidateString = LanguageManager.shared.localized(string: "PleaseCompleteAllInformation")
+    let invalidateString = LanguageManager.shared.localized(string: "PleaseCompleteAllInformation")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -398,7 +398,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         }
         return nil
     }
-    private func validateAddress(completion:@escaping (String?)->()){
+    func validateAddress(completion:@escaping (String?)->()){
 
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(addressTextField.text!) { (placeMarks, error) in

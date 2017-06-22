@@ -12,7 +12,8 @@ class UpdateProfileVC: SignUpVC_2 {
 
     var user : User?{
         didSet{
-            imageAvatar.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
+//            imageAvatar.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
+            imageAvatar.loadImageurl(link: (user?.avatarUrl)!)
             emailTextField.text = user?.email
             addressTextField.text = user?.address?.name
             fullNameTextField.text = user?.name
@@ -35,9 +36,9 @@ class UpdateProfileVC: SignUpVC_2 {
         activity.startAnimating()
         buttonComplate.isUserInteractionEnabled = false
         validate { (validateError) in
-            self.activity.stopAnimating()
-            self.buttonComplate.isUserInteractionEnabled = true
             if validateError != nil{
+                self.activity.stopAnimating()
+                self.buttonComplate.isUserInteractionEnabled = true
                 let alert = UIAlertController(title: "", message: validateError, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)

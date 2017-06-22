@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 class SignUpVC_3: BaseVC{
     
     var delegate : UserEventDelegate?
@@ -75,7 +76,6 @@ class SignUpVC_3: BaseVC{
         
         //        contentView.addConstraintWithFormat(format: "V:|-\(margin)-[v0]-\(margin)-[v1]|", views: logoImage, labelContent)
         contentView.addConstraintWithFormat(format: "V:|[v0]|", views: labelContent)
-        //        logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
         
         labelContent.widthAnchor.constraint(equalToConstant: view.frame.size.width - (2 * margin)).isActive = true
         labelContent.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
@@ -86,6 +86,9 @@ class SignUpVC_3: BaseVC{
         
         buttonComplate.isUserInteractionEnabled = false
         activity.startAnimating()
+        if let token = FIRInstanceID.instanceID().token(){
+            user?["device_token"] = token
+        }
         UserService.shared.register(info: user!, avatar: avatarImage!) { (userRegisted, token, error) in
             self.activity.stopAnimating()
             self.buttonComplate.isUserInteractionEnabled = true

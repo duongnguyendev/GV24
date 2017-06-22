@@ -10,9 +10,19 @@ import UIKit
 
 class RechargeVC: BaseVC {
     
+    var contact : Contact?{
+        didSet{
+            labelAddress.text = contact?.address
+            labelHotLine.text = contact?.phone
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Hướng dẫn nạp tiền"
+        MoreService.shared.getContact { (contact, error) in
+            self.contact = contact
+        }
         
     }
 
@@ -45,6 +55,22 @@ class RechargeVC: BaseVC {
         bottomLine.bottomAnchor.constraint(equalTo: v.bottomAnchor, constant: 0).isActive = true
         return v
     }()
+    let labelAddress: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = Fonts.by(name: .light, size: 13)
+        lb.numberOfLines = 0
+        lb.textAlignment = .justified
+        return lb
+    }()
+    
+    let labelHotLine : UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = Fonts.by(name: .light, size: 13)
+        return lb
+    }()
+
 
     
     override func setupView() {
@@ -90,16 +116,6 @@ class RechargeVC: BaseVC {
         labelContent.text = "Ngoài ra, khách hàng có thể đến trụ sở công ty để gửi tiền trực tiếp vào tài khoản NGV24."
         labelContent.numberOfLines = 3
         labelContent.textAlignment = .justified
-        let labelAddress = UILabel()
-        labelAddress.translatesAutoresizingMaskIntoConstraints = false
-        labelAddress.font = Fonts.by(name: .light, size: 13)
-        labelAddress.text = "Địa chỉ: 123 đường 1, phường Phạm Ngũ Lão Quận 1, Thành phố Hồ Chí Minh"
-        labelAddress.numberOfLines = 0
-        labelAddress.textAlignment = .justified
-        let labelHotLine = UILabel()
-        labelHotLine.translatesAutoresizingMaskIntoConstraints = false
-        labelHotLine.font = Fonts.by(name: .light, size: 13)
-        labelHotLine.text = "1234 123 123"
         
         let iconAddress = IconView(icon: .home, size: 20, color: AppColor.backButton)
         let iconCall = IconView(icon: .iosTelephone, size: 20, color: AppColor.backButton)
@@ -145,7 +161,9 @@ class RechargeVC: BaseVC {
         
     }
     func handleButtonTransferInfo(_ sender: UIButton){
-        push(viewController: TransferInfoVC())
+        let transferInfoVC = TransferInfoVC()
+        transferInfoVC.contact = self.contact
+        push(viewController: transferInfoVC)
     }
 }
 

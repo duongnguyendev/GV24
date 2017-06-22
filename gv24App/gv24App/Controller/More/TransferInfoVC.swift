@@ -10,6 +10,13 @@ import UIKit
 
 class TransferInfoVC: BaseVC {
     
+    var contact : Contact?{
+        didSet{
+            labelNote.text = contact?.note
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Thông tin chuyển khoản"

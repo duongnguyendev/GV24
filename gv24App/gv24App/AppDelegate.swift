@@ -10,13 +10,15 @@ import UIKit
 import Google
 import GoogleSignIn
 import GoogleMaps
-//import FirebaseCore
-//import Firebase
-//import FirebaseMessaging
-//import UserNotifications
+import FirebaseCore
+import Firebase
+import FirebaseMessaging
+import UserNotifications
+import FacebookCore
+import FacebookLogin
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate {
     
     var window: UIWindow?
     
@@ -24,39 +26,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //Firebase config
-//        FIRApp.configure()
-//        if #available(iOS 10.0, *) {
-//            // For iOS 10 display notification (sent via APNS)
-//            UNUserNotificationCenter.current().delegate = self
-//            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-//            UNUserNotificationCenter.current().requestAuthorization(
-//                options: authOptions,
-//                completionHandler: {_, _ in })
-//            // For iOS 10 data message (sent via FCM
-//            FIRMessaging.messaging().remoteMessageDelegate = self
-//        } else {
-//            let settings: UIUserNotificationSettings =
-//                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-//            application.registerUserNotificationSettings(settings)
-//        }
-//        application.registerForRemoteNotifications()
+        FIRApp.configure()
+        let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
         
+        //        NotificationCenter.default.addObserver(self,
+        //                                               selector: #selector(self.tokenRefreshNotification),
+        //                                               name: .firInstanceIDTokenRefresh,
+        //                                               object: nil)
         
         GMSServices.provideAPIKey("AIzaSyAX9zDfRhJOhCVJya1bawKqGRNPJKsqk7Q")
         // Initialize sign-in
-        //        var configureError: NSError?
-        //        GGLContext.sharedInstance().configureWithError(&configureError)
-        //
-        //        GIDSignIn.sharedInstance().delegate = self
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+//        GIDSignIn.sharedInstance().delegate = self
         // Override point for customization after application launch.
-        
-//        Thread.sleep(forTimeInterval: 2)
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
         window?.rootViewController = LaunchScreenVC()
         
         return true
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.prod)
+    }
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error)
+    }
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        print("userInfo")
+        print(userInfo)
+    }
+    
+    //FCM delegate
+    
+    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
+        print("userInfo")
+        print(remoteMessage.appData)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("userInfo")
+        print(userInfo)
+    }
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -74,28 +91,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        AppEventsLogger.activate(application)
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                 annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        let google = GIDSignIn.sharedInstance().handle(url,
+                                                       sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                       annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        let facebook = SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        return google || facebook
     }
+    
     
     //MARK: - Google delegate
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
-            // Perform any operations on signed in user here.
-            //            let userId = user.userID                  // For client-side use only!
-            //            let idToken = user.authentication.idToken // Safe to send to the server
-            //            let fullName = user.profile.name
-            //            let givenName = user.profile.givenName
-            //            let familyName = user.profile.familyName
-            //            let email = user.profile.email
+            //            Perform any operations on signed in user here.
             // ...
         } else {
             print("\(error.localizedDescription)")

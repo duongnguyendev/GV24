@@ -87,7 +87,7 @@ class MoreUserCell: BaseMoreCell {
     private func showUserInfo(){
         let user = UserHelpers.currentUser
         if let imageUrl = user?.avatarUrl{
-            self.avatarImageView.loadImageUsingUrlString(urlString: imageUrl)
+            self.avatarImageView.loadImageurl(link: imageUrl)
         }
         
         self.labelName.text = user?.name
