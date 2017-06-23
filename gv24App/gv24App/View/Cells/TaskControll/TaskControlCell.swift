@@ -10,7 +10,9 @@ import UIKit
 @objc protocol TaskControlDelegate {
     @objc optional func selectedPosted(task : Task,deadline: Bool)
     @objc optional func remove(task : Task)
-    @objc optional func selectedAssigned(task : Task)
+    @objc optional func selectedAssigned(deadline: Bool,task : Task)
+    @objc optional func selectedProgress(task : Task)
+    
 }
 
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
@@ -33,19 +35,25 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         didSet{
             if type == 0{
                 TaskManageService.shared.fetchTask(process: "000000000000000000000001&sortByTaskTime=true", completion: { (tasksNew) in
-                    self.tasks = tasksNew!
-                    self.taskCollectionView.reloadData()
+                    if let taskNew = tasksNew{
+                        self.tasks = taskNew
+                        self.taskCollectionView.reloadData()
+                    }
                 })
             }else if type == 1{
                 TaskManageService.shared.fetchTask(process: "000000000000000000000003", completion: { (tasksAssigned) in
-                    self.tasks = tasksAssigned!
-                    self.taskCollectionView.reloadData()
+                    if let taskAssigned = tasksAssigned{
+                        self.tasks = taskAssigned
+                        self.taskCollectionView.reloadData()
+                    }
                 })
 
             }else{
                 TaskManageService.shared.fetchTask(process: "000000000000000000000004", completion: { (tasksProgress) in
-                    self.tasks = tasksProgress!
-                    self.taskCollectionView.reloadData()
+                    if let taskProgress = tasksProgress{
+                        self.tasks = taskProgress
+                        self.taskCollectionView.reloadData()
+                    }
                 })
             }
         }
@@ -93,4 +101,11 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
         
     }
+    
+    func removeObjectLocal(task: Task){
+        let index = tasks.index(of: task)
+        self.tasks.remove(at: index!)
+        self.taskCollectionView.reloadData()
+    }
+    
 }

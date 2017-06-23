@@ -16,7 +16,7 @@ class DetailTaskHistoryVC: BaseVC{
         self.mainScrollView.backgroundColor = AppColor.collection
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
     }
     
     let mainScrollView : UIScrollView = {

@@ -42,11 +42,14 @@ class MaidProfile : User {
     override init() {
         super.init()
     }
+    var maidId: String?
     var age : Int?
     var workInfo : WorkInfo?
+    
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
         self.age = jsonData["info"]["age"].int
+        self.maidId = jsonData["_id"].string ?? ""
         self.workInfo = WorkInfo(jsonData: jsonData["work_info"])
     }
 }

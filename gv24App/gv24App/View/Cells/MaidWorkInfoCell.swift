@@ -12,6 +12,7 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
     var maid : MaidProfile?{
         didSet{
             self.labelPrice.text = "\(maid?.workInfo?.price ?? 0)"
+            self.collectionWorkInfo.reloadData()
         }
     }
     var delegate : MaidProfileDelegate?
@@ -44,6 +45,7 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.backgroundColor = .clear
         cv.delegate = self
         cv.dataSource = self
         return cv
@@ -60,7 +62,7 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
     let collectionLine = UIView.horizontalLine()
     
     override func setupView() {
-        collectionWorkInfo.register(UICollectionViewCell.self, forCellWithReuseIdentifier: workInfoCellId)
+        collectionWorkInfo.register(AbilityCell.self, forCellWithReuseIdentifier: workInfoCellId)
         
         buttonReport.addTarget(self, action: #selector(handleReportButton(_:)), for: .touchUpInside)
         buttonChoose.addTarget(self, action: #selector(handleChooseButton(_:)), for: .touchUpInside)
@@ -136,17 +138,12 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
     }
     
     //MARK: - collection view delegate
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return (maid?.workInfo?.ability?.count)!
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: workInfoCellId, for: indexPath)
-        if indexPath.item % 2 == 0{
-            cell.backgroundColor = UIColor.red
-        }else{
-            cell.backgroundColor = UIColor.yellow
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: workInfoCellId, for: indexPath) as! AbilityCell
+        cell.ability = maid?.workInfo?.ability?[indexPath.item]
         return cell
     }
     

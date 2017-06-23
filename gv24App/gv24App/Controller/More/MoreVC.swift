@@ -11,6 +11,7 @@ import FacebookCore
 import FacebookLogin
 import GoogleSignIn
 
+
 class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SwitchCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,7 +216,16 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         }
     }
     func handleSection3(item : Int){
-        
+        if item == 0{
+            
+        }else{
+            let url = URL(string: "fb://profile/1616383408662886")
+            if UIApplication.shared.canOpenURL(url!) {
+                UIApplication.shared.openURL(url!)
+            }else{
+                UIApplication.shared.openURL(URL(string: "https://www.facebook.com/hbbsolutions/")!)
+            }
+        }
     }
     func notification(isOn: Bool) {
         print(isOn)

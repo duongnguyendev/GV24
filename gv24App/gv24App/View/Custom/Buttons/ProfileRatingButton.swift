@@ -28,6 +28,12 @@ class ProfileRatingButton: BaseButton{
             avatarImageView.loadImageUsingUrlString(urlString: str_Avatar!)
         }
     }
+    
+    var ratingPoint: Double? {
+        didSet{
+            rattingView.point = ratingPoint
+        }
+    }
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false

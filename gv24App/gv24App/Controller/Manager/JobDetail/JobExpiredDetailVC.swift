@@ -36,8 +36,6 @@ class JobExpiredDetailVC: JobDetailVC{
         button.iconName = .iosTrash
         return button
     }()
-
-    
     override func setupView() {
         super.setupView()
         view.addSubview(labelExpired)
@@ -51,11 +49,16 @@ class JobExpiredDetailVC: JobDetailVC{
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.descTaskView.task = task
     }
     
     func handleRemoveTask(_ sender: UIButton){
+        self.showAlertWith(task: task)
         print("Handle Remove Task")
     }
-    
+    override func localized() {
+        super.localized()
+        title = LanguageManager.shared.localized(string: "Posted")
+    }
 }

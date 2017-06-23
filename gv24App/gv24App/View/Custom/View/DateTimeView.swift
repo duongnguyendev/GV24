@@ -18,7 +18,7 @@ class DateTimeView: DescInfoView {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .light, size: 16)
-        lb.textColor = UIColor.black
+        lb.textColor = .lightGray
         lb.text = "9:00 AM - 12:00 PM"
         return lb
     }()

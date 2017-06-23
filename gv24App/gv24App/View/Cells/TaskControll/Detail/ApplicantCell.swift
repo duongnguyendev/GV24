@@ -10,34 +10,32 @@ import Foundation
 import UIKit
 @objc protocol ApplicantControlDelegate {
     @objc optional func selectedProfile(maid : MaidProfile)
-    @objc optional func selectedMaid(maid : MaidProfile)
+    @objc optional func selectedMaid(id: String,maid : MaidProfile)
 }
-
 class ApplicantCell: MaidCell{
     var delegateApp: ApplicantControlDelegate?
-    
+    var idTask: String?
     override func setupView() {
         super.setupView()
-        title = "Chọn người giúp việc này"
+        title = LanguageManager.shared.localized(string: "SelectYourApplicants")
     }
     
     override func handleButtonTasks(_ sender: UIButton) {
         if delegateApp != nil{
-            delegateApp?.selectedMaid!(maid: (request?.madid)!)
+            delegateApp?.selectedMaid!(id: idTask!, maid: (request?.madid)!)
         }
     }
-    
     override func handleButtonProfile(_ sender: UIButton) {
         if delegateApp != nil{
             delegateApp?.selectedProfile!(maid: (request?.madid)!)
         }
     }
-    
     var request: Request?{
         didSet{
             profileRatingButton.str_Avatar = request?.madid?.avatarUrl
             profileRatingButton.name = request?.madid?.userName
-            profileRatingButton.date = "\((request?.madid?.workInfo?.price)!)"
+            profileRatingButton.date = "\((request?.madid?.workInfo?.price)!) VND/1 \(LanguageManager.shared.localized(string: "Hour")!)"
+            profileRatingButton.ratingPoint = request?.madid?.workInfo?.evaluationPoint as? Double
         }
     }
 }

@@ -13,6 +13,7 @@ class WorkType: Entity {
 
     var id : String?
     var name : String?
+    var image: String?
     
     override init() {
         super.init()
@@ -21,5 +22,6 @@ class WorkType: Entity {
         super.init()
         self.id = jsonData["_id"].string
         self.name = jsonData["name"].string
+        self.image = jsonData["image"].string
     }
 }

@@ -114,6 +114,8 @@ class TaskCell: BaseCollectionCell {
             iconType.loadImageurl(link: (task?.info?.work?.image)!)
             labelDate.text = date.dayMonthYear
             labelTimes.text = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
+            labelUploadAt.text = Date(isoDateString: (task?.history?.updateAt)!).periodTime
         }
     }
+    
 }

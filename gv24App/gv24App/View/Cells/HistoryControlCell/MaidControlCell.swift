@@ -21,7 +21,7 @@ class MaidControlCell: HistoryControlCell {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: maidCellId, for: indexPath) as! MaidCell
         cell.delegate = delegate
-        cell.maidHistory = maidsHistory[indexPath.item]
+        //cell.maidHistory = maidsHistory[indexPath.item]
         return cell
     }
     

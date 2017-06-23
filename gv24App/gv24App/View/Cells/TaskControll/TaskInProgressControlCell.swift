@@ -19,7 +19,7 @@ class TaskInProgressControlCell: TaskControlCell {
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.delegate != nil {
-            self.delegate?.selectedAssigned!(task: tasks[indexPath.item])
+            self.delegate?.selectedProgress!(task: tasks[indexPath.item])
         }
     }
     let progressCellId = "progressCellId"

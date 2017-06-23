@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
-class JobAssignedDetailVC: BaseVC{
+class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var taskAssigned = Task()
+    
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +33,7 @@ class JobAssignedDetailVC: BaseVC{
     private let conformedMaid: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = LanguageManager.shared.localized(string: "ConformedMaid")
+        button.title = LanguageManager.shared.localized(string: "ComformedMaid")
         button.addTarget(self, action: #selector(handleConformMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
         button.color = AppColor.backButton
@@ -40,6 +41,14 @@ class JobAssignedDetailVC: BaseVC{
         return button
     }()
     
+    let descLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.text = LanguageManager.shared.localized(string: "Description")
+        lb.textColor = AppColor.lightGray
+        return lb
+    }()
+
     let descTaskView: DescTaskView = {
         let view = DescTaskView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -65,8 +74,44 @@ class JobAssignedDetailVC: BaseVC{
         print("Handle Profile Button")
     }
     func handleConformMaid(_ sender: UIButton){
-         print("Handle Comform Task")
+        self.handleTakePhoto()
+        print("Handle Comform Task")
     }
+    func handleTakePhoto(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            self.showImagePickerWith(sourceType: .camera)
+        }else{
+            print("Camera not availble.")
+        }
+    }
+    func handleSelectFromGallery(){
+        showImagePickerWith(sourceType: .photoLibrary)
+    }
+    
+    func showImagePickerWith(sourceType : UIImagePickerControllerSourceType)
+    {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    //MARK: - handle image picker controller delegate
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            let imageResized = image.resize(newWidth: 200)
+            TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
+                
+            })
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+
     func handleRemoveTask(_ sender: UIButton){
         print("Handle Remove Task")
     }
@@ -74,22 +119,21 @@ class JobAssignedDetailVC: BaseVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
-         title = "Đã phân công"
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.descTaskView.task = taskAssigned
         self.profileButton.received = taskAssigned.stakeholder?.receivced
     }
     
     override func setupView() {
-        super.setupView()
         view.addSubview(mainScrollView)
         self.mainScrollView.addSubview(contentView)
         self.contentView.addSubview(profileButton)
         self.contentView.addSubview(conformedMaid)
         self.contentView.addSubview(descTaskView)
         self.contentView.addSubview(deleteButton)
-        
+        self.view.addSubview(descLabel)
         mainScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         mainScrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
@@ -109,7 +153,10 @@ class JobAssignedDetailVC: BaseVC{
         conformedMaid.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 1).isActive = true
         conformedMaid.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        descTaskView.topAnchor.constraint(equalTo: conformedMaid.bottomAnchor, constant: 20).isActive = true
+        descLabel.topAnchor.constraint(equalTo: conformedMaid.bottomAnchor, constant: 20).isActive = true
+        descLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        
+        descTaskView.topAnchor.constraint(equalTo: descLabel.bottomAnchor, constant: 10).isActive = true
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
         descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
@@ -117,6 +164,10 @@ class JobAssignedDetailVC: BaseVC{
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
-        
+    }
+    
+    override func localized() {
+        super.localized()
+        title = LanguageManager.shared.localized(string: "InProcess")
     }
 }

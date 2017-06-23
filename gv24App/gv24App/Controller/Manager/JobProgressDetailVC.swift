@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 class JobProgressDetailVC: BaseVC {
     var taskProgress = Task()
-
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +27,15 @@ class JobProgressDetailVC: BaseVC {
         button.iconName = .logOut
         return button
     }()
+    
+    let descLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.text = LanguageManager.shared.localized(string: "Description")
+        lb.textColor = AppColor.lightGray
+        return lb
+    }()
+
     
     let descTaskView: DescTaskView = {
         let view = DescTaskView()
@@ -53,6 +61,7 @@ class JobProgressDetailVC: BaseVC {
         title = "Đang làm"
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.descTaskView.task = taskProgress
         self.profileButton.received = taskProgress.stakeholder?.receivced
     }
@@ -62,7 +71,8 @@ class JobProgressDetailVC: BaseVC {
         self.view.addSubview(profileButton)
         self.view.addSubview(finishMaid)
         self.view.addSubview(descTaskView)
-
+        self.view.addSubview(descLabel)
+        
         view.addConstraintWithFormat(format: "H:|[v0]|", views: profileButton)
         profileButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         profileButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -71,9 +81,17 @@ class JobProgressDetailVC: BaseVC {
         finishMaid.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 1).isActive = true
         finishMaid.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        descTaskView.topAnchor.constraint(equalTo: finishMaid.bottomAnchor, constant: 20).isActive = true
+        descLabel.topAnchor.constraint(equalTo: finishMaid.bottomAnchor, constant: 20).isActive = true
+        descLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        
+        descTaskView.topAnchor.constraint(equalTo: descLabel.bottomAnchor, constant: 20).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
         descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+    }
+    
+    override func localized() {
+        super.localized()
+        title = LanguageManager.shared.localized(string: "RunningWork")
     }
 
 }

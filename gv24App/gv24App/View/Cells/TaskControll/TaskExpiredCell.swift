@@ -33,5 +33,4 @@ class TaskExpiredCell: TaskCell{
         labelExpired.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelExpired.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
     }
-
 }

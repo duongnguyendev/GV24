@@ -11,10 +11,11 @@ target 'gv24App' do
   pod ‘SwiftyJSON’
   pod 'FacebookCore'
   pod 'FacebookLogin'
+  pod 'FacebookShare'
   pod 'Google/SignIn'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
-  
+  pod 'AFNetworking', '~> 2.0’
 end

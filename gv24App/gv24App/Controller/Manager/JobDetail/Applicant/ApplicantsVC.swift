@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,ApplicantControlDelegate{
     var applicants = [Applicant]()
+    var delegate: TaskManageDelegate?
+    
     private lazy var collectionApplicant : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -28,6 +30,8 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         title = LanguageManager.shared.localized(string: "ApplicantList")
     }
     override func setupView() {
@@ -42,6 +46,7 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: applicantCellId, for: indexPath) as! ApplicantCell
         cell.request = applicants[0].request?[indexPath.item]
+        cell.idTask = applicants[0].id
         cell.delegateApp = self
         return cell
     }
@@ -56,15 +61,26 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
     }
-
     func selectedProfile(maid: MaidProfile) {
         let maidProfileVC = MaidProfileVC()
         maidProfileVC.maid = maid
         push(viewController: maidProfileVC)
     }
     
-    func selectedMaid(maid: MaidProfile) {
-        
-        self.dismiss(animated: true, completion: nil)
+    func selectedMaid(id: String, maid: MaidProfile) {
+        if delegate != nil{
+            delegate?.selectedYourApplicants!()
+            TaskService.shared.selectedMaid(id: id, maidId: maid.maidId!, completion: { (flag) in
+                if flag!{
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    let alert = UIAlertController(title: nil, message: "Chọn người giúp việc thành công", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
+        }
     }
+
 }

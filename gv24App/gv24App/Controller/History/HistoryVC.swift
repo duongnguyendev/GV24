@@ -9,7 +9,6 @@
 import UIKit
 
 class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HistoryVCDelegate {
-    
     let maidHistoryCellId = "maidCellId"
     let taskHistoryCellId = "historyCellId"
     let unpaidWorkCellId = "unpaidCellId"

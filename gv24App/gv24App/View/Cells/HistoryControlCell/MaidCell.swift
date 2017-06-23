@@ -27,7 +27,7 @@ class MaidCell: BaseCollectionCell{
     let tasksButton: GeneralButton = {
        let button = GeneralButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Danh sách công việc"
+        button.title = LanguageManager.shared.localized(string: "Worklist")
         button.color = AppColor.backButton
         return button
     }()
@@ -59,7 +59,6 @@ class MaidCell: BaseCollectionCell{
             delegate?.selectedTaskMaid!(list: maidHistory!)
         }
     }
-    
     func handleButtonProfile(_ sender: UIButton){
         if delegate != nil{
             delegate?.selectedProfile!(maid: maidHistory!)
@@ -71,6 +70,7 @@ class MaidCell: BaseCollectionCell{
             profileRatingButton.str_Avatar = maidHistory?.avatarUrl
             profileRatingButton.name = maidHistory?.userName
             profileRatingButton.date = Date(isoDateString: (maidHistory?.times?[0])!).dayMonthYear
+            profileRatingButton.ratingPoint = maidHistory?.evaluationPoint
         }
     }
 }

@@ -85,12 +85,10 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     func handleButtonMoneyPayment(_ sender: UIButton){
         print("Handle Money Payment")
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
         title = "Thanh toán"
-        
         collectionPayment.register(JobTypeCell.self, forCellWithReuseIdentifier: jobCellId)
         collectionPayment.register(KeyBillCell.self, forCellWithReuseIdentifier: billCellId)
         collectionPayment.register(ProfileMaidCell.self, forCellWithReuseIdentifier: profileCellId)
@@ -100,7 +98,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         collectionPayment.register(BaseHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
     }
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
     }
     override func setupView() {
         super.setupView()
