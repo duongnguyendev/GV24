@@ -22,7 +22,11 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     
     var params = Dictionary<String, Any>()
     var workTypes : [WorkType]?
-    var workType : WorkType?
+    var workType : WorkType?{
+        didSet{
+            buttonType.title = workType?.name
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

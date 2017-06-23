@@ -69,7 +69,7 @@ class GeneralStatisticInfoView: BaseView {
         let labelRuningWork = labelWith(title: "WorkInProcess", textSize: 15)
         let labelDone = labelWith(title: "WorkDone", textSize: 15)
         let labelUnit = labelWith(title: "VND", textSize: 20)
-        let labelTotalCost = labelWith(title: "Tổng chi phí", textSize: 18)
+        let labelTotalCost = labelWith(title: "TotalExpense", textSize: 18)
         
         addSubview(backgroudImage)
         addSubview(labelTotalCost)

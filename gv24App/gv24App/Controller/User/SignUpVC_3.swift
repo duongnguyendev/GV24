@@ -16,6 +16,9 @@ class SignUpVC_3: BaseVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         title = LanguageManager.shared.localized(string: "TermsOfUse")
+        MoreService.shared.getTerms { (htmlString) in
+            print(htmlString as Any)
+        }
         // Do any additional setup after loading the view.
     }
     

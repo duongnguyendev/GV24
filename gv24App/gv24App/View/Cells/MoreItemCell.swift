@@ -31,6 +31,13 @@ class MoreItemCell: BaseMoreCell {
         labelView.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true
     }
 }
+class LogoutCell : MoreItemCell{
+    override func setupView() {
+        super.setupView()
+        labelView.textColor = AppColor.homeButton1
+    }
+}
+
 class MoreSocialCell: BaseMoreCell{
     var text : String?{
         didSet{

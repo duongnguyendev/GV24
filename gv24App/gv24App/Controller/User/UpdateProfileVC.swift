@@ -30,6 +30,7 @@ class UpdateProfileVC: SignUpVC_2 {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.user = UserHelpers.currentUser
+        emailTextField.isUserInteractionEnabled = false
     }
     
     override func handleComplateButton(_ sender: UIButton) {

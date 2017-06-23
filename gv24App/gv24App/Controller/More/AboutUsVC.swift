@@ -12,8 +12,10 @@ class AboutUsVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = LanguageManager.shared.localized(string: "AboutUs")
+        MoreService.shared.getAbout { (htmlString) in
+            print(htmlString as Any)
+        }
     }
     
     let logoImage : IconView = {

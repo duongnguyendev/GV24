@@ -63,6 +63,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        iv.contentMode = .scaleToFill
         iv.layer.cornerRadius = 25
         iv.layer.masksToBounds = true
         return iv

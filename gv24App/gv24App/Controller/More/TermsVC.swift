@@ -12,8 +12,10 @@ class TermsVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = LanguageManager.shared.localized(string: "TermsOfUse")
+        MoreService.shared.getTerms { (htmlString) in
+            print(htmlString as Any)
+        }
     }
     let labelContent : UILabel = {
         let lb = UILabel()

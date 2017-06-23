@@ -29,6 +29,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
         iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
         iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleToFill
         iv.layer.cornerRadius = 25
         iv.layer.masksToBounds = true
         return iv

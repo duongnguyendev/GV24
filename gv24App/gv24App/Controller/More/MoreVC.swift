@@ -19,6 +19,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         collectionMore.register(MoreUserCell.self, forCellWithReuseIdentifier: userCellId)
         collectionMore.register(MoreSocialCell.self, forCellWithReuseIdentifier: socialCellId)
         collectionMore.register(SwitchCell.self, forCellWithReuseIdentifier: switchCellId)
+        collectionMore.register(LogoutCell.self, forCellWithReuseIdentifier: logoutCellId)
         collectionMore.register(BaseHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
     }
     
@@ -26,6 +27,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     let itemCellId = "itemCellId"
     let socialCellId = "socialCellId"
     let switchCellId = "switchCellId"
+    let logoutCellId = "logoutCellId"
     let headerId = "headerId"
     lazy var collectionMore : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -101,10 +103,13 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             {
             case 0:
                 cell.text = "AboutUs"
+                break
             case 1:
                 cell.text = "TermsOfUse"
+                break
             case 2:
                 cell.text = "Contact"
+                break
             default: break
                 
             }
@@ -114,17 +119,20 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             switch indexPath.item
             {
             case 0:
-                cell.text = "Chia sẻ ứng dụng GV24"
+                cell.text = "ShareNGV247"
                 cell.icon = .androidShareAlt
+                break
             case 1:
                 cell.text = "FollowUsOnFacebook"
                 cell.icon = .socialFacebook
+                break
             default: break
                 
             }
             return cell
         case 4:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: logoutCellId, for: indexPath) as! LogoutCell
+            
             cell.text = "Logout"
             return cell
         default:
@@ -217,7 +225,19 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     func handleSection3(item : Int){
         if item == 0{
+            let text = "share content"
             
+            // set up activity view controller
+            let textToShare = [ text ]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: [])
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            
+            // exclude some activity types from the list (optional)
+            activityViewController.excludedActivityTypes = [ UIActivityType.airDrop ]
+            
+            // present the view controller
+            self.present(activityViewController, animated: true, completion: nil)
+
         }else{
             let url = URL(string: "fb://profile/1616383408662886")
             if UIApplication.shared.canOpenURL(url!) {

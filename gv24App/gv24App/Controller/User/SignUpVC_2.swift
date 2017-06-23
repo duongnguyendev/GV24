@@ -36,7 +36,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     let imageAvatar : CustomImageView = {
         let iv = CustomImageView()
         iv.image = Icon.by(imageName: "camera")
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleToFill
         iv.layer.cornerRadius = 50
         iv.layer.masksToBounds = true
         
