@@ -8,17 +8,19 @@
 
 import Foundation
 import UIKit
-class DetailTaskHistoryVC: BaseVC{
+class DetailTaskDoneVC: BaseVC{
     var taskHistory = Task()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mainScrollView.backgroundColor = AppColor.collection
+        title = LanguageManager.shared.localized(string: "WorkDone")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        descTaskView.task = taskHistory
+        profileButton.received = taskHistory.stakeholder?.receivced
     }
-    
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,25 +68,13 @@ class DetailTaskHistoryVC: BaseVC{
         return lb
     }()
     
-    private let commentButton: GeneralButton = {
-        let button = GeneralButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Nhận xét của bạn"
-        button.color = AppColor.backButton
-        button.addTarget(self, action: #selector(handleButtonComment(_:)), for: .touchUpInside)
-        return button
-    }()
     private let horizontalProfileButtonLine = UIView.horizontalLine()
-    private let horizontalStatusTaskLine = UIView.horizontalLine()
+    let horizontalStatusTaskLine = UIView.horizontalLine()
     
-    func handleButtonComment(_ sender: UIButton){
-        let commentVC = CommentMaidVC()
-        push(viewController: commentVC)
-        print("Click Button Comment")
-    }
     func handleButtonProfile(_ sender: UIButton){
-        //let maidHistoryProfileVC = MaidProfileHistoryVC()
-        //push(viewController: maidHistoryProfileVC)
+        let maidProfileVC = MaidProfileHistoryVC()
+        maidProfileVC.maidHistory = taskHistory.stakeholder?.receivced
+        push(viewController: maidProfileVC)
         print("Click Button Profile")
     }
     override func setupView() {
@@ -116,7 +106,6 @@ class DetailTaskHistoryVC: BaseVC{
         mainView.addSubview(profileButton)
         mainView.addSubview(horizontalProfileButtonLine)
         mainView.addSubview(horizontalStatusTaskLine)
-        mainView.addSubview(commentButton)
         
         mainView.addConstraintWithFormat(format: "V:|-20-[v0(300)]", views: descTaskView)
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
@@ -145,10 +134,5 @@ class DetailTaskHistoryVC: BaseVC{
         
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: horizontalStatusTaskLine)
         horizontalStatusTaskLine.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: 0).isActive = true
-        
-        mainView.addConstraintWithFormat(format: "H:|[v0]|", views: commentButton)
-        commentButton.topAnchor.constraint(equalTo: horizontalStatusTaskLine.topAnchor, constant: 1).isActive = true
-        commentButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        commentButton.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -30).isActive = true
     }
 }

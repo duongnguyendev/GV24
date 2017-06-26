@@ -19,6 +19,7 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
         collectionTask.register(MaidTaskCell.self, forCellWithReuseIdentifier: cellId)
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         HistoryService.shared.fetchListTasks(id: id!) { (maidTask) in
             if let tasks = maidTask?.taks{
                 self.tasks = tasks

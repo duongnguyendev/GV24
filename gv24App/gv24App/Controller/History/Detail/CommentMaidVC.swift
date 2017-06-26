@@ -9,7 +9,14 @@
 import Foundation
 import UIKit
 class CommentMaidVC: BaseVC,UITextViewDelegate{
-    
+    var id: String?
+    var maid : MaidProfile?{
+        didSet{
+            self.avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
+            self.labelName.text = maid?.name
+            self.labelAddress.text = maid?.address?.name
+        }
+    }
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -50,14 +57,15 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     private let textViewdContent : UITextView = {
         let tF = UITextView()
         tF.translatesAutoresizingMaskIntoConstraints = false
-        tF.text = "Báo cáo"
+        tF.text = "Bình luận"
+        tF.textColor = .lightGray
         tF.font = Fonts.by(name: .regular, size: 15)
         return tF
     }()
     
     override func setupRightNavButton() {
         let buttonSend = NavButton(title: "Send")
-        //buttonSend.addTarget(self, action: #selector(handleSendButton(_:)), for: .touchUpInside)
+        buttonSend.addTarget(self, action: #selector(handleSendButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn
     }
@@ -127,10 +135,36 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
+        title = LanguageManager.shared.localized(string: "Addcomments")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ratingView.isEnable = true
+    }
+    //Mark- Handle Button Send
+    func handleSendButton(_ sender: UIButton){
+        let alert = UIAlertController(title: "", message: "Báo cáo thành công", preferredStyle: .alert)
+        var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
+            HistoryService.shared.assesmentMaid(task: id!, told: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { (error) in
+                if error != nil{
+                    alert.message = error
+                }else{
+                    alertAction = UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    alert.addAction(alertAction)
+                }
+                self.present(alert: alert)
+            })
+        }else{
+            alert.message = "Vui lòng nhập nội dung cần báo cáo"
+            alert.addAction(alertAction)
+            self.present(alert: alert)
+        }
     }
     
-    
+    func present(alert : UIAlertController){
+        self.present(alert, animated: true, completion: nil)
+    }
 }

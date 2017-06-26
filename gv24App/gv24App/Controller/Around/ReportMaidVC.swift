@@ -112,7 +112,6 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     }
     
     //MARK: - handle button
-    
     func handleSendButton(_ sender: UIButton){
         let alert = UIAlertController(title: "", message: "Báo cáo thành công", preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

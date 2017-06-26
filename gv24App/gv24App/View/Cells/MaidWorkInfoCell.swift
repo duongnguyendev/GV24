@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var maid : MaidProfile?{
         didSet{

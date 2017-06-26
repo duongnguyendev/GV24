@@ -151,14 +151,21 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     //MARK: - Delegate-
     func selectedTaskHistory(task: Task) {
-        let detailTaskHistory = DetailTaskHistoryVC()
-        detailTaskHistory.taskHistory = task
-        push(viewController: detailTaskHistory)
-
+        HistoryService.shared.getCommentOwner(taskID: (task.stakeholder?.receivced?.maidId)!) { (commentOwner) in
+            if let _ = commentOwner{
+                let preAssesmentVC = PreviewAssesmentVC()
+                preAssesmentVC.taskHistory = task
+                self.push(viewController: preAssesmentVC)
+            }else{
+                let assesmentVC = AssesmentVC()
+                assesmentVC.taskHistory = task
+                self.push(viewController: assesmentVC)
+            }
+        }
     }
     func selectedProfile(maid: MaidHistory) {
-        let maidProfileVC = MaidProfileHistoryVC()
-        maidProfileVC.maidHistory = maid
+        let maidProfileVC = MaidProfileVC()
+        maidProfileVC.maid = maid
         push(viewController: maidProfileVC)
     }
     func selectedTaskMaid(list: MaidHistory) {
@@ -183,5 +190,10 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func handleToButton(_ sender : UIButton){
         print("handleToButton")
+    }
+    
+    //Mark-Language
+    override func localized() {
+        
     }
 }

@@ -10,7 +10,6 @@ import UIKit
 import IoniconsSwift
 
 class BaseVC: UIViewController {
-
     var isPresented : Bool?
     let margin : CGFloat = 30
     var hideKeyboardWhenTouchUpOutSize : Bool?{
@@ -59,10 +58,8 @@ class BaseVC: UIViewController {
         }
     }
     func setupRightNavButton(){
-    
+        
     }
-    
-    
     //MARK: - navigation handle
     func goBack(){
         if isPresented! {
