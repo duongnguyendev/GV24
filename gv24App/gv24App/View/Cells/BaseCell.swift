@@ -40,7 +40,7 @@ class BaseTableCell: UITableViewCell {
 class CellWithTitle: BaseCollectionCell {
     var title : String?{
         didSet{
-            titleView.text = title
+            titleView.text = LanguageManager.shared.localized(string: title!)
         }
     }
     private let titleView : UILabel = {

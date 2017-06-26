@@ -96,7 +96,7 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         }
         if comments.count == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CellWithTitle
-            cell.title = "Không có nhận xét"
+            cell.title = "ThereAreNoComments"
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: commentCellId, for: indexPath) as! CommentCell
