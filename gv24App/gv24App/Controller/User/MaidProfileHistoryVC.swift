@@ -9,7 +9,7 @@
 import UIKit
 
 class MaidProfileHistoryVC: MaidProfileVC {
-    var maidHistory: MaidHistory?
+    var maidHistory: MaidProfile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,6 @@ class MaidProfileHistoryVC: MaidProfileVC {
         repostVC.maid = self.maidHistory
         push(viewController: repostVC)
     }
-    
     override func loadComment() {
         if currentCommentPage == nil || currentCommentPage! < totalCommentPages!{
             UserService.shared.getComments(user: maidHistory, page: currentCommentPage) { (comments, page, totalPage, error) in

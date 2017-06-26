@@ -115,7 +115,6 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var headerView : HeaderWithTitle? = nil
-        
         if kind == UICollectionElementKindSectionHeader {
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? HeaderWithTitle
             switch indexPath.section {

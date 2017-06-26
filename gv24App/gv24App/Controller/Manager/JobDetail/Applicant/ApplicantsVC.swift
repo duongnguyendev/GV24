@@ -66,7 +66,6 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
         maidProfileVC.maid = maid
         push(viewController: maidProfileVC)
     }
-    
     func selectedMaid(id: String, maid: MaidProfile) {
         if delegate != nil{
             delegate?.selectedYourApplicants!()

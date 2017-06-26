@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var maid : MaidProfile?{
         didSet{
@@ -139,7 +138,7 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
     
     //MARK: - collection view delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (maid?.workInfo?.ability?.count)!
+        return (maid?.workInfo?.ability?.count) ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: workInfoCellId, for: indexPath) as! AbilityCell

@@ -304,6 +304,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     func handleButtonDate(_ sender : UIButton){
+        hideKeyboard()
         showDatePickerWith(mode: .date, sender: sender)
     }
     func handleButtonWorkTypes(_ sender: UIButton){

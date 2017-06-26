@@ -165,7 +165,6 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
     }
-    
     override func localized() {
         super.localized()
         title = LanguageManager.shared.localized(string: "InProcess")

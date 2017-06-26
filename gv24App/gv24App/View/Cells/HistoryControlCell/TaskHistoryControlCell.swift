@@ -24,10 +24,7 @@ class TaskHistoryControlCell: HistoryControlCell {
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if taskHistory?.docs?.count != nil{
-            return (taskHistory?.docs?.count)!
-        }
-        return 0
+        return taskHistory?.docs?.count ?? 0
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.delegate != nil {

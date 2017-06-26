@@ -18,7 +18,6 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     let totalCellId = "totalCellId"
     let headerId = "headerId"
     
-    
     lazy var collectionPayment : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

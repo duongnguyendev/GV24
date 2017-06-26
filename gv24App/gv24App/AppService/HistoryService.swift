@@ -64,4 +64,34 @@ class HistoryService: APIService{
         }
     }
     
+    func getCommentOwner(taskID: String,completion:@escaping ((Comment?)->())){
+        let url = "task/getComment?task=\(taskID)"
+        getWithToken(url: url) { (json, error) in
+            if error == nil{
+                let comment = Comment(jsonData: json!)
+                completion(comment)
+            }else{
+                completion(nil)
+            }
+        }
+    }
+    
+    func assesmentMaid(task: String,told: String,content: String,evaluation_point: Double,completion:@escaping ((String?)->())){
+        let url = "owner/comment"
+        let parameters = [
+            "task" : task,
+            "told" : told,
+            "content" : content,
+            "evaluation_point" : evaluation_point
+        ] as [String : Any]
+        postWidthToken(url: url, parameters: parameters) { (json, error) in
+            if error == nil{
+                completion(nil)
+            }else{
+                completion(error)
+            }
+        }
+    }
+    
+    
 }
