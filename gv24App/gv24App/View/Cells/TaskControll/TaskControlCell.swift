@@ -106,5 +106,4 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         self.tasks.remove(at: index!)
         self.taskCollectionView.reloadData()
     }
-    
 }

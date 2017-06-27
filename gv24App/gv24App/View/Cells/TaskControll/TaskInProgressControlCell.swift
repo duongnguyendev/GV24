@@ -10,7 +10,7 @@ import UIKit
 
 class TaskInProgressControlCell: TaskControlCell {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: progressCellId, for: indexPath) as! TaskCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: progressCellId, for: indexPath) as! TaskProgressCell
         cell.task = tasks[indexPath.item]
         return cell
     }
@@ -27,7 +27,7 @@ class TaskInProgressControlCell: TaskControlCell {
         super.setupView()
     }
     override func register() {
-        taskCollectionView.register(TaskCell.self, forCellWithReuseIdentifier: progressCellId)
+        taskCollectionView.register(TaskProgressCell.self, forCellWithReuseIdentifier: progressCellId)
     }
 
 }

@@ -13,14 +13,14 @@ class TaskRequestCell: TaskCell{
     let labelRequest : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        lb.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        lb.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        lb.heightAnchor.constraint(equalToConstant: 25).isActive = true
         lb.font = Fonts.by(name: .light, size: 13)
         lb.textColor = UIColor.white
         
-        lb.layer.cornerRadius = 10
+        lb.layer.cornerRadius = 12.5
         lb.layer.masksToBounds = true
-        lb.backgroundColor = AppColor.homeButton2
+        lb.backgroundColor = AppColor.homeButton1
         lb.textAlignment = .center
         lb.text = "Gửi trực tiếp"
         return lb

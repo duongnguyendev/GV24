@@ -146,6 +146,8 @@
 		4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35D1EE150CD00560C4A /* RadioButton.swift */; };
 		4EF1F3601EE1640600560C4A /* ButtonTitleValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35F1EE1640600560C4A /* ButtonTitleValue.swift */; };
 		4EF8A14E1EE110CF002A5920 /* LabelButtomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF8A14D1EE110CF002A5920 /* LabelButtomLine.swift */; };
+		A6091B921F02A75F0070595B /* TaskAssignedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6091B911F02A75F0070595B /* TaskAssignedCell.swift */; };
+		A6091B941F02A7CE0070595B /* TaskProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6091B931F02A7CE0070595B /* TaskProgressCell.swift */; };
 		A61579121F016BEF005CC9F3 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61579111F016BEF005CC9F3 /* PaymentService.swift */; };
 		A61579141F016C46005CC9F3 /* SendOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61579131F016C46005CC9F3 /* SendOrderVC.swift */; };
 		A61579161F016EE4005CC9F3 /* InfoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61579151F016EE4005CC9F3 /* InfoTextField.swift */; };
@@ -324,6 +326,8 @@
 		6048FD6ABBCEEABE41FA5CE8 /* Pods_gv24App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gv24App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D2C40D16D81184827E7734 /* Pods-gv24App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.release.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.release.xcconfig"; sourceTree = "<group>"; };
 		9E955963E9F84A771AF50D5E /* Pods-gv24App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gv24App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gv24App/Pods-gv24App.debug.xcconfig"; sourceTree = "<group>"; };
+		A6091B911F02A75F0070595B /* TaskAssignedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAssignedCell.swift; sourceTree = "<group>"; };
+		A6091B931F02A7CE0070595B /* TaskProgressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskProgressCell.swift; sourceTree = "<group>"; };
 		A61579111F016BEF005CC9F3 /* PaymentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		A61579131F016C46005CC9F3 /* SendOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendOrderVC.swift; sourceTree = "<group>"; };
 		A61579151F016EE4005CC9F3 /* InfoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTextField.swift; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 				03446A541EE54F3D004DB193 /* TaskInProgressControlCell.swift */,
 				03446A561EE54F3D004DB193 /* TaskNewControlCell.swift */,
 				03446A521EE54F3D004DB193 /* TaskControlCell.swift */,
+				A6091B911F02A75F0070595B /* TaskAssignedCell.swift */,
+				A6091B931F02A7CE0070595B /* TaskProgressCell.swift */,
 			);
 			path = TaskControll;
 			sourceTree = "<group>";
@@ -1013,6 +1019,7 @@
 				4E3D17621EE7BE5000C91D6B /* InputButonWithIcon.swift in Sources */,
 				A6D471321EF2614A00F8A5BA /* ProfileMaidCell.swift in Sources */,
 				03446A5E1EE54F3D004DB193 /* SwitchCell.swift in Sources */,
+				A6091B941F02A7CE0070595B /* TaskProgressCell.swift in Sources */,
 				4E4E358F1ED7E0C800D13EF5 /* ContactVC.swift in Sources */,
 				A69DA7781EFD05C000C4C5F8 /* AssesmentVC.swift in Sources */,
 				4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */,
@@ -1098,6 +1105,7 @@
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
 				A6D471301EF25ECA00F8A5BA /* KeyBillCell.swift in Sources */,
 				4E58A7A01EEE49B30088FC1D /* GeneralStatisticInfoView.swift in Sources */,
+				A6091B921F02A75F0070595B /* TaskAssignedCell.swift in Sources */,
 				033DC7381EF0E0600093EE8F /* JobExpiredDetailVC.swift in Sources */,
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,

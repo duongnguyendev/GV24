@@ -137,7 +137,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         if !deadline{
             let jobPostVC = JobAssignedDetailVC()
             jobPostVC.taskAssigned = task
-            push(viewController: jobPostVC)
+            present(viewController: jobPostVC)
         }else{
             let alertController = UIAlertController(title: "", message: "Công việc đã quá hạn", preferredStyle:UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel){ action -> Void in

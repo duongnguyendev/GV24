@@ -105,11 +105,14 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let imageResized = image.resize(newWidth: 200)
+            self.activity.startAnimating()
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
                 if flag!{
-                   self.dismiss(animated: true, completion: nil)
+                    self.activity.stopAnimating()
+                    self.dismiss(animated: true, completion: nil)
                 }else{
-                    self.showAlertWith(message: "Chọn người giúp việc thất bại", completion: { 
+                    self.showAlertWith(message: "Xác nhận người giúp thất bại", completion: {
+                        self.activity.stopAnimating()
                         self.goBack()
                     })
                 }

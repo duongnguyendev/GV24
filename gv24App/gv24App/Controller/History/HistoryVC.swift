@@ -24,6 +24,21 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         collectionControl.register(MaidControlCell.self, forCellWithReuseIdentifier: maidHistoryCellId)
         collectionControl.register(UnpaidWorkControlCell.self, forCellWithReuseIdentifier: unpaidWorkCellId)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.activity.startAnimating()
+        HistoryService.shared.fetchUnpaidWork(completion: { (mWorkUnpaids) in
+            if let worksUnpaid = mWorkUnpaids{
+                if worksUnpaid.count > 0{
+                    self.labelNumberPaid.isHidden = false
+                    self.labelNumberPaid.text = "\(worksUnpaid.count)"
+                }else{
+                     self.labelNumberPaid.isHidden = true
+                }
+                self.activity.stopAnimating()
+            }
+        })
+    }
     
     private let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
@@ -43,6 +58,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         lb.heightAnchor.constraint(equalToConstant: 20).isActive = true
         lb.font = Fonts.by(name: .light, size: 13)
         lb.textColor = UIColor.white
+        lb.isHidden = true
         lb.backgroundColor = UIColor.red
         lb.layer.cornerRadius = 10
         lb.layer.masksToBounds = true
@@ -65,7 +81,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     private let buttonFrom : UIButton = {
         let btn = UIButton(type: .custom)
-        btn.setTitle("10/10/2017", for: .normal)
+        btn.setTitle("--/--/--/", for: .normal)
         btn.titleLabel?.font = Fonts.by(name: .light, size: 15)
         btn.setTitleColor(AppColor.backButton, for: .normal)
         btn.addTarget(self, action: #selector(handleFromButton(_:)), for: .touchUpInside)

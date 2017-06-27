@@ -110,13 +110,12 @@ class TaskService: APIService {
             }
         }
     }
-    
     func checkInMaid(task: Task,img_checkin: UIImage,completion:@escaping ((Bool?)->())){
         let url = "task/checkin"
         var params = Dictionary<String, String>()
         params["ownerId"] = task.stakeholder?.owner
         params["id"] = task.id
-        postMultipartWithToken(url: url, image: img_checkin, name: "checkin", parameters: params) { (json, error) in
+        postMultipartWithToken(url: url, image: img_checkin, name: "image", parameters: params) { (json, error) in
             if error == nil{
                 completion(true)
             }else{
@@ -124,7 +123,6 @@ class TaskService: APIService {
             }
         }
     }
-    
     func checkOutMaid(id: String,completion: @escaping ((WorkUnpaid?)->())){
         let url = "task/checkout"
         let  params = ["id": id]
