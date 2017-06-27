@@ -10,17 +10,21 @@ import UIKit
 
 class TaskNewControlCell: TaskControlCell {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let endTime = tasks[indexPath.item].info?.time?.endAt
+        let task = tasks[indexPath.item]
+        let endTime = task.info?.time?.endAt
         let deadlinePosted = Date(isoDateString: endTime!).compareDate
         if deadlinePosted{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: expiredCellId, for: indexPath) as! TaskExpiredCell
-            cell.task = tasks[indexPath.item]
+            cell.task = task
             return cell
-        }else if (tasks[indexPath.item].stakeholder?.request?.count)! > 0{
+        }else if (task.stakeholder?.request?.count)! > 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: applicantCellId, for: indexPath) as! TaskNewCell
-            let taskNew = tasks[indexPath.item]
-            cell.countNumber = taskNew.stakeholder?.request?.count
-            cell.task = taskNew
+            cell.countNumber = task.stakeholder?.request?.count
+            cell.task = task
+            return cell
+        }else if task.process?.id == "000000000000000000000006"{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: applicantCellId, for: indexPath) as! TaskRequestCell
+            cell.task = task
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newCellId, for: indexPath) as! TaskCell
@@ -51,6 +55,7 @@ class TaskNewControlCell: TaskControlCell {
     let newCellId = "newCellId"
     let applicantCellId = "applicantCellId"
     let expiredCellId = "expiredCellId"
+    let requestCellId = "requestCellId"
     override func setupView() {
         super.setupView()
     }
@@ -58,5 +63,6 @@ class TaskNewControlCell: TaskControlCell {
         taskCollectionView.register(TaskNewCell.self, forCellWithReuseIdentifier: applicantCellId)
         taskCollectionView.register(TaskCell.self, forCellWithReuseIdentifier: newCellId)
         taskCollectionView.register(TaskExpiredCell.self, forCellWithReuseIdentifier: expiredCellId)
+        taskCollectionView.register(TaskRequestCell.self, forCellWithReuseIdentifier: requestCellId)
     }
 }
