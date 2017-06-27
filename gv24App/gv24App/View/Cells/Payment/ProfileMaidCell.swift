@@ -10,6 +10,15 @@ import Foundation
 import UIKit
 class ProfileMaidCell: BaseCollectionCell{
     let cellMargin: CGFloat = 20
+    
+    var maid: MaidProfile? {
+        didSet{
+            avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
+            labelName.text = maid?.userName
+            labelAddress.text = maid?.address?.name
+        }
+    }
+
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false

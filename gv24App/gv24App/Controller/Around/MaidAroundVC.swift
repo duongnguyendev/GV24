@@ -17,7 +17,6 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     
     let locationManager = CLLocationManager()
     var currentLocation : CLLocationCoordinate2D?
-    lazy var geocoder = CLGeocoder()
     var maids : [MaidProfile]?{
         didSet{
             var index = 0
@@ -126,17 +125,11 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         hideKeyboard()
         let text = searchBar.text!
-        geocoder.geocodeAddressString(text) { (placeMarks, error) in
-            if error == nil{
-                if (placeMarks?.count)! > 0{
-                    let firstLocation = placeMarks?.first?.location
-                    self.handle(location: (firstLocation?.coordinate)!)
-                }
-                else{
-                    print("không tìm thấy địa điểm")
-                }
+        LocationService.locationFor(address: text) { (cordinate, error) in
+            if error != nil{
+                print(error as Any)
             }else{
-                print(error?.localizedDescription as Any)
+                self.handle(location: cordinate!)
             }
         }
     }

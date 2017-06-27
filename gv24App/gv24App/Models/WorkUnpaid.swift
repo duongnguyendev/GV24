@@ -13,6 +13,7 @@ class WorkUnpaid: Entity{
     var id: String?
     var price: Int?
     var period: String?
+    var date: String?
     var task: TaskUnpaid?
     override init(){
         super.init()
@@ -23,20 +24,19 @@ class WorkUnpaid: Entity{
         self.id = jsonData["_id"].string ?? ""
         self.price = jsonData["price"].int ?? 0
         self.period = jsonData["period"].string ?? ""
+        self.date = jsonData["date"].string ?? ""
         self.task = TaskUnpaid(jsonData: jsonData["task"])
     }
 }
 
 class TaskUnpaid: Task {
     var check: CheckInOut?
-    
     override init() {
         super.init()
     }
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
         self.check = CheckInOut(jsonData: jsonData["check"])
-
     }
 }
 class CheckInOut: Entity {

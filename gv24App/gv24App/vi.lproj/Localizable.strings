@@ -57,6 +57,7 @@ Comment = "Bình luận";
 Payment = "Thanh toán";
 NGV247Account = "Tài khoản NGV247";
 OnlinePayment = "Thanh toán online";
+CashPayment = "Thah toán tiền mặt";
 AccountBalance = "Số dư tài khoản: ";
 SelectYourPaymentMethods = "Chọn hình thức thanh toán";
 DeleteWork = "Xoá công việc";
@@ -149,7 +150,7 @@ PleaseEnterTheMessage = "Vui lòng nhập nội dung cần báo cáo";
 ThereAreNoComments = "Chưa có nhận xét";
 InvalidUsernamePassword = "username or mật khẩu không đúng";
 Done = "Vừa xong";
-Complete = "Check out thành công";
+CompleteCheckout = "Check out thành công";
 //==================
 InvalidEmailAddress = "Email nhập không đúng";
 InvalidPhoneNumber = "Số điện thoại nhập không đúng";

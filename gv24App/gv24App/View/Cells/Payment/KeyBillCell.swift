@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 class KeyBillCell: BaseCollectionCell{
-    
+   var billId: String?{
+        didSet{
+            labelKey.text = billId
+        }
+    }
     private let labelKeyBill: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false

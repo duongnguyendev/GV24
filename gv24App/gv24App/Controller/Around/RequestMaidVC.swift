@@ -21,11 +21,13 @@ class RequestMaidVC: PostVC {
     }
     
     override func handlePostButton(_ sender: UIButton) {
+        self.activity.startAnimating()
         validate { (errorString) in
             if errorString == nil{
                 self.params["tools"] = self.checkBoxTool.isSelected
                 self.params["maidId"] = self.maid?.userId
                 TaskService.shared.sendRequestToMaid(params: self.params) { (error) in
+                    self.activity.stopAnimating()
                     if error == nil{
                         self.showAlertWith(message: LanguageManager.shared.localized(string: "PostSuccessfully")!, completion: {
                             self.goBack()
@@ -36,6 +38,7 @@ class RequestMaidVC: PostVC {
                 }
             }
             else{
+                self.activity.stopAnimating()
                 self.showAlertWith(message: errorString!, completion: {})
             }
         }

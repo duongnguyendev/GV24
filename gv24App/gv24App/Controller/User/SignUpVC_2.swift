@@ -398,19 +398,12 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     }
     func validateAddress(completion:@escaping (String?)->()){
         let invalidString = LanguageManager.shared.localized(string: "AddressNotFound")
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(addressTextField.text!) { (placeMarks, error) in
-            if error == nil{
-                if (placeMarks?.count)! > 0{
-                    let firstLocation = placeMarks?.first?.location
-                    self.coordinate = firstLocation?.coordinate
-                    completion(nil)
-                }
-                else{
-                    completion(invalidString)
-                }
-            }else{
+        LocationService.locationFor(address: addressTextField.text!) { (coordinate, error) in
+            if error != nil{
                 completion(invalidString)
+            }else{
+                self.coordinate = coordinate
+                completion(nil)
             }
         }
     }

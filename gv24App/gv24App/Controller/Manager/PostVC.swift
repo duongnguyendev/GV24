@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import CoreLocation
+import GoogleMaps
 
 class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
+    
     var date : Date? = Date(){
         didSet{
             buttonDate.valueString = date?.dayMonthYear
@@ -436,21 +437,16 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         return "Vui lòng nhập mô tả công việc"
     }
     private func validateAddress(completion: @escaping ((String?)->())){
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(addressTextField.text!) { (placeMarks, error) in
-            if error == nil{
-                if (placeMarks?.count)! > 0{
-                    let firstLocation = placeMarks?.first?.location
-                    self.params["addressName"] = self.addressTextField.text
-                    self.params["lat"] = firstLocation?.coordinate.latitude
-                    self.params["lng"] = firstLocation?.coordinate.longitude
-                    completion(nil)
-                }
-                else{
-                    completion("Địa chỉ nhập không đúng")
-                }
+        let text = addressTextField.text!
+        LocationService.locationFor(address: text) { (coordinate, error) in
+            if error != nil{
+                print(error as Any)
+                completion(error)
             }else{
-                completion("Địa chỉ nhập không đúng")
+                self.params["addressName"] = self.addressTextField.text
+                self.params["lat"] = coordinate?.latitude
+                self.params["lng"] = coordinate?.longitude
+                completion(nil)
             }
         }
     }
@@ -508,5 +504,5 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         }
         return false
     }
-
+    
 }
