@@ -12,7 +12,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     
     var user : User?{
         didSet{
-            self.avatarImage.loadImageUsingUrlString(urlString: (self.user?.avatarUrl)!)
+            self.avatarImage.loadImageurl(link: (self.user?.avatarUrl)!)
         }
     }
     var starDate: Date?{

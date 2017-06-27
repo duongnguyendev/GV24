@@ -154,6 +154,11 @@ class UserService: APIService {
             }
         }
     }
+    func forgotPassword(userName : String, email: String){
+        let params : Dictionary<String, String> = ["username": userName, "email": email]
+        
+        
+    }
     
     func report(maidId: String, content: String, completion: @escaping ((String?)->())){
         let url = "owner/report"

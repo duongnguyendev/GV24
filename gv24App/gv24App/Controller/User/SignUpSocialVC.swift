@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class SignUpSocialVC: SignUpVC_2 {
     
@@ -17,9 +18,8 @@ class SignUpSocialVC: SignUpVC_2 {
                 emailTextField.isEnabled = false
             }
             self.imageAvatar.loadImageurl(link: (userInfo?["image"])!)
-//            self.imageAvatar.loadImageUsingUrlString(urlString: "https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/18740207_114394142477650_3589190078270584963_n.jpg?oh=5c8081c320b17254c04801d376038679&oe=59D6DE80")
             fullNameTextField.text = userInfo?["name"]
-            
+        
         }
     }
 
@@ -54,7 +54,11 @@ class SignUpSocialVC: SignUpVC_2 {
             }
         })
     }
-
+    override func goBack() {
+        super.goBack()
+        GIDSignIn.sharedInstance().signOut()
+    }
+    
     override func validateAvatar() -> String? {
         return nil
     }

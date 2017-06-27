@@ -17,8 +17,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     var gender : Int?
     var avatarImage : UIImage?
     var coordinate : CLLocationCoordinate2D?
-    let invalidateString = LanguageManager.shared.localized(string: "PleaseCompleteAllInformation")
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
@@ -262,7 +261,6 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         let femaleString = LanguageManager.shared.localized(string: "Female")
         let genderString = LanguageManager.shared.localized(string: "Gender")
         let cancelString = LanguageManager.shared.localized(string: "Cancel")
-        
         let actionSheet = UIAlertController(title: "", message: genderString, preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: nil))
@@ -384,22 +382,22 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         if (emailTextField.text?.isEmail)! {
             return nil
         }
-        return invalidateString
+        return LanguageManager.shared.localized(string: "InvalidEmailAddress")
     }
     private func validatePhone() -> String?{
         if (phoneTextField.text?.isPhoneNumber)! {
             return nil
         }
-        return invalidateString
+        return LanguageManager.shared.localized(string: "InvalidPhoneNumber")
     }
     private func validateGender() -> String?{
         if self.gender == nil {
-            return invalidateString
+            return LanguageManager.shared.localized(string: "PleaseEnterYourGender")
         }
         return nil
     }
     func validateAddress(completion:@escaping (String?)->()){
-
+        let invalidString = LanguageManager.shared.localized(string: "AddressNotFound")
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(addressTextField.text!) { (placeMarks, error) in
             if error == nil{
@@ -409,23 +407,23 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
                     completion(nil)
                 }
                 else{
-                    completion(self.invalidateString)
+                    completion(invalidString)
                 }
             }else{
-                completion(self.invalidateString)
+                completion(invalidString)
             }
         }
     }
     private func validateFullName()-> String?{
         
         if (self.fullNameTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! < 2{
-            return invalidateString
+            return LanguageManager.shared.localized(string: "PleaseFillInYourFullname")
         }
         return nil
     }
     func validateAvatar() -> String?{
         if self.avatarImage == nil{
-            return invalidateString
+            return LanguageManager.shared.localized(string: "Avatar")
         }
         return nil
     }

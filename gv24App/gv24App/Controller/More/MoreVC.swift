@@ -239,11 +239,11 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             self.present(activityViewController, animated: true, completion: nil)
 
         }else{
-            let url = URL(string: "fb://profile/1616383408662886")
+            let url = URL(string: "fb://profile/122998571630965")
             if UIApplication.shared.canOpenURL(url!) {
                 UIApplication.shared.openURL(url!)
             }else{
-                UIApplication.shared.openURL(URL(string: "https://www.facebook.com/hbbsolutions/")!)
+                UIApplication.shared.openURL(URL(string: "https://www.facebook.com/Ng%C6%B0%E1%BB%9Di-Gi%C3%BAp-Vi%E1%BB%87c-247-122998571630965/")!)
             }
         }
     }

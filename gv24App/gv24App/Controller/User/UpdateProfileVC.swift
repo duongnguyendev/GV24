@@ -12,7 +12,6 @@ class UpdateProfileVC: SignUpVC_2 {
 
     var user : User?{
         didSet{
-//            imageAvatar.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
             imageAvatar.loadImageurl(link: (user?.avatarUrl)!)
             emailTextField.text = user?.email
             addressTextField.text = user?.address?.name
@@ -20,10 +19,9 @@ class UpdateProfileVC: SignUpVC_2 {
             phoneTextField.text = user?.phone
             self.gender = user?.gender
             if user?.gender == 0{
-                
-                genderTextField.text = "Nam"
+                genderTextField.text = LanguageManager.shared.localized(string: "Male")
             }else{
-                genderTextField.text = "Nữ"
+                genderTextField.text = LanguageManager.shared.localized(string: "Female")
             }
         }
     }
@@ -60,16 +58,18 @@ class UpdateProfileVC: SignUpVC_2 {
         UserService.shared.updateProfile(info: self.userInfo!, avatar: self.avatarImage) { (userUpdate, error) in
             self.activity.stopAnimating()
             self.buttonComplate.isUserInteractionEnabled = true
+            var updateStatus = LanguageManager.shared.localized(string: "UpdateSuccessfully")
             if error == nil{
                 UserHelpers.save(user: userUpdate!, token: UserHelpers.token)
-                let alert = UIAlertController(title: "Cập nhật thông tin thành công", message: error, preferredStyle: .alert)
+                let alert = UIAlertController(title: updateStatus, message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
                     self.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
 
             }else{
-                let alert = UIAlertController(title: "Lỗi", message: error, preferredStyle: .alert)
+                updateStatus = LanguageManager.shared.localized(string: "UpdateUnsuccessfully")
+                let alert = UIAlertController(title: updateStatus, message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

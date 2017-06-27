@@ -13,7 +13,6 @@ More = "Thêm";
 Around = "Giúp việc quanh đây";
 SignIn = "Sign In";
 SingUp = "Đăng ký";
-Password = "Mật khẩu";
 NearbyJobs = "Nearby jobs";
 WorkManagement = "Quản lý công việc";
 WorkHistory = "Lịch sử\ncông việc";
@@ -151,4 +150,28 @@ ThereAreNoComments = "Chưa có nhận xét";
 InvalidUsernamePassword = "username or mật khẩu không đúng";
 Done = "Vừa xong";
 Complete = "Check out thành công";
+//==================
+InvalidEmailAddress = "Email nhập không đúng";
+InvalidPhoneNumber = "Số điện thoại nhập không đúng";
+YourDescriptionIsTooShort = "Mô tả quá ngắn";
+PleaseEnterYourGender = "Vui lòng nhập giới tính";
+PleaseChooseYourTypeOfWork = "Vui lòng chọn loại công việc";
+CashPayment = "Thanh toán tiền mặt";
+APasswordResetLinkIsSentToYourEmail = "Đã gửi thành công link đặt lại mật khẩu qua email của bạn.";
+FailedPleaseDoubleCheckYourEmailAndAccount = "Thất bại, hãy kiểm tra lại email và tài khoản của bạn.";
+Timework = "Khoán theo thời gian";
+PleaseSignInBeforeUsingThisFeature = "Hãy đăng nhập trước khi sử dụng tính năng này";
+AddressNotFound = "Địa chỉ không tìm thấy!";
+PleaseFillInTheTitle = "Vui lòng nhập tiêu đề.";
+PaymentMethods = "Payment methods";
+RechargeOnline = "RechargeOnline";
+PleaseFillInYourUsername = "Vui lòng điền username";
+PleaseFillInYourFullname = "Vui lòng điền họ tên";
+InvoiceNumber = "Mã số hóa đơn";
+InvalidUsername = "Tên đăng nhập không đúng";
+InvalidConfirmPassword = "Xác nhận mật khẩu không đúng";
+YourPasswordIsTooShort = "Mật khẩu quá ngắn";
+PaymentMethods = "Phương thức thanh toán";
+Avatar = "Vui lòng chọn hình đại diện";
+
 

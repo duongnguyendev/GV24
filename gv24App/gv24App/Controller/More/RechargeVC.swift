@@ -19,7 +19,6 @@ class RechargeVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Hướng dẫn nạp tiền"
         MoreService.shared.getContact { (contact, error) in
             self.contact = contact
         }
@@ -29,14 +28,14 @@ class RechargeVC: BaseVC {
     let buttonRecharge : RechargeButton = {
         let btn = RechargeButton()
         btn.iconName = "thanhtoan-1"
-        btn.title = "OnlinePayment"
+        btn.title = "RechargeOnline"
         btn.addTarget(self, action: #selector(handleButtonRecharge(_:)), for: .touchUpInside)
         return btn
     }()
     let buttonTransferInfo : RechargeButton = {
         let btn = RechargeButton()
         btn.iconName = "thanhtoan-2"
-        btn.title = "Thông tin chuyển khoản"
+        btn.title = "RemittanceInformation"
         btn.addTarget(self, action: #selector(handleButtonTransferInfo(_:)), for: .touchUpInside)
         return btn
     }()
@@ -113,7 +112,7 @@ class RechargeVC: BaseVC {
         let labelContent = UILabel()
         labelContent.translatesAutoresizingMaskIntoConstraints = false
         labelContent.font = Fonts.by(name: .medium, size: 15)
-        labelContent.text = "Ngoài ra, khách hàng có thể đến trụ sở công ty để gửi tiền trực tiếp vào tài khoản NGV24."
+        labelContent.text = LanguageManager.shared.localized(string: "ClientsCanComeToTheCompanyForDirectRemittance")
         labelContent.numberOfLines = 3
         labelContent.textAlignment = .justified
         
@@ -151,7 +150,7 @@ class RechargeVC: BaseVC {
         logoImage.widthAnchor.constraint(equalToConstant: 90).isActive = true
         logoImage.heightAnchor.constraint(equalToConstant: 90).isActive = true
         
-        labelSlogan.text = "Niềm tin - Chất lượng"
+        labelSlogan.text = LanguageManager.shared.localized(string: "TrustQuality")
         labelSlogan.translatesAutoresizingMaskIntoConstraints = false
         labelSlogan.font = Fonts.by(name: .regular, size: 15)
         labelSlogan.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
@@ -164,6 +163,10 @@ class RechargeVC: BaseVC {
         let transferInfoVC = TransferInfoVC()
         transferInfoVC.contact = self.contact
         push(viewController: transferInfoVC)
+    }
+    
+    override func localized() {
+        title = LanguageManager.shared.localized(string: "RechargingInstruction")
     }
 }
 

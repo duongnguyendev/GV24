@@ -121,7 +121,7 @@ class SignUpVC_1: BaseVC {
     
     func validate() -> String?{
         if (textFieldUserName.text?.characters.count)! < 6 {
-            return "Tên đăng nhập không đúng."
+            return LanguageManager.shared.localized(string: "InvalidUsername")
         }else{
             return confirmPass()
         }
@@ -129,10 +129,10 @@ class SignUpVC_1: BaseVC {
     func confirmPass() -> String?{
         
         if (textFieldPass.text?.characters.count)! < 6 {
-            return "mật khẩu không đúng."
+            return LanguageManager.shared.localized(string: "YourPasswordIsTooShort")
         }else{
             if textFieldConfirmPass.text != textFieldPass.text{
-                return "xác nhận mật khẩu không đúng."
+                return LanguageManager.shared.localized(string: "InvalidConfirmPassword")
             }
         }
         return nil

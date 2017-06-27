@@ -328,7 +328,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
                 TaskService.shared.postTask(params: self.params) { (error) in
                     self.activity.stopAnimating()
                     if error == nil{
-                        self.showAlertWith(message: "Đăng bài thành công", completion: {
+                        self.showAlertWith(message: "PostSuccessfully", completion: {
                             self.goBack()
                         })
                     }else{
@@ -344,7 +344,8 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     func showAlertWith(message: String, completion: @escaping (()->())){
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let mes = LanguageManager.shared.localized(string: message)
+        let alert = UIAlertController(title: nil, message: mes, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
             completion()
         }))
@@ -368,8 +369,10 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     func handleActionSheet(){
-        let actionSheet = UIAlertController(title: nil, message: "loại công việc", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Huỷ bỏ", style: .cancel, handler: nil))
+        let mes = LanguageManager.shared.localized(string: "TypesOfWork")
+        let cancelString = LanguageManager.shared.localized(string: "Cancel")
+        let actionSheet = UIAlertController(title: nil, message: mes, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: nil))
         for workType in workTypes!{
             actionSheet.addAction(UIAlertAction(title: workType.name, style: .default, handler: { (nil) in
                 self.workType = workType

@@ -257,16 +257,24 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
                     self.presentHome()
                 }
                 else{
-                    self.showAlertWith(title: "Lỗi đăng nhập", mes: error)
+                    self.showAlertWith(title: nil, mes: error)
                 }
             })
         }else{
-            showAlertWith(title: "Lỗi đăng nhập", mes: "Tên đăng nhập hoặc mật khẩu không đúng.")
+            showAlertWith(title: nil, mes: "InvalidUsernamePassword")
         }
     }
     
     func showAlertWith(title: String?, mes: String?){
-        let alert = UIAlertController(title: title, message: mes, preferredStyle: .alert)
+        var message = mes
+        var mTitle = title
+        if mes != nil {
+            message = LanguageManager.shared.localized(string: mes!)
+        }
+        if title != nil {
+            mTitle = LanguageManager.shared.localized(string: mes!)
+        }
+        let alert = UIAlertController(title: mTitle, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

@@ -82,6 +82,40 @@ class ForgotPassVC: BaseVC {
     }
     
     func handleSendButton(_ sender : UIButton){
+        if let validateString = validate(){
+            showAlert(title: nil, message: validateString, completion: { 
+                
+            })
+        }else{
+            
+        }
+        
+    }
     
+    func showAlert(title : String?, message : String?, completion: @escaping (()->())){
+        var mTitle = title
+        var mMessage = message
+        if title != nil {
+            mTitle = LanguageManager.shared.localized(string: title!)
+        }
+        if message != nil{
+            mMessage = LanguageManager.shared.localized(string: message!)
+        }
+        
+        let alert = UIAlertController(title: mTitle, message: mMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+            completion()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    func validate()-> String?{
+        if (textFieldUserName.text?.trimmingCharacters(in: .whitespaces).characters.count)! < 6{
+            return LanguageManager.shared.localized(string: "InvalidUsername")
+        }
+        if !(textFieldEmail.text?.isEmail)! {
+            return LanguageManager.shared.localized(string: "InvalidEmailAddress")
+        }
+        return nil
     }
 }

@@ -70,8 +70,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("userInfo")
-        print(userInfo)
+        // recevi remote notification here
+        
+        let topWindow = UIWindow(frame: UIScreen.main.bounds)
+        topWindow.rootViewController = UIViewController()
+        topWindow.windowLevel = UIWindowLevelAlert + 1
+        
+        let alert = UIAlertController(title: "notification", message: "abcd", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        topWindow.makeKeyAndVisible()
+        
+        topWindow.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     

@@ -19,15 +19,14 @@ class TransferInfoVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Thông tin chuyển khoản"
-        view.backgroundColor = AppColor.collection
+        title = LanguageManager.shared.localized(string: "RemittanceInformation")
         // Do any additional setup after loading the view.
     }
     
     let titleLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "THÔNG TIN TÀI KHOẢN"
+        label.text = LanguageManager.shared.localized(string: "AccountInformation")
         label.font = Fonts.by(name: .light, size: 15)
         label.textColor = UIColor.darkGray
         return label
@@ -36,7 +35,6 @@ class TransferInfoVC: BaseVC {
     let labelNote : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Lưu ý: nên giữ lại biên lai chuyển tiền, nhất là những trường hợp chuyển từ cây ATM không ghi được nội dung.\nSau khi chuyển xong hãy chat trực tiếp với nhân viên bán hàng ở phần dưới và chụp lại biên lai chuyển tiền để được thanh toán nhanh nhất."
         label.numberOfLines = 0
         label.font = Fonts.by(name: .light, size: 13)
         label.textAlignment = .justified

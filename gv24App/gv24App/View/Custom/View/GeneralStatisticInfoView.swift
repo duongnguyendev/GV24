@@ -32,6 +32,12 @@ class GeneralStatisticInfoView: BaseView {
         lb.textAlignment = .center
         lb.text = "0"
         lb.font = Fonts.by(name: .regular, size: 35)
+        if let window = UIApplication.shared.keyWindow{
+            if window.frame.size.width == 414{
+                lb.font = Fonts.by(name: .regular, size: 50)
+            }
+        }
+        
         return lb
     }()
     let labelNumberRuningWork : UILabel = {
@@ -40,6 +46,11 @@ class GeneralStatisticInfoView: BaseView {
         lb.textAlignment = .center
         lb.text = "0"
         lb.font = Fonts.by(name: .regular, size: 35)
+        if let window = UIApplication.shared.keyWindow{
+            if window.frame.size.width == 414{
+                lb.font = Fonts.by(name: .regular, size: 50)
+            }
+        }
         return lb
     }()
     let labelNumberDone : UILabel = {
@@ -48,6 +59,11 @@ class GeneralStatisticInfoView: BaseView {
         lb.textAlignment = .center
         lb.text = "0"
         lb.font = Fonts.by(name: .regular, size: 35)
+        if let window = UIApplication.shared.keyWindow{
+            if window.frame.size.width == 414{
+                lb.font = Fonts.by(name: .regular, size: 50)
+            }
+        }
         return lb
     }()
     let labelNumberTotalCost : UILabel = {
@@ -56,7 +72,12 @@ class GeneralStatisticInfoView: BaseView {
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textAlignment = .center
         lb.text = "0.0 triệu"
-        lb.font = Fonts.by(name: .medium, size: 45)
+        lb.font = Fonts.by(name: .regular, size: 40)
+        if let window = UIApplication.shared.keyWindow{
+            if window.frame.size.width == 414{
+                lb.font = Fonts.by(name: .regular, size: 50)
+            }
+        }
         return lb
     }()
 
@@ -65,11 +86,11 @@ class GeneralStatisticInfoView: BaseView {
         super.setupView()
         backgroundColor = UIColor.white
         
-        let labelPosted = labelWith(title: "PostedWork", textSize: 15)
-        let labelRuningWork = labelWith(title: "WorkInProcess", textSize: 15)
-        let labelDone = labelWith(title: "WorkDone", textSize: 15)
-        let labelUnit = labelWith(title: "VND", textSize: 20)
-        let labelTotalCost = labelWith(title: "TotalExpense", textSize: 18)
+        let labelPosted = labelWith(title: "PostedWork", textSize: 17)
+        let labelRuningWork = labelWith(title: "WorkInProcess", textSize: 17)
+        let labelDone = labelWith(title: "WorkDone", textSize: 17)
+        let labelUnit = labelWith(title: "VND", textSize: 22)
+        let labelTotalCost = labelWith(title: "TotalExpense", textSize: 20)
         
         addSubview(backgroudImage)
         addSubview(labelTotalCost)
@@ -102,9 +123,9 @@ class GeneralStatisticInfoView: BaseView {
         labelNumberRuningWork.topAnchor.constraint(equalTo: backgroudImage.bottomAnchor, constant: 0).isActive = true
         labelNumberDone.topAnchor.constraint(equalTo: backgroudImage.bottomAnchor, constant: 0).isActive = true
         
-        addConstraintWithFormat(format: "V:[v0][v1]|", views: labelNumberPosted, labelPosted)
-        addConstraintWithFormat(format: "V:[v0][v1]|", views: labelNumberRuningWork, labelRuningWork)
-        addConstraintWithFormat(format: "V:[v0][v1]|", views: labelNumberDone, labelDone)
+        addConstraintWithFormat(format: "V:[v0]-(-10)-[v1]-5-|", views: labelNumberPosted, labelPosted)
+        addConstraintWithFormat(format: "V:[v0]-(-10)-[v1]-5-|", views: labelNumberRuningWork, labelRuningWork)
+        addConstraintWithFormat(format: "V:[v0]-(-10)-[v1]-5-|", views: labelNumberDone, labelDone)
         
         addConstraint(NSLayoutConstraint(item: labelNumberPosted, attribute: .height, relatedBy: .equal, toItem: labelPosted, attribute: .height, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: labelNumberRuningWork, attribute: .height, relatedBy: .equal, toItem: labelRuningWork, attribute: .height, multiplier: 1, constant: 0))
@@ -133,15 +154,26 @@ class GeneralStatisticInfoView: BaseView {
         line1.centerYAnchor.constraint(equalTo: labelPosted.topAnchor, constant: 0).isActive = true
         line2.centerYAnchor.constraint(equalTo: labelPosted.topAnchor, constant: 0).isActive = true
         
-        line1.topAnchor.constraint(equalTo: labelNumberPosted.topAnchor, constant: 30).isActive = true
-        line2.topAnchor.constraint(equalTo: labelNumberPosted.topAnchor, constant: 30).isActive = true
+//        line1.topAnchor.constraint(equalTo: labelNumberPosted.topAnchor, constant: 30).isActive = true
+//        line2.topAnchor.constraint(equalTo: labelNumberPosted.topAnchor, constant: 30).isActive = true
+        
+        addConstraint(NSLayoutConstraint(item: line1, attribute: .height, relatedBy: .equal, toItem: labelNumberDone, attribute: .height, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: line2, attribute: .height, relatedBy: .equal, toItem: labelNumberDone, attribute: .height, multiplier: 1, constant: 0))
     }
     
     private func labelWith(title: String, textSize : CGFloat) -> UILabel{
+        var size = textSize
+        if let window = UIApplication.shared.keyWindow{
+            if window.frame.size.width == 414{
+                size = size * 1.3
+            }
+        }
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = Fonts.by(name: .light, size: textSize)
+        
+        
+        label.font = Fonts.by(name: .light, size: size)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = LanguageManager.shared.localized(string: title)
         label.textColor = UIColor.lightGray
