@@ -196,6 +196,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     func setupSubView(){
+        super.setupView()
         mainView.addSubview(infoView)
         mainView.addSubview(typeView)
         mainView.addSubview(timeView)
