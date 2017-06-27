@@ -12,7 +12,6 @@ import UIKit
     @objc optional func remove(task : Task)
     @objc optional func selectedAssigned(deadline: Bool,task : Task)
     @objc optional func selectedProgress(task : Task)
-    
 }
 
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
