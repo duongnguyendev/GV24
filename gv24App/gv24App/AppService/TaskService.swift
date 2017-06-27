@@ -118,8 +118,21 @@ class TaskService: APIService {
         params["id"] = task.id
         postMultipartWithToken(url: url, image: img_checkin, name: "checkin", parameters: params) { (json, error) in
             if error == nil{
+                
             }
         }
     }
     
+    func checkOutMaid(id: String,completion: @escaping ((WorkUnpaid?)->())){
+        let url = "task/checkout"
+        let  params = ["id": id]
+        postWithTokenUrl(url: url, parameters: params) { (json, error) in
+            if error == nil{
+                let workSuccess = WorkUnpaid(jsonData: json!)
+                completion(workSuccess)
+            }else{
+                completion(nil)
+            }
+        }
+    }
 }

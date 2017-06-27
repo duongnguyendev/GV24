@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 class MoneyMaidCell: BaseCollectionCell{
+    
+    var price: String?{
+        didSet{
+            moneyView.name = "\(price!) VND"
+        }
+    }
     let moneyView: DescInfoView = {
         let view = DescInfoView()
         view.icon = .socialUsd

@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 class TotalMaidCell: BaseCollectionCell{
     
+    var total: String? {
+        didSet{
+            labelTotal.text = total
+        }
+    }
     let labelTotal: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false

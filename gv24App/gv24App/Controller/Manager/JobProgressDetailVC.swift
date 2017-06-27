@@ -16,7 +16,6 @@ class JobProgressDetailVC: BaseVC {
         button.addTarget(self, action: #selector(handleButtonProfile(_:)), for: .touchUpInside)
         return button
     }()
-    
     private let finishMaid: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -50,9 +49,16 @@ class JobProgressDetailVC: BaseVC {
         print("Click Profile Button")
     }
     func handleButtonFinishMaid(_ sender: UIButton){
-        let paymentVC = PaymentVC()
-        push(viewController: paymentVC)
-        print("Click Finish Maid Button")
+        self.activity.startAnimating()
+        TaskService.shared.checkOutMaid(id: taskProgress.id!) { (workSuccess) in
+            if let work = workSuccess{
+                let paymentVC = PaymentVC()
+                paymentVC.workSuccess = work
+                paymentVC.taskProgress = self.taskProgress
+                self.push(viewController: paymentVC)
+            }
+            self.activity.stopAnimating()
+        }
     }
     
     override func viewDidLoad() {

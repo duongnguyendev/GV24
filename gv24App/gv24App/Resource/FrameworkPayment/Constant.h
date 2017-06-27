@@ -13,9 +13,9 @@
 
 #define MAIN_URL_DEV @"http://192.168.11.101/nl30/mobile_checkout_api_post.php"
 
-#define  MERCHANT_ID @"45060"
-#define MERCHANT_PASSWORD @"9fff39a446b7af9d5757b3c20cf3a9c1"
-#define MERCHANT_ACCOUNT  @"nhant@peacesoft.net"
+#define  MERCHANT_ID @"51185"
+#define MERCHANT_PASSWORD @"0fc156a3ed1cd742a4ec65fe52372d06"
+#define MERCHANT_ACCOUNT  @"info@hbbsolution.com"
 #define ORDER_CODE @"PS_2342342342342"
 #define CURRENCY   @"vnd"
 #define LANGUAGE   @"vi"

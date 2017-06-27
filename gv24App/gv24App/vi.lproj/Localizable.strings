@@ -58,6 +58,7 @@ Comment = "Bình luận";
 Payment = "Thanh toán";
 NGV247Account = "Tài khoản NGV247";
 OnlinePayment = "Thanh toán online";
+CashPayment = "Thah toán tiền mặt";
 AccountBalance = "Số dư tài khoản: ";
 SelectYourPaymentMethods = "Chọn hình thức thanh toán";
 DeleteWork = "Xoá công việc";

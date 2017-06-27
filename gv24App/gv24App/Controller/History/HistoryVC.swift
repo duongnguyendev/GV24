@@ -36,7 +36,21 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         sc.heightAnchor.constraint(equalToConstant: 30).isActive = true
         return sc
     }()
-    
+    private let labelNumberPaid : UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        lb.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        lb.font = Fonts.by(name: .light, size: 13)
+        lb.textColor = UIColor.white
+        lb.backgroundColor = UIColor.red
+        lb.layer.cornerRadius = 10
+        lb.layer.masksToBounds = true
+        lb.textAlignment = .center
+        lb.text = "2"
+        return lb
+    }()
+
     private lazy var collectionControl : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -82,10 +96,13 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         view.addSubview(buttonFrom)
         view.addSubview(buttonTo)
         view.addSubview(labelTo)
+        view.addSubview(labelNumberPaid)
         
         view.addConstraintWithFormat(format: "H:|-10-[v0]-10-|", views: segmentedControl)
-        segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
         
+        labelNumberPaid.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -5).isActive = true
+        labelNumberPaid.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         
         view.addConstraint(NSLayoutConstraint(item: buttonFrom, attribute: .width, relatedBy: .equal, toItem: buttonTo, attribute: .width, multiplier: 1, constant: 0))
         labelTo.widthAnchor.constraint(equalToConstant: 50).isActive = true
@@ -173,8 +190,10 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         taskMaidVC.id = list.userId
         push(viewController: taskMaidVC)
     }
-    func selectedTaskUnpaid() {
+    func selectedTaskUnpaid(work: WorkUnpaid) {
         let paymentVC = PaymentVC()
+        paymentVC.taskProgress = work.task
+        paymentVC.workSuccess = work
         push(viewController: paymentVC)
     }
     //MARK: - segmented Control
