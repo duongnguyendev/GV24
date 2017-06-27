@@ -14,7 +14,7 @@ typealias ResponseCompletion = (JSON?, String?) -> ()
 class APIService: NSObject {
     //MARK: - POST
     func postWidthToken(url : String, parameters: Parameters, completion: @escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters, headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -34,7 +34,7 @@ class APIService: NSObject {
         }
     }
     func postWithTokenUrl(url : String, parameters: Parameters, completion: @escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters,encoding:JSONEncoding.default, headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -109,8 +109,7 @@ class APIService: NSObject {
         )
     }
     func postMultipartWithToken(url : String, image: UIImage?, name: String?, parameters: Dictionary<String, String>, completion: @escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
-        
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 if image != nil{
@@ -150,7 +149,7 @@ class APIService: NSObject {
         
     }
     func putWithToken(url: String,parameters: Parameters, completion: @escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), method: .put, parameters: parameters, headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -172,7 +171,7 @@ class APIService: NSObject {
         
     }
     func putMultipartWithToken(url : String, image: UIImage?, name: String?, parameters: Dictionary<String, String>, completion: @escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
@@ -233,7 +232,7 @@ class APIService: NSObject {
         }
     }
     func getWithToken(url : String, completion:@escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -253,7 +252,7 @@ class APIService: NSObject {
         }
     }
     func getWithToken(url: String, params : Parameters, completion:@escaping (ResponseCompletion)){
-        let header : HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         
         Alamofire.request(self.urlFrom(request: url),parameters: params, headers: header).responseJSON { (response) in
             switch response.result {
@@ -274,7 +273,7 @@ class APIService: NSObject {
         }
     }
     func deleteWithToken(url: String,parameters: Dictionary<String, String>,completion:@escaping (ResponseCompletion)){
-        let header: HTTPHeaders = ["hbbgvauth": "970f9900d1e3d529edf4ce3ae801bd1ed44fb717a0a2f17f31b204afb37fca7fc6d9b2e3d7af81bcdb8dd287ec5c4563c13e8f2545e997b33b5fe75368db397c"]
+        let header: HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), method: .delete, parameters: parameters,encoding: JSONEncoding.default,headers: header).responseJSON { (response) in
             switch response.result {
             case .success(let value):

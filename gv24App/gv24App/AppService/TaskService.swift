@@ -118,7 +118,9 @@ class TaskService: APIService {
         params["id"] = task.id
         postMultipartWithToken(url: url, image: img_checkin, name: "checkin", parameters: params) { (json, error) in
             if error == nil{
-                
+                completion(true)
+            }else{
+                completion(false)
             }
         }
     }

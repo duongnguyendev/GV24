@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 class SendOrderVC: BaseVC {
     var workSuccess = WorkUnpaid()
-    
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false

@@ -106,10 +106,25 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let imageResized = image.resize(newWidth: 200)
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
-                
+                if flag!{
+                   self.dismiss(animated: true, completion: nil)
+                }else{
+                    self.showAlertWith(message: "Chọn người giúp việc thất bại", completion: { 
+                        self.goBack()
+                    })
+                }
             })
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+
+    //MARK: - Show Message
+    func showAlertWith(message: String, completion: @escaping (()->())){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+            completion()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
     func handleRemoveTask(_ sender: UIButton){
