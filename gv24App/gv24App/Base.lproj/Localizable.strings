@@ -1,10 +1,10 @@
 /*
-  Localizable.strings
-  gv24App
-
-  Created by Nguyen Duy Duong on 4/27/17.
-  Copyright © 2017 HBBs. All rights reserved.
-*/
+ Localizable.strings
+ gv24App
+ 
+ Created by Nguyen Duy Duong on 4/27/17.
+ Copyright © 2017 HBBs. All rights reserved.
+ */
 domainGV24 = "https://yukotest123.herokuapp.com/en/";
 English = "English";
 Back = "Back";
@@ -14,8 +14,8 @@ Around = "Maid\naround here";
 SignIn = "Sign In";
 SingUp = "Sign up";
 NearbyJobs = "Nearby jobs";
-WorkHistory = "Work\nhistory";
 WorkManagement = "Work\nmanagement";
+WorkHistory = "Work\nhistory";
 TitleWorkHistory = "Work history";
 TitleWorkManagement = "Work management";
 TitleAround = "Maid around here";
@@ -60,12 +60,14 @@ Comment = "Comment";
 Payment = "Payment ";
 NGV247Account = "NGV247 account";
 OnlinePayment = "Online payment";
+CashPayment = "Cash Payment";
 AccountBalance = "Account balance: ";
 SelectYourPaymentMethods = "Select your payment methods";
 DeleteWork = "Delete work";
 AreYouSureYouWantToDeleteThisWork = "Are you sure you want to delete this work?";
 Cancel = "Cancel";
 Delete = "Delete ";
+OK = "OK";
 EditWork = "Edit work";
 ClickOktoConfirmTheTaskCompleted = "Click \"Ok\" to confirm the task completed";
 PleaseCompleteAllInformation = "Please, complete all information.";
@@ -79,6 +81,7 @@ UpdateUnsuccessfully = "Update unsuccessfully!";
 YouAccountHasBeenLoggedIntoFromANewDevice = "You account has been logged into from a new device";
 YourHelpers = "Your helpers";
 UnpaidWork = "Unpaid work";
+CompletedWork = "Completed";
 Recharge = "RECHARGE";
 Unpaid = "Unpaid";
 WorkInProcess = "Work-in-process";
@@ -116,7 +119,6 @@ HourBefore = "hours before";
 MinuteBefore = "minutes before";
 Description = "Description";
 Hour = "hour";
-ComformedMaid = "ComformMaid";
 PleaseDoubleCheckTimeChosen = "Please double check time chosen";
 TotalExpense = "Total expense";
 ShareNGV247 = "Share NGV247";
@@ -150,7 +152,7 @@ ClientsCanComeToTheCompanyForDirectRemittance = "Clients can come to the company
 AccountInformation = "Account Information";
 PleaseEnterTheMessage = "Please enter the message";
 ThereAreNoComments = "There are no comments. ";
-InvalidUsernamePassword = "Invalid Username Password";
+InvalidUsernamePassword = "Invalid Username/Password";
 Done = "Done! ";
 Complete = "Complete";
 //==================
@@ -178,4 +180,15 @@ PaymentMethods = "Payment methods";
 Avatar = "Vui lòng chọn hình đại diện";
 DATA_NOT_EXIST = "DATA_NOT_EXIST";
 Million = "million";
+Skip = "Skip";
+Title = "Title";
+ExceededTask = "Exceeded";
+PleaseEnterDescriptionForWork = "Please Enter Description For Work";
+SentDirectly = "Sent Directly";
+EditedSuccessfully = "Edited Successfully";
+NewApplications = "New Applications";
+TheStartDateShouldBeLessThanTheEndDate = "The start date should be less than the end date";
+PleaseEnterTheAmount = "Please enter the amount";
+WorkYouChooseIsExpired = "Work you choose is expired";
+FailedToIdentify = "Failed to identify!";
 

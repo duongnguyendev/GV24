@@ -36,7 +36,7 @@ class TaskCell: BaseCollectionCell {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 12)
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Đang chờ ứng tuyển"
+        lb.text = LanguageManager.shared.localized(string: "JobsForApplications")
         lb.textColor = UIColor.gray
         return lb
     }()

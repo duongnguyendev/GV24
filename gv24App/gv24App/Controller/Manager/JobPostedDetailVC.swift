@@ -22,7 +22,7 @@ class JobPostedDetailVC: JobDetailVC{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.color = AppColor.homeButton1
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
-        button.title = LanguageManager.shared.localized(string: "RemoveTask")
+        button.title = LanguageManager.shared.localized(string: "DeleteWork")
         button.sizeImage = 30
         button.iconName = .iosTrash
         return button

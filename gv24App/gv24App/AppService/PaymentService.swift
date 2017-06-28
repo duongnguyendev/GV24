@@ -46,7 +46,6 @@ class PaymentService: APIService {
             }
         }
     }
-    
     func paymentOnline(billId: String,completion: @escaping ((Bool?)->())){
         let url = "payment/payOnline"
         let params = ["billId": billId]
@@ -59,4 +58,16 @@ class PaymentService: APIService {
         }
     }
     
+    func paymentMoney(billId: String,completion: @escaping ((Bool?)->())){
+        let url = "payment/payDirectly"
+        let params = ["billId": billId]
+        postWithTokenUrl(url: url, parameters: params) { (json, error) in
+            if error == nil{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+
+    }
 }

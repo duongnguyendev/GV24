@@ -679,8 +679,8 @@
 			isa = PBXGroup;
 			children = (
 				4E1A42311EFBC1D900475C9B /* Social */,
-				4E61E3DF1EC1A33800E6C8C5 /* MaidProfileVC.swift */,
 				4E61E3D61EC1A31C00E6C8C5 /* ForgotPassVC.swift */,
+				4E61E3DF1EC1A33800E6C8C5 /* MaidProfileVC.swift */,
 				4E61E3D71EC1A31C00E6C8C5 /* SignInVC.swift */,
 				4E61E3D91EC1A31C00E6C8C5 /* SignUpVC_2.swift */,
 				4E61E3D81EC1A31C00E6C8C5 /* SignUpVC_1.swift */,

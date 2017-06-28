@@ -107,7 +107,19 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func handleButtonMoneyPayment(_ sender: UIButton){
-        
+        let alert = UIAlertController(title: "Hoàn tất thanh toán", message: "Vui lòng xác nhận thanh toán bằng cách nhấn OK", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Đồng ý", style: .default){ action -> Void in
+            PaymentService.shared.paymentMoney(billId: (self.workSuccess?.id)!, completion: { (flag) in
+                if flag!{
+                    let commentVC = CommentMaidVC()
+                    self.push(viewController: commentVC)
+                }else{
+                    
+                }
+            })
+        })
+        alert.addAction(UIAlertAction(title: "Huỷ", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         print("Handle Money Payment")
     }
     
@@ -244,7 +256,6 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? BaseHeaderView
         return headerView!
     }
-    
     //Mark-Localize Language
     override func localized() {
         title = LanguageManager.shared.localized(string: "Payment")

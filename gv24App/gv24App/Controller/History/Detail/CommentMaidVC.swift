@@ -69,7 +69,12 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn
     }
-    
+    override func setupBackButton() {
+        let buttonSkip = NavButton(title: "Skip")
+        buttonSkip.addTarget(self, action: #selector(handleSkipButton(_:)), for: .touchUpInside)
+        let btn = UIBarButtonItem(customView: buttonSkip)
+        self.navigationItem.leftBarButtonItem = btn
+    }
     override func setupView() {
         let userView = UIView()
         userView.backgroundColor = UIColor.white
@@ -141,7 +146,7 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
         super.viewWillAppear(animated)
         ratingView.isEnable = true
     }
-    //Mark- Handle Button Send
+    //Mark- Handle UITabbar Button
     func handleSendButton(_ sender: UIButton){
         let alert = UIAlertController(title: "", message: "Báo cáo thành công", preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -164,6 +169,9 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
         }
     }
     
+    func handleSkipButton(_ sender: UIButton){
+        self.dismiss(animated: true, completion: nil)
+    }
     func present(alert : UIAlertController){
         self.present(alert, animated: true, completion: nil)
     }

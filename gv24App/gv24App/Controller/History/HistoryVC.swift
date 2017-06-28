@@ -18,7 +18,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        title = LanguageManager.shared.localized(string: "WorkHistory")
+        
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
         collectionControl.register(TaskHistoryControlCell.self, forCellWithReuseIdentifier: taskHistoryCellId)
         collectionControl.register(MaidControlCell.self, forCellWithReuseIdentifier: maidHistoryCellId)
@@ -41,9 +41,9 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     private let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
-        sc.insertSegment(withTitle: "Hoàn thành", at: 0, animated: true)
-        sc.insertSegment(withTitle: "Gv đã làm", at: 1, animated: true)
-        sc.insertSegment(withTitle: "Công nợ", at: 2, animated: true)
+        sc.insertSegment(withTitle: LanguageManager.shared.localized(string: "CompletedWork"), at: 0, animated: true)
+        sc.insertSegment(withTitle: LanguageManager.shared.localized(string: "YourHelpers"), at: 1, animated: true)
+        sc.insertSegment(withTitle: LanguageManager.shared.localized(string: "UnpaidWork"), at: 2, animated: true)
         sc.selectedSegmentIndex = 0
         sc.tintColor = AppColor.backButton
         sc.translatesAutoresizingMaskIntoConstraints = false
@@ -209,7 +209,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         let paymentVC = PaymentVC()
         paymentVC.taskProgress = work.task
         paymentVC.workSuccess = work
-        push(viewController: paymentVC)
+        present(viewController: paymentVC)
     }
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){
@@ -228,6 +228,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     //Mark-Language
     override func localized() {
-        
+        title = LanguageManager.shared.localized(string: "WorkHistory")
     }
 }

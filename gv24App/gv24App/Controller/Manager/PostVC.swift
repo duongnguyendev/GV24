@@ -10,7 +10,6 @@ import UIKit
 import GoogleMaps
 
 class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
-    
     var date : Date? = Date(){
         didSet{
             buttonDate.valueString = date?.dayMonthYear
@@ -41,7 +40,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
         hideKeyboardWhenTouchUpOutSize = true
-        title = "Đăng công việc"
+        title = LanguageManager.shared.localized(string: "PostYourWork")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +62,6 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     override func setupRightNavButton() {
         buttonSend.addTarget(self, action: #selector(handlePostButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: self.buttonSend)
-        
         self.navigationItem.rightBarButtonItem = btn
     }
     let mainScrollView : UIScrollView = UIScrollView()
@@ -92,21 +90,21 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
         tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        tF.placeholder = "Tiêu đề"
+        tF.placeholder = LanguageManager.shared.localized(string: "Title")
         return tF
     }()
     let typeTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
         tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        tF.placeholder = "Loại công việc"
+        tF.placeholder = LanguageManager.shared.localized(string: "TypesOfWork")
         return tF
     }()
     lazy var descriptionTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
         tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        tF.placeholder = "Mô tả công việc"
+        tF.placeholder = LanguageManager.shared.localized(string: "WorkDescription")
         tF.delegate = self
         return tF
     }()
@@ -114,20 +112,20 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
         tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        tF.placeholder = "Địa chỉ làm việc"
+        tF.placeholder = LanguageManager.shared.localized(string: "Address")
         return tF
     }()
     let checkBoxTool : CheckBox = {
         let cb = CheckBox()
         cb.heightAnchor.constraint(equalToConstant: 40).isActive = true
         cb.addTarget(self, action: #selector(handleCheckBoxToolButton(_:)), for: .touchUpInside)
-        cb.title = "Mang theo dụng cụ làm việc"
+        cb.title = LanguageManager.shared.localized(string: "BringYourCleaningSupplies")
         return cb
     }()
     let radioButtonMoney : RadioButton = {
         let rb = RadioButton()
         rb.showBottomLine = true
-        rb.title = "Nhập số tiền công"
+        rb.title = LanguageManager.shared.localized(string: "EnterTheSalary")
         rb.unit = "VND"
         rb.addTarget(self, action: #selector(handleRadioButton(_:)), for: .touchUpInside)
         rb.isSelected = true
@@ -135,7 +133,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }()
     let radioButtonTime : RadioButton = {
         let rb = RadioButton()
-        rb.title = "Khoán theo thời gian"
+        rb.title = LanguageManager.shared.localized(string: "Timework")
         rb.addTarget(self, action: #selector(handleRadioButton(_:)), for: .touchUpInside)
         return rb
     }()
@@ -148,7 +146,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     
     let buttonDate : ButtonTitleValue = {
         let btn = ButtonTitleValue()
-        btn.title = "Ngày làm việc"
+        btn.title = LanguageManager.shared.localized(string: "TheStartDate")
         btn.valueString = Date().dayMonthYear
         btn.showBottomLine = true
         btn.addTarget(self, action: #selector(handleButtonDate(_:)), for: .touchUpInside)
@@ -261,12 +259,12 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         let labelTime = UILabel()
         labelTime.font = Fonts.by(name: .light, size: 15)
         labelTime.translatesAutoresizingMaskIntoConstraints = false
-        labelTime.text = "Thời gian làm việc"
+        labelTime.text = LanguageManager.shared.localized(string: "TimeOfWorking")
         
         let labelTo = UILabel()
         labelTo.font = Fonts.by(name: .light, size: 15)
         labelTo.translatesAutoresizingMaskIntoConstraints = false
-        labelTo.text = "đến"
+        labelTo.text = LanguageManager.shared.localized(string: "To")
         timeView.addSubview(labelTime)
         timeView.addSubview(labelTo)
         
@@ -366,7 +364,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     func showAlertWith(message: String, completion: @escaping (()->())){
         let mes = LanguageManager.shared.localized(string: message)
         let alert = UIAlertController(title: nil, message: mes, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
             completion()
         }))
         self.present(alert, animated: true, completion: nil)
@@ -438,14 +436,14 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
             params["title"] = titleTextField.text
             return nil
         }
-        return "Vui lòng nhập title"
+        return LanguageManager.shared.localized(string: "PleaseFillInTheTitle")
     }
     private func validateType() -> String?{
         if self.workType != nil   {
             params["work"] = workType?.id
             return nil
         }
-        return "Vui lòng chọn Loại công việc"
+        return LanguageManager.shared.localized(string: "PleaseChooseYourTypeOfWork")
     }
     private func validateDescription() -> String?{
         let numberChar = (descriptionTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)!
@@ -453,7 +451,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
             params["description"] = descriptionTextField.text
             return nil
         }
-        return "Vui lòng nhập mô tả công việc"
+        return LanguageManager.shared.localized(string: "YourDescriptionIsTooShort")
     }
     private func validateAddress(completion: @escaping ((String?)->())){
         let text = addressTextField.text!
@@ -477,7 +475,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
                 self.params["price"] = priceNumber
                 return nil
             }else{
-                return "Vui lòng chọn giá tiền"
+                return LanguageManager.shared.localized(string: "PleaseEnterTheAmount")
             }
         }else{
             self.params["package"] = "000000000000000000000002"
@@ -492,7 +490,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
             params["endAt"] = timeEnd
             return nil
         }
-        return "Giờ bắt đầu phải nhỏ hơn giờ kết thúc"
+        return LanguageManager.shared.localized(string: "TheStartDateShouldBeLessThanTheEndDate")
     }
     
     //MARK: - delegate

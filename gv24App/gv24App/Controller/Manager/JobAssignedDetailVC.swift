@@ -33,7 +33,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     private let conformedMaid: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = LanguageManager.shared.localized(string: "ComformedMaid")
+        button.title = LanguageManager.shared.localized(string: "IdentifyYourPartners")
         button.addTarget(self, action: #selector(handleConformMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
         button.color = AppColor.backButton
@@ -61,7 +61,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         button.color = AppColor.homeButton1
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
         button.sizeImage = 30
-        button.title = LanguageManager.shared.localized(string: "RemoveTask")
+        button.title = LanguageManager.shared.localized(string: "DeleteWork")
         button.backgroundColor = UIColor.white
         button.iconName = .iosTrash
         return button
@@ -88,8 +88,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         showImagePickerWith(sourceType: .photoLibrary)
     }
     
-    func showImagePickerWith(sourceType : UIImagePickerControllerSourceType)
-    {
+    func showImagePickerWith(sourceType : UIImagePickerControllerSourceType){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
@@ -107,12 +106,11 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
             let imageResized = image.resize(newWidth: 200)
             self.activity.startAnimating()
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
+                self.activity.stopAnimating()
                 if flag!{
-                    self.activity.stopAnimating()
                     self.dismiss(animated: true, completion: nil)
                 }else{
-                    self.showAlertWith(message: "Xác nhận người giúp thất bại", completion: {
-                        self.activity.stopAnimating()
+                    self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToIdentify")!, completion: {
                         self.goBack()
                     })
                 }
@@ -124,16 +122,35 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     //MARK: - Show Message
     func showAlertWith(message: String, completion: @escaping (()->())){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
             completion()
         }))
         self.present(alert, animated: true, completion: nil)
     }
-
-    func handleRemoveTask(_ sender: UIButton){
-        print("Handle Remove Task")
+    func showAlertDelete(message: String, completion: @escaping (()->())){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
+            completion()
+        }))
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "Cancel"), style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
+    func handleRemoveTask(_ sender: UIButton){
+        self.showAlertDelete(message: LanguageManager.shared.localized(string: "AreYouSureYouWantToDeleteThisWork")!) {
+            self.activity.startAnimating()
+            TaskService.shared.deleteTask(task: self.taskAssigned, completion: { (flag) in
+                 self.activity.stopAnimating()
+                if (flag!){
+                    self.goBack()
+                }else{
+                    self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToDelete")!, completion: {})
+                }
+            })
+
+        }
+        print("Handle Remove Task")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
@@ -145,6 +162,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     }
     
     override func setupView() {
+        super.setupView()
         view.addSubview(mainScrollView)
         self.mainScrollView.addSubview(contentView)
         self.contentView.addSubview(profileButton)

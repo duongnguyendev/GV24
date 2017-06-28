@@ -22,13 +22,13 @@ class TaskRequestCell: TaskCell{
         lb.layer.masksToBounds = true
         lb.backgroundColor = AppColor.homeButton1
         lb.textAlignment = .center
-        lb.text = "Gửi trực tiếp"
+        lb.text = LanguageManager.shared.localized(string: "SentDirectly")
         return lb
     }()
     
     override func setupView() {
         super.setupView()
-        statusTask = "Yêu cầu trực tiếp"
+        statusTask = LanguageManager.shared.localized(string: "AwaitingAssignment")
         addSubview(labelRequest)
         labelRequest.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelRequest.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true

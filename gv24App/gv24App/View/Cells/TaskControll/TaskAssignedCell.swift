@@ -12,7 +12,7 @@ class TaskAssignedCell: TaskCell{
     
     override func setupView() {
         super.setupView()
-        statusTask = "Đã phân công"
+        statusTask = LanguageManager.shared.localized(string: "Assigned")
     }
     
 }

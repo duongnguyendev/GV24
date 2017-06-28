@@ -84,7 +84,7 @@ class HistoryService: APIService{
             "content" : content,
             "evaluation_point" : evaluation_point
         ] as [String : Any]
-        postWidthToken(url: url, parameters: parameters) { (json, error) in
+        postWithTokenUrl(url: url, parameters: parameters) { (json, error) in
             if error == nil{
                 completion(nil)
             }else{

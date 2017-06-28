@@ -33,31 +33,24 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     var type: Int?{
         didSet{
             if type == 0{
-                TaskManageService.shared.fetchTask(process: "000000000000000000000001&sortByTaskTime=true", completion: { (tasksNew) in
-                    if let taskNew = tasksNew{
-                        self.tasks = taskNew
-                        self.taskCollectionView.reloadData()
-                    }
-                })
+                self.loadData(process: "000000000000000000000001&sortByTaskTime=true")
             }else if type == 1{
-                TaskManageService.shared.fetchTask(process: "000000000000000000000003", completion: { (tasksAssigned) in
-                    if let taskAssigned = tasksAssigned{
-                        self.tasks = taskAssigned
-                        self.taskCollectionView.reloadData()
-                    }
-                })
+                self.loadData(process: "000000000000000000000003")
 
             }else{
-                TaskManageService.shared.fetchTask(process: "000000000000000000000004", completion: { (tasksProgress) in
-                    if let taskProgress = tasksProgress{
-                        self.tasks = taskProgress
-                        self.taskCollectionView.reloadData()
-                    }
-                })
+                self.loadData(process: "000000000000000000000004")
             }
         }
     }
-    
+    func loadData(process: String){
+        TaskManageService.shared.fetchTask(process: process, completion: { (tasks) in
+            if let task = tasks{
+                self.tasks = task
+                self.taskCollectionView.reloadData()
+            }
+        })
+
+    }
     override func setupView() {
         register()
         super.setupView()

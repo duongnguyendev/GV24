@@ -21,7 +21,8 @@ class HeaderWithTitle: BaseHeaderView {
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
         addSubview(labelTitle)
         addConstraintWithFormat(format: "H:|-20-[v0]|", views: labelTitle)
-        labelTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
+//        labelTitle.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
+        labelTitle.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         labelTitle.textColor = UIColor.gray
         labelTitle.font = Fonts.by(name: .light, size: 15)
     }
