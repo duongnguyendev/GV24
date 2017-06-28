@@ -16,6 +16,13 @@ extension Date{
         let date = dateFormatter.date(from: isoDateString)!
         self = date
     }
+    init(year : Int){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let string = "\(year)-12-31"
+        let date = dateFormatter.date(from: string)!
+        self = date
+    }
     var year : String{
         let calendar = Calendar(identifier: .gregorian)
         let year = calendar.component(.year, from: self)

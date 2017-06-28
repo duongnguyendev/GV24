@@ -20,7 +20,7 @@ import Firebase
     @objc optional func signUpComplete()
 }
 
-let DATA_NOT_EXIT = "Sorry! Data is not exist."
+let DATA_NOT_EXIT = "DATA_NOT_EXIST"
 class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     private var itemHeight : CGFloat = 0

@@ -19,11 +19,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     var currentLocation : CLLocationCoordinate2D?
     var maids : [MaidProfile]?{
         didSet{
-            var index = 0
-            for maid in maids! {
-                self.addMarkerFor(user: maid, at: "\(index)")
-                index += 1
-            }
+            reloadMap()
         }
     }
     
@@ -180,8 +176,18 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         }
 
     }
+    func reloadMap(){
+        self.mapView.clear()
+        var index = 0
+        for maid in maids! {
+            self.addMarkerFor(user: maid, at: "\(index)")
+            index += 1
+        }
+    }
+    
     func showAlertLogin(){
-        let alert = UIAlertController(title: "", message: "Vui lòng đăng nhập để xem thêm chi tiết", preferredStyle: .alert)
+        let loginMes = LanguageManager.shared.localized(string: "PleaseSignInBeforeUsingThisFeature")
+        let alert = UIAlertController(title: "", message: loginMes, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
             
         }))
@@ -192,6 +198,10 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         UserService.shared.filter(params: params!, location: self.currentLocation!, completion: { (response, error) in
             if error == nil{
                 self.maids = response
+            }else{
+                let alert = UIAlertController(title: nil, message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         })
     }

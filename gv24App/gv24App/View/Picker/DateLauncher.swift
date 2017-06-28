@@ -29,6 +29,10 @@ class DateLauncher: BaseLauncher {
     let datePicker : UIDatePicker = {
         let picker = UIDatePicker()
         picker.date = Date()
+        let calendar = Calendar(identifier: .gregorian)
+        picker.minimumDate = Date()
+        let currentYear = Int(Date().year)
+        picker.maximumDate = Date(year: (currentYear! + 5))
         picker.translatesAutoresizingMaskIntoConstraints = false
         return picker
     }()
