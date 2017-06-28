@@ -154,10 +154,17 @@ class UserService: APIService {
             }
         }
     }
-    func forgotPassword(userName : String, email: String){
+    func forgotPassword(userName : String, email: String, completion:@escaping ((_ error: String?)->())){
+        let url = "more/ownerForgotPassword"
         let params : Dictionary<String, String> = ["username": userName, "email": email]
-        
-        
+        postWithUrl(url: url, parameters: params) { (jsonData, error) in
+            if error != nil{
+                completion(error)
+            }else{
+                completion(nil)
+            }
+
+        }
     }
     
     func report(maidId: String, content: String, completion: @escaping ((String?)->())){

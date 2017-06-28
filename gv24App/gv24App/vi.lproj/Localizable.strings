@@ -174,5 +174,5 @@ InvalidConfirmPassword = "Xác nhận mật khẩu không đúng";
 YourPasswordIsTooShort = "Mật khẩu quá ngắn";
 PaymentMethods = "Phương thức thanh toán";
 Avatar = "Vui lòng chọn hình đại diện";
-
+DATA_NOT_EXIST = "Dữ liệu không tồn tại";
 

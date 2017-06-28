@@ -11,10 +11,10 @@ import UIKit
 class ForgotPassVC: BaseVC {
     
     let itemSize : CGFloat = 50.0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = LanguageManager.shared.localized(string: "ForgotPassword")
     }
     
@@ -82,16 +82,29 @@ class ForgotPassVC: BaseVC {
     }
     
     func handleSendButton(_ sender : UIButton){
+        
         if let validateString = validate(){
-            showAlert(title: nil, message: validateString, completion: { 
-                
+            showAlert(title: nil, message: validateString, completion: {
             })
         }else{
-            
+            requestForgotPassword()
         }
-        
     }
-    
+    func requestForgotPassword(){
+        activity.startAnimating()
+        UserService.shared.forgotPassword(userName: textFieldUserName.text!, email: textFieldEmail.text!, completion: { (error) in
+            self.activity.stopAnimating()
+            if error != nil{
+                self.showAlert(title: nil, message: error, completion: {
+                    
+                })
+            }else{
+                self.showAlert(title: nil, message: "APasswordResetLinkIsSentToYourEmail", completion: {
+                    self.goBack()
+                })
+            }
+        })
+    }
     func showAlert(title : String?, message : String?, completion: @escaping (()->())){
         var mTitle = title
         var mMessage = message

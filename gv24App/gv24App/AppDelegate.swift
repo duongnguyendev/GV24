@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
             UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
-        FIRMessaging.messaging().remoteMessageDelegate = self
+//        FIRMessaging.messaging().remoteMessageDelegate = self
         
         //        NotificationCenter.default.addObserver(self,
         //                                               selector: #selector(self.tokenRefreshNotification),
@@ -54,9 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.prod)
-        FIRMessaging.messaging().connect { (error) in
-            
-        }
+//        FIRMessaging.messaging().connect { (error) in
+//            
+//        }
     }
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print(error)

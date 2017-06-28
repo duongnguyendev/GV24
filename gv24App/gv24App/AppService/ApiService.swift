@@ -54,6 +54,26 @@ class APIService: NSObject {
         }
 
     }
+    func postWithUrl(url : String, parameters: Parameters, completion: @escaping (ResponseCompletion)){
+        Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters,encoding:JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let status = json["status"].bool
+                if !status!{
+                    if let message = json["message"].string{
+                        completion(nil, message)
+                    }
+                }else{
+                    completion(json["data"], nil)
+                }
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
+                print(error)
+            }
+        }
+        
+    }
     func post(url : String, parameters: Dictionary<String, Any>, completion: @escaping (ResponseCompletion)){
         Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters).responseJSON { (response) in
             switch response.result {
