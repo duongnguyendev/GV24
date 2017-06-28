@@ -27,6 +27,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
         title = LanguageManager.shared.localized(string: "Around")
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         setupLocationManager()
     }
     
@@ -43,6 +44,13 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         sB.placeholder = "Search"
         sB.delegate = self
         return sB
+    }()
+    let viewHandleKeyboard : UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        v.isHidden = true
+        return v
     }()
     lazy var mapView : GMSMapView = {
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 16.0)
@@ -68,6 +76,16 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         mapView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         
         mapView.backgroundColor = AppColor.backButton
+        
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        viewHandleKeyboard.addGestureRecognizer(tap)
+        
+        self.view.addSubview(viewHandleKeyboard)
+        viewHandleKeyboard.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 0).isActive = true
+        viewHandleKeyboard.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        viewHandleKeyboard.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        viewHandleKeyboard.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        
     }
     
     //MARK: - setup location manager
@@ -204,5 +222,13 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
                 self.present(alert, animated: true, completion: nil)
             }
         })
+    }
+    
+    override func hideKeyboard() {
+        self.viewHandleKeyboard.isHidden = true
+        super.hideKeyboard()
+    }
+    func keyboardWillShow(notification : Notification){
+        self.viewHandleKeyboard.isHidden = false
     }
 }

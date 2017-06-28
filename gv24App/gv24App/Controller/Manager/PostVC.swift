@@ -47,11 +47,23 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    let buttonSend : NavButton = {
+        let btnSend = NavButton(title: "Post")
+        return btnSend
+    }()
+    
+    let backButton = BackButton()
+    
+    override func setupBackButton() {
+        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        let navLeftButton = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = navLeftButton
+    }
     
     override func setupRightNavButton() {
-        let buttonSend = NavButton(title: "Đăng bài")
         buttonSend.addTarget(self, action: #selector(handlePostButton(_:)), for: .touchUpInside)
-        let btn = UIBarButtonItem(customView: buttonSend)
+        let btn = UIBarButtonItem(customView: self.buttonSend)
+        
         self.navigationItem.rightBarButtonItem = btn
     }
     let mainScrollView : UIScrollView = UIScrollView()
@@ -323,6 +335,8 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     func handlePostButton(_ sender: UIButton){
+        self.backButton.isUserInteractionEnabled = false
+        self.buttonSend.isUserInteractionEnabled = false
         self.activity.startAnimating()
         validate { (errorString) in
             if errorString == nil{
@@ -334,12 +348,16 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
                             self.goBack()
                         })
                     }else{
+                        self.buttonSend.isUserInteractionEnabled = true
+                        self.backButton.isUserInteractionEnabled = true
                         self.showAlertWith(message: error!, completion: {})
                     }
                 }
             }
             else{
                 self.activity.stopAnimating()
+                self.backButton.isUserInteractionEnabled = true
+                self.buttonSend.isUserInteractionEnabled = true
                 self.showAlertWith(message: errorString!, completion: {})
             }
         }

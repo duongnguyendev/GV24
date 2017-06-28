@@ -29,6 +29,7 @@ class UpdateProfileVC: SignUpVC_2 {
         super.viewDidLoad()
         self.user = UserHelpers.currentUser
         emailTextField.isUserInteractionEnabled = false
+        title = LanguageManager.shared.localized(string: "Profile")
     }
     
     override func handleComplateButton(_ sender: UIButton) {

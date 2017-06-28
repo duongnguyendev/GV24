@@ -12,8 +12,9 @@ class GeneralStatisticInfoView: BaseView {
 
     var generalStatisticData : GeneralStatistic?{
         didSet{
+            let millionString = LanguageManager.shared.localized(string: "Million")
             labelNumberDone.text = "\(String(describing: (generalStatisticData?.numberDone)!))"
-            labelNumberTotalCost.text = "\(String(describing: (generalStatisticData?.totalPrice)!)) triệu"
+            labelNumberTotalCost.text = "\(String(describing: (generalStatisticData?.totalPrice)!)) \(millionString!)"
             labelNumberPosted.text = "\(String(describing: (generalStatisticData?.numberPosted)!))"
             labelNumberRuningWork.text = "\(String(describing: (generalStatisticData?.numberRuning)!))"
         }
@@ -71,7 +72,7 @@ class GeneralStatisticInfoView: BaseView {
         lb.textColor = AppColor.homeButton3
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textAlignment = .center
-        lb.text = "0.0 triệu"
+        lb.text = "0.0"
         lb.font = Fonts.by(name: .regular, size: 40)
         if let window = UIApplication.shared.keyWindow{
             if window.frame.size.width == 414{

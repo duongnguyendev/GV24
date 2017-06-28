@@ -44,7 +44,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     let buttonFrom: BasicButton = {
         let btn = BasicButton()
         btn.titleCollor = AppColor.backButton
-        btn.title = Date().dayMonthYear
+        btn.title = "--/--/--"
         btn.titleFont = Fonts.by(name: .regular, size: 15)
         btn.addTarget(self, action: #selector(handleButtonFrom(_:)), for: .touchUpInside)
         return btn

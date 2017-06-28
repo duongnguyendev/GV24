@@ -90,6 +90,7 @@
 		4E61E3DD1EC1A31C00E6C8C5 /* SignUpVC_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3D91EC1A31C00E6C8C5 /* SignUpVC_2.swift */; };
 		4E61E3E01EC1A33800E6C8C5 /* MaidAroundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3DE1EC1A33800E6C8C5 /* MaidAroundVC.swift */; };
 		4E61E3E11EC1A33800E6C8C5 /* MaidProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61E3DF1EC1A33800E6C8C5 /* MaidProfileVC.swift */; };
+		4E69EC271F03A68600929AB9 /* RechargeOnlineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E69EC261F03A68600929AB9 /* RechargeOnlineVC.swift */; };
 		4E87A54C1EBB64F100EDA0D1 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E87A54B1EBB64F100EDA0D1 /* IconView.swift */; };
 		4E8D27441EDC134B00872A61 /* SignUpVC_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D27431EDC134B00872A61 /* SignUpVC_3.swift */; };
 		4E8D27481EDC13B900872A61 /* JobProgressDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */; };
@@ -276,6 +277,7 @@
 		4E61E3D91EC1A31C00E6C8C5 /* SignUpVC_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC_2.swift; sourceTree = "<group>"; };
 		4E61E3DE1EC1A33800E6C8C5 /* MaidAroundVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidAroundVC.swift; sourceTree = "<group>"; };
 		4E61E3DF1EC1A33800E6C8C5 /* MaidProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaidProfileVC.swift; path = ../Around/MaidProfileVC.swift; sourceTree = "<group>"; };
+		4E69EC261F03A68600929AB9 /* RechargeOnlineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeOnlineVC.swift; sourceTree = "<group>"; };
 		4E87A54B1EBB64F100EDA0D1 /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		4E8D27431EDC134B00872A61 /* SignUpVC_3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC_3.swift; sourceTree = "<group>"; };
 		4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JobProgressDetailVC.swift; path = ../JobProgressDetailVC.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				4E4E358E1ED7E0C800D13EF5 /* ContactVC.swift */,
 				4E33F95A1EEF94390073BC7E /* RechargeVC.swift */,
 				4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */,
+				4E69EC261F03A68600929AB9 /* RechargeOnlineVC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1106,6 +1109,7 @@
 				4E8D27491EDC13B900872A61 /* JobPostedDetailVC.swift in Sources */,
 				4EBF04B61ED292F100F7E08B /* Address.swift in Sources */,
 				4EA7A8441EBB1E6600CA7F37 /* BasicButton.swift in Sources */,
+				4E69EC271F03A68600929AB9 /* RechargeOnlineVC.swift in Sources */,
 				4E4DD6C51EB0A0C5001B4936 /* ViewController.swift in Sources */,
 				A6D471301EF25ECA00F8A5BA /* KeyBillCell.swift in Sources */,
 				4E58A7A01EEE49B30088FC1D /* GeneralStatisticInfoView.swift in Sources */,

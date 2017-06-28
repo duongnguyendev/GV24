@@ -47,7 +47,7 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     private let labelDistance : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Khoảng cách"
+        lb.text = LanguageManager.shared.localized(string: "Distance")
         lb.font = Fonts.by(name: .medium, size: 15)
         return lb
     }()
@@ -89,7 +89,7 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     private let buttonPrice : InputButonWithIcon = {
         let btn = InputButonWithIcon()
         btn.iconName = Ionicons.socialUsd
-        btn.title = "Giá tiền"
+        btn.title = "Amount"
         btn.color = AppColor.backButton
         btn.addTarget(self, action: #selector(handleButtonPrice(_:)), for: .touchUpInside)
         return btn
