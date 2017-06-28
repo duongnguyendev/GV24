@@ -11,10 +11,13 @@ import Foundation
 import UIKit
 class MaidTaskCell: BaseCollectionCell{
     let margin : CGFloat = 10
-    
-    var statusTask: String?{
+    var task: Task?{
         didSet{
-            labelStatus.text = statusTask
+            iconType.loadImageurl(link: (task?.info?.work?.image)!)
+            labelTitle.text = task?.info?.title
+            labelUploadAt.text = Date(isoDateString: (task?.history?.updateAt)!).periodTime
+            labelDate.text = Date(isoDateString: (task?.history?.createAt)!).dayMonthYear
+            labelTimes.text = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
         }
     }
     let iconType : IconView = {

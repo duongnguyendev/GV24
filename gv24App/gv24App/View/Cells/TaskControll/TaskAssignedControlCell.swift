@@ -13,7 +13,7 @@ class TaskAssignedControlCell: TaskControlCell {
         let endTime = tasks[indexPath.item].info?.time?.endAt
         let deadline = Date(isoDateString: endTime!).compareDate
         if !deadline {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: assignedCellId, for: indexPath) as! TaskCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: assignedCellId, for: indexPath) as! TaskAssignedCell
             cell.task = tasks[indexPath.item]
             return cell
         }else{
@@ -40,7 +40,7 @@ class TaskAssignedControlCell: TaskControlCell {
     }
     
     override func register() {
-        taskCollectionView.register(TaskCell.self, forCellWithReuseIdentifier: assignedCellId)
+        taskCollectionView.register(TaskAssignedCell.self, forCellWithReuseIdentifier: assignedCellId)
         taskCollectionView.register(TaskExpiredCell.self, forCellWithReuseIdentifier: expiredCellId)
     }
     override func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {

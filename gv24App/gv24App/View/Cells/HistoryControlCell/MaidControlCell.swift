@@ -11,7 +11,6 @@ import UIKit
 class MaidControlCell: HistoryControlCell {
     let maidCellId = "maidCellId"
     override func setupView() {
-//        backgroundColor = UIColor.blue
         super.setupView()
     }
     override func register() {
@@ -35,10 +34,9 @@ class MaidControlCell: HistoryControlCell {
         return maidsHistory.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if delegate != nil{
-            
-        }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
     }
-
+    
+    
 }

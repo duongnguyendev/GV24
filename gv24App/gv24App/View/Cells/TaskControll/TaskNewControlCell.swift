@@ -17,13 +17,13 @@ class TaskNewControlCell: TaskControlCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: expiredCellId, for: indexPath) as! TaskExpiredCell
             cell.task = task
             return cell
+        }else if task.process?.id == "000000000000000000000006"{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: requestCellId, for: indexPath) as! TaskRequestCell
+            cell.task = task
+            return cell
         }else if (task.stakeholder?.request?.count)! > 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: applicantCellId, for: indexPath) as! TaskNewCell
             cell.countNumber = task.stakeholder?.request?.count
-            cell.task = task
-            return cell
-        }else if task.process?.id == "000000000000000000000006"{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: applicantCellId, for: indexPath) as! TaskRequestCell
             cell.task = task
             return cell
         }else{

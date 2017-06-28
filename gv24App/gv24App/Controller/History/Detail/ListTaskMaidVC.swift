@@ -50,7 +50,7 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MaidTaskCell
-        //cell.task = tasks[indexPath.item]
+        cell.task = tasks[indexPath.item]
         return cell
     }
     

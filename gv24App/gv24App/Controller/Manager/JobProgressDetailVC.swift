@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 class JobProgressDetailVC: BaseVC {
     var taskProgress = Task()
+    
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
         button.translatesAutoresizingMaskIntoConstraints = false

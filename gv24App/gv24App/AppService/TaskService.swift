@@ -110,7 +110,6 @@ class TaskService: APIService {
             }
         }
     }
-    
     func checkInMaid(task: Task,img_checkin: UIImage,completion:@escaping ((Bool?)->())){
         let url = "task/checkin"
         var params = Dictionary<String, String>()
@@ -124,7 +123,6 @@ class TaskService: APIService {
             }
         }
     }
-    
     func checkOutMaid(id: String,completion: @escaping ((WorkUnpaid?)->())){
         let url = "task/checkout"
         let  params = ["id": id]
