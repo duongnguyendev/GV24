@@ -110,7 +110,6 @@ class APIService: NSObject {
     }
     func postMultipartWithToken(url : String, image: UIImage?, name: String?, parameters: Dictionary<String, String>, completion: @escaping (ResponseCompletion)){
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
-        
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 if image != nil{
@@ -118,7 +117,6 @@ class APIService: NSObject {
                         multipartFormData.append(imageData, withName: name!, fileName: "\(name!).jpeg", mimeType: "image/jpeg")
                     }
                 }
-                
                 for (key,value) in parameters{
                     multipartFormData.append((value.data(using: .utf8))!, withName: key)
                 }
@@ -141,7 +139,6 @@ class APIService: NSObject {
                             completion(json["data"], nil)
                         }
                     }
-                    
                 case .failure(let encodingError):
                     completion(nil, encodingError.localizedDescription)
                 }

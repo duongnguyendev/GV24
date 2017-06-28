@@ -171,6 +171,7 @@
 		A6D487FF1EF7C9EA0059CC8A /* JobNewDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D487FE1EF7C9EA0059CC8A /* JobNewDetailVC.swift */; };
 		A6D8F5DF1EFA70DF001FC0BF /* UpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8F5DE1EFA70DF001FC0BF /* UpdateVC.swift */; };
 		A6F9C1431F01F5F300E6F3F6 /* WebviewPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C1421F01F5F300E6F3F6 /* WebviewPaymentVC.swift */; };
+		A6F9C1451F0259C100E6F3F6 /* TaskRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9C1441F0259C100E6F3F6 /* TaskRequestCell.swift */; };
 		CF334A489D0E0A4083BA94C8 /* Pods_gv24App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6048FD6ABBCEEABE41FA5CE8 /* Pods_gv24App.framework */; };
 /* End PBXBuildFile section */
 
@@ -356,6 +357,7 @@
 		A6D487FE1EF7C9EA0059CC8A /* JobNewDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobNewDetailVC.swift; sourceTree = "<group>"; };
 		A6D8F5DE1EFA70DF001FC0BF /* UpdateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVC.swift; sourceTree = "<group>"; };
 		A6F9C1421F01F5F300E6F3F6 /* WebviewPaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebviewPaymentVC.swift; sourceTree = "<group>"; };
+		A6F9C1441F0259C100E6F3F6 /* TaskRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRequestCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +436,7 @@
 				038987371EEE4F6500DA5293 /* Detail */,
 				03446A4F1EE54F3D004DB193 /* TaskCell.swift */,
 				03446A531EE54F3D004DB193 /* TaskExpiredCell.swift */,
+				A6F9C1441F0259C100E6F3F6 /* TaskRequestCell.swift */,
 				03446A551EE54F3D004DB193 /* TaskNewCell.swift */,
 				03446A511EE54F3D004DB193 /* TaskAssignedControlCell.swift */,
 				03446A541EE54F3D004DB193 /* TaskInProgressControlCell.swift */,
@@ -1087,6 +1090,7 @@
 				03446A5D1EE54F3D004DB193 /* MoreUserCell.swift in Sources */,
 				A6D471361EF2721A00F8A5BA /* BankOwnerCell.swift in Sources */,
 				4E61E3D51EC1A30B00E6C8C5 /* MoreVC.swift in Sources */,
+				A6F9C1451F0259C100E6F3F6 /* TaskRequestCell.swift in Sources */,
 				4E4DD6E51EB0A838001B4936 /* Icon.swift in Sources */,
 				4E0F75C71EE54A6300121113 /* WorkType.swift in Sources */,
 				A6C8269A1EFB6ACF0017FD0F /* UIView+Toast.m in Sources */,
