@@ -78,7 +78,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func handleButtonGv24(_ sender: UIButton){
         let alert = UIAlertController(title: "Hoàn tất thanh toán", message: "Vui lòng xác nhận thanh toán bằng cách nhấn OK", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default){ action -> Void in
+        alert.addAction(UIAlertAction(title: "Đồng ý", style: .default){ action -> Void in
             PaymentService.shared.paymentGv247(billId: (self.workSuccess?.id)!, completion: { (flag) in
                 if flag!{
                     let commentVC = CommentMaidVC()
@@ -92,9 +92,17 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func handleButtonOnlinePayment(_ sender: UIButton){
-        let sendOrderVC = SendOrderVC()
-        sendOrderVC.workSuccess = workSuccess!
-        push(viewController: sendOrderVC)
+        PaymentService.shared.paymentOnlineCofirm(billId: (workSuccess?.id)!) { (flag) in
+            if (flag)!{
+                let sendOrderVC = SendOrderVC()
+                sendOrderVC.workSuccess = self.workSuccess!
+                self.push(viewController: sendOrderVC)
+            }else{
+                let alert = UIAlertController(title: "Thông báo", message: "Thanh toán ngân lượng thất bại", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
         print("Handle Online Payment")
     }
     

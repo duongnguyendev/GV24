@@ -29,13 +29,12 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         self.activity.startAnimating()
         HistoryService.shared.fetchUnpaidWork(completion: { (mWorkUnpaids) in
             if let worksUnpaid = mWorkUnpaids{
-                if worksUnpaid.count > 0{
-                    self.labelNumberPaid.isHidden = false
-                    self.labelNumberPaid.text = "\(worksUnpaid.count)"
-                }else{
-                     self.labelNumberPaid.isHidden = true
-                }
+                self.labelNumberPaid.isHidden = false
+                self.labelNumberPaid.text = "\(worksUnpaid.count)"
                 self.activity.stopAnimating()
+            }else{
+                 self.labelNumberPaid.isHidden = true
+                 self.activity.stopAnimating()
             }
         })
     }

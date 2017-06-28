@@ -225,6 +225,7 @@ class SendOrderVC: BaseVC {
                     let wvPaymentVC = WebviewPaymentVC()
                     wvPaymentVC.gstrUrl = result["checkout_url"] as? String
                     wvPaymentVC.token_code = result["token_code"] as? String
+                    wvPaymentVC.billId = self.workSuccess.id
                     self.push(viewController: wvPaymentVC)
                 }
             }

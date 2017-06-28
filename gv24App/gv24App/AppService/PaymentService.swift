@@ -35,7 +35,28 @@ class PaymentService: APIService {
             }
         }
     }
-    func paymentOnline(){
-        
+    func paymentOnlineCofirm(billId: String,completion: @escaping ((Bool?)->())){
+        let url = "payment/payOnlineConfirm"
+        let params = ["billId": billId]
+        postWidthToken(url: url, parameters: params) { (json, error) in
+            if error == nil{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
     }
+    
+    func paymentOnline(billId: String,completion: @escaping ((Bool?)->())){
+        let url = "payment/payOnline"
+        let params = ["billId": billId]
+        postWidthToken(url: url, parameters: params) { (json, error) in
+            if error == nil{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+    }
+    
 }

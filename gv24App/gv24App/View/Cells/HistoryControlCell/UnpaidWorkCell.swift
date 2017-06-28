@@ -20,6 +20,7 @@ class UnpaidWorkCell: TaskCell{
             iconType.loadImageurl(link: (taskUnpaid?.info?.work?.image)!)
             labelDate.text = Date(isoDateString: (taskUnpaid?.info?.time?.startAt)!).dayMonthYear
             labelTimes.text = Date(isoDateString: (taskUnpaid?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (taskUnpaid?.info?.time?.endAt)!).hourMinute
+            labelUploadAt.text = Date(isoDateString: (taskUnpaid?.history?.updateAt)!).periodTime
         }
     }
     
