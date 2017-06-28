@@ -11,6 +11,7 @@ import UIKit
 class WebviewPaymentVC: BaseVC, UIWebViewDelegate {
     var gstrUrl: String?
     var token_code: String?
+    var billId: String?
     
     lazy var webView: UIWebView = {
         let wb = UIWebView()
@@ -42,7 +43,9 @@ class WebviewPaymentVC: BaseVC, UIWebViewDelegate {
         let currentUrl = webView.stringByEvaluatingJavaScript(from: "window.location.href")
         if currentUrl == RETURN_URL{
             self.showAlertWith(message: "Thanh toán thành công", completion: {
-                self.dismiss(animated: true, completion: nil)
+                PaymentService.shared.paymentOnline(billId: self.billId!, completion: { (flag) in
+                     self.dismiss(animated: true, completion: nil)
+                })
             })
         }else{
         }
