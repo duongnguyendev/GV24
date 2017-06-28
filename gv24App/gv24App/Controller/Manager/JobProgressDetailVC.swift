@@ -20,7 +20,7 @@ class JobProgressDetailVC: BaseVC {
     private let finishMaid: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Hoàn tất công việc"
+        button.title = LanguageManager.shared.localized(string: "Complete")
         button.addTarget(self, action: #selector(handleButtonFinishMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
         button.color = AppColor.backButton
@@ -56,7 +56,7 @@ class JobProgressDetailVC: BaseVC {
                 let paymentVC = PaymentVC()
                 paymentVC.workSuccess = work
                 paymentVC.taskProgress = self.taskProgress
-                self.push(viewController: paymentVC)
+                self.present(viewController: paymentVC)
             }
             self.activity.stopAnimating()
         }
@@ -65,7 +65,6 @@ class JobProgressDetailVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
-        title = "Đang làm"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

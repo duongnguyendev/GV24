@@ -12,6 +12,6 @@ class TaskProgressCell: TaskCell{
     
     override func setupView() {
         super.setupView()
-        statusTask = "Đang làm"
+        statusTask = LanguageManager.shared.localized(string: "RunningWork")
     }
 }

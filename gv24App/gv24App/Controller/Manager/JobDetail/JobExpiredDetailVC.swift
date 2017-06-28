@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 class JobExpiredDetailVC: JobDetailVC{
     var task = Task()
-    
     let labelExpired : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +21,7 @@ class JobExpiredDetailVC: JobDetailVC{
         lb.layer.cornerRadius = 10
         lb.layer.masksToBounds = true
         lb.textAlignment = .center
-        lb.text = "Quá hạn"
+        lb.text = LanguageManager.shared.localized(string: "ExceededTask")
         return lb
     }()
     
@@ -31,7 +30,7 @@ class JobExpiredDetailVC: JobDetailVC{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.color = AppColor.homeButton1
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
-        button.title = LanguageManager.shared.localized(string: "RemoveTask")
+        button.title = LanguageManager.shared.localized(string: "DeleteWork")
         button.sizeImage = 30
         button.iconName = .iosTrash
         return button

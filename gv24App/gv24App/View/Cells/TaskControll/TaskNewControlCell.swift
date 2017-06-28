@@ -28,7 +28,7 @@ class TaskNewControlCell: TaskControlCell {
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newCellId, for: indexPath) as! TaskCell
-            cell.task = tasks[indexPath.item]
+            cell.task = task
             return cell
         }
     }

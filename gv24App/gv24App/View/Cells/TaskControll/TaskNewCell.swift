@@ -18,11 +18,11 @@ class TaskNewCell: TaskCell {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        lb.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        lb.heightAnchor.constraint(equalToConstant: 20).isActive = true
         lb.font = Fonts.by(name: .light, size: 13)
         lb.textColor = UIColor.white
         lb.backgroundColor = UIColor.red
-        lb.layer.cornerRadius = 12.5
+        lb.layer.cornerRadius = 10
         lb.layer.masksToBounds = true
         lb.textAlignment = .center
         lb.text = "2"
@@ -30,7 +30,7 @@ class TaskNewCell: TaskCell {
     }()
     override func setupView() {
         super.setupView()
-        statusTask = "Có người ứng tuyển"
+        statusTask = LanguageManager.shared.localized(string: "NewApplications")
         addSubview(labelNumber)
         labelNumber.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelNumber.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true

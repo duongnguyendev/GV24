@@ -45,23 +45,23 @@ class JobDetailVC: BaseVC{
         descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
     }
     func showAlertWith(task: Task){
-        let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ShowDeleteWork"), preferredStyle:UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default){ action -> Void in
+        let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "AreYouSureYouWantToDeleteThisWork"), preferredStyle:UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: UIAlertActionStyle.default){ action -> Void in
             TaskService.shared.deleteTask(task: task, completion: { (flag) in
                 if (flag!){
                     self.goBack()
                 }else{
-                    self.showAlertError(message: "Xóa bài đăng không thành công", completion: {})
+                    self.showAlertError(message: LanguageManager.shared.localized(string: "FailedToDelete")!, completion: {})
                 }
             })
         })
-        alertController.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel){ action -> Void in})
+        alertController.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "Cancel"), style: UIAlertActionStyle.cancel){ action -> Void in})
         
         self.presentAlert(alert: alertController)
     }
     func showAlertError(message: String, completion: @escaping (()->())){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
             completion()
         }))
         self.presentAlert(alert: alert)

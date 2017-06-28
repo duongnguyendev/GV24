@@ -139,8 +139,8 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
             jobPostVC.taskAssigned = task
             present(viewController: jobPostVC)
         }else{
-            let alertController = UIAlertController(title: "", message: "Công việc đã quá hạn", preferredStyle:UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel){ action -> Void in
+            let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "WorkYouChooseIsExpired"), preferredStyle:UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: UIAlertActionStyle.cancel){ action -> Void in
             })
             self.present(alertController, animated: true, completion: nil)
         }
@@ -171,7 +171,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         super.localized()
         title = LanguageManager.shared.localized(string: "WorkManagement")
         segmentedControl.setTitle(LanguageManager.shared.localized(string: "PostedWork"), forSegmentAt: 0)
-        segmentedControl.setTitle(LanguageManager.shared.localized(string: "InProcess"), forSegmentAt: 1)
+        segmentedControl.setTitle(LanguageManager.shared.localized(string: "Assigned"), forSegmentAt: 1)
         segmentedControl.setTitle(LanguageManager.shared.localized(string: "RunningWork"), forSegmentAt: 2)
     }
 }

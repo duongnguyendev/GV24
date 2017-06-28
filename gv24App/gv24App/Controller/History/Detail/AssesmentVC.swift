@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class AssesmentVC: DetailTaskDoneVC {
+    
     private let commentButton: GeneralButton = {
         let button = GeneralButton()
         button.translatesAutoresizingMaskIntoConstraints = false
