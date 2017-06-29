@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 class ProfileMaidCell: BaseCollectionCell{
     let cellMargin: CGFloat = 20
-    
     var maid: MaidProfile? {
         didSet{
             avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)

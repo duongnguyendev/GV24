@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var taskAssigned = Task()
+    var delegate: TaskManageDelegate?
     
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -87,7 +88,6 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     func handleSelectFromGallery(){
         showImagePickerWith(sourceType: .photoLibrary)
     }
-    
     func showImagePickerWith(sourceType : UIImagePickerControllerSourceType){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -96,11 +96,9 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     }
     
     //MARK: - handle image picker controller delegate
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let imageResized = image.resize(newWidth: 200)
@@ -108,10 +106,12 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
                 self.activity.stopAnimating()
                 if flag!{
-                    self.dismiss(animated: true, completion: nil)
+                    self.showAlertWith(message: LanguageManager.shared.localized(string: "PartnerIdentifiedSuccessfully")!, completion: { 
+                        self.delegate?.checkInMaid!()
+                        self.dismiss(animated: true, completion: nil)
+                    })
                 }else{
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToIdentify")!, completion: {
-                        self.goBack()
                     })
                 }
             })
@@ -149,7 +149,6 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
             })
 
         }
-        print("Handle Remove Task")
     }
     override func viewDidLoad() {
         super.viewDidLoad()

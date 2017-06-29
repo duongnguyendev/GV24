@@ -21,8 +21,6 @@ class SendOrderVC: BaseVC {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    
     private let labelName: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +29,6 @@ class SendOrderVC: BaseVC {
         lb.font = Fonts.by(name: .light, size: 14)
         return lb
     }()
-    
     private let mtfName: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false

@@ -119,13 +119,17 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - task control delegate
     func selectedPosted(task: Task, deadline: Bool) {
         if deadline{
-            let jobExpiredDetailVC = JobExpiredDetailVC()
-            jobExpiredDetailVC.task = task
-            push(viewController: jobExpiredDetailVC)
+            let jobExpiredVC = JobExpiredDetailVC()
+            jobExpiredVC.task = task
+            push(viewController: jobExpiredVC)
+        }else if task.process?.id == "000000000000000000000006"{
+            let jobRequestVC = JobRequestDetailVC()
+            jobRequestVC.taskRequest = task
+            push(viewController: jobRequestVC)
         }else if task.stakeholder?.request?.count == 0{
-            let jobNewDetailVC = JobNewDetailVC()
-            jobNewDetailVC.task = task
-            present(viewController: jobNewDetailVC)
+            let jobNewVC = JobNewDetailVC()
+            jobNewVC.task = task
+            present(viewController: jobNewVC)
         }else{
             let jobPostVC = JobPostedDetailVC()
             jobPostVC.task = task
@@ -135,9 +139,10 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     func selectedAssigned(deadline: Bool, task: Task) {
         if !deadline{
-            let jobPostVC = JobAssignedDetailVC()
-            jobPostVC.taskAssigned = task
-            present(viewController: jobPostVC)
+            let jobAssignedVC = JobAssignedDetailVC()
+            jobAssignedVC.taskAssigned = task
+            jobAssignedVC.delegate = self
+            present(viewController: jobAssignedVC)
         }else{
             let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "WorkYouChooseIsExpired"), preferredStyle:UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: UIAlertActionStyle.cancel){ action -> Void in
@@ -150,6 +155,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         jobProgressVC.taskProgress = task
         push(viewController: jobProgressVC)
     }
+    
     func remove(task: Task) {
         let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "AreYouSureYouWantToDeleteThisWork"), preferredStyle:UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default){ action -> Void in
@@ -158,7 +164,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
                     let cell = self.collectionType.cellForItem(at: self.indexPath) as! TaskControlCell
                     cell.removeObjectLocal(task: task)
                 }else{
-                    
                 }
             })
         })
@@ -168,17 +173,19 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     override func localized() {
-        super.localized()
-        title = LanguageManager.shared.localized(string: "WorkManagement")
+        title = LanguageManager.shared.localized(string: "TitleWorkManagement")
         segmentedControl.setTitle(LanguageManager.shared.localized(string: "PostedWork"), forSegmentAt: 0)
         segmentedControl.setTitle(LanguageManager.shared.localized(string: "Assigned"), forSegmentAt: 1)
         segmentedControl.setTitle(LanguageManager.shared.localized(string: "RunningWork"), forSegmentAt: 2)
     }
 }
 extension TaskManagementVC : TaskManageDelegate{
-    func selectedYourApplicants() {
+    func chooseMaid() {
         indexPath = IndexPath(item: 1, section: 0)
         segmentedControl.selectedSegmentIndex = 1
-        collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
+    func checkInMaid() {
+        indexPath = IndexPath(item: 2, section: 0)
+        segmentedControl.selectedSegmentIndex = 2
     }
 }

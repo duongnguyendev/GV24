@@ -9,8 +9,8 @@
 import UIKit
 @objc protocol HistoryVCDelegate {
     @objc optional func selectedTaskHistory(task : Task)
-    @objc optional func selectedProfile(maid : MaidHistory)
-    @objc optional func selectedTaskMaid(list : MaidHistory)
+    @objc optional func handleProfile(maid : MaidHistory)
+    @objc optional func handleTaskMaid(list : MaidHistory)
     @objc optional func selectedTaskUnpaid(work: WorkUnpaid)
 }
 class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {

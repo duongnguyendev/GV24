@@ -56,12 +56,12 @@ class MaidCell: BaseCollectionCell{
     
     func handleButtonTasks(_ sender: UIButton){
         if delegate != nil{
-            delegate?.selectedTaskMaid!(list: maidHistory!)
+            delegate?.handleTaskMaid!(list: maidHistory!)
         }
     }
     func handleButtonProfile(_ sender: UIButton){
         if delegate != nil{
-            delegate?.selectedProfile!(maid: maidHistory!)
+            delegate?.handleProfile!(maid: maidHistory!)
         }
     }
     

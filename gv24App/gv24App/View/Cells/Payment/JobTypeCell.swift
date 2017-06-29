@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 class JobTypeCell: BaseCollectionCell{
-    let margin: CGFloat = 20
     
+    let margin: CGFloat = 20
     var task: Task? {
         didSet{
             iconType.loadImageurl(link: (task?.info?.work?.image)!)
@@ -18,6 +18,7 @@ class JobTypeCell: BaseCollectionCell{
             labelType.text = task?.info?.desc
         }
     }
+    
     private let iconType : IconView = {
         let iv = IconView(image: "nau_an", size: 50)
         return iv

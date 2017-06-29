@@ -52,7 +52,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         let bt = HomeFunctButton()
         bt.backgroundColor = UIColor.clear
         bt.imageName = "payment_gv24"
-        bt.title = "Tài khoản\nGv24"
+        bt.title = "NGV247Payment"
         bt.textColor = AppColor.homeButton1
         bt.addTarget(self, action: #selector(handleButtonGv24(_:)), for: .touchUpInside)
         return bt
@@ -61,7 +61,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         let bt = HomeFunctButton()
         bt.backgroundColor =  UIColor.clear
         bt.imageName = "payment_online"
-        bt.title = "Thanh toán\ntrực tuyến"
+        bt.title = "OnlinePayment"
         bt.textColor = AppColor.homeButton2
         bt.addTarget(self, action: #selector(handleButtonOnlinePayment(_:)), for: .touchUpInside)
         return bt
@@ -70,7 +70,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         let bt = HomeFunctButton()
         bt.backgroundColor =  UIColor.clear
         bt.imageName = "payment_money"
-        bt.title = "Thanh toán\ntiền mặt"
+        bt.title = "CashPayment"
         bt.textColor = AppColor.homeButton3
         bt.addTarget(self, action: #selector(handleButtonMoneyPayment(_:)), for: .touchUpInside)
         return bt
@@ -82,6 +82,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
             PaymentService.shared.paymentGv247(billId: (self.workSuccess?.id)!, completion: { (flag) in
                 if flag!{
                     let commentVC = CommentMaidVC()
+                    commentVC.maid = self.taskProgress?.stakeholder?.receivced
                     self.push(viewController: commentVC)
                 }
             })
@@ -98,7 +99,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
                 sendOrderVC.workSuccess = self.workSuccess!
                 self.push(viewController: sendOrderVC)
             }else{
-                let alert = UIAlertController(title: "Thông báo", message: "Thanh toán ngân lượng thất bại", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Thông báo", message: "Thanh toán ngân lượng không thành công", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -112,9 +113,9 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
             PaymentService.shared.paymentMoney(billId: (self.workSuccess?.id)!, completion: { (flag) in
                 if flag!{
                     let commentVC = CommentMaidVC()
+                    commentVC.maid = self.taskProgress?.stakeholder?.receivced
                     self.push(viewController: commentVC)
                 }else{
-                    
                 }
             })
         })
@@ -126,7 +127,8 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
-        title = "Thanh toán"
+        title = LanguageManager.shared.localized(string: "Payment")
+        
         collectionPayment.register(JobTypeCell.self, forCellWithReuseIdentifier: jobCellId)
         collectionPayment.register(KeyBillCell.self, forCellWithReuseIdentifier: billCellId)
         collectionPayment.register(ProfileMaidCell.self, forCellWithReuseIdentifier: profileCellId)
@@ -229,7 +231,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: totalCellId, for: indexPath) as! TotalMaidCell
-                cell.total = "Thành tiền \((workSuccess?.price)!)"
+                cell.total = "\((workSuccess?.price)!)"
                 return cell
             }
         default:
@@ -255,12 +257,5 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView { 
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? BaseHeaderView
         return headerView!
-    }
-    //Mark-Localize Language
-    override func localized() {
-        title = LanguageManager.shared.localized(string: "Payment")
-        gv24PaymentButton.title = "NGV247Account"
-        onlinePaymentButton.title = "OnlinePayment"
-        moneyPaymentButton.title = "CashPayment"
     }
 }

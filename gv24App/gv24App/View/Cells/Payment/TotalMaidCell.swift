@@ -12,7 +12,7 @@ class TotalMaidCell: BaseCollectionCell{
     
     var total: String? {
         didSet{
-            labelTotal.text = total
+            labelTotal.text = "\(LanguageManager.shared.localized(string: "TotalMoney")!) \(total!) VND"
         }
     }
     let labelTotal: UILabel = {

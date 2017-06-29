@@ -12,7 +12,7 @@ class BankOwnerCell: BaseCollectionCell{
     let labelWorkDate: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Ngày làm việc: 12/01/2017"
+        lb.text = "\(LanguageManager.shared.localized(string: "TheStartDate")! ):"
         lb.font = Fonts.by(name: .light, size: 16)
         return lb
     }()
@@ -20,7 +20,7 @@ class BankOwnerCell: BaseCollectionCell{
     let labelBank: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Số dư tài khoản Gv24: 2.000.000 vnd"
+        lb.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) 2.000.000 VND"
         lb.font = Fonts.by(name: .light, size: 16)
         return lb
     }()

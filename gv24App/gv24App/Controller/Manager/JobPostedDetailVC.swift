@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 import IoniconsSwift
 @objc protocol TaskManageDelegate {
-    @objc optional func selectedYourApplicants()
+    @objc optional func chooseMaid()
+    @objc optional func checkInMaid()
+    
 }
 class JobPostedDetailVC: JobDetailVC{
     

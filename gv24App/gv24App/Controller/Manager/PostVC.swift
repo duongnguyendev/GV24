@@ -32,7 +32,6 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
             typeTextField.text = workType?.name
         }
     }
-    
     var workTypes : [WorkType]?
     var params = Dictionary<String, Any>()
     
@@ -469,7 +468,6 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
             }
         }
     }
-    
     private func validatePackage()->String?{
         if self.radioButtonMoney.isSelected {
             self.params["package"] = "000000000000000000000001"
