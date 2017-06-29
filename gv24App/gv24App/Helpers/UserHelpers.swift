@@ -23,6 +23,12 @@ class UserHelpers: NSObject {
     static var token : String{
         return UserDefaults.standard.value(forKey: TOKEN) as! String
     }
+    static var notificationIsAvailble : Bool{
+        if let isAvailble = UserDefaults.standard.value(forKey: "notificationIsAvailble") as? Bool{
+            return isAvailble
+        }
+        return true
+    }
     static var currentUser : User?{
         if isLogin {
             let userDic = UserDefaults.standard.value(forKey: CURRENT_USER) as! Dictionary<String, Any>
@@ -62,7 +68,9 @@ class UserHelpers: NSObject {
         UserDefaults.standard.set(token, forKey: TOKEN)
 
     }
-    
+    static func turnNotificaitonOn(_ isOn:Bool){
+        UserDefaults.standard.set(isOn, forKey: "notificationIsAvailble")
+    }
     static func logOut(){
         UserDefaults.standard.removeObject(forKey: TOKEN)
         UserDefaults.standard.removeObject(forKey: CURRENT_USER)

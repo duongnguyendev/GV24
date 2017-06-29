@@ -65,19 +65,17 @@ class TaskService: APIService {
         }
     }
     func generalStatistic(startDate: Date?, endDate: Date?, completion: @escaping ((GeneralStatistic?, String?)->())){
-        var url = "owner/statistical"
-        
-        if startDate != nil && endDate != nil{
-            url = url + "?startAt=\(startDate!.yearMonthDate)&endAt=\(endDate!.yearMonthDate)"
-        }else{
-            if startDate != nil {
-                url = url + "?startAt=\(startDate!.yearMonthDate)"
-            }
-            if endDate != nil{
-                url = url + "?endAt=\(endDate!.yearMonthDate)"
-            }
+        let url = "owner/statistical"
+        var params = Parameters()
+        if startDate != nil{
+            params["startAt"] = startDate?.isoString
         }
-        getWithToken(url: url) { (jsonData, error) in
+        if endDate != nil {
+            params["endAt"] = endDate?.isoString
+        }
+        
+        
+        getWithToken(url: url, params: params) { (jsonData, error) in
             if error != nil{
                 completion(nil, error)
             }else{

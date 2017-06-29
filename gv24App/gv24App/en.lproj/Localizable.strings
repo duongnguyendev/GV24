@@ -177,7 +177,7 @@ InvalidUsername = "Invalid username";
 InvalidConfirmPassword = "Invalid confirm password";
 YourPasswordIsTooShort = "Your password is too short";
 PaymentMethods = "Payment methods";
-Avatar = "Vui lòng chọn hình đại diện";
+Avatar = "Please set your avatar";
 DATA_NOT_EXIST = "DATA_NOT_EXIST";
 Million = "million";
 Skip = "Skip";
@@ -191,4 +191,4 @@ TheStartDateShouldBeLessThanTheEndDate = "The start date should be less than the
 PleaseEnterTheAmount = "Please enter the amount";
 WorkYouChooseIsExpired = "Work you choose is expired";
 FailedToIdentify = "Failed to identify!";
-
+UserNotExist = "User not exist";

@@ -25,20 +25,37 @@ class UpdateProfileVC: SignUpVC_2 {
             }
         }
     }
+    let viewHandleUpdate : UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        v.isHidden = true
+        return v
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.user = UserHelpers.currentUser
         emailTextField.isUserInteractionEnabled = false
         title = LanguageManager.shared.localized(string: "Profile")
     }
+    override func setupView() {
+        super.setupView()
+        
+        view.addSubview(viewHandleUpdate)
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: viewHandleUpdate)
+        view.addConstraintWithFormat(format: "V:|[v0]|", views: viewHandleUpdate)
+    }
     
     override func handleComplateButton(_ sender: UIButton) {
         activity.startAnimating()
         buttonComplate.isUserInteractionEnabled = false
+        viewHandleUpdate.isHidden = false
         validate { (validateError) in
             if validateError != nil{
                 self.activity.stopAnimating()
                 self.buttonComplate.isUserInteractionEnabled = true
+                self.viewHandleUpdate.isHidden = true
                 let alert = UIAlertController(title: "", message: validateError, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -58,6 +75,7 @@ class UpdateProfileVC: SignUpVC_2 {
         self.userInfo?["gender"] = "\(String(describing: (self.gender)!))"
         UserService.shared.updateProfile(info: self.userInfo!, avatar: self.avatarImage) { (userUpdate, error) in
             self.activity.stopAnimating()
+            self.viewHandleUpdate.isHidden = true
             self.buttonComplate.isUserInteractionEnabled = true
             var updateStatus = LanguageManager.shared.localized(string: "UpdateSuccessfully")
             if error == nil{

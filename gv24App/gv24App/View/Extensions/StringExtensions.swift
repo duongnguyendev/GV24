@@ -35,7 +35,7 @@ extension String {
         return true
     }
     var isPhoneNumber : Bool {
-        let mobileFormat = "^(\\+\\d{1,3}[- ]?)?\\d{10}$"
+        let mobileFormat = "^(\\+\\d{1,3}[- ]?)?\\d{11}$"
         
         let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobileFormat)
         let mobileTestResult = mobileTest.evaluate(with: self)

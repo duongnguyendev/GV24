@@ -249,6 +249,27 @@ class APIService: NSObject {
             }
         }
     }
+    func getWithtoken(url: String, params : Parameters,  completion:@escaping (ResponseCompletion)){
+        let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
+        Alamofire.request(urlFrom(request: url), parameters: params, headers: header).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let status = json["status"].bool
+                if !status!{
+                    if let message = json["message"].string{
+                        completion(nil, message)
+                    }
+                }else{
+                    completion(json["data"], nil)
+                }
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
+                print(error)
+            }
+
+        }
+    }
     func getWithToken(url : String, completion:@escaping (ResponseCompletion)){
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), headers: header).responseJSON { (response) in

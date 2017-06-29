@@ -72,6 +72,7 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     override func setupBackButton() {
         let buttonSkip = NavButton(title: "Skip")
         buttonSkip.addTarget(self, action: #selector(handleSkipButton(_:)), for: .touchUpInside)
+        buttonSkip.contentHorizontalAlignment = .left
         let btn = UIBarButtonItem(customView: buttonSkip)
         self.navigationItem.leftBarButtonItem = btn
     }
@@ -128,8 +129,8 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
         viewConent.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         viewConent.heightAnchor.constraint(equalToConstant: 200).isActive = true
         textViewdContent.topAnchor.constraint(equalTo: viewConent.topAnchor, constant: 5).isActive = true
-        textViewdContent.leftAnchor.constraint(equalTo: viewConent.leftAnchor, constant: 20).isActive = true
-        textViewdContent.rightAnchor.constraint(equalTo: viewConent.rightAnchor, constant: -20).isActive = true
+        textViewdContent.leftAnchor.constraint(equalTo: viewConent.leftAnchor, constant: 15).isActive = true
+        textViewdContent.rightAnchor.constraint(equalTo: viewConent.rightAnchor, constant: -15).isActive = true
         textViewdContent.bottomAnchor.constraint(equalTo: viewConent.bottomAnchor, constant: 0).isActive = true
     }
     
@@ -158,8 +159,8 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
                     alertAction = UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
                         self.dismiss(animated: true, completion: nil)
                     })
-                    alert.addAction(alertAction)
                 }
+                alert.addAction(alertAction)
                 self.present(alert: alert)
             })
         }else{

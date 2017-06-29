@@ -30,7 +30,10 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         setupLocationManager()
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewHandleKeyboard.isHidden = true
+    }
     override func setupRightNavButton() {
         let buttonFilter = NavButton(icon: .iosSettingsStrong)
         buttonFilter.addTarget(self, action: #selector(handleButtonFilter(_:)), for: .touchUpInside)
@@ -48,7 +51,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     let viewHandleKeyboard : UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        v.backgroundColor = UIColor(white: 0, alpha: 0.3)
         v.isHidden = true
         return v
     }()

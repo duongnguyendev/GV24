@@ -31,7 +31,7 @@ class UserService: APIService {
         let url = "auth/login"
         var params : Dictionary<String, String> = ["username": userName, "password": password]
         if let token = FIRInstanceID.instanceID().token(){
-            params["device_token"] = token
+            params["device_token"] = token + "@//@ios"
         }
         postMultipart(url: url, image: nil, name: nil, parameters: params) { (jsonData, error) in
             if error == nil{
@@ -59,7 +59,7 @@ class UserService: APIService {
         let url = "auth/thirdLogin"
         let params : Dictionary<String, String> = ["id": userInfo["id"]!,
                                                    "token": userInfo["token"]!,
-                                                   "device_token" : FIRInstanceID.instanceID().token()!]
+                                                   "device_token" : FIRInstanceID.instanceID().token()! + "@//@ios"]
         postMultipart(url: url, image: nil, name: nil, parameters: params) { (response, error) in
             if error == nil{
                 let token = response?["token"].string
@@ -72,7 +72,7 @@ class UserService: APIService {
     func signUpSocical(userInfo : Dictionary<String, String>, completion : @escaping ((User?, String?, String?)->())){
         var params = userInfo
         let url = "auth/thirdRegister"
-        params["device_token"] = FIRInstanceID.instanceID().token()!
+        params["device_token"] = FIRInstanceID.instanceID().token()! + "@//@ios"
         
         postMultipart(url: url, image: nil, name: nil, parameters: params) { (jsonData, error) in
             if error == nil{
@@ -128,7 +128,9 @@ class UserService: APIService {
     
     func register(info: Dictionary<String, String>, avatar: UIImage, completion : @escaping ((User?, String?, String?)->())){
         let url = "auth/register"
-        postMultipart(url: url, image: avatar, name: "image", parameters: info) { (jsonData, error) in
+        var registerInfo = info
+        registerInfo["device_token"] = FIRInstanceID.instanceID().token()! + "@//@ios"
+        postMultipart(url: url, image: avatar, name: "image", parameters: registerInfo) { (jsonData, error) in
             if error == nil{
                 let token = jsonData?["token"].string
                 let user = User(jsonData: (jsonData?["user"])!)

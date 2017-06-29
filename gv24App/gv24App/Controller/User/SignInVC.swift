@@ -20,7 +20,7 @@ import Firebase
     @objc optional func signUpComplete()
 }
 
-let DATA_NOT_EXIT = "DATA_NOT_EXIST"
+let DATA_NOT_EXIST = "DATA_NOT_EXIST"
 class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     private var itemHeight : CGFloat = 0
@@ -212,7 +212,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         
         let lableSocial = UILabel()
         lableSocial.text = LanguageManager.shared.localized(string: "LoginWith")
-        lableSocial.font = Fonts.by(name: .regular, size: 12)
+        lableSocial.font = Fonts.by(name: .regular, size: 14)
         lableSocial.textColor = AppColor.lightGray
         lableSocial.textAlignment = .center
         lableSocial.translatesAutoresizingMaskIntoConstraints = false
@@ -251,7 +251,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         if (self.emailTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 && (self.passTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 {
             self.activity.startAnimating()
             UserService.shared.logIn(userName: emailTextField.text!, password: passTextField.text!, completion: { (userLogedIn, token, error) in
-                self.activity.startAnimating()
+                self.activity.stopAnimating()
                 if error == nil{
                     UserHelpers.save(user: userLogedIn!, token: token!)
                     self.presentHome()
@@ -273,6 +273,9 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         }
         if title != nil {
             mTitle = LanguageManager.shared.localized(string: mes!)
+        }
+        if mes == DATA_NOT_EXIST{
+            message = LanguageManager.shared.localized(string: "UserNotExist")
         }
         let alert = UIAlertController(title: mTitle, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -315,6 +318,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         self.dismiss(animated: true, completion: nil)
     }
     func handleFacebookAccount(){
+        self.activity.startAnimating()
         GraphRequest(graphPath: "me", parameters: ["field" : "id, name, email, phone"], accessToken: AccessToken.current, httpMethod: .GET).start { (response, result) in
             switch result{
             case .failed(let error):
@@ -338,7 +342,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         UserService.shared.loginSocial(userInfo: userInfo) { (user, token, error) in
             self.activity.stopAnimating()
             if error != nil{
-                if error == DATA_NOT_EXIT{
+                if error == DATA_NOT_EXIST{
                     self.handleSignUpSocical(userInfo: userInfo)
                 }else{
                     print(error!)

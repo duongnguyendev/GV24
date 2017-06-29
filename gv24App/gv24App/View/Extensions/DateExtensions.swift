@@ -28,6 +28,15 @@ extension Date{
         let year = calendar.component(.year, from: self)
         return "\(year)"
     }
+    var isoString : String{
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return formatter.string(from: self)
+        
+    }
     var month: String{
         let calendar = Calendar(identifier: .gregorian)
         let month = calendar.component(.month, from: self)

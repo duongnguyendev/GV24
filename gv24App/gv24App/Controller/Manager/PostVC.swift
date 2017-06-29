@@ -320,6 +320,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         showDatePickerWith(mode: .date, sender: sender)
     }
     func handleButtonWorkTypes(_ sender: UIButton){
+        sender.isUserInteractionEnabled = false
         if self.workTypes == nil{
             TaskService.shared.getWorkTypes { (workTypes, error) in
                 if error == nil{
@@ -387,6 +388,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     func handleActionSheet(){
+        self.buttonWorkTypes.isUserInteractionEnabled = true
         let mes = LanguageManager.shared.localized(string: "TypesOfWork")
         let cancelString = LanguageManager.shared.localized(string: "Cancel")
         let actionSheet = UIAlertController(title: nil, message: mes, preferredStyle: .actionSheet)

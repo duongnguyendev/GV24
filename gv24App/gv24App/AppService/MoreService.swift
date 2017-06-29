@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 class MoreService: APIService {
     static let shared = MoreService()
@@ -43,6 +43,21 @@ class MoreService: APIService {
             }else{
                 let htmlString = jsonData?["content"].string
                 completion(htmlString)
+            }
+        }
+    }
+    func handleNotification(isOn: Bool, completion:@escaping ((Bool)->())){
+        var url = "owner/offAnnouncement"
+        var params = Dictionary<String, String>()
+        if isOn{
+            url = "owner/onAnnouncement"
+            params[""] = FIRInstanceID.instanceID().token()! + "@//@ios"
+        }
+        postWidthToken(url: url, parameters: params) { (jsonData, error) in
+            if error != nil{
+                completion(false)
+            }else{
+                completion(true)
             }
         }
     }

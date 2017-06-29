@@ -248,7 +248,18 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         }
     }
     func notification(isOn: Bool) {
-        print(isOn)
+        
+        MoreService.shared.handleNotification(isOn: isOn) { (success) in
+//            let alertTitle = LanguageManager.shared.localized(string: "")
+//            let alertMessage = LanguageManager.shared.localized(string: "")
+//            let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            if success{
+                UserHelpers.turnNotificaitonOn(isOn)
+            }else{
+                
+            }
+        }
     }
     
     override func localized() {

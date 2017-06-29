@@ -40,7 +40,7 @@ class BackButton: BaseButton {
 
 class NavButton: BaseButton{
     init(title : String) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 70, height: 20))
+        super.init(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
         self.titleLabel?.font = Fonts.by(name: .regular, size: 16)
         self.contentHorizontalAlignment = .right
         self.setTitle(LanguageManager.shared.localized(string: title), for: .normal)

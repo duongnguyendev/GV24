@@ -80,7 +80,7 @@ class HistoryService: APIService{
         let url = "owner/comment"
         let parameters = [
             "task" : task,
-            "told" : told,
+            "toId" : told,
             "content" : content,
             "evaluation_point" : evaluation_point
         ] as [String : Any]

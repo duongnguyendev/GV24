@@ -12,7 +12,11 @@ import UIKit
 }
 class SwitchCell: BaseCollectionCell {
     
-    var delegate : SwitchCellDelegate?
+    var delegate : SwitchCellDelegate?{
+        didSet{
+            self.switchView.isOn = UserHelpers.notificationIsAvailble
+        }
+    }
     var text : String?{
         didSet{
             self.labelView.text = LanguageManager.shared.localized(string: text!)

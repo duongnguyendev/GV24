@@ -121,6 +121,10 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     lazy var dateLaucher : DateLauncher = {
         let launcher = DateLauncher()
         launcher.pickerMode = .date
+        let calendar = Calendar(identifier: .gregorian)
+        let currentYear = Int(Date().year)
+        launcher.datePicker.maximumDate = Date()
+        launcher.datePicker.minimumDate = Date(year: (currentYear! - 5))
         launcher.delegate = self
         return launcher
     }()
@@ -214,7 +218,9 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         TaskService.shared.generalStatistic(startDate: startDate, endDate: endDate) { (generalStatistic, error) in
             self.activity.stopAnimating()
             if error != nil{
-                print(error as Any)
+                let alert = UIAlertController(title: nil, message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }else{
                 self.generalStatisticData = generalStatistic
             }
@@ -228,6 +234,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         }else{
             dateLaucher.startDate = starDate
         }
+        dateLaucher.datePicker.maximumDate = endDate
         dateLaucher.show()
         
     }
@@ -238,7 +245,10 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         }else{
             dateLaucher.startDate = endDate
         }
-        
+        dateLaucher.datePicker.maximumDate = Date()
+        if starDate != nil{
+            dateLaucher.datePicker.minimumDate = starDate
+        }
         dateLaucher.show()
     }
     

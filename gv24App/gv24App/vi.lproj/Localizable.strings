@@ -191,3 +191,4 @@ TheStartDateShouldBeLessThanTheEndDate = "Giờ bắt đầu phải nhỏ hơn g
 PleaseEnterTheAmount = "Vui lòng chọn giá tiền";
 WorkYouChooseIsExpired = "Công việc đã quá hạn";
 FailedToIdentify = "Xác nhận người giúp việc không thành công";
+UserNotExist = "Tên đăng nhập không tồn tại";

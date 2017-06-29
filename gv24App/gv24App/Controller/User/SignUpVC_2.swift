@@ -57,6 +57,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         let tf = UITextField()
         tf.font = Fonts.by(name: .regular, size: 14)
         tf.placeholder = LanguageManager.shared.localized(string: "FullName")
+        tf.addTarget(self, action: #selector(fullNameTextFieldChange(_:)), for: .editingChanged)
         return tf
     }()
     
@@ -358,6 +359,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
             completion(phoneError)
             return
         }
+        
         if let genderError = validateGender(){
             completion(genderError)
         }
@@ -419,6 +421,14 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
             return LanguageManager.shared.localized(string: "Avatar")
         }
         return nil
+    }
+    func fullNameTextFieldChange(_ sender: UITextField){
+        let lenght = phoneTextField.text?.characters.count
+        let metin = phoneTextField.text
+        if lenght! > 50{
+            let index = metin?.index((metin?.startIndex)!, offsetBy: 11)
+            phoneTextField.text = phoneTextField.text?.substring(to: index!)
+        }
     }
     
 }
