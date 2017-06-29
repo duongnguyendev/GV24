@@ -18,7 +18,7 @@ class KeyBillCell: BaseCollectionCell{
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textColor = UIColor.black
-        lb.text = "Mã số hoá đơn"
+        lb.text = LanguageManager.shared.localized(string: "InvoiceNumber")
         return lb
     }()
     

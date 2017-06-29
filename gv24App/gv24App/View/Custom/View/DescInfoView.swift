@@ -31,7 +31,7 @@ class DescInfoView: BaseView{
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        label.font = Fonts.by(name: .light, size: 16)
+        label.font = Fonts.by(name: .light, size: 15)
         return label
     }()
     let viewLine: UIView = {

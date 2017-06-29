@@ -17,11 +17,10 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
             self.labelAddress.text = maid?.address?.name
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
-        title = "Báo cáo"
+        title = LanguageManager.shared.localized(string: "Feedback")
     }
     
     private let avatarImageView : CustomImageView = {

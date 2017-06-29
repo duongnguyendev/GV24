@@ -18,7 +18,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
         collectionControl.register(TaskHistoryControlCell.self, forCellWithReuseIdentifier: taskHistoryCellId)
         collectionControl.register(MaidControlCell.self, forCellWithReuseIdentifier: maidHistoryCellId)
@@ -38,7 +37,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             }
         })
     }
-    
     private let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: LanguageManager.shared.localized(string: "CompletedWork"), at: 0, animated: true)
@@ -143,7 +141,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         
         line1.topAnchor.constraint(equalTo: buttonFrom.topAnchor, constant: 0).isActive = true
         line2.topAnchor.constraint(equalTo: buttonFrom.bottomAnchor, constant: 0).isActive = true
-        
     }
     
     //MARK: - collection view handle
@@ -183,7 +180,9 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     //MARK: - Delegate-
     func selectedTaskHistory(task: Task) {
+        self.collectionControl.isUserInteractionEnabled = false
         HistoryService.shared.getCommentOwner(taskID: (task.stakeholder?.receivced?.maidId)!) { (commentOwner) in
+            self.collectionControl.isUserInteractionEnabled = true
             if let _ = commentOwner{
                 let preAssesmentVC = PreviewAssesmentVC()
                 preAssesmentVC.taskHistory = task
@@ -195,12 +194,12 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             }
         }
     }
-    func selectedProfile(maid: MaidHistory) {
+    func handleProfile(maid: MaidHistory) {
         let maidProfileVC = MaidProfileVC()
         maidProfileVC.maid = maid
         push(viewController: maidProfileVC)
     }
-    func selectedTaskMaid(list: MaidHistory) {
+    func handleTaskMaid(list: MaidHistory) {
         let taskMaidVC = ListTaskMaidVC()
         taskMaidVC.id = list.userId
         push(viewController: taskMaidVC)

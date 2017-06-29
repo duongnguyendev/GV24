@@ -31,7 +31,6 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         title = LanguageManager.shared.localized(string: "ApplicantList")
     }
     override func setupView() {
@@ -68,18 +67,26 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     }
     func selectedMaid(id: String, maid: MaidProfile) {
         if delegate != nil{
-            delegate?.selectedYourApplicants!()
             TaskService.shared.selectedMaid(id: id, maidId: maid.maidId!, completion: { (flag) in
                 if flag!{
-                    self.dismiss(animated: true, completion: nil)
+                    self.showAlertWith(message: LanguageManager.shared.localized(string: "CongratsYouHaveYourRightPerson")!, completion: {
+                        self.delegate?.chooseMaid!()
+                        self.dismiss(animated: true, completion: nil)
+                    })
                 }else{
-                    let alert = UIAlertController(title: nil, message: "Chọn người giúp việc thành công", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToChooseYourRightPerson")!, completion: {})
                 }
             })
         }
+    }
+    
+    //Mark: - Show Alert Message
+    func showAlertWith(message: String, completion: @escaping (()->())){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
+            completion()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
 }
