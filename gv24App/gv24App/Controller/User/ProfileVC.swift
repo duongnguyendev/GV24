@@ -43,6 +43,7 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     override func setupRightNavButton() {
         let updateButton = NavButton(title: "Update")
+        updateButton.frame = CGRect(x: 0, y: 0, width: 70, height: 20)
         updateButton.addTarget(self, action: #selector(handleUpdateButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: updateButton)
         self.navigationItem.rightBarButtonItem = btn
