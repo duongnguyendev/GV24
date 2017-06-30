@@ -203,3 +203,9 @@ ThisWorkIsCompleted = "Công việc đã được hoàn thành.";
 CompleteWorkProgress = "Hoàn tất công việc";
 ThereAreNotEnoughFundsInYourAccountToMakeThisPayment = "Tài khoản bạn không đủ để thanh toán.";
 PaymentMoneyFailed = "Thanh toán tiền mặt không thành công";
+//=============
+PayerFullName = "Họ tên người thanh toán";
+TotalAmount = "Tổng số tiền thanh toán";
+Email = "Email";
+Doer = "Người thực hiện";
+ReportSentSuccessfully = "Báo cáo thành công";

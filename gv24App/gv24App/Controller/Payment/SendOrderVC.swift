@@ -26,7 +26,7 @@ class SendOrderVC: BaseVC {
     private let labelName: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Họ tên người thanh toán"
+        lb.text = LanguageManager.shared.localized(string: "PayerFullName")
         lb.textColor = .black
         lb.font = Fonts.by(name: .light, size: 14)
         return lb
@@ -34,15 +34,13 @@ class SendOrderVC: BaseVC {
     private let mtfName: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        
-        tf.placeholder = "Họ & tên"
         return tf
     }()
     
     private let labelTotal: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Tổng số tiền cần thanh toán"
+        lb.text = LanguageManager.shared.localized(string: "TotalAmount")
         lb.textColor = .black
         lb.font = Fonts.by(name: .light, size: 14)
         return lb
@@ -52,14 +50,13 @@ class SendOrderVC: BaseVC {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .numberPad
-        tf.placeholder = "Tổng số tiền"
         return tf
     }()
 
     private let labelEmail: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Email người thanh toán"
+        lb.text = LanguageManager.shared.localized(string: "Email")
         lb.textColor = .black
         lb.font = Fonts.by(name: .light, size: 14)
         return lb
@@ -68,14 +65,13 @@ class SendOrderVC: BaseVC {
     private let mtfEmail: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Email"
         return tf
     }()
 
     private let labelPhone: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Số điện thoại người thanh toán"
+        lb.text = LanguageManager.shared.localized(string: "PhoneNumber")
         lb.textColor = .black
         lb.font = Fonts.by(name: .light, size: 14)
         return lb
@@ -85,14 +81,13 @@ class SendOrderVC: BaseVC {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .numberPad
-        tf.placeholder = "Phone"
         return tf
     }()
 
     private let labelAddress: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Địa chỉ người thanh toán"
+        lb.text = LanguageManager.shared.localized(string: "Address")
         lb.textColor = .black
         lb.font = Fonts.by(name: .light, size: 14)
         return lb
@@ -101,7 +96,6 @@ class SendOrderVC: BaseVC {
     private let mtfAddress: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = "Địa chỉ"
         return tf
     }()
 
@@ -111,7 +105,7 @@ class SendOrderVC: BaseVC {
         bt.addTarget(self, action: #selector(handleSendButton(_:)), for: .touchUpInside)
         bt.layer.cornerRadius = 5.0
         bt.backgroundColor = AppColor.homeButton3
-        bt.setTitle("Send Order", for: .normal)
+        bt.setTitle(LanguageManager.shared.localized(string: "Request"), for: .normal)
         return bt
     }()
     
@@ -119,7 +113,7 @@ class SendOrderVC: BaseVC {
         super.viewDidLoad()
         self.hideKeyboardWhenTouchUpOutSize = true
         view.backgroundColor = AppColor.collection
-        title = "Thanh toán Online"
+        title = LanguageManager.shared.localized(string: "OnlinePayment")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)

@@ -47,7 +47,7 @@ class DetailTaskDoneVC: BaseVC{
     private let label: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Người Thực Hiện"
+        lb.text = LanguageManager.shared.localized(string: "Doer")
         lb.textColor = AppColor.lightGray
         return lb
     }()
@@ -62,7 +62,7 @@ class DetailTaskDoneVC: BaseVC{
     private let statusLabel: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Công việc đã hoàn thành"
+        lb.text = LanguageManager.shared.localized(string: "ThisWorkIsCompleted")
         lb.textColor = AppColor.lightGray
         lb.backgroundColor = AppColor.white
         return lb

@@ -13,7 +13,7 @@ class AssesmentVC: DetailTaskDoneVC {
     private let commentButton: GeneralButton = {
         let button = GeneralButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = "Nhận xét của bạn"
+        button.title = LanguageManager.shared.localized(string: "Addcomments")
         button.color = AppColor.backButton
         button.addTarget(self, action: #selector(handleButtonComment(_:)), for: .touchUpInside)
         return button

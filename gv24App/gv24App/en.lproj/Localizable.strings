@@ -203,3 +203,9 @@ ThisWorkIsCompleted = "This work is completed.";
 CompleteWorkProgress = "Complete";
 ThereAreNotEnoughFundsInYourAccountToMakeThisPayment = "There are not enough funds in your account to make this payment";
 PaymentMoneyFailed = "Payment failed!";
+//==============
+PayerFullName = "Payer 's full name";
+TotalAmount = "Total amount";
+Email = "Email";
+Doer = "Doer";
+ReportSentSuccessfully = "Report sent successfully!";
