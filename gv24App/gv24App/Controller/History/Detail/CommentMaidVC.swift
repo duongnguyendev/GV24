@@ -48,7 +48,7 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .regular, size: 15)
-        lb.text = "Đánh giá"
+        lb.text = LanguageManager.shared.localized(string: "Evaluate")
         lb.textColor = .lightGray
         return lb
     }()
@@ -57,7 +57,7 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     private let textViewdContent : UITextView = {
         let tF = UITextView()
         tF.translatesAutoresizingMaskIntoConstraints = false
-        tF.text = "Bình luận"
+        tF.text = LanguageManager.shared.localized(string: "Comment")
         tF.textColor = .lightGray
         tF.font = Fonts.by(name: .regular, size: 15)
         return tF
@@ -149,14 +149,14 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     }
     //Mark- Handle UITabbar Button
     func handleSendButton(_ sender: UIButton){
-        let alert = UIAlertController(title: "", message: "Báo cáo thành công", preferredStyle: .alert)
-        var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ReportSentSuccessfully"), preferredStyle: .alert)
+        var alertAction : UIAlertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: nil)
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
             HistoryService.shared.assesmentMaid(task: id!, toId: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { (error) in
                 if error != nil{
                     alert.message = error
                 }else{
-                    alertAction = UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+                    alertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
                         self.dismiss(animated: true, completion: nil)
                     })
                 }
@@ -164,7 +164,7 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
                 self.present(alert: alert)
             })
         }else{
-            alert.message = "Vui lòng nhập nội dung cần báo cáo"
+            alert.message = LanguageManager.shared.localized(string: "PleaseEnterTheMessage")
             alert.addAction(alertAction)
             self.present(alert: alert)
         }

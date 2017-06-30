@@ -15,7 +15,7 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Danh sách công việc"
+        title = LanguageManager.shared.localized(string: "Worklist")
         collectionTask.register(MaidTaskCell.self, forCellWithReuseIdentifier: cellId)
     }
     override func viewWillAppear(_ animated: Bool) {
