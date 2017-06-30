@@ -12,9 +12,8 @@ class GeneralStatisticInfoView: BaseView {
 
     var generalStatisticData : GeneralStatistic?{
         didSet{
-            let millionString = LanguageManager.shared.localized(string: "Million")
             labelNumberDone.text = "\(String(describing: (generalStatisticData?.numberDone)!))"
-            labelNumberTotalCost.text = "\(String(describing: (generalStatisticData?.totalPrice)!)) \(millionString!)"
+            labelNumberTotalCost.text = String.numberDecimalString(number: (generalStatisticData?.totalPrice)! as NSNumber)
             labelNumberPosted.text = "\(String(describing: (generalStatisticData?.numberPosted)!))"
             labelNumberRuningWork.text = "\(String(describing: (generalStatisticData?.numberRuning)!))"
         }

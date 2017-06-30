@@ -66,4 +66,12 @@ extension String {
         
         return result!
     }
+    
+    static func numberDecimalString(number : NSNumber) -> String{
+        let numberFormater = NumberFormatter()
+        numberFormater.numberStyle = .decimal
+        numberFormater.locale = Locale(identifier: "vi")
+        return numberFormater.string(from: number)!
+    }
+    
 }

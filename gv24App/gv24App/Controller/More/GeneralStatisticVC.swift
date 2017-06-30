@@ -28,7 +28,8 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     var generalStatisticData : GeneralStatistic?{
         didSet{
             infoView.generalStatisticData = generalStatisticData
-            labelNumberAccountBalance.text = "\(generalStatisticData?.wallet ?? 0) vnd"
+            let numberAccountBalanceString = String.numberDecimalString(number: (generalStatisticData?.wallet)! as NSNumber)
+            labelNumberAccountBalance.text =  numberAccountBalanceString + " vnd"
             
         }
     }
