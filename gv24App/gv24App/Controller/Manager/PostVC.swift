@@ -60,7 +60,9 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     
     override func setupRightNavButton() {
         buttonSend.addTarget(self, action: #selector(handlePostButton(_:)), for: .touchUpInside)
+        buttonSend.frame = CGRect(x: 0, y: 0, width: 70, height: 20)
         let btn = UIBarButtonItem(customView: self.buttonSend)
+        
         self.navigationItem.rightBarButtonItem = btn
     }
     let mainScrollView : UIScrollView = UIScrollView()
@@ -97,6 +99,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         tF.font = Fonts.by(name: .light, size: 15)
         tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
         tF.placeholder = LanguageManager.shared.localized(string: "TypesOfWork")
+        tF.isUserInteractionEnabled = false
         return tF
     }()
     lazy var descriptionTextField : UITextFieldButtomLine = {
@@ -333,8 +336,10 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     func handlePostButton(_ sender: UIButton){
+        hideKeyboard()
         self.backButton.isUserInteractionEnabled = false
         self.buttonSend.isUserInteractionEnabled = false
+        self.view.isUserInteractionEnabled = false
         self.activity.startAnimating()
         validate { (errorString) in
             if errorString == nil{
@@ -348,6 +353,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
                     }else{
                         self.buttonSend.isUserInteractionEnabled = true
                         self.backButton.isUserInteractionEnabled = true
+                        self.view.isUserInteractionEnabled = true
                         self.showAlertWith(message: error!, completion: {})
                     }
                 }
@@ -356,6 +362,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
                 self.activity.stopAnimating()
                 self.backButton.isUserInteractionEnabled = true
                 self.buttonSend.isUserInteractionEnabled = true
+                self.view.isUserInteractionEnabled = true
                 self.showAlertWith(message: errorString!, completion: {})
             }
         }
@@ -459,7 +466,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         LocationService.locationFor(address: text) { (coordinate, error) in
             if error != nil{
                 print(error as Any)
-                completion(error)
+                completion(LanguageManager.shared.localized(string: "AddressNotFound"))
             }else{
                 self.params["addressName"] = self.addressTextField.text
                 self.params["lat"] = coordinate?.latitude

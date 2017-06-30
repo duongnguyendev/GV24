@@ -129,6 +129,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     //MARK: - handle button
     
     func handleButtonFilter(_ sender: UIButton){
+        hideKeyboard()
         if UserHelpers.isLogin{
             let filterVC = FilterVC()
             filterVC.delegate = self

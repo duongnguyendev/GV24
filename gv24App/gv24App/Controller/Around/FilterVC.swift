@@ -37,6 +37,7 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     
     override func setupRightNavButton() {
         let buttonSearch = NavButton(title: "Search")
+        buttonSearch.frame = CGRect(x: 0, y: 0, width: 70, height: 20)
         buttonSearch.addTarget(self, action: #selector(handleSearchButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSearch)
         self.navigationItem.rightBarButtonItem = btn
