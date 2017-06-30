@@ -54,7 +54,7 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     }()
     private let ratingView = RatingStartView()
     
-    private let textViewdContent : UITextView = {
+    private lazy var textViewdContent : UITextView = {
         let tF = UITextView()
         tF.translatesAutoresizingMaskIntoConstraints = false
         tF.text = LanguageManager.shared.localized(string: "Comment")
@@ -136,6 +136,9 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        self.textViewdContent.text = ""
     }
 
     override func viewDidLoad() {

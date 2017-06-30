@@ -77,12 +77,12 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     }()
     
     func handleButtonGv24(_ sender: UIButton){
-        let price = Int((taskProgress?.stakeholder?.receivced?.workInfo?.price)!)
+        let price = Int((workSuccess?.price)!)
         let wlet = Int((wallet?.wallet)!)
         if wlet < price{
             self.showAlertWith(message: LanguageManager.shared.localized(string: "ThereAreNotEnoughFundsInYourAccountToMakeThisPayment")!, completion: {})
         }else{
-            showAlertDelete {
+            showAlertPayment {
                 PaymentService.shared.paymentGv247(billId: (self.workSuccess?.id)!, completion: { (flag) in
                     if flag!{
                         let commentVC = CommentMaidVC()
@@ -99,11 +99,12 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func handleButtonOnlinePayment(_ sender: UIButton){
-        showAlertDelete { 
+        showAlertPayment {
             PaymentService.shared.paymentOnlineCofirm(billId: (self.workSuccess?.id)!) { (flag) in
                 if (flag)!{
                     let sendOrderVC = SendOrderVC()
-                    sendOrderVC.workSuccess = self.workSuccess!
+                    sendOrderVC.workPayment = self.workSuccess
+                    sendOrderVC.taskPayment = self.taskProgress
                     self.push(viewController: sendOrderVC)
                 }else{
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "PaymentFailed")!, completion: {})
@@ -114,7 +115,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func handleButtonMoneyPayment(_ sender: UIButton){
-        showAlertDelete { 
+        showAlertPayment {
             PaymentService.shared.paymentMoney(billId: (self.workSuccess?.id)!, completion: { (flag) in
                 if flag!{
                     let commentVC = CommentMaidVC()
@@ -129,7 +130,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         print("Handle Money Payment")
     }
     //Mark:-- Alert Payment
-    func showAlertDelete(completion: @escaping (()->())){
+    func showAlertPayment(completion: @escaping (()->())){
         let alert = UIAlertController(title: LanguageManager.shared.localized(string: "CompletePayment"), message: LanguageManager.shared.localized(string: "PleaseClickToOKConfirmThePayment"), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .default, handler: { (nil) in
             completion()
