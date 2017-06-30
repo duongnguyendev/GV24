@@ -63,18 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     }
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         
-        print("userInfo")
-        print(userInfo)
-        let topWindow = UIWindow(frame: UIScreen.main.bounds)
-        topWindow.rootViewController = UIViewController()
-        topWindow.windowLevel = UIWindowLevelAlert + 1
-        
-        let alert = UIAlertController(title: "notification", message: "abcd", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        
-        topWindow.makeKeyAndVisible()
-        
-        topWindow.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     //FCM delegate
@@ -86,17 +74,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // recevi remote notification here
-        
+        let aps = userInfo["aps"] as? Dictionary<String, Any>
+        let alert = aps?["alert"] as? Dictionary<String, Any>
+        let title = alert?["title"] as? String
+        let body = alert?["body"] as? String
+
         let topWindow = UIWindow(frame: UIScreen.main.bounds)
         topWindow.rootViewController = UIViewController()
         topWindow.windowLevel = UIWindowLevelAlert + 1
         
-        let alert = UIAlertController(title: "notification", message: "abcd", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        let alertControll = UIAlertController(title: title, message: body, preferredStyle: .alert)
+        alertControll.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
         topWindow.makeKeyAndVisible()
         
-        topWindow.rootViewController?.present(alert, animated: true, completion: nil)
+        topWindow.rootViewController?.present(alertControll, animated: true, completion: nil)
     }
     
     

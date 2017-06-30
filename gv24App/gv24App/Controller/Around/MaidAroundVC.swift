@@ -26,7 +26,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
-        title = LanguageManager.shared.localized(string: "Around")
+        title = LanguageManager.shared.localized(string: "TitleAround")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         setupLocationManager()
     }
