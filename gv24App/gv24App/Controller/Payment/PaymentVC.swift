@@ -77,53 +77,71 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     }()
     
     func handleButtonGv24(_ sender: UIButton){
-        let alert = UIAlertController(title: "Hoàn tất thanh toán", message: "Vui lòng xác nhận thanh toán bằng cách nhấn OK", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Đồng ý", style: .default){ action -> Void in
-            PaymentService.shared.paymentGv247(billId: (self.workSuccess?.id)!, completion: { (flag) in
-                if flag!{
-                    let commentVC = CommentMaidVC()
-                    commentVC.maid = self.taskProgress?.stakeholder?.receivced
-                    self.push(viewController: commentVC)
-                }
-            })
-        })
-        alert.addAction(UIAlertAction(title: "Huỷ", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let price = Int((taskProgress?.stakeholder?.receivced?.workInfo?.price)!)
+        let wlet = Int((wallet?.wallet)!)
+        if wlet < price{
+            self.showAlertWith(message: LanguageManager.shared.localized(string: "ThereAreNotEnoughFundsInYourAccountToMakeThisPayment")!, completion: {})
+        }else{
+            showAlertDelete {
+                PaymentService.shared.paymentGv247(billId: (self.workSuccess?.id)!, completion: { (flag) in
+                    if flag!{
+                        let commentVC = CommentMaidVC()
+                        commentVC.maid = self.taskProgress?.stakeholder?.receivced
+                        commentVC.id = self.taskProgress?.id
+                        self.push(viewController: commentVC)
+                    }else{
+                        
+                    }
+                })
+            }
+        }
         print("Handle Gv 24")
     }
     
     func handleButtonOnlinePayment(_ sender: UIButton){
-        PaymentService.shared.paymentOnlineCofirm(billId: (workSuccess?.id)!) { (flag) in
-            if (flag)!{
-                let sendOrderVC = SendOrderVC()
-                sendOrderVC.workSuccess = self.workSuccess!
-                self.push(viewController: sendOrderVC)
-            }else{
-                let alert = UIAlertController(title: "Thông báo", message: "Thanh toán ngân lượng không thành công", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+        showAlertDelete { 
+            PaymentService.shared.paymentOnlineCofirm(billId: (self.workSuccess?.id)!) { (flag) in
+                if (flag)!{
+                    let sendOrderVC = SendOrderVC()
+                    sendOrderVC.workSuccess = self.workSuccess!
+                    self.push(viewController: sendOrderVC)
+                }else{
+                    self.showAlertWith(message: LanguageManager.shared.localized(string: "PaymentFailed")!, completion: {})
+                }
             }
         }
         print("Handle Online Payment")
     }
     
     func handleButtonMoneyPayment(_ sender: UIButton){
-        let alert = UIAlertController(title: "Hoàn tất thanh toán", message: "Vui lòng xác nhận thanh toán bằng cách nhấn OK", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Đồng ý", style: .default){ action -> Void in
+        showAlertDelete { 
             PaymentService.shared.paymentMoney(billId: (self.workSuccess?.id)!, completion: { (flag) in
                 if flag!{
                     let commentVC = CommentMaidVC()
                     commentVC.maid = self.taskProgress?.stakeholder?.receivced
+                    commentVC.id = self.taskProgress?.id
                     self.push(viewController: commentVC)
                 }else{
+                    self.showAlertWith(message: LanguageManager.shared.localized(string: "PaymentMoneyFailed")!, completion: {})
                 }
             })
-        })
-        alert.addAction(UIAlertAction(title: "Huỷ", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        }
         print("Handle Money Payment")
     }
-    
+    //Mark:-- Alert Payment
+    func showAlertDelete(completion: @escaping (()->())){
+        let alert = UIAlertController(title: LanguageManager.shared.localized(string: "CompletePayment"), message: LanguageManager.shared.localized(string: "PleaseClickToOKConfirmThePayment"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .default, handler: { (nil) in
+            completion()
+        }))
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "Cancel"), style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func showAlertWith(message: String, completion: @escaping (()->())){
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
@@ -136,13 +154,16 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         collectionPayment.register(BankOwnerCell.self, forCellWithReuseIdentifier: bankCellId)
         collectionPayment.register(TotalMaidCell.self, forCellWithReuseIdentifier: totalCellId)
         collectionPayment.register(BaseHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         PaymentService.shared.getWalletOwner { (wallet) in
             if let wallet = wallet{
                 self.wallet = wallet
-                self.collectionPayment.reloadData()
+                let cell = self.collectionPayment.cellForItem(at: IndexPath(item: 0, section: 2)) as! BankOwnerCell
+                cell.date = self.taskProgress?.history?.updateAt
+                cell.bank = wallet.wallet
             }
         }
     }
@@ -167,6 +188,9 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         setupViewPaymentMethods()
     }
     
+    override func goBack() {
+        self.dismiss(animated: true, completion: nil)
+    }
     func setupViewPaymentMethods(){
         viewPaymentMethods.addSubview(gv24PaymentButton)
         viewPaymentMethods.addSubview(onlinePaymentButton)

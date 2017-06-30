@@ -103,6 +103,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let imageResized = image.resize(newWidth: 200)
             self.activity.startAnimating()
+            self.deleteButton.isUserInteractionEnabled = false
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
                 self.activity.stopAnimating()
                 if flag!{
@@ -114,11 +115,11 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToIdentify")!, completion: {
                     })
                 }
+                self.deleteButton.isUserInteractionEnabled = true
             })
+            picker.dismiss(animated: true, completion: nil)
         }
-        picker.dismiss(animated: true, completion: nil)
     }
-
     //MARK: - Show Message
     func showAlertWith(message: String, completion: @escaping (()->())){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -129,7 +130,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     }
     func showAlertDelete(message: String, completion: @escaping (()->())){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .default, handler: { (nil) in
             completion()
         }))
         alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "Cancel"), style: .cancel, handler: nil))
@@ -137,7 +138,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     }
 
     func handleRemoveTask(_ sender: UIButton){
-        self.showAlertDelete(message: LanguageManager.shared.localized(string: "AreYouSureYouWantToDeleteThisWork")!) {
+        showAlertDelete(message: LanguageManager.shared.localized(string: "AreYouSureYouWantToDeleteThisWork")!) {
             self.activity.startAnimating()
             TaskService.shared.deleteTask(task: self.taskAssigned, completion: { (flag) in
                  self.activity.stopAnimating()
@@ -147,7 +148,6 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToDelete")!, completion: {})
                 }
             })
-
         }
     }
     override func viewDidLoad() {

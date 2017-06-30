@@ -25,9 +25,10 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    override func viewDidAppear(_ animated: Bool) {
         self.collectionType.reloadData()
     }
-    
     lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -153,7 +154,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     func selectedProgress(task: Task) {
         let jobProgressVC = JobProgressDetailVC()
         jobProgressVC.taskProgress = task
-        push(viewController: jobProgressVC)
+        present(viewController: jobProgressVC)
     }
     
     func remove(task: Task) {
@@ -183,9 +184,11 @@ extension TaskManagementVC : TaskManageDelegate{
     func chooseMaid() {
         indexPath = IndexPath(item: 1, section: 0)
         segmentedControl.selectedSegmentIndex = 1
+        collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }
     func checkInMaid() {
         indexPath = IndexPath(item: 2, section: 0)
         segmentedControl.selectedSegmentIndex = 2
+        collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }
 }

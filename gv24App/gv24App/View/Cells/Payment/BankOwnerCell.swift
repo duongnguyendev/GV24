@@ -9,6 +9,23 @@
 import Foundation
 import UIKit
 class BankOwnerCell: BaseCollectionCell{
+    
+    var date: String?{
+        didSet{
+            let dateWork = Date(isoDateString: date!).dayMonthYear
+            labelWorkDate.text = "\(LanguageManager.shared.localized(string: "TheStartDate")! ): \(dateWork)"
+        }
+    }
+    var bank: NSNumber?{
+        didSet{
+            if bank == nil{
+                labelBank.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) \(0) VND"
+            }else{
+                labelBank.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) \(bank!) VND"
+            }
+        }
+    }
+    
     let labelWorkDate: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false

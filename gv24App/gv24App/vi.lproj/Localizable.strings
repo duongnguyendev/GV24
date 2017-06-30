@@ -196,4 +196,10 @@ TotalMoney = "Thành tiền:";
 PartnerIdentifiedSuccessfully = "Xác nhận người giúp việc thành công";
 CongratsYouHaveYourRightPerson = "Chọn người giúp việc thành công";
 FailedToChooseYourRightPerson = "Chọn người giúp việc không thành công";
-
+CompletePayment = "Hoàn tất thanh toán";
+PaymentFailed = "Thanh toán ngân lượng không thành công";
+PleaseClickToOKConfirmThePayment = "Vui lòng xác nhận thanh toán bằng cách nhấn OK";
+ThisWorkIsCompleted = "Công việc đã được hoàn thành.";
+CompleteWorkProgress = "Hoàn tất công việc";
+ThereAreNotEnoughFundsInYourAccountToMakeThisPayment = "Tài khoản bạn không đủ để thanh toán.";
+PaymentMoneyFailed = "Thanh toán tiền mặt không thành công";

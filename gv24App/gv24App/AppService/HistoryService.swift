@@ -76,11 +76,11 @@ class HistoryService: APIService{
         }
     }
     
-    func assesmentMaid(task: String,told: String,content: String,evaluation_point: Double,completion:@escaping ((String?)->())){
+    func assesmentMaid(task: String,toId: String,content: String,evaluation_point: Double,completion:@escaping ((String?)->())){
         let url = "owner/comment"
         let parameters = [
             "task" : task,
-            "toId" : told,
+            "toId" : toId,
             "content" : content,
             "evaluation_point" : evaluation_point
         ] as [String : Any]

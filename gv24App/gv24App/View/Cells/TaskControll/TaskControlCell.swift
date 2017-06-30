@@ -36,7 +36,6 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
                 self.loadData(process: "000000000000000000000001&sortByTaskTime=true")
             }else if type == 1{
                 self.loadData(process: "000000000000000000000003")
-
             }else{
                 self.loadData(process: "000000000000000000000004")
             }
@@ -49,7 +48,6 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
                 self.taskCollectionView.reloadData()
             }
         })
-
     }
     override func setupView() {
         register()
