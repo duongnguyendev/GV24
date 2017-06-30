@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 class SendOrderVC: BaseVC {
+    
     var workSuccess = WorkUnpaid()
+    
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +34,7 @@ class SendOrderVC: BaseVC {
     private let mtfName: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
+        
         tf.placeholder = "Họ & tên"
         return tf
     }()

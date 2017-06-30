@@ -31,11 +31,11 @@ class KeyBillCell: BaseCollectionCell{
         return lb
     }()
     
-    let arrowRight : UIImageView = {
+    /*let arrowRight : UIImageView = {
         let iv = UIImageView(image: Icon.by(name: .iosArrowRight, color: AppColor.arrowRight))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
-    }()
+    }()*/
     
     override func setupView() {
         super.setupView()
@@ -43,7 +43,7 @@ class KeyBillCell: BaseCollectionCell{
         
         addSubview(labelKeyBill)
         addSubview(labelKey)
-        addSubview(arrowRight)
+        //addSubview(arrowRight)
         
         labelKeyBill.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10).isActive = true
         labelKeyBill.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
@@ -51,10 +51,10 @@ class KeyBillCell: BaseCollectionCell{
         labelKey.topAnchor.constraint(equalTo: labelKeyBill.bottomAnchor, constant: 5).isActive = true
         labelKey.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         
-        arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        /*arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         arrowRight.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         arrowRight.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowRight.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        arrowRight.heightAnchor.constraint(equalToConstant: 20).isActive = true*/
     
     }
 }

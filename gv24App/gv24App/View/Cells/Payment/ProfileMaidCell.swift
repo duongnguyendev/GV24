@@ -17,7 +17,6 @@ class ProfileMaidCell: BaseCollectionCell{
             labelAddress.text = maid?.address?.name
         }
     }
-
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -42,11 +41,11 @@ class ProfileMaidCell: BaseCollectionCell{
         return lb
     }()
     
-    private let arrowRight : UIImageView = {
+    /*private let arrowRight : UIImageView = {
         let iv = UIImageView(image: Icon.by(name: .iosArrowRight, color: AppColor.arrowRight))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
-    }()
+    }()*/
     
     override func setupView() {
         super.setupView()
@@ -55,7 +54,7 @@ class ProfileMaidCell: BaseCollectionCell{
         addSubview(avatarImageView)
         addSubview(labelName)
         addSubview(labelAddress)
-        addSubview(arrowRight)
+        //addSubview(arrowRight)
         
         avatarImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         avatarImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
@@ -63,13 +62,13 @@ class ProfileMaidCell: BaseCollectionCell{
         avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         
         labelName.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin / 2).isActive = true
-        labelName.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true
+        labelName.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 10).isActive = true
         labelName.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 0).isActive = true
         
-        arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        /*arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         arrowRight.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         arrowRight.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        arrowRight.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        arrowRight.heightAnchor.constraint(equalToConstant: 20).isActive = true*/
         
         labelAddress.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin/2).isActive = true
         labelAddress.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -cellMargin/4).isActive = true

@@ -23,12 +23,12 @@ class TaskExpiredCell: TaskCell{
         lb.layer.masksToBounds = true
         
         lb.textAlignment = .center
-        lb.text = LanguageManager.shared.localized(string: "ExceededTask")
+        lb.text = LanguageManager.shared.localized(string: "ExpiredTask")
         return lb
     }()
     override func setupView() {
         super.setupView()
-        statusTask = LanguageManager.shared.localized(string: "Exceeded")
+        statusTask = LanguageManager.shared.localized(string: "ExpiredToApply")
         addSubview(labelExpired)
         labelExpired.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelExpired.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
