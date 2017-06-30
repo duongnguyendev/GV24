@@ -196,4 +196,10 @@ TotalMoney = "Total:";
 PartnerIdentifiedSuccessfully = "Partner identified successfully!";
 CongratsYouHaveYourRightPerson = "Congrats! You have your right person!";
 FailedToChooseYourRightPerson = "Failed to choose your right person";
-
+CompletePayment = "Complete";
+PaymentFailed = "Payment failed!";
+PleaseClickToOKConfirmThePayment = "Please click to OK confirm the payment!";
+ThisWorkIsCompleted = "This work is completed.";
+CompleteWorkProgress = "Complete";
+ThereAreNotEnoughFundsInYourAccountToMakeThisPayment = "There are not enough funds in your account to make this payment";
+PaymentMoneyFailed = "Payment failed!";

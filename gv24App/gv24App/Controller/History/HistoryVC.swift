@@ -37,6 +37,10 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             }
         })
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.collectionControl.reloadData()
+    }
+    
     private let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: LanguageManager.shared.localized(string: "CompletedWork"), at: 0, animated: true)
@@ -181,16 +185,17 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     //MARK: - Delegate-
     func selectedTaskHistory(task: Task) {
         self.collectionControl.isUserInteractionEnabled = false
-        HistoryService.shared.getCommentOwner(taskID: (task.stakeholder?.receivced?.maidId)!) { (commentOwner) in
+        HistoryService.shared.getCommentOwner(taskID: task.id!) { (commentOwner) in
             self.collectionControl.isUserInteractionEnabled = true
             if let _ = commentOwner{
                 let preAssesmentVC = PreviewAssesmentVC()
                 preAssesmentVC.taskHistory = task
+                preAssesmentVC.content = commentOwner?.content
                 self.push(viewController: preAssesmentVC)
             }else{
                 let assesmentVC = AssesmentVC()
                 assesmentVC.taskHistory = task
-                self.push(viewController: assesmentVC)
+                self.present(viewController: assesmentVC)
             }
         }
     }

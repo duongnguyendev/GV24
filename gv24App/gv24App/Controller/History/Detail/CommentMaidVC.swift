@@ -152,7 +152,7 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
         let alert = UIAlertController(title: "", message: "Báo cáo thành công", preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
-            HistoryService.shared.assesmentMaid(task: id!, told: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { (error) in
+            HistoryService.shared.assesmentMaid(task: id!, toId: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { (error) in
                 if error != nil{
                     alert.message = error
                 }else{

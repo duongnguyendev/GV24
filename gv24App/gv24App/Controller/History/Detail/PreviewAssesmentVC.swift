@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 class PreviewAssesmentVC: DetailTaskDoneVC{
-    
+    var content: String?{
+        didSet{
+            labelContent.text = content
+        }
+    }
     private let labelContent: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false

@@ -15,6 +15,8 @@ class Wallet: Entity{
     
     override init() {
         super.init()
+        self.id = ""
+        self.wallet = 0
     }
     
     override init(jsonData: JSON) {

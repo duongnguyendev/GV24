@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 class JobProgressDetailVC: BaseVC {
     var taskProgress = Task()
-    
     private let profileButton: ProfileUserButton = {
         let button = ProfileUserButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -20,14 +19,13 @@ class JobProgressDetailVC: BaseVC {
     private let finishMaid: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.title = LanguageManager.shared.localized(string: "Complete")
+        button.title = LanguageManager.shared.localized(string: "CompleteWorkProgress")
         button.addTarget(self, action: #selector(handleButtonFinishMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
         button.color = AppColor.backButton
         button.iconName = .logOut
         return button
     }()
-    
     let descLabel: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -35,8 +33,6 @@ class JobProgressDetailVC: BaseVC {
         lb.textColor = AppColor.lightGray
         return lb
     }()
-
-    
     let descTaskView: DescTaskView = {
         let view = DescTaskView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -52,16 +48,26 @@ class JobProgressDetailVC: BaseVC {
     func handleButtonFinishMaid(_ sender: UIButton){
         self.activity.startAnimating()
         TaskService.shared.checkOutMaid(id: taskProgress.id!) { (workSuccess) in
+            self.activity.stopAnimating()
             if let work = workSuccess{
                 let paymentVC = PaymentVC()
                 paymentVC.workSuccess = work
                 paymentVC.taskProgress = self.taskProgress
-                self.present(viewController: paymentVC)
+                self.push(viewController: paymentVC)
+            }else{
+                self.showAlertError(message: LanguageManager.shared.localized(string: "ThisWorkIsCompleted")!, completion: {})
             }
-            self.activity.stopAnimating()
         }
     }
-    
+    //Mark: Show-Alert
+    func showAlertError(message: String, completion: @escaping (()->())){
+        let mes = LanguageManager.shared.localized(string: message)
+        let alert = UIAlertController(title: nil, message: mes, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
+            completion()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
@@ -71,7 +77,6 @@ class JobProgressDetailVC: BaseVC {
         self.descTaskView.task = taskProgress
         self.profileButton.received = taskProgress.stakeholder?.receivced
     }
-    
     override func setupView() {
         super.setupView()
         self.view.addSubview(profileButton)
@@ -94,7 +99,6 @@ class JobProgressDetailVC: BaseVC {
         view.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
         descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
     }
-    
     override func localized() {
         super.localized()
         title = LanguageManager.shared.localized(string: "RunningWork")

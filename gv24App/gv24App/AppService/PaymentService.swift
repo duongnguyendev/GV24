@@ -57,7 +57,6 @@ class PaymentService: APIService {
             }
         }
     }
-    
     func paymentMoney(billId: String,completion: @escaping ((Bool?)->())){
         let url = "payment/payDirectly"
         let params = ["billId": billId]
