@@ -47,6 +47,11 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             }
         })
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.taskTemp = nil
+    }
     override func viewDidAppear(_ animated: Bool) {
         self.collectionControl.reloadData()
     }
@@ -197,22 +202,29 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         let index = targetContentOffset.pointee.x / view.frame.width
         segmentedControl.selectedSegmentIndex = Int(index)
     }
+    var taskTemp: Task?
     
     //MARK: - Delegate-
     func selectedTaskHistory(task: Task) {
-        self.loadingView.show()
-        HistoryService.shared.getCommentOwner(taskID: task.id!) { (commentOwner) in
-            self.loadingView.close()
-            if let _ = commentOwner{
-                let preAssesmentVC = PreviewAssesmentVC()
-                preAssesmentVC.taskHistory = task
-                preAssesmentVC.content = commentOwner?.content
-                self.push(viewController: preAssesmentVC)
-            }else{
-                let assesmentVC = AssesmentVC()
-                assesmentVC.taskHistory = task
-                self.present(viewController: assesmentVC)
+        if taskTemp != nil && task == taskTemp{
+            return
+        }else{
+            self.loadingView.show()
+            self.taskTemp = task
+            HistoryService.shared.getCommentOwner(taskID: task.id!) { (commentOwner) in
+                self.loadingView.close()
+                if let _ = commentOwner{
+                    let preAssesmentVC = PreviewAssesmentVC()
+                    preAssesmentVC.taskHistory = task
+                    preAssesmentVC.content = commentOwner?.content
+                    self.push(viewController: preAssesmentVC)
+                }else{
+                    let assesmentVC = AssesmentVC()
+                    assesmentVC.taskHistory = task
+                    self.present(viewController: assesmentVC)
+                }
             }
+
         }
     }
     func handleProfile(maid: MaidHistory) {
