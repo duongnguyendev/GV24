@@ -19,10 +19,10 @@ class MarkerInfoWindow: BaseView {
         }
     }
     let margin : CGFloat = 5.0
-    private let avatarImage : CustomImageView = {
+    private let avatarImage : UIImageView = {
         let iconSize : CGFloat = 40
         
-        let iv = CustomImageView(image : UIImage(named: "avatar"))
+        let iv = UIImageView(image : UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
         iv.heightAnchor.constraint(equalToConstant: iconSize).isActive = true

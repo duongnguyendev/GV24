@@ -23,15 +23,15 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
     }
     let maidProfileCellId = "maidProfileCellId"
     let maidWorkInfoCellId = "maidWorkInfoCellId"
-    override func setupRightNavButton() {
-        
-    }
+    
     //MARK: - Collection Delegate - Datasource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
-    
+    override func setupRightNavButton() {
+        
+    }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -77,7 +77,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
             let text = comments[indexPath.item].content
             let size = CGSize(width: view.frame.width, height: 1000)
             let height = String.heightWith(string: text!, size: size, font: Fonts.by(name: .regular, size: 12))
-            return CGSize(width: view.frame.size.width, height: 90 + height)
+            return CGSize(width: view.frame.size.width, height: 100 + height)
         }
     }
     

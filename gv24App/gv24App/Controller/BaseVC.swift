@@ -27,14 +27,7 @@ class BaseVC: UIViewController {
         setupRightNavButton()
         setupView()
     }
-//    let activity : UIActivityIndicatorView = {
-//        let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-//        act.hidesWhenStopped = true
-//        act.translatesAutoresizingMaskIntoConstraints = false
-//        act.layer.zPosition = 1
-//        return act
-//        
-//    }()
+
     let loadingView = LoadingView()
     
     override func viewWillAppear(_ animated: Bool) {

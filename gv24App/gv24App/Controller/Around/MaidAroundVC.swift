@@ -44,7 +44,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     lazy var searchBar : UISearchBar = {
         let sB = UISearchBar()
         sB.translatesAutoresizingMaskIntoConstraints = false
-        sB.placeholder = "Search"
+        sB.placeholder = LanguageManager.shared.localized(string: "Search")
         sB.delegate = self
         return sB
     }()

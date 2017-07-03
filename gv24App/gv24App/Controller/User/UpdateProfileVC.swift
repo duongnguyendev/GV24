@@ -25,13 +25,6 @@ class UpdateProfileVC: SignUpVC_2 {
             }
         }
     }
-    let viewHandleUpdate : UIView = {
-        let v = UIView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        v.isHidden = true
-        return v
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +34,6 @@ class UpdateProfileVC: SignUpVC_2 {
     }
     override func setupView() {
         super.setupView()
-        
-        view.addSubview(viewHandleUpdate)
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: viewHandleUpdate)
-        view.addConstraintWithFormat(format: "V:|[v0]|", views: viewHandleUpdate)
     }
     
     override func handleComplateButton(_ sender: UIButton) {

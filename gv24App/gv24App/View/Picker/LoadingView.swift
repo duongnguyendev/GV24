@@ -9,9 +9,8 @@
 import UIKit
 
 class LoadingView: NSObject {
-    
-    let blackView = UIView()
-    let mainView : UIView = {
+    private let blackView = UIView()
+    private let mainView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
@@ -21,7 +20,7 @@ class LoadingView: NSObject {
         view.layer.masksToBounds = true
         return view
     }()
-    let activity : UIActivityIndicatorView = {
+    private let activity : UIActivityIndicatorView = {
         let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         act.hidesWhenStopped = true
         act.translatesAutoresizingMaskIntoConstraints = false

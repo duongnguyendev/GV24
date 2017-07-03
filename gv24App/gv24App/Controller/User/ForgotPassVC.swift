@@ -82,7 +82,6 @@ class ForgotPassVC: BaseVC {
     }
     
     func handleSendButton(_ sender : UIButton){
-        
         if let validateString = validate(){
             showAlert(title: nil, message: validateString, completion: {
             })

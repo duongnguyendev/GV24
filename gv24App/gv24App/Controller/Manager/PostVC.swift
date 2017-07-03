@@ -323,10 +323,16 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     func handleButtonWorkTypes(_ sender: UIButton){
         if self.workTypes == nil{
+            self.loadingView.show()
             TaskService.shared.getWorkTypes { (workTypes, error) in
                 if error == nil{
                     self.workTypes = workTypes
+                    self.loadingView.close()
                     self.handleActionSheet()
+                }else{
+                    self.showAlertWith(message: error!, completion: { 
+                        
+                    })
                 }
             }
         }else{
@@ -337,25 +343,25 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     func handlePostButton(_ sender: UIButton){
         hideKeyboard()
         self.loadingView.show()
-        validate { (errorString) in
-            if errorString == nil{
-                self.params["tools"] = self.checkBoxTool.isSelected
-                TaskService.shared.postTask(params: self.params) { (error) in
-                    self.loadingView.close()
-                    if error == nil{
-                        self.showAlertWith(message: "PostSuccessfully", completion: {
-                            self.goBack()
-                        })
-                    }else{
-                        self.showAlertWith(message: error!, completion: {})
-                    }
-                }
-            }
-            else{
-                self.loadingView.close()
-                self.showAlertWith(message: errorString!, completion: {})
-            }
-        }
+//        validate { (errorString) in
+//            if errorString == nil{
+//                self.params["tools"] = self.checkBoxTool.isSelected
+//                TaskService.shared.postTask(params: self.params) { (error) in
+//                    self.loadingView.close()
+//                    if error == nil{
+//                        self.showAlertWith(message: "PostSuccessfully", completion: {
+//                            self.goBack()
+//                        })
+//                    }else{
+//                        self.showAlertWith(message: error!, completion: {})
+//                    }
+//                }
+//            }
+//            else{
+//                self.loadingView.close()
+//                self.showAlertWith(message: errorString!, completion: {})
+//            }
+//        }
     }
     
     func showAlertWith(message: String, completion: @escaping (()->())){

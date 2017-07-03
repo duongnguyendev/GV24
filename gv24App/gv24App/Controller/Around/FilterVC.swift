@@ -260,15 +260,17 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
         
     }
     func handleButtonType(_ sender: UIButton){
-        
+        self.loadingView.show()
         if self.workTypes == nil{
             TaskService.shared.getWorkTypes { (workTypes, error) in
                 if error == nil{
+                    self.loadingView.close()
                     self.workTypes = workTypes
                     self.handleWorkTypes()
                 }
             }
         }else{
+            self.loadingView.close()
             self.handleWorkTypes()
         }
         

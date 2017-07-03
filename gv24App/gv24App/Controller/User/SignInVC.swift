@@ -21,6 +21,7 @@ import Firebase
 }
 
 let DATA_NOT_EXIST = "DATA_NOT_EXIST"
+let INVALID_PASSWORD = "INVALID_PASSWORD "
 class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     private var itemHeight : CGFloat = 0
@@ -277,6 +278,9 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         }
         if mes == DATA_NOT_EXIST{
             message = LanguageManager.shared.localized(string: "UserNotExist")
+        }
+        if mes == INVALID_PASSWORD{
+            message = LanguageManager.shared.localized(string: "INVALID_PASSWORD")
         }
         let alert = UIAlertController(title: mTitle, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

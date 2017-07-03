@@ -211,3 +211,4 @@ ReportSentSuccessfully = "Report sent successfully!";
 PaymentSuccessfully = "Payment successfully!";
 TitlePayment = "Payment";
 NearbyMaid = "Nearby maid";
+INVALID_PASSWORD = "Invalid password";
