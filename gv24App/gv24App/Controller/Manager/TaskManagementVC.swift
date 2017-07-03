@@ -117,7 +117,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - hanlde event
     func handleButtonPost(_ sender: UIButton){
         let postVC = PostVC()
-        push(viewController: postVC)
+        present(viewController: postVC)
     }
     //MARK: - task control delegate
     func selectedPosted(task: Task, deadline: Bool) {

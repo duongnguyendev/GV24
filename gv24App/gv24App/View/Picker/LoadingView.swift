@@ -29,7 +29,7 @@ class LoadingView: NSObject {
     }()
     override init() {
         super.init()
-        setupMainView()
+        
     }
     
     func setupMainView(){
@@ -53,6 +53,7 @@ class LoadingView: NSObject {
     }
     
     func show(){
+        setupMainView()
         self.blackView.isHidden = false
         self.mainView.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
