@@ -64,4 +64,21 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let task = tasks[indexPath.item]
+        self.loadingView.show()
+        HistoryService.shared.getCommentOwner(taskID: task.id!) { (commentOwner) in
+            self.loadingView.close()
+            if let _ = commentOwner{
+                let preAssesmentVC = PreviewAssesmentVC()
+                preAssesmentVC.taskHistory = task
+                preAssesmentVC.content = commentOwner?.content
+                self.push(viewController: preAssesmentVC)
+            }else{
+                let assesmentVC = AssesmentVC()
+                assesmentVC.taskHistory = task
+                self.present(viewController: assesmentVC)
+            }
+        }
+    }
 }
