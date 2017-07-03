@@ -8,13 +8,13 @@
 
 import UIKit
 class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, TaskControlDelegate{
-    
     private let cellId = "cellId"
     private let cellNew = "cellNew"
     private let cellAssigned = "cellAssigned"
     private let cellInProgress = "cellInProgress"
     
     var indexPath: IndexPath = IndexPath(item: 0, section: 0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionType.register(TaskControlCell.self, forCellWithReuseIdentifier: cellId)
@@ -22,6 +22,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         collectionType.register(TaskAssignedControlCell.self, forCellWithReuseIdentifier: cellAssigned)
         collectionType.register(TaskInProgressControlCell.self, forCellWithReuseIdentifier: cellInProgress)
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,6 +30,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     override func viewDidAppear(_ animated: Bool) {
         self.collectionType.reloadData()
     }
+    
     lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -89,6 +91,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         cell.type = indexPath.item
         cell.delegate = self
         return cell
+        
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
@@ -105,7 +108,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         indexPath = IndexPath(item: Int(index), section: 0)
         segmentedControl.selectedSegmentIndex = Int(index)
     }
-    
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){
         indexPath = IndexPath(item: sender.selectedSegmentIndex, section: 0)

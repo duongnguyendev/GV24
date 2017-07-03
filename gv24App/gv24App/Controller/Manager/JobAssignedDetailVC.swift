@@ -123,17 +123,17 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     //MARK: - Show Message
     func showAlertWith(message: String, completion: @escaping (()->())){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: LanguageManager.shared.localized(string: "OK")!), style: .cancel, handler: { (nil) in
             completion()
         }))
         self.present(alert, animated: true, completion: nil)
     }
     func showAlertDelete(message: String, completion: @escaping (()->())){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .default, handler: { (nil) in
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: LanguageManager.shared.localized(string: "OK")!), style: .default, handler: { (nil) in
             completion()
         }))
-        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "Cancel"), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: LanguageManager.shared.localized(string: "Cancel")!), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 

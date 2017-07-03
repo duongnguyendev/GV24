@@ -7,13 +7,23 @@
 //
 
 import UIKit
-
-class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HistoryVCDelegate {
+class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HistoryVCDelegate, DateTimeLauncherDelegate {
     let maidHistoryCellId = "maidCellId"
     let taskHistoryCellId = "historyCellId"
     let unpaidWorkCellId = "unpaidCellId"
     let cellId = "cellId"
     
+    var timeStart : Date? = Date(){
+        didSet{
+            buttonFrom.title = timeStart?.hourMinute
+        }
+    }
+    var timeEnd : Date? = Date(){
+        didSet{
+            buttonTo.title = timeEnd?.hourMinute
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -80,19 +90,25 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         return cv
     }()
     
-    private let buttonFrom : UIButton = {
-        let btn = UIButton(type: .custom)
-        btn.setTitle("--/--/--/", for: .normal)
-        btn.titleLabel?.font = Fonts.by(name: .light, size: 15)
-        btn.setTitleColor(AppColor.backButton, for: .normal)
+    lazy var dateLauncher : DateLauncher = {
+        let launcher = DateLauncher()
+        launcher.delegate = self
+        return launcher
+    }()
+    
+    private let buttonFrom : BasicButton = {
+        let btn = BasicButton()
+        btn.titleCollor = AppColor.backButton
+        btn.title = "--/--/--"
+        btn.contentHorizontalAlignment = .center
         btn.addTarget(self, action: #selector(handleFromButton(_:)), for: .touchUpInside)
         return btn
     }()
-    private let buttonTo : UIButton = {
-        let btn = UIButton(type: .custom)
-        btn.setTitle("10/10/2017", for: .normal)
-        btn.titleLabel?.font = Fonts.by(name: .light, size: 15)
-        btn.setTitleColor(AppColor.backButton, for: .normal)
+    private let buttonTo : BasicButton = {
+        let btn = BasicButton()
+        btn.titleCollor = AppColor.backButton
+        btn.title = "10/10/2017"
+        btn.contentHorizontalAlignment = .center
         btn.addTarget(self, action: #selector(handleToButton(_:)), for: .touchUpInside)
         return btn
     }()
@@ -185,6 +201,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     //MARK: - Delegate-
     func selectedTaskHistory(task: Task) {
         self.collectionControl.isUserInteractionEnabled = false
+        self.activity.startAnimating()
         HistoryService.shared.getCommentOwner(taskID: task.id!) { (commentOwner) in
             self.collectionControl.isUserInteractionEnabled = true
             if let _ = commentOwner{
@@ -220,17 +237,29 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         let index = IndexPath(item: sender.selectedSegmentIndex, section: 0)
         self.collectionControl.scrollToItem(at: index, at: .left, animated: true)
     }
-    
-    //MARK: - handle button
+    //MARK: - handle button  
     func handleFromButton(_ sender : UIButton){
+        dateLauncher.startDate = timeStart
+        showDatePickerWith(mode: .time, sender: sender)
         print("handleFromButton")
     }
     
     func handleToButton(_ sender : UIButton){
+        dateLauncher.startDate = timeEnd
+        showDatePickerWith(mode: .time, sender: sender)
         print("handleToButton")
     }
-    
-    //Mark-Language
+    //Mark: - Show DateTimeLauncher
+    func showDatePickerWith(mode : UIDatePickerMode, sender : UIButton){
+        dateLauncher.pickerMode = mode
+        dateLauncher.sender = sender
+        dateLauncher.show()
+    }
+    //Mark: - Delegate DateTime Launcher
+    func selected(dateTime: Date, for sender: UIButton) {
+        
+    }
+    //Mark: - Language
     override func localized() {
         title = LanguageManager.shared.localized(string: "TitleWorkHistory")
     }

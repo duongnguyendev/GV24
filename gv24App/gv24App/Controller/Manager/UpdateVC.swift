@@ -67,7 +67,7 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
     }
     
     override func setupRightNavButton() {
-        let buttonSend = NavButton(title: "Sửa bài")
+        let buttonSend = NavButton(title: LanguageManager.shared.localized(string: "Update")!)
         buttonSend.addTarget(self, action: #selector(handleUpdateButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn
@@ -339,6 +339,7 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
     }
     
     func handleUpdateButton(_ sender: UIButton){
+        hideKeyboard()
         self.activity.startAnimating()
         validate { (errorString) in
             if errorString == nil{
@@ -365,7 +366,7 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
     
     func showAlertWith(message: String, completion: @escaping (()->())){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
             completion()
         }))
         self.present(alert, animated: true, completion: nil)
@@ -389,7 +390,7 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
     
     func handleActionSheet(){
         let actionSheet = UIAlertController(title: nil, message: LanguageManager.shared.localized(string: "TypesOfWork"), preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Huỷ bỏ", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "Cancel"), style: .cancel, handler: nil))
         for workType in workTypes!{
             actionSheet.addAction(UIAlertAction(title: workType.name, style: .default, handler: { (nil) in
                 self.workType = workType
