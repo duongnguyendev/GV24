@@ -42,9 +42,9 @@ class LaunchScreenVC: BaseVC {
     }
     func handleLogedIn() {
         if !appStarted{
-            activity.startAnimating()
+            self.loadingView.show()
             UserService.shared.checkStatus { (error) in
-                self.activity.stopAnimating()
+                self.loadingView.close()
                 if error != nil{
                     UserHelpers.logOut()
                     self.showSign()

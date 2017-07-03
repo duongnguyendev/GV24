@@ -19,22 +19,20 @@ class SignUpSocialVC: SignUpVC_2 {
             }
             self.imageAvatar.loadImageurl(link: (userInfo?["image"])!)
             fullNameTextField.text = userInfo?["name"]
-        
+            
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageAvatar.isUserInteractionEnabled = false
         // Do any additional setup after loading the view.
     }
-
+    
     override func handleComplateButton(_ sender: UIButton) {
-        activity.startAnimating()
-        buttonComplate.isUserInteractionEnabled = false
+        self.loadingView.show()
         validate(completion: { (error) in
-            self.buttonComplate.isUserInteractionEnabled = true
-            self.activity.stopAnimating()
+            self.loadingView.close()
             if error != nil{
                 let alert = UIAlertController(title: "", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

@@ -48,14 +48,10 @@ class UpdateProfileVC: SignUpVC_2 {
     }
     
     override func handleComplateButton(_ sender: UIButton) {
-        activity.startAnimating()
-        buttonComplate.isUserInteractionEnabled = false
-        viewHandleUpdate.isHidden = false
+        self.loadingView.show()
         validate { (validateError) in
             if validateError != nil{
-                self.activity.stopAnimating()
-                self.buttonComplate.isUserInteractionEnabled = true
-                self.viewHandleUpdate.isHidden = true
+                self.loadingView.close()
                 let alert = UIAlertController(title: "", message: validateError, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -74,9 +70,7 @@ class UpdateProfileVC: SignUpVC_2 {
         self.userInfo?["lng"] = "\(String(describing: (self.coordinate?.longitude)!))"
         self.userInfo?["gender"] = "\(String(describing: (self.gender)!))"
         UserService.shared.updateProfile(info: self.userInfo!, avatar: self.avatarImage) { (userUpdate, error) in
-            self.activity.stopAnimating()
-            self.viewHandleUpdate.isHidden = true
-            self.buttonComplate.isUserInteractionEnabled = true
+            self.loadingView.close()
             var updateStatus = LanguageManager.shared.localized(string: "UpdateSuccessfully")
             if error == nil{
                 UserHelpers.save(user: userUpdate!, token: UserHelpers.token)

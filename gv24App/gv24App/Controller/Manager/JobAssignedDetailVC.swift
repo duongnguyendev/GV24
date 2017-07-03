@@ -102,10 +102,9 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let imageResized = image.resize(newWidth: 200)
-            self.activity.startAnimating()
-            self.deleteButton.isUserInteractionEnabled = false
+            self.loadingView.show()
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
-                self.activity.stopAnimating()
+                self.loadingView.close()
                 if flag!{
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "PartnerIdentifiedSuccessfully")!, completion: { 
                         self.delegate?.checkInMaid!()
@@ -115,7 +114,6 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToIdentify")!, completion: {
                     })
                 }
-                self.deleteButton.isUserInteractionEnabled = true
             })
             picker.dismiss(animated: true, completion: nil)
         }
@@ -139,9 +137,9 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
 
     func handleRemoveTask(_ sender: UIButton){
         showAlertDelete(message: LanguageManager.shared.localized(string: "AreYouSureYouWantToDeleteThisWork")!) {
-            self.activity.startAnimating()
+            self.loadingView.show()
             TaskService.shared.deleteTask(task: self.taskAssigned, completion: { (flag) in
-                 self.activity.stopAnimating()
+                 self.loadingView.close()
                 if (flag!){
                     self.goBack()
                 }else{

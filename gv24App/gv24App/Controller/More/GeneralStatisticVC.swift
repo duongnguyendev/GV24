@@ -215,9 +215,9 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     }
     
     func loadData(startDate : Date?, endDate: Date?){
-        activity.startAnimating()
+        self.loadingView.show()
         TaskService.shared.generalStatistic(startDate: startDate, endDate: endDate) { (generalStatistic, error) in
-            self.activity.stopAnimating()
+            self.loadingView.close()
             if error != nil{
                 let alert = UIAlertController(title: nil, message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

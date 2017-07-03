@@ -230,11 +230,9 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     }
     
     func handleComplateButton(_ sender : UIButton){
-        activity.startAnimating()
-        buttonComplate.isUserInteractionEnabled = false
+        self.loadingView.show()
         validate { (validateError) in
-            self.activity.stopAnimating()
-            self.buttonComplate.isUserInteractionEnabled = true
+            self.loadingView.close()
             if validateError != nil{
                 let alert = UIAlertController(title: "", message: validateError, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

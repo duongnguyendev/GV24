@@ -99,14 +99,12 @@ class SignUpVC_3: BaseVC{
     
     func handleButtonComplate(_ sender : UIButton){
         
-        buttonComplate.isUserInteractionEnabled = false
-        activity.startAnimating()
+        self.loadingView.show()
         if let token = FIRInstanceID.instanceID().token(){
             user?["device_token"] = token
         }
         UserService.shared.register(info: user!, avatar: avatarImage!) { (userRegisted, token, error) in
-            self.activity.stopAnimating()
-            self.buttonComplate.isUserInteractionEnabled = true
+            self.loadingView.close()
             if error == nil{
                 UserHelpers.save(user: userRegisted!, token: token!)
                 self.navigationController?.dismiss(animated: true, completion: {

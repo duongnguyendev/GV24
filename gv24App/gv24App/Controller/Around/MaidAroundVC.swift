@@ -221,7 +221,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
             if error == nil{
                 self.maids = response
             }else{
-                let alert = UIAlertController(title: nil, message: error, preferredStyle: .alert)
+                let alert = UIAlertController(title: nil, message: LanguageManager.shared.localized(string: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

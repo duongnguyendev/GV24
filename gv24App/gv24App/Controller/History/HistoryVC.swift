@@ -25,15 +25,15 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.activity.startAnimating()
+        self.loadingView.show()
         HistoryService.shared.fetchUnpaidWork(completion: { (mWorkUnpaids) in
             if let worksUnpaid = mWorkUnpaids{
                 self.labelNumberPaid.isHidden = false
                 self.labelNumberPaid.text = "\(worksUnpaid.count)"
-                self.activity.stopAnimating()
+                self.loadingView.close()
             }else{
                  self.labelNumberPaid.isHidden = true
-                 self.activity.stopAnimating()
+                 self.loadingView.close()
             }
         })
     }

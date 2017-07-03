@@ -46,9 +46,9 @@ class JobProgressDetailVC: BaseVC {
         print("Click Profile Button")
     }
     func handleButtonFinishMaid(_ sender: UIButton){
-        self.activity.startAnimating()
+        self.loadingView.show()
         TaskService.shared.checkOutMaid(id: taskProgress.id!) { (workSuccess) in
-            self.activity.stopAnimating()
+            self.loadingView.close()
             if let work = workSuccess{
                 let paymentVC = PaymentVC()
                 paymentVC.workSuccess = work

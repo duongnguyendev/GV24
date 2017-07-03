@@ -91,9 +91,9 @@ class ForgotPassVC: BaseVC {
         }
     }
     func requestForgotPassword(){
-        activity.startAnimating()
+        self.loadingView.show()
         UserService.shared.forgotPassword(userName: textFieldUserName.text!, email: textFieldEmail.text!, completion: { (error) in
-            self.activity.stopAnimating()
+            self.loadingView.close()
             if error != nil{
                 self.showAlert(title: nil, message: error, completion: {
                     

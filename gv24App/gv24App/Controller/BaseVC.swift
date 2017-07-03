@@ -27,14 +27,16 @@ class BaseVC: UIViewController {
         setupRightNavButton()
         setupView()
     }
-    let activity : UIActivityIndicatorView = {
-        let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        act.hidesWhenStopped = true
-        act.translatesAutoresizingMaskIntoConstraints = false
-        act.layer.zPosition = 1
-        return act
-        
-    }()
+//    let activity : UIActivityIndicatorView = {
+//        let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+//        act.hidesWhenStopped = true
+//        act.translatesAutoresizingMaskIntoConstraints = false
+//        act.layer.zPosition = 1
+//        return act
+//        
+//    }()
+    let loadingView = LoadingView()
+    
     override func viewWillAppear(_ animated: Bool) {
         setupBackButton()
         localized()
@@ -81,9 +83,7 @@ class BaseVC: UIViewController {
     }
     
     func setupView(){
-        view.addSubview(activity)
-        activity.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        activity.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        
     }
     
     func hideKeyboard(){

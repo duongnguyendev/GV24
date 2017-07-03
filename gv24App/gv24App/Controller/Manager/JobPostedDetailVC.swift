@@ -65,10 +65,10 @@ class JobPostedDetailVC: JobDetailVC{
     }
     
     func handleAppListTask(_ sender: UIButton){
-        activity.startAnimating()
+        self.loadingView.show()
         TaskManageService.shared.fetchApplicants(id: task.id!) { (applicants, error) in
             if error == nil{
-                self.activity.stopAnimating()
+                self.loadingView.close()
                 let applicantVC = ApplicantsVC()
                 applicantVC.delegate = self.delegate
                 applicantVC.applicants = applicants!

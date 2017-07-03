@@ -248,10 +248,10 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         push(viewController: MaidAroundVC())
     }
     func handleSignInButton(_ sender : UIButton) {
+        self.loadingView.show()
         if (self.emailTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 && (self.passTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 {
-            self.activity.startAnimating()
             UserService.shared.logIn(userName: emailTextField.text!, password: passTextField.text!, completion: { (userLogedIn, token, error) in
-                self.activity.stopAnimating()
+                self.loadingView.close()
                 if error == nil{
                     UserHelpers.save(user: userLogedIn!, token: token!)
                     self.presentHome()
@@ -261,6 +261,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
                 }
             })
         }else{
+            self.loadingView.close()
             showAlertWith(title: nil, mes: "InvalidUsernamePassword")
         }
     }
@@ -318,7 +319,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         self.dismiss(animated: true, completion: nil)
     }
     func handleFacebookAccount(){
-        self.activity.startAnimating()
+        self.loadingView.show()
         GraphRequest(graphPath: "me", parameters: ["field" : "id, name, email, phone"], accessToken: AccessToken.current, httpMethod: .GET).start { (response, result) in
             switch result{
             case .failed(let error):
@@ -338,9 +339,9 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     }
     
     func loginSocial(userInfo : Dictionary<String, String>){
-        activity.startAnimating()
+        self.loadingView.show()
         UserService.shared.loginSocial(userInfo: userInfo) { (user, token, error) in
-            self.activity.stopAnimating()
+            self.loadingView.close()
             if error != nil{
                 if error == DATA_NOT_EXIST{
                     self.handleSignUpSocical(userInfo: userInfo)
@@ -368,7 +369,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         self.present(viewController, animated: true, completion: nil)
     }
     func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-        self.activity.stopAnimating()
+        self.loadingView.close()
         self.dismiss(animated: true, completion: nil)
     }
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

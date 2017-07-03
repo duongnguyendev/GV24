@@ -60,6 +60,7 @@
 		4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBE29A1ED83948005B47B0 /* AppDelegate.swift */; };
 		4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95A1EEF94390073BC7E /* RechargeVC.swift */; };
 		4E33F95D1EEFE7920073BC7E /* TransferInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */; };
+		4E34EFC01F0A032500BE4B01 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34EFBF1F0A032500BE4B01 /* LoadingView.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
 		4E3D17621EE7BE5000C91D6B /* InputButonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D17611EE7BE5000C91D6B /* InputButonWithIcon.swift */; };
 		4E3D17641EE7F85D00C91D6B /* AgeLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D17631EE7F85D00C91D6B /* AgeLauncher.swift */; };
@@ -234,6 +235,7 @@
 		4E250E461EF3C02E00CCDE61 /* gv24App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gv24App.entitlements; sourceTree = "<group>"; };
 		4E33F95A1EEF94390073BC7E /* RechargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeVC.swift; sourceTree = "<group>"; };
 		4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferInfoVC.swift; sourceTree = "<group>"; };
+		4E34EFBF1F0A032500BE4B01 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		4E3D17611EE7BE5000C91D6B /* InputButonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputButonWithIcon.swift; sourceTree = "<group>"; };
 		4E3D17631EE7F85D00C91D6B /* AgeLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeLauncher.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				4E0F75C01EE5095200121113 /* BaseLauncher.swift */,
 				4E0F75C21EE50C4D00121113 /* DateLauncher.swift */,
 				4E3D17631EE7F85D00C91D6B /* AgeLauncher.swift */,
+				4E34EFBF1F0A032500BE4B01 /* LoadingView.swift */,
 			);
 			name = Launcher;
 			path = Picker;
@@ -1095,6 +1098,7 @@
 				4ED231731EB9803400592842 /* ImageExtensions.swift in Sources */,
 				4E3D17641EE7F85D00C91D6B /* AgeLauncher.swift in Sources */,
 				4E58A7A21EEE8F1D0088FC1D /* GeneralStatistic.swift in Sources */,
+				4E34EFC01F0A032500BE4B01 /* LoadingView.swift in Sources */,
 				A6C826981EFB6ACF0017FD0F /* NSString+MD5.m in Sources */,
 				A61579161F016EE4005CC9F3 /* InfoTextField.swift in Sources */,
 				4E8D275A1EDC152800872A61 /* TaskManageService.swift in Sources */,

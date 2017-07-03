@@ -17,11 +17,9 @@ class SignUpSocialFinalVC: SignUpVC_3 {
     }
 
     override func handleButtonComplate(_ sender: UIButton) {
-        buttonComplate.isUserInteractionEnabled = false
-        activity.startAnimating()
+        self.loadingView.show()
         UserService.shared.signUpSocical(userInfo: self.user!) { (user, token, error) in
-            self.buttonComplate.isUserInteractionEnabled = true
-            self.activity.stopAnimating()
+            self.loadingView.close()
             if error != nil{
                 let alert = UIAlertController(title: "Lỗi", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

@@ -339,14 +339,14 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
     }
     
     func handleUpdateButton(_ sender: UIButton){
-        self.activity.startAnimating()
+        self.loadingView.show()
         validate { (errorString) in
             if errorString == nil{
                 self.params["tools"] = self.checkBoxTool.isSelected
                 self.params["id"] = self.task.id
                 self.params["process"] = self.task.process?.id
                 TaskService.shared.updateTask(params: self.params) { (error) in
-                    self.activity.stopAnimating()
+                    self.loadingView.close()
                     if error == nil{
                         self.showAlertWith(message: LanguageManager.shared.localized(string: "EditedSuccessfully")!, completion: {
                             self.dismiss(animated: true, completion: nil)
@@ -357,7 +357,7 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
                 }
             }
             else{
-                self.activity.stopAnimating()
+                self.loadingView.close()
                 self.showAlertWith(message: errorString!, completion: {})
             }
         }

@@ -322,7 +322,6 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         showDatePickerWith(mode: .date, sender: sender)
     }
     func handleButtonWorkTypes(_ sender: UIButton){
-        sender.isUserInteractionEnabled = false
         if self.workTypes == nil{
             TaskService.shared.getWorkTypes { (workTypes, error) in
                 if error == nil{
@@ -337,32 +336,23 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     
     func handlePostButton(_ sender: UIButton){
         hideKeyboard()
-        self.backButton.isUserInteractionEnabled = false
-        self.buttonSend.isUserInteractionEnabled = false
-        self.view.isUserInteractionEnabled = false
-        self.activity.startAnimating()
+        self.loadingView.show()
         validate { (errorString) in
             if errorString == nil{
                 self.params["tools"] = self.checkBoxTool.isSelected
                 TaskService.shared.postTask(params: self.params) { (error) in
-                    self.activity.stopAnimating()
+                    self.loadingView.close()
                     if error == nil{
                         self.showAlertWith(message: "PostSuccessfully", completion: {
                             self.goBack()
                         })
                     }else{
-                        self.buttonSend.isUserInteractionEnabled = true
-                        self.backButton.isUserInteractionEnabled = true
-                        self.view.isUserInteractionEnabled = true
                         self.showAlertWith(message: error!, completion: {})
                     }
                 }
             }
             else{
-                self.activity.stopAnimating()
-                self.backButton.isUserInteractionEnabled = true
-                self.buttonSend.isUserInteractionEnabled = true
-                self.view.isUserInteractionEnabled = true
+                self.loadingView.close()
                 self.showAlertWith(message: errorString!, completion: {})
             }
         }
@@ -394,7 +384,6 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     func handleActionSheet(){
-        self.buttonWorkTypes.isUserInteractionEnabled = true
         let mes = LanguageManager.shared.localized(string: "TypesOfWork")
         let cancelString = LanguageManager.shared.localized(string: "Cancel")
         let actionSheet = UIAlertController(title: nil, message: mes, preferredStyle: .actionSheet)
