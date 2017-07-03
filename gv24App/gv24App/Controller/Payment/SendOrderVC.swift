@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 class SendOrderVC: BaseVC {
-    
-    var workSuccess = WorkUnpaid()
+    var workPayment: WorkUnpaid?
+    var taskPayment: Task?
     
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
@@ -98,7 +98,6 @@ class SendOrderVC: BaseVC {
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
-
     private let buttonSend: UIButton = {
         let bt = UIButton()
         bt.translatesAutoresizingMaskIntoConstraints = false
@@ -135,7 +134,7 @@ class SendOrderVC: BaseVC {
         super.viewWillAppear(animated)
         
         mtfName.text = UserHelpers.currentUser?.userName
-        mtfTotalMoney.text = "\((workSuccess.price)!)"
+        mtfTotalMoney.text = "\((workPayment?.price)!)"
         mtfEmail.text = UserHelpers.currentUser?.email
         mtfPhone.text = UserHelpers.currentUser?.phone
         mtfAddress.text = UserHelpers.currentUser?.address?.name
@@ -219,12 +218,13 @@ class SendOrderVC: BaseVC {
                     let wvPaymentVC = WebviewPaymentVC()
                     wvPaymentVC.gstrUrl = result["checkout_url"] as? String
                     wvPaymentVC.token_code = result["token_code"] as? String
-                    wvPaymentVC.billId = self.workSuccess.id
+                    wvPaymentVC.taskPayment = self.taskPayment
+                    wvPaymentVC.workPayment = self.workPayment
                     self.push(viewController: wvPaymentVC)
                 }
             }
         }) { (error) in
-            self.showAlertWith(message: "Thanh toán không thành công", completion: {})
+            self.showAlertWith(message: LanguageManager.shared.localized(string: "PaymentFailed")!, completion: {})
         }
     }
     

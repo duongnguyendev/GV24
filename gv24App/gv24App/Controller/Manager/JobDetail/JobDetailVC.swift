@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class JobDetailVC: BaseVC{
+    
     let descLabel: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false

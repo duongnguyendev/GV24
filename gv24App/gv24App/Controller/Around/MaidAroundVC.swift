@@ -216,8 +216,9 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
         self.present(alert, animated: true, completion: nil)
     }
     func filter(params: Dictionary<String, Any>?) {
-        
+        self.loadingView.show()
         UserService.shared.filter(params: params!, location: self.currentLocation!, completion: { (response, error) in
+            self.loadingView.close()
             if error == nil{
                 self.maids = response
             }else{

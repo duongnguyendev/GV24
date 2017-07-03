@@ -58,7 +58,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     private let workAroundButton : BasicButton = {
         let btn = BasicButton()
         btn.color = AppColor.homeButton1
-        btn.title = "Around"
+        btn.title = "NearbyMaid"
         btn.addTarget(self, action: #selector(handleWordAroundButton(_:)), for: .touchUpInside)
         return btn
     }()

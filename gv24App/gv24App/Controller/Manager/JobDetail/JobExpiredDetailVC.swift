@@ -21,7 +21,7 @@ class JobExpiredDetailVC: JobDetailVC{
         lb.layer.cornerRadius = 10
         lb.layer.masksToBounds = true
         lb.textAlignment = .center
-        lb.text = LanguageManager.shared.localized(string: "ExceededTask")
+        lb.text = LanguageManager.shared.localized(string: "ExpiredTask")
         return lb
     }()
     

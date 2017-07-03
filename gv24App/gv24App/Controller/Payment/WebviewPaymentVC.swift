@@ -11,7 +11,8 @@ import UIKit
 class WebviewPaymentVC: BaseVC, UIWebViewDelegate {
     var gstrUrl: String?
     var token_code: String?
-    var billId: String?
+    var workPayment: WorkUnpaid?
+    var taskPayment: Task?
     
     lazy var webView: UIWebView = {
         let wb = UIWebView()
@@ -22,7 +23,7 @@ class WebviewPaymentVC: BaseVC, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Ngân lượng"
+        title = LanguageManager.shared.localized(string: "TitlePayment")
         let url = URL(string: gstrUrl!)
         let request = URLRequest(url: url!)
         webView.loadRequest(request)
@@ -42,12 +43,16 @@ class WebviewPaymentVC: BaseVC, UIWebViewDelegate {
     func webViewDidFinishLoad(_ webView: UIWebView) {
         let currentUrl = webView.stringByEvaluatingJavaScript(from: "window.location.href")
         if currentUrl == RETURN_URL{
-            self.showAlertWith(message: "Thanh toán thành công", completion: {
-                PaymentService.shared.paymentOnline(billId: self.billId!, completion: { (flag) in
-                     self.dismiss(animated: true, completion: nil)
+            self.showAlertWith(message: LanguageManager.shared.localized(string: "PaymentSuccessfully")!, completion: {
+                PaymentService.shared.paymentOnline(billId: (self.workPayment?.id)!, completion: { (flag) in
+                    let commentMaidVC = CommentMaidVC()
+                    commentMaidVC.maid = self.taskPayment?.stakeholder?.receivced
+                    commentMaidVC.id = self.taskPayment?.id
+                    self.push(viewController: commentMaidVC)
                 })
             })
         }else{
+            
         }
     }
     //MARK: - Show Message
