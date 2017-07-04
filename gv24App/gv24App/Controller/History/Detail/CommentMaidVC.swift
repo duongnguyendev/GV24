@@ -155,10 +155,10 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
         let alert = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ReportSentSuccessfully"), preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: nil)
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
+            self.loadingView.show()
             HistoryService.shared.assesmentMaid(task: id!, toId: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { (error) in
-                if error != nil{
-                    alert.message = error
-                }else{
+                self.loadingView.close()
+                if error == nil{
                     alertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
                         self.dismiss(animated: true, completion: nil)
                     })

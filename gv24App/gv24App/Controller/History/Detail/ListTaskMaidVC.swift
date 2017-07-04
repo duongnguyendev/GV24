@@ -53,7 +53,6 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
         cell.task = tasks[indexPath.item]
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tasks.count
     }
