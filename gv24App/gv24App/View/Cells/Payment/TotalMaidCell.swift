@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 class TotalMaidCell: BaseCollectionCell{
     
-    var total: String? {
+    var total: NSNumber? {
         didSet{
-            labelTotal.text = "\(LanguageManager.shared.localized(string: "TotalMoney")!) \(total!) VND"
+            labelTotal.text = "\(LanguageManager.shared.localized(string: "TotalMoney")!) \(String.numberDecimalString(number: total!)) VND"
         }
     }
     let labelTotal: UILabel = {

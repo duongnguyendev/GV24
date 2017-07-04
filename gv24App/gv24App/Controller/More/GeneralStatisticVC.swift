@@ -9,7 +9,6 @@
 import UIKit
 
 class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
-    
     var user : User?{
         didSet{
             self.avatarImage.loadImageurl(link: (self.user?.avatarUrl)!)
@@ -30,7 +29,6 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
             infoView.generalStatisticData = generalStatisticData
             let numberAccountBalanceString = String.numberDecimalString(number: (generalStatisticData?.wallet)! as NSNumber)
             labelNumberAccountBalance.text =  numberAccountBalanceString + " vnd"
-            
         }
     }
     
@@ -116,9 +114,6 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         let view = GeneralStatisticInfoView()
         return view
     }()
-    
-    
-    
     lazy var dateLaucher : DateLauncher = {
         let launcher = DateLauncher()
         launcher.pickerMode = .date
@@ -210,8 +205,6 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         accountView.addSubview(line)
         line.bottomAnchor.constraint(equalTo: buttonRecharge.topAnchor, constant: 0).isActive = true
         accountView.addConstraintWithFormat(format: "H:|[v0]|", views: line)
-        
-        
     }
     
     func loadData(startDate : Date?, endDate: Date?){
@@ -245,7 +238,6 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         
         dateLaucher.datePicker.minimumDate = Date(year: (Int(date.year)! - 5))
         dateLaucher.show()
-        
     }
     func handleButtonTo(_ sender: UIButton){
         dateLaucher.sender = sender

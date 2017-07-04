@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 class HistoryService: APIService{
     static let shared = HistoryService()
     func fetchTaskHistory(completion:@escaping (TaskHistoryCompletion)){
@@ -93,5 +94,28 @@ class HistoryService: APIService{
         }
     }
     
+    func filterWorkHistory(startAt: Date?,endAt: Date?,page: Int?,completion:@escaping (TaskHistoryCompletion)){
+        let url = "owner/getHistoryTasks"
+        var params = Parameters()
+        if startAt != nil{
+            params["startAt"] = startAt?.isoString
+        }
+        if endAt != nil{
+            params["endAt"] = startAt?.isoString
+        }
+        if page != nil{
+            params["page"] = page
+        }
+        getWithToken(url: url, params: params) { (json, error) in
+            if error == nil{
+                if error == nil{
+                    let taskHistory = TaskHistory(jsonData: json!)
+                    completion(taskHistory)
+                }else{
+                    completion(nil)
+                }
+            }
+        }
+    }
     
 }

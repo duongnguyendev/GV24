@@ -260,7 +260,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: totalCellId, for: indexPath) as! TotalMaidCell
-                cell.total = "\((workSuccess?.price)!)"
+                cell.total = workSuccess?.price as NSNumber?
                 return cell
             }
         default:

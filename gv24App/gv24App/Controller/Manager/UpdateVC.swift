@@ -480,13 +480,12 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
                 self.params["price"] = priceNumber
                 return nil
             }else{
-                return "Vui lòng chọn giá tiền"
+                return LanguageManager.shared.localized(string: "PleaseEnterTheAmount")
             }
         }else{
             self.params["package"] = "000000000000000000000002"
             return nil
         }
-        
     }
     
     private func validateDate() -> String?{
@@ -495,7 +494,7 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
             params["endAt"] = timeEnd
             return nil
         }
-        return "Giờ bắt đầu phải nhỏ hơn giờ kết thúc"
+        return LanguageManager.shared.localized(string: "TheStartDateShouldBeLessThanTheEndDate")
     }
     
     //MARK: - delegate

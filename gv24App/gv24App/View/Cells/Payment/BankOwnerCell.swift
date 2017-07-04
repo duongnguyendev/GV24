@@ -21,7 +21,7 @@ class BankOwnerCell: BaseCollectionCell{
             if bank == nil{
                 labelBank.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) \(0) VND"
             }else{
-                labelBank.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) \(bank!) VND"
+                labelBank.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) \(String.numberDecimalString(number: bank!)) VND"
             }
         }
     }
