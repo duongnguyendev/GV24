@@ -119,7 +119,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
             headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? HeaderWithTitle
             switch indexPath.section {
             case 1:
-                headerView?.title = "Năng lực làm việc"
+                headerView?.title = "Workability"
                 return headerView!
             case 2:
                 headerView?.title = "Comment"

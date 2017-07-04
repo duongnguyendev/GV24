@@ -35,7 +35,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     }
     private let topBackGround : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "top_bg"))
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleToFill
         iv.backgroundColor = UIColor.brown
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -158,7 +158,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         emailTextField.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         passTextField.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         
-        emailTextField.topAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: 20).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: 0).isActive = true
         view.addConstraintWithFormat(format: "V:[v0][v1][v2][v3]", views: emailTextField, line1, passTextField, line2)
         
         view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: line1)

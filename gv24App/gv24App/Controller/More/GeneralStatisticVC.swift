@@ -230,25 +230,37 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     
     func handleButtonFrom(_ sender: UIButton){
         dateLaucher.sender = sender
+        var date = Date()
         if starDate == nil{
-            dateLaucher.startDate = Date()
+            dateLaucher.startDate = date
         }else{
             dateLaucher.startDate = starDate
         }
-        dateLaucher.datePicker.maximumDate = endDate
+        if endDate != nil{
+            dateLaucher.datePicker.maximumDate = endDate
+            date = endDate!
+        }else{
+            dateLaucher.datePicker.maximumDate = date
+        }
+        
+        dateLaucher.datePicker.minimumDate = Date(year: (Int(date.year)! - 5))
         dateLaucher.show()
         
     }
     func handleButtonTo(_ sender: UIButton){
         dateLaucher.sender = sender
+        var date = Date()
         if endDate == nil{
             dateLaucher.startDate = Date()
         }else{
             dateLaucher.startDate = endDate
+            date = endDate!
         }
         dateLaucher.datePicker.maximumDate = Date()
         if starDate != nil{
             dateLaucher.datePicker.minimumDate = starDate
+        }else{
+            dateLaucher.datePicker.minimumDate = Date(year: (Int(date.year)! - 5))
         }
         dateLaucher.show()
     }
