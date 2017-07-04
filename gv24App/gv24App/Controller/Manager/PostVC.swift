@@ -5,7 +5,6 @@
 //  Created by Nguyen Duy Duong on 5/15/17.
 //  Copyright © 2017 HBBs. All rights reserved.
 //
-
 import UIKit
 import GoogleMaps
 
@@ -343,25 +342,25 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     func handlePostButton(_ sender: UIButton){
         hideKeyboard()
         self.loadingView.show()
-//        validate { (errorString) in
-//            if errorString == nil{
-//                self.params["tools"] = self.checkBoxTool.isSelected
-//                TaskService.shared.postTask(params: self.params) { (error) in
-//                    self.loadingView.close()
-//                    if error == nil{
-//                        self.showAlertWith(message: "PostSuccessfully", completion: {
-//                            self.goBack()
-//                        })
-//                    }else{
-//                        self.showAlertWith(message: error!, completion: {})
-//                    }
-//                }
-//            }
-//            else{
-//                self.loadingView.close()
-//                self.showAlertWith(message: errorString!, completion: {})
-//            }
-//        }
+        validate { (errorString) in
+            if errorString == nil{
+                self.params["tools"] = self.checkBoxTool.isSelected
+                TaskService.shared.postTask(params: self.params) { (error) in
+                    self.loadingView.close()
+                    if error == nil{
+                        self.showAlertWith(message: "PostSuccessfully", completion: {
+                            self.goBack()
+                        })
+                    }else{
+                        self.showAlertWith(message: error!, completion: {})
+                    }
+                }
+            }
+            else{
+                self.loadingView.close()
+                self.showAlertWith(message: errorString!, completion: {})
+            }
+        }
     }
     
     func showAlertWith(message: String, completion: @escaping (()->())){
@@ -483,7 +482,6 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
             self.params["package"] = "000000000000000000000002"
             return nil
         }
-        
     }
     
     private func validateDate() -> String?{

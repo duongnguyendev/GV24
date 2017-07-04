@@ -17,7 +17,7 @@ class DescTaskView: BaseView {
             labelTitle.text = task?.info?.title
             labelType.text = task?.info?.work?.name
             labelDescTask.text = task?.info?.desc
-            moneyView.name = "\((task?.info?.price)!) VND"
+            moneyView.name = "\(String.numberDecimalString(number: (task?.info?.price)!)) VND"
             datetimeView.name = Date(isoDateString: (task?.info?.time?.startAt)!).dayMonthYear
             datetimeView.clock = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
             addressView.name = task?.info?.address?.name

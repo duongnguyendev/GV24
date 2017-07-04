@@ -13,14 +13,14 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     let unpaidWorkCellId = "unpaidCellId"
     let cellId = "cellId"
     
-    var timeStart : Date? = Date(){
+    var startDate : Date? = Date(){
         didSet{
-            buttonFrom.title = timeStart?.hourMinute
+            buttonFrom.title = startDate?.dayMonthYear
         }
     }
-    var timeEnd : Date? = Date(){
+    var endDate : Date? = Date(){
         didSet{
-            buttonTo.title = timeEnd?.hourMinute
+            buttonTo.title = endDate?.dayMonthYear
         }
     }
 
@@ -49,13 +49,8 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.taskTemp = nil
     }
-    override func viewDidAppear(_ animated: Bool) {
-        self.collectionControl.reloadData()
-    }
-    
     private let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: LanguageManager.shared.localized(string: "CompletedWork"), at: 0, animated: true)
@@ -97,6 +92,9 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     lazy var dateLauncher : DateLauncher = {
         let launcher = DateLauncher()
+        let currentYear = Int(Date().year)
+        launcher.datePicker.maximumDate = Date()
+        launcher.datePicker.minimumDate = Date(year: (currentYear! - 5))
         launcher.delegate = self
         return launcher
     }()
@@ -112,7 +110,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     private let buttonTo : BasicButton = {
         let btn = BasicButton()
         btn.titleCollor = AppColor.backButton
-        btn.title = "10/10/2017"
+        btn.title = Date().dayMonthYear
         btn.contentHorizontalAlignment = .center
         btn.addTarget(self, action: #selector(handleToButton(_:)), for: .touchUpInside)
         return btn
@@ -250,14 +248,13 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     //MARK: - handle button  
     func handleFromButton(_ sender : UIButton){
-        dateLauncher.startDate = timeStart
-        showDatePickerWith(mode: .time, sender: sender)
+        dateLauncher.startDate = startDate
+        showDatePickerWith(mode: .date, sender: sender)
         print("handleFromButton")
     }
-    
     func handleToButton(_ sender : UIButton){
-        dateLauncher.startDate = timeEnd
-        showDatePickerWith(mode: .time, sender: sender)
+        dateLauncher.startDate = endDate
+        showDatePickerWith(mode: .date, sender: sender)
         print("handleToButton")
     }
     //Mark: - Show DateTimeLauncher
@@ -268,7 +265,13 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     //Mark: - Delegate DateTime Launcher
     func selected(dateTime: Date, for sender: UIButton) {
-        
+        if sender == buttonFrom {
+            buttonFrom.title = dateTime.dayMonthYear
+            startDate = dateTime
+        }else{
+            buttonTo.title = dateTime.dayMonthYear
+            endDate = dateTime
+        }
     }
     //Mark: - Language
     override func localized() {

@@ -73,8 +73,6 @@ class TaskService: APIService {
         if endDate != nil {
             params["endAt"] = endDate?.isoString
         }
-        
-        
         getWithToken(url: url, params: params) { (jsonData, error) in
             if error != nil{
                 completion(nil, error)
@@ -82,7 +80,6 @@ class TaskService: APIService {
                 completion(GeneralStatistic(jsonData: jsonData!), error)
             }
         }
-        
     }
     func getWorkTypesFrom(jsonData : JSON) -> [WorkType]?{
         if let jsonArray = jsonData.array{
@@ -94,7 +91,6 @@ class TaskService: APIService {
         }
         return nil
     }
-    
     func selectedMaid(id: String,maidId: String,completion:@escaping ((Bool?)->())){
         let url = "task/submit"
         let parameters = [
