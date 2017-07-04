@@ -114,7 +114,7 @@ class HomeVC: BaseVC {
     //MARK: - localize
     override func localized(){
         title = LanguageManager.shared.localized(string: "Home")
-        aroundButton.title = "Around"
+        aroundButton.title = "NearbyWorkers"
         historyButton.title = "WorkHistory"
         taskManagerButton.title = "WorkManagement"
         sloganView.slogan = "TrustQuality"

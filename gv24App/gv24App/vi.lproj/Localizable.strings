@@ -136,6 +136,7 @@ AwaitingAssignment = "Đang chờ phân công";
 PendingConfirmation = "Đang chờ xác nhận";
 ChooseThisWork = "Chọn công việc này";
 Feedback = "Báo cáo người giúp việc";
+TitleFeedback = "Báo cáo";
 PartnersNearby = "Người giúp việc quanh đây";
 Announcement = "Thông báo";
 LoadingPleaseWait = "Đang tải...Vui lòng chờ";

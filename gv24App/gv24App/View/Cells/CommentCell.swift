@@ -12,7 +12,7 @@ class CommentCell: BaseCollectionCell {
     var comment : Comment?{
         didSet{
             if comment?.fromUser?.avatarUrl != nil{
-                avartaImage.loadImageUsingUrlString(urlString: (comment?.fromUser?.avatarUrl)!)
+                avartaImage.loadImageurl(link: (comment?.fromUser?.avatarUrl)!)
             }
             ratingView.point = comment?.evaluationPoint
             labelName.text = comment?.fromUser?.name

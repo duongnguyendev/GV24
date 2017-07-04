@@ -26,7 +26,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTouchUpOutSize = true
-        title = LanguageManager.shared.localized(string: "TitleAround")
+        title = LanguageManager.shared.localized(string: "TitleNearbyWorkers")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         setupLocationManager()
     }
@@ -222,7 +222,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
             if error == nil{
                 self.maids = response
             }else{
-                let alert = UIAlertController(title: nil, message: LanguageManager.shared.localized(string: ""), preferredStyle: .alert)
+                let alert = UIAlertController(title: nil, message: LanguageManager.shared.localized(string: "DATA_NOT_EXIST"), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

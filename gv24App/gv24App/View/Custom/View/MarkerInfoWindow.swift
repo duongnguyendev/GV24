@@ -13,7 +13,7 @@ class MarkerInfoWindow: BaseView {
 
     var user : MaidProfile?{
         didSet{
-            self.labelName.text = user?.userName
+            self.labelName.text = user?.name
             self.labelPrice.text = "\(String(describing: (user?.workInfo?.price)!))"
             self.avatarImage.loadImageurl(link: (user?.avatarUrl)!)
         }

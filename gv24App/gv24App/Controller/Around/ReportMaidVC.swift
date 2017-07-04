@@ -20,7 +20,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
-        title = LanguageManager.shared.localized(string: "Feedback")
+        title = LanguageManager.shared.localized(string: "TitleFeedback")
     }
     
     private let avatarImageView : CustomImageView = {
@@ -112,7 +112,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     
     //MARK: - handle button
     func handleSendButton(_ sender: UIButton){
-        let alert = UIAlertController(title: "", message: "Báo cáo thành công", preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ReportSentSuccessfully"), preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
             UserService.shared.report(maidId: (maid?.userId)!, content: textViewdContent.text, completion: { (error) in
@@ -120,21 +120,20 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
                     alert.message = error
                 }else{
                     alertAction = UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
-                        self.dismiss(animated: true, completion: nil)
+                        self.goBack()
                     })
                     alert.addAction(alertAction)
                 }
                 self.present(alert: alert)
             })
         }else{
-            alert.message = "Vui lòng nhập nội dung cần báo cáo"
+            alert.message = LanguageManager.shared.localized(string: "PleaseEnterTheMessage")
             alert.addAction(alertAction)
             self.present(alert: alert)
         }
     }
     
     func present(alert : UIAlertController){
-        
         self.present(alert, animated: true, completion: nil)
     }
 }
