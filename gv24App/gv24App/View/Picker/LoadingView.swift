@@ -56,14 +56,14 @@ class LoadingView: NSObject {
         setupMainView()
         self.blackView.isHidden = false
         self.mainView.isHidden = false
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.alpha = 1
             self.mainView.alpha = 1
         }, completion: nil)
     }
     
     func close(){
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.blackView.alpha = 0
             self.mainView.alpha = 0
         }) { (Bool) in
