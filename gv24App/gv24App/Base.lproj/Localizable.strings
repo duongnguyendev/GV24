@@ -196,3 +196,4 @@ WorkYouChooseIsExpired = "Work you choose is expired";
 FailedToIdentify = "Failed to identify!";
 UserNotExist = "User not exist";
 INVALID_PASSWORD = "Invalid password";
+RechargeSuccessful = "Recharge successful!";

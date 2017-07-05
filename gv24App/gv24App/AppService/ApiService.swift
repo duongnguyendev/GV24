@@ -12,6 +12,28 @@ import SwiftyJSON
 import Photos
 typealias ResponseCompletion = (JSON?, String?) -> ()
 class APIService: NSObject {
+    
+    func post(url : String, parameters: Parameters?, header: HTTPHeaders, completion: @escaping (ResponseCompletion)){
+
+        Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters, headers: header).responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let status = json["status"].bool
+                if !status!{
+                    if let message = json["message"].string{
+                        completion(nil, message)
+                    }
+                }else{
+                    completion(json["data"], nil)
+                }
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
+                print(error)
+            }
+        }
+    }
+    
     //MARK: - POST
     func postWidthToken(url : String, parameters: Parameters, completion: @escaping (ResponseCompletion)){
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]

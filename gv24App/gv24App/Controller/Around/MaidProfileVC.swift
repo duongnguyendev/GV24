@@ -77,7 +77,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
             let text = comments[indexPath.item].content
             let size = CGSize(width: view.frame.width, height: 1000)
             let height = String.heightWith(string: text!, size: size, font: Fonts.by(name: .regular, size: 12))
-            return CGSize(width: view.frame.size.width, height: 120 + height)
+            return CGSize(width: view.frame.size.width, height: 130 + height)
         }
     }
     

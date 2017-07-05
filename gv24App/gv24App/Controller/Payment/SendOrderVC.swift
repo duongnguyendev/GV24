@@ -31,7 +31,7 @@ class SendOrderVC: BaseVC {
         lb.font = Fonts.by(name: .light, size: 14)
         return lb
     }()
-    private let mtfName: InfoTextField = {
+    let mtfName: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -46,7 +46,7 @@ class SendOrderVC: BaseVC {
         return lb
     }()
     
-    private let mtfTotalMoney: InfoTextField = {
+    let mtfTotalMoney: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .numberPad
@@ -62,7 +62,7 @@ class SendOrderVC: BaseVC {
         return lb
     }()
     
-    private let mtfEmail: InfoTextField = {
+    let mtfEmail: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -77,7 +77,7 @@ class SendOrderVC: BaseVC {
         return lb
     }()
     
-    private let mtfPhone: InfoTextField = {
+    let mtfPhone: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .numberPad
@@ -93,7 +93,7 @@ class SendOrderVC: BaseVC {
         return lb
     }()
     
-    private let mtfAddress: InfoTextField = {
+    let mtfAddress: InfoTextField = {
         let tf = InfoTextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -132,8 +132,7 @@ class SendOrderVC: BaseVC {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        mtfName.text = UserHelpers.currentUser?.userName
+        mtfName.text = UserHelpers.currentUser?.name
         mtfTotalMoney.text = "\((workPayment?.price)!)"
         mtfEmail.text = UserHelpers.currentUser?.email
         mtfPhone.text = UserHelpers.currentUser?.phone

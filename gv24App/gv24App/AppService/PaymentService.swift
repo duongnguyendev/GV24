@@ -69,4 +69,43 @@ class PaymentService: APIService {
         }
 
     }
+    func chargeOnlineFiConfirm(number: Double, completion: @escaping ((String?, String?, String?)->())){
+        let url = "payment/chargeOnlineFiConfirm"
+        let params = ["price": number]
+        postWidthToken(url: url, parameters: params) { (jsonData, error) in
+            if error != nil{
+                completion(nil, nil, error)
+            }else{
+                let bill = jsonData?["bill"].string
+                let key = jsonData?["key"].string
+                completion(bill, key, nil)
+            }
+        }
+    }
+    func chargeOnlineSeConfirm(billId : String, key: String, completion: @escaping ((String?, String?)->())){
+        let url = "payment/chargeOnlineSecConfirm"
+        let header = ["hbbgvauth": UserHelpers.token, "hbbgv_accesskey":key]
+        let params = ["billId": billId]
+        post(url: url, parameters: params, header: header) { (jsonData, error) in
+            if error != nil{
+                completion(nil, error)
+            }else{
+                let key = jsonData?["key"].string
+                completion(key, nil)
+            }
+        }
+    }
+    
+    func chargeOnlineThiConfirm(billId: String, key: String, completion: @escaping ((String?)->())){
+        let url = "payment/chargeOnlineThiConfirm"
+        let header = ["hbbgvauth": UserHelpers.token, "hbbgv_accesskey":key]
+        let params = ["billId": billId]
+        post(url: url, parameters: params, header: header) { (jsonData, error) in
+            if error != nil{
+                completion(error)
+            }else{
+                completion(nil)
+            }
+        }
+    }
 }

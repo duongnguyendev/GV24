@@ -213,3 +213,4 @@ PaymentSuccessfully = "Thanh toán thánh công";
 TitlePayment = "Ngân lượng";
 NearbyMaid = "Người giúp việc quanh đây";
 INVALID_PASSWORD = "Mật khẩu không đúng";
+RechargeSuccessful = "Recharge successful!";

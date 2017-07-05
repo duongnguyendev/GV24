@@ -37,6 +37,10 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         view.backgroundColor = AppColor.collection
         title = LanguageManager.shared.localized(string: "GeneralStatistic")
         self.user = UserHelpers.currentUser
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadData(startDate: starDate, endDate: endDate)
     }
     
@@ -258,7 +262,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     }
     
     func handleRechargeButton(_ sender : UIButton){
-        push(viewController: RechargeVC())
+        present(viewController: RechargeVC())
     }
     func selected(dateTime: Date, for sender: UIButton) {
         if sender == buttonFrom {
