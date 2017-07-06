@@ -157,7 +157,7 @@ class RechargeVC: BaseVC {
         labelSlogan.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 5).isActive = true
     }
     func handleButtonRecharge(_ sender: UIButton){
-        
+        push(viewController: RechargeOnlineVC())
     }
     func handleButtonTransferInfo(_ sender: UIButton){
         let transferInfoVC = TransferInfoVC()

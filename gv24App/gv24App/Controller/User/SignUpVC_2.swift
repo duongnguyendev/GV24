@@ -421,11 +421,11 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         return nil
     }
     func fullNameTextFieldChange(_ sender: UITextField){
-        let lenght = phoneTextField.text?.characters.count
-        let metin = phoneTextField.text
+        let lenght = sender.text?.characters.count
+        let metin = sender.text
         if lenght! > 50{
             let index = metin?.index((metin?.startIndex)!, offsetBy: 11)
-            phoneTextField.text = phoneTextField.text?.substring(to: index!)
+            sender.text = sender.text?.substring(to: index!)
         }
     }
     

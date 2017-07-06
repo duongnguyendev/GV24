@@ -215,3 +215,4 @@ PaymentSuccessfully = "Payment successfully!";
 TitlePayment = "Payment";
 NearbyMaid = "Nearby maid";
 INVALID_PASSWORD = "Invalid password";
+RechargeSuccessful = "Recharge successful!";
