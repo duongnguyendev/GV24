@@ -17,11 +17,14 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
     var delegate : HistoryVCDelegate?
     let cellId = "cellId"
     var taskHistory: TaskHistory?
-    var workUnpaids = [WorkUnpaid]()
-    var maidsHistory = [MaidHistory]()
+    var workUnpaids: [WorkUnpaid]?
+    var maidsHistory: [MaidHistory]?
     
-    var indexPath = IndexPath(item: 0, section: 0)
     var pointCell = CGPoint()
+    var startAt: Date?
+    var endAt: Date?
+    var page: Int?
+    
     lazy var historyCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -34,27 +37,33 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
     var type: Int?{
         didSet{
             if type == 0{
-                HistoryService.shared.fetchTaskHistory(completion: { (taskHistory) in
-                    self.taskHistory = taskHistory
-                    self.historyCollectionView.reloadData()
-                })
+                self.loadTaskHistory()
             }else if type == 1{
-                HistoryService.shared.fetchMaidHistory(completion: { (maids) in
-                    if let maids = maids{
-                        self.maidsHistory = maids
-                        self.historyCollectionView.reloadData()
-                    }
-                })
-                
+                self.loadMaidHistory()
             }else if type == 2{
-                HistoryService.shared.fetchUnpaidWork(completion: { (mWorkUnpaids) in
-                    if let worksUnpaid = mWorkUnpaids{
-                        self.workUnpaids = worksUnpaid
-                        self.historyCollectionView.reloadData()
-                    }
-                    
-                })
+                self.loadTaskUnpaids()
             }
+        }
+    }
+    //Mark: -Load Data-
+    func loadTaskHistory(){
+        HistoryService.shared.fetchTaskHistory(startAt: startAt, endAt: endAt, page: page) { (taskHistory) in
+            if let task = taskHistory{
+                self.taskHistory = task
+                self.historyCollectionView.reloadData()
+            }
+        }
+    }
+    func loadMaidHistory(){
+        HistoryService.shared.fetchMaidHistory(startAt: startAt, endAt: endAt, page: page) { (maidHistory) in
+            self.maidsHistory = maidHistory
+            self.historyCollectionView.reloadData()
+        }
+    }
+    func loadTaskUnpaids(){
+        HistoryService.shared.fetchUnpaidWork(startAt: startAt, endAt: endAt) { (workUnpaids) in
+            self.workUnpaids = workUnpaids
+            self.historyCollectionView.reloadData()
         }
     }
     override func setupView() {
@@ -68,12 +77,10 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
     func register(){
         historyCollectionView.register(TaskCell.self, forCellWithReuseIdentifier: cellId)
     }
-    
     //MARK: - collection delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         return cell

@@ -14,17 +14,16 @@ class JobExpiredDetailVC: JobDetailVC{
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        lb.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        lb.heightAnchor.constraint(equalToConstant: 25).isActive = true
         lb.font = Fonts.by(name: .light, size: 13)
         lb.textColor = UIColor.white
         lb.backgroundColor = UIColor.lightGray
-        lb.layer.cornerRadius = 10
+        lb.layer.cornerRadius = 12.5
         lb.layer.masksToBounds = true
         lb.textAlignment = .center
         lb.text = LanguageManager.shared.localized(string: "ExpiredTask")
         return lb
     }()
-    
     let deleteButton: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +41,6 @@ class JobExpiredDetailVC: JobDetailVC{
         
         labelExpired.rightAnchor.constraint(equalTo: descTaskView.rightAnchor, constant: -(margin/3)).isActive = true
         labelExpired.topAnchor.constraint(equalTo: descTaskView.topAnchor, constant: margin/3).isActive = true
-        
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
@@ -51,7 +49,6 @@ class JobExpiredDetailVC: JobDetailVC{
         super.viewWillAppear(animated)
         self.descTaskView.task = task
     }
-    
     func handleRemoveTask(_ sender: UIButton){
         self.showAlertWith(task: task)
         print("Handle Remove Task")

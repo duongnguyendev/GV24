@@ -20,7 +20,7 @@ class MaidControlCell: HistoryControlCell {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: maidCellId, for: indexPath) as! MaidCell
         cell.delegate = delegate
-        cell.maidHistory = maidsHistory[indexPath.item]
+        cell.maidHistory = maidsHistory?[indexPath.item]
         return cell
     }
     
@@ -31,7 +31,7 @@ class MaidControlCell: HistoryControlCell {
         return 20
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return maidsHistory.count
+        return maidsHistory?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){

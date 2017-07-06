@@ -249,6 +249,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         push(viewController: MaidAroundVC())
     }
     func handleSignInButton(_ sender : UIButton) {
+        self.hideKeyboard()
         self.loadingView.show()
         if (self.emailTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 && (self.passTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 {
             UserService.shared.logIn(userName: emailTextField.text!, password: passTextField.text!, completion: { (userLogedIn, token, error) in

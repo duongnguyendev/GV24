@@ -9,8 +9,8 @@
 import UIKit
 
 class TaskHistoryControlCell: HistoryControlCell {
-    
     let historyCellId = "historyCellId"
+    
     override func setupView() {
         super.setupView()
     }

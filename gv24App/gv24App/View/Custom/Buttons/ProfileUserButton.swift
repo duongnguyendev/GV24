@@ -13,7 +13,7 @@ class ProfileUserButton: BaseButton{
     
     var received: MaidProfile?{
         didSet{
-            avatarImageView.loadImageUsingUrlString(urlString: (received?.avatarUrl)!)
+            avatarImageView.loadImageurl(link: (received?.avatarUrl)!)
             labelName.text = received?.userName
             labelAddress.text = received?.address?.name
         }
@@ -38,6 +38,7 @@ class ProfileUserButton: BaseButton{
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 13)
         lb.text = "244 Cống Quỳnh, P. Phạm Ngũ Lão, Q.1"
+        lb.numberOfLines = 2
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()

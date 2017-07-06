@@ -34,7 +34,6 @@ class DescTaskView: BaseView {
         lb.text = "Lau dọn nhà"
         return lb
     }()
-    
     private let labelType : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 12)
@@ -43,7 +42,6 @@ class DescTaskView: BaseView {
         lb.textColor = UIColor.gray
         return lb
     }()
-    
     private let labelDescTask: UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 14)
@@ -53,7 +51,6 @@ class DescTaskView: BaseView {
         lb.text = "Cần 1 bạn nữ dọn phòng sáng ngày thứ 4, sau 9 giờ.Cần 1 bạn nữ dọn phòng sáng ngày thứ 4, sau 9 giờ."
         return lb
     }()
-    
     let viewLine: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +104,6 @@ class DescTaskView: BaseView {
         addSubview(viewTimerLine)
         addSubview(addressView)
         
-        
         iconType.topAnchor.constraint(equalTo: topAnchor, constant: margin/2).isActive = true
         iconType.leftAnchor.constraint(equalTo: leftAnchor, constant: margin/2).isActive = true
         
@@ -144,7 +140,6 @@ class DescTaskView: BaseView {
         addressView.topAnchor.constraint(equalTo: viewTimerLine.bottomAnchor, constant: 0).isActive = true
         addressView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-    
     func setupLabelDescTask(){
         let size = CGSize(width: self.frame.width - margin - margin, height: 1000)
         let height = String.heightWith(string: labelDescTask.text!, size: size, font: labelDescTask.font!)

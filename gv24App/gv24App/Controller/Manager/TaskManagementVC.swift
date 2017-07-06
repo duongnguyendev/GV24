@@ -12,7 +12,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     private let cellNew = "cellNew"
     private let cellAssigned = "cellAssigned"
     private let cellInProgress = "cellInProgress"
-    
     var indexPath: IndexPath = IndexPath(item: 0, section: 0)
     
     override func viewDidLoad() {
@@ -22,15 +21,10 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         collectionType.register(TaskAssignedControlCell.self, forCellWithReuseIdentifier: cellAssigned)
         collectionType.register(TaskInProgressControlCell.self, forCellWithReuseIdentifier: cellInProgress)
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        self.collectionType.reloadData()
-    }
-    
     lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -61,7 +55,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     override func setupView() {
         super.setupView()
-        
         view.addSubview(segmentedControl)
         view.addSubview(collectionType)
         
@@ -71,7 +64,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         view.addConstraintWithFormat(format: "|[v0]|", views: collectionType)
     }
     //MARK: - collection view handle
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell : TaskControlCell
         switch indexPath.item {
@@ -105,12 +97,12 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
         let index = targetContentOffset.pointee.x / view.frame.width
-        indexPath = IndexPath(item: Int(index), section: 0)
+        indexPath.item = Int(index)
         segmentedControl.selectedSegmentIndex = Int(index)
     }
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){
-        indexPath = IndexPath(item: sender.selectedSegmentIndex, section: 0)
+        indexPath.item = segmentedControl.selectedSegmentIndex
         self.collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }
     

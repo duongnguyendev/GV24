@@ -239,7 +239,6 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         }else{
             dateLaucher.datePicker.maximumDate = date
         }
-        
         dateLaucher.datePicker.minimumDate = Date(year: (Int(date.year)! - 5))
         dateLaucher.show()
     }
