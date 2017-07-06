@@ -10,8 +10,6 @@ import UIKit
 import FacebookCore
 import FacebookLogin
 import GoogleSignIn
-
-
 class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SwitchCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -225,7 +223,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     func handleSection3(item : Int){
         if item == 0{
-            let text = "share content"
+            let text = LanguageManager.shared.localized(string: "ShareApp")
             
             // set up activity view controller
             let textToShare = [ text ]

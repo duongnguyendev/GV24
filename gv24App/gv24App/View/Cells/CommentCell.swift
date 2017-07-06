@@ -36,6 +36,7 @@ class CommentCell: BaseCollectionCell {
         let lb = UILabel()
         lb.font = Fonts.by(name: .medium, size: 15)
         lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.numberOfLines = 1
         lb.text = "Giúp việc A"
         return lb
     }()
@@ -50,6 +51,7 @@ class CommentCell: BaseCollectionCell {
     let labelTitle : UILabel = {
         let lb = UILabel()
         lb.text = "Lau dọn phòng khách"
+        lb.numberOfLines = 1
         lb.font = Fonts.by(name: .medium, size: 15)
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
@@ -82,12 +84,14 @@ class CommentCell: BaseCollectionCell {
         
         labelName.topAnchor.constraint(equalTo: avartaImage.topAnchor, constant: 5).isActive = true
         labelName.leftAnchor.constraint(equalTo: avartaImage.rightAnchor, constant: 10).isActive = true
+        labelName.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         
         labelDate.bottomAnchor.constraint(equalTo: avartaImage.bottomAnchor, constant: -5).isActive = true
         labelDate.leftAnchor.constraint(equalTo: avartaImage.rightAnchor, constant: 10).isActive = true
         
         labelTitle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         labelTitle.topAnchor.constraint(equalTo: avartaImage.bottomAnchor, constant: 10).isActive = true
+        labelTitle.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         
         labelContent.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         labelContent.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true

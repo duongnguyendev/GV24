@@ -40,7 +40,7 @@ class HistoryService: APIService{
             params["startAt"] = startAt?.isoString
         }
         if endAt != nil{
-            params["endAt"] = startAt?.isoString
+            params["endAt"] = endAt?.isoString
         }
         if page != nil{
             params["page"] = page
@@ -65,7 +65,7 @@ class HistoryService: APIService{
             params["startAt"] = startAt?.isoString
         }
         if endAt != nil{
-            params["endAt"] = startAt?.isoString
+            params["endAt"] = endAt?.isoString
         }
         getWithToken(url: url, params: params) { (json, error) in
             if error == nil{

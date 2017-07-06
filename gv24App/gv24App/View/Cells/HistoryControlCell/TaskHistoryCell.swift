@@ -12,6 +12,7 @@ class TaskHistoryCell: TaskCell{
     
     override func setupView() {
         super.setupView()
+        marginTitle = 10
         statusTask = "Đã hoàn thành"
     }
 }

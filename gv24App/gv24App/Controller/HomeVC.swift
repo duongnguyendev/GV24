@@ -26,7 +26,6 @@ class HomeVC: BaseVC {
         if !UserHelpers.isLogin {
             self.dismiss(animated: false, completion: nil)
         }
-
     }
     
     let aroundButton : HomeFunctButton = {
@@ -89,7 +88,6 @@ class HomeVC: BaseVC {
     
     
     func setupBackGround(){
-        
         view.addSubview(backGroundView)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: backGroundView)
         view.addConstraintWithFormat(format: "V:|[v0]|", views: backGroundView)

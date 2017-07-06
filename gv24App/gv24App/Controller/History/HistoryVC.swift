@@ -8,14 +8,16 @@
 
 import UIKit
 class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HistoryVCDelegate, DateTimeLauncherDelegate {
+    
     let maidHistoryCellId = "maidCellId"
     let taskHistoryCellId = "historyCellId"
     let unpaidWorkCellId = "unpaidCellId"
     let cellId = "cellId"
     var indexPath = IndexPath(item: 0, section: 0)
-    /*var startDate : Date?{
+    
+    var startDate : Date?{
         didSet{
-            let cell = collectionControl.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HistoryControlCell
+            let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
             cell.startAt = startDate
             cell.endAt = endDate
             cell.type = indexPath.item
@@ -23,12 +25,12 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     var endDate : Date?{
         didSet{
-            let cell = collectionControl.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HistoryControlCell
+            let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
             cell.startAt = startDate
             cell.endAt = endDate
             cell.type = indexPath.item
         }
-    }*/
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -54,7 +56,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             }
         }
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.taskTemp = nil
@@ -126,7 +127,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }()
     private let labelTo : UILabel = {
         let lb = UILabel()
-        lb.text = "đến"
+        lb.text = LanguageManager.shared.localized(string: "To")
         lb.font = Fonts.by(name: .light, size: 15)
         lb.textAlignment = .center
         return lb
@@ -209,8 +210,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         let index = targetContentOffset.pointee.x / view.frame.width
         indexPath.item = Int(index)
         segmentedControl.selectedSegmentIndex = indexPath.item
-        buttonFrom.title = "--/--/--"
-        buttonTo.title = Date().dayMonthYear
     }
     var taskTemp: Task?
     //MARK: - Delegate-
@@ -255,12 +254,11 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     func segmentedValueChanged(_ sender : UISegmentedControl){
         indexPath.item = sender.selectedSegmentIndex
         self.collectionControl.scrollToItem(at: indexPath, at: .left, animated: true)
-        buttonFrom.title = "--/--/--"
-        buttonTo.title = Date().dayMonthYear
     }
+    
     //MARK: - handle button  
     func handleFromButton(_ sender : UIButton){
-        /*dateLauncher.sender = sender
+        dateLauncher.sender = sender
         var date = Date()
         if startDate == nil{
             dateLauncher.startDate = date
@@ -274,10 +272,10 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             dateLauncher.datePicker.maximumDate = date
         }
         dateLauncher.datePicker.minimumDate = Date(year: (Int(date.year)! - 5))
-        dateLauncher.show()*/
+        dateLauncher.show()
     }
     func handleToButton(_ sender : UIButton){
-        /*dateLauncher.sender = sender
+        dateLauncher.sender = sender
         var date = Date()
         if endDate == nil{
             dateLauncher.startDate = Date()
@@ -291,20 +289,21 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         }else{
             dateLauncher.datePicker.minimumDate = Date(year: (Int(date.year)! - 5))
         }
-        dateLauncher.show()*/
+        dateLauncher.show()
     }
     //Mark: - Delegate DateTime Launcher
     func selected(dateTime: Date, for sender: UIButton) {
-        /*if sender == buttonFrom {
+        if sender == buttonFrom {
             buttonFrom.title = dateTime.dayMonthYear
             startDate = dateTime
         }else{
             buttonTo.title = dateTime.dayMonthYear
             endDate = dateTime
-        }*/
+        }
     }
     //Mark: - Language
     override func localized() {
         title = LanguageManager.shared.localized(string: "TitleWorkHistory")
     }
+    
 }

@@ -30,6 +30,8 @@ class TaskRequestCell: TaskCell{
         super.setupView()
         statusTask = LanguageManager.shared.localized(string: "AwaitingAssignment")
         addSubview(labelRequest)
+        marginTitle = 110
+        
         labelRequest.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelRequest.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
     }

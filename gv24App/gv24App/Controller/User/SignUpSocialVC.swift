@@ -22,13 +22,11 @@ class SignUpSocialVC: SignUpVC_2 {
             
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageAvatar.isUserInteractionEnabled = false
         // Do any additional setup after loading the view.
     }
-    
     override func handleComplateButton(_ sender: UIButton) {
         self.loadingView.show()
         validate(completion: { (error) in

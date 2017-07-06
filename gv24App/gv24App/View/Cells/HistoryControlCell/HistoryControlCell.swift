@@ -17,8 +17,8 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
     var delegate : HistoryVCDelegate?
     let cellId = "cellId"
     var taskHistory: TaskHistory?
-    var workUnpaids = [WorkUnpaid]()
-    var maidsHistory = [MaidHistory]()
+    var workUnpaids: [WorkUnpaid]?
+    var maidsHistory: [MaidHistory]?
     
     var pointCell = CGPoint()
     var startAt: Date?
@@ -56,18 +56,14 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
     }
     func loadMaidHistory(){
         HistoryService.shared.fetchMaidHistory(startAt: startAt, endAt: endAt, page: page) { (maidHistory) in
-            if let maids = maidHistory{
-                self.maidsHistory = maids
-                self.historyCollectionView.reloadData()
-            }
+            self.maidsHistory = maidHistory
+            self.historyCollectionView.reloadData()
         }
     }
     func loadTaskUnpaids(){
         HistoryService.shared.fetchUnpaidWork(startAt: startAt, endAt: endAt) { (workUnpaids) in
-            if let unpaids = workUnpaids{
-                self.workUnpaids = unpaids
-                self.historyCollectionView.reloadData()
-            }
+            self.workUnpaids = workUnpaids
+            self.historyCollectionView.reloadData()
         }
     }
     override func setupView() {

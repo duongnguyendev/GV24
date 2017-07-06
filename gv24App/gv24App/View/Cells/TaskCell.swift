@@ -11,6 +11,12 @@ import IoniconsSwift
 
 class TaskCell: BaseCollectionCell {
     let margin : CGFloat = 10
+    
+    var marginTitle: CGFloat?{
+        didSet{
+            labelTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: -marginTitle!).isActive = true
+        }
+    }
     var statusTask: String?{
         didSet{
             labelStatus.text = statusTask
@@ -27,6 +33,7 @@ class TaskCell: BaseCollectionCell {
     let labelTitle : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.numberOfLines = 1
         lb.font = Fonts.by(name: .medium, size: 17)
         lb.text = "Lau dọn nhà"
         return lb
@@ -86,7 +93,7 @@ class TaskCell: BaseCollectionCell {
 
         labelTitle.topAnchor.constraint(equalTo: iconType.topAnchor, constant: margin/4).isActive = true
         labelTitle.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin).isActive = true
-        labelTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
+        
 
         labelStatus.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin).isActive = true
         labelStatus.bottomAnchor.constraint(equalTo: iconType.bottomAnchor, constant: -margin/4).isActive = true

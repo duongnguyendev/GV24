@@ -9,7 +9,6 @@
 import UIKit
 
 class WebviewRechargeOnlineVC: WebviewPaymentVC {
-
     var billId : String?
     var key : String?
     
@@ -22,8 +21,6 @@ class WebviewRechargeOnlineVC: WebviewPaymentVC {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     override func webViewDidFinishLoad(_ webView: UIWebView) {
         let currentUrl = webView.stringByEvaluatingJavaScript(from: "window.location.href")
         if currentUrl == RETURN_URL{

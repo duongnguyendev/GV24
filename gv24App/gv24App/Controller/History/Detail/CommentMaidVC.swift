@@ -152,6 +152,7 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     }
     //Mark- Handle UITabbar Button
     func handleSendButton(_ sender: UIButton){
+        self.hideKeyboard()
         let alert = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ReportSentSuccessfully"), preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: nil)
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {

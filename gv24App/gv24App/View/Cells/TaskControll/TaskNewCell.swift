@@ -32,6 +32,8 @@ class TaskNewCell: TaskCell {
         super.setupView()
         statusTask = LanguageManager.shared.localized(string: "NewApplications")
         addSubview(labelNumber)
+        marginTitle = 30
+        
         labelNumber.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelNumber.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
     }

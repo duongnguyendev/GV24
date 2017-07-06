@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 class TaskExpiredCell: TaskCell{
-    
     let labelExpired : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +28,7 @@ class TaskExpiredCell: TaskCell{
     override func setupView() {
         super.setupView()
         statusTask = LanguageManager.shared.localized(string: "ExpiredToApply")
+        marginTitle = 80
         addSubview(labelExpired)
         labelExpired.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
         labelExpired.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
