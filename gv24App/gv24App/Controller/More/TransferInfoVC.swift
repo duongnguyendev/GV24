@@ -13,6 +13,7 @@ class TransferInfoVC: BaseVC {
     var contact : Contact?{
         didSet{
             labelNote.text = contact?.note
+            bankWebview.loadHTMLString((contact?.bank)!, baseURL: nil)
         }
     }
     
@@ -57,7 +58,15 @@ class TransferInfoVC: BaseVC {
         bottomLine.bottomAnchor.constraint(equalTo: v.bottomAnchor, constant: 0).isActive = true
         return v
     }()
-    
+    let bankWebview : UIWebView = {
+        let webView = UIWebView()
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.backgroundColor = UIColor.clear
+        webView.isOpaque = false
+        webView.scrollView.isScrollEnabled = false
+        return webView
+    }()
+
     override func setupView() {
         
         view.addSubview(titleLabel)
@@ -67,6 +76,7 @@ class TransferInfoVC: BaseVC {
         setupContactInfoView()
         setupNoteLabel()
     }
+    
     
     func setupContactInfoView(){
         
@@ -87,11 +97,11 @@ class TransferInfoVC: BaseVC {
         labelInfo.textAlignment = .left
         
         contactView.addSubview(labelBank)
-        contactView.addSubview(labelInfo)
+        contactView.addSubview(bankWebview)
         
-        contactView.addConstraintWithFormat(format: "V:|-20-[v0]-10-[v1]-20-|", views: labelBank, labelInfo)
+        contactView.addConstraintWithFormat(format: "V:|-20-[v0]-10-[v1(250)]|", views: labelBank, bankWebview)
         contactView.addConstraintWithFormat(format: "H:|-20-[v0]-15-|", views: labelBank)
-        contactView.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: labelInfo)
+        contactView.addConstraintWithFormat(format: "H:|-15-[v0]-15-|", views: bankWebview)
     }
     
     func setupNoteLabel(){

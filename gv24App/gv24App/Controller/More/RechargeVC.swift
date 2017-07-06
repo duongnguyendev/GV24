@@ -144,7 +144,7 @@ class RechargeVC: BaseVC {
         view.addSubview(logoImage)
         
         logoImage.translatesAutoresizingMaskIntoConstraints = false
-        logoImage.contentMode = .center
+        logoImage.contentMode = .scaleAspectFit
         logoImage.topAnchor.constraint(equalTo: contactView.bottomAnchor, constant: 10).isActive = true
         logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         logoImage.widthAnchor.constraint(equalToConstant: 90).isActive = true

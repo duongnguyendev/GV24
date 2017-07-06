@@ -19,6 +19,16 @@ class LaunchScreenVC: BaseVC {
     
     override func setupView() {
         super.setupView()
+        
+        let logoImage = UIImageView(image: UIImage(named: "logo"))
+        logoImage.translatesAutoresizingMaskIntoConstraints = false
+        logoImage.contentMode = .scaleAspectFit
+        view.addSubview(logoImage)
+        logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        logoImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        
+        view.addConstraint(NSLayoutConstraint(item: logoImage, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 2/3, constant: 0))
+        
     }
     
     private func showSign(){

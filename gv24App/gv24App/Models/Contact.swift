@@ -16,6 +16,7 @@ class Contact: Entity {
     var note : String?
     var address : String?
     var name : String?
+    var bank : String?
     
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
@@ -25,5 +26,6 @@ class Contact: Entity {
         self.note = jsonData["note"].string
         self.address = jsonData["address"].string
         self.name = jsonData["name"].string
+        self.bank = jsonData["bank"].string
     }
 }

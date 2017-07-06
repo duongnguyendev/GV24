@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //delay splash screen
+        Thread.sleep(forTimeInterval: 2)
         
         //Firebase config
         FIRApp.configure()
