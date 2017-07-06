@@ -49,8 +49,7 @@ class CustomImageView : UIImageView{
     func loadImageUsingUrlString(urlString: String){
         
         imageUrlString = urlString
-        
-        image = nil
+//        image = nil
         
         if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
             image = imageFromCache

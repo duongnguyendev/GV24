@@ -318,6 +318,8 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     
     func handleButtonDate(_ sender : UIButton){
         hideKeyboard()
+        let currentYear = Int(Date().year)
+        self.dateLauncher.datePicker.maximumDate = Date(year: (currentYear! + 5))
         showDatePickerWith(mode: .date, sender: sender)
     }
     func handleButtonWorkTypes(_ sender: UIButton){
@@ -374,11 +376,13 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     
     func handleButtonFrom(_ sender: UIButton){
         dateLauncher.startDate = timeStart
+        dateLauncher.datePicker.maximumDate = nil
         showDatePickerWith(mode: .time, sender: sender)
         
     }
     func handleButtonTo(_ sender: UIButton){
         dateLauncher.startDate = timeEnd
+        dateLauncher.datePicker.maximumDate = nil
         showDatePickerWith(mode: .time, sender: sender)
     }
     

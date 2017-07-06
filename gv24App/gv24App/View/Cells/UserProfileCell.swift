@@ -162,11 +162,12 @@ class UserProfileCell: BaseCollectionCell {
         setupComponent()
     }
     func getUserInfo(){
-        UserService.shared.getMyInfo { (user, error) in
-            if error == nil{
-                self.user = user
-            }
-        }
+//        UserService.shared.getMyInfo { (user, error) in
+//            if error == nil{
+//                self.user = user
+//            }
+//        }
+        self.user = UserHelpers.currentUser
     }
     
 }

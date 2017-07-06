@@ -11,7 +11,7 @@ import UIKit
 class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     var user : User?{
         didSet{
-            self.avatarImage.loadImageurl(link: (self.user?.avatarUrl)!)
+            self.avatarImage.loadImageUsingUrlString(urlString:(self.user?.avatarUrl)!)
         }
     }
     var starDate: Date?{

@@ -11,8 +11,10 @@ import UIKit
 class CommentCell: BaseCollectionCell {
     var comment : Comment?{
         didSet{
-            if comment?.fromUser?.avatarUrl != nil{
-                avartaImage.loadImageurl(link: (comment?.fromUser?.avatarUrl)!)
+            if comment?.fromUser?.avatarUrl != nil && comment?.fromUser?.avatarUrl != ""{
+                avartaImage.loadImageUsingUrlString(urlString: (comment?.fromUser?.avatarUrl)!)
+            }else{
+                avartaImage.image = UIImage(named: "avatar")
             }
             ratingView.point = comment?.evaluationPoint
             labelName.text = comment?.fromUser?.name

@@ -65,17 +65,6 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     //MARK: - load comment
     
     func loadComment(){
-//        if currentCommentPage == nil || currentCommentPage! < totalCommentPages!{
-//            UserService.shared.getComments(user: nil, page: currentCommentPage) { (comments, page, totalPage, error) in
-//                if error == nil{
-//                    self.currentCommentPage = page
-//                    self.totalCommentPages = totalPage
-//                    self.comments = self.comments + comments!
-//                }else{
-//                    
-//                }
-//            }
-//        }
         
     }
     

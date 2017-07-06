@@ -15,14 +15,15 @@ class MarkerInfoWindow: BaseView {
         didSet{
             self.labelName.text = user?.name
             self.labelPrice.text = "\(String(describing: (user?.workInfo?.price)!))"
-            self.avatarImage.loadImageurl(link: (user?.avatarUrl)!)
+//            self.avatarImage.loadImageurl(link: (user?.avatarUrl)!)
+            self.avatarImage.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
         }
     }
     let margin : CGFloat = 5.0
-    private let avatarImage : UIImageView = {
+    private let avatarImage : CustomImageView = {
         let iconSize : CGFloat = 40
         
-        let iv = UIImageView(image : UIImage(named: "avatar"))
+        let iv = CustomImageView(image : UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
         iv.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
