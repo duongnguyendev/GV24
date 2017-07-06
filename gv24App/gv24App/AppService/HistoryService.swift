@@ -5,15 +5,25 @@
 //  Created by Macbook Solution on 6/5/17.
 //  Copyright © 2017 HBBs. All rights reserved.
 //
-
 import Foundation
 import SwiftyJSON
 import Alamofire
 class HistoryService: APIService{
     static let shared = HistoryService()
-    func fetchTaskHistory(completion:@escaping (TaskHistoryCompletion)){
+    
+    func fetchTaskHistory(startAt: Date?,endAt: Date?,page: Int?,completion:@escaping (TaskHistoryCompletion)){
         let url = "owner/getHistoryTasks"
-        getWithToken(url: url) { (json, error) in
+        var params = Parameters()
+        if startAt != nil{
+            params["startAt"] = startAt?.isoString
+        }
+        if endAt != nil{
+            params["endAt"] = endAt?.isoString
+        }
+        if page != nil{
+            params["page"] = page
+        }
+        getWithToken(url: url, params: params) { (json, error) in
             if error == nil{
                 let taskHistory = TaskHistory(jsonData: json!)
                 completion(taskHistory)
@@ -22,9 +32,20 @@ class HistoryService: APIService{
             }
         }
     }
-    func fetchMaidHistory(completion:@escaping (MaidHistoryCompletion)){
+
+    func fetchMaidHistory(startAt: Date?,endAt: Date?,page: Int?,completion:@escaping (MaidHistoryCompletion)){
         let url = "owner/getAllWorkedMaid"
-        getWithToken(url: url) { (json, error) in
+        var params = Parameters()
+        if startAt != nil{
+            params["startAt"] = startAt?.isoString
+        }
+        if endAt != nil{
+            params["endAt"] = startAt?.isoString
+        }
+        if page != nil{
+            params["page"] = page
+        }
+        getWithToken(url: url, params: params) { (json, error) in
             if error == nil{
                 var maids = [MaidHistory]()
                 json?.array?.forEach({ (json) in
@@ -37,9 +58,16 @@ class HistoryService: APIService{
             }
         }
     }
-    func fetchUnpaidWork(completion:@escaping (UnpaidWorkCompletion)){
+    func fetchUnpaidWork(startAt: Date?,endAt: Date?,completion:@escaping (UnpaidWorkCompletion)){
         let url = "owner/getDebt"
-        getWithToken(url: url) { (json, error) in
+        var params = Parameters()
+        if startAt != nil{
+            params["startAt"] = startAt?.isoString
+        }
+        if endAt != nil{
+            params["endAt"] = startAt?.isoString
+        }
+        getWithToken(url: url, params: params) { (json, error) in
             if error == nil{
                 var works = [WorkUnpaid]()
                 json?.array?.forEach({ (mJson) in
@@ -52,7 +80,6 @@ class HistoryService: APIService{
             }
         }
     }
-    
     func fetchListTasks(id: String,completion:@escaping (MaidTaskCompletion)){
         let url = "owner/getTaskOfMaid?maid=\(id)"
         getWithToken(url: url) { (json, error) in
@@ -90,30 +117,6 @@ class HistoryService: APIService{
                 completion(nil)
             }else{
                 completion(error)
-            }
-        }
-    }
-    
-    func filterWorkHistory(startAt: Date?,endAt: Date?,page: Int?,completion:@escaping (TaskHistoryCompletion)){
-        let url = "owner/getHistoryTasks"
-        var params = Parameters()
-        if startAt != nil{
-            params["startAt"] = startAt?.isoString
-        }
-        if endAt != nil{
-            params["endAt"] = startAt?.isoString
-        }
-        if page != nil{
-            params["page"] = page
-        }
-        getWithToken(url: url, params: params) { (json, error) in
-            if error == nil{
-                if error == nil{
-                    let taskHistory = TaskHistory(jsonData: json!)
-                    completion(taskHistory)
-                }else{
-                    completion(nil)
-                }
             }
         }
     }

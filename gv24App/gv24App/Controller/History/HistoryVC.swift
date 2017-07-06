@@ -12,41 +12,49 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     let taskHistoryCellId = "historyCellId"
     let unpaidWorkCellId = "unpaidCellId"
     let cellId = "cellId"
-    
-    var startDate : Date? = Date(){
+    var indexPath = IndexPath(item: 0, section: 0)
+    /*var startDate : Date?{
         didSet{
-            buttonFrom.title = startDate?.dayMonthYear
+            let cell = collectionControl.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HistoryControlCell
+            cell.startAt = startDate
+            cell.endAt = endDate
+            cell.type = indexPath.item
         }
     }
-    var endDate : Date? = Date(){
+    var endDate : Date?{
         didSet{
-            buttonTo.title = endDate?.dayMonthYear
+            let cell = collectionControl.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HistoryControlCell
+            cell.startAt = startDate
+            cell.endAt = endDate
+            cell.type = indexPath.item
         }
-    }
-
+    }*/
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
+        collectionControl.register(HistoryControlCell.self, forCellWithReuseIdentifier: cellId)
         collectionControl.register(TaskHistoryControlCell.self, forCellWithReuseIdentifier: taskHistoryCellId)
         collectionControl.register(MaidControlCell.self, forCellWithReuseIdentifier: maidHistoryCellId)
         collectionControl.register(UnpaidWorkControlCell.self, forCellWithReuseIdentifier: unpaidWorkCellId)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadingView.show()
-        HistoryService.shared.fetchUnpaidWork(completion: { (mWorkUnpaids) in
-            if let worksUnpaid = mWorkUnpaids{
+        HistoryService.shared.fetchUnpaidWork(startAt: nil, endAt: nil) { (workUnpaids) in
+            if let unpaids = workUnpaids{
                 self.labelNumberPaid.isHidden = false
-                self.labelNumberPaid.text = "\(worksUnpaid.count)"
+                self.labelNumberPaid.text = "\(unpaids.count)"
                 self.loadingView.close()
             }else{
-                 self.labelNumberPaid.isHidden = true
-                 self.loadingView.close()
+                self.labelNumberPaid.isHidden = true
+                self.loadingView.close()
             }
-        })
+        }
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.taskTemp = nil
@@ -92,6 +100,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     lazy var dateLauncher : DateLauncher = {
         let launcher = DateLauncher()
+        launcher.pickerMode = .date
         let currentYear = Int(Date().year)
         launcher.datePicker.maximumDate = Date()
         launcher.datePicker.minimumDate = Date(year: (currentYear! - 5))
@@ -198,10 +207,12 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let index = targetContentOffset.pointee.x / view.frame.width
-        segmentedControl.selectedSegmentIndex = Int(index)
+        indexPath.item = Int(index)
+        segmentedControl.selectedSegmentIndex = indexPath.item
+        buttonFrom.title = "--/--/--"
+        buttonTo.title = Date().dayMonthYear
     }
     var taskTemp: Task?
-    
     //MARK: - Delegate-
     func selectedTaskHistory(task: Task) {
         if taskTemp != nil && task == taskTemp{
@@ -222,7 +233,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
                     self.present(viewController: assesmentVC)
                 }
             }
-
         }
     }
     func handleProfile(maid: MaidHistory) {
@@ -243,35 +253,55 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){
-        let index = IndexPath(item: sender.selectedSegmentIndex, section: 0)
-        self.collectionControl.scrollToItem(at: index, at: .left, animated: true)
+        indexPath.item = sender.selectedSegmentIndex
+        self.collectionControl.scrollToItem(at: indexPath, at: .left, animated: true)
+        buttonFrom.title = "--/--/--"
+        buttonTo.title = Date().dayMonthYear
     }
     //MARK: - handle button  
     func handleFromButton(_ sender : UIButton){
-        dateLauncher.startDate = startDate
-        showDatePickerWith(mode: .date, sender: sender)
-        print("handleFromButton")
+        /*dateLauncher.sender = sender
+        var date = Date()
+        if startDate == nil{
+            dateLauncher.startDate = date
+        }else{
+            dateLauncher.startDate = startDate
+        }
+        if endDate != nil{
+            dateLauncher.datePicker.maximumDate = endDate
+            date = endDate!
+        }else{
+            dateLauncher.datePicker.maximumDate = date
+        }
+        dateLauncher.datePicker.minimumDate = Date(year: (Int(date.year)! - 5))
+        dateLauncher.show()*/
     }
     func handleToButton(_ sender : UIButton){
-        dateLauncher.startDate = endDate
-        showDatePickerWith(mode: .date, sender: sender)
-        print("handleToButton")
-    }
-    //Mark: - Show DateTimeLauncher
-    func showDatePickerWith(mode : UIDatePickerMode, sender : UIButton){
-        dateLauncher.pickerMode = mode
-        dateLauncher.sender = sender
-        dateLauncher.show()
+        /*dateLauncher.sender = sender
+        var date = Date()
+        if endDate == nil{
+            dateLauncher.startDate = Date()
+        }else{
+            dateLauncher.startDate = endDate
+            date = endDate!
+        }
+        dateLauncher.datePicker.maximumDate = Date()
+        if startDate != nil{
+            dateLauncher.datePicker.minimumDate = startDate
+        }else{
+            dateLauncher.datePicker.minimumDate = Date(year: (Int(date.year)! - 5))
+        }
+        dateLauncher.show()*/
     }
     //Mark: - Delegate DateTime Launcher
     func selected(dateTime: Date, for sender: UIButton) {
-        if sender == buttonFrom {
+        /*if sender == buttonFrom {
             buttonFrom.title = dateTime.dayMonthYear
             startDate = dateTime
         }else{
             buttonTo.title = dateTime.dayMonthYear
             endDate = dateTime
-        }
+        }*/
     }
     //Mark: - Language
     override func localized() {
