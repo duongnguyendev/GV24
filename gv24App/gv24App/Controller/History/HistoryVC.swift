@@ -309,7 +309,10 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func showButtonDate(index: IndexPath){
-        let cell = collectionControl.cellForItem(at: index) as! HistoryControlCell
+        guard let cell = collectionControl.cellForItem(at: index) as? HistoryControlCell else {
+            return
+        }
+        
         if let startDate = cell.startAt, let endDate = cell.endAt{
             buttonFrom.title = startDate.dayMonthYear
             buttonTo.title = endDate.dayMonthYear
