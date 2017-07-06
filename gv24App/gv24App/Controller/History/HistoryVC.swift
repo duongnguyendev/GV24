@@ -210,6 +210,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         let index = targetContentOffset.pointee.x / view.frame.width
         indexPath.item = Int(index)
         segmentedControl.selectedSegmentIndex = indexPath.item
+        self.showButtonDate(index: indexPath)
     }
     var taskTemp: Task?
     //MARK: - Delegate-
@@ -254,6 +255,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     func segmentedValueChanged(_ sender : UISegmentedControl){
         indexPath.item = sender.selectedSegmentIndex
         self.collectionControl.scrollToItem(at: indexPath, at: .left, animated: true)
+        self.showButtonDate(index: indexPath)
     }
     
     //MARK: - handle button  
@@ -306,4 +308,17 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         title = LanguageManager.shared.localized(string: "TitleWorkHistory")
     }
     
+    func showButtonDate(index: IndexPath){
+        let cell = collectionControl.cellForItem(at: index) as! HistoryControlCell
+        if let startDate = cell.startAt, let endDate = cell.endAt{
+            buttonFrom.title = startDate.dayMonthYear
+            buttonTo.title = endDate.dayMonthYear
+        }else if let startDate = cell.startAt{
+            buttonFrom.title = startDate.dayMonthYear
+            buttonTo.title = Date().dayMonthYear
+        }else{
+            buttonFrom.title = "--/--/--"
+            buttonTo.title = Date().dayMonthYear
+        }
+    }
 }
