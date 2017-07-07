@@ -5,7 +5,8 @@
   Created by Nguyen Duy Duong on 4/27/17.
   Copyright © 2017 HBBs. All rights reserved.
 */
-domainGV24 = "https://yukotest123.herokuapp.com/vi/";
+//domainGV24 = "https://yukotest123.herokuapp.com/vi/";
+domainGV24 = "http://api.ngv247.com/vi/";
 English = "English";
 Back = "Trở lại";
 Home = "Trang chủ";
@@ -217,3 +218,4 @@ NearbyMaid = "Người giúp việc quanh đây";
 INVALID_PASSWORD = "Mật khẩu không đúng";
 RechargeSuccessful = "Recharge successful!";
 ShareApp = "Giao diện hiện đại, tính năng độc đáo, hoạt động cực kỳ hiệu quả là những gì bạn vừa trải nghiệm. Với phương châm “Chất lượng tạo niềm tin”, chúng tôi mong muốn mang đến cho khách hàng của mình những điều tốt nhất.  Và giờ đây, hãy chia sẻ ứng dụng NGV247 với chúng tôi để cùng nhau phát triển những điều lợi ích nhất";
+NoInternetConnection = "Không có kết nối Internet";

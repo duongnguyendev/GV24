@@ -21,6 +21,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         collectionType.register(TaskAssignedControlCell.self, forCellWithReuseIdentifier: cellAssigned)
         collectionType.register(TaskInProgressControlCell.self, forCellWithReuseIdentifier: cellInProgress)
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -112,6 +113,15 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         present(viewController: postVC)
     }
     //MARK: - task control delegate
+    
+//    func isLoading(loading: Bool) {
+//        if loading {
+//            self.loadingView.show()
+//        }else{
+//            self.loadingView.close()
+//        }
+//    }
+    
     func selectedPosted(task: Task, deadline: Bool) {
         if deadline{
             let jobExpiredVC = JobExpiredDetailVC()

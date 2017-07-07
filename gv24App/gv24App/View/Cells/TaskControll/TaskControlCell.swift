@@ -12,6 +12,7 @@ import UIKit
     @objc optional func remove(task : Task)
     @objc optional func selectedAssigned(deadline: Bool,task : Task)
     @objc optional func selectedProgress(task : Task)
+    @objc optional func isLoading(loading: Bool)
 }
 
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
@@ -29,6 +30,20 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         cv.dataSource = self
         return cv
     }()
+//    let loadingView : UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.backgroundColor = UIColor(white: 0, alpha: 0.3)
+//        let activity = UIActivityIndicatorView(activityIndicatorStyle: .white)
+//        view.addSubview(activity)
+//        activity.translatesAutoresizingMaskIntoConstraints = false
+//        activity.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+//        activity.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+//        activity.startAnimating()
+//        view.isHidden = true
+//        return view
+//    }()
+    
     
     var type: Int?{
         didSet{
@@ -42,7 +57,9 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         }
     }
     func loadData(process: String){
+//        self.loadingView.isHidden = false
         TaskManageService.shared.fetchTask(process: process, completion: { (tasks) in
+//            self.loadingView.isHidden = true
             if let task = tasks{
                 self.tasks = task
                 self.taskCollectionView.reloadData()
@@ -61,6 +78,10 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         lpgr.delaysTouchesBegan = true
         lpgr.delegate = self
         self.taskCollectionView.addGestureRecognizer(lpgr)
+        
+//        self.addSubview(loadingView)
+//        addConstraintWithFormat(format: "V:|[v0]|", views: loadingView)
+//        addConstraintWithFormat(format: "H:|[v0]|", views: loadingView)
     }
     
     func register(){

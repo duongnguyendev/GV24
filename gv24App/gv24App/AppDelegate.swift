@@ -16,6 +16,7 @@ import FirebaseMessaging
 import UserNotifications
 import FacebookCore
 import FacebookLogin
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate {
@@ -142,5 +143,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         // ...
     }
     
+    //MARK: - handle internet
     
+    
+    
+}
+class NetworkStatus {
+    static let sharedInstance = NetworkStatus()
+    private init() {}
+    let reachabilityManager = Alamofire.NetworkReachabilityManager(host: "https://www.google.com")
+    func startNetworkReachabilityObserver(completion:@escaping ((_ networkConnected: Bool)->())){
+        reachabilityManager?.listener = { status in
+            switch status {
+            case .notReachable:
+                print("The network is not reachable")
+                completion(false)
+            case .unknown :
+                print("It is unknown whether the network is reachable")
+                completion(false)
+            case .reachable(.ethernetOrWiFi):
+                print("The network is reachable over the WiFi connection")
+                completion(true)
+            case .reachable(.wwan):
+                print("The network is reachable over the WWAN connection")
+                completion(true)
+            }
+        }
+        reachabilityManager?.startListening()
+    }
 }

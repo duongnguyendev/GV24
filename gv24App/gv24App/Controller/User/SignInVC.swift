@@ -24,6 +24,7 @@ let DATA_NOT_EXIST = "DATA_NOT_EXIST"
 let INVALID_PASSWORD = "INVALID_PASSWORD "
 class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
+    
     private var itemHeight : CGFloat = 0
     override func viewDidLoad() {
         itemHeight = self.view.frame.size.height / 15
@@ -34,9 +35,8 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         GIDSignIn.sharedInstance().delegate = self
     }
     private let topBackGround : UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "top_bg"))
+        let iv = UIImageView()
         iv.contentMode = .scaleToFill
-        iv.backgroundColor = UIColor.brown
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -112,8 +112,20 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     }()
     
     //MARK: - SetupView
+    let mMargin : CGFloat = 40
     override func setupView() {
         super.setupView()
+    
+        
+        let backgroudImage = UIImageView(image: UIImage(named: "signin_bg"))
+        backgroudImage.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backgroudImage)
+        backgroudImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        backgroudImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        backgroudImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        backgroudImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+
+        
         self.setupTopView()
         self.setupBottomView()
     }
@@ -125,14 +137,17 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         view.addConstraintWithFormat(format: "V:|[v0(\(imageHeight))]", views: topBackGround)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: topBackGround)
         
-        view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: workAroundButton)
+        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: workAroundButton)
         workAroundButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
-        workAroundButton.bottomAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: -margin).isActive = true
+        workAroundButton.bottomAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: -mMargin/2).isActive = true
         
-        let logoView = IconView(image: "logo2", size: imageHeight / 3)
+        let logoView = UIImageView(image: UIImage(named: "logo2"))
+        logoView.translatesAutoresizingMaskIntoConstraints = false
+        logoView.contentMode = .scaleAspectFit
         view.addSubview(logoView)
         logoView.centerXAnchor.constraint(equalTo: topBackGround.centerXAnchor, constant: 0).isActive = true
-        logoView.centerYAnchor.constraint(equalTo: topBackGround.centerYAnchor, constant: -30).isActive = true
+        logoView.topAnchor.constraint(equalTo: topBackGround.topAnchor, constant: mMargin).isActive = true
+        logoView.bottomAnchor.constraint(equalTo: workAroundButton.topAnchor, constant: -20).isActive = true
     }
     
     private func setupBottomView(){
@@ -146,8 +161,8 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         let line1 = UIView.horizontalLine()
         let line2 = UIView.horizontalLine()
         
-        let iconUser = IconView(icon: .person, size: 15, color: AppColor.lightGray)
-        let iconPass = IconView(icon: .locked, size: 15, color: AppColor.lightGray)
+        let iconUser = IconView(icon: .person, size: 15, color: UIColor.darkGray)
+        let iconPass = IconView(icon: .locked, size: 15, color: UIColor.darkGray)
         view.addSubview(emailTextField)
         view.addSubview(passTextField)
         view.addSubview(iconUser)
@@ -161,11 +176,11 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         emailTextField.topAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: 0).isActive = true
         view.addConstraintWithFormat(format: "V:[v0][v1][v2][v3]", views: emailTextField, line1, passTextField, line2)
         
-        view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: line1)
-        view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: line2)
+        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: line1)
+        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: line2)
         
-        view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-5-[v1]-\(margin)-|", views: iconUser, emailTextField)
-        view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-5-[v1]-\(margin)-|", views: iconPass, passTextField)
+        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-5-[v1]-\(mMargin)-|", views: iconUser, emailTextField)
+        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-5-[v1]-\(mMargin)-|", views: iconPass, passTextField)
         
         iconUser.centerYAnchor.constraint(equalTo: emailTextField.centerYAnchor, constant: 0).isActive = true
         iconPass.centerYAnchor.constraint(equalTo: passTextField.centerYAnchor, constant: 0).isActive = true
@@ -176,7 +191,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         
         signInButton.topAnchor.constraint(equalTo: passTextField.bottomAnchor, constant: 30).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
-        view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: signInButton)
+        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: signInButton)
     }
     private func setupSignUp_ForgotPass(){
         
@@ -190,13 +205,13 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         
         forgotPassButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         forgotPassButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 5).isActive = true
-        forgotPassButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
+        forgotPassButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: mMargin).isActive = true
         forgotPassButton.rightAnchor.constraint(equalTo: lineView.leftAnchor, constant: 0).isActive = true
         
         signUpButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 5).isActive = true
         signUpButton.leftAnchor.constraint(equalTo: lineView.rightAnchor, constant: 0).isActive = true
-        signUpButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -margin).isActive = true
+        signUpButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -mMargin).isActive = true
         
         lineView.centerYAnchor.constraint(equalTo: signUpButton.centerYAnchor, constant: 0).isActive = true
     }
@@ -207,14 +222,14 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         view.addSubview(socialView)
         socialView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 0).isActive = true
         socialView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        view.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: socialView)
+        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: socialView)
         
         // label
         
         let lableSocial = UILabel()
         lableSocial.text = LanguageManager.shared.localized(string: "LoginWith")
         lableSocial.font = Fonts.by(name: .regular, size: 14)
-        lableSocial.textColor = AppColor.lightGray
+        lableSocial.textColor = UIColor.darkGray
         lableSocial.textAlignment = .center
         lableSocial.translatesAutoresizingMaskIntoConstraints = false
         

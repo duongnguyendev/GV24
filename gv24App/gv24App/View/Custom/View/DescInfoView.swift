@@ -21,9 +21,8 @@ class DescInfoView: BaseView{
             labelName.text = name
         }
     }
-    let iconType: UIImageView = {
-        let iv = UIImageView()
-        iv.translatesAutoresizingMaskIntoConstraints = false
+    let iconType: IconView = {
+        let iv = IconView(size: 20)
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -53,6 +52,8 @@ class DescInfoView: BaseView{
         iconType.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
         
         labelName.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: 10).isActive = true
+        labelName.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+
         labelName.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
     }
     

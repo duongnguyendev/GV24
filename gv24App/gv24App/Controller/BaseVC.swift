@@ -27,7 +27,7 @@ class BaseVC: UIViewController {
         setupRightNavButton()
         setupView()
     }
-
+    
     let loadingView = LoadingView()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +64,8 @@ class BaseVC: UIViewController {
                 nav.popViewController(animated: true)
             }
         }
+        
+        
     }
     func present(viewController : BaseVC){
         viewController.isPresented = true

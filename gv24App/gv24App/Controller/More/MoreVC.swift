@@ -226,7 +226,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             let text = LanguageManager.shared.localized(string: "ShareApp")
             
             // set up activity view controller
-            let textToShare = [ text ]
+            let textToShare = [text as Any]
             let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: [])
             activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
             

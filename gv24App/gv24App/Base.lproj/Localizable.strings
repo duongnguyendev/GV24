@@ -5,7 +5,8 @@
  Created by Nguyen Duy Duong on 4/27/17.
  Copyright © 2017 HBBs. All rights reserved.
  */
-domainGV24 = "https://yukotest123.herokuapp.com/en/";
+//domainGV24 = "https://yukotest123.herokuapp.com/en/";
+domainGV24 = "http://api.ngv247.com/en/";
 English = "English";
 Back = "Back";
 Home = "Home";
@@ -197,3 +198,4 @@ FailedToIdentify = "Failed to identify!";
 UserNotExist = "User not exist";
 INVALID_PASSWORD = "Invalid password";
 RechargeSuccessful = "Recharge successful!";
+NoInternetConnection = "No internet connection";

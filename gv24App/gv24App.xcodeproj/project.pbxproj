@@ -888,7 +888,7 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = FE5FXN233L;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1296,15 +1296,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv247App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "d0fca019-7eea-4bf6-9fda-74b217d2b68f";
+				PROVISIONING_PROFILE_SPECIFIER = "demo push notification GV247";
 				SWIFT_OBJC_BRIDGING_HEADER = "gv24App/Resource/FrameworkPayment/gv24App-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1319,16 +1319,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HBBs.gv247App;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "08dedf7f-15cc-4de2-aafb-86faf00432df";
+				PROVISIONING_PROFILE_SPECIFIER = ngv247profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "gv24App/Resource/FrameworkPayment/gv24App-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

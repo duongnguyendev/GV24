@@ -5,7 +5,8 @@
   Created by Nguyen Duy Duong on 4/27/17.
   Copyright © 2017 HBBs. All rights reserved.
 */
-domainGV24 = "https://yukotest123.herokuapp.com/en/";
+//domainGV24 = "https://yukotest123.herokuapp.com/en/";
+domainGV24 = "http://api.ngv247.com/en/";
 English = "English";
 Back = "Back";
 Home = "Home";
@@ -217,3 +218,4 @@ NearbyMaid = "Nearby maid";
 INVALID_PASSWORD = "Invalid password";
 RechargeSuccessful = "Recharge successful!";
 ShareApp = "Modern designs, unique features, extremely efficient performance are what you just experienced. Following the motto 'Quality builds Trust', we desire to bring our customers the best of the best. And now, let's share the NGV247 application to develop the greatest";
+NoInternetConnection = "No internet connection";

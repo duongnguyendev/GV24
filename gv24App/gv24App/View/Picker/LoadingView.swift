@@ -72,3 +72,63 @@ class LoadingView: NSObject {
         }
     }
 }
+
+
+class InternetDisconnectView: NSObject {
+    private let blackView = UIView()
+    private let mainView : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = LanguageManager.shared.localized(string: "NoInternetConnection")
+        view.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        label.font = Fonts.by(name: .medium, size: 20)
+        label.textAlignment = .center
+        return view
+    }()
+    override init() {
+        super.init()
+    }
+    
+    func setupMainView(){
+        if let window = UIApplication.shared.keyWindow{
+            self.blackView.isHidden = true
+            self.mainView.isHidden = true
+            
+            blackView.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
+            window.addSubview(blackView)
+            window.addSubview(mainView)
+            
+            blackView.frame = window.frame
+            blackView.alpha = 0
+            mainView.centerYAnchor.constraint(equalTo: blackView.centerYAnchor, constant: 0).isActive = true
+            mainView.centerXAnchor.constraint(equalTo: blackView.centerXAnchor, constant: 0).isActive = true
+            mainView.topAnchor.constraint(equalTo: blackView.topAnchor, constant: 0).isActive = true
+            mainView.leftAnchor.constraint(equalTo: blackView.leftAnchor, constant: 0).isActive = true
+        }
+    }
+    
+    func show(){
+        setupMainView()
+        self.blackView.isHidden = false
+        self.mainView.isHidden = false
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.blackView.alpha = 1
+            self.mainView.alpha = 1
+        }, completion: nil)
+    }
+    
+    func close(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blackView.alpha = 0
+            self.mainView.alpha = 0
+        }) { (Bool) in
+            self.blackView.isHidden = true
+            self.mainView.isHidden = true
+        }
+    }
+}

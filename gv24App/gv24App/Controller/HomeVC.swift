@@ -65,7 +65,7 @@ class HomeVC: BaseVC {
         let buttonSize = view.frame.size.width / 3
         
         view.addConstraintWithFormat(format: "H:|[v0]|", views: sloganView)
-        view.addConstraintWithFormat(format: "V:[v0(\(buttonSize - 30))]|", views: sloganView)
+        view.addConstraintWithFormat(format: "V:[v0(\(buttonSize))]|", views: sloganView)
         
         view.addConstraintWithFormat(format: "H:|[v0(\(buttonSize))][v1(\(buttonSize))][v2]|", views: aroundButton, taskManagerButton, historyButton)
         

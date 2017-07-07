@@ -14,7 +14,6 @@ class LaunchScreenVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func setupView() {
@@ -49,6 +48,12 @@ class LaunchScreenVC: BaseVC {
         }else{
             showSign()
         }
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            self.handleInternet(isConnected: false)
+        }
+        NetworkStatus.sharedInstance.startNetworkReachabilityObserver { (isInternetConnected) in
+            self.handleInternet(isConnected: isInternetConnected)
+        }
     }
     func handleLogedIn() {
         if !appStarted{
@@ -66,6 +71,16 @@ class LaunchScreenVC: BaseVC {
             self.showHome()
         }
     }
+    
+    func handleInternet(isConnected : Bool){
+        if isConnected {
+            internetDisconnectView.close()
+        }else{
+            internetDisconnectView.show()
+        }
+    }
+    let internetDisconnectView = InternetDisconnectView()
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
