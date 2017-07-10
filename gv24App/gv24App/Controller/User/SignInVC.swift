@@ -112,7 +112,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     }()
     
     //MARK: - SetupView
-    let mMargin : CGFloat = 40
+    let mMargin : CGFloat = UIScreen.main.bounds.size.width / 10
     override func setupView() {
         super.setupView()
     
