@@ -14,6 +14,12 @@ typealias ResponseCompletion = (JSON?, String?) -> ()
 class APIService: NSObject {
     
     func post(url : String, parameters: Parameters?, header: HTTPHeaders, completion: @escaping (ResponseCompletion)){
+        
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
+        
 
         Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters, headers: header).responseJSON { (response) in
             switch response.result {
@@ -36,6 +42,10 @@ class APIService: NSObject {
     
     //MARK: - POST
     func postWidthToken(url : String, parameters: Parameters, completion: @escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters, headers: header).responseJSON { (response) in
             switch response.result {
@@ -56,6 +66,10 @@ class APIService: NSObject {
         }
     }
     func postWithTokenUrl(url : String, parameters: Parameters, completion: @escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters,encoding:JSONEncoding.default, headers: header).responseJSON { (response) in
             switch response.result {
@@ -77,6 +91,10 @@ class APIService: NSObject {
 
     }
     func postWithUrl(url : String, parameters: Parameters, completion: @escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters,encoding:JSONEncoding.default).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -97,6 +115,10 @@ class APIService: NSObject {
         
     }
     func post(url : String, parameters: Dictionary<String, Any>, completion: @escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         Alamofire.request(self.urlFrom(request: url), method: .post, parameters: parameters).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -116,6 +138,10 @@ class APIService: NSObject {
         }
     }
     func postMultipart(url : String, image: UIImage?, name: String?, parameters: Dictionary<String, String>, completion: @escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 if let imageUpload = image{
@@ -151,6 +177,10 @@ class APIService: NSObject {
         )
     }
     func postMultipartWithToken(url : String, image: UIImage?, name: String?, parameters: Dictionary<String, String>, completion: @escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.upload(
             multipartFormData: { multipartFormData in
@@ -189,6 +219,10 @@ class APIService: NSObject {
         
     }
     func putWithToken(url: String,parameters: Parameters, completion: @escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), method: .put, parameters: parameters, headers: header).responseJSON { (response) in
             switch response.result {
@@ -211,6 +245,10 @@ class APIService: NSObject {
         
     }
     func putMultipartWithToken(url : String, image: UIImage?, name: String?, parameters: Dictionary<String, String>, completion: @escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         
         Alamofire.upload(
@@ -252,6 +290,10 @@ class APIService: NSObject {
     }
     //MARK: - GET
     func get(url : String, completion:@escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         Alamofire.request(self.urlFrom(request: url)).responseJSON { (response) in
             switch response.result {
             case .success(let value):
@@ -272,6 +314,10 @@ class APIService: NSObject {
         }
     }
     func getWithtoken(url: String, params : Parameters,  completion:@escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(urlFrom(request: url), parameters: params, headers: header).responseJSON { (response) in
             switch response.result {
@@ -293,6 +339,10 @@ class APIService: NSObject {
         }
     }
     func getWithToken(url : String, completion:@escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), headers: header).responseJSON { (response) in
             switch response.result {
@@ -313,6 +363,10 @@ class APIService: NSObject {
         }
     }
     func getWithToken(url: String, params : Parameters, completion:@escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header : HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         
         Alamofire.request(self.urlFrom(request: url),parameters: params, headers: header).responseJSON { (response) in
@@ -334,6 +388,10 @@ class APIService: NSObject {
         }
     }
     func deleteWithToken(url: String,parameters: Dictionary<String, String>,completion:@escaping (ResponseCompletion)){
+        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
+            completion(nil, LanguageManager.shared.localized(string: "NoInternetConnection"))
+            return
+        }
         let header: HTTPHeaders = ["hbbgvauth": UserHelpers.token]
         Alamofire.request(self.urlFrom(request: url), method: .delete, parameters: parameters,encoding: JSONEncoding.default,headers: header).responseJSON { (response) in
             switch response.result {

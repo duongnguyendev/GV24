@@ -48,13 +48,19 @@ class LaunchScreenVC: BaseVC {
         }else{
             showSign()
         }
+//        handleInternet()
+    }
+    
+    func handleInternet(){
         if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
             self.handleInternet(isConnected: false)
         }
         NetworkStatus.sharedInstance.startNetworkReachabilityObserver { (isInternetConnected) in
             self.handleInternet(isConnected: isInternetConnected)
         }
+
     }
+    
     func handleLogedIn() {
         if !appStarted{
             self.loadingView.show()

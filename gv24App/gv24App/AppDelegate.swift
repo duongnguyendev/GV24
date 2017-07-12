@@ -151,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
 class NetworkStatus {
     static let sharedInstance = NetworkStatus()
     private init() {}
-    let reachabilityManager = Alamofire.NetworkReachabilityManager(host: "https://www.google.com")
+    let reachabilityManager = Alamofire.NetworkReachabilityManager(host: "www.google.com")
     func startNetworkReachabilityObserver(completion:@escaping ((_ networkConnected: Bool)->())){
         reachabilityManager?.listener = { status in
             switch status {

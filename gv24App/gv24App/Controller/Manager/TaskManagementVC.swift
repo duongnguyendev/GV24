@@ -186,12 +186,12 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
 }
 extension TaskManagementVC : TaskManageDelegate{
     func chooseMaid() {
-        indexPath = IndexPath(item: 1, section: 0)
+        indexPath.item = 1
         segmentedControl.selectedSegmentIndex = 1
         collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }
     func checkInMaid() {
-        indexPath = IndexPath(item: 2, section: 0)
+        indexPath.item = 2
         segmentedControl.selectedSegmentIndex = 2
         collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }

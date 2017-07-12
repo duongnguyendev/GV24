@@ -20,7 +20,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
             cell.startAt = startDate
             cell.endAt = endDate
-            cell.type = indexPath.item
+//            cell.type = indexPath.item
         }
     }
     var endDate : Date?{
@@ -28,7 +28,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
             cell.startAt = startDate
             cell.endAt = endDate
-            cell.type = indexPath.item
+//            cell.type = indexPath.item
         }
     }
     override func viewDidLoad() {
