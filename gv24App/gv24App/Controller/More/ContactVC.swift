@@ -40,7 +40,7 @@ class ContactVC: BaseVC, MFMailComposeViewControllerDelegate  {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .medium, size: 15)
-        lb.text = "Công ty TNHH GV247"
+        lb.text = LanguageManager.shared.localized(string: "NGV247LimitedCompany")
         return lb
     }()
     private let labelAddress : UILabel = {

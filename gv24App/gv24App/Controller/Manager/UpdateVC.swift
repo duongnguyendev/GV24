@@ -68,6 +68,7 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
     
     override func setupRightNavButton() {
         let buttonSend = NavButton(title: LanguageManager.shared.localized(string: "Update")!)
+        buttonSend.frame = CGRect(x: 0, y: 0, width: 70, height: 20)
         buttonSend.addTarget(self, action: #selector(handleUpdateButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn

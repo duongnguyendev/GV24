@@ -95,7 +95,7 @@ class UserService: APIService {
             url = url + "?id=\((user?.userId)!)"
         }
         if page != nil{
-            url = url + "&page=\(page!)"
+            url = url + "&page=\(page! + 1)"
         }
         getWithToken(url: url) { (jsonData, error) in
             if error == nil{

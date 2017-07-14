@@ -199,3 +199,25 @@ UserNotExist = "User not exist";
 INVALID_PASSWORD = "Invalid password";
 RechargeSuccessful = "Recharge successful!";
 NoInternetConnection = "No internet connection";
+TimeOfWorkingIsInvalid ="Time of working is invalid";
+
+//========
+SUCCESS = "Thành công";
+FAILED = "Thất bại";
+DUPLICATED = "Dữ liệu đã tồn tại";
+DATA_NOT_EXIST = "Dữ liệu không tồn tại";
+LANGUAGE_NOT_SUPPORT = "Ngôn ngữ không hỗ trợ";
+INVALID_PASSWORD = "Sai mật khẩu";
+TASK_UPDATE_FAILED  = "Không thể cập nhật công việc (lý do: công việc đã được chọn bởi NGV)";
+TASK_OUT_OF_LIMIT = "Không thể tạo mới/gửi trực tiếp (lý do: qá 10 công việc)";
+SCHEDULE_DUPLICATED = "Không thể nhận công việc (lý do: trùng thời gian làm việc)";
+CHECK_IN_EXIST = "Check in đã tồn tại";
+CHECK_OUT_EXIST = "Check out đã tồn tại";
+NOT_CHECK_IN = "Không thể check out (lý do: chưa check in)";
+UNAUTHORIZED = "Tài khoản không xác thực";
+DELETE_DENY = "Không thể xóa/hủy công việc";
+RESERVE_EXIST = "Công việc đã được đăng ký";
+PUSH_NOTIFY_FAILED = "Không thể push notification";
+WALLET_NOT_ENOUGH = "Ví tiền không đủ để thanh toán";
+FACE_IDENTICAL_FAILED = "Nhận diện khuôn mặt không chính xác";
+NGV247LimitedCompany = "NGV247, limited company";

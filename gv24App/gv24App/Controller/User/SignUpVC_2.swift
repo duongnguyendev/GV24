@@ -323,7 +323,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            let imageResized = image.resize(newWidth: 500)
+            let imageResized = image.resize(newWidth: 200)
             imageAvatar.image = imageResized
             self.avatarImage = imageResized
         }

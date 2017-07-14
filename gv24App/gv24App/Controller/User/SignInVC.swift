@@ -29,6 +29,8 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     override func viewDidLoad() {
         itemHeight = self.view.frame.size.height / 15
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         hideKeyboardWhenTouchUpOutSize = true
         title = LanguageManager.shared.localized(string: "Login")
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -110,41 +112,65 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         btn.addTarget(self, action: #selector(handleGoogleButton(_:)), for: .touchUpInside)
         return btn
     }()
+    private let mainScrollView : UIScrollView = UIScrollView()
+    private let mainView : UIView = UIView()
     
     //MARK: - SetupView
     let mMargin : CGFloat = UIScreen.main.bounds.size.width / 10
     override func setupView() {
         super.setupView()
-    
-        
-        let backgroudImage = UIImageView(image: UIImage(named: "signin_bg"))
-        backgroudImage.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(backgroudImage)
-        backgroudImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        backgroudImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        backgroudImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        backgroudImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        setupMainView()
 
         
         self.setupTopView()
         self.setupBottomView()
     }
+    
+    private func setupMainView(){
+        view.addSubview(mainScrollView)
+        mainScrollView.addSubview(mainView)
+        
+        mainScrollView.translatesAutoresizingMaskIntoConstraints = false
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+        
+        mainScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        mainScrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+        mainView.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 0).isActive = true
+        mainView.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor, constant: 0).isActive = true
+        mainView.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0).isActive = true
+        mainView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor, constant: 0).isActive = true
+        
+        mainView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        mainView.heightAnchor.constraint(equalToConstant: view.frame.size.height - 64).isActive = true
+        
+        let backgroudImage = UIImageView(image: UIImage(named: "signin_bg"))
+        backgroudImage.translatesAutoresizingMaskIntoConstraints = false
+        mainView.addSubview(backgroudImage)
+        backgroudImage.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 0).isActive = true
+        backgroudImage.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 0).isActive = true
+        backgroudImage.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 0).isActive = true
+        backgroudImage.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: 0).isActive = true
+    }
+    
     private func setupTopView(){
-        view.addSubview(topBackGround)
-        view.addSubview(workAroundButton)
+        mainView.addSubview(topBackGround)
+        mainView.addSubview(workAroundButton)
         
         let imageHeight = (self.view.bounds.size.height) / 8 * 3 - 20
-        view.addConstraintWithFormat(format: "V:|[v0(\(imageHeight))]", views: topBackGround)
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: topBackGround)
+        mainView.addConstraintWithFormat(format: "V:|[v0(\(imageHeight))]", views: topBackGround)
+        mainView.addConstraintWithFormat(format: "H:|[v0]|", views: topBackGround)
         
-        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: workAroundButton)
+        mainView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: workAroundButton)
         workAroundButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         workAroundButton.bottomAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: -mMargin/2).isActive = true
         
         let logoView = UIImageView(image: UIImage(named: "logo2"))
         logoView.translatesAutoresizingMaskIntoConstraints = false
         logoView.contentMode = .scaleAspectFit
-        view.addSubview(logoView)
+        mainView.addSubview(logoView)
         logoView.centerXAnchor.constraint(equalTo: topBackGround.centerXAnchor, constant: 0).isActive = true
         logoView.topAnchor.constraint(equalTo: topBackGround.topAnchor, constant: mMargin).isActive = true
         logoView.bottomAnchor.constraint(equalTo: workAroundButton.topAnchor, constant: -20).isActive = true
@@ -163,45 +189,45 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         
         let iconUser = IconView(icon: .person, size: 15, color: UIColor.darkGray)
         let iconPass = IconView(icon: .locked, size: 15, color: UIColor.darkGray)
-        view.addSubview(emailTextField)
-        view.addSubview(passTextField)
-        view.addSubview(iconUser)
-        view.addSubview(iconPass)
-        view.addSubview(line1)
-        view.addSubview(line2)
+        mainView.addSubview(emailTextField)
+        mainView.addSubview(passTextField)
+        mainView.addSubview(iconUser)
+        mainView.addSubview(iconPass)
+        mainView.addSubview(line1)
+        mainView.addSubview(line2)
         
         emailTextField.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         passTextField.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         
         emailTextField.topAnchor.constraint(equalTo: topBackGround.bottomAnchor, constant: 0).isActive = true
-        view.addConstraintWithFormat(format: "V:[v0][v1][v2][v3]", views: emailTextField, line1, passTextField, line2)
+        mainView.addConstraintWithFormat(format: "V:[v0][v1][v2][v3]", views: emailTextField, line1, passTextField, line2)
         
-        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: line1)
-        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: line2)
+        mainView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: line1)
+        mainView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: line2)
         
-        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-5-[v1]-\(mMargin)-|", views: iconUser, emailTextField)
-        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-5-[v1]-\(mMargin)-|", views: iconPass, passTextField)
+        mainView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-5-[v1]-\(mMargin)-|", views: iconUser, emailTextField)
+        mainView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-5-[v1]-\(mMargin)-|", views: iconPass, passTextField)
         
         iconUser.centerYAnchor.constraint(equalTo: emailTextField.centerYAnchor, constant: 0).isActive = true
         iconPass.centerYAnchor.constraint(equalTo: passTextField.centerYAnchor, constant: 0).isActive = true
     }
     
     private func setupSignInButton(){
-        view.addSubview(signInButton)
+        mainView.addSubview(signInButton)
         
         signInButton.topAnchor.constraint(equalTo: passTextField.bottomAnchor, constant: 30).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
-        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: signInButton)
+        mainView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: signInButton)
     }
     private func setupSignUp_ForgotPass(){
         
         let lineView = UIView.verticalLine()
-        view.addSubview(lineView)
+        mainView.addSubview(lineView)
         lineView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 12).isActive = true
         
-        view.addSubview(signUpButton)
-        view.addSubview(forgotPassButton)
+        mainView.addSubview(signUpButton)
+        mainView.addSubview(forgotPassButton)
         
         forgotPassButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         forgotPassButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 5).isActive = true
@@ -211,7 +237,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         signUpButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 5).isActive = true
         signUpButton.leftAnchor.constraint(equalTo: lineView.rightAnchor, constant: 0).isActive = true
-        signUpButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -mMargin).isActive = true
+        signUpButton.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: -mMargin).isActive = true
         
         lineView.centerYAnchor.constraint(equalTo: signUpButton.centerYAnchor, constant: 0).isActive = true
     }
@@ -219,10 +245,10 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         
         let socialView = UIView()
         socialView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(socialView)
+        mainView.addSubview(socialView)
         socialView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 0).isActive = true
-        socialView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
-        view.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: socialView)
+        socialView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20).isActive = true
+        mainView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: socialView)
         
         // label
         
@@ -258,6 +284,21 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         googleButton.layer.masksToBounds = true
         
     }
+    //MARK: - handle keyboard show
+    func keyboardWillShow(notification : Notification){
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            self.mainScrollView.contentInset = contentInsets
+            self.mainScrollView.scrollIndicatorInsets = contentInsets
+        }
+    }
+    
+    func keyboardWillHide(notification : Notification){
+        let contentInsets = UIEdgeInsets.zero
+        self.mainScrollView.contentInset = contentInsets
+        self.mainScrollView.scrollIndicatorInsets = contentInsets
+    }
+    
     //MARK: - Handle action
     
     func handleWordAroundButton(_ sender : UIButton) {

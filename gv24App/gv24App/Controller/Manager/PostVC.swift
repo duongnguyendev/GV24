@@ -489,6 +489,9 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     }
     
     private func validateDate() -> String?{
+        if timeStart! <= Date() || timeEnd! <= Date(){
+            return LanguageManager.shared.localized(string: "TimeOfWorkingIsInvalid")
+        }
         if self.timeStart! < self.timeEnd!   {
             params["startAt"] = timeStart
             params["endAt"] = timeEnd

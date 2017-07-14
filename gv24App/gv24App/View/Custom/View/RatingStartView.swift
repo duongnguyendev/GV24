@@ -64,6 +64,14 @@ class RatingStartView: BaseView {
     }
     
     func handle(point: Double){
+        if point >= 5{
+            arrayButton[0].isSelected = true
+            arrayButton[1].isSelected = true
+            arrayButton[2].isSelected = true
+            arrayButton[3].isSelected = true
+            arrayButton[4].isSelected = true
+            return
+        }
         arrayButton[0].isSelected = false
         arrayButton[1].isSelected = false
         arrayButton[2].isSelected = false

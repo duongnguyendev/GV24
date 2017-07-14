@@ -121,6 +121,9 @@ extension Date{
         if dateComponent.month! > 0{
             return "\((dateComponent.month)!) \((LanguageManager.shared.localized(string: "MonthBefore"))!)"
         }else if dateComponent.day! > 0{
+            if dateComponent.day == 1{
+                return "\((dateComponent.day)!) \((LanguageManager.shared.localized(string: "1DayBefore"))!)"
+            }
             return "\((dateComponent.day)!) \((LanguageManager.shared.localized(string: "DayBefore"))!)"
         }else if dateComponent.hour! > 0{
             return "\((dateComponent.hour)!) \((LanguageManager.shared.localized(string: "HourBefore"))!)"

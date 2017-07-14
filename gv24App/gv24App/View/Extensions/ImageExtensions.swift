@@ -49,7 +49,7 @@ class CustomImageView : UIImageView{
     func loadImageUsingUrlString(urlString: String){
         
         imageUrlString = urlString
-//        image = nil
+        //        image = nil
         
         if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
             image = imageFromCache
@@ -72,13 +72,13 @@ class CustomImageView : UIImageView{
                             imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
                         }
                         else{
-                            //                            self.image = UIImage(named: "no_image_icon")
+                            self.image = UIImage(named: "avatar")
                         }
                     }
                 }
             }).resume()
         }else{
-            //            self.image = UIImage(named: "no_image_icon")
+            self.image = UIImage(named: "avatar")
         }
     }
 }

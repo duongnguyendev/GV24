@@ -32,8 +32,8 @@ class UserProfileCell: BaseCollectionCell {
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
-    let avatarImageView : UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "avatar"))
+    let avatarImageView : CustomImageView = {
+        let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(equalToConstant: 80).isActive = true
