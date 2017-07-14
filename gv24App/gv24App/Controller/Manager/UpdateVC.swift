@@ -466,10 +466,10 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
                     completion(nil)
                 }
                 else{
-                    completion("Địa chỉ nhập không đúng")
+                    completion(LanguageManager.shared.localized(string: "AddressNotFound"))
                 }
             }else{
-                completion("Địa chỉ nhập không đúng")
+                completion(LanguageManager.shared.localized(string: "AddressNotFound"))
             }
         }
     }

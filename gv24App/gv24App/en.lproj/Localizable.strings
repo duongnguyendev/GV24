@@ -219,6 +219,7 @@ INVALID_PASSWORD = "Invalid password";
 RechargeSuccessful = "Recharge successful!";
 ShareApp = "Modern designs, unique features, extremely efficient performance are what you just experienced. Following the motto 'Quality builds Trust', we desire to bring our customers the best of the best. And now, let's share the NGV247 application to develop the greatest";
 NoInternetConnection = "No internet connection";
+<<<<<<< HEAD
 TimeOfWorkingIsInvalid ="Time of working is invalid";
 
 //===============
@@ -241,3 +242,6 @@ PUSH_NOTIFY_FAILED = "PUSH NOTIFY FAILED";
 WALLET_NOT_ENOUGH = "WALLET NOT ENOUGH";
 FACE_IDENTICAL_FAILED = "FACE IDENTICAL FAILED";
 NGV247LimitedCompany = "NGV247, limited company";
+CommentSuccess = "Comment sent successfully";
+CommentFailed = "Failed to send comment";
+AlreadyComment = "You already commented on this";

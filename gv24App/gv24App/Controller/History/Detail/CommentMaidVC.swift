@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class CommentMaidVC: BaseVC,UITextViewDelegate{
+class CommentMaidVC: BaseVC{
     var id: String?
     var maid : MaidProfile?{
         didSet{
@@ -133,13 +133,6 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
         textViewdContent.rightAnchor.constraint(equalTo: viewConent.rightAnchor, constant: -15).isActive = true
         textViewdContent.bottomAnchor.constraint(equalTo: viewConent.bottomAnchor, constant: 0).isActive = true
     }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        
-    }
-    func textViewDidChange(_ textView: UITextView) {
-        self.textViewdContent.text = ""
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,13 +146,18 @@ class CommentMaidVC: BaseVC,UITextViewDelegate{
     //Mark- Handle UITabbar Button
     func handleSendButton(_ sender: UIButton){
         self.hideKeyboard()
-        let alert = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ReportSentSuccessfully"), preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "CommentSuccess"), preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: nil)
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
             self.loadingView.show()
             HistoryService.shared.assesmentMaid(task: id!, toId: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { (error) in
                 self.loadingView.close()
                 if error == nil{
+                    alertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }else{
+                    alert.message = LanguageManager.shared.localized(string: "AlreadyComment")
                     alertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
                         self.dismiss(animated: true, completion: nil)
                     })
