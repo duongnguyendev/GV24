@@ -14,7 +14,7 @@ class ProfileUserButton: BaseButton{
     var received: MaidProfile?{
         didSet{
             avatarImageView.loadImageurl(link: (received?.avatarUrl)!)
-            labelName.text = received?.userName
+            labelName.text = received?.name
             labelAddress.text = received?.address?.name
         }
     }

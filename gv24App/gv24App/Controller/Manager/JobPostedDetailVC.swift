@@ -40,6 +40,11 @@ class JobPostedDetailVC: JobDetailVC{
         return button
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = LanguageManager.shared.localized(string: "PostedWork")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.descTaskView.task = task
@@ -77,9 +82,5 @@ class JobPostedDetailVC: JobDetailVC{
                 
             }
         }
-    }
-    override func localized() {
-        super.localized()
-        title = LanguageManager.shared.localized(string: "Posted")
     }
 }

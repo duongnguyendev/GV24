@@ -55,7 +55,6 @@ class JobNewDetailVC: JobDetailVC{
     
     override func localized() {
         super.localized()
-        title = LanguageManager.shared.localized(string: "Posted")
-        
+        title = LanguageManager.shared.localized(string: "PostedWork")
     }
 }

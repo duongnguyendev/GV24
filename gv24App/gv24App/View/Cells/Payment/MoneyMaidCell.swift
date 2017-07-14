@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 class MoneyMaidCell: BaseCollectionCell{
     
-    var price: String?{
+    var price: NSNumber?{
         didSet{
-            moneyView.name = "\(price!) VND"
+            moneyView.name = "\(String.numberDecimalString(number: price!)) VND"
         }
     }
     let moneyView: DescInfoView = {

@@ -83,7 +83,9 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
             self.showAlertWith(message: LanguageManager.shared.localized(string: "ThereAreNotEnoughFundsInYourAccountToMakeThisPayment")!, completion: {})
         }else{
             showAlertPayment {
+                self.loadingView.show()
                 PaymentService.shared.paymentGv247(billId: (self.workSuccess?.id)!, completion: { (flag) in
+                    self.loadingView.close()
                     if flag!{
                         let commentVC = CommentMaidVC()
                         commentVC.maid = self.taskProgress?.stakeholder?.receivced
@@ -100,7 +102,9 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func handleButtonOnlinePayment(_ sender: UIButton){
         showAlertPayment {
+            self.loadingView.show()
             PaymentService.shared.paymentOnlineCofirm(billId: (self.workSuccess?.id)!) { (flag) in
+                self.loadingView.close()
                 if (flag)!{
                     let sendOrderVC = SendOrderVC()
                     sendOrderVC.workPayment = self.workSuccess
@@ -116,7 +120,9 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func handleButtonMoneyPayment(_ sender: UIButton){
         showAlertPayment {
+            self.loadingView.show()
             PaymentService.shared.paymentMoney(billId: (self.workSuccess?.id)!, completion: { (flag) in
+                self.loadingView.close()
                 if flag!{
                     let commentVC = CommentMaidVC()
                     commentVC.maid = self.taskProgress?.stakeholder?.receivced
@@ -251,7 +257,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: moneyCellId, for: indexPath) as! MoneyMaidCell
-                cell.price = "\((taskProgress?.stakeholder?.receivced?.workInfo?.price)!)"
+                cell.price = taskProgress?.stakeholder?.receivced?.workInfo?.price
                 return cell
             }
         case 2:

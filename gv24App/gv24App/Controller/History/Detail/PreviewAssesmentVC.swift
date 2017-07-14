@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class PreviewAssesmentVC: DetailTaskDoneVC{
+    
     var content: String?{
         didSet{
             labelContent.text = content

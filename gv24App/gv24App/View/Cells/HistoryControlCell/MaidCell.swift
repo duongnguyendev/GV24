@@ -68,7 +68,7 @@ class MaidCell: BaseCollectionCell{
     var maidHistory: MaidHistory?{
         didSet{
             profileRatingButton.str_Avatar = maidHistory?.avatarUrl
-            profileRatingButton.name = maidHistory?.userName
+            profileRatingButton.name = maidHistory?.name
             profileRatingButton.date = Date(isoDateString: (maidHistory?.times?[0])!).dayMonthYear
             profileRatingButton.ratingPoint = maidHistory?.evaluationPoint
         }

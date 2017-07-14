@@ -21,10 +21,13 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         collectionType.register(TaskAssignedControlCell.self, forCellWithReuseIdentifier: cellAssigned)
         collectionType.register(TaskInProgressControlCell.self, forCellWithReuseIdentifier: cellInProgress)
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        let cell = collectionType.cellForItem(at: indexPath) as! TaskControlCell
+        cell.type = indexPath.item
     }
     lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()

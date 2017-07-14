@@ -20,7 +20,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
             cell.startAt = startDate
             cell.endAt = endDate
-//            cell.type = indexPath.item
+            cell.type = indexPath.item
         }
     }
     var endDate : Date?{
@@ -28,7 +28,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
             cell.startAt = startDate
             cell.endAt = endDate
-//            cell.type = indexPath.item
+            cell.type = indexPath.item
         }
     }
     override func viewDidLoad() {
@@ -59,6 +59,10 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.taskTemp = nil
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
+        cell.type = indexPath.item
     }
     private let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
@@ -249,7 +253,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         let paymentVC = PaymentVC()
         paymentVC.taskProgress = work.task
         paymentVC.workSuccess = work
-        present(viewController: paymentVC)
+        push(viewController: paymentVC)
     }
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){

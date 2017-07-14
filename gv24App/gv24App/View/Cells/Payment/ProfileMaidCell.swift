@@ -13,7 +13,7 @@ class ProfileMaidCell: BaseCollectionCell{
     var maid: MaidProfile? {
         didSet{
             avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
-            labelName.text = maid?.userName
+            labelName.text = maid?.name
             labelAddress.text = maid?.address?.name
         }
     }
