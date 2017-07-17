@@ -61,13 +61,13 @@ class UpdateVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate{
             radioButtonMoney.isSelected = false
         }
         self.timeStart = Date(isoDateString: (task.info?.time?.startAt)!)
-        self.buttonFrom.title = timeStart?.hourMinute
         self.timeEnd = Date(isoDateString: (task.info?.time?.endAt)!)
-        self.buttonTo.title = timeEnd?.hourMinute
+        self.date = Date(isoDateString: (task.info?.time?.endAt)!)
     }
     
     override func setupRightNavButton() {
         let buttonSend = NavButton(title: LanguageManager.shared.localized(string: "Update")!)
+        buttonSend.frame = CGRect(x: 0, y: 0, width: 70, height: 20)
         buttonSend.addTarget(self, action: #selector(handleUpdateButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn

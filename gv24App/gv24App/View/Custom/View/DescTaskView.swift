@@ -27,7 +27,7 @@ class DescTaskView: BaseView {
         let iv = IconView(image: "nau_an", size: 50)
         return iv
     }()
-    private let labelTitle : UILabel = {
+    let labelTitle : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .medium, size: 17)
@@ -103,13 +103,13 @@ class DescTaskView: BaseView {
         addSubview(datetimeView)
         addSubview(viewTimerLine)
         addSubview(addressView)
-        
+
         iconType.topAnchor.constraint(equalTo: topAnchor, constant: margin/2).isActive = true
         iconType.leftAnchor.constraint(equalTo: leftAnchor, constant: margin/2).isActive = true
         
         labelTitle.topAnchor.constraint(equalTo: iconType.topAnchor, constant: margin/2).isActive = true
         labelTitle.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin/2).isActive = true
-        labelTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
+        labelTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin/2).isActive = true
         
         labelType.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin/2).isActive = true
         labelType.bottomAnchor.constraint(equalTo: iconType.bottomAnchor, constant: -margin/4).isActive = true

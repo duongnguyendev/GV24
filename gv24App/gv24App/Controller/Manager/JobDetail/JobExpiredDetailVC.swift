@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 class JobExpiredDetailVC: JobDetailVC{
     var task = Task()
+    
     let labelExpired : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -34,10 +35,12 @@ class JobExpiredDetailVC: JobDetailVC{
         button.iconName = .iosTrash
         return button
     }()
+
     override func setupView() {
         super.setupView()
         view.addSubview(labelExpired)
         view.addSubview(deleteButton)
+        descTaskView.labelTitle.rightAnchor.constraint(equalTo: labelExpired.leftAnchor, constant: 10).isActive = true
         
         labelExpired.rightAnchor.constraint(equalTo: descTaskView.rightAnchor, constant: -(margin/3)).isActive = true
         labelExpired.topAnchor.constraint(equalTo: descTaskView.topAnchor, constant: margin/3).isActive = true

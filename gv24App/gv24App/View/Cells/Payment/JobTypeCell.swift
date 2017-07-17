@@ -15,7 +15,7 @@ class JobTypeCell: BaseCollectionCell{
         didSet{
             iconType.loadImageurl(link: (task?.info?.work?.image)!)
             labelTitle.text = task?.info?.title
-            labelType.text = task?.info?.desc
+            labelType.text = task?.info?.work?.name
         }
     }
     
