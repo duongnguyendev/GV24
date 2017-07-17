@@ -48,9 +48,11 @@ class TaskAssignedControlCell: TaskControlCell {
             return
         }
         pointCell = gestureReconizer.location(in: taskCollectionView)
-        indexPath = taskCollectionView.indexPathForItem(at: pointCell)!
-        if self.delegate != nil{
-            self.delegate?.remove!(task: tasks[indexPath.item])
+        if let indexPath = taskCollectionView.indexPathForItem(at: pointCell){
+        self.indexPath = indexPath
+            if self.delegate != nil{
+                self.delegate?.remove!(task: tasks[indexPath.item])
+            }
         }
     }
     

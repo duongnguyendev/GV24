@@ -67,7 +67,6 @@ extension Date{
         let day = calendar.component(.day, from: self)
         return "\(year)/\(month)/\(day)"
     }
-
     
     var hour : String{
         let calendar = Calendar(identifier: .gregorian)
@@ -86,10 +85,14 @@ extension Date{
     }
     
     var hourMinute: String{
-        let calendar = Calendar(identifier: .gregorian)
+        /*let calendar = Calendar(identifier: .gregorian)
         let hour = calendar.component(.hour, from: self)
         let minute = calendar.component(.minute, from: self)
-        return "\(hour)h\(minute)"
+        return "\(hour)h\(minute)"*/
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        let hourMinute = formatter.string(from: self)
+        return hourMinute
     }
     var hourMinuteSecond: String{
         let calendar = Calendar(identifier: .gregorian)
