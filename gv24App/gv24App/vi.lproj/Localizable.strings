@@ -73,7 +73,7 @@ OK = "Đồng ý";
 Delete = "Xoá ";
 EditWork = "Chỉnh sửa công việc";
 ClickOktoConfirmTheTaskCompleted = "Vui lòng xác nhận công việc đã hoàn thành bằng cách nhấn \"OK\"";
-PleaseCompleteAllInformation = "Vui lòng điền đầy đủ thông tin.";
+PleaseCompleteAllInformation = "Vui lòng điền đầy đủ thông tin!";
 TheDateChosenIsunsuitable = "Ngày bạn chọn không phù hợp.";
 WorkingTimeIsUnsuitable = "Thời gian làm việc không phù hợp.";
 PleaseDoubleCheckYourHomeAddress = "Vui lòng kiểm tra lại địa chỉ nhà.";
@@ -160,7 +160,7 @@ InvalidUsernamePassword = "tên đăng nhập hoặc mật khẩu không đúng"
 Done = "Vừa xong";
 CompleteCheckout = "Check out thành công";
 //==================
-InvalidEmailAddress = "Email nhập không đúng";
+InvalidEmailAddress = "Email nhập không đúng!";
 InvalidPhoneNumber = "Số điện thoại nhập không đúng";
 YourDescriptionIsTooShort = "Mô tả quá ngắn";
 PleaseEnterYourGender = "Vui lòng nhập giới tính";

@@ -122,6 +122,10 @@ class ForgotPassVC: BaseVC {
         self.present(alert, animated: true, completion: nil)
     }
     func validate()-> String?{
+        let userName = (textFieldUserName.text?.trimmingCharacters(in: .whitespaces).characters.count)!
+        if userName == 0{
+            return LanguageManager.shared.localized(string: "PleaseCompleteAllInformation")
+        }
         if (textFieldUserName.text?.trimmingCharacters(in: .whitespaces).characters.count)! < 6{
             return LanguageManager.shared.localized(string: "InvalidUsername")
         }

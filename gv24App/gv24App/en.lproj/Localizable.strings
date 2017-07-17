@@ -73,7 +73,7 @@ Delete = "Delete ";
 OK = "OK";
 EditWork = "Edit work";
 ClickOktoConfirmTheTaskCompleted = "Click \"Ok\" to confirm the task completed";
-PleaseCompleteAllInformation = "Please, complete all information.";
+PleaseCompleteAllInformation = "Please, complete all information!";
 TheDateChosenIsunsuitable = "The date chosen is unsuitable.";
 WorkingTimeIsUnsuitable = "Working time is unsuitable.";
 PleaseDoubleCheckYourHomeAddress = "Please, double check your home address.";
@@ -219,7 +219,6 @@ INVALID_PASSWORD = "Invalid password";
 RechargeSuccessful = "Recharge successful!";
 ShareApp = "Modern designs, unique features, extremely efficient performance are what you just experienced. Following the motto 'Quality builds Trust', we desire to bring our customers the best of the best. And now, let's share the NGV247 application to develop the greatest";
 NoInternetConnection = "No internet connection";
-<<<<<<< HEAD
 TimeOfWorkingIsInvalid ="Time of working is invalid";
 
 //===============

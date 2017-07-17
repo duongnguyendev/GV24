@@ -117,7 +117,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
             UserService.shared.report(maidId: (maid?.userId)!, content: textViewdContent.text, completion: { (error) in
                 if error != nil{
-                    alert.message = error
+                    alert.message = LanguageManager.shared.localized(string: error!)
                 }else{
                     alertAction = UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
                         self.goBack()
