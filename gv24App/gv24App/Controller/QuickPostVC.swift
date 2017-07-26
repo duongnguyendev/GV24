@@ -225,8 +225,8 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     }
     func setupChexboxes(){
         
-        let checkboxWidth = (UIScreen.main.bounds.width - 30) / 3
         let numberCollum : CGFloat = 3
+        let checkboxWidth = (UIScreen.main.bounds.width - 30) / numberCollum
         var currentRow : CGFloat = 0
         var currentCollum : CGFloat = 0
         
@@ -240,10 +240,11 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
             checkbox.addTarget(self, action: #selector(handleCheckbox(_:)), for: .touchUpInside)
             
             checkbox.widthAnchor.constraint(equalToConstant: checkboxWidth).isActive = true
-            checkbox.heightAnchor.constraint(equalToConstant: 30).isActive = true
-            checkbox.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 10 + currentRow * checkboxHeight).isActive = true
+            checkbox.heightAnchor.constraint(equalToConstant: checkboxHeight).isActive = true
+            checkbox.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: (10 + currentRow * checkboxHeight)).isActive = true
             checkbox.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: (30 + checkboxWidth * currentCollum)).isActive = true
-            if index == chexboxes.count - 1 {
+            
+            if index == (workType?.suggests.count)! - 1 {
                 checkbox.bottomAnchor.constraint(equalTo: view1.bottomAnchor, constant: -10).isActive = true
             }
             

@@ -44,6 +44,7 @@ class CheckBox: BaseButton {
         
         titleView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         titleView.leftAnchor.constraint(equalTo: self.statusIcon.rightAnchor, constant: 10).isActive = true
+        titleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         
         statusIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         statusIcon.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
