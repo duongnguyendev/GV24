@@ -9,15 +9,15 @@ import UIKit
 import GoogleMaps
 
 class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
-    var date : Date? = Date(){
+    var date : Date?{
         didSet{
             buttonDate.valueString = date?.dayMonthYear
             timeStart = date
-            timeEnd = date
         }
     }
     var timeStart : Date? = Date(){
         didSet{
+            timeEnd = timeStart?.postDefaultDate()
             buttonFrom.title = timeStart?.hourMinute
         }
     }
@@ -36,6 +36,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        date = Date()
         view.backgroundColor = AppColor.collection
         hideKeyboardWhenTouchUpOutSize = true
         title = LanguageManager.shared.localized(string: "PostYourWork")

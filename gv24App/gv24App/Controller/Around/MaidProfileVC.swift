@@ -20,6 +20,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
         
         mainCollectionView.register(MaidProfileCell.self, forCellWithReuseIdentifier: maidProfileCellId)
         mainCollectionView.register(MaidWorkInfoCell.self, forCellWithReuseIdentifier: maidWorkInfoCellId)
+        loadComment()
     }
     let maidProfileCellId = "maidProfileCellId"
     let maidWorkInfoCellId = "maidWorkInfoCellId"

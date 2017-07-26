@@ -15,8 +15,7 @@ class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         mainCollectionView.register(CellWithTitle.self, forCellWithReuseIdentifier: cellId)
         mainCollectionView.register(UserProfileCell.self, forCellWithReuseIdentifier: profileCellId)
         mainCollectionView.register(CommentCell.self, forCellWithReuseIdentifier: commentCellId)
-        mainCollectionView.register(HeaderWithTitle.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
-        loadComment()
+        mainCollectionView.register(HeaderWithTitle.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
     }
     let cellId = "cellId"

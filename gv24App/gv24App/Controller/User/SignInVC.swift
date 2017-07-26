@@ -68,7 +68,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     private let signInButton : BasicButton = {
         let btn = BasicButton()
         btn.color = AppColor.homeButton3
-        btn.title = "Login"
+        btn.title = "SignIn"
         btn.addTarget(self, action: #selector(handleSignInButton(_:)), for: .touchUpInside)
         return btn
     }()
@@ -381,11 +381,12 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     }
     func handleFacebookAccount(){
         self.loadingView.show()
-        GraphRequest(graphPath: "me", parameters: ["field" : "id, name, email, phone"], accessToken: AccessToken.current, httpMethod: .GET).start { (response, result) in
+        GraphRequest(graphPath: "me", parameters: ["field" : "id,name,email,phone"], accessToken: AccessToken.current, httpMethod: .GET).start { (response, result) in
+            self.loadingView.close()
             switch result{
             case .failed(let error):
                 print(error)
-            case .success(response: let res):
+            case .success(let res):
                 var userInfo = Dictionary<String, String>()
                 let id = res.dictionaryValue?["id"] as? String
                 userInfo["id"] = id
@@ -397,6 +398,8 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
                 self.loginSocial(userInfo: userInfo)
             }
         }
+        
+        
     }
     
     func loginSocial(userInfo : Dictionary<String, String>){

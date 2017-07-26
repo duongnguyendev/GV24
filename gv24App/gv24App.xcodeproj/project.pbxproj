@@ -58,6 +58,8 @@
 		4E1A42331EFBC21400475C9B /* SignUpSocialFinalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A42321EFBC21400475C9B /* SignUpSocialFinalVC.swift */; };
 		4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */; };
 		4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BBE29A1ED83948005B47B0 /* AppDelegate.swift */; };
+		4E292A8F1F20843E0017BA3F /* WorkTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E292A8E1F20843E0017BA3F /* WorkTypeCell.swift */; };
+		4E292A911F2091460017BA3F /* QuickPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E292A901F2091460017BA3F /* QuickPostVC.swift */; };
 		4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95A1EEF94390073BC7E /* RechargeVC.swift */; };
 		4E33F95D1EEFE7920073BC7E /* TransferInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */; };
 		4E34EFC01F0A032500BE4B01 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34EFBF1F0A032500BE4B01 /* LoadingView.swift */; };
@@ -234,6 +236,8 @@
 		4E1A42321EFBC21400475C9B /* SignUpSocialFinalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSocialFinalVC.swift; sourceTree = "<group>"; };
 		4E1A75061EC56D2000B80CD0 /* LanguageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		4E250E461EF3C02E00CCDE61 /* gv24App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gv24App.entitlements; sourceTree = "<group>"; };
+		4E292A8E1F20843E0017BA3F /* WorkTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkTypeCell.swift; sourceTree = "<group>"; };
+		4E292A901F2091460017BA3F /* QuickPostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickPostVC.swift; sourceTree = "<group>"; };
 		4E33F95A1EEF94390073BC7E /* RechargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeVC.swift; sourceTree = "<group>"; };
 		4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferInfoVC.swift; sourceTree = "<group>"; };
 		4E34EFBF1F0A032500BE4B01 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -410,6 +414,7 @@
 				03446A681EE5502C004DB193 /* MaidProfileCell.swift */,
 				03446A691EE5502C004DB193 /* UserProfileCell.swift */,
 				A6B4EE4C1EF916BA003997FD /* AbilityCell.swift */,
+				4E292A8E1F20843E0017BA3F /* WorkTypeCell.swift */,
 				03446A451EE54F3D004DB193 /* BaseCell.swift */,
 				03446A461EE54F3D004DB193 /* BaseHeaderView.swift */,
 				03446A471EE54F3D004DB193 /* Headers */,
@@ -647,6 +652,7 @@
 				4ED231741EB980D000592842 /* BaseVC.swift */,
 				4ED2317D1EB9B15E00592842 /* HomeVC.swift */,
 				4E5C04CA1EF1340A00470C8C /* LaunchScreenVC.swift */,
+				4E292A901F2091460017BA3F /* QuickPostVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1023,6 +1029,7 @@
 				4ED2316F1EB979AF00592842 /* Colors.swift in Sources */,
 				4E8D27501EDC142100872A61 /* DateTimeView.swift in Sources */,
 				4ED2316D1EB9797B00592842 /* ViewExtensions.swift in Sources */,
+				4E292A911F2091460017BA3F /* QuickPostVC.swift in Sources */,
 				A6D471341EF2621D00F8A5BA /* MoneyMaidCell.swift in Sources */,
 				4E57F9C21EE90AEC00C02EF2 /* MaidWorkInfoCell.swift in Sources */,
 				4E4E358D1ED7E02100D13EF5 /* TermsVC.swift in Sources */,
@@ -1126,6 +1133,7 @@
 				4E58A7A01EEE49B30088FC1D /* GeneralStatisticInfoView.swift in Sources */,
 				A6091B921F02A75F0070595B /* TaskAssignedCell.swift in Sources */,
 				033DC7381EF0E0600093EE8F /* JobExpiredDetailVC.swift in Sources */,
+				4E292A8F1F20843E0017BA3F /* WorkTypeCell.swift in Sources */,
 				4E54F58E1EC95C7A007D15D6 /* TaskManagementVC.swift in Sources */,
 				4ED2317C1EB98FAC00592842 /* BaseButton.swift in Sources */,
 				03D3103B1EEA7F4F00CF53C3 /* MaidTask.swift in Sources */,

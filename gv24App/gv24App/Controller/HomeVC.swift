@@ -9,10 +9,24 @@
 import UIKit
 import IoniconsSwift
 
-class HomeVC: BaseVC {
+class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    var currentLanguage = LanguageManager.shared.getCurrentLanguage().languageCode{
+        didSet{
+            loadTypeOfWork()
+        }
+    }
+    
+    var typeOfWorks : [WorkType]?{
+        didSet{
+            self.collectionViewTypeOfwork.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionViewTypeOfwork.register(WorkTypeCell.self, forCellWithReuseIdentifier: cellId)
+        loadTypeOfWork()
     }
     let backGroundView : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "bg_app"))
@@ -23,6 +37,10 @@ class HomeVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if currentLanguage != LanguageManager.shared.getCurrentLanguage().languageCode{
+            currentLanguage = LanguageManager.shared.getCurrentLanguage().languageCode
+        }
+        self.collectionViewTypeOfwork.reloadData()
         if !UserHelpers.isLogin {
             self.dismiss(animated: false, completion: nil)
         }
@@ -55,12 +73,29 @@ class HomeVC: BaseVC {
         return v
     }()
     
+    let cellId = "cellId"
+    let widthCell = (UIScreen.main.bounds.width) / 4
+    
+    lazy var collectionViewTypeOfwork: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.delegate = self
+        cv.dataSource = self
+        cv.backgroundColor = .clear
+        cv.layer.borderColor = UIColor.clear.cgColor
+        cv.layer.borderWidth = 4
+        return cv
+    }()
+    
     override func setupView() {
         setupBackGround()
+        view.addSubview(collectionViewTypeOfwork)
         view.addSubview(sloganView)
         view.addSubview(aroundButton)
         view.addSubview(taskManagerButton)
         view.addSubview(historyButton)
+        
         
         let buttonSize = view.frame.size.width / 3
         
@@ -77,6 +112,10 @@ class HomeVC: BaseVC {
         taskManagerButton.bottomAnchor.constraint(equalTo: sloganView.topAnchor, constant: 0).isActive = true
         historyButton.bottomAnchor.constraint(equalTo: sloganView.topAnchor, constant: 0).isActive = true
         
+        collectionViewTypeOfwork.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionViewTypeOfwork)
+        collectionViewTypeOfwork.bottomAnchor.constraint(equalTo: aroundButton.topAnchor, constant: 5).isActive = true
+        
     }
     
     override func setupRightNavButton() {
@@ -91,6 +130,21 @@ class HomeVC: BaseVC {
         view.addSubview(backGroundView)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: backGroundView)
         view.addConstraintWithFormat(format: "V:|[v0]|", views: backGroundView)
+    }
+    
+    //MARK: - load work type
+    
+    func loadTypeOfWork(){
+        self.loadingView.show()
+        TaskService.shared.getWorkTypes { (workTypes, error) in
+            self.loadingView.close()
+            if error == nil{
+                self.typeOfWorks = workTypes
+                
+            }else{
+
+            }
+        }
     }
     
     //MARK: - Handle button
@@ -109,6 +163,40 @@ class HomeVC: BaseVC {
         present(viewController: HistoryVC())
     }
     
+    //MARK: - collection view delegate
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return typeOfWorks?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! WorkTypeCell
+        cell.title = typeOfWorks?[indexPath.row].name
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let heightCell = widthCell * 1.2
+        
+        if indexPath.item == 0{
+            return CGSize(width: widthCell * 2 , height: heightCell)
+        }
+        return CGSize(width: widthCell, height: heightCell)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let quickPostVC = QuickPostVC()
+        quickPostVC.workType = typeOfWorks?[indexPath.item]
+        self.push(viewController: quickPostVC)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     //MARK: - localize
     override func localized(){
         title = LanguageManager.shared.localized(string: "Home")

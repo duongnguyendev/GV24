@@ -27,7 +27,7 @@ class RechargeOnlineVC: SendOrderVC {
     
     override func handleSendButton(_ sender: UIButton) {
         let numberMoney = Double(mtfTotalMoney.text!)
-        if numberMoney != nil && numberMoney! > 2000.0 {
+        if numberMoney != nil && numberMoney! >= 2000.0 {
             self.loadingView.show()
             PaymentService.shared.chargeOnlineFiConfirm(number: numberMoney!, completion: { (billId, key, error) in
                 if error != nil{

@@ -45,6 +45,7 @@ class MaidProfileHistoryVC: MaidProfileVC {
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: maidWorkInfoCellId, for: indexPath) as! MaidWorkInfoCell
+            cell.maid = maidHistory
             cell.delegate = self
             return cell
         default:

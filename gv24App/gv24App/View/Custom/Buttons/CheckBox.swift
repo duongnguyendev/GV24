@@ -38,7 +38,7 @@ class CheckBox: BaseButton {
         return label
     }()
     override func setupView() {
-        
+        self.translatesAutoresizingMaskIntoConstraints = false
         addSubview(statusIcon)
         addSubview(titleView)
         

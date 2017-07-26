@@ -85,10 +85,6 @@ extension Date{
     }
     
     var hourMinute: String{
-        /*let calendar = Calendar(identifier: .gregorian)
-        let hour = calendar.component(.hour, from: self)
-        let minute = calendar.component(.minute, from: self)
-        return "\(hour)h\(minute)"*/
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm a"
         let hourMinute = formatter.string(from: self)
@@ -119,6 +115,21 @@ extension Date{
             return false
         }
     }
+    
+    func postDefaultDate() -> Date{
+
+        if Int(self.hour)! >= 22 {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let string = "\(self.year)-\(self.month)-\(self.day)"
+            var date = dateFormatter.date(from: string)!
+            date = Date(timeInterval: 23 * 60 * 60 + (59 * 60), since: date)
+            return date
+        }
+        let date = Date(timeInterval: 60 * 60 * 2, since: self)
+        return date
+    }
+    
     var periodTime: String{
         let dateComponent = self.rangeDate
         if dateComponent.month! > 0{
