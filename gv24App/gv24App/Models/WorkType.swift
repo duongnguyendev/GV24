@@ -18,6 +18,7 @@ class WorkType: Entity {
     var image : String?
     var weight : Int?
     var price : NSNumber?
+    var tools : Bool? = false
     var suggests : [Suggest] = [Suggest]()
     
     override init() {
@@ -32,7 +33,7 @@ class WorkType: Entity {
         self.price = jsonData["price"].number
         self.weight = jsonData["weight"].int
         self.image = jsonData["image"].string
-        
+        self.tools = jsonData["tools"].bool
         let suggetsJson = jsonData["suggest"].arrayValue
         
         for suggestData in suggetsJson {

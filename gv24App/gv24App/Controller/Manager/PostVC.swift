@@ -90,14 +90,14 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     let titleTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
-        tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        tF.heightAnchor.constraint(equalToConstant: 50).isActive = true
         tF.placeholder = LanguageManager.shared.localized(string: "Title")
         return tF
     }()
     let typeTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
-        tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        tF.heightAnchor.constraint(equalToConstant: 50).isActive = true
         tF.placeholder = LanguageManager.shared.localized(string: "TypesOfWork")
         tF.isUserInteractionEnabled = false
         return tF
@@ -105,7 +105,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     lazy var descriptionTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
-        tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        tF.heightAnchor.constraint(equalToConstant: 50).isActive = true
         tF.placeholder = LanguageManager.shared.localized(string: "WorkDescription")
         tF.delegate = self
         return tF
@@ -113,7 +113,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
     let addressTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
-        tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        tF.heightAnchor.constraint(equalToConstant: 50).isActive = true
         tF.placeholder = LanguageManager.shared.localized(string: "Address")
         return tF
     }()
@@ -213,7 +213,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         mainView.addSubview(typeView)
         mainView.addSubview(timeView)
         
-        mainView.addConstraintWithFormat(format: "V:|-20-[v0(200)]-20-[v1(100)]-20-[v2(120)]|", views: infoView, typeView, timeView)
+        mainView.addConstraintWithFormat(format: "V:|-20-[v0(300)]-20-[v1(100)]-20-[v2(120)]|", views: infoView, typeView, timeView)
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: infoView)
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views:  typeView)
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: timeView)
@@ -228,7 +228,7 @@ class PostVC: BaseVC, DateTimeLauncherDelegate, UITextFieldDelegate {
         infoView.addSubview(buttonWorkTypes)
         
         
-        infoView.addConstraintWithFormat(format: "V:|[v0][v1][v2][v3][v4]", views: titleTextField, typeTextField, descriptionTextField, addressTextField, checkBoxTool)
+        infoView.addConstraintWithFormat(format: "V:|-10-[v0]-10-[v1]-10-[v2]-10-[v3]-10-[v4]", views: titleTextField, typeTextField, descriptionTextField, addressTextField, checkBoxTool)
         mainView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: titleTextField)
         mainView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: typeTextField)
         mainView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: descriptionTextField)

@@ -10,12 +10,16 @@ import UIKit
 
 class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     var params = Dictionary<String, Any>()
+    var workTypes : [WorkType]?
+    
     var workType : WorkType?{
         didSet{
-            self.radioButtonMoney.title = "\(String(describing: (workType?.price)!))"
+            params["work"] = workType?.id
+            self.radioButtonMoney.titleView.text = "\(String(describing: (workType?.price)!))"
             self.textViewDescription.text = workType?.workDescription
             self.titleTextField.text = workType?.title
             self.addressTextField.text = UserHelpers.currentUser?.address?.name
+            self.workTypeTextField.text = workType?.name
         }
     }
     var chexboxes = [CheckBox]()
@@ -77,17 +81,47 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     let titleTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
-        tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        tF.heightAnchor.constraint(equalToConstant: 50).isActive = true
         tF.placeholder = LanguageManager.shared.localized(string: "Title")
         return tF
+    }()
+    
+    let workTypeTextField : UITextFieldButtomLine = {
+        let tF = UITextFieldButtomLine()
+        tF.layer.masksToBounds = true
+        tF.font = Fonts.by(name: .light, size: 15)
+        tF.placeholder = LanguageManager.shared.localized(string: "TypesOfWork")
+        tF.isUserInteractionEnabled = false
+        return tF
+    }()
+    
+    let buttonWorkType : UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.addTarget(self, action: #selector(handleButtonWorkType(_:)), for: .touchUpInside)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
     }()
     
     let addressTextField : UITextFieldButtomLine = {
         let tF = UITextFieldButtomLine()
         tF.font = Fonts.by(name: .light, size: 15)
-        tF.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        tF.heightAnchor.constraint(equalToConstant: 50).isActive = true
         tF.placeholder = LanguageManager.shared.localized(string: "Address")
         return tF
+    }()
+    
+    let toolView : UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.layer.masksToBounds = true
+        v.backgroundColor = .white
+        return v
+    }()
+    let checkBoxTool : CheckBox = {
+        let cb = CheckBox()
+        cb.addTarget(self, action: #selector(handleCheckBoxToolButton(_:)), for: .touchUpInside)
+        cb.title = LanguageManager.shared.localized(string: "BringYourCleaningSupplies")
+        return cb
     }()
     //MARK: - view 2 component
     let view2 : UIView = {
@@ -156,6 +190,8 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     let textViewDescription : UITextView = {
         let tv = UITextView()
+//        tv.hint = LanguageManager.shared.localized(string: "WorkDescription")!
+        tv.font = Fonts.by(name: .light, size: 13)
         tv.text = "Yêu cầu khác"
         return tv
     }()
@@ -167,6 +203,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         setupMainView()
         setupStruct()
         setupView1()
+        setupToolView()
         setupView2()
         setupView3()
         setupView4()
@@ -196,24 +233,39 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     func setupStruct(){
         
         mainView.addSubview(view1)
+        mainView.addSubview(toolView)
         mainView.addSubview(view2)
         mainView.addSubview(view3)
         mainView.addSubview(view4)
         
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: view1)
+        mainView.addConstraintWithFormat(format: "H:|[v0]|", views: toolView)
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: view2)
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: view3)
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: view4)
         
-        mainView.addConstraintWithFormat(format: "V:|[v0]-20-[v1]-20-[v2]-20-[v3]-20-|", views: view1, view2, view3, view4)
+        mainView.addConstraintWithFormat(format: "V:|[v0][v1]-20-[v2]-20-[v3]-20-[v4]-20-|", views: view1, toolView, view2, view3, view4)
     }
     func setupView1(){
         view1.addSubview(titleTextField)
+        view1.addSubview(workTypeTextField)
+        view1.addSubview(buttonWorkType)
         view1.addSubview(addressTextField)
         
-        view1.addConstraintWithFormat(format: "V:|[v0][v1]", views: titleTextField, addressTextField)
+        view1.addConstraintWithFormat(format: "V:|-10-[v0]-10-[v1]-10-[v2]", views: titleTextField, workTypeTextField, addressTextField)
         view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: titleTextField)
         view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: addressTextField)
+        view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: workTypeTextField)
+        
+        if workType?.id == "000000000000000000000001"{
+            workTypeTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        }else{
+            workTypeTextField.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
+        buttonWorkType.topAnchor.constraint(equalTo: workTypeTextField.topAnchor, constant: 0).isActive = true
+        buttonWorkType.leftAnchor.constraint(equalTo: workTypeTextField.leftAnchor, constant: 0).isActive = true
+        buttonWorkType.rightAnchor.constraint(equalTo: workTypeTextField.rightAnchor, constant: 0).isActive = true
+        buttonWorkType.bottomAnchor.constraint(equalTo: workTypeTextField.bottomAnchor, constant: 0).isActive = true
         
         if workType?.suggests.count == 0{
             addressTextField.bottomAnchor.constraint(equalTo: view1.bottomAnchor, constant: 0).isActive = true
@@ -221,6 +273,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         }
         
         setupChexboxes()
+        
         
     }
     func setupChexboxes(){
@@ -257,6 +310,18 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         }
     }
     
+    func setupToolView(){
+        toolView.addSubview(checkBoxTool)
+        toolView.addConstraintWithFormat(format: "V:|[v0]|", views: checkBoxTool)
+        toolView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: checkBoxTool)
+        
+        if (workType?.tools)! {
+            toolView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        }else{
+            toolView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }
+        
+    }
     
     func setupView2(){
         view2.addSubview(radioButtonTime)
@@ -339,7 +404,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         self.loadingView.show()
         validate { (errorString) in
             if errorString == nil{
-                self.params["tools"] = false
+                self.params["tools"] = self.checkBoxTool.isSelected
                 TaskService.shared.postTask(params: self.params) { (error) in
                     self.loadingView.close()
                     if error == nil{
@@ -395,6 +460,26 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
             sender.isSelected = false
         }else{
             sender.isSelected = true
+        }
+    }
+    func handleButtonWorkType(_ sender: UIButton){
+        let mes = LanguageManager.shared.localized(string: "TypesOfWork")
+        let cancelString = LanguageManager.shared.localized(string: "Cancel")
+        let actionSheet = UIAlertController(title: nil, message: mes, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: nil))
+        for workType in workTypes!{
+            actionSheet.addAction(UIAlertAction(title: workType.name, style: .default, handler: { (nil) in
+                self.workType = workType
+            }))
+        }
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func handleCheckBoxToolButton(_ sender: UIButton){
+        if checkBoxTool.isSelected{
+            checkBoxTool.isSelected = false
+        }else{
+            checkBoxTool.isSelected = true
         }
     }
     

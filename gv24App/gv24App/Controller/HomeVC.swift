@@ -78,13 +78,14 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     lazy var collectionViewTypeOfwork: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.delegate = self
         cv.dataSource = self
         cv.backgroundColor = .clear
-        cv.layer.borderColor = UIColor.clear.cgColor
-        cv.layer.borderWidth = 4
+//        cv.layer.borderColor = UIColor.clear.cgColor
+//        cv.layer.borderWidth = 4
         return cv
     }()
     
@@ -112,9 +113,11 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         taskManagerButton.bottomAnchor.constraint(equalTo: sloganView.topAnchor, constant: 0).isActive = true
         historyButton.bottomAnchor.constraint(equalTo: sloganView.topAnchor, constant: 0).isActive = true
         
+        
+        let collectionHeight = (UIScreen.main.bounds.width) / 2 * 1.2
         collectionViewTypeOfwork.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionViewTypeOfwork)
-        collectionViewTypeOfwork.bottomAnchor.constraint(equalTo: aroundButton.topAnchor, constant: 5).isActive = true
+        collectionViewTypeOfwork.heightAnchor.constraint(equalToConstant: collectionHeight).isActive = true
         
     }
     
@@ -187,6 +190,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let quickPostVC = QuickPostVC()
         quickPostVC.workType = typeOfWorks?[indexPath.item]
+        quickPostVC.workTypes = typeOfWorks
         self.push(viewController: quickPostVC)
     }
     

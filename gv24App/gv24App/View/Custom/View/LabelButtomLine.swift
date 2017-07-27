@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UITextFieldButtomLine: UITextField {
+class UITextFieldButtomLine: FloatLabelTextField {
 
     var hideLine : Bool?{
         didSet{

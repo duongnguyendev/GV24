@@ -134,6 +134,8 @@
 		4ECD1D481EB1986C007DEF88 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD1D471EB1986C007DEF88 /* LanguageManager.swift */; };
 		4ECD1D531EB19DE4007DEF88 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4ECD1D551EB19DE4007DEF88 /* Localizable.strings */; };
 		4ECD1D5A1EB1AFF4007DEF88 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD1D591EB1AFF4007DEF88 /* ApiService.swift */; };
+		4ED1DD971F29D1AD0067A5C1 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DD951F29D1AD0067A5C1 /* FloatLabelTextField.swift */; };
+		4ED1DD981F29D1AD0067A5C1 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DD961F29D1AD0067A5C1 /* FloatLabelTextView.swift */; };
 		4ED2316D1EB9797B00592842 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2316C1EB9797B00592842 /* ViewExtensions.swift */; };
 		4ED2316F1EB979AF00592842 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2316E1EB979AF00592842 /* Colors.swift */; };
 		4ED231711EB97D4100592842 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED231701EB97D4100592842 /* StringExtensions.swift */; };
@@ -318,6 +320,8 @@
 		4ECD1D4A1EB19AC4007DEF88 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4ECD1D541EB19DE4007DEF88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4ECD1D591EB1AFF4007DEF88 /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		4ED1DD951F29D1AD0067A5C1 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
+		4ED1DD961F29D1AD0067A5C1 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
 		4ED2316C1EB9797B00592842 /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		4ED2316E1EB979AF00592842 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4ED231701EB97D4100592842 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -540,6 +544,8 @@
 		4E3D091E1EB31FB400303AAD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4ED1DD951F29D1AD0067A5C1 /* FloatLabelTextField.swift */,
+				4ED1DD961F29D1AD0067A5C1 /* FloatLabelTextView.swift */,
 				03446A441EE54F3D004DB193 /* Cells */,
 				4E0F75BF1EE5082800121113 /* Launcher */,
 				4E3D09221EB320BE00303AAD /* Extensions */,
@@ -1086,6 +1092,7 @@
 				03446A6E1EE5508C004DB193 /* HistoryControlCell.swift in Sources */,
 				4E5C04CB1EF1340A00470C8C /* LaunchScreenVC.swift in Sources */,
 				4E0F75C11EE5095200121113 /* BaseLauncher.swift in Sources */,
+				4ED1DD981F29D1AD0067A5C1 /* FloatLabelTextView.swift in Sources */,
 				03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */,
 				4E61E3E01EC1A33800E6C8C5 /* MaidAroundVC.swift in Sources */,
 				4E8D275E1EDC157E00872A61 /* BlockAlias.swift in Sources */,
@@ -1093,6 +1100,7 @@
 				A6D4712B1EF2284900F8A5BA /* PaymentVC.swift in Sources */,
 				4E5F6C7E1EE11D7000B19C86 /* CheckBox.swift in Sources */,
 				03446A631EE54F3D004DB193 /* TaskInProgressControlCell.swift in Sources */,
+				4ED1DD971F29D1AD0067A5C1 /* FloatLabelTextField.swift in Sources */,
 				A61579121F016BEF005CC9F3 /* PaymentService.swift in Sources */,
 				4ECD1D5A1EB1AFF4007DEF88 /* ApiService.swift in Sources */,
 				4E0B0A431EDE7AE40043E38A /* ReportMaidVC.swift in Sources */,
