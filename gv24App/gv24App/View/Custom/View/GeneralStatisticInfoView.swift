@@ -86,7 +86,7 @@ class GeneralStatisticInfoView: BaseView {
         super.setupView()
         backgroundColor = UIColor.white
         
-        let labelPosted = labelWith(title: "PostedWork", textSize: 17)
+        let labelPosted = labelWith(title: "PostedWork1", textSize: 17)
         let labelRuningWork = labelWith(title: "WorkInProcess", textSize: 17)
         let labelDone = labelWith(title: "WorkDone", textSize: 17)
         let labelUnit = labelWith(title: "VND", textSize: 22)

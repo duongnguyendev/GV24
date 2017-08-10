@@ -63,6 +63,7 @@
 		4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95A1EEF94390073BC7E /* RechargeVC.swift */; };
 		4E33F95D1EEFE7920073BC7E /* TransferInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */; };
 		4E34EFC01F0A032500BE4B01 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34EFBF1F0A032500BE4B01 /* LoadingView.swift */; };
+		4E38044A1F2F07A4007AC64C /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3804491F2F07A4007AC64C /* Constant.swift */; };
 		4E3D09251EB32B9E00303AAD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3D09241EB32B9E00303AAD /* CoreImage.framework */; };
 		4E3D17621EE7BE5000C91D6B /* InputButonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D17611EE7BE5000C91D6B /* InputButonWithIcon.swift */; };
 		4E3D17641EE7F85D00C91D6B /* AgeLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D17631EE7F85D00C91D6B /* AgeLauncher.swift */; };
@@ -243,6 +244,7 @@
 		4E33F95A1EEF94390073BC7E /* RechargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeVC.swift; sourceTree = "<group>"; };
 		4E33F95C1EEFE7920073BC7E /* TransferInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferInfoVC.swift; sourceTree = "<group>"; };
 		4E34EFBF1F0A032500BE4B01 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		4E3804491F2F07A4007AC64C /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4E3D09241EB32B9E00303AAD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		4E3D17611EE7BE5000C91D6B /* InputButonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputButonWithIcon.swift; sourceTree = "<group>"; };
 		4E3D17631EE7F85D00C91D6B /* AgeLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeLauncher.swift; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 			children = (
 				4E8D275D1EDC157E00872A61 /* BlockAlias.swift */,
 				4EBF04B71ED29D0C00F7E08B /* UserHelpers.swift */,
+				4E3804491F2F07A4007AC64C /* Constant.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1084,6 +1087,7 @@
 				03446A7A1EE5666E004DB193 /* UnpaidWorkCell.swift in Sources */,
 				4E8D275C1EDC156100872A61 /* Task.swift in Sources */,
 				4EBF04BA1ED2BB7500F7E08B /* UserService.swift in Sources */,
+				4E38044A1F2F07A4007AC64C /* Constant.swift in Sources */,
 				03446A601EE54F3D004DB193 /* TaskAssignedControlCell.swift in Sources */,
 				03446A651EE54F3D004DB193 /* TaskNewControlCell.swift in Sources */,
 				03B762AE1EEEA1410006A2BC /* ListTaskMaidVC.swift in Sources */,

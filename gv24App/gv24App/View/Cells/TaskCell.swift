@@ -118,7 +118,10 @@ class TaskCell: BaseCollectionCell {
         didSet{
             let date = Date(isoDateString: (task?.info?.time?.startAt)!)
             labelTitle.text = task?.info?.title
-            iconType.loadImageurl(link: (task?.info?.work?.image)!)
+            if let imageUrl = task?.info?.work?.image{
+                iconType.loadImageurl(link: imageUrl)
+            }
+            
             labelDate.text = date.dayMonthYear
             labelTimes.text = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
             labelUploadAt.text = Date(isoDateString: (task?.history?.updateAt)!).periodTime

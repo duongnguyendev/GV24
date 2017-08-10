@@ -33,7 +33,7 @@ class ApplicantCell: MaidCell{
     var request: Request?{
         didSet{
             profileRatingButton.str_Avatar = request?.madid?.avatarUrl
-            profileRatingButton.name = request?.madid?.userName
+            profileRatingButton.name = request?.madid?.name
             profileRatingButton.date = "\((request?.madid?.workInfo?.price)!) VND/1 \(LanguageManager.shared.localized(string: "Hour")!)"
             profileRatingButton.ratingPoint = request?.madid?.workInfo?.evaluationPoint as? Double
         }

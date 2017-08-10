@@ -56,7 +56,7 @@ class TaskService: APIService {
     }
     func getWorkTypes(completion: @escaping (([WorkType]?, String?)-> ())){
         let url = "work/getAll"
-        getWithToken(url: url) { (response, error) in
+        get(url: url) { (response, error) in
             if error == nil {
                 completion(self.getWorkTypesFrom(jsonData: response!), nil)
             }else{
@@ -87,7 +87,7 @@ class TaskService: APIService {
             for workData in jsonArray{
                 works.append(WorkType(jsonData: workData))
             }
-            return works
+            return works.reversed()
         }
         return nil
     }

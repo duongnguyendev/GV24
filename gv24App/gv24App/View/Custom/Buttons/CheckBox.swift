@@ -14,9 +14,12 @@ class CheckBox: BaseButton {
     var title: String?{
         didSet{
             titleView.text = title
+            let size = CGSize(width: 1000, height: 30)
+            let titleWidth = title?.widthWith(size: size, font: Fonts.by(name: .light, size: 15))
+            self.width = titleWidth! + 15 + 15
         }
     }
-    
+    var width : CGFloat?
     override var isSelected: Bool{
         didSet{
             if isSelected{
@@ -28,13 +31,14 @@ class CheckBox: BaseButton {
     }
     
     let statusIcon : IconView = {
-        let icon = IconView(icon: Ionicons.androidCheckboxOutlineBlank, size: 15, color: AppColor.backButton)
+        let icon = IconView(icon: Ionicons.androidCheckboxOutlineBlank, size: 20, color: AppColor.backButton)
         return icon
     }()
     let titleView : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Fonts.by(name: .light, size: 15)
+        label.numberOfLines = 0
         return label
     }()
     override func setupView() {

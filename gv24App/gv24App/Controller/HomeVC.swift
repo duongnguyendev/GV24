@@ -10,7 +10,7 @@ import UIKit
 import IoniconsSwift
 
 class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
     var currentLanguage = LanguageManager.shared.getCurrentLanguage().languageCode{
         didSet{
             loadTypeOfWork()
@@ -78,14 +78,14 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     lazy var collectionViewTypeOfwork: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
+        //        layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.delegate = self
         cv.dataSource = self
         cv.backgroundColor = .clear
-//        cv.layer.borderColor = UIColor.clear.cgColor
-//        cv.layer.borderWidth = 4
+        //        cv.layer.borderColor = UIColor.clear.cgColor
+        //        cv.layer.borderWidth = 4
         return cv
     }()
     
@@ -142,10 +142,10 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         TaskService.shared.getWorkTypes { (workTypes, error) in
             self.loadingView.close()
             if error == nil{
-                self.typeOfWorks = workTypes
-                
+                Constant.workTypes = workTypes
+                self.typeOfWorks = Constant.workTypes
             }else{
-
+                
             }
         }
     }
@@ -190,7 +190,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let quickPostVC = QuickPostVC()
         quickPostVC.workType = typeOfWorks?[indexPath.item]
-        quickPostVC.workTypes = typeOfWorks
         self.push(viewController: quickPostVC)
     }
     

@@ -31,7 +31,11 @@ class HomeFunctButton: BaseButton {
             titleView.textColor = textColor
         }
     }
-    
+    var iconUrl : String?{
+        didSet{
+            iconView.loadImageUsingUrlString(urlString: iconUrl!)
+        }
+    }
     private let iconView : CustomImageView = {
         let iv = CustomImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false

@@ -12,7 +12,7 @@ class RechargeOnlineVC: SendOrderVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = LanguageManager.shared.localized(string: "RechargeOnline")
         // Do any additional setup after loading the view.
     }
     
@@ -23,6 +23,18 @@ class RechargeOnlineVC: SendOrderVC {
         mtfEmail.text = UserHelpers.currentUser?.email
         mtfPhone.text = UserHelpers.currentUser?.phone
         mtfAddress.text = UserHelpers.currentUser?.address?.name
+        
+        mtfName.isUserInteractionEnabled = false
+        mtfTotalMoney.isEnabled = true
+        mtfEmail.isUserInteractionEnabled = false
+        mtfPhone.isUserInteractionEnabled = false
+        mtfAddress.isUserInteractionEnabled = false
+        
+        labelName.text = LanguageManager.shared.localized(string: "PayerFullName")
+        labelEmail.text = LanguageManager.shared.localized(string: "PayerEmail")
+        labelPhone.text = LanguageManager.shared.localized(string: "PayerPhone")
+        labelAddress.text = LanguageManager.shared.localized(string: "PayerAddress")
+        labelTotal.text = LanguageManager.shared.localized(string: "RechargeAmount")
     }
     
     override func handleSendButton(_ sender: UIButton) {

@@ -10,16 +10,15 @@ import UIKit
 
 class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     var params = Dictionary<String, Any>()
-    var workTypes : [WorkType]?
     
     var workType : WorkType?{
         didSet{
             params["work"] = workType?.id
-            self.radioButtonMoney.titleView.text = "\(String(describing: (workType?.price)!))"
-            self.textViewDescription.text = workType?.workDescription
-            self.titleTextField.text = workType?.title
-            self.addressTextField.text = UserHelpers.currentUser?.address?.name
+            if workType?.price != nil{
+                self.radioButtonMoney.titleView.text = "\(String(describing: (workType?.price)!))"
+            }
             self.workTypeTextField.text = workType?.name
+            self.labelDescription.text = workType?.workDescription
         }
     }
     var chexboxes = [CheckBox]()
@@ -55,7 +54,12 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         hideKeyboardWhenTouchUpOutSize = true
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        title = LanguageManager.shared.localized(string: "Post")
+        title = workType?.name
+        
+        self.labelDescription.text = workType?.workDescription
+        self.titleTextField.text = workType?.title
+        self.addressTextField.text = UserHelpers.currentUser?.address?.name
+        
         self.date = Date()
     }
     override func setupRightNavButton() {
@@ -75,6 +79,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = .white
+        v.layer.masksToBounds = true
         return v
     }()
     
@@ -123,6 +128,14 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         cb.title = LanguageManager.shared.localized(string: "BringYourCleaningSupplies")
         return cb
     }()
+    
+    let labelDescription : UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.numberOfLines = 0
+        lb.font = Fonts.by(name: .regular, size: 15)
+        return lb
+    }()
     //MARK: - view 2 component
     let view2 : UIView = {
         let v = UIView()
@@ -133,15 +146,15 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     let radioButtonMoney : RadioButton = {
         let rb = RadioButton()
-        rb.showBottomLine = true
         rb.title = LanguageManager.shared.localized(string: "EnterTheSalary")
         rb.unit = "VND"
         rb.addTarget(self, action: #selector(handleRadioButton(_:)), for: .touchUpInside)
-        rb.isSelected = true
         return rb
     }()
     let radioButtonTime : RadioButton = {
         let rb = RadioButton()
+        rb.showBottomLine = true
+        rb.isSelected = true
         rb.title = LanguageManager.shared.localized(string: "Timework")
         rb.addTarget(self, action: #selector(handleRadioButton(_:)), for: .touchUpInside)
         return rb
@@ -190,9 +203,8 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     let textViewDescription : UITextView = {
         let tv = UITextView()
-//        tv.hint = LanguageManager.shared.localized(string: "WorkDescription")!
         tv.font = Fonts.by(name: .light, size: 13)
-        tv.text = "Yêu cầu khác"
+        tv.text = LanguageManager.shared.localized(string: "WorkDescription")
         return tv
     }()
     
@@ -251,11 +263,13 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         view1.addSubview(workTypeTextField)
         view1.addSubview(buttonWorkType)
         view1.addSubview(addressTextField)
+        view1.addSubview(labelDescription)
         
-        view1.addConstraintWithFormat(format: "V:|-10-[v0]-10-[v1]-10-[v2]", views: titleTextField, workTypeTextField, addressTextField)
+        view1.addConstraintWithFormat(format: "V:|-10-[v0]-10-[v1]-10-[v2]-10-[v3]", views: titleTextField, workTypeTextField, addressTextField, labelDescription)
         view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: titleTextField)
         view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: addressTextField)
         view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: workTypeTextField)
+        view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: labelDescription)
         
         if workType?.id == "000000000000000000000001"{
             workTypeTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -276,25 +290,39 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         
         
     }
+    
+    func createCheckBoxes() -> CGFloat{
+        let checkboxWidth = (UIScreen.main.bounds.width - 30) / numberCollum
+        var checkboxHeight : CGFloat = 0
+        let font = Fonts.by(name: .light, size: 15)
+        
+        for suggest in (workType?.suggests)!{
+            let checkbox = CheckBox()
+            checkbox.title = suggest.name
+            checkbox.widthAnchor.constraint(equalToConstant: checkboxWidth).isActive = true
+            view1.addSubview(checkbox)
+            chexboxes.append(checkbox)
+            let size = CGSize(width: checkboxWidth - 30, height: 1000)
+            let height = checkbox.title?.heightWith(size: size, font: font)
+            checkbox.addTarget(self, action: #selector(handleCheckbox(_:)), for: .touchUpInside)
+            if checkboxHeight < height!{
+                checkboxHeight = height!
+            }
+        }
+        return checkboxHeight + 10
+    }
+    let numberCollum : CGFloat = 3
     func setupChexboxes(){
         
-        let numberCollum : CGFloat = 3
+        let checkboxHeight = self.createCheckBoxes()
         let checkboxWidth = (UIScreen.main.bounds.width - 30) / numberCollum
         var currentRow : CGFloat = 0
         var currentCollum : CGFloat = 0
         
-        let checkboxHeight : CGFloat = 30
-        
-        for (index, suggest) in (workType?.suggests)!.enumerated(){
-            let checkbox = CheckBox()
-            checkbox.title = suggest.name
-            view1.addSubview(checkbox)
-            chexboxes.append(checkbox)
-            checkbox.addTarget(self, action: #selector(handleCheckbox(_:)), for: .touchUpInside)
+        for (index, checkbox) in self.chexboxes.enumerated(){
             
-            checkbox.widthAnchor.constraint(equalToConstant: checkboxWidth).isActive = true
             checkbox.heightAnchor.constraint(equalToConstant: checkboxHeight).isActive = true
-            checkbox.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: (10 + currentRow * checkboxHeight)).isActive = true
+            checkbox.topAnchor.constraint(equalTo: labelDescription.bottomAnchor, constant: (10 + currentRow * checkboxHeight)).isActive = true
             checkbox.leftAnchor.constraint(equalTo: view1.leftAnchor, constant: (30 + checkboxWidth * currentCollum)).isActive = true
             
             if index == (workType?.suggests.count)! - 1 {
@@ -328,7 +356,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         view2.addSubview(radioButtonMoney)
         view2.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        view2.addConstraintWithFormat(format: "V:|[v0][v1]|", views: radioButtonMoney, radioButtonTime)
+        view2.addConstraintWithFormat(format: "V:|[v0][v1]|", views: radioButtonTime, radioButtonMoney)
         view2.addConstraint(NSLayoutConstraint(item: radioButtonMoney, attribute: .height, relatedBy: .equal, toItem: radioButtonTime, attribute: .height, multiplier: 1, constant: 0))
         
         view2.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: radioButtonTime)
@@ -350,6 +378,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         labelTo.font = Fonts.by(name: .light, size: 15)
         labelTo.translatesAutoresizingMaskIntoConstraints = false
         labelTo.text = LanguageManager.shared.localized(string: "To")
+        labelTo.textAlignment = .center
         view3.addSubview(labelTime)
         view3.addSubview(labelTo)
         
@@ -377,13 +406,14 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     func setupView4(){
         view4.addSubview(textViewDescription)
         view4.addConstraintWithFormat(format: "V:|-10-[v0(100)]-10-|", views: textViewDescription)
-        view4.addConstraintWithFormat(format: "H:|-10-[v0]-10-|", views: textViewDescription)
+        view4.addConstraintWithFormat(format: "H:|-25-[v0]-25-|", views: textViewDescription)
         
     }
     
     
     
     func showDatePickerWith(mode : UIDatePickerMode, sender : UIButton){
+        hideKeyboard()
         dateLauncher.pickerMode = mode
         dateLauncher.sender = sender
         dateLauncher.show()
@@ -438,13 +468,16 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         }
     }
     func handleButtonDate(_ sender : UIButton){
-        hideKeyboard()
         let currentYear = Int(Date().year)
         self.dateLauncher.datePicker.maximumDate = Date(year: (currentYear! + 5))
         showDatePickerWith(mode: .date, sender: sender)
     }
     func handleButtonFrom(_ sender: UIButton){
-        dateLauncher.startDate = timeStart
+        if timeStart! < Date(){
+            dateLauncher.startDate = Date()
+        }else{
+            dateLauncher.startDate = timeStart
+        }
         dateLauncher.datePicker.maximumDate = nil
         showDatePickerWith(mode: .time, sender: sender)
         
@@ -467,9 +500,10 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         let cancelString = LanguageManager.shared.localized(string: "Cancel")
         let actionSheet = UIAlertController(title: nil, message: mes, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: cancelString, style: .cancel, handler: nil))
-        for workType in workTypes!{
+        for workType in Constant.workTypes!{
             actionSheet.addAction(UIAlertAction(title: workType.name, style: .default, handler: { (nil) in
                 self.workType = workType
+                self.updatelayout()
             }))
         }
         self.present(actionSheet, animated: true, completion: nil)
@@ -550,16 +584,18 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         return LanguageManager.shared.localized(string: "PleaseChooseYourTypeOfWork")
     }
     private func validateDescription() -> String?{
+        var checked : Bool = false
         var text = ""
         for (index, chexbox) in chexboxes.enumerated(){
             if chexbox.isSelected{
-                text = text + "\n" + (workType?.suggests[index].name)!
+                checked = true
+                text = text + (workType?.suggests[index].name)! + "\n"
             }
         }
-        text = text + "\n" + textViewDescription.text
+        text = text + textViewDescription.text
         
         let numberChar = (text.trimmingCharacters(in: .whitespaces).characters.count)
-        if  numberChar > 10 {
+        if  checked || numberChar > 10 {
             params["description"] = text
             return nil
         }
@@ -621,4 +657,18 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         self.mainScrollView.scrollIndicatorInsets = contentInsets
     }
     
+    func updatelayout(){
+        
+        let subviews = view1.subviews + view2.subviews + view3.subviews + view4.subviews + toolView.subviews
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+        view1.removeFromSuperview()
+        toolView.removeFromSuperview()
+        view2.removeFromSuperview()
+        view3.removeFromSuperview()
+        view4.removeFromSuperview()
+        self.setupView()
+
+    }
 }

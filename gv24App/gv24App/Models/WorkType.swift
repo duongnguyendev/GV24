@@ -34,11 +34,20 @@ class WorkType: Entity {
         self.weight = jsonData["weight"].int
         self.image = jsonData["image"].string
         self.tools = jsonData["tools"].bool
-        let suggetsJson = jsonData["suggest"].arrayValue
         
-        for suggestData in suggetsJson {
+        let suggetsJson = jsonData["suggest"].arrayValue
+        for suggestData in (suggetsJson as [JSON]) {
             self.suggests.append(Suggest(jsonData: suggestData))
         }
+    }
+    
+    static func getBy(id: String)-> WorkType?{
+        for workType in Constant.workTypes!{
+            if workType.id == id{
+                return workType
+            }
+        }
+        return nil
     }
 }
 

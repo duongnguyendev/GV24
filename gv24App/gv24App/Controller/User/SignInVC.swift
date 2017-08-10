@@ -307,7 +307,10 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     func handleSignInButton(_ sender : UIButton) {
         self.hideKeyboard()
         self.loadingView.show()
-        if (self.emailTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 && (self.passTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! > 5 {
+        if let validateError = validate(){
+            self.loadingView.close()
+            showAlertWith(title: nil, mes: validateError)
+        }else{
             UserService.shared.logIn(userName: emailTextField.text!, password: passTextField.text!, completion: { (userLogedIn, token, error) in
                 self.loadingView.close()
                 if error == nil{
@@ -318,10 +321,38 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
                     self.showAlertWith(title: nil, mes: error)
                 }
             })
-        }else{
-            self.loadingView.close()
-            showAlertWith(title: nil, mes: "InvalidUsernamePassword")
         }
+    }
+    
+    func validate()->String?{
+        let emailError = validateEmail()
+        let passError = validatePass()
+        
+        if emailError == "PleaseCompleteAllInformation" || passError == "PleaseCompleteAllInformation"{
+            return "PleaseCompleteAllInformation"
+        }
+        if emailError != nil{
+            return emailError
+        }
+        return passError
+    }
+    func validateEmail()->String?{
+        if (self.emailTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! == 0{
+            return "PleaseCompleteAllInformation"
+        }
+        if (self.emailTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! < 6{
+            return "InvalidUsernamePassword"
+        }
+        return nil
+    }
+    func validatePass()->String?{
+        if (self.passTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! == 0{
+            return "PleaseCompleteAllInformation"
+        }
+        if (self.passTextField.text?.trimmingCharacters(in: .whitespaces).characters.count)! < 6{
+            return "InvalidUsernamePassword"
+        }
+        return nil
     }
     
     func showAlertWith(title: String?, mes: String?){

@@ -89,6 +89,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
     }
     func choose() {
         let requestVC = RequestMaidVC()
+        requestVC.workType = WorkType.getBy(id: "000000000000000000000001")
         requestVC.maid = self.maid
         push(viewController: requestVC)
     }

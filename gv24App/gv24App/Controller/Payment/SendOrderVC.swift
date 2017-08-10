@@ -23,7 +23,7 @@ class SendOrderVC: BaseVC {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    private let labelName: UILabel = {
+    let labelName: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.text = LanguageManager.shared.localized(string: "PayerFullName")
@@ -37,7 +37,7 @@ class SendOrderVC: BaseVC {
         return tf
     }()
     
-    private let labelTotal: UILabel = {
+    let labelTotal: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.text = LanguageManager.shared.localized(string: "TotalAmount")
@@ -53,7 +53,7 @@ class SendOrderVC: BaseVC {
         return tf
     }()
 
-    private let labelEmail: UILabel = {
+    let labelEmail: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.text = LanguageManager.shared.localized(string: "Email")
@@ -68,7 +68,7 @@ class SendOrderVC: BaseVC {
         return tf
     }()
 
-    private let labelPhone: UILabel = {
+    let labelPhone: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.text = LanguageManager.shared.localized(string: "PhoneNumber")
@@ -84,7 +84,7 @@ class SendOrderVC: BaseVC {
         return tf
     }()
 
-    private let labelAddress: UILabel = {
+    let labelAddress: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.text = LanguageManager.shared.localized(string: "Address")

@@ -21,6 +21,7 @@ class WorkTypeCell: BaseCollectionCell {
         lb.text = "Nấu ăn"
         lb.textColor = .white
         lb.font = Fonts.by(name: .medium, size: 10)
+        lb.numberOfLines = 0
         return lb
     }()
     
@@ -35,13 +36,13 @@ class WorkTypeCell: BaseCollectionCell {
         self.layer.borderColor = UIColor.white.cgColor
         addSubview(textBackground)
         addConstraintWithFormat(format: "H:|[v0]|", views: textBackground)
-        textBackground.heightAnchor.constraint(equalToConstant: 30).isActive = true
+//        textBackground.heightAnchor.constraint(equalToConstant: 30).isActive = true
         textBackground.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         
         textBackground.addSubview(labelTitle)
         
         textBackground.addConstraintWithFormat(format: "H:|-5-[v0]|", views: labelTitle)
-        textBackground.addConstraintWithFormat(format: "V:|[v0]|", views: labelTitle)
+        textBackground.addConstraintWithFormat(format: "V:|-5-[v0]-5-|", views: labelTitle)
         
     }
 

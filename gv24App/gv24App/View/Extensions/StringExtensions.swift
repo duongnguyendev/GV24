@@ -16,6 +16,17 @@ extension String {
         return estimatedRect.height
     }
     
+    func widthWith(size : CGSize, font : UIFont) -> CGFloat{
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let estimatedRect = NSString(string: self).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : font], context: nil)
+        return estimatedRect.width
+    }
+    func heightWith(size : CGSize, font : UIFont) -> CGFloat{
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        let estimatedRect = NSString(string: self).boundingRect(with: size, options: options, attributes: [NSFontAttributeName : font], context: nil)
+        return estimatedRect.height
+    }
+    
     func htmlAttributedString(completion: ((_ string : NSAttributedString?)->())) {
         if let htmlData = self.data(using: String.Encoding(rawValue: String.Encoding.unicode.rawValue)){
             let attributedString = try! NSAttributedString(data: htmlData, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)

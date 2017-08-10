@@ -92,7 +92,13 @@ class Info: Entity {
         super.init(jsonData: jsonData)
         self.title = jsonData["title"].string ?? ""
         self.package = Package(json: jsonData["package"])
-        self.work = WorkType(jsonData: jsonData["work"])
+        
+        var workId = jsonData["work"]["_id"].string
+        if workId == nil{ workId = jsonData["work"].string }
+        if workId != nil{
+            self.work = WorkType.getBy(id: workId!)
+        }
+        
         self.desc = jsonData["description"].string ?? ""
         self.price = jsonData["price"].number ?? 0
         self.tool  = jsonData["tools"].bool ?? false
@@ -117,5 +123,10 @@ class Info: Entity {
             self.endAt = json["endAt"].string ?? ""
             self.hour = json["hour"].number ?? 0
         }
+    }
+    
+    func getWorkTypeLocalBy(id: String) -> WorkType?{
+        
+        return nil
     }
 }

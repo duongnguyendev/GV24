@@ -84,7 +84,7 @@ class PaymentService: APIService {
     }
     func chargeOnlineSeConfirm(billId : String, key: String, completion: @escaping ((String?, String?)->())){
         let url = "payment/chargeOnlineSecConfirm"
-        let header = ["hbbgvauth": UserHelpers.token, "hbbgv_accesskey":key]
+        let header = ["hbbgvauth": UserHelpers.token, "hbbgvaccesskey":key]
         let params = ["billId": billId]
         post(url: url, parameters: params, header: header) { (jsonData, error) in
             if error != nil{
@@ -98,7 +98,7 @@ class PaymentService: APIService {
     
     func chargeOnlineThiConfirm(billId: String, key: String, completion: @escaping ((String?)->())){
         let url = "payment/chargeOnlineThiConfirm"
-        let header = ["hbbgvauth": UserHelpers.token, "hbbgv_accesskey":key]
+        let header = ["hbbgvauth": UserHelpers.token, "hbbgvaccesskey":key]
         let params = ["billId": billId]
         post(url: url, parameters: params, header: header) { (jsonData, error) in
             if error != nil{

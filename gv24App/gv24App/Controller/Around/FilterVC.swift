@@ -16,7 +16,6 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     var distance : Int = 5{
         didSet{
             labelNumberDistance.text = "\(distance)km"
-            
         }
     }
     
@@ -227,7 +226,7 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     }
     
     func handleButtonPrice(_ sender: UIButton){
-        let actionSheet = UIAlertController(title: nil, message: "Giá tiền", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: LanguageManager.shared.localized(string: "Amount"), preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "<50.000", style: .default, handler: { (nil) in
             self.buttonPrice.title = "<50.000"
             self.params["priceMax"] = 50000

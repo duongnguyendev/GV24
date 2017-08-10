@@ -28,7 +28,8 @@ class AbilityCell: BaseCollectionCell {
     
     var ability: Ability?{
         didSet{
-            abilityView.imageView?.loadImageurl(link: (ability?.image)!)
+//            abilityView.imageView?.loadImageurl(link: (ability?.image)!)
+            abilityView.iconUrl = ability?.image
             abilityView.title = ability?.name
         }
     }

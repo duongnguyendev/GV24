@@ -49,8 +49,8 @@ class JobNewDetailVC: JobDetailVC{
     func handleUpdateButton(_ sender: UIButton){
         let updateVC = UpdateVC()
         updateVC.task = task
+        updateVC.workType = task.info?.work
         push(viewController: updateVC)
-        print("Handle Update Task")
     }
     
     override func localized() {
