@@ -19,6 +19,8 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
             }
             self.workTypeTextField.text = workType?.name
             self.labelDescription.text = workType?.workDescription
+            self.titleTextField.text = workType?.title
+            
         }
     }
     var chexboxes = [CheckBox]()
@@ -56,11 +58,12 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         title = workType?.name
         
-        self.labelDescription.text = workType?.workDescription
-        self.titleTextField.text = workType?.title
         self.addressTextField.text = UserHelpers.currentUser?.address?.name
         
         self.date = Date()
+        if workType?.id != "000000000000000000000001"{
+            self.buttonWorkType.isUserInteractionEnabled = false
+        }
     }
     override func setupRightNavButton() {
         let btnSend = NavButton(title: "Post")
@@ -270,12 +273,12 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: addressTextField)
         view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: workTypeTextField)
         view1.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: labelDescription)
-        
-        if workType?.id == "000000000000000000000001"{
-            workTypeTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        }else{
-            workTypeTextField.heightAnchor.constraint(equalToConstant: 0).isActive = true
-        }
+        workTypeTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        //        if workType?.id == "000000000000000000000001"{
+        //
+        //        }else{
+        //            workTypeTextField.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        //        }
         buttonWorkType.topAnchor.constraint(equalTo: workTypeTextField.topAnchor, constant: 0).isActive = true
         buttonWorkType.leftAnchor.constraint(equalTo: workTypeTextField.leftAnchor, constant: 0).isActive = true
         buttonWorkType.rightAnchor.constraint(equalTo: workTypeTextField.rightAnchor, constant: 0).isActive = true
@@ -295,7 +298,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         let checkboxWidth = (UIScreen.main.bounds.width - 30) / numberCollum
         var checkboxHeight : CGFloat = 0
         let font = Fonts.by(name: .light, size: 15)
-        
+        chexboxes = [CheckBox]()
         for suggest in (workType?.suggests)!{
             let checkbox = CheckBox()
             checkbox.title = suggest.name
@@ -669,6 +672,6 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         view3.removeFromSuperview()
         view4.removeFromSuperview()
         self.setupView()
-
+        
     }
 }

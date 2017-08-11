@@ -183,13 +183,19 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     func logOut() {
-        UserHelpers.logOut()
-        GIDSignIn.sharedInstance().signOut()
-        if AccessToken.current != nil{
-            let facebookLoginManager = LoginManager()
-            facebookLoginManager.logOut()
-        }
-        self.dismiss(animated: true, completion: nil)
+        let alert = UIAlertController(title: nil, message: LanguageManager.shared.localized(string: "AreYouSureYouWantToLogOut"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "Cancel"), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            UserHelpers.logOut()
+            GIDSignIn.sharedInstance().signOut()
+            if AccessToken.current != nil{
+                let facebookLoginManager = LoginManager()
+                facebookLoginManager.logOut()
+            }
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func handleSection0(item : Int){

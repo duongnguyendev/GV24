@@ -252,3 +252,4 @@ RechargeAmount = "Tổng số tiền nạp";
 PayerPhone = "Số điện thoại người thanh toán";
 PayerAddress = "Địa chỉ người thanh toán";
 PayerEmail = "Email người thanh toán";
+AreYouSureYouWantToLogOut = "Bạn thực sự muốn đăng xuất?";
