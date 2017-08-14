@@ -32,7 +32,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         hideKeyboardWhenTouchUpOutSize = true
-        title = LanguageManager.shared.localized(string: "Login")
+        title = LanguageManager.shared.localized(string: "SignIn")
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
     }
@@ -61,21 +61,21 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     private let workAroundButton : BasicButton = {
         let btn = BasicButton()
         btn.color = AppColor.homeButton1
-        btn.title = "NearbyMaid"
+        btn.title = "TitleNearbyWorkers"
         btn.addTarget(self, action: #selector(handleWordAroundButton(_:)), for: .touchUpInside)
         return btn
     }()
     private let signInButton : BasicButton = {
         let btn = BasicButton()
         btn.color = AppColor.homeButton3
-        btn.title = "SignIn"
+        btn.title = "SignInUppercase"
         btn.addTarget(self, action: #selector(handleSignInButton(_:)), for: .touchUpInside)
         return btn
     }()
     
     private let signUpButton : UIButton = {
         let btn = UIButton()
-        let title = LanguageManager.shared.localized(string: "SignUpNow")
+        let title = LanguageManager.shared.localized(string: "SingUp")
         btn.setTitle(title, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.titleLabel?.font = Fonts.by(name: .regular, size: 14)

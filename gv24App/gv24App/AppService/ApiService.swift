@@ -158,13 +158,18 @@ class APIService: NSObject {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        let json = JSON(response.value as Any)
-                        let status = json["status"].bool
-                        if !status!{
+                        guard case let .success(jsonData) = response.result else {
+                            return completion(nil, response.error?.localizedDescription)
+                        }
+                        let json = JSON(jsonData)
+                        let status = json["status"].boolValue
+                        if !status {
                             if let message = json["message"].string{
                                 completion(nil, message)
+                            } else {
+                                completion(nil, "unknow error")
                             }
-                            
+    
                         }else{
                             completion(json["data"], nil)
                         }

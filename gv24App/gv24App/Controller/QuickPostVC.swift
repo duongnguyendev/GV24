@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KMPlaceholderTextView
 
 class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     var params = Dictionary<String, Any>()
@@ -60,7 +61,12 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         
         self.addressTextField.text = UserHelpers.currentUser?.address?.name
         
-        self.date = Date()
+        // configure timeStart = now() + 10'
+        var components = DateComponents()
+        components.setValue(10, for: .minute)
+        let now = Date()
+        self.date = Calendar.current.date(byAdding: components, to: now)
+        
         if workType?.id != "000000000000000000000001"{
             self.buttonWorkType.isUserInteractionEnabled = false
         }
@@ -205,9 +211,9 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     }()
     
     let textViewDescription : UITextView = {
-        let tv = UITextView()
+        let tv = KMPlaceholderTextView()
         tv.font = Fonts.by(name: .light, size: 13)
-        tv.text = LanguageManager.shared.localized(string: "WorkDescription")
+        tv.placeholder = LanguageManager.shared.localized(string: "WorkDescription")!
         return tv
     }()
     

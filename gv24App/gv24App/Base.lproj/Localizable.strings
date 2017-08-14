@@ -15,6 +15,7 @@ Around = "Maid\naround here";
 NearbyWorkers = "Nearby workers";
 TitleNearbyWorkers = "Nearby\nworkers";
 SignIn = "Sign In";
+SignInUppercase = "SIGN IN";
 SingUp = "Sign up";
 NearbyJobs = "Nearby jobs";
 WorkManagement = "Work\nmanagement";

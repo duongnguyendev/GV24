@@ -1376,3 +1376,14 @@ gv24App/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch
 gv24App/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-umbrella.h
 gv24App/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.modulemap
 gv24App/Pods/Target Support Files/SwiftyJSON/SwiftyJSON.xcconfig
+gv24App/Pods/KMPlaceholderTextView/LICENSE
+gv24App/Pods/KMPlaceholderTextView/README.md
+gv24App/Pods/KMPlaceholderTextView/KMPlaceholderTextView/KMPlaceholderTextView.swift
+gv24App/Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/KMPlaceholderTextView.xcscheme
+gv24App/Pods/Target Support Files/KMPlaceholderTextView/Info.plist
+gv24App/Pods/Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView-dummy.m
+gv24App/Pods/Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView-prefix.pch
+gv24App/Pods/Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView-umbrella.h
+gv24App/Pods/Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView.modulemap
+gv24App/Pods/Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView.xcconfig
+gv24App/Pods/

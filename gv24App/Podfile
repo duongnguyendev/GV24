@@ -18,4 +18,5 @@ target 'gv24App' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'AFNetworking', '~> 2.0’
+  pod 'KMPlaceholderTextView'
 end
