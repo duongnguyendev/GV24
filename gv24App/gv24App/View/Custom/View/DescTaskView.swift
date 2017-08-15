@@ -10,17 +10,46 @@ import Foundation
 import UIKit
 import IoniconsSwift
 class DescTaskView: BaseView {
+    var preferredHeight: CGFloat {
+        var height = CGFloat(250)
+        if let description = self.task?.info?.desc {
+            let size = CGSize(width: self.bounds.width - margin*2, height: 1000)
+            height += String.heightWith(string: description, size: size, font: labelDescTask.font)
+            height += 5
+        }
+        return height
+    }
     let margin : CGFloat = 20
     var task: Task?{
         didSet{
-            iconType.loadImageurl(link: (task?.info?.work?.image)!)
-            labelTitle.text = task?.info?.title
-            labelType.text = task?.info?.work?.name
-            labelDescTask.text = task?.info?.desc
+            guard let info = task?.info, let work = info.work else {
+                return
+            }
+            
+            if let image = work.image {
+                iconType.loadImageurl(link: image)
+            }
+            labelTitle.text = info.title
+            labelType.text = work.name
+            if let description = info.desc {
+                let size = CGSize(width: self.bounds.width - margin*2, height: 1000)
+                let height = String.heightWith(string: description, size: size, font: labelDescTask.font) + 5
+                descriptionHeightConstraint?.constant = height
+            } else {
+                descriptionHeightConstraint?.constant = 0
+            }
+            labelDescTask.text = info.desc
+            if let showTool = info.tool, showTool {
+                bringSuplierHeightConstraint?.constant = 16
+            } else {
+                bringSuplierHeightConstraint?.constant = 0
+            }
             moneyView.name = "\(String.numberDecimalString(number: (task?.info?.price)!)) VND"
             datetimeView.name = Date(isoDateString: (task?.info?.time?.startAt)!).dayMonthYear
             datetimeView.clock = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
             addressView.name = task?.info?.address?.name
+            
+            self.setNeedsLayout()
         }
     }
     private let iconType : IconView = {
@@ -47,7 +76,8 @@ class DescTaskView: BaseView {
         lb.font = Fonts.by(name: .light, size: 14)
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textAlignment = .justified
-        lb.numberOfLines = 3
+        lb.numberOfLines = 0
+        lb.lineBreakMode = .byWordWrapping
         lb.text = "Cần 1 bạn nữ dọn phòng sáng ngày thứ 4, sau 9 giờ.Cần 1 bạn nữ dọn phòng sáng ngày thứ 4, sau 9 giờ."
         return lb
     }()
@@ -91,12 +121,26 @@ class DescTaskView: BaseView {
         return view
     }()
     
+    let bringSupplierLabel: UILabel = {
+        let lb = UILabel()
+        lb.font = Fonts.by(name: .light, size: 14)
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.numberOfLines = 1
+        lb.text = LanguageManager.shared.localized(string: "task.bringSuplier")
+        lb.textColor = AppColor.homeButton2
+        return lb
+    }()
+    
+    var bringSuplierHeightConstraint: NSLayoutConstraint?
+    var descriptionHeightConstraint: NSLayoutConstraint?
+    
     override func setupView() {
         backgroundColor = UIColor.white
         addSubview(iconType)
         addSubview(labelTitle)
         addSubview(labelType)
         addSubview(labelDescTask)
+        addSubview(bringSupplierLabel)
         addSubview(viewLine)
         addSubview(moneyView)
         addSubview(viewMoneyLine)
@@ -115,10 +159,11 @@ class DescTaskView: BaseView {
         labelType.bottomAnchor.constraint(equalTo: iconType.bottomAnchor, constant: -margin/4).isActive = true
         
         self.setupLabelDescTask()
+        self.setupLabelBringSupplier()
         
         addConstraintWithFormat(format: "H:|[v0]|", views: viewLine)
         viewLine.heightAnchor.constraint(equalToConstant: 1/2).isActive = true
-        viewLine.bottomAnchor.constraint(equalTo: labelDescTask.bottomAnchor, constant: 10).isActive = true
+        viewLine.bottomAnchor.constraint(equalTo: bringSupplierLabel.bottomAnchor, constant: 10).isActive = true
         
         addConstraintWithFormat(format: "H:|[v0]|", views: moneyView)
         moneyView.topAnchor.constraint(equalTo: viewLine.bottomAnchor, constant: 0).isActive = true
@@ -146,6 +191,14 @@ class DescTaskView: BaseView {
         
         labelDescTask.topAnchor.constraint(equalTo: iconType.bottomAnchor, constant: margin/2).isActive = true
         addConstraintWithFormat(format: "H:|-\(margin - 10)-[v0]-\(margin - 10)-|", views: labelDescTask)
-        labelDescTask.heightAnchor.constraint(equalToConstant: height + 40).isActive = true
+        descriptionHeightConstraint = labelDescTask.heightAnchor.constraint(equalToConstant: height + 5)
+        descriptionHeightConstraint?.isActive = true
+    }
+    func setupLabelBringSupplier() {
+        let height = 16
+        bringSupplierLabel.topAnchor.constraint(equalTo: labelDescTask.bottomAnchor, constant: margin/2).isActive = true
+        addConstraintWithFormat(format: "H:|-\(margin - 10)-[v0]-\(margin - 10)-|", views: bringSupplierLabel)
+        bringSuplierHeightConstraint = bringSupplierLabel.heightAnchor.constraint(equalToConstant: CGFloat(height))
+        bringSuplierHeightConstraint?.isActive = true
     }
 }

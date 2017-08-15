@@ -91,16 +91,16 @@ class TaskService: APIService {
         }
         return nil
     }
-    func selectedMaid(id: String,maidId: String,completion:@escaping ((Bool?)->())){
+    func selectedMaid(id: String,maidId: String,completion:@escaping ((Bool?, _ errorMessage: String?)->())){
         let url = "task/submit"
         let parameters = [
             "id": id,
             "maidId": maidId]
         postWidthToken(url: url, parameters: parameters) { (json, error) in
             if error == nil{
-                completion(true)
+                completion(true, nil)
             }else{
-                completion(false)
+                completion(false, error)
             }
         }
     }

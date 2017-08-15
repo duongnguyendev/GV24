@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MaidProfileVCDelegate {
+    func maidProfileVCDidSelected(_ maidProfileVC: MaidProfileVC)
+}
+
 class MaidProfileVC: ProfileVC, MaidProfileDelegate {
     
     var maid : MaidProfile?{
@@ -15,6 +19,9 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
             title = maid?.name
         }
     }
+    var selectable = false
+    var delegate: MaidProfileVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -88,10 +95,14 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
         push(viewController: repostVC)
     }
     func choose() {
-        let requestVC = RequestMaidVC()
-        requestVC.workType = WorkType.getBy(id: "000000000000000000000001")
-        requestVC.maid = self.maid
-        push(viewController: requestVC)
+        if selectable {
+            delegate?.maidProfileVCDidSelected(self)
+        } else {
+            let requestVC = RequestMaidVC()
+            requestVC.workType = WorkType.getBy(id: "000000000000000000000001")
+            requestVC.maid = self.maid
+            push(viewController: requestVC)
+        }
     }
     
     override func loadComment() {

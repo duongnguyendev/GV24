@@ -23,6 +23,9 @@ class JobDetailVC: BaseVC{
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    var descTaskViewHeightConstraint: NSLayoutConstraint?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,11 @@ class JobDetailVC: BaseVC{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descTaskViewHeightConstraint?.constant = descTaskView.preferredHeight
     }
     
     override func setupView() {
@@ -43,7 +51,8 @@ class JobDetailVC: BaseVC{
         
         descTaskView.topAnchor.constraint(equalTo: descLabel.bottomAnchor, constant: 10).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
-        descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        descTaskViewHeightConstraint = descTaskView.heightAnchor.constraint(equalToConstant: 300)
+        descTaskViewHeightConstraint?.isActive = true
     }
     func showAlertWith(task: Task){
         let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "AreYouSureYouWantToDeleteThisWork"), preferredStyle:UIAlertControllerStyle.alert)

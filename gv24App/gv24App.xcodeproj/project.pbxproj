@@ -901,7 +901,7 @@
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = FE5FXN233L;
+						DevelopmentTeam = YNT6QGU3P6;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1316,7 +1316,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNT6QGU3P6;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1341,7 +1341,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNT6QGU3P6;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

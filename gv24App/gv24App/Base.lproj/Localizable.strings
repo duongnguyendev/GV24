@@ -232,3 +232,5 @@ PayerPhone = "Phone number";
 PayerAddress = "Address";
 PayerEmail = "Email";
 AreYouSureYouWantToLogOut = "Are you sure you want to log out?";
+task.bringSuplier = "Bring your cleaning supplies";
+

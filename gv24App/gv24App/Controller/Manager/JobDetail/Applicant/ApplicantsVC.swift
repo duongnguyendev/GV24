@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
-class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,ApplicantControlDelegate{
+class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,ApplicantControlDelegate {
     var applicants = [Applicant]()
     var delegate: TaskManageDelegate?
+    var controllerToDismiss: BaseVC?
     
     private lazy var collectionApplicant : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -63,18 +64,28 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     func selectedProfile(maid: MaidProfile) {
         let maidProfileVC = MaidProfileVC()
         maidProfileVC.maid = maid
+        maidProfileVC.selectable = true
+        maidProfileVC.delegate = self
         push(viewController: maidProfileVC)
     }
+    
     func selectedMaid(id: String, maid: MaidProfile) {
         if delegate != nil{
-            TaskService.shared.selectedMaid(id: id, maidId: maid.maidId!, completion: { (flag) in
+            TaskService.shared.selectedMaid(id: id, maidId: maid.maidId!, completion: { (flag, error) in
                 if flag!{
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "CongratsYouHaveYourRightPerson")!, completion: {
                         self.delegate?.chooseMaid!()
+                        self.controllerToDismiss?.goBack()
                         self.dismiss(animated: true, completion: nil)
                     })
                 }else{
-                    self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToChooseYourRightPerson")!, completion: {})
+                    var message = LanguageManager.shared.localized(string: "FailedToChooseYourRightPerson")
+                    if (error == "SCHEDULE_DUPLICATED") {
+                        message = LanguageManager.shared.localized(string: "SCHEDULE_DUPLICATED")
+                    } else if (error == "DATA_NOT_EXIST") {
+                        message = LanguageManager.shared.localized(string: "DATA_NOT_EXIST")
+                    }
+                    self.showAlertWith(message: message!, completion: {})
                 }
             })
         }
@@ -90,3 +101,15 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     }
 
 }
+
+extension ApplicantsVC: MaidProfileVCDelegate {
+    func maidProfileVCDidSelected(_ maidProfileVC: MaidProfileVC) {
+        guard let maid = maidProfileVC.maid, let id = applicants[0].id else {
+            print("WARNING: user behavior is strange. (maid:\(String(describing: maidProfileVC.maid)), id:\(String(describing: applicants[0].id)))")
+            return
+        }
+        controllerToDismiss = maidProfileVC
+        selectedMaid(id: id, maid: maid)
+    }
+}
+
