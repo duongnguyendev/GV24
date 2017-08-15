@@ -180,7 +180,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let heightCell = widthCell * 1.2
-        
+
         if indexPath.item == 0{
             return CGSize(width: widthCell * 2 , height: heightCell)
         }

@@ -12,7 +12,7 @@ class UnpaidWorkCell: TaskCell{
     
     override func setupView() {
         super.setupView()
-        statusTask = "Chưa thanh toán"
+        statusTask = LanguageManager.shared.localized(string: "task.history.status.unpaid")
     }
     var taskUnpaid: TaskUnpaid?{
         didSet{

@@ -43,7 +43,6 @@ class WorkTypeCell: BaseCollectionCell {
         
         textBackground.addConstraintWithFormat(format: "H:|-5-[v0]|", views: labelTitle)
         textBackground.addConstraintWithFormat(format: "V:|-5-[v0]-5-|", views: labelTitle)
-        
     }
 
 }

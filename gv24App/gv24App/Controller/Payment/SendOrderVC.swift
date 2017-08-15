@@ -112,7 +112,7 @@ class SendOrderVC: BaseVC {
         super.viewDidLoad()
         self.hideKeyboardWhenTouchUpOutSize = true
         view.backgroundColor = AppColor.collection
-        title = LanguageManager.shared.localized(string: "OnlinePayment")
+        title = LanguageManager.shared.localized(string: "title.payment.online")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)

@@ -40,7 +40,7 @@ class MaidTaskCell: BaseCollectionCell{
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 12)
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Đã hoàn thành"
+        lb.text = LanguageManager.shared.localized(string: "task.history.status.completed")
         lb.textColor = UIColor.gray
         return lb
     }()

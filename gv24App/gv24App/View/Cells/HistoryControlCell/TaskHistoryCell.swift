@@ -13,6 +13,6 @@ class TaskHistoryCell: TaskCell{
     override func setupView() {
         super.setupView()
         marginTitle = 10
-        statusTask = "Đã hoàn thành"
+        statusTask = LanguageManager.shared.localized(string: "task.history.status.completed")
     }
 }

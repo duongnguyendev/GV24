@@ -51,7 +51,7 @@ class RechargeOnlineVC: SendOrderVC {
                 }
             })
         }else{
-            showAlertWith(message: LanguageManager.shared.localized(string: "PleaseEnterTheAmount")!, completion: {
+            showAlertWith(message: LanguageManager.shared.localized(string: "recharge.online.amount.error")!, completion: {
                 
             })
         }

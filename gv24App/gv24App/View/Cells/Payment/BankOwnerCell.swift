@@ -13,7 +13,7 @@ class BankOwnerCell: BaseCollectionCell{
     var date: String?{
         didSet{
             let dateWork = Date(isoDateString: date!).dayMonthYear
-            labelWorkDate.text = "\(LanguageManager.shared.localized(string: "TheStartDate")! ): \(dateWork)"
+            labelWorkDate.text = "\(LanguageManager.shared.localized(string: "title.payment.date")! ): \(dateWork)"
         }
     }
     var bank: NSNumber?{
@@ -29,7 +29,6 @@ class BankOwnerCell: BaseCollectionCell{
     let labelWorkDate: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "\(LanguageManager.shared.localized(string: "TheStartDate")! ):"
         lb.font = Fonts.by(name: .light, size: 16)
         return lb
     }()
