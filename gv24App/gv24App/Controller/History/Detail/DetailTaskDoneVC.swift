@@ -44,6 +44,9 @@ class DetailTaskDoneVC: BaseVC{
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private var descTaskViewHeightContraint: NSLayoutConstraint?
+    
     private let label: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +110,9 @@ class DetailTaskDoneVC: BaseVC{
         mainView.addSubview(horizontalProfileButtonLine)
         mainView.addSubview(horizontalStatusTaskLine)
         
-        mainView.addConstraintWithFormat(format: "V:|-20-[v0(300)]", views: descTaskView)
+        descTaskViewHeightContraint = descTaskView.heightAnchor.constraint(equalToConstant: descTaskView.preferredHeight)
+        descTaskViewHeightContraint?.isActive = true
+        mainView.addConstraintWithFormat(format: "V:|-20-[v0]", views: descTaskView)
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
         
         label.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 20).isActive = true
@@ -121,6 +126,12 @@ class DetailTaskDoneVC: BaseVC{
         horizontalProfileButtonLine.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 0).isActive = true
         
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descTaskViewHeightContraint?.constant = descTaskView.preferredHeight
+    }
+    
     func setupStatusTaskView(){
         mainView.addSubview(statusView)
         statusView.addSubview(statusLabel)

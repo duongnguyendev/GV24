@@ -171,7 +171,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
             if let wallet = wallet{
                 self.wallet = wallet
                 let cell = self.collectionPayment.cellForItem(at: IndexPath(item: 0, section: 2)) as! BankOwnerCell
-                cell.date = self.taskProgress?.history?.updateAt
+                cell.date = Date().isoString
                 cell.bank = wallet.wallet
             }else{
                 self.loadingView.close()
