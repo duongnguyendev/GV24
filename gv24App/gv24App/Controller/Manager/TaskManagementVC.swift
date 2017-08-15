@@ -111,7 +111,18 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     //MARK: - hanlde event
-    func handleButtonPost(_ sender: UIButton){
+    func handleButtonPost(_ sender: UIButton) {
+        
+        let taskNewCellIndex = IndexPath(row: 0, section: 0)
+        if let postedCell = collectionType.cellForItem(at: taskNewCellIndex) as? TaskNewControlCell, postedCell.tasks.count >= 10 {
+            let message = LanguageManager.shared.localized(string: "error.task.post.exceed")
+            let ok = LanguageManager.shared.localized(string: "OK")
+            let action = UIAlertAction(title: ok, style: .cancel, handler: nil)
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         
         let postVC = PostVC()
         postVC.workType = WorkType.getBy(id: "000000000000000000000001")

@@ -259,3 +259,5 @@ task.history.status.completed = "Completed";
 task.history.status.unpaid = "Unpaid";
 title.payment.date = "Payment date";
 title.payment.online = "Payment Online";
+error.task.post.exceed = "Your posts would be within ten!";
+

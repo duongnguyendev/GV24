@@ -259,4 +259,5 @@ task.history.status.completed = "Đã hoàn thành";
 task.history.status.unpaid = "Chưa thanh toán";
 title.payment.date = "Ngày thanh toán";
 title.payment.online = "Thanh toán online";
+error.task.post.exceed = "Số lượng bài đăng không được vượt quá 10 bài!";
 
