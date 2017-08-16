@@ -68,6 +68,9 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         return button
     }()
     
+    var descTaskViewHeightConstraint: NSLayoutConstraint?
+
+    
     func handleProfileButton(_ sender: UIButton){
         let maidProfileVC = MaidProfileVC()
         maidProfileVC.maid = taskAssigned.stakeholder?.receivced
@@ -191,12 +194,19 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         
         descTaskView.topAnchor.constraint(equalTo: descLabel.bottomAnchor, constant: 10).isActive = true
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
-        descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        descTaskViewHeightConstraint = descTaskView.heightAnchor.constraint(equalToConstant: 300)
+        descTaskViewHeightConstraint?.isActive = true
         
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        descTaskViewHeightConstraint?.constant = descTaskView.preferredHeight
     }
     override func localized() {
         super.localized()

@@ -38,15 +38,17 @@ class JobExpiredDetailVC: JobDetailVC{
 
     override func setupView() {
         super.setupView()
-        view.addSubview(labelExpired)
-        view.addSubview(deleteButton)
+        contentView.addSubview(labelExpired)
+        contentView.addSubview(deleteButton)
         descTaskView.labelTitle.rightAnchor.constraint(equalTo: labelExpired.leftAnchor, constant: 10).isActive = true
         
         labelExpired.rightAnchor.constraint(equalTo: descTaskView.rightAnchor, constant: -(margin/3)).isActive = true
         labelExpired.topAnchor.constraint(equalTo: descTaskView.topAnchor, constant: margin/3).isActive = true
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
+        contentView.bottomAnchor.constraint(greaterThanOrEqualTo: deleteButton.bottomAnchor, constant: 20).isActive = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -120,6 +120,7 @@ Search = "Tìm kiếm";
 Send = "Gửi";
 MonthBefore = "tháng trước";
 DayBefore = "ngày trước";
+1DayBefore = "ngày trước";
 HourBefore = "giờ trước";
 MinuteBefore = "phút trước";
 Description = "Mô tả";

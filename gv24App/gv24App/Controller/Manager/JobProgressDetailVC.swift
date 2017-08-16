@@ -39,6 +39,21 @@ class JobProgressDetailVC: BaseVC {
         return view
     }()
     
+    let mainScrollView : UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    let contentView : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var descTaskViewHeightConstraint: NSLayoutConstraint?
+
+    
     func handleButtonProfile(_ sender: UIButton){
         let maidProfileVC = MaidProfileVC()
         maidProfileVC.maid = taskProgress.stakeholder?.receivced
@@ -79,26 +94,51 @@ class JobProgressDetailVC: BaseVC {
     }
     override func setupView() {
         super.setupView()
-        self.view.addSubview(profileButton)
-        self.view.addSubview(finishMaid)
-        self.view.addSubview(descTaskView)
-        self.view.addSubview(descLabel)
         
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: profileButton)
-        profileButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        self.view.addSubview(mainScrollView)
+        mainScrollView.addSubview(contentView)
+        
+        mainScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        mainScrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+        contentView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        contentView.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 0).isActive = true
+        contentView.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor, constant: 0).isActive = true
+        contentView.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor, constant: 0).isActive = true
+        
+        contentView.addSubview(profileButton)
+        contentView.addSubview(finishMaid)
+        contentView.addSubview(descTaskView)
+        contentView.addSubview(descLabel)
+        
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: profileButton)
+        profileButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
         profileButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: finishMaid)
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: finishMaid)
         finishMaid.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 1).isActive = true
         finishMaid.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         descLabel.topAnchor.constraint(equalTo: finishMaid.bottomAnchor, constant: 20).isActive = true
-        descLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        descLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
         
         descTaskView.topAnchor.constraint(equalTo: descLabel.bottomAnchor, constant: 20).isActive = true
-        view.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
-        descTaskView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        contentView.addConstraintWithFormat(format: "H:|[v0]|", views: descTaskView)
+        
+        contentView.bottomAnchor.constraint(greaterThanOrEqualTo: descTaskView.bottomAnchor, constant: 20).isActive = true
+        
+        descTaskViewHeightConstraint = descTaskView.heightAnchor.constraint(equalToConstant: 300)
+        descTaskViewHeightConstraint?.isActive = true
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        descTaskViewHeightConstraint?.constant = descTaskView.preferredHeight
+    }
+    
     override func localized() {
         super.localized()
         title = LanguageManager.shared.localized(string: "RunningWork")

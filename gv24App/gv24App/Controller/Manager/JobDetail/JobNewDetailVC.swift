@@ -27,11 +27,13 @@ class JobNewDetailVC: JobDetailVC{
     }
     override func setupView() {
         super.setupView()
-        view.addSubview(deleteButton)
+        contentView.addSubview(deleteButton)
         
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
+        contentView.bottomAnchor.constraint(greaterThanOrEqualTo: deleteButton.bottomAnchor, constant: 20).isActive = true
     }
     
     override func setupRightNavButton() {

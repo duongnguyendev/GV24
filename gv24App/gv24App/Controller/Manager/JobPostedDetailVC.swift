@@ -53,8 +53,9 @@ class JobPostedDetailVC: JobDetailVC{
     
     override func setupView() {
         super.setupView()
-        self.view.addSubview(deleteButton)
-        self.view.addSubview(appListButton)
+        
+        contentView.addSubview(deleteButton)
+        contentView.addSubview(appListButton)
         
         appListButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 20).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: appListButton)
@@ -63,6 +64,8 @@ class JobPostedDetailVC: JobDetailVC{
         deleteButton.topAnchor.constraint(equalTo: appListButton.bottomAnchor, constant: 20).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
+        contentView.bottomAnchor.constraint(greaterThanOrEqualTo: deleteButton.bottomAnchor, constant: 20).isActive = true
     }
     func handleRemoveTask(_ sender: UIButton){
         self.showAlertWith(task: task)
