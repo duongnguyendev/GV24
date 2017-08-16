@@ -14,14 +14,16 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     var workType : WorkType?{
         didSet{
-            params["work"] = workType?.id
-            if workType?.price != nil{
-                self.radioButtonMoney.titleView.text = "\(String(describing: (workType?.price)!))"
+            guard let workType = workType else {
+                return
             }
-            self.workTypeTextField.text = workType?.name
-            self.labelDescription.text = workType?.workDescription
-            self.titleTextField.text = workType?.title
-            
+            params["work"] = workType.id
+            if let price = workType.price {
+                self.radioButtonMoney.titleView.text = "\(price)"
+            }
+            self.workTypeTextField.text = workType.name
+            self.labelDescription.text = workType.workDescription
+            self.titleTextField.text = workType.title
         }
     }
     var chexboxes = [CheckBox]()
@@ -131,6 +133,9 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         v.backgroundColor = .white
         return v
     }()
+    
+    var toolViewHeightConstraint: NSLayoutConstraint?
+    
     let checkBoxTool : CheckBox = {
         let cb = CheckBox()
         cb.addTarget(self, action: #selector(handleCheckBoxToolButton(_:)), for: .touchUpInside)
@@ -352,12 +357,17 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         toolView.addConstraintWithFormat(format: "V:|[v0]|", views: checkBoxTool)
         toolView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: checkBoxTool)
         
-        if (workType?.tools)! {
-            toolView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        }else{
-            toolView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        var height = 0
+        if let enableTool = workType?.tools {
+            height = enableTool ? 40 : 0
         }
         
+        if let heightConstraint = toolViewHeightConstraint {
+            heightConstraint.constant = CGFloat(height)
+        } else {
+            toolViewHeightConstraint = toolView.heightAnchor.constraint(equalToConstant: CGFloat(height))
+            toolViewHeightConstraint?.isActive = true
+        }
     }
     
     func setupView2(){
