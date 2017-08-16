@@ -13,12 +13,17 @@ import UIKit
     @objc optional func selectedAssigned(deadline: Bool,task : Task)
     @objc optional func selectedProgress(task : Task)
     @objc optional func isLoading(loading: Bool)
+    @objc optional func cellDidRefreshTasks(_ cell: TaskControlCell)
 }
 
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
     var delegate : TaskControlDelegate?
     let cellId = "cellId"
-    var tasks = [Task]()
+    var tasks = [Task]() {
+        didSet {
+            self.delegate?.cellDidRefreshTasks?(self)
+        }
+    }
     var indexPath = IndexPath(item: 0, section: 0)
     var pointCell = CGPoint()
     

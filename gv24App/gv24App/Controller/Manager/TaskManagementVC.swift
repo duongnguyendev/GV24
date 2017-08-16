@@ -13,6 +13,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     private let cellAssigned = "cellAssigned"
     private let cellInProgress = "cellInProgress"
     var indexPath: IndexPath = IndexPath(item: 0, section: 0)
+    private var postedTaskCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,8 +114,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     //MARK: - hanlde event
     func handleButtonPost(_ sender: UIButton) {
         
-        let taskNewCellIndex = IndexPath(row: 0, section: 0)
-        if let postedCell = collectionType.cellForItem(at: taskNewCellIndex) as? TaskNewControlCell, postedCell.tasks.count >= 10 {
+        if postedTaskCount >= 10 {
             let message = LanguageManager.shared.localized(string: "error.task.post.exceed")
             let ok = LanguageManager.shared.localized(string: "OK")
             let action = UIAlertAction(title: ok, style: .cancel, handler: nil)
@@ -193,6 +193,13 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func cellDidRefreshTasks(_ cell: TaskControlCell) {
+        let indexpath = collectionType.indexPath(for: cell)
+        if let indexpath = indexpath, indexpath.section == 0, indexpath.row == 0 {
+            postedTaskCount = cell.tasks.count
+        }
+    }
+    
     override func localized() {
         title = LanguageManager.shared.localized(string: "TitleWorkManagement")
         segmentedControl.setTitle(LanguageManager.shared.localized(string: "PostedWork"), forSegmentAt: 0)
@@ -200,6 +207,8 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         segmentedControl.setTitle(LanguageManager.shared.localized(string: "RunningWork"), forSegmentAt: 2)
     }
 }
+
+
 extension TaskManagementVC : TaskManageDelegate{
     func chooseMaid() {
         indexPath.item = 1
