@@ -17,10 +17,16 @@ class UnpaidWorkCell: TaskCell{
     var taskUnpaid: TaskUnpaid?{
         didSet{
             labelTitle.text = taskUnpaid?.info?.title
-            iconType.loadImageurl(link: (taskUnpaid?.info?.work?.image)!)
-            labelDate.text = Date(isoDateString: (taskUnpaid?.info?.time?.startAt)!).dayMonthYear
-            labelTimes.text = Date(isoDateString: (taskUnpaid?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (taskUnpaid?.info?.time?.endAt)!).hourMinute
-            labelUploadAt.text = Date(isoDateString: (taskUnpaid?.history?.updateAt)!).periodTime
+            if let image = taskUnpaid?.info?.work?.image {
+                iconType.loadImageurl(link: image)
+            }
+            if let startAt = taskUnpaid?.info?.time?.startAt, let endAt = taskUnpaid?.info?.time?.endAt {
+                labelDate.text = Date(isoDateString: startAt).dayMonthYear
+                labelTimes.text = Date(isoDateString: startAt).hourMinute + " - " + Date(isoDateString: endAt).hourMinute
+            }
+            if let updateAt = taskUnpaid?.history?.updateAt {
+                labelUploadAt.text = Date(isoDateString: updateAt).periodTime
+            }
         }
     }
     
