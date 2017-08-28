@@ -93,6 +93,7 @@ class TaskCell: BaseCollectionCell {
 
         labelTitle.topAnchor.constraint(equalTo: iconType.topAnchor, constant: margin/4).isActive = true
         labelTitle.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin).isActive = true
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[labelTitle]-8-|", options: [], metrics: nil, views: ["labelTitle": self.labelTitle]))
         
 
         labelStatus.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin).isActive = true

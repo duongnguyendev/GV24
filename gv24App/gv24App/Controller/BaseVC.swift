@@ -37,7 +37,7 @@ class BaseVC: UIViewController {
     
     //MARK: - Setup navigation bar
     
-    func setupNav(){
+    func setupNav() {
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSForegroundColorAttributeName: UIColor.black,
              NSFontAttributeName: Fonts.by(name: .bold, size: 17)]

@@ -35,12 +35,12 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
     }()
     
     var type: Int?{
-        didSet{
+        didSet {
             if type == 0{
                 self.loadTaskHistory()
-            }else if type == 1{
+            } else if type == 1{
                 self.loadMaidHistory()
-            }else if type == 2{
+            } else {
                 self.loadTaskUnpaids()
             }
         }

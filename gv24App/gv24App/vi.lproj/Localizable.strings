@@ -159,7 +159,7 @@ ClientsCanComeToTheCompanyForDirectRemittance = "Khách hàng có thể đến t
 AccountInformation = "THÔNG TIN TÀI KHOẢN";
 PleaseEnterTheMessage = "Vui lòng nhập nội dung cần báo cáo";
 ThereAreNoComments = "Chưa có nhận xét";
-InvalidUsernamePassword = "tên đăng nhập hoặc mật khẩu không đúng";
+InvalidUsernamePassword = "Tên đăng nhập hoặc mật khẩu không đúng";
 Done = "Vừa xong";
 CompleteCheckout = "Check out thành công";
 //==================

@@ -43,6 +43,10 @@ class UpdateVC: QuickPostVC, UITextFieldDelegate{
         self.timeStart = Date(isoDateString: (task.info?.time?.startAt)!)
         self.timeEnd = Date(isoDateString: (task.info?.time?.endAt)!)
         
+        if let descText = task.info?.desc {
+            self.descText = descText
+            self.textViewDescription.text = descText
+        }
     }
     
     override func setupRightNavButton() {
