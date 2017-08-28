@@ -314,6 +314,7 @@ class FilterVC: BaseVC, AgeLauncherDelegate {
     }
     
     func select(age: Int, toAge: Int) {
+        self.buttonAge.title = "\(age) - \(toAge)"
         self.params["ageMin"] = age
         self.params["ageMax"] = toAge
     }

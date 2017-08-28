@@ -11,12 +11,14 @@ import UIKit
 class BaseLauncher: NSObject {
     
     let blackView = UIView()
+    
     let mainView : UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
         return view
     }()
+    
     let buttonOK : BasicButton = {
         let btn = BasicButton()
         btn.titleCollor = AppColor.white

@@ -211,11 +211,14 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
         let index = targetContentOffset.pointee.x / view.frame.width
+        if Int(index) == indexPath.item { return }
         indexPath.item = Int(index)
         segmentedControl.selectedSegmentIndex = indexPath.item
         self.showButtonDate(index: indexPath)
     }
+
     var taskTemp: Task?
     //MARK: - Delegate-
     func selectedTaskHistory(task: Task) {
