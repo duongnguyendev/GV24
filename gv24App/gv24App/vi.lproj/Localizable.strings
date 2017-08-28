@@ -165,7 +165,7 @@ CompleteCheckout = "Check out thành công";
 //==================
 InvalidEmailAddress = "Email nhập không đúng!";
 InvalidPhoneNumber = "Số điện thoại nhập không đúng";
-YourDescriptionIsTooShort = "Mô tả quá ngắn";
+YourDescriptionIsTooShort = "Yêu cầu khác quá ngắn";
 PleaseEnterYourGender = "Vui lòng nhập giới tính";
 PleaseChooseYourTypeOfWork = "Vui lòng chọn loại công việc";
 APasswordResetLinkIsSentToYourEmail = "Đã gửi thành công link đặt lại mật khẩu qua email của bạn.";
