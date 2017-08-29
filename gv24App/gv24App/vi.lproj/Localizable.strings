@@ -224,6 +224,8 @@ ShareApp = "Giao diện hiện đại, tính năng độc đáo, hoạt động 
 NoInternetConnection = "Không có kết nối Internet";
 TimeOfWorkingIsInvalid ="Thời gian làm việc không đúng";
 InvalidReportTextCount = "Mô tả báo cáo phải có ít nhất 10 ký tự";
+PackageTypeText = "Khoán theo thời gian";
+InvalidPriceTextNumber = "Mức giá ít nhất phải là 2000";
 
 //===============
 SUCCESS = "Thành công";

@@ -222,8 +222,6 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         return tv
     }()
     
-    
-    
     //MARK: - setup view
     override func setupView() {
         setupMainView()
@@ -578,6 +576,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
             completion(packageError)
             return
         }
+        
         validateAddress { (addressError) in
             if addressError != nil{
                 completion(addressError)
@@ -638,8 +637,12 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         if self.radioButtonMoney.isSelected {
             self.params["package"] = "000000000000000000000001"
             if let priceNumber = Double(self.radioButtonMoney.titleView.text!){
-                self.params["price"] = priceNumber
-                return nil
+                if priceNumber >= 2000 {
+                    self.params["price"] = priceNumber
+                    return nil
+                } else {
+                    return LanguageManager.shared.localized(string: "InvalidPriceTextNumber")
+                }
             }else{
                 return LanguageManager.shared.localized(string: "PleaseEnterTheAmount")
             }

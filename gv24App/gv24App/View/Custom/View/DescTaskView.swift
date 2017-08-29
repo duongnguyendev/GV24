@@ -44,7 +44,11 @@ class DescTaskView: BaseView {
             } else {
                 bringSuplierHeightConstraint?.constant = 0
             }
-            moneyView.name = "\(String.numberDecimalString(number: (task?.info?.price)!)) VND"
+            if task?.info?.package?.id == "000000000000000000000002" {
+                moneyView.name = LanguageManager.shared.localized(string: "PackageTypeText")
+            } else {
+                moneyView.name = "\(String.numberDecimalString(number: (task?.info?.price)!)) VND"
+            }
             datetimeView.name = Date(isoDateString: (task?.info?.time?.startAt)!).dayMonthYear
             datetimeView.clock = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
             addressView.name = task?.info?.address?.name

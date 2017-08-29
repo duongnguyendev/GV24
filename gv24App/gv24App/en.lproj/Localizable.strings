@@ -223,6 +223,8 @@ ShareApp = "Modern designs, unique features, extremely efficient performance are
 NoInternetConnection = "No internet connection";
 TimeOfWorkingIsInvalid ="Time of working is invalid";
 InvalidReportTextCount = "Report description must be at least 10 characters";
+PackageTypeText = "Hourly pay";
+InvalidPriceTextNumber = "The price must be at least 2000";
 
 //===============
 SUCCESS = "Success!";
