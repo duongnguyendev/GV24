@@ -69,6 +69,8 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         components.setValue(10, for: .minute)
         let now = Date()
         self.date = Calendar.current.date(byAdding: components, to: now)
+        self.timeStart = self.date!
+        self.timeEnd = self.date!.postDefaultDate()
         
         if workType?.id != "000000000000000000000001"{
             self.buttonWorkType.isUserInteractionEnabled = false
@@ -193,7 +195,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     let buttonFrom: BasicButton = {
         let btn = BasicButton()
-        btn.title = Date().hourMinute
+        //btn.title = Date().hourMinute
         btn.titleCollor = AppColor.backButton
         btn.contentHorizontalAlignment = .left
         btn.addTarget(self, action: #selector(handleButtonFrom(_:)), for: .touchUpInside)
@@ -202,7 +204,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     let buttonTo: BasicButton = {
         let btn = BasicButton()
-        btn.title = Date().postDefaultDate().hourMinute
+        //btn.title = Date().postDefaultDate().hourMinute
         btn.titleCollor = AppColor.backButton
         btn.contentHorizontalAlignment = .right
         btn.addTarget(self, action: #selector(handleButtonTo(_:)), for: .touchUpInside)
