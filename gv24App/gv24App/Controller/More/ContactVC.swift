@@ -123,11 +123,18 @@ class ContactVC: BaseVC, MFMailComposeViewControllerDelegate  {
         }
         
     }
+    
     func handleMail(_ sender : UIButton){
-        
         if let email = contact?.email{
             if !MFMailComposeViewController.canSendMail() {
-                print("Mail services are not available")
+                let alertVC = UIAlertController.init(title: "", message: LanguageManager.shared.localized(string: "EmailServicesUnavailable"), preferredStyle: .alert)
+                alertVC.addAction(UIAlertAction.init(title: LanguageManager.shared.localized(string: "CancelTextForAlertView"), style: .cancel, handler: nil))
+                alertVC.addAction(UIAlertAction.init(title: LanguageManager.shared.localized(string: "SettingTextForAlertView"), style: .default, handler: { (action) in
+                    if let url = URL.init(string: UIApplicationOpenSettingsURLString) {
+                        UIApplication.shared.openURL(url)
+                    }
+                }))
+                self.present(alertVC, animated: true, completion: nil)
             }else{
                 let composeVC = MFMailComposeViewController()
                 composeVC.mailComposeDelegate = self

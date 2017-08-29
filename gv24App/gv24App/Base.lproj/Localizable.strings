@@ -206,6 +206,9 @@ InvalidReportTextCount = "Report description must be at least 10 characters";
 PackageTypeText = "Hourly pay";
 InvalidPriceTextNumber = "The price must be at least 2000";
 InvalidOtherRequestText = "Other requests must be at least 10 characters";
+CancelTextForAlertView = "Cancel";
+SettingTextForAlertView = "Settings";
+EmailServicesUnavailable = "Please setup email accounts in Settings before using";
 
 //========
 SUCCESS = "Thành công";
