@@ -202,7 +202,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     let buttonTo: BasicButton = {
         let btn = BasicButton()
-        btn.title = Date().hourMinute
+        btn.title = Date().postDefaultDate().hourMinute
         btn.titleCollor = AppColor.backButton
         btn.contentHorizontalAlignment = .right
         btn.addTarget(self, action: #selector(handleButtonTo(_:)), for: .touchUpInside)
