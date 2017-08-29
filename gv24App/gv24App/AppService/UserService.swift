@@ -186,6 +186,28 @@ class UserService: APIService {
             completion(error)
         }
     }
+
+    func checkUsername(username: String, completion: @escaping ((_ userNameError: String?)->())){
+        let url = "more/checkUsername?username=\(username)"
+        get(url: url) { (jsonData, error) in
+            if error != nil{
+                completion(error)
+            }else{
+                completion(nil)
+            }
+        }
+    }
+    
+    func checkEmail(email: String, completion: @escaping ((_ userNameError: String?)->())){
+        let url = "more/checkEmail?email=\(email)"
+        get(url: url) { (jsonData, error) in
+            if error != nil{
+                completion(error)
+            }else{
+                completion(nil)
+            }
+        }
+    }
     
     private func getMaidProfileFrom(json : JSON) -> [MaidProfile]?{
         if let data = json.array{

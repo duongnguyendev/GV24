@@ -89,12 +89,6 @@ class TransferInfoVC: BaseVC {
         labelBank.font = Fonts.by(name: .medium, size: 15)
         labelBank.text = "Vietcombank"
         labelBank.textAlignment = .left
-        let labelInfo = UILabel()
-        labelInfo.translatesAutoresizingMaskIntoConstraints = false
-        labelInfo.font = Fonts.by(name: .regular, size: 13)
-        labelInfo.text = "Số tài khoản: 123456789\nTên người hưởng: Nguyễn Văn B\nChi nhánh Hồ Chí Minh\nNội dung: NAP NGUYENVANB@GMAIL.COM"
-        labelInfo.numberOfLines = 0
-        labelInfo.textAlignment = .left
         
         contactView.addSubview(labelBank)
         contactView.addSubview(bankWebview)

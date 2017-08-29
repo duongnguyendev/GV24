@@ -234,22 +234,29 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         validate { (validateError) in
             self.loadingView.close()
             if validateError != nil{
-                let alert = UIAlertController(title: "", message: validateError, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.showAlertWith(title: nil, message: validateError!)
             }else{
-                self.userInfo?["email"] = self.emailTextField.text
-                self.userInfo?["name"] = self.fullNameTextField.text
-                self.userInfo?["phone"] = self.phoneTextField.text
-                self.userInfo?["addressName"] = self.addressTextField.text
-                self.userInfo?["lat"] = "\(String(describing: (self.coordinate?.latitude)!))"
-                self.userInfo?["lng"] = "\(String(describing: (self.coordinate?.longitude)!))"
-                self.userInfo?["gender"] = "\(String(describing: (self.gender)!))"
-                let signUpVC_3 = SignUpVC_3()
-                signUpVC_3.user = self.userInfo
-                signUpVC_3.avatarImage = self.avatarImage
-                signUpVC_3.delegate = self.delegate
-                self.push(viewController: signUpVC_3)
+                let email = self.emailTextField.text
+                UserService.shared.checkEmail(email: email!, completion: { (emailError) in
+                    if emailError != nil{
+                        self.showAlertWith(title: nil, message: LanguageManager.shared.localized(string: "DUPLICATED_EMAIL")!)
+                    }else{
+                        self.userInfo?["email"] = email
+                        self.userInfo?["name"] = self.fullNameTextField.text
+                        self.userInfo?["phone"] = self.phoneTextField.text
+                        self.userInfo?["addressName"] = self.addressTextField.text
+                        self.userInfo?["lat"] = "\(String(describing: (self.coordinate?.latitude)!))"
+                        self.userInfo?["lng"] = "\(String(describing: (self.coordinate?.longitude)!))"
+                        self.userInfo?["gender"] = "\(String(describing: (self.gender)!))"
+                        let signUpVC_3 = SignUpVC_3()
+                        signUpVC_3.user = self.userInfo
+                        signUpVC_3.avatarImage = self.avatarImage
+                        signUpVC_3.delegate = self.delegate
+                        self.push(viewController: signUpVC_3)
+                    }
+                })
+                
+
             }
         }
 //        push(viewController: SignUpVC_3())
@@ -428,5 +435,13 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
             sender.text = sender.text?.substring(to: index!)
         }
     }
+    
+    private func showAlertWith(title: String?, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+        
+    }
+
     
 }

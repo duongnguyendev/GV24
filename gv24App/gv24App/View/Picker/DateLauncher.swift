@@ -49,6 +49,7 @@ class DateLauncher: BaseLauncher {
     override func addContentView() {
         super.addContentView()
         mainView.addSubview(datePicker)
+        datePicker.locale = Locale(identifier: LanguageManager.shared.getCurrentLanguage().languageCode!)
     }
     override func setupSubView() {
         super.setupSubView()

@@ -13,8 +13,10 @@ class MarkerInfoWindow: BaseView {
 
     var user : MaidProfile?{
         didSet{
+            let hString = LanguageManager.shared.localized(string: "H")!
             self.labelName.text = user?.name
-            self.labelPrice.text = "\(String(describing: (user?.workInfo?.price)!))" + " VND/h"
+            let priceString = String.numberDecimalString(number: (user?.workInfo?.price)!)
+            self.labelPrice.text = "\(priceString)" + " VND/\(hString)"
 //            self.avatarImage.loadImageurl(link: (user?.avatarUrl)!)
             self.avatarImage.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
         }
