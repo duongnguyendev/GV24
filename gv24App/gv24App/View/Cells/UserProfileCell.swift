@@ -48,7 +48,7 @@ class UserProfileCell: BaseCollectionCell {
     let labelName : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .medium, size: 17)
-        lb.textColor = UIColor.white
+        lb.textColor = UIColor.black
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()

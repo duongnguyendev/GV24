@@ -164,7 +164,7 @@ Done = "Vừa xong";
 CompleteCheckout = "Check out thành công";
 //==================
 InvalidEmailAddress = "Email nhập không đúng!";
-InvalidPhoneNumber = "Số điện thoại nhập không đúng";
+InvalidPhoneNumber = "Số điện thoại phải có ít nhất 10 ký tự";
 YourDescriptionIsTooShort = "Yêu cầu khác quá ngắn";
 PleaseEnterYourGender = "Vui lòng nhập giới tính";
 PleaseChooseYourTypeOfWork = "Vui lòng chọn loại công việc";
@@ -223,6 +223,7 @@ RechargeSuccessful = "Nạp tiền thành công!";
 ShareApp = "Giao diện hiện đại, tính năng độc đáo, hoạt động cực kỳ hiệu quả là những gì bạn vừa trải nghiệm. Với phương châm “Chất lượng tạo niềm tin”, chúng tôi mong muốn mang đến cho khách hàng của mình những điều tốt nhất.  Và giờ đây, hãy chia sẻ ứng dụng NGV247 với chúng tôi để cùng nhau phát triển những điều lợi ích nhất";
 NoInternetConnection = "Không có kết nối Internet";
 TimeOfWorkingIsInvalid ="Thời gian làm việc không đúng";
+InvalidReportTextCount = "Mô tả báo cáo phải có ít nhất 10 ký tự";
 
 //===============
 SUCCESS = "Thành công";

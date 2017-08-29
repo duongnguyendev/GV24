@@ -15,7 +15,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     let cellId = "cellId"
     var indexPath = IndexPath(item: 0, section: 0)
     
-    var startDate : Date?{
+    var startDate : Date? {
         didSet{
             let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
             cell.startAt = startDate
@@ -23,7 +23,7 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             cell.type = indexPath.item
         }
     }
-    var endDate : Date?{
+    var endDate : Date? {
         didSet{
             let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
             cell.startAt = startDate

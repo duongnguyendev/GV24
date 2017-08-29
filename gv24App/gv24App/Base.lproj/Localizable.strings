@@ -163,7 +163,7 @@ Done = "Done! ";
 Complete = "Complete";
 //==================
 InvalidEmailAddress = "Invalid email address";
-InvalidPhoneNumber = "Invalid phone number";
+InvalidPhoneNumber = "Phone number must be at least 10 characters";
 YourDescriptionIsTooShort = "Your description is too short";
 PleaseEnterYourGender = "Please enter your gender";
 PleaseChooseYourTypeOfWork = "Please choose your type of work";
@@ -201,7 +201,8 @@ UserNotExist = "User not exist";
 INVALID_PASSWORD = "Invalid password";
 RechargeSuccessful = "Recharge successful!";
 NoInternetConnection = "No internet connection";
-TimeOfWorkingIsInvalid ="Time of working is invalid";
+TimeOfWorkingIsInvalid = "Time of working is invalid";
+InvalidReportTextCount = "Report description must be at least 10 characters";
 
 //========
 SUCCESS = "Thành công";

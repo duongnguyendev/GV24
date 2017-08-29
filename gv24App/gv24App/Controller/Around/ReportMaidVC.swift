@@ -127,7 +127,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
                 self.present(alert: alert)
             })
         }else{
-            alert.message = LanguageManager.shared.localized(string: "PleaseEnterTheMessage")
+            alert.message = LanguageManager.shared.localized(string: "InvalidReportTextCount")
             alert.addAction(alertAction)
             self.present(alert: alert)
         }

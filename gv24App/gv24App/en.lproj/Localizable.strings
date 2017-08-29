@@ -164,7 +164,7 @@ Done = "Done! ";
 Complete = "Complete";
 //==================
 InvalidEmailAddress = "Invalid email address";
-InvalidPhoneNumber = "Invalid phone number";
+InvalidPhoneNumber = "Phone number must be at least 10 characters";
 YourDescriptionIsTooShort = "Your description is too short";
 PleaseEnterYourGender = "Please enter your gender";
 PleaseChooseYourTypeOfWork = "Please choose your type of work";
@@ -222,6 +222,7 @@ RechargeSuccessful = "Recharge successful!";
 ShareApp = "Modern designs, unique features, extremely efficient performance are what you just experienced. Following the motto 'Quality builds Trust', we desire to bring our customers the best of the best. And now, let's share the NGV247 application to develop the greatest";
 NoInternetConnection = "No internet connection";
 TimeOfWorkingIsInvalid ="Time of working is invalid";
+InvalidReportTextCount = "Report description must be at least 10 characters";
 
 //===============
 SUCCESS = "Success!";
