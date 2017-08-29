@@ -53,7 +53,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     private let textViewdContent : UITextView = {
         let tF = UITextView()
         tF.translatesAutoresizingMaskIntoConstraints = false
-        tF.text = "Báo cáo"
+        tF.text = ""
         tF.font = Fonts.by(name: .regular, size: 15)
         return tF
     }()
@@ -63,6 +63,20 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
         buttonSend.addTarget(self, action: #selector(handleSendButton(_:)), for: .touchUpInside)
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard textViewdContent.canBecomeFirstResponder == true else { return }
+        textViewdContent.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        guard textViewdContent.canResignFirstResponder == true else { return }
+        textViewdContent.resignFirstResponder()
     }
     
     override func setupView() {

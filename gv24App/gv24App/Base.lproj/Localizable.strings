@@ -205,6 +205,7 @@ TimeOfWorkingIsInvalid = "Time of working is invalid";
 InvalidReportTextCount = "Report description must be at least 10 characters";
 PackageTypeText = "Hourly pay";
 InvalidPriceTextNumber = "The price must be at least 2000";
+InvalidOtherRequestText = "Other requests must be at least 10 characters";
 
 //========
 SUCCESS = "Thành công";

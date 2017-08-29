@@ -617,7 +617,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
             params["description"] = text
             return nil
         }
-        return LanguageManager.shared.localized(string: "YourDescriptionIsTooShort")
+        return LanguageManager.shared.localized(string: "InvalidOtherRequestText")
     }
     private func validateAddress(completion: @escaping ((String?)->())){
         let text = addressTextField.text!
