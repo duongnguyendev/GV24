@@ -34,7 +34,8 @@ class ApplicantCell: MaidCell{
         didSet{
             profileRatingButton.str_Avatar = request?.madid?.avatarUrl
             profileRatingButton.name = request?.madid?.name
-            profileRatingButton.date = "\((request?.madid?.workInfo?.price)!) VND/1 \(LanguageManager.shared.localized(string: "Hour")!)"
+            let priceString = String.numberDecimalString(number: (request?.madid?.workInfo?.price)!)
+            profileRatingButton.date = "\(priceString) VND/1 \(LanguageManager.shared.localized(string: "Hour")!)"
             profileRatingButton.ratingPoint = request?.madid?.workInfo?.evaluationPoint as? Double
         }
     }

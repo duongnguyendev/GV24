@@ -119,6 +119,7 @@ Call = "Call";
 Search = "Search";
 Send = "Send";
 MonthBefore = "months before";
+1MonthBefore = "month before";
 DayBefore = "days before";
 HourBefore = "hours before";
 MinuteBefore = "minutes before";
@@ -231,7 +232,8 @@ WALLET_NOT_ENOUGH = "Ví tiền không đủ để thanh toán";
 FACE_IDENTICAL_FAILED = "Nhận diện khuôn mặt không chính xác";
 NGV247LimitedCompany = "NGV247, limited company";
 WorkDetail = "Work detail";
-
+DUPLICATED_USERNAME = "Tên đăng nhập đã tồn tại";
+DUPLICATED_EMAIL = "Email đã tồn tại";
 
 PayerFullName = "Full name";
 RechargeAmount = "Recharge amount";
@@ -240,4 +242,6 @@ PayerAddress = "Address";
 PayerEmail = "Email";
 AreYouSureYouWantToLogOut = "Are you sure you want to log out?";
 task.bringSuplier = "Bring your cleaning supplies";
+
+H = "Giờ";
 

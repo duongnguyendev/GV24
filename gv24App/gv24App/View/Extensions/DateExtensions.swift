@@ -134,7 +134,11 @@ extension Date{
     var periodTime: String{
         let dateComponent = self.rangeDate
         if dateComponent.month! > 0{
+            if dateComponent.month == 1{
+                return "\((dateComponent.month)!) \((LanguageManager.shared.localized(string: "1MonthBefore"))!)"
+            }
             return "\((dateComponent.month)!) \((LanguageManager.shared.localized(string: "MonthBefore"))!)"
+            
         }else if dateComponent.day! > 0{
             if dateComponent.day == 1{
                 return "\((dateComponent.day)!) \((LanguageManager.shared.localized(string: "1DayBefore"))!)"

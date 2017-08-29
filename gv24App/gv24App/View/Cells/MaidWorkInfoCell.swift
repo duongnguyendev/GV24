@@ -10,7 +10,9 @@ import UIKit
 class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var maid : MaidProfile?{
         didSet{
-            self.labelPrice.text = "\(maid?.workInfo?.price ?? 0)" + " VND/h"
+            let hString = LanguageManager.shared.localized(string: "H")!
+            let priceString = String.numberDecimalString(number: maid?.workInfo?.price ?? 0)
+            self.labelPrice.text = "\(priceString)" + " VND/\(hString)"
             self.collectionWorkInfo.reloadData()
         }
     }

@@ -13,9 +13,13 @@ class AboutUsVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = LanguageManager.shared.localized(string: "AboutUs")
-        MoreService.shared.getAbout { (htmlString) in
-            print(htmlString as Any)
-            self.webView.loadHTMLString(htmlString!, baseURL: nil)
+        MoreService.shared.getAbout { (htmlString, error) in
+            if error == nil{
+                self.webView.loadHTMLString(htmlString!, baseURL: nil)
+            }
+            else{
+                self.showAlertWith(title: nil, message: error)
+            }
         }
     }
     
@@ -79,5 +83,13 @@ class AboutUsVC: BaseVC {
 //        
 //        labelContent.widthAnchor.constraint(equalToConstant: view.frame.size.width - (2 * margin)).isActive = true
 //        labelContent.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
+    }
+    
+    func showAlertWith(title: String?, message: String?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+           self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }

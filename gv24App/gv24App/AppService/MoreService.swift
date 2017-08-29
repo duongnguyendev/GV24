@@ -24,25 +24,25 @@ class MoreService: APIService {
             }
         }
     }
-    func getAbout(completion : @escaping ((_ htmlString : String?)->())){
+    func getAbout(completion : @escaping ((_ htmlString : String?, _ error: String?)->())){
         let url = "more/getGV24HInfo?id=000000000000000000000001"
         get(url: url) { (jsonData, error) in
             if error != nil{
-                completion(nil)
+                completion(nil, error)
             }else{
                 let htmlString = jsonData?["content"].string
-                completion(htmlString)
+                completion(htmlString, nil)
             }
         }
     }
-    func getTerms(completion : @escaping ((_ htmlString : String?)->())){
+    func getTerms(completion : @escaping ((_ htmlString : String?, _ error: String?)->())){
         let url = "more/getGV24HInfo?id=000000000000000000000002"
         get(url: url) { (jsonData, error) in
             if error != nil{
-                completion(nil)
+                completion(nil, error)
             }else{
                 let htmlString = jsonData?["content"].string
-                completion(htmlString)
+                completion(htmlString, nil)
             }
         }
     }

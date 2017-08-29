@@ -119,6 +119,7 @@ Call = "Gọi điện";
 Search = "Tìm kiếm";
 Send = "Gửi";
 MonthBefore = "tháng trước";
+1MonthBefore = "tháng trước";
 DayBefore = "ngày trước";
 1DayBefore = "ngày trước";
 HourBefore = "giờ trước";
@@ -240,7 +241,7 @@ LANGUAGE_NOT_SUPPORT = "Ngôn ngữ không hỗ trợ";
 INVALID_PASSWORD = "Sai mật khẩu";
 TASK_UPDATE_FAILED  = "Không thể cập nhật công việc (lý do: công việc đã được chọn bởi NGV)";
 TASK_OUT_OF_LIMIT = "Số lượng bài đăng không được vượt quá 10 bài.";
-SCHEDULE_DUPLICATED = "Không thể nhận công việc (lý do: trùng thời gian làm việc)";
+SCHEDULE_DUPLICATED = "Bạn không thể chọn một người cho nhiều việc cùng khung giờ. Vui lòng chọn lại!";
 CHECK_IN_EXIST = "Check in đã tồn tại";
 CHECK_OUT_EXIST = "Check out đã tồn tại";
 NOT_CHECK_IN = "Không thể check out (lý do: chưa check in)";
@@ -251,6 +252,9 @@ PUSH_NOTIFY_FAILED = "Không thể push notification";
 WALLET_NOT_ENOUGH = "Ví tiền không đủ để thanh toán";
 FACE_IDENTICAL_FAILED = "Nhận diện khuôn mặt không chính xác";
 NGV247LimitedCompany = "Công ty TNHH GV247";
+DUPLICATED_USERNAME = "Tên đăng nhập đã tồn tại";
+DUPLICATED_EMAIL = "Email đã tồn tại";
+
 CommentSuccess = "Nhận xét thành công";
 CommentFailed = "Nhận xét thất bại";
 AlreadyComment = "Bạn dã nhận xét người giúp việc này rồi!";
@@ -268,4 +272,6 @@ task.history.status.unpaid = "Chưa thanh toán";
 title.payment.date = "Ngày thanh toán";
 title.payment.online = "Thanh toán online";
 error.task.post.exceed = "Số lượng bài đăng không được vượt quá 10 bài!";
+
+H = "Giờ";
 

@@ -103,20 +103,31 @@ class SignUpVC_1: BaseVC {
     
     
     func handleNextButton(_ sender: UIButton){
-//        self.push(viewController: SignUpVC_2())
-     
+        //        self.push(viewController: SignUpVC_2())
+        
+        let username = textFieldUserName.text!
+        let passWord = textFieldPass.text!
+        
         if let validateError = validate(){
-            let alert = UIAlertController(title: "", message: validateError, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
+            showAlertWith(title: nil, message: validateError)
         }else{
-            
-            let registerInfo : Dictionary<String, String> = ["username":textFieldUserName.text!, "password": textFieldPass.text!]
-            let signUpVC_2 = SignUpVC_2()
-            signUpVC_2.delegate = self.delegate
-            signUpVC_2.userInfo = registerInfo
-            push(viewController: signUpVC_2)
+            loadingView.show()
+            UserService.shared.checkUsername(username: username) { (error) in
+                self.loadingView.close()
+                if error != nil{
+                    self.showAlertWith(title: nil, message: LanguageManager.shared.localized(string: "DUPLICATED_USERNAME")!)
+                }else{
+                    let registerInfo : Dictionary<String, String> = ["username":username, "password": passWord]
+                    let signUpVC_2 = SignUpVC_2()
+                    signUpVC_2.delegate = self.delegate
+                    signUpVC_2.userInfo = registerInfo
+                    self.push(viewController: signUpVC_2)
+                }
+            }
         }
+        
+        
+        
     }
     
     func validate() -> String?{
@@ -136,6 +147,13 @@ class SignUpVC_1: BaseVC {
             }
         }
         return nil
+    }
+    
+    private func showAlertWith(title: String?, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+        
     }
     
 }

@@ -133,7 +133,8 @@ class SendOrderVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mtfName.text = UserHelpers.currentUser?.name
-        mtfTotalMoney.text = "\((workPayment?.price)!)"
+        let priceString = String.numberDecimalString(number: (workPayment?.price)! as NSNumber)
+        mtfTotalMoney.text = priceString
         mtfEmail.text = UserHelpers.currentUser?.email
         mtfPhone.text = UserHelpers.currentUser?.phone
         mtfAddress.text = UserHelpers.currentUser?.address?.name
