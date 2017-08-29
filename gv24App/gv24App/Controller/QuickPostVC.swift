@@ -28,21 +28,23 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     }
     var chexboxes = [CheckBox]()
     
-    var date : Date?{
+    var date : Date? {
         didSet{
             buttonDate.valueString = date?.dayMonthYear
-            timeStart = date
+            //if let myDate = self.date {
+            //    timeStart = myDate
+            //}
         }
     }
-    var timeStart : Date? = Date(){
+    var timeStart = Date() {
         didSet{
-            timeEnd = timeStart?.postDefaultDate()
-            buttonFrom.title = timeStart?.hourMinute
+            timeEnd = timeStart.postDefaultDate()
+            buttonFrom.title = timeStart.hourMinute
         }
     }
-    var timeEnd : Date? = Date(){
+    var timeEnd = Date() {
         didSet{
-            buttonTo.title = timeEnd?.hourMinute
+            buttonTo.title = timeEnd.hourMinute
         }
     }
     
@@ -51,7 +53,6 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         launcher.delegate = self
         return launcher
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -192,8 +193,8 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     let buttonFrom: BasicButton = {
         let btn = BasicButton()
-        btn.titleCollor = AppColor.backButton
         btn.title = Date().hourMinute
+        btn.titleCollor = AppColor.backButton
         btn.contentHorizontalAlignment = .left
         btn.addTarget(self, action: #selector(handleButtonFrom(_:)), for: .touchUpInside)
         return btn
@@ -201,8 +202,8 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     
     let buttonTo: BasicButton = {
         let btn = BasicButton()
-        btn.titleCollor = AppColor.backButton
         btn.title = Date().hourMinute
+        btn.titleCollor = AppColor.backButton
         btn.contentHorizontalAlignment = .right
         btn.addTarget(self, action: #selector(handleButtonTo(_:)), for: .touchUpInside)
         return btn
@@ -490,7 +491,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         showDatePickerWith(mode: .date, sender: sender)
     }
     func handleButtonFrom(_ sender: UIButton){
-        if timeStart! < Date(){
+        if timeStart < Date(){
             dateLauncher.startDate = Date()
         }else{
             dateLauncher.startDate = timeStart
@@ -653,10 +654,10 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     }
     
     private func validateDate() -> String?{
-        if timeStart! <= Date() || timeEnd! <= Date(){
+        if timeStart <= Date() || timeEnd <= Date(){
             return LanguageManager.shared.localized(string: "TimeOfWorkingIsInvalid")
         }
-        if self.timeStart! < self.timeEnd!   {
+        if self.timeStart < self.timeEnd   {
             params["startAt"] = timeStart
             params["endAt"] = timeEnd
             return nil
