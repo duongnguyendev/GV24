@@ -19,5 +19,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gv24App/AppService/HistoryService.swift"
+            timestampString = "525690628.164228"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "fetchTaskHistory(startAt:endAt:page:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "gv24App.HistoryService.fetchTaskHistory (startAt : Swift.Optional&lt;Foundation.Date&gt;, endAt : Swift.Optional&lt;Foundation.Date&gt;, page : Swift.Optional&lt;Swift.Int&gt;, completion : (Swift.Optional&lt;gv24App.TaskHistory&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "gv24App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nguyenduyduong/Desktop/HBBS/GV24/gv24App/gv24App/AppService/HistoryService.swift"
+                  timestampString = "525690628.37559"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "1612">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "gv24App.HistoryService.(fetchTaskHistory (startAt : Swift.Optional&lt;Foundation.Date&gt;, endAt : Swift.Optional&lt;Foundation.Date&gt;, page : Swift.Optional&lt;Swift.Int&gt;, completion : (Swift.Optional&lt;gv24App.TaskHistory&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "gv24App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nguyenduyduong/Desktop/HBBS/GV24/gv24App/gv24App/AppService/HistoryService.swift"
+                  timestampString = "525690628.377619"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "174">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

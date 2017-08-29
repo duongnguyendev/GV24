@@ -28,9 +28,10 @@ class DateLauncher: BaseLauncher {
     }
     let datePicker : UIDatePicker = {
         let picker = UIDatePicker()
-        if LanguageManager.shared.getCurrentLanguage().languageCode == "vi" {
-            picker.locale = Locale.init(identifier: "vi")
-        }
+//        if LanguageManager.shared.getCurrentLanguage().languageCode == "vi" {
+//            picker.locale = Locale.init(identifier: "vi")
+//        }
+        
         picker.date = Date()
         let calendar = Calendar(identifier: .gregorian)
         picker.minimumDate = Date()
