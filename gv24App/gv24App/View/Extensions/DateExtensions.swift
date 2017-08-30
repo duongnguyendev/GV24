@@ -13,7 +13,9 @@ extension Date{
     init(isoDateString: String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 7)
         let date = dateFormatter.date(from: isoDateString)!
+        print(isoDateString)
         self = date
     }
     init(year : Int){
@@ -32,7 +34,7 @@ extension Date{
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.locale = Locale(identifier: LanguageManager.shared.getCurrentLanguage().languageCode!)
-//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.timeZone = TimeZone(secondsFromGMT: 7)
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         return formatter.string(from: self)
         
