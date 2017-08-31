@@ -92,6 +92,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
     func report() {
         let repostVC = ReportMaidVC()
         repostVC.maid = self.maid
+        
         push(viewController: repostVC)
     }
     func choose() {

@@ -30,7 +30,7 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
         lb.font = Fonts.by(name: .light, size: 15)
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textColor = AppColor.backButton
-        lb.text = LanguageManager.shared.localized(string: "Feedback")
+        lb.text = LanguageManager.shared.localized(string: "TitleFeedback")
         return lb
     }()
     let labelChoose : UILabel = {
