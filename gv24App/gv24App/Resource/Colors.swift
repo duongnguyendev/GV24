@@ -25,7 +25,7 @@ class AppColor : NSObject{
     static let backGround = UIColor.white
     static let homeButton1 = UIColor.rgb(red: 255, green: 191, blue: 65)
     static let homeButton2 = UIColor.rgb(red: 95, green: 216, blue: 27)
-    static let homeButton3 = UIColor.rgb(red: 51, green: 197, blue: 205)
+    static let homeButton3 = UIColor.rgb(red: 6, green: 110, blue: 169)
     static let collection = UIColor.rgb(red: 239, green: 239, blue: 244)
     static let seqaratorView = UIColor.rgb(red: 230, green: 230, blue: 230)
     static let arrowRight = UIColor.rgb(red: 199, green: 199, blue: 204)

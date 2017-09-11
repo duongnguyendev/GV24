@@ -15,6 +15,13 @@ class BasicButton: BaseButton {
             self.backgroundColor = color
         }
     }
+    
+    var cornerRadius: CGFloat = 0{
+        didSet{
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+    
     var titleCollor : UIColor?{
         didSet{
             self.setTitleColor(titleCollor, for: .normal)
@@ -32,7 +39,7 @@ class BasicButton: BaseButton {
     }
     override func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel?.font = Fonts.by(name: .semibold, size: 15)
+        self.titleLabel?.font = Fonts.by(name: .medium, size: 14)
         self.setTitleColor(AppColor.white, for: .normal)
     }
 

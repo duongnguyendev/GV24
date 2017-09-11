@@ -20,9 +20,17 @@ class BaseVC: UIViewController {
             }
         }
     }
+    
+    var hiddenNav: Bool = false {
+        didSet{
+            self.navigationController?.isNavigationBarHidden = hiddenNav
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = AppColor.backGround
+        hiddenNav = false
         setupNav()
         setupRightNavButton()
         setupView()

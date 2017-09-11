@@ -24,35 +24,49 @@ let DATA_NOT_EXIST = "DATA_NOT_EXIST"
 let INVALID_PASSWORD = "INVALID_PASSWORD "
 class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
-    
     private var itemHeight : CGFloat = 0
     override func viewDidLoad() {
         itemHeight = self.view.frame.size.height / 15
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        hiddenNav = true
+        
         hideKeyboardWhenTouchUpOutSize = true
         title = LanguageManager.shared.localized(string: "SignIn")
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
     }
+    
+    
     private let topBackGround : UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
+    
+    
+    private let backgroundView: UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "bg_app"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.isUserInteractionEnabled = true
+        iv.contentMode = .scaleToFill
+        return iv
+    }()
+    
+    
     private let emailTextField : UITextField = {
         let tf = UITextField()
         tf.placeholder = LanguageManager.shared.localized(string: "Username")
-        tf.font = Fonts.by(name: .light, size: 14)
+        tf.font = Fonts.by(name: .regular, size: 13)
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
+    
+    
     private let passTextField : UITextField = {
         let tf = UITextField()
         tf.isSecureTextEntry = true
-        tf.font = Fonts.by(name: .light, size: 14)
+        tf.font = Fonts.by(name: .regular, size: 13)
         tf.placeholder = LanguageManager.shared.localized(string: "Password")
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -62,12 +76,16 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         let btn = BasicButton()
         btn.color = AppColor.homeButton1
         btn.title = "TitleNearbyWorkers"
+        btn.cornerRadius = 8
         btn.addTarget(self, action: #selector(handleWordAroundButton(_:)), for: .touchUpInside)
         return btn
     }()
+    
+    
     private let signInButton : BasicButton = {
         let btn = BasicButton()
         btn.color = AppColor.homeButton3
+        btn.cornerRadius = 8
         btn.title = "SignInUppercase"
         btn.addTarget(self, action: #selector(handleSignInButton(_:)), for: .touchUpInside)
         return btn
@@ -78,81 +96,82 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         let title = LanguageManager.shared.localized(string: "SingUp")
         btn.setTitle(title, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.titleLabel?.font = Fonts.by(name: .regular, size: 14)
+        btn.titleLabel?.font = Fonts.by(name: .regular, size: 13)
         btn.setTitleColor(AppColor.homeButton3, for: .normal)
         btn.addTarget(self, action: #selector(handleSignUpButton(_:)), for: .touchUpInside)
         return btn
     }()
+    
+    
     private let forgotPassButton : UIButton = {
         let btn = UIButton()
         let title = LanguageManager.shared.localized(string: "ForgotPassword")
         btn.setTitle(title, for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.titleLabel?.font = Fonts.by(name: .regular, size: 14)
+        btn.titleLabel?.font = Fonts.by(name: .regular, size: 13)
         btn.setTitleColor(AppColor.homeButton3, for: .normal)
         btn.addTarget(self, action: #selector(handleForgotPassButton(_:)), for: .touchUpInside)
         return btn
     }()
     
-    private let facebookButton : UIButton = {
-        let btn = UIButton()
-        btn.setImage(Icon.by(name: .socialFacebook, color : AppColor.white), for: .normal )
+    
+    
+    private let facebookButton : ButtonWithIcon = {
+        let btn = ButtonWithIcon()
+        btn.iconName = Icon.by(name: .socialFacebook, size: 30, collor: AppColor.white)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = AppColor.facebook
-        btn.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        btn.title = "Login with Facebook"
         btn.addTarget(self, action: #selector(handleFaceBookButton(_:)), for: .touchUpInside)
         return btn
     }()
-    private let googleButton : UIButton = {
-        let btn = UIButton()
-        btn.setImage(Icon.by(name: .socialGoogle, color : AppColor.white), for: .normal )
-        btn.contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    private let googleButton : ButtonWithIcon = {
+        let btn = ButtonWithIcon()
+        btn.iconName = Icon.by(name: .socialGoogle, size: 30, collor: AppColor.white)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = AppColor.google
+        btn.title = "Login with Google"
         btn.addTarget(self, action: #selector(handleGoogleButton(_:)), for: .touchUpInside)
         return btn
     }()
-    private let mainScrollView : UIScrollView = UIScrollView()
-    private let mainView : UIView = UIView()
+    
+    private let mainView : UIView = {
+        let iv = UIView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.layer.cornerRadius = 12
+        iv.backgroundColor = UIColor.rgbAlpha(red: 255, green: 255, blue: 255, alpha: 0.8)
+        return iv
+    }()
+    
+    private let copyRightLabel: UILabel = {
+       let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = Fonts.by(name: .light, size: 14)
+        lb.textAlignment = .center
+        lb.textColor = .white
+        lb.text = "Copyright © 2017. HBB Solutions"
+        return lb
+    }()
     
     //MARK: - SetupView
     let mMargin : CGFloat = UIScreen.main.bounds.size.width / 10
     override func setupView() {
         super.setupView()
         setupMainView()
-
-        
-        self.setupTopView()
-        self.setupBottomView()
+        setupTopView()
+        setupBottomView()
+        setupCopyRightView()
     }
     
     private func setupMainView(){
-        view.addSubview(mainScrollView)
-        mainScrollView.addSubview(mainView)
+        view.addSubview(backgroundView)
+        backgroundView.addSubview(mainView)
         
-        mainScrollView.translatesAutoresizingMaskIntoConstraints = false
-        mainView.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraintWithFormat(format: "H:|[v0]|", views: backgroundView)
+        view.addConstraintWithFormat(format: "V:|[v0]|", views: backgroundView)
         
-        mainScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        mainScrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        
-        mainView.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 0).isActive = true
-        mainView.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor, constant: 0).isActive = true
-        mainView.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0).isActive = true
-        mainView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor, constant: 0).isActive = true
-        
-        mainView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        mainView.heightAnchor.constraint(equalToConstant: view.frame.size.height - 64).isActive = true
-        
-        let backgroudImage = UIImageView(image: UIImage(named: "signin_bg"))
-        backgroudImage.translatesAutoresizingMaskIntoConstraints = false
-        mainView.addSubview(backgroudImage)
-        backgroudImage.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 0).isActive = true
-        backgroudImage.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 0).isActive = true
-        backgroudImage.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: 0).isActive = true
-        backgroudImage.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: 0).isActive = true
+        backgroundView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: mainView)
+        backgroundView.addConstraintWithFormat(format: "V:|-30-[v0(\(view.frame.size.height * 2/3))]", views: mainView)
     }
     
     private func setupTopView(){
@@ -174,6 +193,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         logoView.centerXAnchor.constraint(equalTo: topBackGround.centerXAnchor, constant: 0).isActive = true
         logoView.topAnchor.constraint(equalTo: topBackGround.topAnchor, constant: mMargin).isActive = true
         logoView.bottomAnchor.constraint(equalTo: workAroundButton.topAnchor, constant: -20).isActive = true
+        
     }
     
     private func setupBottomView(){
@@ -222,7 +242,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     private func setupSignUp_ForgotPass(){
         
         let lineView = UIView.verticalLine()
-        mainView.addSubview(lineView)
+        mainView.addSubview(lineView) 
         lineView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 12).isActive = true
         
@@ -242,20 +262,20 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         lineView.centerYAnchor.constraint(equalTo: signUpButton.centerYAnchor, constant: 0).isActive = true
     }
     private func setupSocialView(){
-        
+    
         let socialView = UIView()
         socialView.translatesAutoresizingMaskIntoConstraints = false
-        mainView.addSubview(socialView)
-        socialView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 0).isActive = true
-        socialView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20).isActive = true
-        mainView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: socialView)
+        backgroundView.addSubview(socialView)
+        
+        backgroundView.addConstraintWithFormat(format: "H:|-\(mMargin)-[v0]-\(mMargin)-|", views: socialView)
+        socialView.topAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 0).isActive = true
+        socialView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
         
         // label
-        
         let lableSocial = UILabel()
         lableSocial.text = LanguageManager.shared.localized(string: "LoginWith")
         lableSocial.font = Fonts.by(name: .regular, size: 14)
-        lableSocial.textColor = UIColor.darkGray
+        lableSocial.textColor = .white
         lableSocial.textAlignment = .center
         lableSocial.translatesAutoresizingMaskIntoConstraints = false
         
@@ -263,40 +283,26 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         socialView.addSubview(facebookButton)
         socialView.addSubview(googleButton)
         
-        lableSocial.leftAnchor.constraint(equalTo: socialView.leftAnchor, constant: 0).isActive = true
-        lableSocial.rightAnchor.constraint(equalTo: socialView.centerXAnchor, constant: 0).isActive = true
-        lableSocial.centerYAnchor.constraint(equalTo: socialView.centerYAnchor, constant: 0).isActive = true
+        lableSocial.centerXAnchor.constraint(equalTo: socialView.centerXAnchor, constant: 0).isActive = true
+        lableSocial.topAnchor.constraint(equalTo: socialView.topAnchor, constant: 10).isActive = true
         
-        facebookButton.centerYAnchor.constraint(equalTo: socialView.centerYAnchor, constant: 0).isActive = true
-        facebookButton.widthAnchor.constraint(equalToConstant: itemHeight - 10).isActive = true
-        facebookButton.heightAnchor.constraint(equalToConstant: itemHeight - 10).isActive = true
-        facebookButton.leftAnchor.constraint(equalTo: socialView.centerXAnchor, constant: 0).isActive = true
+        socialView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: facebookButton)
+        facebookButton.topAnchor.constraint(equalTo: lableSocial.bottomAnchor, constant: 16).isActive = true
+        facebookButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         
-        googleButton.centerYAnchor.constraint(equalTo: socialView.centerYAnchor, constant: 0).isActive = true
-        googleButton.widthAnchor.constraint(equalToConstant: itemHeight - 10).isActive = true
-        googleButton.heightAnchor.constraint(equalToConstant: itemHeight - 10).isActive = true
-        googleButton.leftAnchor.constraint(equalTo: facebookButton.rightAnchor, constant: itemHeight - 20).isActive = true
+        socialView.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: googleButton)
+        googleButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 8).isActive = true
+        googleButton.heightAnchor.constraint(equalToConstant: itemHeight).isActive = true
         
-        facebookButton.layer.cornerRadius = (itemHeight - 10) / 2
-        facebookButton.layer.masksToBounds = true
-        
-        googleButton.layer.cornerRadius = (itemHeight - 10) / 2
-        googleButton.layer.masksToBounds = true
-        
-    }
-    //MARK: - handle keyboard show
-    func keyboardWillShow(notification : Notification){
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
-            self.mainScrollView.contentInset = contentInsets
-            self.mainScrollView.scrollIndicatorInsets = contentInsets
-        }
+        facebookButton.layer.cornerRadius = 8
+        googleButton.layer.cornerRadius = 8
     }
     
-    func keyboardWillHide(notification : Notification){
-        let contentInsets = UIEdgeInsets.zero
-        self.mainScrollView.contentInset = contentInsets
-        self.mainScrollView.scrollIndicatorInsets = contentInsets
+    func setupCopyRightView() {
+        backgroundView.addSubview(copyRightLabel)
+        
+        backgroundView.addConstraintWithFormat(format: "H:|-20-[v0]-20-|", views: copyRightLabel)
+        copyRightLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
     }
     
     //MARK: - Handle action

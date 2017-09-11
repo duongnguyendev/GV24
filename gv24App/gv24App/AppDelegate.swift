@@ -17,6 +17,9 @@ import UserNotifications
 import FacebookCore
 import FacebookLogin
 import Alamofire
+import IQKeyboardManagerSwift
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate {
@@ -28,18 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         //delay splash screen
         Thread.sleep(forTimeInterval: 2)
         
+        IQKeyboardManager.sharedManager().enable = true
+        
         //Firebase config
         FIRApp.configure()
         let settings: UIUserNotificationSettings =
             UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
-//        FIRMessaging.messaging().remoteMessageDelegate = self
-        
-        //        NotificationCenter.default.addObserver(self,
-        //                                               selector: #selector(self.tokenRefreshNotification),
-        //                                               name: .firInstanceIDTokenRefresh,
-        //                                               object: nil)
+
         
         GMSServices.provideAPIKey("AIzaSyAX9zDfRhJOhCVJya1bawKqGRNPJKsqk7Q")
         // Initialize sign-in
@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
         window?.rootViewController = LaunchScreenVC()
-        
         return true
     }
     
