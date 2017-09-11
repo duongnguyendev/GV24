@@ -9,11 +9,19 @@
 import Foundation
 import UIKit
 class SendOrderVC: BaseVC {
+    
+    /* MARK: - For disable and enable textfield checking */
+    var isPayment = false
+    
     var workPayment: WorkUnpaid?
     var taskPayment: Task?
     
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.isDirectionalLockEnabled = false
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.bounces = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -33,6 +41,8 @@ class SendOrderVC: BaseVC {
     }()
     let mtfName: InfoTextField = {
         let tf = InfoTextField()
+        tf.isEnabled = false
+        tf.isUserInteractionEnabled = false
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -48,6 +58,8 @@ class SendOrderVC: BaseVC {
     
     let mtfTotalMoney: InfoTextField = {
         let tf = InfoTextField()
+        tf.isEnabled = false
+        tf.isUserInteractionEnabled = false
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .numberPad
         return tf
@@ -64,6 +76,8 @@ class SendOrderVC: BaseVC {
     
     let mtfEmail: InfoTextField = {
         let tf = InfoTextField()
+        tf.isEnabled = false
+        tf.isUserInteractionEnabled = false
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -79,6 +93,8 @@ class SendOrderVC: BaseVC {
     
     let mtfPhone: InfoTextField = {
         let tf = InfoTextField()
+        tf.isEnabled = false
+        tf.isUserInteractionEnabled = false
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.keyboardType = .numberPad
         return tf
@@ -95,6 +111,8 @@ class SendOrderVC: BaseVC {
     
     let mtfAddress: InfoTextField = {
         let tf = InfoTextField()
+        tf.isEnabled = false
+        tf.isUserInteractionEnabled = false
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -110,6 +128,10 @@ class SendOrderVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mtfTotalMoney.isEnabled = !self.isPayment
+        mtfTotalMoney.isUserInteractionEnabled = !self.isPayment
+        
         self.hideKeyboardWhenTouchUpOutSize = true
         view.backgroundColor = AppColor.collection
         title = LanguageManager.shared.localized(string: "title.payment.online")
@@ -133,11 +155,12 @@ class SendOrderVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mtfName.text = UserHelpers.currentUser?.name
-        let priceString = String.numberDecimalString(number: (workPayment?.price)! as NSNumber)
-        mtfTotalMoney.text = priceString
         mtfEmail.text = UserHelpers.currentUser?.email
         mtfPhone.text = UserHelpers.currentUser?.phone
         mtfAddress.text = UserHelpers.currentUser?.address?.name
+        guard let price = workPayment?.price else { return }
+        let priceString = String.numberDecimalString(number: price)
+        mtfTotalMoney.text = priceString
     }
     
     override func setupView() {
@@ -221,6 +244,8 @@ class SendOrderVC: BaseVC {
                     wvPaymentVC.taskPayment = self.taskPayment
                     wvPaymentVC.workPayment = self.workPayment
                     self.push(viewController: wvPaymentVC)
+                } else {
+                    self.showAlertWith(message: LanguageManager.shared.localized(string: "NotEnoughMoneyInOnlinePayment")!, completion: {})
                 }
             }
         }) { (error) in

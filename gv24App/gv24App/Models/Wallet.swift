@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 class Wallet: Entity{
     var id: String?
-    var wallet: NSNumber?
+    var wallet: Int?
     
     override init() {
         super.init()
@@ -22,6 +22,6 @@ class Wallet: Entity{
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
         self.id = jsonData["_id"].string ?? ""
-        self.wallet = jsonData["wallet"].number ?? 0
+        self.wallet = jsonData["wallet"].int ?? 0
     }
 }

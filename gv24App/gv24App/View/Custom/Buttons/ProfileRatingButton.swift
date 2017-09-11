@@ -29,7 +29,7 @@ class ProfileRatingButton: BaseButton{
         }
     }
     
-    var ratingPoint: Double? {
+    var ratingPoint: Int? {
         didSet{
             rattingView.point = ratingPoint
         }

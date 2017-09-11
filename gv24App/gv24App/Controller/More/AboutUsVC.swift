@@ -15,7 +15,8 @@ class AboutUsVC: BaseVC {
         title = LanguageManager.shared.localized(string: "AboutUs")
         MoreService.shared.getAbout { (htmlString, error) in
             if error == nil{
-                self.webView.loadHTMLString(htmlString!, baseURL: nil)
+                guard let htmlString = htmlString else { return }
+                self.webView.loadHTMLString(htmlString, baseURL: nil)
             }
             else{
                 self.showAlertWith(title: nil, message: error)

@@ -21,6 +21,8 @@ class LanguageVC: BaseVC, UITableViewDelegate, UITableViewDataSource {
         let tb = UITableView()
         tb.delegate = self
         tb.dataSource = self
+        // MARK: - TEAM LEAD: remove all separated lines
+        tb.tableFooterView = UIView()
         return tb
     }()
     

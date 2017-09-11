@@ -13,7 +13,7 @@ class TaskRequestCell: TaskCell{
     let labelRequest : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        //lb.widthAnchor.constraint(equalToConstant: 100).isActive = true
         lb.heightAnchor.constraint(equalToConstant: 25).isActive = true
         lb.font = Fonts.by(name: .light, size: 13)
         lb.textColor = UIColor.white
@@ -29,10 +29,11 @@ class TaskRequestCell: TaskCell{
     override func setupView() {
         super.setupView()
         statusTask = LanguageManager.shared.localized(string: "AwaitingAssignment")
-        addSubview(labelRequest)
+        
+        self.contentView.addSubview(labelRequest)
         marginTitle = 110
         
-        labelRequest.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
-        labelRequest.topAnchor.constraint(equalTo: topAnchor, constant: margin).isActive = true
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[titleLabel]-8-[requestLabel]-8-|", options: [], metrics: nil, views: ["titleLabel": self.labelTitle, "requestLabel": self.labelRequest]))
+        labelRequest.topAnchor.constraint(equalTo: topAnchor, constant: margin/3).isActive = true
     }
 }

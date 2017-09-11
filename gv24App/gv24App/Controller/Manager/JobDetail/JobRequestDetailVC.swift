@@ -32,6 +32,9 @@ class JobRequestDetailVC: BaseVC {
     
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.bounces = true
+        scrollView.alwaysBounceVertical = true
+        scrollView.isDirectionalLockEnabled = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()

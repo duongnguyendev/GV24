@@ -24,7 +24,6 @@
 		03446A5F1EE54F3D004DB193 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A4F1EE54F3D004DB193 /* TaskCell.swift */; };
 		03446A601EE54F3D004DB193 /* TaskAssignedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A511EE54F3D004DB193 /* TaskAssignedControlCell.swift */; };
 		03446A611EE54F3D004DB193 /* TaskControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A521EE54F3D004DB193 /* TaskControlCell.swift */; };
-		03446A621EE54F3D004DB193 /* TaskExpiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A531EE54F3D004DB193 /* TaskExpiredCell.swift */; };
 		03446A631EE54F3D004DB193 /* TaskInProgressControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A541EE54F3D004DB193 /* TaskInProgressControlCell.swift */; };
 		03446A641EE54F3D004DB193 /* TaskNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A551EE54F3D004DB193 /* TaskNewCell.swift */; };
 		03446A651EE54F3D004DB193 /* TaskNewControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03446A561EE54F3D004DB193 /* TaskNewControlCell.swift */; };
@@ -44,6 +43,7 @@
 		03D3103B1EEA7F4F00CF53C3 /* MaidTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */; };
 		03D3103E1EEA924700CF53C3 /* MaidTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */; };
 		03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */; };
+		0431463C1F627F0C00200F0B /* TaskExpiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431463B1F627F0C00200F0B /* TaskExpiredCell.swift */; };
 		4E01542C1EE6A98E00529F4F /* MaidProfileHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01542B1EE6A98E00529F4F /* MaidProfileHistoryVC.swift */; };
 		4E0B0A411EDE7ACC0043E38A /* RequestMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */; };
 		4E0B0A431EDE7AE40043E38A /* ReportMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */; };
@@ -204,7 +204,6 @@
 		03446A4F1EE54F3D004DB193 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskCell.swift; path = ../TaskCell.swift; sourceTree = "<group>"; };
 		03446A511EE54F3D004DB193 /* TaskAssignedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskAssignedControlCell.swift; sourceTree = "<group>"; };
 		03446A521EE54F3D004DB193 /* TaskControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskControlCell.swift; sourceTree = "<group>"; };
-		03446A531EE54F3D004DB193 /* TaskExpiredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExpiredCell.swift; sourceTree = "<group>"; };
 		03446A541EE54F3D004DB193 /* TaskInProgressControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInProgressControlCell.swift; sourceTree = "<group>"; };
 		03446A551EE54F3D004DB193 /* TaskNewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNewCell.swift; sourceTree = "<group>"; };
 		03446A561EE54F3D004DB193 /* TaskNewControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNewControlCell.swift; sourceTree = "<group>"; };
@@ -225,6 +224,7 @@
 		03D3103A1EEA7F4F00CF53C3 /* MaidTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidTask.swift; sourceTree = "<group>"; };
 		03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidTaskCell.swift; sourceTree = "<group>"; };
 		03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRatingButton.swift; sourceTree = "<group>"; };
+		0431463B1F627F0C00200F0B /* TaskExpiredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskExpiredCell.swift; path = Detail/TaskExpiredCell.swift; sourceTree = "<group>"; };
 		4E01542B1EE6A98E00529F4F /* MaidProfileHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidProfileHistoryVC.swift; sourceTree = "<group>"; };
 		4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaidVC.swift; sourceTree = "<group>"; };
 		4E0B0A421EDE7AE40043E38A /* ReportMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMaidVC.swift; sourceTree = "<group>"; };
@@ -458,7 +458,7 @@
 			children = (
 				038987371EEE4F6500DA5293 /* Detail */,
 				03446A4F1EE54F3D004DB193 /* TaskCell.swift */,
-				03446A531EE54F3D004DB193 /* TaskExpiredCell.swift */,
+				0431463B1F627F0C00200F0B /* TaskExpiredCell.swift */,
 				A6F9C1441F0259C100E6F3F6 /* TaskRequestCell.swift */,
 				03446A551EE54F3D004DB193 /* TaskNewCell.swift */,
 				03446A511EE54F3D004DB193 /* TaskAssignedControlCell.swift */,
@@ -483,13 +483,8 @@
 			isa = PBXGroup;
 			children = (
 				03B762AA1EEEA0950006A2BC /* Applicant */,
-				4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */,
-				4E8D27471EDC13B900872A61 /* JobAssignedDetailVC.swift */,
-				4E8D27461EDC13B900872A61 /* JobPostedDetailVC.swift */,
-				033DC7371EF0E0600093EE8F /* JobExpiredDetailVC.swift */,
 				033DC7331EF0D4BE0093EE8F /* JobDetailVC.swift */,
-				A6D487FE1EF7C9EA0059CC8A /* JobNewDetailVC.swift */,
-				A60732691F04EA6C009DD815 /* JobRequestDetailVC.swift */,
+				0431463D1F62948600200F0B /* JobDetailVC */,
 			);
 			path = JobDetail;
 			sourceTree = "<group>";
@@ -508,6 +503,19 @@
 				03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		0431463D1F62948600200F0B /* JobDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				4E8D27451EDC13B900872A61 /* JobProgressDetailVC.swift */,
+				4E8D27471EDC13B900872A61 /* JobAssignedDetailVC.swift */,
+				4E8D27461EDC13B900872A61 /* JobPostedDetailVC.swift */,
+				033DC7371EF0E0600093EE8F /* JobExpiredDetailVC.swift */,
+				A6D487FE1EF7C9EA0059CC8A /* JobNewDetailVC.swift */,
+				A60732691F04EA6C009DD815 /* JobRequestDetailVC.swift */,
+			);
+			name = JobDetailVC;
 			sourceTree = "<group>";
 		};
 		387D039E8EB683F4FCE8D6B8 /* Frameworks */ = {
@@ -989,7 +997,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -1156,11 +1164,11 @@
 				4E61E3DA1EC1A31C00E6C8C5 /* ForgotPassVC.swift in Sources */,
 				4EF1F3601EE1640600560C4A /* ButtonTitleValue.swift in Sources */,
 				A63905361EFD011C009255D2 /* PreviewAssesmentVC.swift in Sources */,
+				0431463C1F627F0C00200F0B /* TaskExpiredCell.swift in Sources */,
 				03446A581EE54F3D004DB193 /* BaseHeaderView.swift in Sources */,
 				4EBF04B41ED2925200F7E08B /* WorkInfo.swift in Sources */,
 				A607326A1F04EA6C009DD815 /* JobRequestDetailVC.swift in Sources */,
 				4E0CACA11EDD074C00752BCC /* Comment.swift in Sources */,
-				03446A621EE54F3D004DB193 /* TaskExpiredCell.swift in Sources */,
 				03446A6C1EE5502C004DB193 /* UserProfileCell.swift in Sources */,
 				4E1A42301EFBAD2300475C9B /* SignUpSocialVC.swift in Sources */,
 				4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */,

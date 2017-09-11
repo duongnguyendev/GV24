@@ -40,10 +40,13 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         collectionControl.register(TaskHistoryControlCell.self, forCellWithReuseIdentifier: taskHistoryCellId)
         collectionControl.register(MaidControlCell.self, forCellWithReuseIdentifier: maidHistoryCellId)
         collectionControl.register(UnpaidWorkControlCell.self, forCellWithReuseIdentifier: unpaidWorkCellId)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.loadingView.show()
         HistoryService.shared.fetchUnpaidWork(startAt: nil, endAt: nil) { (workUnpaids) in
             if let unpaids = workUnpaids{
@@ -237,7 +240,9 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
                 }else{
                     let assesmentVC = AssesmentVC()
                     assesmentVC.taskHistory = task
-                    self.present(viewController: assesmentVC)
+                    // MARK: - TEAM LEAD fix
+                    self.push(viewController: assesmentVC)
+                    //self.present(viewController: assesmentVC)
                 }
             }
         }

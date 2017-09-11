@@ -16,12 +16,13 @@ class BankOwnerCell: BaseCollectionCell{
             labelWorkDate.text = "\(LanguageManager.shared.localized(string: "title.payment.date")! ): \(dateWork)"
         }
     }
-    var bank: NSNumber?{
+    var bank: Int? {
         didSet{
             if bank == nil{
                 labelBank.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) \(0) VND"
             }else{
-                labelBank.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) \(String.numberDecimalString(number: bank!)) VND"
+                guard let bank = bank else { return }
+                labelBank.text = "\(LanguageManager.shared.localized(string: "AccountBalance")!) \(String.numberDecimalString(number: bank)) VND"
             }
         }
     }

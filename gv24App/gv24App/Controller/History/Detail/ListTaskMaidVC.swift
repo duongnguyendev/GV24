@@ -32,6 +32,9 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = AppColor.collection
+        cv.bounces = true
+        cv.alwaysBounceVertical = true
+        cv.isDirectionalLockEnabled = false
         cv.delegate = self
         cv.dataSource = self
         cv.contentInset.top = 20
@@ -47,7 +50,6 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
     }
     
     //MARK: - collection view handle
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MaidTaskCell
         cell.task = tasks[indexPath.item]
@@ -68,7 +70,7 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
         self.loadingView.show()
         HistoryService.shared.getCommentOwner(taskID: task.id!) { (commentOwner) in
             self.loadingView.close()
-            if let _ = commentOwner{
+            if let _ = commentOwner {
                 let preAssesmentVC = PreviewAssesmentVC()
                 preAssesmentVC.taskHistory = task
                 preAssesmentVC.content = commentOwner?.content
@@ -76,7 +78,9 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
             }else{
                 let assesmentVC = AssesmentVC()
                 assesmentVC.taskHistory = task
-                self.present(viewController: assesmentVC)
+                // MARK: - TEAM LEAD: fix present to push here
+                self.push(viewController: assesmentVC)
+                //self.present(viewController: assesmentVC)
             }
         }
     }

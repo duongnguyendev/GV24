@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 class TaskAssignedCell: TaskCell{
     
     override func setupView() {

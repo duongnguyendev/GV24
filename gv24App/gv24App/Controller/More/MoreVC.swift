@@ -10,6 +10,7 @@ import UIKit
 import FacebookCore
 import FacebookLogin
 import GoogleSignIn
+
 class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SwitchCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +28,19 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     let switchCellId = "switchCellId"
     let logoutCellId = "logoutCellId"
     let headerId = "headerId"
+    
     lazy var collectionMore : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = AppColor.collection
+        
+        // MARK: - TEAM LEAD: collectionView needs to bounds for default
+        cv.bounces = true
+        cv.alwaysBounceVertical = true
+        cv.isDirectionalLockEnabled = false
+        
         cv.delegate = self
         cv.dataSource = self
         return cv
@@ -198,21 +208,21 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         self.present(alert, animated: true, completion: nil)
     }
     
-    func handleSection0(item : Int){
+    func handleSection0(item : Int) {
         if item == 0 {
             self.push(viewController: ProfileVC())
         }else{
             self.push(viewController: GeneralStatisticVC())
         }
     }
-    func handleSection1(item : Int){
+    func handleSection1(item : Int) {
         if item == 0 {
             
         }else{
             self.push(viewController: LanguageVC())
         }
     }
-    func handleSection2(item : Int){
+    func handleSection2(item : Int) {
         switch item {
         case 0:
             push(viewController: AboutUsVC())

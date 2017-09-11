@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import IoniconsSwift
 class DescTaskView: BaseView {
+    
     var preferredHeight: CGFloat {
         var height = CGFloat(250)
         if let description = self.task?.info?.desc {
@@ -19,8 +20,10 @@ class DescTaskView: BaseView {
         }
         return height
     }
+    
     let margin : CGFloat = 20
-    var task: Task?{
+    
+    var task: Task? {
         didSet{
             guard let info = task?.info, let work = info.work else {
                 return
@@ -30,7 +33,9 @@ class DescTaskView: BaseView {
                 iconType.loadImageurl(link: image)
             }
             labelTitle.text = info.title
+            
             labelType.text = work.name
+            
             if let description = info.desc {
                 let size = CGSize(width: self.bounds.width - margin*2, height: 1000)
                 let height = String.heightWith(string: description, size: size, font: labelDescTask.font) + 5
@@ -60,6 +65,7 @@ class DescTaskView: BaseView {
         let iv = IconView(image: "nau_an", size: 50)
         return iv
     }()
+    
     let labelTitle : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +73,8 @@ class DescTaskView: BaseView {
         lb.text = "Lau dọn nhà"
         return lb
     }()
-    private let labelType : UILabel = {
+    
+    var labelType : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 12)
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +82,7 @@ class DescTaskView: BaseView {
         lb.textColor = UIColor.gray
         return lb
     }()
+    
     private let labelDescTask: UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 14)

@@ -26,12 +26,14 @@ class UserProfileCell: BaseCollectionCell {
         }
     }
     let ratingView = RatingStartView()
+    
     let imageBackGround : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "top_bg"))
         iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
+    
     let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.contentMode = .scaleToFill

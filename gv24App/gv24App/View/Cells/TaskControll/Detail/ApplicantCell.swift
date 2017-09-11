@@ -36,7 +36,7 @@ class ApplicantCell: MaidCell{
             profileRatingButton.name = request?.madid?.name
             let priceString = String.numberDecimalString(number: (request?.madid?.workInfo?.price)!)
             profileRatingButton.date = "\(priceString) VND/1 \(LanguageManager.shared.localized(string: "Hour")!)"
-            profileRatingButton.ratingPoint = request?.madid?.workInfo?.evaluationPoint as? Double
+            profileRatingButton.ratingPoint = request?.madid?.workInfo?.evaluationPoint
         }
     }
 }

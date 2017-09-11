@@ -23,6 +23,9 @@ class DetailTaskDoneVC: BaseVC{
     }
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.bounces = true
+        scrollView.isDirectionalLockEnabled = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()

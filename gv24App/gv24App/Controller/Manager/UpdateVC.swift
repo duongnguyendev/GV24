@@ -99,7 +99,14 @@ class UpdateVC: QuickPostVC, UITextFieldDelegate{
                     self.loadingView.close()
                     if error == nil{
                         self.showAlertWith(message: LanguageManager.shared.localized(string: "EditedSuccessfully")!, completion: {
-                            self.dismiss(animated: true, completion: nil)
+                            // MARK: - TEAM LEAD: Fix present to push here
+                            for vc in (self.navigationController?.viewControllers ?? []) {
+                                if vc is TaskManagementVC {
+                                    _ = self.navigationController?.popToViewController(vc, animated: true)
+                                    return
+                                }
+                            }
+                            //self.dismiss(animated: true, completion: nil)
                         })
                     }else{
                         self.showAlertWith(message: error!, completion: {})

@@ -78,11 +78,11 @@ extension String {
         return result!
     }
     
-    static func numberDecimalString(number : NSNumber) -> String{
+    static func numberDecimalString(number : Int) -> String {
         let numberFormater = NumberFormatter()
         numberFormater.numberStyle = .decimal
         numberFormater.locale = Locale(identifier: "vi")
-        return numberFormater.string(from: number)!
+        return numberFormater.string(from: NSNumber(value: number))!
     }
     
 }

@@ -80,7 +80,7 @@ class Info: Entity {
     var package: Package?
     var work: WorkType?
     var desc: String?
-    var price: NSNumber?
+    var price: Int?
     var tool: Bool?
     var time: Time?
     var address: Address?
@@ -100,7 +100,7 @@ class Info: Entity {
         }
         
         self.desc = jsonData["description"].string ?? ""
-        self.price = jsonData["price"].number ?? 0
+        self.price = jsonData["price"].int ?? 0
         self.tool  = jsonData["tools"].bool ?? false
         self.time = Time(json: jsonData["time"])
         self.address = Address(jsonData: jsonData["address"])

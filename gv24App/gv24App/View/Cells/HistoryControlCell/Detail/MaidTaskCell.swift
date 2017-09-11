@@ -13,21 +13,28 @@ class MaidTaskCell: BaseCollectionCell{
     let margin : CGFloat = 10
     var task: Task?{
         didSet{
-            iconType.loadImageurl(link: (task?.info?.work?.image)!)
+            //iconType.loadImageurl(link: (task?.info?.work?.image)!)
             labelTitle.text = task?.info?.title
             labelUploadAt.text = Date(isoDateString: (task?.history?.updateAt)!).periodTime
             labelDate.text = Date(isoDateString: (task?.history?.createAt)!).dayMonthYear
             labelTimes.text = Date(isoDateString: (task?.info?.time?.startAt)!).hourMinute + " - " + Date(isoDateString: (task?.info?.time?.endAt)!).hourMinute
+            
+            // MARK: - Team Lead - fix crash optional
+            guard let image = task?.info?.work?.image else { return }
+            iconType.loadImageurl(link: image)
         }
     }
+    
     let iconType : IconView = {
         let iv = IconView(image: "nau_an", size: 50)
         return iv
     }()
+    
     let iconAlarmClock : IconView = {
         let iv = IconView(icon: .androidAlarmClock, size: 20, color: AppColor.backButton)
         return iv
     }()
+    
     let labelTitle : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false

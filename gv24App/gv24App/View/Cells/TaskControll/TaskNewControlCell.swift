@@ -9,6 +9,7 @@
 import UIKit
 
 class TaskNewControlCell: TaskControlCell {
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let task = tasks[indexPath.item]
         let endTime = task.info?.time?.endAt
@@ -33,9 +34,11 @@ class TaskNewControlCell: TaskControlCell {
             return cell
         }
     }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tasks.count
     }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let endTime = tasks[indexPath.item].info?.time?.endAt
         let deadlinePosted = Date(isoDateString: endTime!).compareDate
@@ -43,6 +46,7 @@ class TaskNewControlCell: TaskControlCell {
             self.delegate?.selectedPosted!(task: tasks[indexPath.item],deadline: deadlinePosted)
         }
     }
+    
     override func handleLongPress(gestureReconizer: UILongPressGestureRecognizer) {
         if gestureReconizer.state != UIGestureRecognizerState.ended {
             return
@@ -55,13 +59,16 @@ class TaskNewControlCell: TaskControlCell {
             }
         }
     }
+    
     let newCellId = "newCellId"
     let applicantCellId = "applicantCellId"
     let expiredCellId = "expiredCellId"
     let requestCellId = "requestCellId"
+    
     override func setupView() {
         super.setupView()
     }
+    
     override func register() {
         taskCollectionView.register(TaskNewCell.self, forCellWithReuseIdentifier: applicantCellId)
         taskCollectionView.register(TaskCell.self, forCellWithReuseIdentifier: newCellId)

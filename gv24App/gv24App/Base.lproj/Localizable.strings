@@ -245,3 +245,8 @@ task.bringSuplier = "Bring your cleaning supplies";
 
 H = "Giờ";
 
+CommentInvalidMessage = "Comment must be at least 10 characters";
+SkipBackButton = "Skip";
+PaymentSuccessful = "Payment successful";
+PaymentOK = "OK";
+NotEnoughMoneyInOnlinePayment = "Your account doesn't have enough money.";

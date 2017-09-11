@@ -152,18 +152,25 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     //MARK: - Handle button
     func handleButtonMore(_ sender : UIButton) {
-        let moreVC = MoreVC()
-        present(viewController: moreVC)
+        // MARK: - Team lead edited it
+        push(viewController: MoreVC())
+//        present(viewController: moreVC)
     }
     
-    func handleButtonAround(_ sender : UIButton){
-        present(viewController: MaidAroundVC())
+    func handleButtonAround(_ sender : UIButton) {
+        // MARK: - Team lead edited it
+        push(viewController: MaidAroundVC())
+        //present(viewController: MaidAroundVC())
     }
-    func handleButtonTaskManagement(_ sender : UIButton){
-        present(viewController: TaskManagementVC())
+    func handleButtonTaskManagement(_ sender : UIButton) {
+        // MARK: - Team lead edited it
+        push(viewController: TaskManagementVC())
+        //present(viewController: TaskManagementVC())
     }
-    func handleButtonHistory(_ sender : UIButton){
-        present(viewController: HistoryVC())
+    func handleButtonHistory(_ sender : UIButton) {
+        // MARK: - Team lead edited it
+        push(viewController: HistoryVC())
+        //present(viewController: HistoryVC())
     }
     
     //MARK: - collection view delegate

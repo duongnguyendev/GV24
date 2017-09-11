@@ -10,17 +10,21 @@ import UIKit
 import SwiftyJSON
 
 class WorkInfo: Entity {
-    var price : NSNumber?
-    var evaluationPoint : NSNumber?
+    
+    var price : Int?
+    var evaluationPoint : Int?
     var ability: [Ability]?
+    
     override init(jsonData: JSON) {
         super.init()
-        self.price = jsonData["price"].number
-        self.evaluationPoint = jsonData["evaluation_point"].number
+        
+        self.price = jsonData["price"].int
+        self.evaluationPoint = jsonData["evaluation_point"].int
         self.ability = jsonData["ability"].array?.map { return Ability(jsonData: $0) }
     }
     
 }
+
 class Ability: Entity {
     var id: String?
     var image: String?
@@ -28,6 +32,7 @@ class Ability: Entity {
     
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
+        
         self.id = jsonData["_id"].string ?? ""
         self.image = jsonData["image"].string ?? ""
         self.name = jsonData["name"].string ?? ""

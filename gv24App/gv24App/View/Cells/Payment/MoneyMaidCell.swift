@@ -10,17 +10,20 @@ import Foundation
 import UIKit
 class MoneyMaidCell: BaseCollectionCell{
     
-    var price: NSNumber?{
+    var price: Int?{
         didSet{
-            moneyView.name = "\(String.numberDecimalString(number: price!)) VND"
+            guard let price = price else { return }
+            moneyView.name = "\(String.numberDecimalString(number: price)) VND"
         }
     }
+    
     let moneyView: DescInfoView = {
         let view = DescInfoView()
         view.icon = .socialUsd
         view.name = "500.000 VND"
         return view
     }()
+    
     override func setupView() {
         super.setupView()
         addSubview(moneyView)

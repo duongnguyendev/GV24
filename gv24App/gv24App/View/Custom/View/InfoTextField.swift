@@ -9,14 +9,20 @@ import Foundation
 import UIKit
 class BaseTextField: UITextField {
     
+    override var isEnabled: Bool {
+        didSet {
+            self.textColor = isEnabled ? .black : .gray
+            self.borderStyle = isEnabled ? .roundedRect : .none
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         setupView()
     }
-    func setupView(){
-        
-    }
+    
+    func setupView() {}
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -27,14 +33,15 @@ class InfoTextField: BaseTextField {
     
     override func setupView() {
         super.setupView()
-        backgroundColor = .white
+        //backgroundColor = .white
         
         //let textFieldContent = UITextField()
         self.textAlignment = NSTextAlignment.left
         self.font = Fonts.by(name: .regular, size: 14)
         self.textColor = .black
-        self.borderStyle = .roundedRect
+        self.borderStyle = .none
     }
+    
     
 }
 

@@ -8,8 +8,12 @@
 
 import Foundation
 import UIKit
-class CommentMaidVC: BaseVC{
+class CommentMaidVC: BaseVC {
+    
+    var isFromPayment = false
+    
     var id: String?
+    
     var maid : MaidProfile?{
         didSet{
             self.avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
@@ -17,6 +21,7 @@ class CommentMaidVC: BaseVC{
             self.labelAddress.text = maid?.address?.name
         }
     }
+    
     private let avatarImageView : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -57,7 +62,7 @@ class CommentMaidVC: BaseVC{
     private lazy var textViewdContent : UITextView = {
         let tF = UITextView()
         tF.translatesAutoresizingMaskIntoConstraints = false
-        tF.text = LanguageManager.shared.localized(string: "Comment")
+        //tF.text = LanguageManager.shared.localized(string: "Comment")
         tF.textColor = .lightGray
         tF.font = Fonts.by(name: .regular, size: 15)
         return tF
@@ -69,13 +74,18 @@ class CommentMaidVC: BaseVC{
         let btn = UIBarButtonItem(customView: buttonSend)
         self.navigationItem.rightBarButtonItem = btn
     }
+    
     override func setupBackButton() {
+        super.setupBackButton()
+        
+        guard self.isFromPayment == true else { return }
         let buttonSkip = NavButton(title: "Skip")
         buttonSkip.addTarget(self, action: #selector(handleSkipButton(_:)), for: .touchUpInside)
         buttonSkip.contentHorizontalAlignment = .left
         let btn = UIBarButtonItem(customView: buttonSkip)
         self.navigationItem.leftBarButtonItem = btn
     }
+    
     override func setupView() {
         let userView = UIView()
         userView.backgroundColor = UIColor.white
@@ -136,12 +146,26 @@ class CommentMaidVC: BaseVC{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = AppColor.collection
         title = LanguageManager.shared.localized(string: "Addcomments")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if self.textViewdContent.canBecomeFirstResponder {
+            self.textViewdContent.becomeFirstResponder()
+        }
+        
         ratingView.isEnable = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.textViewdContent.canResignFirstResponder {
+            self.textViewdContent.resignFirstResponder()
+        }
     }
     //Mark- Handle UITabbar Button
     func handleSendButton(_ sender: UIButton){
@@ -150,32 +174,45 @@ class CommentMaidVC: BaseVC{
         var alertAction : UIAlertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: nil)
         if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
             self.loadingView.show()
-            HistoryService.shared.assesmentMaid(task: id!, toId: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { (error) in
-                self.loadingView.close()
-                if error == nil{
+            HistoryService.shared.assesmentMaid(task: id!, toId: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { [weak self] (error) in
+                self?.loadingView.close()
+                if error == nil {
                     alertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
-                        self.dismiss(animated: true, completion: nil)
+                        // TEAM LEAD FIX HERE
+                        for vc in (self?.navigationController?.viewControllers ?? []) {
+                            guard vc is HistoryVC else { continue }
+                            _ = self?.navigationController?.popToViewController(vc, animated: true)
+                        }
+                        //self.dismiss(animated: true, completion: nil)
                     })
                 }else{
                     alert.message = LanguageManager.shared.localized(string: "AlreadyComment")
                     alertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
-                        self.dismiss(animated: true, completion: nil)
+                        // MARK: - TEAM LEAD fix
+                        //self.dismiss(animated: true, completion: nil)
                     })
                 }
                 alert.addAction(alertAction)
-                self.present(alert: alert)
+                self?.present(alert, animated: true, completion: nil)
             })
         }else{
-            alert.message = LanguageManager.shared.localized(string: "PleaseEnterTheMessage")
+            alert.message = LanguageManager.shared.localized(string: "CommentInvalidMessage")
             alert.addAction(alertAction)
-            self.present(alert: alert)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func handleSkipButton(_ sender: UIButton){
-        self.dismiss(animated: true, completion: nil)
-    }
-    func present(alert : UIAlertController){
-        self.present(alert, animated: true, completion: nil)
+    func handleSkipButton(_ sender: UIButton) {
+        // MARK: TEAM LEAD - fix present to push
+        for vc in (self.navigationController?.viewControllers ?? []) {
+            if vc is HistoryVC {
+                _ = self.navigationController?.popToViewController(vc, animated: true)
+                return
+            } else if vc is ListTaskMaidVC {
+                _ = self.navigationController?.popToViewController(vc, animated: true)
+                return
+            }
+        }
+        //self.dismiss(animated: true, completion: nil)
     }
 }

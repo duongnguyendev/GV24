@@ -273,3 +273,9 @@ title.payment.online = "Payment Online";
 error.task.post.exceed = "Your posts would be within ten!";
 
 H = "house";
+
+CommentInvalidMessage = "Comment must be at least 10 characters";
+SkipBackButton = "Skip";
+PaymentSuccessful = "Payment successful";
+PaymentOK = "OK";
+NotEnoughMoneyInOnlinePayment = "Your account doesn't have enough money.";

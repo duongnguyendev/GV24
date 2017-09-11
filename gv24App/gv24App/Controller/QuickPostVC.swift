@@ -85,7 +85,20 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         self.navigationItem.rightBarButtonItem = btn
     }
     
-    let mainScrollView : UIScrollView = UIScrollView()
+    override func setupBackButton() {
+        super.setupBackButton()
+    }
+    
+    let mainScrollView : UIScrollView = {
+        let scrollView = UIScrollView()
+        
+        scrollView.bounces = true
+        scrollView.alwaysBounceVertical = true
+        scrollView.isDirectionalLockEnabled = false
+        
+        return scrollView
+    }()
+    
     let mainView : UIView = UIView()
     
     //MARK: - view 1 component
@@ -237,7 +250,6 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     }
     
     private func setupMainView(){
-        
         view.addSubview(mainScrollView)
         mainScrollView.addSubview(mainView)
         
@@ -656,7 +668,7 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
     }
     
     private func validateDate() -> String?{
-        if timeStart <= Date() || timeEnd <= Date(){
+        if timeStart <= Date() || timeEnd <= Date() {
             return LanguageManager.shared.localized(string: "TimeOfWorkingIsInvalid")
         }
         if self.timeStart < self.timeEnd   {

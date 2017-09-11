@@ -275,3 +275,8 @@ error.task.post.exceed = "Số lượng bài đăng không được vượt quá
 
 H = "Giờ";
 
+CommentInvalidMessage = "Vui lòng nhập ít nhất 10 ký tự";
+SkipBackButton = "Bỏ qua";
+PaymentSuccessful = "Thanh toán thành công";
+PaymentOK = "OK";
+NotEnoughMoneyInOnlinePayment = "Tài khoản của bạn không có đủ tiền.";

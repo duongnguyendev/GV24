@@ -147,7 +147,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
         }
     }
     
-    func present(alert : UIAlertController){
+    func present(alert : UIAlertController) {
         self.present(alert, animated: true, completion: nil)
     }
 }

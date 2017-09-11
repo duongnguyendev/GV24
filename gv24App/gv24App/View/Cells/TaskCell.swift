@@ -12,24 +12,27 @@ import IoniconsSwift
 class TaskCell: BaseCollectionCell {
     let margin : CGFloat = 10
     
-    var marginTitle: CGFloat?{
+    var marginTitle: CGFloat? {
         didSet{
             labelTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: -marginTitle!).isActive = true
         }
     }
-    var statusTask: String?{
+    var statusTask: String? {
         didSet{
             labelStatus.text = statusTask
         }
     }
+    
     let iconType : IconView = {
         let iv = IconView(image: "nau_an", size: 50)
         return iv
     }()
+    
     let iconAlarmClock : IconView = {
         let iv = IconView(icon: .androidAlarmClock, size: 20, color: AppColor.backButton)
         return iv
     }()
+    
     let labelTitle : UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -76,14 +79,14 @@ class TaskCell: BaseCollectionCell {
     override func setupView() {
         backgroundColor = UIColor.white
         let verticalLine = UIView.verticalLine(height : 10)
-        addSubview(iconType)
-        addSubview(iconAlarmClock)
-        addSubview(labelTitle)
-        addSubview(labelStatus)
-        addSubview(labelDate)
-        addSubview(labelTimes)
-        addSubview(labelUploadAt)
-        addSubview(verticalLine)
+        contentView.addSubview(iconType)
+        contentView.addSubview(iconAlarmClock)
+        contentView.addSubview(labelTitle)
+        contentView.addSubview(labelStatus)
+        contentView.addSubview(labelDate)
+        contentView.addSubview(labelTimes)
+        contentView.addSubview(labelUploadAt)
+        contentView.addSubview(verticalLine)
         
         iconType.topAnchor.constraint(equalTo: topAnchor, constant: margin/2).isActive = true
         iconType.leftAnchor.constraint(equalTo: leftAnchor, constant: margin).isActive = true
@@ -93,14 +96,14 @@ class TaskCell: BaseCollectionCell {
 
         labelTitle.topAnchor.constraint(equalTo: iconType.topAnchor, constant: margin/4).isActive = true
         labelTitle.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin).isActive = true
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[labelTitle]-8-|", options: [], metrics: nil, views: ["labelTitle": self.labelTitle]))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[labelTitle]-8-|", options: [], metrics: nil, views: ["labelTitle": self.labelTitle]))
         
 
         labelStatus.leftAnchor.constraint(equalTo: iconType.rightAnchor, constant: margin).isActive = true
         labelStatus.bottomAnchor.constraint(equalTo: iconType.bottomAnchor, constant: -margin/4).isActive = true
-        addConstraint(NSLayoutConstraint(item: labelStatus, attribute: .width, relatedBy: .equal, toItem: labelUploadAt, attribute: .width, multiplier: 1, constant: 0))
+        contentView.addConstraint(NSLayoutConstraint(item: labelStatus, attribute: .width, relatedBy: .equal, toItem: labelUploadAt, attribute: .width, multiplier: 1, constant: 0))
         
-        addConstraintWithFormat(format: "H:[v0][v1][v2]|", views: labelStatus, verticalLine, labelUploadAt)
+        contentView.addConstraintWithFormat(format: "H:[v0][v1][v2]|", views: labelStatus, verticalLine, labelUploadAt)
         
         verticalLine.centerYAnchor.constraint(equalTo: labelStatus.centerYAnchor, constant: 0).isActive = true
         

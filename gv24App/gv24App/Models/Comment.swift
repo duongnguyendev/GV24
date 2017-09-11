@@ -12,7 +12,7 @@ import SwiftyJSON
 class Comment: Entity {
     var commentId : String?
     var createAt: Date?
-    var evaluationPoint : Double?
+    var evaluationPoint : Int?
     var content: String?
     var task: Task?
     var fromUser: User?
@@ -25,7 +25,7 @@ class Comment: Entity {
         super.init(jsonData: jsonData)
         commentId = jsonData["_id"].string
         createAt = Date(isoDateString: jsonData["createAt"].string!)
-        evaluationPoint = jsonData["evaluation_point"].double
+        evaluationPoint = jsonData["evaluation_point"].int
         content = jsonData["content"].string
         task = Task(jsonData: jsonData["task"])
         fromUser = User(jsonData: jsonData["fromId"])

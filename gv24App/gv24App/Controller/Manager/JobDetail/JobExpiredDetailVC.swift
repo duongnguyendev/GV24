@@ -8,8 +8,13 @@
 
 import Foundation
 import UIKit
-class JobExpiredDetailVC: JobDetailVC{
-    var task = Task()
+class JobExpiredDetailVC: JobDetailVC {
+    
+    var task = Task() {
+        didSet {
+            self.descTaskView.task = task
+        }
+    }
     
     let labelExpired : UILabel = {
         let lb = UILabel()
@@ -25,6 +30,7 @@ class JobExpiredDetailVC: JobDetailVC{
         lb.text = LanguageManager.shared.localized(string: "ExpiredTask")
         return lb
     }()
+    
     let deleteButton: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -40,20 +46,21 @@ class JobExpiredDetailVC: JobDetailVC{
         super.setupView()
         contentView.addSubview(labelExpired)
         contentView.addSubview(deleteButton)
-        descTaskView.labelTitle.rightAnchor.constraint(equalTo: labelExpired.leftAnchor, constant: 10).isActive = true
         
-        labelExpired.rightAnchor.constraint(equalTo: descTaskView.rightAnchor, constant: -(margin/3)).isActive = true
+        descTaskView.labelTitle.rightAnchor.constraint(equalTo: labelExpired.leftAnchor, constant: -10).isActive = true
+        
+        labelExpired.rightAnchor.constraint(equalTo: descTaskView.rightAnchor, constant: -margin/3).isActive = true
+        
         labelExpired.topAnchor.constraint(equalTo: descTaskView.topAnchor, constant: margin/3).isActive = true
+        
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
+        
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         
         contentView.bottomAnchor.constraint(greaterThanOrEqualTo: deleteButton.bottomAnchor, constant: 20).isActive = true
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.descTaskView.task = task
-    }
+
     func handleRemoveTask(_ sender: UIButton){
         self.showAlertWith(task: task)
         print("Handle Remove Task")

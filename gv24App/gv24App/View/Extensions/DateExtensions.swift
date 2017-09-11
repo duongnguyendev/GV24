@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-extension Date{
+extension Date {
     
     init(isoDateString: String) {
         let dateFormatter = DateFormatter()

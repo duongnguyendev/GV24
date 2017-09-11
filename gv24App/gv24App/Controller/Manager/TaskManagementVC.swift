@@ -35,6 +35,10 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = AppColor.collection
+        cv.bounces = true
+        cv.alwaysBounceVertical = false
+        cv.alwaysBounceHorizontal = true
+        cv.isDirectionalLockEnabled = true
         cv.delegate = self
         cv.dataSource = self
         cv.isPagingEnabled = true
@@ -90,9 +94,11 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         return cell
         
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height - margin - 30)
     }
@@ -100,11 +106,13 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
         let index = targetContentOffset.pointee.x / view.frame.width
         indexPath.item = Int(index)
         segmentedControl.selectedSegmentIndex = Int(index)
     }
+    
     //MARK: - segmented Control
     func segmentedValueChanged(_ sender : UISegmentedControl){
         indexPath.item = segmentedControl.selectedSegmentIndex
@@ -113,7 +121,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     
     //MARK: - hanlde event
     func handleButtonPost(_ sender: UIButton) {
-        
         if postedTaskCount >= 10 {
             let message = LanguageManager.shared.localized(string: "error.task.post.exceed")
             let ok = LanguageManager.shared.localized(string: "OK")
@@ -130,14 +137,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     //MARK: - task control delegate
     
-//    func isLoading(loading: Bool) {
-//        if loading {
-//            self.loadingView.show()
-//        }else{
-//            self.loadingView.close()
-//        }
-//    }
-    
     func selectedPosted(task: Task, deadline: Bool) {
         if deadline{
             let jobExpiredVC = JobExpiredDetailVC()
@@ -147,34 +146,40 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
             let jobRequestVC = JobRequestDetailVC()
             jobRequestVC.taskRequest = task
             push(viewController: jobRequestVC)
-        }else if task.stakeholder?.request?.count == 0{
+        }else if task.stakeholder?.request?.count == 0 {
             let jobNewVC = JobNewDetailVC()
             jobNewVC.task = task
-            present(viewController: jobNewVC)
+            // MARK: TEAM LEAD - fix present to push here
+            push(viewController: jobNewVC)
+            //present(viewController: jobNewVC)
         }else{
             let jobPostVC = JobPostedDetailVC()
             jobPostVC.task = task
             jobPostVC.delegate = self
-            present(viewController: jobPostVC)
+            // MARK: TEAM LEAD - fix present to push here
+            push(viewController: jobPostVC)
+            //present(viewController: jobPostVC)
         }
     }
+    
     func selectedAssigned(deadline: Bool, task: Task) {
-        if !deadline{
-            let jobAssignedVC = JobAssignedDetailVC()
-            jobAssignedVC.taskAssigned = task
-            jobAssignedVC.delegate = self
-            present(viewController: jobAssignedVC)
-        }else{
-            let alertController = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "WorkYouChooseIsExpired"), preferredStyle:UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: UIAlertActionStyle.cancel){ action -> Void in
-            })
-            self.present(alertController, animated: true, completion: nil)
-        }
+        let jobAssignedVC = JobAssignedDetailVC()
+        jobAssignedVC.taskAssigned = task
+        jobAssignedVC.delegate = self
+        jobAssignedVC.conformedMaid.isHidden = deadline
+
+        // MARK: TEAM LEAD - fix present to push here
+        push(viewController: jobAssignedVC)
+        //present(viewController: jobAssignedVC)
     }
+    
     func selectedProgress(task: Task) {
         let jobProgressVC = JobProgressDetailVC()
         jobProgressVC.taskProgress = task
-        present(viewController: jobProgressVC)
+        
+        // MARK: TEAM LEAD - fix present to push here
+        push(viewController: jobProgressVC)
+        //present(viewController: jobProgressVC)
     }
     
     func remove(task: Task) {

@@ -104,7 +104,7 @@ class HistoryService: APIService{
         }
     }
     
-    func assesmentMaid(task: String,toId: String,content: String,evaluation_point: Double,completion:@escaping ((String?)->())){
+    func assesmentMaid(task: String,toId: String, content: String, evaluation_point: Int,completion:@escaping ((String?)->())){
         let url = "owner/comment"
         let parameters = [
             "task" : task,

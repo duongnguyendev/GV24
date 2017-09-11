@@ -12,16 +12,19 @@ class MaidCell: BaseCollectionCell{
     
     let cellMargin : CGFloat = 20
     var delegate: HistoryVCDelegate?
+    
     var title: String?{
         didSet{
             tasksButton.title = title
         }
     }
+    
     let profileRatingButton: ProfileRatingButton = {
         let button = ProfileRatingButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
     let horizontalLine = UIView.horizontalLine()
     
     let tasksButton: GeneralButton = {
@@ -65,12 +68,12 @@ class MaidCell: BaseCollectionCell{
         }
     }
     
-    var maidHistory: MaidHistory?{
+    var maidHistory: MaidHistory? {
         didSet{
             profileRatingButton.str_Avatar = maidHistory?.avatarUrl
             profileRatingButton.name = maidHistory?.name
             profileRatingButton.date = Date(isoDateString: (maidHistory?.times?[0])!).dayMonthYear
-            profileRatingButton.ratingPoint = maidHistory?.evaluationPoint
+            profileRatingButton.ratingPoint = maidHistory?.workInfo?.evaluationPoint
         }
     }
 }

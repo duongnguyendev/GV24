@@ -26,6 +26,9 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = AppColor.collection
+        cv.bounces = true
+        cv.alwaysBounceVertical = true
+        cv.isDirectionalLockEnabled = false
         cv.delegate = self
         cv.dataSource = self
         cv.isPagingEnabled = true
@@ -107,6 +110,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
                 self.loadingView.close()
                 if (flag)!{
                     let sendOrderVC = SendOrderVC()
+                    sendOrderVC.isPayment = true
                     sendOrderVC.workPayment = self.workSuccess
                     sendOrderVC.taskPayment = self.taskProgress
                     self.push(viewController: sendOrderVC)
@@ -124,10 +128,15 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
             PaymentService.shared.paymentMoney(billId: (self.workSuccess?.id)!, completion: { (flag) in
                 self.loadingView.close()
                 if flag!{
-                    let commentVC = CommentMaidVC()
-                    commentVC.maid = self.taskProgress?.stakeholder?.receivced
-                    commentVC.id = self.taskProgress?.id
-                    self.push(viewController: commentVC)
+                    let alertVC = UIAlertController.init(title: "", message: LanguageManager.shared.localized(string: "PaymentSuccessful"), preferredStyle: .alert)
+                    alertVC.addAction(UIAlertAction.init(title: LanguageManager.shared.localized(string: "PaymentOK"), style: .default, handler: { (action) in
+                        let commentVC = CommentMaidVC()
+                        commentVC.isFromPayment = true
+                        commentVC.maid = self.taskProgress?.stakeholder?.receivced
+                        commentVC.id = self.taskProgress?.id
+                        self.push(viewController: commentVC)
+                    }))
+                    self.present(alertVC, animated: true, completion: nil)
                 }else{
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "PaymentMoneyFailed")!, completion: {})
                 }
@@ -135,6 +144,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
         print("Handle Money Payment")
     }
+    
     //Mark:-- Alert Payment
     func showAlertPayment(completion: @escaping (()->())){
         let alert = UIAlertController(title: LanguageManager.shared.localized(string: "CompletePayment"), message: LanguageManager.shared.localized(string: "PleaseClickToOKConfirmThePayment"), preferredStyle: .alert)
@@ -144,11 +154,13 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "Cancel"), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
     func showAlertWith(message: String, completion: @escaping (()->())){
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
@@ -200,7 +212,13 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     override func goBack() {
-        self.dismiss(animated: true, completion: nil)
+        // TEAM LEAD FIX HERE
+        self.navigationController?.popViewController(animated: true)
+//        for vc in (self.navigationController?.viewControllers ?? []) {
+//            guard vc is HistoryVC else { continue }
+//            _ = self?.navigationController?.popToViewController(vc, animated: true)
+//        }
+        //self.dismiss(animated: true, completion: nil)
     }
     func setupViewPaymentMethods(){
         viewPaymentMethods.addSubview(gv24PaymentButton)
@@ -266,7 +284,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: totalCellId, for: indexPath) as! TotalMaidCell
-                cell.total = workSuccess?.price as NSNumber?
+                cell.total = workSuccess?.price
                 return cell
             }
         default:

@@ -15,6 +15,7 @@ class RatingStartView: BaseView {
     let button3 = StartButton()
     let button4 = StartButton()
     let button5 = StartButton()
+    
     var arrayButton : [StartButton] = [StartButton]()
     
     var isEnable : Bool?{
@@ -27,12 +28,11 @@ class RatingStartView: BaseView {
         }
     }
     
-    var point : Double? = 0{
+    var point : Int? = 0 {
         didSet{
-            if point != nil{
+            if point != nil {
                 handle(point: point!)
             }
-            
         }
     }
     override func setupView() {
@@ -63,52 +63,39 @@ class RatingStartView: BaseView {
         button5.addTarget(self, action: #selector(handleButton5(_:)), for: .touchUpInside)
     }
     
-    func handle(point: Double){
-        if point >= 5{
-            arrayButton[0].isSelected = true
-            arrayButton[1].isSelected = true
-            arrayButton[2].isSelected = true
-            arrayButton[3].isSelected = true
-            arrayButton[4].isSelected = true
-            return
-        }
-        arrayButton[0].isSelected = false
-        arrayButton[1].isSelected = false
-        arrayButton[2].isSelected = false
-        arrayButton[3].isSelected = false
-        arrayButton[4].isSelected = false
+    func handle(point: Int) {
+        self.resetStars()
         
-        var currentStart : Int = 0
-        var currentPoint = point
-        while currentPoint > 0 {
-            if currentPoint < 0.3 {
-                arrayButton[currentStart].isHalf = true
-            }else{
-                if currentPoint < 0.7 {
-                    arrayButton[currentStart].isHalf = true
-                }
-                else{
-                    arrayButton[currentStart].isSelected = true
-                }
-            }
-            currentStart = currentStart + 1
-            currentPoint = currentPoint - 1
+        if point == 0 { return }
+        
+        for i in 1...point {
+            arrayButton[i - 1].isSelected = true
         }
     }
     
-    func handleButton1(_ sender : UIButton){
+    func resetStars() {
+        for i in 0...4 {
+            arrayButton[i].isSelected = false
+        }
+    }
+    
+    func handleButton1(_ sender : UIButton) {
         point = 1
     }
-    func handleButton2(_ sender : UIButton){
+    
+    func handleButton2(_ sender : UIButton) {
         point = 2
     }
-    func handleButton3(_ sender : UIButton){
+    
+    func handleButton3(_ sender : UIButton) {
         point = 3
     }
-    func handleButton4(_ sender : UIButton){
+    
+    func handleButton4(_ sender : UIButton) {
         point = 4
     }
-    func handleButton5(_ sender : UIButton){
+    
+    func handleButton5(_ sender : UIButton) {
         point = 5
     }
 }

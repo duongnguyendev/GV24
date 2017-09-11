@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 class TotalMaidCell: BaseCollectionCell{
     
-    var total: NSNumber? {
+    var total: Int? {
         didSet{
-            labelTotal.text = "\(LanguageManager.shared.localized(string: "TotalMoney")!) \(String.numberDecimalString(number: total!)) VND"
+            guard let total = total else { return }
+            labelTotal.text = "\(LanguageManager.shared.localized(string: "TotalMoney")!) \(String.numberDecimalString(number: total)) VND"
         }
     }
+    
     let labelTotal: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -22,6 +24,7 @@ class TotalMaidCell: BaseCollectionCell{
         lb.font = Fonts.by(name: .medium, size: 14)
         return lb
     }()
+    
     override func setupView() {
         super.setupView()
         backgroundColor = AppColor.white

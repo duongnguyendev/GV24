@@ -9,12 +9,18 @@
 import Foundation
 import UIKit
 class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
     var taskAssigned = Task()
+    
     var delegate: TaskManageDelegate?
     
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.bounces = true
+        scrollView.alwaysBounceVertical = true
+        scrollView.isDirectionalLockEnabled = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
         return scrollView
     }()
     let contentView : UIView = {
@@ -31,7 +37,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         return button
     }()
     
-    private let conformedMaid: IconTextButton = {
+    let conformedMaid: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.title = LanguageManager.shared.localized(string: "IdentifyYourPartners")

@@ -13,9 +13,11 @@ class GeneralStatisticInfoView: BaseView {
     var generalStatisticData : GeneralStatistic?{
         didSet{
             labelNumberDone.text = "\(String(describing: (generalStatisticData?.numberDone)!))"
-            labelNumberTotalCost.text = String.numberDecimalString(number: (generalStatisticData?.totalPrice)! as NSNumber)
             labelNumberPosted.text = "\(String(describing: (generalStatisticData?.numberPosted)!))"
             labelNumberRuningWork.text = "\(String(describing: (generalStatisticData?.numberRuning)!))"
+            
+            guard let totalPrice = generalStatisticData?.totalPrice else { return }
+            labelNumberTotalCost.text = String.numberDecimalString(number: totalPrice)
         }
     }
     

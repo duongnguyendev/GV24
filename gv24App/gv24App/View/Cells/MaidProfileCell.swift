@@ -16,7 +16,7 @@ class MaidProfileCell: UserProfileCell {
     
     var user: MaidProfile?{
         didSet{
-            self.ratingView.point = user!.workInfo?.evaluationPoint as? Double
+            self.ratingView.point = user!.workInfo?.evaluationPoint
             self.labelAge.text = "\(user?.age ?? 0)"
             self.labelPhone.text = user?.phone
             self.labelAddress.text = user?.address?.name

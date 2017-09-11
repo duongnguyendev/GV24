@@ -31,6 +31,9 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = AppColor.collection
+        cv.bounces = true
+        cv.alwaysBounceVertical = true
+        cv.isDirectionalLockEnabled = false
         cv.delegate = self
         cv.dataSource = self
         return cv

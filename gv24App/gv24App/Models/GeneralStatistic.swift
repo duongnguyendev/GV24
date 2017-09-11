@@ -11,8 +11,8 @@ import SwiftyJSON
 
 class GeneralStatistic: Entity {
 
-    var totalPrice : Double = 0
-    var wallet : Double = 0
+    var totalPrice : Int = 0
+    var wallet : Int = 0
     var numberPosted : Int = 0
     var numberRuning : Int = 0
     var numberDone : Int = 0
@@ -20,8 +20,8 @@ class GeneralStatistic: Entity {
     
     override init(jsonData: JSON) {
         super.init(jsonData: jsonData)
-        totalPrice = jsonData["totalPrice"].double!
-        wallet = jsonData["wallet"].double!
+        totalPrice = jsonData["totalPrice"].int!
+        wallet = jsonData["wallet"].int!
         if let tasksData = jsonData["task"].array{
             tasks = [StatisticTask]()
             for taskData in tasksData{

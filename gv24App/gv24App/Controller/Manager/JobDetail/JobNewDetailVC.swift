@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class JobNewDetailVC: JobDetailVC{
+class JobNewDetailVC: JobDetailVC {
     var task = Task()
     let deleteButton: IconTextButton = {
         let button = IconTextButton()

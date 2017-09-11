@@ -13,9 +13,11 @@ class JobTypeCell: BaseCollectionCell{
     let margin: CGFloat = 20
     var task: Task? {
         didSet{
-            iconType.loadImageurl(link: (task?.info?.work?.image)!)
             labelTitle.text = task?.info?.title
             labelType.text = task?.info?.work?.name
+            
+            guard let image = self.task?.info?.work?.image else { return }
+            iconType.loadImageurl(link: image)
         }
     }
     
