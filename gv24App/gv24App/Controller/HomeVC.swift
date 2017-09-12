@@ -221,3 +221,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         sloganView.slogan = "TrustQuality"
     }
 }
+
+
+

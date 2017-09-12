@@ -20,6 +20,7 @@ class IconView: UIImageView {
     init(icon : Ionicons,size : CGFloat, color : UIColor) {
         super.init(frame: .zero)
         setUp(size: size)
+        
         contentMode = .scaleAspectFit
         image = Icon.by(name: icon, color: color)
     }

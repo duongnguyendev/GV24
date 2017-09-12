@@ -27,6 +27,8 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(handleImageAvatarTap))
         imageAvatar.isUserInteractionEnabled = true
         imageAvatar.addGestureRecognizer(imageTap)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private let mainScrollView : UIScrollView = UIScrollView()
@@ -94,6 +96,7 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         let btn = BasicButton()
         btn.title = LanguageManager.shared.localized(string: "Next")
         btn.color = AppColor.homeButton3
+        btn.layer.cornerRadius = 4
         btn.addTarget(self, action: #selector(handleComplateButton(_:)), for: .touchUpInside)
         return btn
         
@@ -131,91 +134,61 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         //icon
         
         let emailIcon = IconView(icon: .androidMail, size: 15, color: AppColor.lightGray)
+        
         let fullNameIcon = IconView(icon: .person, size: 15, color: AppColor.lightGray)
+        
         let genderIcon = IconView(icon: .transgender, size: 15, color: AppColor.lightGray)
-        //        let ageIcon = IconView(icon: .calendar, size: 15, color: AppColor.lightGray)
+
         let phoneIcon = IconView(icon: .androidPhonePortrait, size: 15, color: AppColor.lightGray)
         let addressIcon = IconView(icon: .home, size: 15, color: AppColor.lightGray)
-        
-        //horizontal line
-        
-        let emailLine = UIView.horizontalLine()
-        let fullNameLine = UIView.horizontalLine()
-        let genderLine = UIView.horizontalLine()
-        //        let ageLine = UIView.horizontalLine()
-        let phoneLine = UIView.horizontalLine()
-        let addressLine = UIView.horizontalLine()
         
         //add subView
         mainView.addSubview(imageAvatar)
         mainView.addSubview(emailTextField)
         mainView.addSubview(fullNameTextField)
         mainView.addSubview(genderTextField)
-        //        mainView.addSubview(ageTextField)
         mainView.addSubview(phoneTextField)
         mainView.addSubview(addressTextField)
         mainView.addSubview(buttonComplate)
         
         mainView.addSubview(emailIcon)
-        mainView.addSubview(emailLine)
+        //mainView.addSubview(emailLine)
         
         mainView.addSubview(fullNameIcon)
-        mainView.addSubview(fullNameLine)
+        //mainView.addSubview(fullNameLine)
         
         mainView.addSubview(genderIcon)
-        mainView.addSubview(genderLine)
-        
-        //        mainView.addSubview(ageIcon)
-        //        mainView.addSubview(ageLine)
-        //
+
         mainView.addSubview(phoneIcon)
-        mainView.addSubview(phoneLine)
+        //mainView.addSubview(phoneLine)
         
         mainView.addSubview(addressIcon)
-        mainView.addSubview(addressLine)
+        //mainView.addSubview(addressLine)
         
         emailTextField.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         fullNameTextField.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         genderTextField.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
-        //        ageTextField.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         phoneTextField.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         addressTextField.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
         buttonComplate.heightAnchor.constraint(equalToConstant: itemSize - 10).isActive = true
-        
         mainView.addConstraintWithFormat(format: "V:|-\(margin)-[v0][v1][v2][v3][v4][v5]-\(margin)-[v6]-\(margin)-|", views:imageAvatar, emailTextField, fullNameTextField, phoneTextField, genderTextField, addressTextField, buttonComplate)
-        
         imageAvatar.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageAvatar.widthAnchor.constraint(equalToConstant: 100).isActive = true
         imageAvatar.centerXAnchor.constraint(equalTo: mainView.centerXAnchor, constant: 0).isActive = true
-        
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-5-[v1]-\(margin)-|", views: emailIcon, emailTextField)
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-5-[v1]-\(margin)-|", views: fullNameIcon, fullNameTextField)
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-5-[v1]-\(margin)-|", views: genderIcon, genderTextField)
-        //        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-5-[v1]-\(margin)-|", views: ageIcon, ageTextField)
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-5-[v1]-\(margin)-|", views: phoneIcon, phoneTextField)
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-5-[v1]-\(margin)-|", views: addressIcon, addressTextField)
+        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-10-[v1]-\(margin)-|", views: emailIcon, emailTextField)
+        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-10-[v1]-\(margin)-|", views: fullNameIcon, fullNameTextField)
+        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-10-[v1]-\(margin)-|", views: genderIcon, genderTextField)
+        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-10-[v1]-\(margin)-|", views: phoneIcon, phoneTextField)
+        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-10-[v1]-\(margin)-|", views: addressIcon, addressTextField)
         mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: buttonComplate)
         
         emailIcon.centerYAnchor.constraint(equalTo: emailTextField.centerYAnchor, constant: 0).isActive = true
         fullNameIcon.centerYAnchor.constraint(equalTo: fullNameTextField.centerYAnchor, constant: 0).isActive = true
         genderIcon.centerYAnchor.constraint(equalTo: genderTextField.centerYAnchor, constant: 0).isActive = true
-        //        ageIcon.centerYAnchor.constraint(equalTo: ageTextField.centerYAnchor, constant: 0).isActive = true
         phoneIcon.centerYAnchor.constraint(equalTo: phoneTextField.centerYAnchor, constant: 0).isActive = true
         addressIcon.centerYAnchor.constraint(equalTo: addressTextField.centerYAnchor, constant: 0).isActive = true
         
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: emailLine)
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: fullNameLine)
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: genderLine)
-        //        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: ageLine)
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: phoneLine)
-        mainView.addConstraintWithFormat(format: "H:|-\(margin)-[v0]-\(margin)-|", views: addressLine)
-        
-        emailLine.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 0).isActive = true
-        fullNameLine.topAnchor.constraint(equalTo: fullNameTextField.bottomAnchor, constant: 0).isActive = true
-        genderLine.topAnchor.constraint(equalTo: genderTextField.bottomAnchor, constant: 0).isActive = true
-        //        ageLine.topAnchor.constraint(equalTo: ageTextField.bottomAnchor, constant: 0).isActive = true
-        addressLine.topAnchor.constraint(equalTo: addressTextField.bottomAnchor, constant: 0).isActive = true
-        phoneLine.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 0).isActive = true
+
         
         //add gender button
         let genderButton = UIButton(type: .custom)
@@ -444,4 +417,12 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     }
 
     
+}
+extension SignUpVC_2 {
+    func cornerRadius(img:UIImageView, radius: CGFloat) {
+        img.layer.cornerRadius = radius
+        img.backgroundColor = AppColor.backButton
+        img.clipsToBounds = true
+    }
+
 }
