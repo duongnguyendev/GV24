@@ -24,6 +24,7 @@ class GeneralButton: BaseButton{
         let lablel = UILabel()
         lablel.translatesAutoresizingMaskIntoConstraints = false
         lablel.font = Fonts.by(name: .light, size: 16)
+        lablel.textAlignment = .center
         return lablel
     }()
     

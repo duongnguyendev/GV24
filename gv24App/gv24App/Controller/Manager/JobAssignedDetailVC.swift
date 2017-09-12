@@ -43,8 +43,10 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         button.title = LanguageManager.shared.localized(string: "IdentifyYourPartners")
         button.addTarget(self, action: #selector(handleConformMaid(_:)), for: .touchUpInside)
         button.sizeImage = 20
-        button.color = AppColor.backButton
-        button.iconName = .logIn
+        button.color = AppColor.white
+        button.layer.cornerRadius = 4
+        //button.iconName = .logIn
+        button.backgroundColor = AppColor.backButton
         return button
     }()
     
@@ -65,12 +67,13 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     let deleteButton: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.color = AppColor.homeButton1
+        button.color = AppColor.white
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
         button.sizeImage = 30
         button.title = LanguageManager.shared.localized(string: "DeleteWork")
-        button.backgroundColor = UIColor.white
-        button.iconName = .iosTrash
+        button.backgroundColor = AppColor.buttonDelete
+        button.layer.cornerRadius = 4
+        //button.iconName = .iosTrash
         return button
     }()
     
@@ -193,7 +196,9 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: conformedMaid)
         conformedMaid.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 1).isActive = true
-        conformedMaid.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        conformedMaid.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        conformedMaid.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        conformedMaid.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         
         descLabel.topAnchor.constraint(equalTo: conformedMaid.bottomAnchor, constant: 20).isActive = true
         descLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
@@ -208,6 +213,9 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
+        deleteButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
+        deleteButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        
     }
     
     override func viewWillLayoutSubviews() {

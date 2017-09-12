@@ -50,6 +50,7 @@ class BaseVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupBackButton()
         localized()
+        print(self)
     }
     
     //MARK: - Setup navigation bar
