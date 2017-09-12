@@ -11,7 +11,7 @@ import UIKit
 class MaidCell: BaseCollectionCell{
     
     let cellMargin : CGFloat = 20
-    var delegate: HistoryVCDelegate?
+    weak var delegate: HistoryVCDelegate?
     
     var title: String?{
         didSet{

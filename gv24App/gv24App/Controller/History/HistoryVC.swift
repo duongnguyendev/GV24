@@ -102,7 +102,6 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         cv.delegate = self
         cv.dataSource = self
         cv.isPagingEnabled = true
-        cv.contentInset.top = 20
         return cv
     }()
     

@@ -339,9 +339,11 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         if emailError == "PleaseCompleteAllInformation" || passError == "PleaseCompleteAllInformation"{
             return "PleaseCompleteAllInformation"
         }
+        
         if emailError != nil{
             return emailError
         }
+        
         return passError
     }
     func validateEmail()->String?{
@@ -422,7 +424,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         }, completion: nil)
         //self.dismiss(animated: true, completion: nil)
     }
-    func handleFacebookAccount() {        
+    func handleFacebookAccount() {
         GraphRequest(graphPath: "me", parameters: ["fields" : "id, name, email"], accessToken: AccessToken.current, httpMethod: .GET).start { (response, result) in
             switch result{
             case .failed(let error):

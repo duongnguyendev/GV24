@@ -50,7 +50,7 @@ class UpdateProfileVC: SignUpVC_2 {
         }
     }
     
-    func handleUpdate(){
+    func handleUpdate() {
         self.userInfo = Dictionary<String, String>()
         self.userInfo?["name"] = self.fullNameTextField.text
         self.userInfo?["phone"] = self.phoneTextField.text
@@ -62,7 +62,7 @@ class UpdateProfileVC: SignUpVC_2 {
             self.loadingView.close()
             var updateStatus = LanguageManager.shared.localized(string: "UpdateSuccessfully")
             if error == nil{
-                UserHelpers.save(user: userUpdate!, token: UserHelpers.token)
+                UserHelpers.save(user: userUpdate!, newToken: nil)
                 let alert = UIAlertController(title: updateStatus, message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (nil) in
                     self.dismiss(animated: true, completion: nil)

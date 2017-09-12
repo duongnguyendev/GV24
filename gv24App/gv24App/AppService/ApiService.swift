@@ -15,23 +15,27 @@ typealias ResponseCompletion = (JSON?, String?) -> ()
 
 class APIService: NSObject {
     
+    var isPresent = false
+    
     func sendBackToLogin() {
+        guard isPresent == false else { return }
         if let appDelegate = UIApplication.shared.delegate {
-            if let rootVC = appDelegate.window??.rootViewController {
-                //guard appStarted == true else { return }
-                let alertController = UIAlertController.init(title: LanguageManager.shared.localized(string: "WarningTitle"), message: LanguageManager.shared.localized(string: "WarningDescription"), preferredStyle: .alert)
-                alertController.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (action) in
-                    UserHelpers.logOut()
-                    UIView.transition(with: appDelegate.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
-                        appDelegate.window??.rootViewController = UINavigationController.init(rootViewController: SignInVC())
-                    }, completion: nil)
-                }))
-                if let vc = rootVC.presentedViewController {
-                    vc.present(alertController, animated: true, completion: nil)
-                } else {
-                    rootVC.present(alertController, animated: true, completion: nil)
-                }
-            }
+            let alertController = UIAlertController.init(title: LanguageManager.shared.localized(string: "WarningTitle"), message: LanguageManager.shared.localized(string: "WarningDescription"), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (action) in
+                UserHelpers.logOut()
+                self.isPresent = false
+                UIView.transition(with: appDelegate.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                    appDelegate.window??.rootViewController = UINavigationController.init(rootViewController: SignInVC())
+                }, completion: nil)
+            }))
+            
+            let topWindow = UIWindow(frame: UIScreen.main.bounds)
+            topWindow.rootViewController = UIViewController()
+            topWindow.windowLevel = UIWindowLevelAlert + 1
+            topWindow.makeKeyAndVisible()
+            //appDelegate.window??.rootViewController?.present(alertController, animated: true, completion: nil)
+            topWindow.rootViewController?.present(alertController, animated: true, completion: nil)
+            self.isPresent = true
         }
     }
     

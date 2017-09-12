@@ -17,13 +17,16 @@ import UIKit
 }
 
 class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
-    var delegate : TaskControlDelegate?
+    
+    weak var delegate : TaskControlDelegate?
     let cellId = "cellId"
+    
     var tasks = [Task]() {
         didSet {
             self.delegate?.cellDidRefreshTasks?(self)
         }
     }
+    
     var indexPath = IndexPath(item: 0, section: 0)
     var pointCell = CGPoint()
     
@@ -38,20 +41,6 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         cv.dataSource = self
         return cv
     }()
-    let loadingView : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .white)
-        view.addSubview(activity)
-        activity.translatesAutoresizingMaskIntoConstraints = false
-        activity.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        activity.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        activity.startAnimating()
-        view.isHidden = true
-        return view
-    }()
-    
     
     var type: Int?{
         didSet{
@@ -65,9 +54,7 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         }
     }
     func loadData(process: String){
-        self.loadingView.isHidden = false
         TaskManageService.shared.fetchTask(process: process, completion: { (tasks) in
-            self.loadingView.isHidden = true
             if let task = tasks{
                 self.tasks = task
                 self.taskCollectionView.reloadData()
@@ -86,10 +73,6 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         lpgr.delaysTouchesBegan = true
         lpgr.delegate = self
         self.taskCollectionView.addGestureRecognizer(lpgr)
-        
-        self.addSubview(loadingView)
-        addConstraintWithFormat(format: "V:|[v0]|", views: loadingView)
-        addConstraintWithFormat(format: "H:|[v0]|", views: loadingView)
     }
     
     func register(){
@@ -122,8 +105,8 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     }
     
     func removeObjectLocal(task: Task){
-        let index = tasks.index(of: task)
-        self.tasks.remove(at: index!)
+        guard let index = tasks.index(of: task) else { return }
+        self.tasks.remove(at: index)
         self.taskCollectionView.reloadData()
     }
 }

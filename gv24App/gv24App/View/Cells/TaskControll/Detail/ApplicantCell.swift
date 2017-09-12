@@ -13,7 +13,7 @@ import UIKit
     @objc optional func selectedMaid(id: String,maid : MaidProfile)
 }
 class ApplicantCell: MaidCell{
-    var delegateApp: ApplicantControlDelegate?
+    weak var delegateApp: ApplicantControlDelegate?
     var idTask: String?
     override func setupView() {
         super.setupView()

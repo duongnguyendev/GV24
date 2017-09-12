@@ -12,7 +12,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     
     var taskAssigned = Task()
     
-    var delegate: TaskManageDelegate?
+    weak var delegate: TaskManageDelegate?
     
     let mainScrollView : UIScrollView = {
         let scrollView = UIScrollView()

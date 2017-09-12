@@ -14,6 +14,7 @@ class TaskNewControlCell: TaskControlCell {
         let task = tasks[indexPath.item]
         let endTime = task.info?.time?.endAt
         let deadlinePosted = Date(isoDateString: endTime!).compareDate
+        
         if deadlinePosted{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: expiredCellId, for: indexPath) as! TaskExpiredCell
             cell.task = task

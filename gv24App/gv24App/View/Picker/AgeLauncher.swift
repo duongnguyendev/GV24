@@ -15,7 +15,7 @@ import IoniconsSwift
 
 class AgeLauncher: BaseLauncher, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    var delegate : AgeLauncherDelegate?
+    weak var delegate : AgeLauncherDelegate?
     
     var ageTo : Int =  60{
         didSet{
@@ -24,6 +24,7 @@ class AgeLauncher: BaseLauncher, UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
     }
+    
     var ageFrom : Int = 18{
         didSet{
             if ageFrom > ageTo{

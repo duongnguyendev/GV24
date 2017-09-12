@@ -37,7 +37,6 @@ class ListTaskMaidVC: BaseVC,UICollectionViewDataSource,UICollectionViewDelegate
         cv.isDirectionalLockEnabled = false
         cv.delegate = self
         cv.dataSource = self
-        cv.contentInset.top = 20
         return cv
     }()
 

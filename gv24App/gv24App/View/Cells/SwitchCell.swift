@@ -12,7 +12,7 @@ import UIKit
 }
 class SwitchCell: BaseCollectionCell {
     
-    var delegate : SwitchCellDelegate?{
+    weak var delegate : SwitchCellDelegate?{
         didSet{
             self.switchView.isOn = UserHelpers.notificationIsAvailble
         }

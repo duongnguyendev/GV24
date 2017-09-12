@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,ApplicantControlDelegate {
     var applicants = [Applicant]()
-    var delegate: TaskManageDelegate?
+    weak var delegate: TaskManageDelegate?
     var controllerToDismiss: BaseVC?
     
     private lazy var collectionApplicant : UICollectionView = {
