@@ -19,8 +19,6 @@ import FacebookLogin
 import Alamofire
 import IQKeyboardManagerSwift
 
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate {
     
@@ -40,12 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
 
-        
+        // Initialize Google sign-in
         GMSServices.provideAPIKey("AIzaSyAX9zDfRhJOhCVJya1bawKqGRNPJKsqk7Q")
-        // Initialize sign-in
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
-//        GIDSignIn.sharedInstance().delegate = self
+
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()

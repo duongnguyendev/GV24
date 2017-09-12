@@ -8,9 +8,10 @@
 
 import UIKit
 
+var appDelegate = UIApplication.shared.delegate
+var appStarted : Bool = false
+
 class LaunchScreenVC: BaseVC {
-    
-    var appStarted : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,39 +34,33 @@ class LaunchScreenVC: BaseVC {
     private func showSign(){
         appStarted = true
         let nav = UINavigationController(rootViewController: SignInVC())
-        self.present(nav, animated: true, completion: nil)
-        
+        UIView.transition(with: appDelegate!.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+            appDelegate?.window??.rootViewController = nav
+        }, completion: nil)
+        //self.present(nav, animated: true, completion: nil)
     }
     private func showHome(){
         appStarted = true
         let nav = UINavigationController(rootViewController: HomeVC())
-        self.present(nav, animated: true, completion: nil)
+        UIView.transition(with: appDelegate!.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+            appDelegate?.window??.rootViewController = nav
+        }, completion: nil)
+        //self.present(nav, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if UserHelpers.isLogin == true{
+        if UserHelpers.isLogin == true {
             handleLogedIn()
         }else{
             showSign()
         }
-//        handleInternet()
-    }
-    
-    func handleInternet(){
-        if !(NetworkStatus.sharedInstance.reachabilityManager?.isReachable)!{
-            self.handleInternet(isConnected: false)
-        }
-        NetworkStatus.sharedInstance.startNetworkReachabilityObserver { (isInternetConnected) in
-            self.handleInternet(isConnected: isInternetConnected)
-        }
-
     }
     
     func handleLogedIn() {
-        if !appStarted{
-            self.loadingView.show()
+        if !appStarted {
+//            self.loadingView.show()
             UserService.shared.checkStatus { (error) in
-                self.loadingView.close()
+//                self.loadingView.close()
                 if error != nil{
                     UserHelpers.logOut()
                     self.showSign()
@@ -76,19 +71,5 @@ class LaunchScreenVC: BaseVC {
         }else{
             self.showHome()
         }
-    }
-    
-    func handleInternet(isConnected : Bool){
-        if isConnected {
-            internetDisconnectView.close()
-        }else{
-            internetDisconnectView.show()
-        }
-    }
-    let internetDisconnectView = InternetDisconnectView()
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

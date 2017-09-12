@@ -11,7 +11,7 @@ import CoreLocation
 
 class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    var delegate : UserEventDelegate?
+    weak var delegate : UserEventDelegate?
     let itemSize : CGFloat = 50
     var userInfo : Dictionary<String, String>?
     var gender : Int?
@@ -231,35 +231,34 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     
     func handleComplateButton(_ sender : UIButton){
         self.loadingView.show()
-        validate { (validateError) in
-            self.loadingView.close()
-            if validateError != nil{
-                self.showAlertWith(title: nil, message: validateError!)
+        validate { [weak self] (validateError) in
+            if validateError != nil {
+                self?.loadingView.close()
+                self?.showAlertWith(title: nil, message: validateError!)
             }else{
-                let email = self.emailTextField.text
-                UserService.shared.checkEmail(email: email!, completion: { (emailError) in
-                    if emailError != nil{
-                        self.showAlertWith(title: nil, message: LanguageManager.shared.localized(string: "DUPLICATED_EMAIL")!)
-                    }else{
-                        self.userInfo?["email"] = email
-                        self.userInfo?["name"] = self.fullNameTextField.text
-                        self.userInfo?["phone"] = self.phoneTextField.text
-                        self.userInfo?["addressName"] = self.addressTextField.text
-                        self.userInfo?["lat"] = "\(String(describing: (self.coordinate?.latitude)!))"
-                        self.userInfo?["lng"] = "\(String(describing: (self.coordinate?.longitude)!))"
-                        self.userInfo?["gender"] = "\(String(describing: (self.gender)!))"
+                let email = self?.emailTextField.text
+                UserService.shared.checkEmail(email: email!, completion: { [weak self] (emailError) in
+                    if emailError != nil {
+                        self?.loadingView.close()
+                        self?.showAlertWith(title: nil, message: LanguageManager.shared.localized(string: "DUPLICATED_EMAIL")!)
+                    } else {
+                        self?.loadingView.close()
+                        self?.userInfo?["email"] = email
+                        self?.userInfo?["name"] = self?.fullNameTextField.text
+                        self?.userInfo?["phone"] = self?.phoneTextField.text
+                        self?.userInfo?["addressName"] = self?.addressTextField.text
+                        self?.userInfo?["lat"] = "\(String(describing: (self?.coordinate?.latitude)!))"
+                        self?.userInfo?["lng"] = "\(String(describing: (self?.coordinate?.longitude)!))"
+                        self?.userInfo?["gender"] = "\(String(describing: (self?.gender)!))"
                         let signUpVC_3 = SignUpVC_3()
-                        signUpVC_3.user = self.userInfo
-                        signUpVC_3.avatarImage = self.avatarImage
-                        signUpVC_3.delegate = self.delegate
-                        self.push(viewController: signUpVC_3)
+                        signUpVC_3.user = self?.userInfo
+                        signUpVC_3.avatarImage = self?.avatarImage
+                        signUpVC_3.delegate = self?.delegate
+                        self?.push(viewController: signUpVC_3)
                     }
                 })
-                
-
             }
         }
-//        push(viewController: SignUpVC_3())
     }
     
     func handleGenderButton(_ sender : UIButton){
@@ -440,8 +439,5 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
-        
     }
-
-    
 }

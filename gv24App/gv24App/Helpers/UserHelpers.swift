@@ -14,14 +14,14 @@ let TOKEN : String = "token"
 
 class UserHelpers: NSObject {
     
-    static var isLogin : Bool{
+    static var isLogin : Bool {
         if UserDefaults.standard.value(forKey: TOKEN) != nil{
             return true
         }
         return false
     }
-    static var token : String{
-        return UserDefaults.standard.value(forKey: TOKEN) as! String
+    static var token : String? {
+        return UserDefaults.standard.value(forKey: TOKEN) as? String
     }
     static var notificationIsAvailble : Bool{
         if let isAvailble = UserDefaults.standard.value(forKey: "notificationIsAvailble") as? Bool{
@@ -29,7 +29,7 @@ class UserHelpers: NSObject {
         }
         return true
     }
-    static var currentUser : User?{
+    static var currentUser : User? {
         if isLogin {
             let userDic = UserDefaults.standard.value(forKey: CURRENT_USER) as! Dictionary<String, Any>
             let user = User()
@@ -53,7 +53,7 @@ class UserHelpers: NSObject {
         return nil
     }
     
-    static func save(user : User, token: String){
+    static func save(user : User, newToken: String?) {
         let dic = ["userId":user.userId!,
                    "userName":user.userName!,
                    "name":user.name!,
@@ -64,9 +64,12 @@ class UserHelpers: NSObject {
                    "lat":(user.address?.location?.latitude)!,
                    "lng":(user.address?.location?.longitude)!,
                    "gender":user.gender!] as Dictionary<String, Any>
+        
         UserDefaults.standard.set(dic, forKey: CURRENT_USER)
-        UserDefaults.standard.set(token, forKey: TOKEN)
-
+        
+        if newToken != nil {
+            UserDefaults.standard.set(newToken, forKey: TOKEN)
+        }
     }
     static func turnNotificaitonOn(_ isOn:Bool){
         UserDefaults.standard.set(isOn, forKey: "notificationIsAvailble")

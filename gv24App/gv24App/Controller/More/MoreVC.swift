@@ -202,7 +202,10 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 let facebookLoginManager = LoginManager()
                 facebookLoginManager.logOut()
             }
-            self.dismiss(animated: true, completion: nil)
+            UIView.transition(with: appDelegate!.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                appDelegate?.window??.rootViewController = UINavigationController.init(rootViewController: SignInVC())
+            }, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
         }))
         
         self.present(alert, animated: true, completion: nil)

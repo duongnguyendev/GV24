@@ -70,7 +70,7 @@ class BaseVC: UIViewController {
     }
     
     //MARK: - navigation handle
-    func goBack(){
+    func goBack() {
         if isPresented! {
             self.dismiss(animated: true, completion: nil)
         }else{
@@ -78,14 +78,14 @@ class BaseVC: UIViewController {
                 nav.popViewController(animated: true)
             }
         }
-        
-        
     }
+    
     func present(viewController : BaseVC){
         viewController.isPresented = true
         let nav = UINavigationController(rootViewController: viewController)
         self.present(nav, animated: true, completion: nil)
     }
+    
     func push(viewController : BaseVC){
         viewController.isPresented = false
         self.navigationController?.pushViewController(viewController, animated: true)
