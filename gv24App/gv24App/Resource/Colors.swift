@@ -21,7 +21,7 @@ extension UIColor{
 }
 
 class AppColor : NSObject{
-    static let backButton = UIColor.rgb(red: 51, green: 197, blue: 205)
+    static let backButton = UIColor.rgb(red: 19, green: 111, blue: 167)
     static let backGround = UIColor.white
     static let homeButton1 = UIColor.rgb(red: 255, green: 191, blue: 65)
     static let homeButton2 = UIColor.rgb(red: 95, green: 216, blue: 27)
@@ -34,4 +34,6 @@ class AppColor : NSObject{
     static let icon = UIColor.lightGray
     static let facebook = UIColor.rgb(red: 65, green: 96, blue: 163)
     static let google = UIColor.rgb(red: 221, green: 74, blue: 56)
+    static let colorButtonLogout = UIColor.rgb(red: 204, green: 204, blue: 204)
+    static let titleButtonLogout = UIColor.rgb(red: 162, green: 162, blue: 162)
 }

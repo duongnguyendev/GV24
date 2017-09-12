@@ -28,12 +28,16 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     override func viewDidLoad() {
         itemHeight = self.view.frame.size.height / 15
         super.viewDidLoad()
-        hiddenNav = true
+        
         
         hideKeyboardWhenTouchUpOutSize = true
         title = LanguageManager.shared.localized(string: "SignIn")
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hiddenNav = true
     }
     
     

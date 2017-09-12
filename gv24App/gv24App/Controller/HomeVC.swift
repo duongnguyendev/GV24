@@ -127,6 +127,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let btn = UIBarButtonItem(customView: buttonMore)
         self.navigationItem.rightBarButtonItem = btn
     }
+
     
     
     func setupBackGround(){
@@ -153,8 +154,12 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     //MARK: - Handle button
     func handleButtonMore(_ sender : UIButton) {
         // MARK: - Team lead edited it
-        push(viewController: MoreVC())
-//        present(viewController: moreVC)
+        //push(viewController: MoreVC())
+        presentLogout(viewController: MoreVC())
+        
+//        let navi = UINavigationController(rootViewController: MoreVC())
+//        self.present(navi, animated: true, completion: nil)
+//        
     }
     
     func handleButtonAround(_ sender : UIButton) {
