@@ -20,6 +20,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         collectionMore.register(SwitchCell.self, forCellWithReuseIdentifier: switchCellId)
         collectionMore.register(LogoutCell.self, forCellWithReuseIdentifier: logoutCellId)
         collectionMore.register(BaseHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId);
+        collectionMore.register(GeneralStatisticCell.self, forCellWithReuseIdentifier: statisticCellId)
     }
     
     let userCellId = "userCellId"
@@ -28,13 +29,13 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     let switchCellId = "switchCellId"
     let logoutCellId = "logoutCellId"
     let headerId = "headerId"
-    
+    let statisticCellId = "statisticCellId"
     lazy var collectionMore : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = AppColor.collection
+        cv.backgroundColor = AppColor.white
         
         // MARK: - TEAM LEAD: collectionView needs to bounds for default
         cv.bounces = true
@@ -45,7 +46,8 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         cv.dataSource = self
         return cv
     }()
-    
+
+
     override func setupView() {
         view.addSubview(collectionMore)
         
@@ -80,10 +82,11 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         case 0:
             if indexPath.item == 0{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: userCellId, for: indexPath) as! MoreUserCell
+                cell.iconImage.isHidden = true
                 return cell
             }else{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
-                cell.text = "GeneralStatistic"
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: statisticCellId, for: indexPath) as! GeneralStatisticCell
+                cell.delegate = self
                 return cell
             }
             
@@ -102,11 +105,13 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 return cell
             default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
+                cell.arrowRight.isHidden = true
                 return cell
             }
             
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
+            cell.arrowRight.isHidden = true
             switch indexPath.item
             {
             case 0:
@@ -117,6 +122,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 break
             case 2:
                 cell.text = "Contact"
+    
                 break
             default: break
                 
@@ -124,15 +130,19 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             return cell
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: socialCellId, for: indexPath) as! MoreSocialCell
+            cell.arrowRight.isHidden = true
+            //cell.iconImage.isHidden = true
             switch indexPath.item
             {
             case 0:
                 cell.text = "ShareNGV247"
-                cell.icon = .androidShareAlt
+                //cell.icon = .androidShareAlt
+    
                 break
             case 1:
                 cell.text = "FollowUsOnFacebook"
-                cell.icon = .socialFacebook
+                //cell.icon = .socialFacebook
+        
                 break
             default: break
                 
@@ -140,13 +150,17 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             return cell
         case 4:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: logoutCellId, for: indexPath) as! LogoutCell
-            
-            cell.text = "Logout"
+            cell.arrowRight.isHidden = true
+            cell.iconImage.isHidden = true
+            cell.titleLogout = "Logout"
+            cell.delegate = self
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
+            cell.arrowRight.isHidden = true
             return cell
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -185,7 +199,7 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             handleSection3(item: indexPath.item)
             break
         case 4:
-            logOut()
+            //logOut()
             break
         default:
             break
@@ -267,10 +281,6 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func notification(isOn: Bool) {
         
         MoreService.shared.handleNotification(isOn: isOn) { (success) in
-//            let alertTitle = LanguageManager.shared.localized(string: "")
-//            let alertMessage = LanguageManager.shared.localized(string: "")
-//            let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             if success{
                 UserHelpers.turnNotificaitonOn(isOn)
             }else{
@@ -283,5 +293,18 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         super.localized()
         self.collectionMore.reloadData()
         title = LanguageManager.shared.localized(string: "More")
+    }
+}
+
+extension MoreVC: GeneralStatisticCellDelegate {
+    func genaralStatic(cell: GeneralStatisticCell) {
+       self.push(viewController: GeneralStatisticVC()) 
+    }
+
+}
+
+extension MoreVC: LogoutCellDelegate {
+    func logout(cell: LogoutCell) {
+        logOut()
     }
 }

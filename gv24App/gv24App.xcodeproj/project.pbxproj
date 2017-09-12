@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		006F5A151F667DDA00383C42 /* GeneralStatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F5A141F667DDA00383C42 /* GeneralStatisticCell.swift */; };
 		0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */; };
 		0319CFAD1EE6604100A4F157 /* DetailTaskDoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319CFAC1EE6604100A4F157 /* DetailTaskDoneVC.swift */; };
 		0337FBCF1EEA43E800077A7E /* MaidHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0337FBCE1EEA43E800077A7E /* MaidHistory.swift */; };
@@ -188,6 +189,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		006F5A141F667DDA00383C42 /* GeneralStatisticCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralStatisticCell.swift; sourceTree = "<group>"; };
 		0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		0319CFAC1EE6604100A4F157 /* DetailTaskDoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTaskDoneVC.swift; sourceTree = "<group>"; };
 		0337FBCE1EEA43E800077A7E /* MaidHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidHistory.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				03446A471EE54F3D004DB193 /* Headers */,
 				03446A491EE54F3D004DB193 /* HistoryControlCell */,
 				03446A501EE54F3D004DB193 /* TaskControll */,
+				006F5A141F667DDA00383C42 /* GeneralStatisticCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -912,7 +915,7 @@
 				TargetAttributes = {
 					4E4DD6BE1EB0A0C5001B4936 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = YNT6QGU3P6;
+						DevelopmentTeam = FE5FXN233L;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1000,7 +1003,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -1109,6 +1112,7 @@
 				4E5C04CB1EF1340A00470C8C /* LaunchScreenVC.swift in Sources */,
 				4E0F75C11EE5095200121113 /* BaseLauncher.swift in Sources */,
 				4ED1DD981F29D1AD0067A5C1 /* FloatLabelTextView.swift in Sources */,
+				006F5A151F667DDA00383C42 /* GeneralStatisticCell.swift in Sources */,
 				03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */,
 				4E61E3E01EC1A33800E6C8C5 /* MaidAroundVC.swift in Sources */,
 				4E8D275E1EDC157E00872A61 /* BlockAlias.swift in Sources */,
@@ -1328,7 +1332,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YNT6QGU3P6;
+				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1353,7 +1357,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = gv24App/gv24App.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = YNT6QGU3P6;
+				DEVELOPMENT_TEAM = FE5FXN233L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = gv24App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

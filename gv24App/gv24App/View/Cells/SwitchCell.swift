@@ -10,7 +10,7 @@ import UIKit
 @objc protocol SwitchCellDelegate{
     @objc optional func notification(isOn : Bool)
 }
-class SwitchCell: BaseCollectionCell {
+class SwitchCell: BaseMoreCell {
     
     weak var delegate : SwitchCellDelegate?{
         didSet{
@@ -37,7 +37,7 @@ class SwitchCell: BaseCollectionCell {
     
 
     override func setupView() {
-
+        super.setupView()
         backgroundColor = AppColor.white
         addSubview(switchView)
         addSubview(labelView)
@@ -46,7 +46,8 @@ class SwitchCell: BaseCollectionCell {
         switchView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         
         labelView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
-        labelView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        labelView.leftAnchor.constraint(equalTo: self.iconImage.rightAnchor, constant: 10).isActive = true
+        labelView.rightAnchor.constraint(equalTo: self.switchView.leftAnchor, constant: 10).isActive = true
         
         setupSeqaratorView()
         

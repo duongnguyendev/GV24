@@ -34,4 +34,7 @@ class AppColor : NSObject {
     static let icon = UIColor.lightGray
     static let facebook = UIColor.rgb(red: 65, green: 96, blue: 163)
     static let google = UIColor.rgb(red: 221, green: 74, blue: 56)
+    static let colorButtonLogout = UIColor.rgb(red: 204, green: 204, blue: 204)
+    static let titleButtonLogout = UIColor.rgb(red: 162, green: 162, blue: 162)
+    static let buttonDelete = UIColor.rgb(red: 240, green: 19, blue: 77)
 }

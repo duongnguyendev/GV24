@@ -38,6 +38,28 @@ class BackButton: BaseButton {
     }
 }
 
+class BackBtPresent: BaseButton {
+    
+    private let iconImageView : UIImageView = {
+        let iv = UIImageView(image: Icon.by(name: .iosCloseEmpty, color: AppColor.colorButtonLogout))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+
+    override func setupView() {
+        super.setupView()
+        
+        self.addSubview(iconImageView)
+        
+        iconImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        iconImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        iconImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        iconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+
+    }
+}
+
 class NavButton: BaseButton{
     init(title : String) {
         super.init(frame: CGRect(x: 0, y: 0, width: 60, height: 20))

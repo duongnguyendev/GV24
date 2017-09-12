@@ -9,7 +9,9 @@
 import UIKit
 
 class BaseMoreCell: BaseCollectionCell {
+    
     let cellMargin : CGFloat = 20
+    
     let seqaratorView: UIView = {
         let view = UIView.horizontalLine()
         view.backgroundColor = AppColor.seqaratorView
@@ -20,19 +22,40 @@ class BaseMoreCell: BaseCollectionCell {
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
+    let iconImage : UIImageView = {
+        let iv = UIImageView()
+        iv.backgroundColor = UIColor.blue
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        return iv
+    }()
+    var constraintsWidthImage: NSLayoutConstraint?
+    
     override func setupView() {
         backgroundColor = UIColor.white
         
         addSubview(arrowRight)
         addSubview(seqaratorView)
+        addSubview(iconImage)
         
         seqaratorView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         addConstraintWithFormat(format: "|-\(cellMargin)-[v0]|", views: seqaratorView)
+        
+        iconImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        iconImage.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        constraintsWidthImage = iconImage.widthAnchor.constraint(equalToConstant: 20)
+        constraintsWidthImage?.isActive = true
+        iconImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
         arrowRight.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         arrowRight.widthAnchor.constraint(equalToConstant: 20).isActive = true
         arrowRight.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        iconImage.layer.cornerRadius = 4
+        iconImage.clipsToBounds = true
     }
 }
 
