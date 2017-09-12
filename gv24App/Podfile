@@ -20,4 +20,6 @@ target 'gv24App' do
   pod 'KMPlaceholderTextView'
   pod 'IQKeyboardManagerSwift'
   pod 'AFNetworking', '~> 2.0’
+  pod 'GoogleMobileVision/FaceDetector'
+  pod 'GTProgressBar'
 end

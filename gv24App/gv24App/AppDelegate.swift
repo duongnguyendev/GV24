@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
-        window?.rootViewController = LaunchScreenVC()
+        window?.rootViewController = FaceRecognizalVC()
         return true
     }
     
