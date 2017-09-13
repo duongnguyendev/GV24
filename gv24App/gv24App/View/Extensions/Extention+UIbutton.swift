@@ -15,5 +15,11 @@ extension UIButton{
         bt.layer.cornerRadius = 8
         bt.layer.masksToBounds = true
     }
+    
+    static func corneRadius(bt: UIButton) {
+        bt.layer.cornerRadius = 8
+        bt.layer.masksToBounds = true
+        bt.backgroundColor = AppColor.backButton
+    }
 
 }
