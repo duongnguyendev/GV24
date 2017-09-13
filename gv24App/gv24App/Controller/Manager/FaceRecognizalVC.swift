@@ -15,7 +15,7 @@ class FaceRecognizalVC: BaseVC {
     
     var faceGMVDetector: GMVDetector!
     
-    let avatarMaidImage : CustomImageView = {
+    lazy var avatarMaidImage : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "face"))
         iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +27,7 @@ class FaceRecognizalVC: BaseVC {
         return iv
     }()
     
-    let avatarPhotoImage : CustomImageView = {
+    lazy var avatarPhotoImage : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "face"))
         iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -48,19 +48,25 @@ class FaceRecognizalVC: BaseVC {
         btn.delegate = self
         return btn
     }()
-
-    let progressBar: GTProgressBar = {
-        let progressBar = GTProgressBar(frame: .zero)
-        progressBar.translatesAutoresizingMaskIntoConstraints = false
-        progressBar.barBorderColor = .red
-        progressBar.barFillColor = .red
-        progressBar.barBackgroundColor = .clear
-        progressBar.progress = 0.1
-        progressBar.font = Fonts.by(name: .light, size: 14)
-        progressBar.barBorderWidth = 1
-        progressBar.barFillInset = 0
-        progressBar.labelPositionInt = 3
-        return progressBar
+    
+    lazy var progressBar: ProgressBar = {
+        let progress = ProgressBar()
+        progress.translatesAutoresizingMaskIntoConstraints = false
+        progress.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        progress.layer.cornerRadius = 15
+        progress.layer.borderColor = UIColor.lightGray.cgColor
+        progress.layer.borderWidth = 1
+        progress.clipsToBounds = true
+        return progress
+    }()
+    
+    let progressLabel: UILabel = {
+       let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.textColor = .red
+        lb.font = Fonts.by(name: .light, size: 16)
+        lb.text = "0 %"
+        return lb
     }()
     
     override func viewDidLoad() {
@@ -76,6 +82,8 @@ class FaceRecognizalVC: BaseVC {
         
         handleFaceDetect(avatarMaidImage)
         handleFaceDetect(avatarPhotoImage)
+        
+        self.animateCheckFace()
     }
     
     
@@ -98,6 +106,7 @@ class FaceRecognizalVC: BaseVC {
         self.view.addSubview(avatarPhotoImage)
         self.view.addSubview(resultFaceButton)
         self.view.addSubview(progressBar)
+        self.view.addSubview(progressLabel)
         
         avatarMaidImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
         avatarMaidImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
@@ -105,12 +114,28 @@ class FaceRecognizalVC: BaseVC {
         avatarPhotoImage.topAnchor.constraint(equalTo: avatarMaidImage.topAnchor, constant: 0).isActive = true
         avatarPhotoImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
         
-        resultFaceButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        resultFaceButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
-        
         view.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: progressBar)
-        progressBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        progressBar.bottomAnchor.constraint(equalTo: resultFaceButton.topAnchor, constant: -20).isActive = true
+        progressBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 120).isActive = true
+        
+        progressLabel.centerXAnchor.constraint(equalTo: progressBar.centerXAnchor, constant: 0).isActive = true
+        progressLabel.topAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 20).isActive = true
+        
+        resultFaceButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        resultFaceButton.topAnchor.constraint(equalTo: progressLabel.bottomAnchor, constant: 30).isActive = true
+    }
+    
+    func animateCheckFace() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 2.0) {
+                self.avatarMaidImage.frame = CGRect(x: self.view.bounds.size.width / 2 - self.avatarMaidImage.frame.size.width / 2, y: self.view.bounds.size.height / 2 - self.avatarMaidImage.frame.size.height / 2, width: self.avatarMaidImage.frame.width, height: self.avatarMaidImage.frame.height)
+            }
+            UIView.animate(withDuration: 2.0) {
+                self.avatarPhotoImage.frame = CGRect(x: self.view.bounds.size.width / 2 - self.avatarPhotoImage.frame.size.width / 2, y: self.view.bounds.size.height / 2 - self.avatarPhotoImage.frame.size.height / 2, width: self.avatarPhotoImage.frame.width, height: self.avatarPhotoImage.frame.height)
+            }
+            self.avatarMaidImage.alpha = 0.5
+            self.avatarPhotoImage.alpha = 0.5
+        }
+
     }
     
     func handleFaceDetect(_ faceImageView: UIImageView){
@@ -191,30 +216,15 @@ class FaceRecognizalVC: BaseVC {
     
 }
 extension FaceRecognizalVC: FaceButtonDelegate {
-    func handleRun(_ btnFace: CustomFaceButton) {
-        btnFace.type = .success
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 2.0) {
-                self.avatarMaidImage.frame = CGRect(x: self.view.bounds.size.width / 2 - self.avatarMaidImage.frame.size.width / 2, y: self.view.bounds.size.height / 2 - self.avatarMaidImage.frame.size.height / 2, width: self.avatarMaidImage.frame.width, height: self.avatarMaidImage.frame.height)
-            }
-            UIView.animate(withDuration: 2.0) {
-                self.avatarPhotoImage.frame = CGRect(x: self.view.bounds.size.width / 2 - self.avatarPhotoImage.frame.size.width / 2, y: self.view.bounds.size.height / 2 - self.avatarPhotoImage.frame.size.height / 2, width: self.avatarPhotoImage.frame.width, height: self.avatarPhotoImage.frame.height)
-            }
-            self.avatarMaidImage.alpha = 0.5
-            self.avatarPhotoImage.alpha = 0.5
-        }
-        print("Handle Button Run")
-    }
-    
     func handleSuccess(_ btnFace: CustomFaceButton) {
         btnFace.type = .failure
-        print("Handle Button Success")
         
-        progressBar.animateTo(progress: 1.0)
+        progressBar.linearLoadingWith(progress: 30)
+        print("Handle Button Success")
     }
     
     func handleFailure(_ btnFace: CustomFaceButton) {
-        btnFace.type = .run
+        btnFace.type = .success
         print("Handle Button Failure")
     }
 }
