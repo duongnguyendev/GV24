@@ -32,8 +32,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
 
         
     }
-    
-    
+
     let backGroundView : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "bg_app"))
         iv.translatesAutoresizingMaskIntoConstraints = false

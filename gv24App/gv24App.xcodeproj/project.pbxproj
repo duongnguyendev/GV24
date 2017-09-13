@@ -166,6 +166,7 @@
 		A62FC7DB1F00FF3100BE80DC /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62FC7DA1F00FF3100BE80DC /* Wallet.swift */; };
 		A632EEB61F6631950007ED1C /* ButtonWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A632EEB51F6631950007ED1C /* ButtonWithIcon.swift */; };
 		A63905361EFD011C009255D2 /* PreviewAssesmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63905351EFD011C009255D2 /* PreviewAssesmentVC.swift */; };
+		A647A7B21F668474009A640B /* FaceRecognizalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647A7B11F668474009A640B /* FaceRecognizalVC.swift */; };
 		A69DA7781EFD05C000C4C5F8 /* AssesmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69DA7771EFD05C000C4C5F8 /* AssesmentVC.swift */; };
 		A6B4EE491EF8DC5E003997FD /* CommentMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B4EE481EF8DC5E003997FD /* CommentMaidVC.swift */; };
 		A6B4EE4B1EF9042C003997FD /* Applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B4EE4A1EF9042C003997FD /* Applicant.swift */; };
@@ -359,6 +360,7 @@
 		A62FC7DA1F00FF3100BE80DC /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		A632EEB51F6631950007ED1C /* ButtonWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithIcon.swift; sourceTree = "<group>"; };
 		A63905351EFD011C009255D2 /* PreviewAssesmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewAssesmentVC.swift; sourceTree = "<group>"; };
+		A647A7B11F668474009A640B /* FaceRecognizalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRecognizalVC.swift; sourceTree = "<group>"; };
 		A69DA7771EFD05C000C4C5F8 /* AssesmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssesmentVC.swift; sourceTree = "<group>"; };
 		A6B4EE481EF8DC5E003997FD /* CommentMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentMaidVC.swift; sourceTree = "<group>"; };
 		A6B4EE4A1EF9042C003997FD /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
@@ -755,6 +757,7 @@
 				4E54F58D1EC95C7A007D15D6 /* TaskManagementVC.swift */,
 				4E54F59E1EC9B173007D15D6 /* PostVC.swift */,
 				A6D8F5DE1EFA70DF001FC0BF /* UpdateVC.swift */,
+				A647A7B11F668474009A640B /* FaceRecognizalVC.swift */,
 			);
 			name = Manage;
 			path = Manager;
@@ -1074,6 +1077,7 @@
 				4E1A75071EC56D2000B80CD0 /* LanguageVC.swift in Sources */,
 				03446A6B1EE5502C004DB193 /* MaidProfileCell.swift in Sources */,
 				4E61E3DC1EC1A31C00E6C8C5 /* SignUpVC_1.swift in Sources */,
+				A647A7B21F668474009A640B /* FaceRecognizalVC.swift in Sources */,
 				A6C826991EFB6ACF0017FD0F /* ToolFunctions.m in Sources */,
 				4E8D274A1EDC13B900872A61 /* JobAssignedDetailVC.swift in Sources */,
 				A6D471281EF2262A00F8A5BA /* ApplicantsVC.swift in Sources */,
