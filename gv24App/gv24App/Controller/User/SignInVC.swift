@@ -125,7 +125,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         btn.iconName = Icon.by(name: .socialFacebook, size: 30, collor: AppColor.white)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = AppColor.facebook
-        btn.title = "Login with Facebook"
+        btn.title = "Facebook"
         btn.addTarget(self, action: #selector(handleFaceBookButton(_:)), for: .touchUpInside)
         return btn
     }()
@@ -134,7 +134,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         btn.iconName = Icon.by(name: .socialGoogle, size: 30, collor: AppColor.white)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = AppColor.google
-        btn.title = "Login with Google"
+        btn.title = "Google"
         btn.addTarget(self, action: #selector(handleGoogleButton(_:)), for: .touchUpInside)
         return btn
     }()
@@ -165,6 +165,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         setupTopView()
         setupBottomView()
         setupCopyRightView()
+
     }
     
     private func setupMainView(){
@@ -491,6 +492,9 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
             loginSocial(userInfo: userInfo)
         }
         
+    }
+    
+    override func localized() {
     }
 }
 

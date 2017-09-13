@@ -21,6 +21,7 @@ extension UIColor{
 }
 
 class AppColor : NSObject{
+    static let backgroundButtonHome = UIColor.rgb(red: 130, green: 130, blue: 130)
     static let backButton = UIColor.rgb(red: 19, green: 111, blue: 167)
     static let backGround = UIColor.white
     static let homeButton1 = UIColor.rgb(red: 255, green: 191, blue: 65)

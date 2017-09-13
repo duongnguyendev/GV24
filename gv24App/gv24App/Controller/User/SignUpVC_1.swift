@@ -58,7 +58,7 @@ class SignUpVC_1: BaseVC {
         view.addSubview(textFieldPass)
         view.addSubview(textFieldConfirmPass)
         view.addSubview(buttonNext)
-        
+        UIButton.cornerButton(bt: buttonNext)
         let userNameLine = UIView.horizontalLine()
         let passLine = UIView.horizontalLine()
         let confirmPassLine = UIView.horizontalLine()

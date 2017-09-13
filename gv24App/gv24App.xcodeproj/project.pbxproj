@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000A77421F692E60003CD434 /* Extention+UIbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A77411F692E60003CD434 /* Extention+UIbutton.swift */; };
 		006F5A151F667DDA00383C42 /* GeneralStatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F5A141F667DDA00383C42 /* GeneralStatisticCell.swift */; };
 		0309AEE01EDFF7E8009C0E32 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */; };
 		0319CFAD1EE6604100A4F157 /* DetailTaskDoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0319CFAC1EE6604100A4F157 /* DetailTaskDoneVC.swift */; };
@@ -189,6 +190,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000A77411F692E60003CD434 /* Extention+UIbutton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extention+UIbutton.swift"; sourceTree = "<group>"; };
 		006F5A141F667DDA00383C42 /* GeneralStatisticCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralStatisticCell.swift; sourceTree = "<group>"; };
 		0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		0319CFAC1EE6604100A4F157 /* DetailTaskDoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTaskDoneVC.swift; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 				4ED231701EB97D4100592842 /* StringExtensions.swift */,
 				4ED231721EB9803400592842 /* ImageExtensions.swift */,
 				0309AEDF1EDFF7E8009C0E32 /* DateExtensions.swift */,
+				000A77411F692E60003CD434 /* Extention+UIbutton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1082,6 +1085,7 @@
 				4E33F95B1EEF94390073BC7E /* RechargeVC.swift in Sources */,
 				03446A6A1EE5502C004DB193 /* CommentCell.swift in Sources */,
 				4ED2317E1EB9B15E00592842 /* HomeVC.swift in Sources */,
+				000A77421F692E60003CD434 /* Extention+UIbutton.swift in Sources */,
 				0337FBCF1EEA43E800077A7E /* MaidHistory.swift in Sources */,
 				038152191EE803F90081FB33 /* MaidCell.swift in Sources */,
 				038987391EEE4F8100DA5293 /* ApplicantCell.swift in Sources */,

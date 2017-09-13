@@ -48,7 +48,7 @@ class ButtonWithIcon: BaseButton {
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textColor = AppColor.white
         lb.textAlignment = .center
-        lb.font = Fonts.by(name: .medium, size: 14)
+        lb.font = Fonts.by(name: .medium, size: 16)
         return lb
     }()
     

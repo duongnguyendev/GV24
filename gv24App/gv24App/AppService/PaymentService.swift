@@ -16,7 +16,8 @@ class PaymentService: APIService {
         let url = "owner/getWallet"
         getWithToken(url: url) { (json, error) in
             if error == nil{
-                let wallet = Wallet(jsonData: json!)
+                guard let jsonData = json else {return}
+                let wallet = Wallet(jsonData: jsonData)
                 completion(wallet)
             }else{
                 completion(nil)

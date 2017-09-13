@@ -25,7 +25,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = AppColor.collection
+        cv.backgroundColor = AppColor.white
         cv.bounces = true
         cv.alwaysBounceVertical = true
         cv.isDirectionalLockEnabled = false
@@ -37,44 +37,51 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     let labelPaymentMethods: UILabel = {
         let lb = UILabel()
+        lb.textAlignment = .center
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textColor = AppColor.lightGray
         lb.font = Fonts.by(name: .light, size: 14)
         lb.text = LanguageManager.shared.localized(string: "SelectYourPaymentMethods")
+        
         return lb
     }()
     
     let viewPaymentMethods: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         return view
     }()
     
     let gv24PaymentButton : HomeFunctButton = {
         let bt = HomeFunctButton()
-        bt.backgroundColor = UIColor.clear
         bt.imageName = "payment_gv24"
         bt.title = "NGV247Payment"
-        bt.textColor = AppColor.homeButton1
+        bt.textColor = AppColor.white
+        bt.layer.cornerRadius = 4
+        bt.backgroundColor = AppColor.homeButton1
         bt.addTarget(self, action: #selector(handleButtonGv24(_:)), for: .touchUpInside)
         return bt
     }()
     let onlinePaymentButton : HomeFunctButton = {
         let bt = HomeFunctButton()
-        bt.backgroundColor =  UIColor.clear
+        //bt.backgroundColor =  UIColor.clear
         bt.imageName = "payment_online"
         bt.title = "OnlinePayment"
-        bt.textColor = AppColor.homeButton2
+        bt.textColor = AppColor.white
+        bt.layer.cornerRadius = 4
+        bt.backgroundColor = AppColor.homeButton2
         bt.addTarget(self, action: #selector(handleButtonOnlinePayment(_:)), for: .touchUpInside)
         return bt
     }()
     let moneyPaymentButton : HomeFunctButton = {
         let bt = HomeFunctButton()
-        bt.backgroundColor =  UIColor.clear
+        //bt.backgroundColor =  UIColor.clear
         bt.imageName = "payment_money"
         bt.title = "CashPayment"
-        bt.textColor = AppColor.homeButton3
+        bt.textColor = AppColor.white
+        bt.layer.cornerRadius = 4
+        bt.backgroundColor = AppColor.homeButton3
         bt.addTarget(self, action: #selector(handleButtonMoneyPayment(_:)), for: .touchUpInside)
         return bt
     }()
@@ -163,7 +170,12 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = AppColor.collection
+        
+//        labelPaymentMethods.layer.shadowColor = UIColor.black.cgColor
+//        labelPaymentMethods.layer.shadowOpacity = 1
+//        labelPaymentMethods.layer.shadowOffset = CGSize.zero
+//        labelPaymentMethods.layer.shadowRadius = 5
+        
         title = LanguageManager.shared.localized(string: "Payment")
         
         collectionPayment.register(JobTypeCell.self, forCellWithReuseIdentifier: jobCellId)
@@ -182,9 +194,9 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
             self.loadingView.close()
             if let wallet = wallet{
                 self.wallet = wallet
-                let cell = self.collectionPayment.cellForItem(at: IndexPath(item: 0, section: 2)) as! BankOwnerCell
-                cell.date = Date().isoString
-                cell.bank = wallet.wallet
+                let cell = self.collectionPayment.cellForItem(at: IndexPath(item: 0, section: 2)) as? BankOwnerCell
+                cell?.date = Date().isoString
+                cell?.bank = wallet.wallet
             }else{
                 self.loadingView.close()
             }
@@ -192,17 +204,17 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     override func setupView() {
         super.setupView()
-        
         view.addSubview(collectionPayment)
         view.addSubview(labelPaymentMethods)
         view.addSubview(viewPaymentMethods)
         
         view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionPayment)
         collectionPayment.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        collectionPayment.heightAnchor.constraint(equalToConstant: view.frame.height * 2/3).isActive = true
+        collectionPayment.heightAnchor.constraint(equalToConstant: (view.frame.height - 64) * 2/3).isActive = true
         
         labelPaymentMethods.topAnchor.constraint(equalTo: collectionPayment.bottomAnchor, constant: 5).isActive = true
         labelPaymentMethods.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        labelPaymentMethods.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         labelPaymentMethods.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         viewPaymentMethods.topAnchor.constraint(equalTo: labelPaymentMethods.bottomAnchor, constant: 10).isActive = true
@@ -214,11 +226,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     override func goBack() {
         // TEAM LEAD FIX HERE
         self.navigationController?.popViewController(animated: true)
-//        for vc in (self.navigationController?.viewControllers ?? []) {
-//            guard vc is HistoryVC else { continue }
-//            _ = self?.navigationController?.popToViewController(vc, animated: true)
-//        }
-        //self.dismiss(animated: true, completion: nil)
+
     }
     func setupViewPaymentMethods(){
         viewPaymentMethods.addSubview(gv24PaymentButton)
@@ -228,15 +236,15 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         viewPaymentMethods.addConstraint(NSLayoutConstraint(item: gv24PaymentButton, attribute: .width, relatedBy: .equal, toItem: onlinePaymentButton, attribute: .width, multiplier: 1, constant: 0))
         viewPaymentMethods.addConstraint(NSLayoutConstraint(item: gv24PaymentButton, attribute: .width, relatedBy: .equal, toItem: moneyPaymentButton, attribute: .width, multiplier: 1, constant: 0))
         
-        viewPaymentMethods.addConstraintWithFormat(format: "H:|[v0][v1][v2]|", views: gv24PaymentButton,onlinePaymentButton,moneyPaymentButton)
+        viewPaymentMethods.addConstraintWithFormat(format: "H:|-10-[v0]-10-[v1]-10-[v2]-10-|", views: gv24PaymentButton,onlinePaymentButton,moneyPaymentButton)
         
         gv24PaymentButton.topAnchor.constraint(equalTo: viewPaymentMethods.topAnchor, constant: 5).isActive = true
         onlinePaymentButton.topAnchor.constraint(equalTo: viewPaymentMethods.topAnchor, constant: 5).isActive = true
         moneyPaymentButton.topAnchor.constraint(equalTo: viewPaymentMethods.topAnchor, constant: 5).isActive = true
         
-        gv24PaymentButton.bottomAnchor.constraint(equalTo: viewPaymentMethods.bottomAnchor, constant: 5).isActive = true
-        onlinePaymentButton.bottomAnchor.constraint(equalTo: viewPaymentMethods.bottomAnchor, constant: 5).isActive = true
-        moneyPaymentButton.bottomAnchor.constraint(equalTo: viewPaymentMethods.bottomAnchor, constant: 5).isActive = true
+        gv24PaymentButton.bottomAnchor.constraint(equalTo: viewPaymentMethods.bottomAnchor, constant: -16).isActive = true
+        onlinePaymentButton.bottomAnchor.constraint(equalTo: viewPaymentMethods.bottomAnchor, constant: -16).isActive = true
+        moneyPaymentButton.bottomAnchor.constraint(equalTo: viewPaymentMethods.bottomAnchor, constant: -16).isActive = true
     }
     
     //MARK: - Collection view delegate - datasourse
@@ -302,10 +310,22 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
         return CGSize(width: view.frame.size.width, height: 70)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 0
+        case 2:
+            return 0
+        case 3:
+            return 0
+        default:
+            return 1
+        }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: 20)
+        return CGSize(width: view.frame.size.width, height: 1)
+
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView { 
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as? BaseHeaderView
