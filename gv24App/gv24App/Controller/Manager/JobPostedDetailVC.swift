@@ -17,7 +17,7 @@ import IoniconsSwift
 class JobPostedDetailVC: JobDetailVC{
     
     var task = Task()
-    var delegate: TaskManageDelegate?
+    weak var delegate: TaskManageDelegate?
     
     let deleteButton: IconTextButton = {
         let button = IconTextButton()

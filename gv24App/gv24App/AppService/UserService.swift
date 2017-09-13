@@ -67,7 +67,8 @@ class UserService: APIService {
                 completion(user,token , nil)
             }else{
                 completion(nil, nil, error)
-            }        }
+            }
+        }
     }
     func signUpSocical(userInfo : Dictionary<String, String>, completion : @escaping ((User?, String?, String?)->())){
         var params = userInfo

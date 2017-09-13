@@ -12,7 +12,7 @@ import GoogleMaps
 
 class FilterVC: BaseVC, AgeLauncherDelegate {
  
-    var delegate : FilterDelegate?
+    weak var delegate : FilterDelegate?
     var distance : Int = 5{
         didSet{
             labelNumberDistance.text = "\(distance)km"

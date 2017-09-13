@@ -16,7 +16,7 @@ class MaidWorkInfoCell: BaseCollectionCell, UICollectionViewDelegate, UICollecti
             self.collectionWorkInfo.reloadData()
         }
     }
-    var delegate : MaidProfileDelegate?
+    weak var delegate : MaidProfileDelegate?
     let workInfoCellId = "workInfoCellId"
     
     let labelPrice : UILabel = {

@@ -23,13 +23,16 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         collectionType.register(TaskInProgressControlCell.self, forCellWithReuseIdentifier: cellInProgress)
         segmentedControl.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .valueChanged)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+       super.viewWillAppear(animated)
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         let cell = collectionType.cellForItem(at: indexPath) as! TaskControlCell
         cell.type = indexPath.item
     }
+    
     lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -42,9 +45,9 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         cv.delegate = self
         cv.dataSource = self
         cv.isPagingEnabled = true
-        cv.contentInset.top = 20
         return cv
     }()
+    
     let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
         sc.insertSegment(withTitle: "Đã đăng", at: 0, animated: true)
@@ -55,6 +58,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         sc.translatesAutoresizingMaskIntoConstraints = false
         return sc
     }()
+    
     //MARK: - setup view
     override func setupRightNavButton() {
         let buttonPost = NavButton(icon: .compose)
@@ -62,6 +66,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         let btn = UIBarButtonItem(customView: buttonPost)
         self.navigationItem.rightBarButtonItem = btn
     }
+    
     override func setupView() {
         super.setupView()
         view.addSubview(segmentedControl)
@@ -72,6 +77,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         view.addConstraintWithFormat(format: "H:|-\(15)-[v0]-\(15)-|", views: segmentedControl)
         view.addConstraintWithFormat(format: "|[v0]|", views: collectionType)
     }
+    
     //MARK: - collection view handle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell : TaskControlCell
@@ -92,7 +98,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         cell.type = indexPath.item
         cell.delegate = self
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -135,8 +140,8 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         postVC.workType = WorkType.getBy(id: "000000000000000000000001")
         present(viewController: postVC)
     }
-    //MARK: - task control delegate
     
+    //MARK: - task control delegate
     func selectedPosted(task: Task, deadline: Bool) {
         if deadline{
             let jobExpiredVC = JobExpiredDetailVC()

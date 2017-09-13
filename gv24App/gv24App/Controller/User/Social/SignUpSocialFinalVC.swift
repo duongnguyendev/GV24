@@ -24,11 +24,11 @@ class SignUpSocialFinalVC: SignUpVC_3 {
                 let alert = UIAlertController(title: "Lỗi", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-            }else{
-                UserHelpers.save(user: user!, token: token!)
-                self.navigationController?.dismiss(animated: true, completion: {
+            } else {
+                UserHelpers.save(user: user!, newToken: token!)
+                //self.navigationController?.dismiss(animated: true, completion: {
                     self.delegate?.signUpComplete!()
-                })
+                //})
             }
         }
     }

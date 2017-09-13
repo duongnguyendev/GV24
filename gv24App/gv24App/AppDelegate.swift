@@ -19,8 +19,6 @@ import FacebookLogin
 import Alamofire
 import IQKeyboardManagerSwift
 
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate {
     
@@ -40,12 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
 
-        
+        // Initialize Google sign-in
         GMSServices.provideAPIKey("AIzaSyAX9zDfRhJOhCVJya1bawKqGRNPJKsqk7Q")
-        // Initialize sign-in
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
-//        GIDSignIn.sharedInstance().delegate = self
+
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
@@ -67,27 +64,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     //FCM delegate
     
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
-        print("userInfo")
+        //print("userInfo")
         print(remoteMessage.appData)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // recevi remote notification here
-        let aps = userInfo["aps"] as? Dictionary<String, Any>
-        let alert = aps?["alert"] as? Dictionary<String, Any>
-        let title = alert?["title"] as? String
-        let body = alert?["body"] as? String
+        print(userInfo.description)
+        
+        //let aps = userInfo["aps"] as? Dictionary<String, Any>
+        //let alert = aps?["alert"] as? Dictionary<String, Any>
+        //let title = alert?["title"] as? String
+        //let body = alert?["body"] as? String
 
-        let topWindow = UIWindow(frame: UIScreen.main.bounds)
-        topWindow.rootViewController = UIViewController()
-        topWindow.windowLevel = UIWindowLevelAlert + 1
+        //let topWindow = UIWindow(frame: UIScreen.main.bounds)
+        //topWindow.rootViewController = UIViewController()
+        //topWindow.windowLevel = UIWindowLevelAlert + 1
         
-        let alertControll = UIAlertController(title: title, message: body, preferredStyle: .alert)
-        alertControll.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        //let alertControll = UIAlertController(title: title, message: body, preferredStyle: .alert)
+        //alertControll.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
-        topWindow.makeKeyAndVisible()
+        //topWindow.makeKeyAndVisible()
         
-        topWindow.rootViewController?.present(alertControll, animated: true, completion: nil)
+        //topWindow.rootViewController?.present(alertControll, animated: true, completion: nil)
     }
     
     

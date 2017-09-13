@@ -10,7 +10,7 @@ import UIKit
 
 class SignUpVC_1: BaseVC {
     
-    var delegate : UserEventDelegate?
+    weak var delegate : UserEventDelegate?
     let itemSize : CGFloat = 50.0
     
     override func viewDidLoad() {

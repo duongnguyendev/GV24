@@ -14,7 +14,7 @@ import UIKit
     @objc optional func selectedTaskUnpaid(work: WorkUnpaid)
 }
 class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate {
-    var delegate : HistoryVCDelegate?
+    weak var delegate : HistoryVCDelegate?
     let cellId = "cellId"
     var taskHistory: TaskHistory?
     var workUnpaids: [WorkUnpaid]?

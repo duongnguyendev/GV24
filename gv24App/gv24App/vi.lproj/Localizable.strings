@@ -32,7 +32,7 @@ Username = "Tên đăng nhập";
 Password = "Mật khẩu";
 ForgotPassword = "Quên mật khẩu?";
 SignUpNow = "Đăng ký ngay";
-LoginWith = "Đăng nhập bằng";
+LoginWith = "Kết nối ngay";
 ConfirmPassword = "Xác nhận mật khẩu";
 Next = "Tiếp theo";
 EmailAddress = "Địa chỉ Email";
@@ -283,3 +283,5 @@ NotEnoughMoneyInOnlinePayment = "Tài khoản của bạn không có đủ tiề
 Postyourworkhere = "Đăng việc tại đây";
 
 
+WarningTitle = "Cảnh báo";
+WarningDescription = "Tài khoản của bạn đã được đăng nhập từ một thiết bị khác!";

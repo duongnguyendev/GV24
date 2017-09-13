@@ -14,9 +14,7 @@ import GoogleSignIn
 import SwiftyJSON
 import Firebase
 
-
-@objc protocol UserEventDelegate{
-    @objc optional func logedIn()
+@objc protocol UserEventDelegate {
     @objc optional func signUpComplete()
 }
 
@@ -28,8 +26,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     override func viewDidLoad() {
         itemHeight = self.view.frame.size.height / 15
         super.viewDidLoad()
-        
-        
+
         hideKeyboardWhenTouchUpOutSize = true
         title = LanguageManager.shared.localized(string: "SignIn")
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -40,6 +37,11 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         hiddenNav = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        hiddenNav = true
+    }
     
     private let topBackGround : UIImageView = {
         let iv = UIImageView()
@@ -152,7 +154,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = Fonts.by(name: .light, size: 14)
         lb.textAlignment = .center
-        lb.textColor = .white
+        lb.textColor = .black
         lb.text = "Copyright © 2017. HBB Solutions"
         return lb
     }()
@@ -280,7 +282,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         let lableSocial = UILabel()
         lableSocial.text = LanguageManager.shared.localized(string: "LoginWith")
         lableSocial.font = Fonts.by(name: .regular, size: 14)
-        lableSocial.textColor = .white
+        lableSocial.textColor = .black
         lableSocial.textAlignment = .center
         lableSocial.translatesAutoresizingMaskIntoConstraints = false
         
@@ -325,7 +327,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
             UserService.shared.logIn(userName: emailTextField.text!, password: passTextField.text!, completion: { (userLogedIn, token, error) in
                 self.loadingView.close()
                 if error == nil{
-                    UserHelpers.save(user: userLogedIn!, token: token!)
+                    UserHelpers.save(user: userLogedIn!, newToken: token!)
                     self.presentHome()
                 }
                 else{
@@ -342,9 +344,11 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         if emailError == "PleaseCompleteAllInformation" || passError == "PleaseCompleteAllInformation"{
             return "PleaseCompleteAllInformation"
         }
+        
         if emailError != nil{
             return emailError
         }
+        
         return passError
     }
     func validateEmail()->String?{
@@ -389,10 +393,14 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     func handleSignUpButton(_ sender : UIButton) {
         let signUpVC_1 = SignUpVC_1()
         signUpVC_1.delegate = self
-        present(viewController: signUpVC_1)
+        // MARK: - TEAM LEAD: Fix present to push here
+        push(viewController: signUpVC_1)
+        //present(viewController: signUpVC_1)
     }
     func handleForgotPassButton(_ sender : UIButton) {
-        present(viewController: ForgotPassVC())
+        // MARK: - TEAM LEAD: Fix present to push here
+        push(viewController: ForgotPassVC())
+        //present(viewController: ForgotPassVC())
     }
     func handleFaceBookButton(_ sender : UIButton) {
         let loginManager = LoginManager()
@@ -401,9 +409,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
             case .failed(let error):
                 print(error)
             case .cancelled:
-                
                 print("User cancelled login.")
-                
             case .success( _, _, _):
                 self.handleFacebookAccount()
             }
@@ -411,7 +417,6 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     }
     func handleGoogleButton(_ sender : UIButton) {
         GIDSignIn.sharedInstance().signIn()
-        
     }
     
     func signUpComplete() {
@@ -419,12 +424,13 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     }
     
     func presentHome() {
-        self.dismiss(animated: true, completion: nil)
+        UIView.transition(with: appDelegate!.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+            appDelegate?.window??.rootViewController = UINavigationController.init(rootViewController: HomeVC())
+        }, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
     }
-    func handleFacebookAccount(){
-        self.loadingView.show()
-        GraphRequest(graphPath: "me", parameters: ["field" : "id,name,email,phone"], accessToken: AccessToken.current, httpMethod: .GET).start { (response, result) in
-            self.loadingView.close()
+    func handleFacebookAccount() {
+        GraphRequest(graphPath: "me", parameters: ["fields" : "id, name, email"], accessToken: AccessToken.current, httpMethod: .GET).start { (response, result) in
             switch result{
             case .failed(let error):
                 print(error)
@@ -449,13 +455,13 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         UserService.shared.loginSocial(userInfo: userInfo) { (user, token, error) in
             self.loadingView.close()
             if error != nil{
-                if error == DATA_NOT_EXIST{
+                if error == DATA_NOT_EXIST {
                     self.handleSignUpSocical(userInfo: userInfo)
                 }else{
                     print(error!)
                 }
             }else{
-                UserHelpers.save(user: user!, token: token!)
+                UserHelpers.save(user: user!, newToken: token!)
                 self.presentHome()
             }
         }
@@ -465,23 +471,28 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         let signUpSocialVC = SignUpSocialVC()
         signUpSocialVC.userInfo = userInfo
         signUpSocialVC.delegate = self
-        present(viewController: signUpSocialVC)
+        // MARK: - TEAM LEAD: Fix present to push here
+        push(viewController: signUpSocialVC)
+        //present(viewController: signUpSocialVC)
     }
     //MARK: -Google sign in delegate
     func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
         
     }
+    
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
         self.present(viewController, animated: true, completion: nil)
     }
+    
     func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-        self.loadingView.close()
+//        self.loadingView.close()
         self.dismiss(animated: true, completion: nil)
     }
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error != nil{
+        if error != nil {
         
-        }else{
+        } else {
             var userInfo = Dictionary<String, String>()
             userInfo["id"] = user.userID
             userInfo["username"] = "gm" + user.userID
@@ -491,7 +502,6 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
             userInfo["image"] = user.profile.imageURL(withDimension: UInt.allZeros).absoluteString
             loginSocial(userInfo: userInfo)
         }
-        
     }
     
     override func localized() {

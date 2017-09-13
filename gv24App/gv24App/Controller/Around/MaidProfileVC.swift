@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MaidProfileVCDelegate {
+protocol MaidProfileVCDelegate : class {
     func maidProfileVCDidSelected(_ maidProfileVC: MaidProfileVC)
 }
 
@@ -20,7 +20,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
         }
     }
     var selectable = false
-    var delegate: MaidProfileVCDelegate?
+    weak var delegate: MaidProfileVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

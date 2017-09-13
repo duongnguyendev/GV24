@@ -32,7 +32,7 @@ Username = "Username";
 Password = "Password";
 ForgotPassword = "Forgot password?";
 SignUpNow = "Sign up now";
-LoginWith = "Login with";
+LoginWith = "Connect in one tap";
 ConfirmPassword = "Confirm password";
 Next = "Next";
 EmailAddress = "Email address";
@@ -255,3 +255,5 @@ Postyourworkhere = "Post your work here";
 
 
 
+WarningTitle = "Warning";
+WarningDescription = "Your account was accessed from another device!";

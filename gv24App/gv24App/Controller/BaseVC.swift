@@ -84,7 +84,7 @@ class BaseVC: UIViewController {
     
     
     //MARK: - navigation handle
-    func goBack(){
+    func goBack() {
         if isPresented! {
             self.dismiss(animated: true, completion: nil)
         }else{
@@ -110,7 +110,7 @@ class BaseVC: UIViewController {
         let nav = UINavigationController(rootViewController: viewController)
         self.present(nav, animated: true, completion: nil)
     }
-    
+
     func presentLogout(viewController : BaseVC){
         viewController.isPresentLogout = true
         let nav = UINavigationController(rootViewController: viewController)
