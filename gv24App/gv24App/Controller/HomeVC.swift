@@ -87,10 +87,8 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-<<<<<<< HEAD
-=======
+
         navigationController?.isNavigationBarHidden = true
->>>>>>> 7634525bf810ca161d5c141c704f21ca2727f2ff
         
         if currentLanguage != LanguageManager.shared.getCurrentLanguage().languageCode{
             currentLanguage = LanguageManager.shared.getCurrentLanguage().languageCode
@@ -126,9 +124,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return v
     }()
     
-<<<<<<< HEAD
-    let widthCell = (UIScreen.main.bounds.width) / 4
-=======
+
     let viewRadian: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.rgbAlpha(red: 38, green: 38, blue: 38, alpha: 0.8)
@@ -144,7 +140,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     let cellId = "cellId"
     let widthCell = (UIScreen.main.bounds.width) / 4 - 10
->>>>>>> 7634525bf810ca161d5c141c704f21ca2727f2ff
     
     lazy var collectionViewTypeOfwork: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
