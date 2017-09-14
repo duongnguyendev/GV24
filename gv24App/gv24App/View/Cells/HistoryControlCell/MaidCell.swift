@@ -45,7 +45,7 @@ class MaidCell: BaseCollectionCell{
         addSubview(profileRatingButton)
         addSubview(horizontalLine)
         addSubview(tasksButton)
-        
+        tasksButton.titleView.textAlignment = .left
         addConstraintWithFormat(format: "V:|[v0(70)]", views: profileRatingButton)
         addConstraintWithFormat(format: "H:|[v0]|", views: profileRatingButton)
         
