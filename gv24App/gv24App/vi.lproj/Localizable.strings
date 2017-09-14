@@ -13,13 +13,13 @@ Home = "Trang chủ";
 More = "Thêm";
 Around = "Giúp việc\nquanh đây";
 SignIn = "Đăng nhập";
-SignInUppercase = "ĐĂNG NHẬP";
+SignInUppercase = "Đăng Nhập";
 SingUp = "Đăng ký";
-NearbyWorkers = "Giúp việc\nquanh đây";
+NearbyWorkers = "Giúp việc quanh đây";
 TitleNearbyWorkers = "Giúp việc quanh đây";
 NearbyJobs = "Nearby jobs";
-WorkManagement = "Quản lý\ncông việc";
-WorkHistory = "Lịch sử\ncông việc";
+WorkManagement = "Quản lý công việc";
+WorkHistory = "Lịch sử công việc";
 TitleWorkHistory = "Lịch sử công việc";
 TitleWorkManagement = "Quản lý công việc";
 TitleAround = "Giúp việc quanh đây";
@@ -280,6 +280,9 @@ SkipBackButton = "Bỏ qua";
 PaymentSuccessful = "Thanh toán thành công";
 PaymentOK = "OK";
 NotEnoughMoneyInOnlinePayment = "Tài khoản của bạn không có đủ tiền.";
+Postyourworkhere = "Đăng việc tại đây";
+
+
 WarningTitle = "Cảnh báo";
 WarningDescription = "Tài khoản của bạn đã được đăng nhập từ một thiết bị khác!";
 

@@ -113,7 +113,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            let imageResized = image.resize(newWidth: 200)
+            /*let imageResized = image.resize(newWidth: 200)
             self.loadingView.show()
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
                 self.loadingView.close()
@@ -127,7 +127,8 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
                     })
                 }
             })
-            picker.dismiss(animated: true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)*/
+            
         }
     }
     //MARK: - Show Message
@@ -213,8 +214,8 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
-        deleteButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        deleteButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        deleteButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
+        deleteButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         
     }
     

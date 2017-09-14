@@ -49,7 +49,7 @@ class ForgotPassVC: BaseVC {
         
         let verticalLineUser = UIView.horizontalLine()
         let verticalLineEmail = UIView.horizontalLine()
-        
+        UIButton.cornerButton(bt: buttonSend)
         view.addSubview(iconEmail)
         view.addSubview(iconUser)
         

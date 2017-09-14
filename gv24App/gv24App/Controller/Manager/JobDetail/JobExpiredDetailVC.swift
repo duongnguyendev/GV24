@@ -34,11 +34,12 @@ class JobExpiredDetailVC: JobDetailVC {
     let deleteButton: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.color = AppColor.homeButton1
+        button.color = AppColor.white
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
         button.title = LanguageManager.shared.localized(string: "DeleteWork")
-        button.sizeImage = 30
-        button.iconName = .iosTrash
+//        button.sizeImage = 30
+        button.backgroundColor = AppColor.buttonDelete
+        //button.iconName = .iosTrash
         return button
     }()
 
@@ -46,7 +47,7 @@ class JobExpiredDetailVC: JobDetailVC {
         super.setupView()
         contentView.addSubview(labelExpired)
         contentView.addSubview(deleteButton)
-        
+        UIButton.corneRadius(bt: deleteButton)
         descTaskView.labelTitle.rightAnchor.constraint(equalTo: labelExpired.leftAnchor, constant: -10).isActive = true
         
         labelExpired.rightAnchor.constraint(equalTo: descTaskView.rightAnchor, constant: -margin/3).isActive = true
@@ -54,10 +55,11 @@ class JobExpiredDetailVC: JobDetailVC {
         labelExpired.topAnchor.constraint(equalTo: descTaskView.topAnchor, constant: margin/3).isActive = true
         
         deleteButton.topAnchor.constraint(equalTo: descTaskView.bottomAnchor, constant: 40).isActive = true
-        
+        deleteButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        deleteButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         contentView.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
+        deleteButton.backgroundColor = AppColor.buttonDelete
         contentView.bottomAnchor.constraint(greaterThanOrEqualTo: deleteButton.bottomAnchor, constant: 20).isActive = true
     }
 

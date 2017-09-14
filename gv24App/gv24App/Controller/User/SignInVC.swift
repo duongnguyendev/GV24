@@ -121,7 +121,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         btn.iconName = Icon.by(name: .socialFacebook, size: 30, collor: AppColor.white)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = AppColor.facebook
-        btn.title = "Login with Facebook"
+        btn.title = "Facebook"
         btn.addTarget(self, action: #selector(handleFaceBookButton(_:)), for: .touchUpInside)
         return btn
     }()
@@ -130,7 +130,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         btn.iconName = Icon.by(name: .socialGoogle, size: 30, collor: AppColor.white)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = AppColor.google
-        btn.title = "Login with Google"
+        btn.title = "Google"
         btn.addTarget(self, action: #selector(handleGoogleButton(_:)), for: .touchUpInside)
         return btn
     }()
@@ -161,6 +161,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         setupTopView()
         setupBottomView()
         setupCopyRightView()
+
     }
     
     private func setupMainView(){
@@ -308,7 +309,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     //MARK: - Handle action
     
     func handleWordAroundButton(_ sender : UIButton) {
-        push(viewController: MaidAroundVC())
+        push(viewController: MaidAroundViewController())
     }
     func handleSignInButton(_ sender : UIButton) {
         self.hideKeyboard()
@@ -495,6 +496,9 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
             userInfo["image"] = user.profile.imageURL(withDimension: UInt.allZeros).absoluteString
             loginSocial(userInfo: userInfo)
         }
+    }
+    
+    override func localized() {
     }
 }
 

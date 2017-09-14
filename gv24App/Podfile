@@ -19,10 +19,11 @@ target 'gv24App' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
-  
-  pod 'AFNetworking', '~> 2.0’
+    
+  pod 'Whisper', :git => 'https://github.com/peihsendoyle/Whisper.git'
   pod 'KMPlaceholderTextView'
   pod 'IQKeyboardManagerSwift'
-  
-  pod 'Whisper', :git => 'https://github.com/peihsendoyle/Whisper.git'
+  pod 'AFNetworking', '~> 2.0’
+  pod 'GoogleMobileVision/FaceDetector'
+  pod 'GTProgressBar'
 end

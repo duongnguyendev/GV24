@@ -12,14 +12,14 @@ Back = "Back";
 Home = "Home";
 More = "More";
 Around = "Maid\naround here";
-NearbyWorkers = "Nearby\nworkers";
+NearbyWorkers = "Nearby workers";
 TitleNearbyWorkers = "Nearby workers";
 SignIn = "Sign in";
-SignInUppercase = "SIGN IN";
+SignInUppercase = "Sign In";
 SingUp = "Sign up";
 NearbyJobs = "Nearby jobs";
-WorkManagement = "Work\nmanagement";
-WorkHistory = "Work\nhistory";
+WorkManagement = "Work management";
+WorkHistory = "Work history";
 TitleWorkHistory = "Work history";
 TitleWorkManagement = "Work management";
 TitleAround = "Maid around here";
@@ -279,6 +279,8 @@ SkipBackButton = "Skip";
 PaymentSuccessful = "Payment successful";
 PaymentOK = "OK";
 NotEnoughMoneyInOnlinePayment = "Your account doesn't have enough money.";
+Postyourworkhere = "Post your work here";
+
 WarningTitle = "Warning";
 WarningDescription = "Your account was accessed from another device!";
 

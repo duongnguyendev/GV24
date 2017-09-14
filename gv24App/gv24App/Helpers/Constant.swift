@@ -8,6 +8,14 @@
 
 import Foundation
 
+
+let screenWidth = UIScreen.main.bounds.width
+let minItemSpacing: CGFloat = 4
+var column: CGFloat = 4
+var itemWidth: CGFloat = 0
+
+let space = minItemSpacing * CGFloat(column + 1)
+
 class Constant{
     static var workTypes : [WorkType]?
 }
