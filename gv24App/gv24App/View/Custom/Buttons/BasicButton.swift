@@ -30,11 +30,13 @@ class BasicButton: BaseButton {
     var title : String?{
         didSet{
             self.setTitle(LanguageManager.shared.localized(string: title!), for: .normal)
+
         }
     }
     var titleFont : UIFont?{
         didSet{
             self.titleLabel?.font = titleFont
+            self.titleLabel?.textAlignment = .center
         }
     }
     override func setupView() {

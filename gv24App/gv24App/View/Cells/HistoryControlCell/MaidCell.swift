@@ -57,6 +57,7 @@ class MaidCell: BaseCollectionCell{
         tasksButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
+    
     func handleButtonTasks(_ sender: UIButton){
         if delegate != nil{
             delegate?.handleTaskMaid!(list: maidHistory!)
