@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 class MaidCell: BaseCollectionCell{
     
-    let cellMargin : CGFloat = 20
+    var cellMargin : CGFloat = 20
     weak var delegate: HistoryVCDelegate?
     
     var title: String?{
@@ -27,8 +27,8 @@ class MaidCell: BaseCollectionCell{
     
     let horizontalLine = UIView.horizontalLine()
     
-    let tasksButton: GeneralButton = {
-       let button = GeneralButton()
+    var tasksButton: GeneralButton = {
+       var button = GeneralButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.title = LanguageManager.shared.localized(string: "Worklist")
         button.color = AppColor.backButton

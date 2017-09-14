@@ -11,9 +11,10 @@ import Google
 import GoogleSignIn
 import GoogleMaps
 import FirebaseCore
-import Firebase
-import FirebaseMessaging
 import UserNotifications
+import Firebase
+import FirebaseInstanceID
+import FirebaseMessaging
 import FacebookCore
 import FacebookLogin
 import Alamofire
@@ -44,17 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         self.routeMeToTheTheater()
         
         // Handle notifications
-        if let userInfo = launchOptions?[.remoteNotification] as? [String: AnyObject] {
+        
+        if let _ = launchOptions?[.remoteNotification] as? [String: AnyObject] {
             Thread.sleep(forTimeInterval: 3)
-            //guard UserHelpers.isLogin == true else { return true }
             isWakeFromPush = true
-            //NotificationHelpers.shared.handleNotificationWhenAppIsKilled(userInfo: userInfo)
         }
         
         return true
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Device Token Raw: \(deviceToken)")
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)
         }
@@ -62,6 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         let token = tokenParts.joined()
         print("Device Token: \(token)")
         
+        //Messaging
+        
+        //let token = FIRMessaging.messaging().tpken
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.prod)
     }
@@ -71,8 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     }
 
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
-        //print("userInfo")
-        //print(remoteMessage.appData)
+        print(remoteMessage.appData)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -100,9 +103,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     }
     
     fileprivate func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             print("Permission granted: \(granted)")
-            
             guard granted else { return }
             self.getNotificationSettings()
         }

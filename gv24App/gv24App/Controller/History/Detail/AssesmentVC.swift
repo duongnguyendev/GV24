@@ -14,8 +14,10 @@ class AssesmentVC: DetailTaskDoneVC {
         let button = GeneralButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.title = LanguageManager.shared.localized(string: "Addcomments")
-        button.color = AppColor.backButton
+        //button.color = AppColor.backButton
+        button.tintColor = AppColor.white
         button.addTarget(self, action: #selector(handleButtonComment(_:)), for: .touchUpInside)
+        button.titleView.textAlignment = .center
         return button
     }()
 
@@ -29,6 +31,7 @@ class AssesmentVC: DetailTaskDoneVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIButton.corneRadius(bt: commentButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,9 +42,11 @@ class AssesmentVC: DetailTaskDoneVC {
         mainView.addSubview(commentButton)
         
         mainView.addConstraintWithFormat(format: "H:|[v0]|", views: commentButton)
-        commentButton.topAnchor.constraint(equalTo: horizontalStatusTaskLine.topAnchor, constant: 1).isActive = true
+        commentButton.topAnchor.constraint(equalTo: horizontalStatusTaskLine.topAnchor, constant: 5).isActive = true
         commentButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
         commentButton.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -30).isActive = true
+        commentButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        commentButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
     }
 
 }
