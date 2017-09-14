@@ -44,7 +44,7 @@ class JobDetailVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = AppColor.collection
+        view.backgroundColor = AppColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
