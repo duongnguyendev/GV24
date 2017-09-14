@@ -309,7 +309,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     //MARK: - Handle action
     
     func handleWordAroundButton(_ sender : UIButton) {
-        push(viewController: MaidAroundVC())
+        push(viewController: MaidAroundViewController())
     }
     func handleSignInButton(_ sender : UIButton) {
         self.hideKeyboard()

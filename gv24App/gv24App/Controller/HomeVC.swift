@@ -257,7 +257,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     func handleButtonAround(_ sender : UIButton) {
         // MARK: - Team lead edited it
-        push(viewController: MaidAroundVC())
+        push(viewController: MaidAroundViewController())
         //present(viewController: MaidAroundVC())
     }
     func handleButtonTaskManagement(_ sender : UIButton) {

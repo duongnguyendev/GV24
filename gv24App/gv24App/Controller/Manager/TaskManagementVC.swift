@@ -8,6 +8,7 @@
 
 import UIKit
 class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, TaskControlDelegate{
+    
     private let cellId = "cellId"
     private let cellNew = "cellNew"
     private let cellAssigned = "cellAssigned"
