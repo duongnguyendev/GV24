@@ -9,6 +9,9 @@
 import UIKit
 import IoniconsSwift
 
+var appDelegate = UIApplication.shared.delegate
+var appStarted : Bool = false
+
 class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var currentLanguage = LanguageManager.shared.getCurrentLanguage().languageCode{
@@ -17,7 +20,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         }
     }
     
-    var typeOfWorks : [WorkType]?{
+    var typeOfWorks : [WorkType]? {
         didSet{
             self.collectionViewTypeOfwork.reloadData()
         }
@@ -25,8 +28,16 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionViewTypeOfwork.register(WorkTypeCell.self, forCellWithReuseIdentifier: cellId)
-        loadTypeOfWork()
+        
+        if UserHelpers.isLogin {
+            self.checkAuthentication { [weak self] in
+                self?.loadTypeOfWork()
+                self?.collectionViewTypeOfwork.register(WorkTypeCell.self, forCellWithReuseIdentifier: "cellId")
+            }
+        } else {
+            self.sendBackToLogin()
+        }
+        
     }
     let backGroundView : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "bg_app"))
@@ -37,6 +48,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if currentLanguage != LanguageManager.shared.getCurrentLanguage().languageCode{
             currentLanguage = LanguageManager.shared.getCurrentLanguage().languageCode
         }
@@ -73,7 +85,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return v
     }()
     
-    let cellId = "cellId"
     let widthCell = (UIScreen.main.bounds.width) / 4
     
     lazy var collectionViewTypeOfwork: UICollectionView = {
@@ -138,16 +149,13 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     //MARK: - load work type
     
-    func loadTypeOfWork(){
+    func loadTypeOfWork() {
         self.loadingView.show()
         TaskService.shared.getWorkTypes { (workTypes, error) in
             self.loadingView.close()
-            if error == nil{
-                Constant.workTypes = workTypes
-                self.typeOfWorks = Constant.workTypes
-            }else{
-                
-            }
+            guard error == nil else { return }
+            Constant.workTypes = workTypes
+            self.typeOfWorks = Constant.workTypes
         }
     }
     
@@ -185,7 +193,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! WorkTypeCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! WorkTypeCell
         cell.title = typeOfWorks?[indexPath.row].name
         return cell
     }
@@ -219,6 +227,27 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         historyButton.title = "WorkHistory"
         taskManagerButton.title = "WorkManagement"
         sloganView.slogan = "TrustQuality"
+    }
+}
+
+extension HomeVC {
+    
+    func sendBackToLogin() {
+        UserHelpers.logOut()
+        let nav = UINavigationController(rootViewController: SignInVC())
+        UIView.transition(with: appDelegate!.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+            appDelegate?.window??.rootViewController = nav
+        }, completion: nil)
+    }
+    
+    func checkAuthentication(completion: @escaping () -> Void) {
+        UserService.shared.checkStatus { (error) in
+            guard error != nil else {
+                completion()
+                return
+            }
+            self.sendBackToLogin()
+        }
     }
 }
 

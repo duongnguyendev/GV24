@@ -14,6 +14,8 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     let unpaidWorkCellId = "unpaidCellId"
     let cellId = "cellId"
     var indexPath = IndexPath(item: 0, section: 0)
+    var isFromPush = false
+    var scrollToIndex = -1
     
     var startDate : Date? {
         didSet{
@@ -31,6 +33,11 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
             cell.type = indexPath.item
         }
     }
+    
+    override func setupBackButton() {
+        super.setupBackButton()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -40,22 +47,20 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         collectionControl.register(TaskHistoryControlCell.self, forCellWithReuseIdentifier: taskHistoryCellId)
         collectionControl.register(MaidControlCell.self, forCellWithReuseIdentifier: maidHistoryCellId)
         collectionControl.register(UnpaidWorkControlCell.self, forCellWithReuseIdentifier: unpaidWorkCellId)
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.loadingView.show()
+        //self.loadingView.show()
         HistoryService.shared.fetchUnpaidWork(startAt: nil, endAt: nil) { (workUnpaids) in
             if let unpaids = workUnpaids{
                 self.labelNumberPaid.isHidden = false
                 self.labelNumberPaid.text = "\(unpaids.count)"
-                self.loadingView.close()
+                //self.loadingView.close()
             }else{
                 self.labelNumberPaid.isHidden = true
-                self.loadingView.close()
+                //self.loadingView.close()
             }
         }
     }
@@ -66,6 +71,20 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     override func viewDidAppear(_ animated: Bool) {
         let cell = collectionControl.cellForItem(at: indexPath) as! HistoryControlCell
         cell.type = indexPath.item
+        
+        if isFromPush == true {
+            switch scrollToIndex {
+            case 0:
+                self.triggerScrollingCollection(index: 0)
+            case 1:
+                self.triggerScrollingCollection(index: 1)
+            case 2:
+                self.triggerScrollingCollection(index: 2)
+            default:
+                break
+            }
+            self.isFromPush = false
+        }
     }
     private let segmentedControl : UISegmentedControl = {
         let sc = UISegmentedControl()
@@ -94,13 +113,11 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         return lb
     }()
 
-    private lazy var collectionControl : UICollectionView = {
+    private let collectionControl : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = AppColor.collection
-        cv.delegate = self
-        cv.dataSource = self
         cv.isPagingEnabled = true
         return cv
     }()
@@ -144,7 +161,11 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
     override func setupView() {
         super.setupView()
         view.addSubview(segmentedControl)
+        
         view.addSubview(collectionControl)
+        collectionControl.delegate = self
+        collectionControl.dataSource = self
+        
         view.addSubview(buttonFrom)
         view.addSubview(buttonTo)
         view.addSubview(labelTo)
@@ -180,6 +201,12 @@ class HistoryVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, U
         
         line1.topAnchor.constraint(equalTo: buttonFrom.topAnchor, constant: 0).isActive = true
         line2.topAnchor.constraint(equalTo: buttonFrom.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    func triggerScrollingCollection(index: Int) {
+        indexPath.item = index
+        segmentedControl.selectedSegmentIndex = index
+        self.collectionControl.scrollToItem(at: indexPath, at: .left, animated: true)
     }
     
     //MARK: - collection view handle

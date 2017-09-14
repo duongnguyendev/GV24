@@ -37,12 +37,6 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         hiddenNav = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        hiddenNav = true
-    }
-    
     private let topBackGround : UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
