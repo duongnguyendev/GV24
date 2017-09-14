@@ -55,7 +55,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     let gv24PaymentButton : HomeFunctButton = {
         let bt = HomeFunctButton()
-        bt.imageName = "payment_gv24"
+        bt.imageName = "piggy-bank-and-book"
         bt.title = "NGV247Payment"
         bt.textColor = AppColor.white
         bt.layer.cornerRadius = 4
@@ -66,7 +66,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     let onlinePaymentButton : HomeFunctButton = {
         let bt = HomeFunctButton()
         //bt.backgroundColor =  UIColor.clear
-        bt.imageName = "payment_online"
+        bt.imageName = "credit-coin"
         bt.title = "OnlinePayment"
         bt.textColor = AppColor.white
         bt.layer.cornerRadius = 4
@@ -77,7 +77,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     let moneyPaymentButton : HomeFunctButton = {
         let bt = HomeFunctButton()
         //bt.backgroundColor =  UIColor.clear
-        bt.imageName = "payment_money"
+        bt.imageName = "dollar-coin"
         bt.title = "CashPayment"
         bt.textColor = AppColor.white
         bt.layer.cornerRadius = 4
@@ -175,7 +175,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
 //        labelPaymentMethods.layer.shadowOpacity = 1
 //        labelPaymentMethods.layer.shadowOffset = CGSize.zero
 //        labelPaymentMethods.layer.shadowRadius = 5
-        
+        view.backgroundColor = AppColor.collection
         title = LanguageManager.shared.localized(string: "Payment")
         
         collectionPayment.register(JobTypeCell.self, forCellWithReuseIdentifier: jobCellId)

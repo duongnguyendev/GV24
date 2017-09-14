@@ -34,8 +34,8 @@ class ProfileRatingButton: BaseButton{
             rattingView.point = ratingPoint
         }
     }
-    private let avatarImageView : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "avatar"))
+    var avatarImageView : CustomImageView = {
+        var iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 25
         iv.layer.masksToBounds = true
@@ -59,8 +59,8 @@ class ProfileRatingButton: BaseButton{
         return lb
     }()
     
-    let arrowRight : UIImageView = {
-        let iv = UIImageView(image: Icon.by(name: .iosArrowRight, color: AppColor.arrowRight))
+    var arrowRight : UIImageView = {
+        var iv = UIImageView(image: Icon.by(name: .iosArrowRight, color: AppColor.arrowRight))
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()

@@ -20,11 +20,12 @@ class GeneralButton: BaseButton{
         }
     }
     
-    let titleView: UILabel = {
-        let lablel = UILabel()
+    var titleView: UILabel = {
+        var lablel = UILabel()
         lablel.translatesAutoresizingMaskIntoConstraints = false
         lablel.font = Fonts.by(name: .light, size: 16)
         lablel.textAlignment = .center
+        lablel.textColor = AppColor.white
         return lablel
     }()
     

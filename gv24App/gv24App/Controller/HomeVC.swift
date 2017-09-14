@@ -168,14 +168,14 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         view.addConstraintWithFormat(format: "H:|[v0]|", views: viewRadian)
         view.addConstraintWithFormat(format: "V:|[v0]|", views: viewRadian)
         
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 25).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         view.addConstraintWithFormat(format: "H:[v0]", views: imageView)
         corner(img: imageView)
         
-        imageProfile.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+        imageProfile.topAnchor.constraint(equalTo: view.topAnchor, constant: 25).isActive = true
         imageProfile.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
         imageProfile.heightAnchor.constraint(equalToConstant: 50).isActive = true
         imageProfile.widthAnchor.constraint(equalToConstant: 50).isActive = true
@@ -218,14 +218,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
     }
     
-//    override func setupRightNavButton() {
-//        let buttonMore = NavButton(icon: .more)
-//        buttonMore.addTarget(self, action: #selector(handleButtonMore(_:)), for: .touchUpInside)
-//        let btn = UIBarButtonItem(customView: buttonMore)
-//        self.navigationItem.rightBarButtonItem = btn
-//    }
-//
-//    
     
     func setupBackGround(){
         view.addSubview(backGroundView)
@@ -310,7 +302,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         }else{
             return CGSize(width: width, height: width)
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
