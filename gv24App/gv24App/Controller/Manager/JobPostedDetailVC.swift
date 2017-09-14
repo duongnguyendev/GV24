@@ -26,7 +26,7 @@ class JobPostedDetailVC: JobDetailVC{
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
         button.title = LanguageManager.shared.localized(string: "DeleteWork")
         button.sizeImage = 30
-        button.iconName = .iosTrash
+        //button.iconName = .iosTrash
         return button
     }()
     
@@ -64,8 +64,12 @@ class JobPostedDetailVC: JobDetailVC{
         deleteButton.topAnchor.constraint(equalTo: appListButton.bottomAnchor, constant: 20).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: deleteButton)
         deleteButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
+        UIButton.corneRadiusDelete(bt: deleteButton)
         contentView.bottomAnchor.constraint(greaterThanOrEqualTo: deleteButton.bottomAnchor, constant: 20).isActive = true
+        deleteButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        deleteButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        deleteButton.color = AppColor.white
+        
     }
     func handleRemoveTask(_ sender: UIButton){
         self.showAlertWith(task: task)

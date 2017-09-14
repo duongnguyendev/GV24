@@ -21,5 +21,12 @@ extension UIButton{
         bt.layer.masksToBounds = true
         bt.backgroundColor = AppColor.backButton
     }
+    
+    static func corneRadiusDelete(bt: UIButton) {
+        bt.layer.cornerRadius = 8
+        bt.layer.masksToBounds = true
+        bt.backgroundColor = AppColor.buttonDelete
+    }
+
 
 }
