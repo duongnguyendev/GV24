@@ -17,7 +17,7 @@ class JobNewDetailVC: JobDetailVC {
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
         button.title = LanguageManager.shared.localized(string: "DeleteWork")
         button.sizeImage = 30
-        button.iconName = .iosTrash
+       // button.iconName = .iosTrash
         return button
     }()
     

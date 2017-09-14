@@ -76,9 +76,10 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         let btn = BasicButton()
         btn.contentHorizontalAlignment = .left
         btn.titleFont = Fonts.by(name: .regular, size: 15)
-        btn.titleCollor = AppColor.backButton
+        btn.titleCollor = AppColor.white
         btn.title = "Recharge"
         btn.addTarget(self, action: #selector(handleRechargeButton(_:)), for: .touchUpInside)
+        btn.contentHorizontalAlignment = .center
         return btn
     }()
     
@@ -138,6 +139,7 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         view.addConstraintWithFormat(format: "H:|[v0]|", views: dateView)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: infoView)
         view.addConstraintWithFormat(format: "H:|[v0]|", views: accountView)
+
         
         setupDateView()
         setupAccoutInfoView()
@@ -194,13 +196,19 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         
         buttonRecharge.bottomAnchor.constraint(equalTo: accountView.bottomAnchor, constant: 0).isActive = true
         buttonRecharge.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        accountView.addConstraintWithFormat(format: "H:|-10-[v0]|", views: buttonRecharge)
+        //accountView.addConstraintWithFormat(format: "H:|-10-[v0]|", views: buttonRecharge)
         
         labelAccount.leftAnchor.constraint(equalTo: avatarImage.rightAnchor, constant: 10).isActive = true
         labelAccount.topAnchor.constraint(equalTo: avatarImage.topAnchor, constant: 5).isActive = true
         
         labelAccountBalance.leftAnchor.constraint(equalTo: avatarImage.rightAnchor, constant: 10).isActive = true
         labelAccountBalance.bottomAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: -5).isActive = true
+        
+        
+        UIButton.corneRadius(bt: buttonRecharge)
+        buttonRecharge.leftAnchor.constraint(equalTo: accountView.leftAnchor, constant: 16).isActive = true
+        buttonRecharge.rightAnchor.constraint(equalTo: accountView.rightAnchor, constant: -16).isActive = true
+        
         
         labelNumberAccountBalance.centerYAnchor.constraint(equalTo: labelAccountBalance.centerYAnchor, constant: 0).isActive = true
         labelNumberAccountBalance.leftAnchor.constraint(equalTo: labelAccountBalance.rightAnchor, constant: 0).isActive = true

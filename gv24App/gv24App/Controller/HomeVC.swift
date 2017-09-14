@@ -162,7 +162,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         view.addSubview(aroundButton)
         view.addSubview(taskManagerButton)
         view.addSubview(historyButton)
-        view.addSubview(lableTitle)
+        //view.addSubview(lableTitle)
         view.addSubview(imageProfile)
         
         
@@ -198,9 +198,9 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         view.addConstraintWithFormat(format: "V:[v0]", views: lbInfor)
         
         
-        lableTitle.centerYAnchor.constraint(equalTo: imageProfile.centerYAnchor, constant: 0).isActive = true
-        lableTitle.rightAnchor.constraint(equalTo: imageProfile.leftAnchor, constant: -20).isActive = true
-        view.addConstraintWithFormat(format: "H:[v0]", views: lableTitle)
+        //lableTitle.centerYAnchor.constraint(equalTo: imageProfile.centerYAnchor, constant: 0).isActive = true
+        //lableTitle.rightAnchor.constraint(equalTo: imageProfile.leftAnchor, constant: -20).isActive = true
+        //view.addConstraintWithFormat(format: "H:[v0]", views: lableTitle)
         
         
         let collectionHeight = (UIScreen.main.bounds.width) / 2
@@ -325,7 +325,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         historyButton.title = "WorkHistory"
         taskManagerButton.title = "WorkManagement"
         sloganView.slogan = "TrustQuality"
-        self.lableTitle.text = UserHelpers.currentUser?.name
+        //self.lableTitle.text = UserHelpers.currentUser?.name
 
         lbInfor.text = LanguageManager.shared.localized(string: "Postyourworkhere")
     }

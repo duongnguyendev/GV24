@@ -45,7 +45,7 @@ class MaidCell: BaseCollectionCell{
         addSubview(profileRatingButton)
         addSubview(horizontalLine)
         addSubview(tasksButton)
-        
+        tasksButton.titleView.textAlignment = .left
         addConstraintWithFormat(format: "V:|[v0(70)]", views: profileRatingButton)
         addConstraintWithFormat(format: "H:|[v0]|", views: profileRatingButton)
         
@@ -56,6 +56,7 @@ class MaidCell: BaseCollectionCell{
         tasksButton.topAnchor.constraint(equalTo: horizontalLine.bottomAnchor, constant: 0).isActive = true
         tasksButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
+    
     
     func handleButtonTasks(_ sender: UIButton){
         if delegate != nil{
