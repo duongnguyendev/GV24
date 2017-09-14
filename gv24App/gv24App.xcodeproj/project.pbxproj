@@ -149,8 +149,8 @@
 		4ED231801EB9BF8F00592842 /* HomeFunctButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED2317F1EB9BF8F00592842 /* HomeFunctButton.swift */; };
 		4ED231831EB9CEFD00592842 /* HomeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED231821EB9CEFD00592842 /* HomeBottomView.swift */; };
 		4EDDB4681ECED8A900AFFD1A /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDB4671ECED8A900AFFD1A /* FilterVC.swift */; };
-		4EDDDB111EF21F79002E28AB /* (null) in Sources */ = {isa = PBXBuildFile; };
-		4EDDDB121EF21FA8002E28AB /* (null) in Sources */ = {isa = PBXBuildFile; };
+		4EDDDB111EF21F79002E28AB /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		4EDDDB121EF21FA8002E28AB /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		4EE483DE1ED6DF10004BC615 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DD1ED6DF10004BC615 /* ProfileVC.swift */; };
 		4EE483E01ED6E94D004BC615 /* GeneralStatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE483DF1ED6E94D004BC615 /* GeneralStatisticVC.swift */; };
 		4EF1F35E1EE150CD00560C4A /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1F35D1EE150CD00560C4A /* RadioButton.swift */; };
@@ -1043,7 +1043,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D64D17DF4279303A40A72015 /* [CP] Embed Pods Frameworks */ = {
@@ -1068,8 +1068,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EDDDB121EF21FA8002E28AB /* (null) in Sources */,
-				4EDDDB111EF21F79002E28AB /* (null) in Sources */,
+				4EDDDB121EF21FA8002E28AB /* BuildFile in Sources */,
+				4EDDDB111EF21F79002E28AB /* BuildFile in Sources */,
 				03446A571EE54F3D004DB193 /* BaseCell.swift in Sources */,
 				A6D471381EF273CA00F8A5BA /* TotalMaidCell.swift in Sources */,
 				4E268A851EDC850D00CB01B2 /* AppDelegate.swift in Sources */,
