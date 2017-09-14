@@ -7,17 +7,23 @@ target 'gv24App' do
 
   # Pods for gv24App
   pod 'IoniconsSwift'
-  pod ‘Alamofire’
-  pod ‘SwiftyJSON’
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'Google/SignIn'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
-  pod 'AFNetworking', '~> 2.0’
+  pod 'Firebase/Auth'
+    
+  pod 'Whisper', :git => 'https://github.com/peihsendoyle/Whisper.git'
   pod 'KMPlaceholderTextView'
   pod 'IQKeyboardManagerSwift'
+  pod 'AFNetworking', '~> 2.0’
+  pod 'GoogleMobileVision/FaceDetector'
+  pod 'GTProgressBar'
 end

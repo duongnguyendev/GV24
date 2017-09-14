@@ -21,13 +21,14 @@ extension UIColor{
 }
 
 class AppColor : NSObject{
+    
     static let backgroundButtonHome = UIColor.rgb(red: 130, green: 130, blue: 130)
     static let backButton = UIColor.rgb(red: 19, green: 111, blue: 167)
     static let backGround = UIColor.white
     static let homeButton1 = UIColor.rgb(red: 255, green: 191, blue: 65)
     static let homeButton2 = UIColor.rgb(red: 95, green: 216, blue: 27)
     static let homeButton3 = UIColor.rgb(red: 6, green: 110, blue: 169)
-    static let collection = UIColor.white
+    static let collection = UIColor.rgb(red: 216, green: 216, blue: 216)
     static let seqaratorView = UIColor.rgb(red: 230, green: 230, blue: 230)
     static let arrowRight = UIColor.rgb(red: 199, green: 199, blue: 204)
     static let white = UIColor.white
@@ -38,4 +39,5 @@ class AppColor : NSObject{
     static let colorButtonLogout = UIColor.rgb(red: 204, green: 204, blue: 204)
     static let titleButtonLogout = UIColor.rgb(red: 162, green: 162, blue: 162)
     static let buttonDelete = UIColor.rgb(red: 240, green: 19, blue: 77)
+    static let successButton = UIColor.rgb(red: 140.0, green: 220.0, blue: 108.0)
 }

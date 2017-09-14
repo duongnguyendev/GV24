@@ -42,7 +42,8 @@ class WorkType: Entity {
     }
     
     static func getBy(id: String)-> WorkType?{
-        for workType in Constant.workTypes!{
+        guard let workTypes = Constant.workTypes else { return nil }
+        for workType in workTypes {
             if workType.id == id{
                 return workType
             }

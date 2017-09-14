@@ -42,7 +42,7 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
         return cv
     }()
     
-    var type: Int?{
+    var type: Int? {
         didSet{
             if type == 0{
                 self.loadData(process: "000000000000000000000001&sortByTaskTime=true")
@@ -53,7 +53,7 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
             }
         }
     }
-    func loadData(process: String){
+    func loadData(process: String) {
         TaskManageService.shared.fetchTask(process: process, completion: { (tasks) in
             if let task = tasks{
                 self.tasks = task
@@ -61,6 +61,7 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
             }
         })
     }
+    
     override func setupView() {
         register()
         super.setupView()

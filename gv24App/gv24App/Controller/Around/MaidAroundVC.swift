@@ -168,7 +168,6 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
                 self.maids = response
             }
         }
-        
     }
     
     //MARK: - mapview delegate

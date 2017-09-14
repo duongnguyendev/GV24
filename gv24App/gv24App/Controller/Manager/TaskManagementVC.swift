@@ -8,10 +8,13 @@
 
 import UIKit
 class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, TaskControlDelegate{
+    
     private let cellId = "cellId"
     private let cellNew = "cellNew"
     private let cellAssigned = "cellAssigned"
     private let cellInProgress = "cellInProgress"
+    var scrollToIndex = -1
+    var isFromPush = false
     var indexPath: IndexPath = IndexPath(item: 0, section: 0)
     private var postedTaskCount = 0
     
@@ -29,11 +32,27 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //Thread.sleep(forTimeInterval: 1)
+        
         let cell = collectionType.cellForItem(at: indexPath) as! TaskControlCell
         cell.type = indexPath.item
+        
+        if isFromPush == true {
+            switch scrollToIndex {
+            case 0:
+                self.triggerScrollingCollection(index: 0)
+            case 1:
+                self.triggerScrollingCollection(index: 1)
+            case 2:
+                self.triggerScrollingCollection(index: 2)
+            default:
+                break
+            }
+            self.isFromPush = false
+        }
     }
     
-    lazy var collectionType : UICollectionView = {
+    let collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -42,8 +61,6 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         cv.alwaysBounceVertical = false
         cv.alwaysBounceHorizontal = true
         cv.isDirectionalLockEnabled = true
-        cv.delegate = self
-        cv.dataSource = self
         cv.isPagingEnabled = true
         return cv
     }()
@@ -67,10 +84,17 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         self.navigationItem.rightBarButtonItem = btn
     }
     
+    override func setupBackButton() {
+        super.setupBackButton()
+    }
+    
     override func setupView() {
         super.setupView()
         view.addSubview(segmentedControl)
         view.addSubview(collectionType)
+        
+        collectionType.delegate = self
+        collectionType.dataSource = self
         
         view.addConstraintWithFormat(format: "V:|-10-[v0(30)]-10-[v1]|", views: segmentedControl, collectionType)
         
@@ -118,8 +142,14 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         segmentedControl.selectedSegmentIndex = Int(index)
     }
     
+    func triggerScrollingCollection(index: Int) {
+        indexPath.item = index
+        segmentedControl.selectedSegmentIndex = index
+        self.collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
+    
     //MARK: - segmented Control
-    func segmentedValueChanged(_ sender : UISegmentedControl){
+    func segmentedValueChanged(_ sender : UISegmentedControl?){
         indexPath.item = segmentedControl.selectedSegmentIndex
         self.collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }
@@ -138,7 +168,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
         
         let postVC = PostVC()
         postVC.workType = WorkType.getBy(id: "000000000000000000000001")
-        present(viewController: postVC)
+        push(viewController: postVC)
     }
     
     //MARK: - task control delegate

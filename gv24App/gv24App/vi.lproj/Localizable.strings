@@ -285,3 +285,11 @@ Postyourworkhere = "Đăng việc tại đây";
 
 WarningTitle = "Cảnh báo";
 WarningDescription = "Tài khoản của bạn đã được đăng nhập từ một thiết bị khác!";
+
+//--------PUSH NOTIFICATIONS---------
+MaidRefuseAcceptedWork = "Người giúp việc vừa hủy công việc đã nhận";
+MaidAcceptWork = "Người giúp việc vừa chấp nhận yêu cầu của bạn";
+MaidReceivedMoney = "Đã nhận được tiền mặt";
+MaidNotReceivedMoney = "Chưa nhận được tiền mặt";
+MaidBecomeApplicant = "Chưa nhận được tiền mặt";
+DefaultNotification = "Bạn vừa nhận được một thông báo";

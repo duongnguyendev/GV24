@@ -283,3 +283,11 @@ Postyourworkhere = "Post your work here";
 
 WarningTitle = "Warning";
 WarningDescription = "Your account was accessed from another device!";
+
+//--------PUSH NOTIFICATIONS---------
+MaidRefuseAcceptedWork = "The applicant just refused your work";
+MaidAcceptWork = "The applicant just accepted your request";
+MaidReceivedMoney = "Cash received!";
+MaidNotReceivedMoney = "No cash received!";
+MaidBecomeApplicant = "You just got a new applicant";
+DefaultNotification = "You just received a new notification";

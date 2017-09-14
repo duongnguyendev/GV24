@@ -32,10 +32,8 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         hiddenNav = true
     }
     
@@ -311,7 +309,7 @@ class SignInVC: BaseVC, UserEventDelegate, GIDSignInUIDelegate, GIDSignInDelegat
     //MARK: - Handle action
     
     func handleWordAroundButton(_ sender : UIButton) {
-        push(viewController: MaidAroundVC())
+        push(viewController: MaidAroundViewController())
     }
     func handleSignInButton(_ sender : UIButton) {
         self.hideKeyboard()

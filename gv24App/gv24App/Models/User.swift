@@ -43,6 +43,7 @@ class MaidProfile : User {
         super.init()
     }
     
+    var calculated: Int?
     var maidId: String?
     var age : Int?
     var workInfo : WorkInfo?
@@ -52,7 +53,7 @@ class MaidProfile : User {
         
         self.age = jsonData["info"]["age"].int
         self.maidId = jsonData["_id"].string ?? ""
+        self.calculated = jsonData["dist"]["calculated"].int
         self.workInfo = WorkInfo(jsonData: jsonData["work_info"])
     }
 }
-

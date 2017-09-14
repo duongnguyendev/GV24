@@ -9,7 +9,8 @@
 import UIKit
 import IoniconsSwift
 
-
+var appDelegate = UIApplication.shared.delegate
+var appStarted : Bool = false
 
 class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -19,7 +20,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         }
     }
     
-    var typeOfWorks : [WorkType]?{
+    var typeOfWorks : [WorkType]? {
         didSet{
             self.collectionViewTypeOfwork.reloadData()
         }
@@ -27,13 +28,17 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionViewTypeOfwork.register(WorkTypeCell.self, forCellWithReuseIdentifier: cellId)
-        loadTypeOfWork()
-
         
+        if UserHelpers.isLogin {
+            self.checkAuthentication { [weak self] in
+                self?.loadTypeOfWork()
+                self?.collectionViewTypeOfwork.register(WorkTypeCell.self, forCellWithReuseIdentifier: "cellId")
+            }
+        } else {
+            self.sendBackToLogin()
+        }
     }
-    
-    
+
     let backGroundView : UIImageView = {
         let iv = UIImageView(image: UIImage(named: "bg_app"))
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +87,10 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+<<<<<<< HEAD
+=======
         navigationController?.isNavigationBarHidden = true
+>>>>>>> 7634525bf810ca161d5c141c704f21ca2727f2ff
         
         if currentLanguage != LanguageManager.shared.getCurrentLanguage().languageCode{
             currentLanguage = LanguageManager.shared.getCurrentLanguage().languageCode
@@ -118,6 +126,9 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return v
     }()
     
+<<<<<<< HEAD
+    let widthCell = (UIScreen.main.bounds.width) / 4
+=======
     let viewRadian: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.rgbAlpha(red: 38, green: 38, blue: 38, alpha: 0.8)
@@ -133,6 +144,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     let cellId = "cellId"
     let widthCell = (UIScreen.main.bounds.width) / 4 - 10
+>>>>>>> 7634525bf810ca161d5c141c704f21ca2727f2ff
     
     lazy var collectionViewTypeOfwork: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -227,16 +239,13 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     //MARK: - load work type
     
-    func loadTypeOfWork(){
+    func loadTypeOfWork() {
         self.loadingView.show()
         TaskService.shared.getWorkTypes { (workTypes, error) in
             self.loadingView.close()
-            if error == nil{
-                Constant.workTypes = workTypes
-                self.typeOfWorks = Constant.workTypes
-            }else{
-                
-            }
+            guard error == nil else { return }
+            Constant.workTypes = workTypes
+            self.typeOfWorks = Constant.workTypes
         }
     }
     
@@ -250,7 +259,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     func handleButtonAround(_ sender : UIButton) {
         // MARK: - Team lead edited it
-        push(viewController: MaidAroundVC())
+        push(viewController: MaidAroundViewController())
         //present(viewController: MaidAroundVC())
     }
     func handleButtonTaskManagement(_ sender : UIButton) {
@@ -271,7 +280,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! WorkTypeCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! WorkTypeCell
         cell.title = typeOfWorks?[indexPath.row].name
         cell.layer.cornerRadius = 8
         cell.backgroundColor = UIColor.rgbAlpha(red: 130, green: 130, blue: 130, alpha: 0.6)
@@ -322,6 +331,27 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         self.lableTitle.text = UserHelpers.currentUser?.name
 
         lbInfor.text = LanguageManager.shared.localized(string: "Postyourworkhere")
+    }
+}
+
+extension HomeVC {
+    
+    func sendBackToLogin() {
+        UserHelpers.logOut()
+        let nav = UINavigationController(rootViewController: SignInVC())
+        UIView.transition(with: appDelegate!.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+            appDelegate?.window??.rootViewController = nav
+        }, completion: nil)
+    }
+    
+    func checkAuthentication(completion: @escaping () -> Void) {
+        UserService.shared.checkStatus { (error) in
+            guard error != nil else {
+                completion()
+                return
+            }
+            self.sendBackToLogin()
+        }
     }
 }
 
