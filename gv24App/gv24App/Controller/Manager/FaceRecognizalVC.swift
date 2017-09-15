@@ -10,20 +10,28 @@ import Foundation
 import UIKit
 import GoogleMobileVision
 import GTProgressBar
+import SwiftySound
+
 
 class FaceRecognizalVC: BaseVC {
     
     var faceGMVDetector: GMVDetector!
+    var timer: Timer?
     
+    var progressValue: Int = 0 {
+        didSet{
+            if progressValue >= 50 {
+                progressBar.loadingColor = .green
+                progressLabel.textColor = .green
+            }
+            progressLabel.text = "\(progressValue) %"
+        }
+    }
     lazy var avatarMaidImage : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "face"))
         iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        iv.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        iv.layer.cornerRadius = 60
-        iv.layer.masksToBounds = true
-        
+        iv.clipsToBounds = true
         return iv
     }()
     
@@ -31,20 +39,13 @@ class FaceRecognizalVC: BaseVC {
         let iv = CustomImageView(image: UIImage(named: "face"))
         iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        iv.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        iv.layer.cornerRadius = 60
-        iv.layer.masksToBounds = true
-        
+        iv.clipsToBounds = true
         return iv
     }()
     
     
     lazy var resultFaceButton: CustomFaceButton = {
         let btn = CustomFaceButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        btn.heightAnchor.constraint(equalToConstant: 80).isActive = true
         btn.delegate = self
         return btn
     }()
@@ -64,7 +65,7 @@ class FaceRecognizalVC: BaseVC {
        let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.textColor = .red
-        lb.font = Fonts.by(name: .light, size: 16)
+        lb.font = Fonts.by(name: .medium, size: 16)
         lb.text = "0 %"
         return lb
     }()
@@ -93,12 +94,16 @@ class FaceRecognizalVC: BaseVC {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        resultFaceButton.layer.cornerRadius = 40
-        /*resultFaceButton.layer.shadowOpacity = 0.35
-        resultFaceButton.layer.shadowRadius = 2
-        resultFaceButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-        resultFaceButton.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 40).cgPath
-        resultFaceButton.layer.masksToBounds = true*/
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        resultFaceButton.layer.cornerRadius = resultFaceButton.bounds.size.width / 2
+        avatarMaidImage.layer.cornerRadius = 60
+        avatarPhotoImage.layer.cornerRadius = 60
+        
+        print("viewDidLayoutSubviews")
     }
     
     override func setupView() {
@@ -108,11 +113,16 @@ class FaceRecognizalVC: BaseVC {
         self.view.addSubview(progressBar)
         self.view.addSubview(progressLabel)
         
-        avatarMaidImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
-        avatarMaidImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
+
+        avatarMaidImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        avatarMaidImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        avatarMaidImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 70).isActive = true
+        avatarMaidImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         
+        avatarPhotoImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        avatarPhotoImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
         avatarPhotoImage.topAnchor.constraint(equalTo: avatarMaidImage.topAnchor, constant: 0).isActive = true
-        avatarPhotoImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+        avatarPhotoImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
         view.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: progressBar)
         progressBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 120).isActive = true
@@ -120,22 +130,40 @@ class FaceRecognizalVC: BaseVC {
         progressLabel.centerXAnchor.constraint(equalTo: progressBar.centerXAnchor, constant: 0).isActive = true
         progressLabel.topAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 20).isActive = true
         
+        resultFaceButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        resultFaceButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
         resultFaceButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         resultFaceButton.topAnchor.constraint(equalTo: progressLabel.bottomAnchor, constant: 30).isActive = true
     }
     
     func animateCheckFace() {
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 2.0) {
-                self.avatarMaidImage.frame = CGRect(x: self.view.bounds.size.width / 2 - self.avatarMaidImage.frame.size.width / 2, y: self.view.bounds.size.height / 2 - self.avatarMaidImage.frame.size.height / 2, width: self.avatarMaidImage.frame.width, height: self.avatarMaidImage.frame.height)
+        //let transform = CGAffineTransform.identity.translatedBy(x: 110, y: 1)
+        //let transformB = CGAffineTransform.identity.translatedBy(x: -100, y: 1)
+        let transform = CATransform3DMakeTranslation(100, 1 , 0);
+        let transformB = CATransform3DMakeTranslation(-115, 1, 0)
+        let scale = CATransform3DMakeScale(1, 1, 1);
+        
+        timer = Timer.scheduledTimer(timeInterval: 2.0 / 70, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        UIView.animate(withDuration: 2.0, animations: {
+            //self.avatarMaidImage.layer.setAffineTransform(transform)
+            //self.avatarPhotoImage.layer.setAffineTransform(transformB)
+            self.avatarMaidImage.layer.transform = CATransform3DConcat(transform, scale)
+            self.avatarPhotoImage.layer.transform = CATransform3DConcat(transformB, scale)
+        },completion: { (success: Bool) in
+            if self.progressValue < 50 {
+                Sound.play(file: "incorrect", fileExtension: "mp3", numberOfLoops: 0)
+            } else{
+                Sound.play(file: "correct", fileExtension: "mp3", numberOfLoops: 0)
             }
-            UIView.animate(withDuration: 2.0) {
-                self.avatarPhotoImage.frame = CGRect(x: self.view.bounds.size.width / 2 - self.avatarPhotoImage.frame.size.width / 2, y: self.view.bounds.size.height / 2 - self.avatarPhotoImage.frame.size.height / 2, width: self.avatarPhotoImage.frame.width, height: self.avatarPhotoImage.frame.height)
-            }
-            self.avatarMaidImage.alpha = 0.5
-            self.avatarPhotoImage.alpha = 0.5
+        })
+    }
+    
+    func update() {
+        progressBar.linearLoadingWith(progress: CGFloat(progressValue))
+        progressValue += 1
+        if progressValue >= 70 {
+            timer?.invalidate()
         }
-
     }
     
     func handleFaceDetect(_ faceImageView: UIImageView){
@@ -218,8 +246,6 @@ class FaceRecognizalVC: BaseVC {
 extension FaceRecognizalVC: FaceButtonDelegate {
     func handleSuccess(_ btnFace: CustomFaceButton) {
         btnFace.type = .failure
-        
-        progressBar.linearLoadingWith(progress: 30)
         print("Handle Button Success")
     }
     

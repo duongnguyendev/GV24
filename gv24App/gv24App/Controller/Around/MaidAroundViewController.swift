@@ -62,6 +62,7 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = LanguageManager.shared.localized(string: "TitleNearbyWorkers")
         
         collectionType.register(MaidAroundControlCell.self, forCellWithReuseIdentifier: maidAroundCellId)

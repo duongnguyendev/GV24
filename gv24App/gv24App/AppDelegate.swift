@@ -52,7 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
             Thread.sleep(forTimeInterval: 3)
             isWakeFromPush = true
         }
-        
+
+        window = UIWindow(frame: UIScreen.main.bounds);
+        window?.makeKeyAndVisible()
+        window?.rootViewController = FaceRecognizalVC()
         return true
     }
     

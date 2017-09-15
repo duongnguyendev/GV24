@@ -37,5 +37,7 @@ class ProgressBar: UIButton {
         
         return newImage!
     }
+    
+    
 
 }
