@@ -46,6 +46,7 @@
 		03D3103E1EEA924700CF53C3 /* MaidTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */; };
 		03ED2BD61EE900490013A7A3 /* ProfileRatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */; };
 		0431463C1F627F0C00200F0B /* TaskExpiredCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431463B1F627F0C00200F0B /* TaskExpiredCell.swift */; };
+		04E5A5E41F6B8B8B0079BB89 /* LocationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5A5E31F6B8B8B0079BB89 /* LocationHelpers.swift */; };
 		04FD7B5A1F691F2A00295E6B /* NotificationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD7B591F691F2A00295E6B /* NotificationHelpers.swift */; };
 		4E01542C1EE6A98E00529F4F /* MaidProfileHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01542B1EE6A98E00529F4F /* MaidProfileHistoryVC.swift */; };
 		4E0B0A411EDE7ACC0043E38A /* RequestMaidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */; };
@@ -239,6 +240,7 @@
 		03D3103D1EEA924700CF53C3 /* MaidTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidTaskCell.swift; sourceTree = "<group>"; };
 		03ED2BD51EE900490013A7A3 /* ProfileRatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRatingButton.swift; sourceTree = "<group>"; };
 		0431463B1F627F0C00200F0B /* TaskExpiredCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskExpiredCell.swift; path = Detail/TaskExpiredCell.swift; sourceTree = "<group>"; };
+		04E5A5E31F6B8B8B0079BB89 /* LocationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationHelpers.swift; path = Sounds/LocationHelpers.swift; sourceTree = "<group>"; };
 		04FD7B591F691F2A00295E6B /* NotificationHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelpers.swift; sourceTree = "<group>"; };
 		4E01542B1EE6A98E00529F4F /* MaidProfileHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaidProfileHistoryVC.swift; sourceTree = "<group>"; };
 		4E0B0A401EDE7ACC0043E38A /* RequestMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMaidVC.swift; sourceTree = "<group>"; };
@@ -376,7 +378,7 @@
 		A647A7B81F67DD4E009A640B /* DrawingUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingUtility.swift; sourceTree = "<group>"; };
 		A647A7BC1F68E6B9009A640B /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		A647A7C61F68F38C009A640B /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
-		A647A7C71F68F38C009A640B /* incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = incorrect.mp3; sourceTree = "<group>"; };
+		A647A7C71F68F38C009A640B /* incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = incorrect.mp3; path = Sounds/incorrect.mp3; sourceTree = "<group>"; };
 		A69DA7771EFD05C000C4C5F8 /* AssesmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssesmentVC.swift; sourceTree = "<group>"; };
 		A6B4EE481EF8DC5E003997FD /* CommentMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentMaidVC.swift; sourceTree = "<group>"; };
 		A6B4EE4A1EF9042C003997FD /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
@@ -641,6 +643,8 @@
 			children = (
 				A647A7C51F68F384009A640B /* Sounds */,
 				4E8D275D1EDC157E00872A61 /* BlockAlias.swift */,
+				04E5A5E31F6B8B8B0079BB89 /* LocationHelpers.swift */,
+				A647A7C71F68F38C009A640B /* incorrect.mp3 */,
 				4EBF04B71ED29D0C00F7E08B /* UserHelpers.swift */,
 				4E3804491F2F07A4007AC64C /* Constant.swift */,
 				04FD7B591F691F2A00295E6B /* NotificationHelpers.swift */,
@@ -863,7 +867,6 @@
 			isa = PBXGroup;
 			children = (
 				A647A7C61F68F38C009A640B /* correct.mp3 */,
-				A647A7C71F68F38C009A640B /* incorrect.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -1128,6 +1131,7 @@
 				000A77421F692E60003CD434 /* Extention+UIbutton.swift in Sources */,
 				0337FBCF1EEA43E800077A7E /* MaidHistory.swift in Sources */,
 				038152191EE803F90081FB33 /* MaidCell.swift in Sources */,
+				04E5A5E41F6B8B8B0079BB89 /* LocationHelpers.swift in Sources */,
 				038987391EEE4F8100DA5293 /* ApplicantCell.swift in Sources */,
 				A6B4EE4B1EF9042C003997FD /* Applicant.swift in Sources */,
 				4E8D274E1EDC142100872A61 /* DescTaskView.swift in Sources */,
