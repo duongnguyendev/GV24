@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         return true
     }
     
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)

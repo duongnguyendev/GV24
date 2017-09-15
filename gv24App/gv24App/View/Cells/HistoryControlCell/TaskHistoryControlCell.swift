@@ -14,6 +14,7 @@ class TaskHistoryControlCell: HistoryControlCell {
     override func setupView() {
         super.setupView()
     }
+    
     override func register() {
         historyCollectionView.register(TaskHistoryCell.self, forCellWithReuseIdentifier: historyCellId)
     }

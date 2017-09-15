@@ -23,9 +23,11 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
     var pointCell = CGPoint()
     var startAt: Date?
     var endAt: Date?
-    var page: Int?
     
-    lazy var historyCollectionView : UICollectionView = {
+    var taskHistoryPage: Int = 1
+    var maidHistoryPage : Int = 1
+    
+    var historyCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = AppColor.collection
@@ -33,9 +35,7 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
         cv.bounces = true
         cv.alwaysBounceVertical = true
         cv.isDirectionalLockEnabled = false
-        
-        cv.delegate = self
-        cv.dataSource = self
+    
         return cv
     }()
     
@@ -43,29 +43,38 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
         didSet {
             if type == 0{
                 self.loadTaskHistory()
-            } else if type == 1{
+            } else if type == 1 {
                 self.loadMaidHistory()
             } else {
                 self.loadTaskUnpaids()
             }
         }
     }
+    
     //Mark: -Load Data-
-    func loadTaskHistory(){
-        HistoryService.shared.fetchTaskHistory(startAt: startAt, endAt: endAt, page: page) { (taskHistory) in
-            if let task = taskHistory{
-                self.taskHistory = task
-                self.historyCollectionView.reloadData()
+    func loadTaskHistory() {
+        HistoryService.shared.fetchTaskHistory(startAt: startAt, endAt: endAt, page: self.taskHistoryPage) { [weak self] (task) in
+            guard let task = task else { return }
+            if self?.taskHistoryPage == 1 {
+                self?.taskHistory = task
+            } else {
+//                self?.taskHistory?.page = task.page
+//                self?.taskHistory?.limit = task.limit
+//                self?.taskHistory?.pages = task.pages
+//                guard self?.taskHistory?.docs != nil, task.docs != nil else { return }
+//                self?.taskHistory?.docs! += task.docs!
             }
+            self?.historyCollectionView.reloadData()
         }
     }
-    func loadMaidHistory(){
-        HistoryService.shared.fetchMaidHistory(startAt: startAt, endAt: endAt, page: page) { (maidHistory) in
+    
+    func loadMaidHistory() {
+        HistoryService.shared.fetchMaidHistory(startAt: startAt, endAt: endAt, page: self.maidHistoryPage) { (maidHistory) in
             self.maidsHistory = maidHistory
             self.historyCollectionView.reloadData()
         }
     }
-    func loadTaskUnpaids(){
+    func loadTaskUnpaids() {
         HistoryService.shared.fetchUnpaidWork(startAt: startAt, endAt: endAt) { (workUnpaids) in
             self.workUnpaids = workUnpaids
             self.historyCollectionView.reloadData()
@@ -74,12 +83,16 @@ class HistoryControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollec
     override func setupView() {
         register()
         super.setupView()
+        
+        historyCollectionView.delegate = self
+        historyCollectionView.dataSource = self
+        
         addSubview(historyCollectionView)
         addConstraintWithFormat(format: "V:|[v0]|", views: historyCollectionView)
         addConstraintWithFormat(format: "H:|[v0]|", views: historyCollectionView)
     }
     
-    func register(){
+    func register() {
         historyCollectionView.register(TaskCell.self, forCellWithReuseIdentifier: cellId)
     }
     //MARK: - collection delegate
