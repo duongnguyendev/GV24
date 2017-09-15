@@ -15,7 +15,7 @@ class NotificationHelpers {
     
     func handleNotification(userInfo: [AnyHashable : Any]) {
         guard let aps = userInfo["aps"] as? [String: AnyObject] else { return }
-        guard let status = userInfo["status"] as? Int else { return }
+        guard let status = userInfo["status"] as? String else { return }
         guard let alert = aps["alert"] as? [String: AnyObject] else { return }
         guard let title = alert["title"] as? String else { return }
         
@@ -33,55 +33,55 @@ class NotificationHelpers {
         Whisper.show(shout: announcement, to: destinationViewController, completion: nil)
     }
     
-    fileprivate func getTitleForStatus(status: Int) -> String {
+    fileprivate func getTitleForStatus(status: String) -> String {
         switch status {
-        case 0:
+        case "0":
             return LanguageManager.shared.localized(string: "MaidRefuseAcceptedWork")!
-        case 2:
+        case "2":
             return LanguageManager.shared.localized(string: "MaidAcceptWork")!
-        case 10:
+        case "10":
             return LanguageManager.shared.localized(string: "MaidReceivedMoney")!
-        case 11:
+        case "11":
             return LanguageManager.shared.localized(string: "MaidNotReceivedMoney")!
-        case 88:
+        case "88":
             return LanguageManager.shared.localized(string: "MaidBecomeApplicant")!
         default:
             return LanguageManager.shared.localized(string: "DefaultNotification")!
         }
     }
     
-    fileprivate func handleAction(destinationViewController: UINavigationController, status: Int) -> (() -> Void) {
+    fileprivate func handleAction(destinationViewController: UINavigationController, status: String) -> (() -> Void) {
         func route() {
             handleNotification(destinationViewController: destinationViewController, status: status)
         }
         return route
     }
     
-    fileprivate func handleNotification(destinationViewController: UINavigationController, status: Int) {
+    fileprivate func handleNotification(destinationViewController: UINavigationController, status: String) {
         destinationViewController.popToRootViewController(animated: true)
         
         switch status {
-        case 0:
+        case "0":
             let taskManagementVC = TaskManagementVC()
             taskManagementVC.isFromPush = true
             taskManagementVC.scrollToIndex = 0
             destinationViewController.pushViewController(taskManagementVC, animated: true)
-        case 2:
+        case "2":
             let taskManagementVC = TaskManagementVC()
             taskManagementVC.isFromPush = true
             taskManagementVC.scrollToIndex = 1
             destinationViewController.pushViewController(taskManagementVC, animated: true)
-        case 10:
+        case "10":
             let historyVC = HistoryVC()
             historyVC.isFromPush = true
             historyVC.scrollToIndex = 0
             destinationViewController.pushViewController(historyVC, animated: true)
-        case 11:
+        case "11":
             let historyVC = HistoryVC()
             historyVC.isFromPush = true
             historyVC.scrollToIndex = 2
             destinationViewController.pushViewController(historyVC, animated: true)
-        case 88:
+        case "88":
             let taskManagementVC = TaskManagementVC()
             taskManagementVC.isFromPush = true
             taskManagementVC.scrollToIndex = 0

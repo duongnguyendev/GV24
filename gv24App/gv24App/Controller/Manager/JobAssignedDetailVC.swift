@@ -113,7 +113,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            /*let imageResized = image.resize(newWidth: 200)
+            let imageResized = image.resize(newWidth: 200)
             self.loadingView.show()
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
                 self.loadingView.close()
@@ -127,7 +127,7 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
                     })
                 }
             })
-            picker.dismiss(animated: true, completion: nil)*/
+            picker.dismiss(animated: true, completion: nil)
             
         }
     }

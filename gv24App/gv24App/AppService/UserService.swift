@@ -31,6 +31,7 @@ class UserService: APIService {
         let url = "auth/login"
         var params : Dictionary<String, String> = ["username": userName, "password": password]
         if let token = FIRInstanceID.instanceID().token() {
+            print(token)
             params["device_token"] = token + "@//@ios"
         }
         postMultipart(url: url, image: nil, name: nil, parameters: params) { (jsonData, error) in
