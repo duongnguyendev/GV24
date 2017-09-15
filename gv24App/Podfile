@@ -26,4 +26,5 @@ target 'gv24App' do
   pod 'AFNetworking', '~> 2.0’
   pod 'GoogleMobileVision/FaceDetector'
   pod 'GTProgressBar'
+  pod 'SwiftySound'
 end

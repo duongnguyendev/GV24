@@ -11,9 +11,10 @@ import Google
 import GoogleSignIn
 import GoogleMaps
 import FirebaseCore
-import Firebase
-import FirebaseMessaging
 import UserNotifications
+import Firebase
+import FirebaseInstanceID
+import FirebaseMessaging
 import FacebookCore
 import FacebookLogin
 import Alamofire
@@ -28,11 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Register notifications
+        self.registerForPushNotifications(application: application)
+        
+        // Register location
+        LocationHelpers.shared.locationManager.requestWhenInUseAuthorization()
+        
         // Configure Firebase
         FIRApp.configure()
-        
-        // Register notifications
-        self.registerForPushNotifications()
         
         // Configure keyboard manager
         IQKeyboardManager.sharedManager().enable = true
@@ -44,13 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         self.routeMeToTheTheater()
         
         // Handle notifications
-        if let userInfo = launchOptions?[.remoteNotification] as? [String: AnyObject] {
+        if let _ = launchOptions?[.remoteNotification] as? [String: AnyObject] {
             Thread.sleep(forTimeInterval: 3)
-            //guard UserHelpers.isLogin == true else { return true }
             isWakeFromPush = true
-            //NotificationHelpers.shared.handleNotificationWhenAppIsKilled(userInfo: userInfo)
         }
-        
         return true
     }
     
@@ -60,10 +61,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         }
         
         let token = tokenParts.joined()
-        print("Device Token: \(token)")
+        print("Raw Token: \(token)")
         
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.prod)
+        //Messaging
+        
+        //let token = FIRMessaging.messaging().tpken
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: .unknown)
+        //FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.prod)
+    }
+    
+    fileprivate func registerForPushNotifications(application: UIApplication) {
+        //        if #available(iOS 10.0, *) {
+        //            // For iOS 10 display notification (sent via APNS)
+        //            UNUserNotificationCenter.current().delegate = self
+        //            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        //            UNUserNotificationCenter.current().requestAuthorization(
+        //                options: authOptions,
+        //                completionHandler: {_, _ in })
+        //            // For iOS 10 data message (sent via FCM
+        //            FIRMessaging.messaging().remoteMessageDelegate = self
+        //        } else {
+        let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        //        }
+        application.registerForRemoteNotifications()
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -71,11 +93,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     }
 
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
-        //print("userInfo")
-        //print(remoteMessage.appData)
+        print(remoteMessage.appData)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        NotificationHelpers.shared.handleNotification(userInfo: userInfo)
+        
+        completionHandler(.newData)
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         NotificationHelpers.shared.handleNotification(userInfo: userInfo)
     }
     
@@ -99,28 +126,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         GGLContext.sharedInstance().configureWithError(&configureError)
     }
     
-    fileprivate func registerForPushNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            print("Permission granted: \(granted)")
-            
-            guard granted else { return }
-            self.getNotificationSettings()
-        }
-    }
+//    fileprivate func getNotificationSettings() {
+//        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+//            print("Notification settings: \(settings)")
+//            
+//            guard settings.authorizationStatus == .authorized else { return }
+//            UIApplication.shared.registerForRemoteNotifications()
+//        }
+//    }
     
-    fileprivate func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            print("Notification settings: \(settings)")
-            
-            guard settings.authorizationStatus == .authorized else { return }
-            UIApplication.shared.registerForRemoteNotifications()
-        }
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        print(notification)
+//    }
+//    
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//        print(response)
+//    }
     
     fileprivate func routeMeToTheTheater() {
         self.window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: HomeVC())
+        window?.rootViewController = UINavigationController(rootViewController: FaceRecognizalVC())
     }
     
     //MARK: - Google delegate

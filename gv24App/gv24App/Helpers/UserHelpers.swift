@@ -13,11 +13,19 @@ import FirebaseAuth
 
 let CURRENT_USER : String = "currentUser"
 let TOKEN : String = "token"
+let IS_REQUEST_LOCATION : String = "isRequestLocation"
 
 class UserHelpers: NSObject {
     
     static var isLogin : Bool {
         if UserDefaults.standard.value(forKey: TOKEN) != nil{
+            return true
+        }
+        return false
+    }
+    
+    static var isRequestLocation : Bool {
+        if UserDefaults.standard.value(forKey: IS_REQUEST_LOCATION) != nil {
             return true
         }
         return false

@@ -113,22 +113,25 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            /*let imageResized = image.resize(newWidth: 200)
+            let imageResized = image.resize(newWidth: 200)
             self.loadingView.show()
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
                 self.loadingView.close()
-                if flag!{
-                    self.showAlertWith(message: LanguageManager.shared.localized(string: "PartnerIdentifiedSuccessfully")!, completion: { 
+                if flag{
+                    let faceVC = FaceRecognizalVC()
+                    faceVC.delegate = self.delegate
+                    self.push(viewController: faceVC)
+                    /*self.showAlertWith(message: LanguageManager.shared.localized(string: "PartnerIdentifiedSuccessfully")!, completion: {
                         self.delegate?.checkInMaid!()
                         self.dismiss(animated: true, completion: nil)
-                    })
+                    })*/
+                    
                 }else{
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToIdentify")!, completion: {
                     })
                 }
             })
-            picker.dismiss(animated: true, completion: nil)*/
-            
+            picker.dismiss(animated: true, completion: nil)
         }
     }
     //MARK: - Show Message

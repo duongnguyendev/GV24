@@ -100,8 +100,7 @@ class MaidAroundVC: BaseVC, UISearchBarDelegate, CLLocationManagerDelegate, GMSM
             self.locationManager.delegate = self
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways{
                 locationManager.startUpdatingLocation()
-            }
-            else{
+            } else{
                 let alertController = UIAlertController (title: "",
                                                          message: "Cài đặt vị trí", preferredStyle: .alert)
                 

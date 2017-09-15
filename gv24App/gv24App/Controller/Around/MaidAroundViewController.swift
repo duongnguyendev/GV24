@@ -15,13 +15,12 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
     
     var indexPath: IndexPath = IndexPath(item: 0, section: 0)
     
-    let locationManager = CLLocationManager()
     var currentLocation : CLLocationCoordinate2D?
     
     let maidAroundCellId  = "maidAroundCellId"
     let mapMaidAroundCellId  = "mapMaidAroundCellId"
     
-    var maids: [MaidProfile]?{
+    var maids: [MaidProfile]? {
         didSet{
             DispatchQueue.main.async {
                 self.collectionType.reloadData()
@@ -63,6 +62,7 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = LanguageManager.shared.localized(string: "TitleNearbyWorkers")
         
         collectionType.register(MaidAroundControlCell.self, forCellWithReuseIdentifier: maidAroundCellId)
@@ -93,16 +93,14 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
     }
 
     //MARK: - setup location manager
-    private func setupLocationManager(){
-        
-        self.locationManager.requestWhenInUseAuthorization()
+    private func setupLocationManager() {
         
         if (CLLocationManager.locationServicesEnabled()) {
-            self.locationManager.delegate = self
+            LocationHelpers.shared.locationManager.delegate = self
+            
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways{
-                locationManager.startUpdatingLocation()
-            }
-            else{
+                LocationHelpers.shared.locationManager.startUpdatingLocation()
+            } else {
                 let alertController = UIAlertController (title: "",
                                                          message: "Cài đặt vị trí", preferredStyle: .alert)
                 
@@ -128,10 +126,9 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.locationManager.stopUpdatingLocation()
+        LocationHelpers.shared.locationManager.stopUpdatingLocation()
         let location : CLLocationCoordinate2D = (manager.location?.coordinate)!
         handle(location: location)
-        
     }
     
     func handle(location : CLLocationCoordinate2D){

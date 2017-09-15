@@ -21,7 +21,7 @@ protocol FaceButtonDelegate: class {
 
 class CustomFaceButton: BaseButton {
     
-    var type: ButtonType = .success {
+    var type: ButtonType = .failure {
         didSet{
             switch type {
             case .success:
@@ -44,7 +44,7 @@ class CustomFaceButton: BaseButton {
 
     override func setupView() {
         super.setupView()
-        updateUI(nil, Icon.by(name: .checkmarkRound, color: AppColor.white), AppColor.successButton)
+        updateUI(nil, Icon.by(name: .checkmarkRound, color: AppColor.white), .red)
         translatesAutoresizingMaskIntoConstraints = false
         self.addTarget(self, action: #selector(handleFaceButton(_:)), for: .touchUpInside)
     }

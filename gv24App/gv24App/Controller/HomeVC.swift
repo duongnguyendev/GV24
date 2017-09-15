@@ -89,7 +89,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         super.viewWillAppear(animated)
 
         navigationController?.isNavigationBarHidden = true
-
         
         if currentLanguage != LanguageManager.shared.getCurrentLanguage().languageCode{
             currentLanguage = LanguageManager.shared.getCurrentLanguage().languageCode
@@ -124,7 +123,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let v = HomeBottomView()
         return v
     }()
-    
 
     let widthCell = (UIScreen.main.bounds.width) / 4
 
@@ -143,18 +141,20 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     let cellId = "cellId"
 
-    lazy var collectionViewTypeOfwork: UICollectionView = {
+    let collectionViewTypeOfwork: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.delegate = self
-        cv.dataSource = self
         cv.backgroundColor = .clear
         return cv
     }()
     
     override func setupView() {
         setupBackGround()
+        
+        collectionViewTypeOfwork.delegate = self
+        collectionViewTypeOfwork.dataSource = self
+        
         view.addSubview(viewRadian)
         view.addSubview(imageView)
         view.addSubview(lbInfor)
