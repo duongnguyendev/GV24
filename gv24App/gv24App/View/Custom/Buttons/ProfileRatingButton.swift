@@ -38,20 +38,21 @@ class ProfileRatingButton: BaseButton{
         var iv = CustomImageView(image: UIImage(named: "avatar"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 25
+        
         iv.layer.masksToBounds = true
         return iv
     }()
     
-    private let labelName : UILabel = {
-        let lb = UILabel()
+    var labelName : UILabel = {
+        var lb = UILabel()
         lb.font = Fonts.by(name: .medium, size: 18)
         lb.text = "Nguyễn Văn A"
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()
     
-    private let labelDate : UILabel = {
-        let lb = UILabel()
+    var labelDate : UILabel = {
+        var lb = UILabel()
         lb.font = Fonts.by(name: .light, size: 13)
         lb.text = "12/03/2016"
         lb.textColor = AppColor.lightGray
@@ -75,11 +76,13 @@ class ProfileRatingButton: BaseButton{
         addSubview(labelDate)
         addSubview(arrowRight)
         addSubview(rattingView)
-        
+       
         avatarImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         avatarImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
         avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        //avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
+        //avatarImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 10).isActive = true
         
         labelName.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: cellMargin / 2).isActive = true
         labelName.rightAnchor.constraint(equalTo: arrowRight.leftAnchor, constant: 0).isActive = true

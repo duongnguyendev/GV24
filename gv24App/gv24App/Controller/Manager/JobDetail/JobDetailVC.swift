@@ -39,6 +39,7 @@ class JobDetailVC: BaseVC {
         return view
     }()
     
+    var contentViewTopConstraint : NSLayoutConstraint!
     var descTaskViewHeightConstraint: NSLayoutConstraint?
     
 
@@ -58,8 +59,14 @@ class JobDetailVC: BaseVC {
     
     override func setupView() {
         super.setupView()
+        
+      
+        
+        
         self.view.addSubview(mainScrollView)
         mainScrollView.addSubview(contentView)
+        contentView.addSubview(descTaskView)
+        contentView.addSubview(descLabel)
         
         mainScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         mainScrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
@@ -67,13 +74,14 @@ class JobDetailVC: BaseVC {
         mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
         contentView.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
-        contentView.topAnchor.constraint(equalTo: mainScrollView.topAnchor, constant: 0).isActive = true
+        
+        self.contentViewTopConstraint = NSLayoutConstraint.init(item: self.contentView, attribute: .top, relatedBy: .equal, toItem: self.mainScrollView, attribute: .top, multiplier: 1.0, constant: 0.0)
+        self.contentViewTopConstraint.isActive = true
+        mainScrollView.addConstraint(self.contentViewTopConstraint)
+        
         contentView.leftAnchor.constraint(equalTo: mainScrollView.leftAnchor, constant: 0).isActive = true
         contentView.rightAnchor.constraint(equalTo: mainScrollView.rightAnchor, constant: 0).isActive = true
         contentView.bottomAnchor.constraint(equalTo: mainScrollView.bottomAnchor, constant: 0).isActive = true
-
-        contentView.addSubview(descTaskView)
-        contentView.addSubview(descLabel)
         
         descLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
         descLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true

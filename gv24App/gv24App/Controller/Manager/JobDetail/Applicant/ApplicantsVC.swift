@@ -13,6 +13,8 @@ class ApplicantsVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource,
     weak var delegate: TaskManageDelegate?
     var controllerToDismiss: BaseVC?
     
+    
+    
     private lazy var collectionApplicant : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
