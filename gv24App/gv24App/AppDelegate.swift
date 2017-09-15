@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         // Register notifications
         self.registerForPushNotifications(application: application)
         
+        // Register location
+        LocationHelpers.shared.locationManager.requestWhenInUseAuthorization()
+        
         // Configure Firebase
         FIRApp.configure()
         
