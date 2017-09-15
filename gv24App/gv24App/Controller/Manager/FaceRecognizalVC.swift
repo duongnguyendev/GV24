@@ -28,11 +28,11 @@ class FaceRecognizalVC: BaseVC {
             }else{
                 resultFaceButton.type = .failure
             }
-            progressLabel.text = "\(value) %"
+            progressLabel.text = "\(progressValue) %"
         }
     }
     
-    var value: Int = 55
+    var value: Int = 60
     
     lazy var avatarMaidImage : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "face"))
@@ -151,17 +151,18 @@ class FaceRecognizalVC: BaseVC {
         let transformB = CATransform3DMakeTranslation(-115, 1, 0)
         let scale = CATransform3DMakeScale(1, 1, 1);
         
-        timer = Timer.scheduledTimer(timeInterval: 2.0 / Double(value), target: self, selector: #selector(update), userInfo: nil, repeats: true)
-        UIView.animate(withDuration: 2.0, animations: {
+        timer = Timer.scheduledTimer(timeInterval: 15.0 / Double(value), target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        Sound.play(file: "facesuccess", fileExtension: "mp3", numberOfLoops: 0)
+        UIView.animate(withDuration: 15.0, animations: {
             //self.avatarMaidImage.layer.setAffineTransform(transform)
             //self.avatarPhotoImage.layer.setAffineTransform(transformB)
             self.avatarMaidImage.layer.transform = CATransform3DConcat(transform, scale)
             self.avatarPhotoImage.layer.transform = CATransform3DConcat(transformB, scale)
         },completion: { (success: Bool) in
             if self.value < 50 {
-                Sound.play(file: "incorrect", fileExtension: "mp3", numberOfLoops: 0)
+                Sound.play(file: "icorrect", fileExtension: "mp3", numberOfLoops: 0)
             } else{
-                Sound.play(file: "correct", fileExtension: "mp3", numberOfLoops: 0)
+                Sound.stop(file: "facesuccess", fileExtension: "mp3")
             }
             self.resultFaceButton.isHidden = false
         })

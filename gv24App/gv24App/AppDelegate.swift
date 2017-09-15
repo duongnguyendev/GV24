@@ -52,10 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
             Thread.sleep(forTimeInterval: 3)
             isWakeFromPush = true
         }
-
-        window = UIWindow(frame: UIScreen.main.bounds);
-        window?.makeKeyAndVisible()
-        window?.rootViewController = FaceRecognizalVC()
         return true
     }
     
@@ -150,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     fileprivate func routeMeToTheTheater() {
         self.window = UIWindow(frame: UIScreen.main.bounds);
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: HomeVC())
+        window?.rootViewController = UINavigationController(rootViewController: FaceRecognizalVC())
     }
     
     //MARK: - Google delegate
