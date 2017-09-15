@@ -37,7 +37,7 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
         sc.translatesAutoresizingMaskIntoConstraints = false
         return sc
     }()
-
+    
     lazy var collectionType : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -78,7 +78,7 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
         let btn = UIBarButtonItem(customView: buttonFilter)
         self.navigationItem.rightBarButtonItem = btn
     }
-
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>){
         let index = targetContentOffset.pointee.x / view.frame.width
         indexPath.item = Int(index)
@@ -90,34 +90,28 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
         indexPath.item = segmentedControl.selectedSegmentIndex
         self.collectionType.scrollToItem(at: indexPath, at: .left, animated: true)
     }
-
+    
     //MARK: - setup location manager
     private func setupLocationManager() {
-        
         if (CLLocationManager.locationServicesEnabled()) {
             LocationHelpers.shared.locationManager.delegate = self
             
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways{
                 LocationHelpers.shared.locationManager.startUpdatingLocation()
             } else {
-                let alertController = UIAlertController (title: "",
-                                                         message: "Cài đặt vị trí", preferredStyle: .alert)
+                let alertController = UIAlertController (title: "", message: "Cài đặt vị trí", preferredStyle: .alert)
                 
-                let settingsAction = UIAlertAction(title: "Settings",
-                                                   style: .default) { (_) -> Void in
-                                                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
-                                                        return
-                                                    }
-                                                    if UIApplication.shared.canOpenURL(settingsUrl) {
-                                                        UIApplication.shared.openURL(settingsUrl)
-                                                    }
-                }
-                alertController.addAction(settingsAction)
-                let cancelAction = UIAlertAction(title: "Cancel",
-                                                 style: .cancel, handler: {(_) -> Void in
-                                                    self.goBack()
+                alertController.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                        return
+                    }
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.openURL(settingsUrl)
+                    }
                 })
-                alertController.addAction(cancelAction)
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(_) -> Void in
+                    self.goBack()
+                }))
                 
                 present(alertController, animated: true, completion: nil)
             }
@@ -138,14 +132,14 @@ class MaidAroundViewController: BaseVC, CLLocationManagerDelegate {
             }
         }
     }
-
+    
     //MARK: - handle button
     func handleButtonFilter(_ sender: UIButton){
         let filterVC = FilterVC()
         filterVC.delegate = self
         push(viewController: filterVC)
     }
-
+    
     func showAlertLogin(){
         let loginMes = LanguageManager.shared.localized(string: "PleaseSignInBeforeUsingThisFeature")
         let alert = UIAlertController(title: "", message: loginMes, preferredStyle: .alert)

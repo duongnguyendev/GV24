@@ -223,7 +223,7 @@ RechargeSuccessful = "Recharge successful!";
 ShareApp = "Modern designs, unique features, extremely efficient performance are what you just experienced. Following the motto 'Quality builds Trust', we desire to bring our customers the best of the best. And now, let's share the NGV247 application to develop the greatest";
 NoInternetConnection = "No internet connection";
 TimeOfWorkingIsInvalid ="Time of working is invalid";
-InvalidReportTextCount = "Report description must be at least 10 characters";
+InvalidReportTextCount = "Please enter your comment";
 PackageTypeText = "Hourly pay";
 InvalidPriceTextNumber = "The price must be at least 2000";
 InvalidOtherRequestText = "Other requests must be at least 10 characters";
@@ -274,7 +274,7 @@ error.task.post.exceed = "Your posts would be within ten!";
 
 H = "house";
 
-CommentInvalidMessage = "Comment must be at least 10 characters";
+CommentInvalidMessage = "Please enter your comment";
 SkipBackButton = "Skip";
 PaymentSuccessful = "Payment successful";
 PaymentOK = "OK";

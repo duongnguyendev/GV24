@@ -616,24 +616,15 @@ class QuickPostVC: BaseVC, DateTimeLauncherDelegate {
         }
         return LanguageManager.shared.localized(string: "PleaseChooseYourTypeOfWork")
     }
-    private func validateDescription() -> String?{
-        var checked : Bool = false
-        var text = ""
-        for (index, chexbox) in chexboxes.enumerated(){
-            if chexbox.isSelected{
-                checked = true
-                text = text + (workType?.suggests[index].name)! + "\n"
-            }
-        }
-        text = text + textViewDescription.text
-        
-        let numberChar = (text.trimmingCharacters(in: .whitespaces).characters.count)
-        if  checked || numberChar > 10 {
+    private func validateDescription() -> String? {
+        let text = textViewDescription.text.trimmingCharacters(in: .whitespaces)
+        if text.characters.count > 0 {
             params["description"] = text
             return nil
         }
-        return LanguageManager.shared.localized(string: "InvalidOtherRequestText")
+        return nil
     }
+    
     private func validateAddress(completion: @escaping ((String?)->())){
         let text = addressTextField.text!
         LocationService.locationFor(address: text) { (coordinate, error) in

@@ -204,7 +204,7 @@ INVALID_PASSWORD = "Invalid password";
 RechargeSuccessful = "Recharge successful!";
 NoInternetConnection = "No internet connection";
 TimeOfWorkingIsInvalid = "Time of working is invalid";
-InvalidReportTextCount = "Report description must be at least 10 characters";
+InvalidReportTextCount = "Please enter your comment";
 PackageTypeText = "Hourly pay";
 InvalidPriceTextNumber = "The price must be at least 2000";
 InvalidOtherRequestText = "Other requests must be at least 10 characters";
@@ -246,7 +246,7 @@ task.bringSuplier = "Bring your cleaning supplies";
 
 H = "Giờ";
 
-CommentInvalidMessage = "Comment must be at least 10 characters";
+CommentInvalidMessage = "Please enter your comment";
 SkipBackButton = "Skip";
 PaymentSuccessful = "Payment successful";
 PaymentOK = "OK";

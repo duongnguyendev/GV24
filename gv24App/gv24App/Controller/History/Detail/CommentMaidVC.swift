@@ -172,7 +172,7 @@ class CommentMaidVC: BaseVC {
         self.hideKeyboard()
         let alert = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "CommentSuccess"), preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: nil)
-        if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
+        if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 0  {
             self.loadingView.show()
             HistoryService.shared.assesmentMaid(task: id!, toId: (maid?.maidId)!, content: textViewdContent.text, evaluation_point: ratingView.point!, completion: { [weak self] (error) in
                 self?.loadingView.close()

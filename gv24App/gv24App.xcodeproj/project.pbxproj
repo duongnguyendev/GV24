@@ -378,7 +378,7 @@
 		A647A7B81F67DD4E009A640B /* DrawingUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingUtility.swift; sourceTree = "<group>"; };
 		A647A7BC1F68E6B9009A640B /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		A647A7C61F68F38C009A640B /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
-		A647A7C71F68F38C009A640B /* incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = incorrect.mp3; path = Sounds/incorrect.mp3; sourceTree = "<group>"; };
+		A647A7C71F68F38C009A640B /* incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = incorrect.mp3; sourceTree = "<group>"; };
 		A69DA7771EFD05C000C4C5F8 /* AssesmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssesmentVC.swift; sourceTree = "<group>"; };
 		A6B4EE481EF8DC5E003997FD /* CommentMaidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentMaidVC.swift; sourceTree = "<group>"; };
 		A6B4EE4A1EF9042C003997FD /* Applicant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Applicant.swift; sourceTree = "<group>"; };
@@ -644,7 +644,6 @@
 				A647A7C51F68F384009A640B /* Sounds */,
 				4E8D275D1EDC157E00872A61 /* BlockAlias.swift */,
 				04E5A5E31F6B8B8B0079BB89 /* LocationHelpers.swift */,
-				A647A7C71F68F38C009A640B /* incorrect.mp3 */,
 				4EBF04B71ED29D0C00F7E08B /* UserHelpers.swift */,
 				4E3804491F2F07A4007AC64C /* Constant.swift */,
 				04FD7B591F691F2A00295E6B /* NotificationHelpers.swift */,
@@ -866,6 +865,7 @@
 		A647A7C51F68F384009A640B /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				A647A7C71F68F38C009A640B /* incorrect.mp3 */,
 				A647A7C61F68F38C009A640B /* correct.mp3 */,
 			);
 			path = Sounds;

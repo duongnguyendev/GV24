@@ -128,7 +128,7 @@ class ReportMaidVC: BaseVC, UITextViewDelegate {
     func handleSendButton(_ sender: UIButton){
         let alert = UIAlertController(title: "", message: LanguageManager.shared.localized(string: "ReportSentSuccessfully"), preferredStyle: .alert)
         var alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 10  {
+        if self.textViewdContent.text.trimmingCharacters(in: .whitespaces).characters.count > 0  {
             UserService.shared.report(maidId: (maid?.userId)!, content: textViewdContent.text, completion: { (error) in
                 if error != nil{
                     alert.message = LanguageManager.shared.localized(string: error!)

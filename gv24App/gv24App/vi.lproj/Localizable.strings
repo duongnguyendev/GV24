@@ -224,7 +224,7 @@ RechargeSuccessful = "Nạp tiền thành công!";
 ShareApp = "Giao diện hiện đại, tính năng độc đáo, hoạt động cực kỳ hiệu quả là những gì bạn vừa trải nghiệm. Với phương châm “Chất lượng tạo niềm tin”, chúng tôi mong muốn mang đến cho khách hàng của mình những điều tốt nhất.  Và giờ đây, hãy chia sẻ ứng dụng NGV247 với chúng tôi để cùng nhau phát triển những điều lợi ích nhất";
 NoInternetConnection = "Không có kết nối Internet";
 TimeOfWorkingIsInvalid ="Thời gian làm việc không đúng";
-InvalidReportTextCount = "Mô tả báo cáo phải có ít nhất 10 ký tự";
+InvalidReportTextCount = "Vui lòng nhập bình luận";
 PackageTypeText = "Khoán theo thời gian";
 InvalidPriceTextNumber = "Mức giá ít nhất phải là 2000";
 InvalidOtherRequestText = "Yêu cầu khác phải có ít nhất 10 ký tự";
@@ -275,7 +275,7 @@ error.task.post.exceed = "Số lượng bài đăng không được vượt quá
 
 H = "Giờ";
 
-CommentInvalidMessage = "Vui lòng nhập ít nhất 10 ký tự";
+CommentInvalidMessage = "Vui lòng nhập bình luận";
 SkipBackButton = "Bỏ qua";
 PaymentSuccessful = "Thanh toán thành công";
 PaymentOK = "OK";
