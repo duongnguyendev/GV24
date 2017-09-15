@@ -104,7 +104,7 @@ class TaskService: APIService {
             }
         }
     }
-    func checkInMaid(task: Task,img_checkin: UIImage,completion:@escaping ((Bool?)->())){
+    func checkInMaid(task: Task,img_checkin: UIImage,completion:@escaping ((Bool)->())){
         let url = "task/checkin"
         var params = Dictionary<String, String>()
         params["ownerId"] = task.stakeholder?.owner

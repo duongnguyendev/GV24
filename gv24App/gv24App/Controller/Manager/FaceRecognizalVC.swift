@@ -17,16 +17,23 @@ class FaceRecognizalVC: BaseVC {
     
     var faceGMVDetector: GMVDetector!
     var timer: Timer?
+    weak var delegate: TaskManageDelegate?
     
     var progressValue: Int = 0 {
         didSet{
-            if progressValue >= 50 {
+            if progressValue > 50 {
                 progressBar.loadingColor = .green
                 progressLabel.textColor = .green
+                resultFaceButton.type = .success
+            }else{
+                resultFaceButton.type = .failure
             }
-            progressLabel.text = "\(progressValue) %"
+            progressLabel.text = "\(value) %"
         }
     }
+    
+    var value: Int = 55
+    
     lazy var avatarMaidImage : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "face"))
         iv.contentMode = .scaleToFill
@@ -46,6 +53,7 @@ class FaceRecognizalVC: BaseVC {
     
     lazy var resultFaceButton: CustomFaceButton = {
         let btn = CustomFaceButton()
+        btn.isHidden = true
         btn.delegate = self
         return btn
     }()
@@ -143,25 +151,26 @@ class FaceRecognizalVC: BaseVC {
         let transformB = CATransform3DMakeTranslation(-115, 1, 0)
         let scale = CATransform3DMakeScale(1, 1, 1);
         
-        timer = Timer.scheduledTimer(timeInterval: 2.0 / 70, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2.0 / Double(value), target: self, selector: #selector(update), userInfo: nil, repeats: true)
         UIView.animate(withDuration: 2.0, animations: {
             //self.avatarMaidImage.layer.setAffineTransform(transform)
             //self.avatarPhotoImage.layer.setAffineTransform(transformB)
             self.avatarMaidImage.layer.transform = CATransform3DConcat(transform, scale)
             self.avatarPhotoImage.layer.transform = CATransform3DConcat(transformB, scale)
         },completion: { (success: Bool) in
-            if self.progressValue < 50 {
+            if self.value < 50 {
                 Sound.play(file: "incorrect", fileExtension: "mp3", numberOfLoops: 0)
             } else{
                 Sound.play(file: "correct", fileExtension: "mp3", numberOfLoops: 0)
             }
+            self.resultFaceButton.isHidden = false
         })
     }
     
     func update() {
         progressBar.linearLoadingWith(progress: CGFloat(progressValue))
         progressValue += 1
-        if progressValue >= 70 {
+        if progressValue == value {
             timer?.invalidate()
         }
     }
@@ -243,14 +252,22 @@ class FaceRecognizalVC: BaseVC {
     }
     
 }
+
 extension FaceRecognizalVC: FaceButtonDelegate {
     func handleSuccess(_ btnFace: CustomFaceButton) {
-        btnFace.type = .failure
+        //btnFace.type = .failure
+        for vc in (self.navigationController?.viewControllers ?? []) {
+            guard vc is TaskManagementVC else { continue }
+            delegate?.checkInMaid!()
+            self.navigationController?.popToViewController(vc, animated: true)
+            return
+        }
         print("Handle Button Success")
     }
     
     func handleFailure(_ btnFace: CustomFaceButton) {
-        btnFace.type = .success
+        //btnFace.type = .success
+        self.navigationController?.popViewController(animated: true)
         print("Handle Button Failure")
     }
 }
