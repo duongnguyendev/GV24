@@ -32,7 +32,7 @@ class FaceRecognizalVC: BaseVC {
         }
     }
     
-    var value: Int = 40
+    var value: Int = 0
     
     lazy var avatarMaidImage : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "face"))
