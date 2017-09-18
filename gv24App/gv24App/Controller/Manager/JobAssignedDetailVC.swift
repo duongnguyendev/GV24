@@ -122,17 +122,19 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
                 self.loadingView.close()
                 if let face = face {
                     let faceVC = FaceRecognizalVC()
-                    faceVC.progressValue = Int(face.confidence!)
+                    faceVC.value = Int(face.confidence!)
                     faceVC.delegate = self.delegate
-                    faceVC.avatarPhotoImage.image = imageResized
-//
-                    //faceVC.avatarMaidImage.af_setImage(withURL: url, placeholderImage: nil)
-                    //faceVC.avatarMaidImage
-                    self.push(viewController: faceVC)
-                    /*self.showAlertWith(message: LanguageManager.shared.localized(string: "PartnerIdentifiedSuccessfully")!, completion: {
-                        self.delegate?.checkInMaid!()
-                        self.dismiss(animated: true, completion: nil)
-                    })*/
+
+                    faceVC.avatarPhotoImage.image = image
+                    
+                    guard let avatarUrl = self.taskAssigned.stakeholder?.receivced?.avatarUrl else { return }
+                    guard let url = URL(string: avatarUrl) else { return }
+                    
+                    faceVC.avatarMaidImage.af_setImage(withURL: url, placeholderImage: nil, completion: { (response) in
+                        if let _ = response.result.value {
+                             self.push(viewController: faceVC)
+                        }
+                    })
                 }else{
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToIdentify")!, completion: {
                     })
