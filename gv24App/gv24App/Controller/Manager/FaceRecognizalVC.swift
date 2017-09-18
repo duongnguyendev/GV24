@@ -32,7 +32,7 @@ class FaceRecognizalVC: BaseVC {
         }
     }
     
-    var value: Int = 60
+    var value: Int = 40
     
     lazy var avatarMaidImage : CustomImageView = {
         let iv = CustomImageView(image: UIImage(named: "face"))
@@ -61,8 +61,6 @@ class FaceRecognizalVC: BaseVC {
     lazy var progressBar: ProgressBar = {
         let progress = ProgressBar()
         progress.translatesAutoresizingMaskIntoConstraints = false
-        progress.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        progress.layer.cornerRadius = 15
         progress.layer.borderColor = UIColor.lightGray.cgColor
         progress.layer.borderWidth = 1
         progress.clipsToBounds = true
@@ -80,6 +78,7 @@ class FaceRecognizalVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Face recognization"
         
         let options: [AnyHashable: Any] =
             [GMVDetectorFaceLandmarkType: GMVDetectorFaceLandmark.all.rawValue,
@@ -108,9 +107,10 @@ class FaceRecognizalVC: BaseVC {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         resultFaceButton.layer.cornerRadius = resultFaceButton.bounds.size.width / 2
-        avatarMaidImage.layer.cornerRadius = 60
-        avatarPhotoImage.layer.cornerRadius = 60
+        progressBar.layer.cornerRadius = 15
         
+        avatarMaidImage.layer.cornerRadius = avatarMaidImage.frame.size.width / 2
+        avatarPhotoImage.layer.cornerRadius = avatarPhotoImage.frame.size.width / 2
         print("viewDidLayoutSubviews")
     }
     
@@ -121,18 +121,16 @@ class FaceRecognizalVC: BaseVC {
         self.view.addSubview(progressBar)
         self.view.addSubview(progressLabel)
         
+        let heightImage = (screenWidth / 2) - 30
 
-        avatarMaidImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        avatarMaidImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        avatarMaidImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 70).isActive = true
-        avatarMaidImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        view.addConstraintWithFormat(format: "H:|-20-[v0]-20-[v1]-20-|", views: avatarMaidImage, avatarPhotoImage)
+        view.addConstraintWithFormat(format: "V:|-70-[v0(\(heightImage))]", views: avatarMaidImage)
+        view.addConstraintWithFormat(format: "V:|-70-[v0(\(heightImage))]", views: avatarPhotoImage)
         
-        avatarPhotoImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        avatarPhotoImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        avatarPhotoImage.topAnchor.constraint(equalTo: avatarMaidImage.topAnchor, constant: 0).isActive = true
-        avatarPhotoImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        view.addConstraint(NSLayoutConstraint(item: avatarMaidImage, attribute: .width, relatedBy: .equal, toItem: avatarPhotoImage, attribute: .width, multiplier: 1, constant: 0))
         
         view.addConstraintWithFormat(format: "H:|-30-[v0]-30-|", views: progressBar)
+        progressBar.heightAnchor.constraint(equalToConstant: 30).isActive = true
         progressBar.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 120).isActive = true
         
         progressLabel.centerXAnchor.constraint(equalTo: progressBar.centerXAnchor, constant: 0).isActive = true
@@ -147,8 +145,8 @@ class FaceRecognizalVC: BaseVC {
     func animateCheckFace() {
         //let transform = CGAffineTransform.identity.translatedBy(x: 110, y: 1)
         //let transformB = CGAffineTransform.identity.translatedBy(x: -100, y: 1)
-        let transform = CATransform3DMakeTranslation(100, 1 , 0);
-        let transformB = CATransform3DMakeTranslation(-115, 1, 0)
+        let transform = CATransform3DMakeTranslation(85, 1 , 0);
+        let transformB = CATransform3DMakeTranslation(-92, 1, 0)
         let scale = CATransform3DMakeScale(1, 1, 1);
         
         timer = Timer.scheduledTimer(timeInterval: 15.0 / Double(value), target: self, selector: #selector(update), userInfo: nil, repeats: true)
@@ -177,7 +175,11 @@ class FaceRecognizalVC: BaseVC {
     }
     
     func handleFaceDetect(_ faceImageView: UIImageView){
-        let resizeImage = faceImageView.image?.resizeImage(targetSize: CGSize(width: 120, height: 120))
+        
+        let sizeImage = (screenWidth / 2) - 30
+        
+        let resizeImage = faceImageView.image?.resizeImage(targetSize: CGSize(width: sizeImage, height: sizeImage))
+        
         let faces = self.faceGMVDetector.features(in: resizeImage, options: nil) as? [GMVFaceFeature]
         
         for face in faces! {
@@ -256,7 +258,6 @@ class FaceRecognizalVC: BaseVC {
 
 extension FaceRecognizalVC: FaceButtonDelegate {
     func handleSuccess(_ btnFace: CustomFaceButton) {
-        //btnFace.type = .failure
         for vc in (self.navigationController?.viewControllers ?? []) {
             guard vc is TaskManagementVC else { continue }
             delegate?.checkInMaid!()
@@ -267,7 +268,6 @@ extension FaceRecognizalVC: FaceButtonDelegate {
     }
     
     func handleFailure(_ btnFace: CustomFaceButton) {
-        //btnFace.type = .success
         self.navigationController?.popViewController(animated: true)
         print("Handle Button Failure")
     }
