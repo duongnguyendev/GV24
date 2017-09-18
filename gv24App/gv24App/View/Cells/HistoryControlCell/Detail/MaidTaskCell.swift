@@ -21,7 +21,10 @@ class MaidTaskCell: BaseCollectionCell{
             
             // MARK: - Team Lead - fix crash optional
             guard let image = task?.info?.work?.image else { return }
-            iconType.loadImageurl(link: image)
+            guard let url = URL(string: image) else {
+                return
+            }
+            iconType.af_setImage(withURL: url, placeholderImage: UIImage(named: "nau_an"))
         }
     }
     

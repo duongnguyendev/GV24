@@ -12,7 +12,6 @@ class UpdateProfileVC: SignUpVC_2 {
 
     var user : User?{
         didSet{
-            imageAvatar.loadImageurl(link: (user?.avatarUrl)!)
             emailTextField.text = user?.email
             addressTextField.text = user?.address?.name
             fullNameTextField.text = user?.name
@@ -23,6 +22,14 @@ class UpdateProfileVC: SignUpVC_2 {
             }else{
                 genderTextField.text = LanguageManager.shared.localized(string: "Female")
             }
+            
+            guard let image = user?.avatarUrl else {
+                return
+            }
+            guard let url = URL(string: image) else {
+                return
+            }
+            imageAvatar.af_setImage(withURL: url, placeholderImage: UIImage(named: "avatar"))
         }
     }
     

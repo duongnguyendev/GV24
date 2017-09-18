@@ -17,7 +17,15 @@ class SignUpSocialVC: SignUpVC_2 {
                 self.emailTextField.text = email
                 emailTextField.isEnabled = false
             }
-            self.imageAvatar.loadImageurl(link: (userInfo?["image"])!)
+            
+            guard let image = userInfo?["image"] else {
+                return
+            }
+            
+            guard let url = URL(string: image) else {
+                return
+            }
+            imageAvatar.af_setImage(withURL: url, placeholderImage: UIImage(named: "avatar"))
             fullNameTextField.text = userInfo?["name"]
             
         }

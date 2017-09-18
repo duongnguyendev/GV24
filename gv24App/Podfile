@@ -8,6 +8,7 @@ target 'gv24App' do
   # Pods for gv24App
   pod 'IoniconsSwift'
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'SwiftyJSON'
   pod 'FacebookCore'
   pod 'FacebookLogin'
@@ -26,4 +27,5 @@ target 'gv24App' do
   pod 'AFNetworking', '~> 2.0’
   pod 'GoogleMobileVision/FaceDetector'
   pod 'GTProgressBar'
+  pod 'SwiftySound'
 end

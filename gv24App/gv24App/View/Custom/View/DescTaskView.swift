@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 import IoniconsSwift
+import AlamofireImage
+
+
 class DescTaskView: BaseView {
     
     var preferredHeight: CGFloat {
@@ -30,7 +33,10 @@ class DescTaskView: BaseView {
             }
             
             if let image = work.image {
-                iconType.loadImageurl(link: image)
+                guard let url = URL(string: image) else {
+                    return
+                }
+                iconType.af_setImage(withURL: url, placeholderImage: UIImage(named: "nau_an"))
             }
             labelTitle.text = info.title
             

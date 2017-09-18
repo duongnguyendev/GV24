@@ -13,7 +13,6 @@ class UserProfileCell: BaseCollectionCell {
 
     private var user : User?{
         didSet{
-            avatarImageView.loadImageurl(link: (user?.avatarUrl)!)
             labelName.text = user?.name
             if user?.gender == 0{
                 labelGender.text = LanguageManager.shared.localized(string: "Male")
@@ -23,6 +22,14 @@ class UserProfileCell: BaseCollectionCell {
             labelPhone.text = user?.phone
             labelAddress.text = user?.address?.name
             self.ratingView.point = 5
+            
+            guard let image = user?.avatarUrl else {
+                return
+            }
+            guard let url = URL(string: image) else {
+                return
+            }
+            avatarImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: "avatar"))
         }
     }
     let ratingView = RatingStartView()

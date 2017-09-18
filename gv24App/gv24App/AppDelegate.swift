@@ -52,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
             Thread.sleep(forTimeInterval: 3)
             isWakeFromPush = true
         }
-        
         return true
     }
     
@@ -127,23 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
     }
-    
-//    fileprivate func getNotificationSettings() {
-//        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-//            print("Notification settings: \(settings)")
-//            
-//            guard settings.authorizationStatus == .authorized else { return }
-//            UIApplication.shared.registerForRemoteNotifications()
-//        }
-//    }
-    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        print(notification)
-//    }
-//    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        print(response)
-//    }
     
     fileprivate func routeMeToTheTheater() {
         self.window = UIWindow(frame: UIScreen.main.bounds);

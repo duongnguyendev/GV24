@@ -123,7 +123,10 @@ class TaskCell: BaseCollectionCell {
             let date = Date(isoDateString: (task?.info?.time?.startAt)!)
             labelTitle.text = task?.info?.title
             if let imageUrl = task?.info?.work?.image{
-                iconType.loadImageurl(link: imageUrl)
+                guard let url = URL(string: imageUrl) else {
+                    return
+                }
+                iconType.af_setImage(withURL: url, placeholderImage: UIImage(named: "nau_an"))
             }
             
             labelDate.text = date.dayMonthYear

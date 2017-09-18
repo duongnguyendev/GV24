@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+
+
+
 class AbilityCell: BaseCollectionCell {
     
     let abilityView : HomeFunctButton = {

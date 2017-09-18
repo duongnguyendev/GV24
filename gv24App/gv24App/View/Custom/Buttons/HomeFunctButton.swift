@@ -8,6 +8,8 @@
 
 import UIKit
 import IoniconsSwift
+import AlamofireImage
+
 
 class HomeFunctButton: BaseButton {
     
@@ -33,7 +35,14 @@ class HomeFunctButton: BaseButton {
     }
     var iconUrl : String?{
         didSet{
-            iconView.loadImageUsingUrlString(urlString: iconUrl!)
+            guard let icon = iconUrl else {
+                return
+            }
+            guard let url = URL(string: icon) else {
+                return
+            }
+
+            iconView.af_setImage(withURL: url, placeholderImage: nil)
         }
     }
     private let iconView : CustomImageView = {

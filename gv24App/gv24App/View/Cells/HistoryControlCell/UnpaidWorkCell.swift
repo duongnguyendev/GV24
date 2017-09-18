@@ -18,7 +18,10 @@ class UnpaidWorkCell: TaskCell{
         didSet{
             labelTitle.text = taskUnpaid?.info?.title
             if let image = taskUnpaid?.info?.work?.image {
-                iconType.loadImageurl(link: image)
+                guard let url = URL(string: image) else {
+                    return
+                }
+                iconType.af_setImage(withURL: url, placeholderImage: UIImage(named: "nau_an"))
             }
             if let startAt = taskUnpaid?.info?.time?.startAt, let endAt = taskUnpaid?.info?.time?.endAt {
                 labelDate.text = Date(isoDateString: startAt).dayMonthYear

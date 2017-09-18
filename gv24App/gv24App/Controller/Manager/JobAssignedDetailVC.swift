@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+
+
 class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var taskAssigned = Task()
@@ -111,24 +113,32 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let imageResized = image.resize(newWidth: 200)
             self.loadingView.show()
-            TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (flag) in
+            TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (face) in
                 self.loadingView.close()
-                if flag!{
-                    self.showAlertWith(message: LanguageManager.shared.localized(string: "PartnerIdentifiedSuccessfully")!, completion: { 
+                if let face = face {
+                    let faceVC = FaceRecognizalVC()
+                    faceVC.progressValue = Int(face.confidence!)
+                    faceVC.delegate = self.delegate
+                    faceVC.avatarPhotoImage.image = imageResized
+                    faceVC.avatarMaidImage.af_setImage(withURL: <#T##URL#>, placeholderImage: <#T##UIImage?#>, filter: <#T##ImageFilter?#>, progress: <#T##ImageDownloader.ProgressHandler?##ImageDownloader.ProgressHandler?##(Progress) -> Void#>, progressQueue: <#T##DispatchQueue#>, imageTransition: <#T##UIImageView.ImageTransition#>, runImageTransitionIfCached: <#T##Bool#>, completion: <#T##((DataResponse<UIImage>) -> Void)?##((DataResponse<UIImage>) -> Void)?##(DataResponse<UIImage>) -> Void#>)
+                    faceVC.avatarMaidImage.af_setImage(withURL: url, placeholderImage: nil)
+                    //faceVC.avatarMaidImage
+                    self.push(viewController: faceVC)
+                    /*self.showAlertWith(message: LanguageManager.shared.localized(string: "PartnerIdentifiedSuccessfully")!, completion: {
                         self.delegate?.checkInMaid!()
                         self.dismiss(animated: true, completion: nil)
-                    })
+                    })*/
                 }else{
                     self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToIdentify")!, completion: {
                     })
                 }
             })
             picker.dismiss(animated: true, completion: nil)
-            
         }
     }
     //MARK: - Show Message

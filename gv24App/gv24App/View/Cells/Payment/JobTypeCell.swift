@@ -17,7 +17,10 @@ class JobTypeCell: BaseCollectionCell{
             labelType.text = task?.info?.work?.name
             
             guard let image = self.task?.info?.work?.image else { return }
-            iconType.loadImageurl(link: image)
+            guard let url = URL(string: image) else {
+                return
+            }
+            iconType.af_setImage(withURL: url, placeholderImage: UIImage(named: "nau_an"))
         }
     }
     

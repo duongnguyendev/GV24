@@ -18,7 +18,14 @@ class MarkerInfoWindow: BaseView {
             let priceString = String.numberDecimalString(number: (user?.workInfo?.price)!)
             self.labelPrice.text = "\(priceString)" + " VND/\(hString)"
 //            self.avatarImage.loadImageurl(link: (user?.avatarUrl)!)
-            self.avatarImage.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
+            guard let image = user?.avatarUrl else {
+                return
+            }
+            guard let url = URL(string: image) else {
+                return
+            }
+            avatarImage.af_setImage(withURL: url, placeholderImage: UIImage(named: "avatar"))
+
         }
     }
     let margin : CGFloat = 5.0

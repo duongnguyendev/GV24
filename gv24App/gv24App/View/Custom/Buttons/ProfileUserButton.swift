@@ -13,9 +13,16 @@ class ProfileUserButton: BaseButton{
     
     var received: MaidProfile?{
         didSet{
-            avatarImageView.loadImageurl(link: (received?.avatarUrl)!)
             labelName.text = received?.name
             labelAddress.text = received?.address?.name
+            
+            guard let image = received?.avatarUrl else {
+                return
+            }
+            guard let url = URL(string: image) else {
+                return
+            }
+            avatarImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: "avatar"))
         }
     }
     private let avatarImageView : CustomImageView = {

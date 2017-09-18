@@ -39,5 +39,5 @@ class AppColor : NSObject{
     static let colorButtonLogout = UIColor.rgb(red: 204, green: 204, blue: 204)
     static let titleButtonLogout = UIColor.rgb(red: 162, green: 162, blue: 162)
     static let buttonDelete = UIColor.rgb(red: 240, green: 19, blue: 77)
-    static let successButton = UIColor.rgb(red: 140.0, green: 220.0, blue: 108.0)
+    static let successButton = UIColor.green
 }

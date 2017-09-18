@@ -51,7 +51,7 @@ extension UIImage{
         let base64String = imageData?.base64EncodedString(options: .init(rawValue: 0))
         return base64String
     }
-    
+
     public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         let rect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
@@ -63,6 +63,7 @@ extension UIImage{
         guard let cgImage = image?.cgImage else { return nil }
         self.init(cgImage: cgImage)
     }
+
 
 }
 
@@ -80,7 +81,6 @@ extension UIImageView{
         }
     }
 }
-
 let imageCache = NSCache<AnyObject, AnyObject>()
 class CustomImageView : UIImageView{
     
