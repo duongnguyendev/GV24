@@ -34,10 +34,10 @@ class SignUpVC_2: BaseVC, UINavigationControllerDelegate, UIImagePickerControlle
     private let mainScrollView : UIScrollView = UIScrollView()
     private let mainView : UIView = UIView()
     
-    let imageAvatar : CustomImageView = {
-        let iv = CustomImageView()
+    let imageAvatar : UIImageView = {
+        let iv = UIImageView()
         iv.image = Icon.by(imageName: "camera")
-        iv.contentMode = .scaleToFill
+        iv.contentMode = .scaleAspectFill
         iv.layer.cornerRadius = 50
         iv.layer.masksToBounds = true
         

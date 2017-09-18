@@ -11,7 +11,9 @@ import UIKit
 class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
     var user : User?{
         didSet{
-            self.avatarImage.loadImageUsingUrlString(urlString:(self.user?.avatarUrl)!)
+            guard let urlString = self.user?.avatarUrl else { return }
+            guard let url = URL.init(string: urlString) else { return }
+            self.avatarImage.af_setImage(withURL: url)
         }
     }
     var starDate: Date?{
@@ -61,8 +63,9 @@ class GeneralStatisticVC: BaseVC,DateTimeLauncherDelegate {
         btn.addTarget(self, action: #selector(handleButtonTo(_:)), for: .touchUpInside)
         return btn
     }()
-    let avatarImage : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "avatar"))
+    let avatarImage : UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "avatar"))
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true

@@ -111,8 +111,9 @@ class SelectApplicantCell: UICollectionViewCell {
     var request: Request?{
         didSet{
             self.nameLabel.text = self.request?.madid?.name
-            guard let url = self.request?.madid?.avatarUrl else { return }
-            self.avatarImageView.loadImageurl(link: url)
+            guard let urlString = self.request?.madid?.avatarUrl else { return }
+            guard let url = URL.init(string: urlString) else { return }
+            self.avatarImageView.af_setImage(withURL: url)
         }
     }    
 }

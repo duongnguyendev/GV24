@@ -70,11 +70,13 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         img.layer.borderWidth = 2
     }
     
-    lazy var imageView: CustomImageView = {
-        let img = CustomImageView()
+    lazy var imageView: UIImageView = {
+        let img = UIImageView()
+        img.contentMode = .scaleAspectFill
         let user = UserHelpers.currentUser
-        if let imageUrl = user?.avatarUrl{
-            img.loadImageUsingUrlString(urlString: imageUrl)
+        if let imageUrl = user?.avatarUrl {
+            guard let url = URL.init(string: imageUrl) else { return img }
+            img.af_setImage(withURL: url)
         }
         return img
     }()

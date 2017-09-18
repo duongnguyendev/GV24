@@ -11,11 +11,14 @@ import UIKit
 class CommentCell: BaseCollectionCell {
     var comment : Comment?{
         didSet{
-            if comment?.fromUser?.avatarUrl != nil && comment?.fromUser?.avatarUrl != ""{
-                avartaImage.loadImageUsingUrlString(urlString: (comment?.fromUser?.avatarUrl)!)
-            }else{
+            if let urlString = comment?.fromUser?.avatarUrl {
+                if let url = URL.init(string: urlString) {
+                    avartaImage.af_setImage(withURL: url)
+                }
+            } else {
                 avartaImage.image = UIImage(named: "avatar")
             }
+            
             ratingView.point = comment?.evaluationPoint
             labelName.text = comment?.fromUser?.name
             labelContent.text = comment?.content
@@ -23,9 +26,9 @@ class CommentCell: BaseCollectionCell {
             labelDate.text = comment?.createAt?.dayMonthYear
         }
     } 
-    let avartaImage : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "avatar"))
-
+    let avartaImage : UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "avatar"))
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true

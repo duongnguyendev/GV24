@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
-
+import AlamofireImage
 
 class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var taskAssigned = Task()
+    var imageView = UIImageView()
     
     weak var delegate: TaskManageDelegate?
     
@@ -120,24 +121,20 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
             self.loadingView.show()
             TaskService.shared.checkInMaid(task: taskAssigned, img_checkin: imageResized, completion: { (face) in
                 self.loadingView.close()
+                let faceVC = FaceRecognizalVC()
+                faceVC.delegate = self.delegate
+                faceVC.avatarPhotoImage.image = image
+                guard let image = self.imageView.image else {
+                    self.showAlertWith(message: "Identify failed. Please try again.", completion: {})
+                    return
+                }
                 if let face = face {
-                    let faceVC = FaceRecognizalVC()
-                    faceVC.value = Int(face.confidence!)
-                    faceVC.delegate = self.delegate
-
-                    faceVC.avatarPhotoImage.image = image
-                    
-                    guard let avatarUrl = self.taskAssigned.stakeholder?.receivced?.avatarUrl else { return }
-                    guard let url = URL(string: avatarUrl) else { return }
-                    
-                    faceVC.avatarMaidImage.af_setImage(withURL: url, placeholderImage: nil, completion: { (response) in
-                        if let _ = response.result.value {
-                             self.push(viewController: faceVC)
-                        }
-                    })
-                }else{
-                    self.showAlertWith(message: LanguageManager.shared.localized(string: "FailedToIdentify")!, completion: {
-                    })
+                    faceVC.value = Int(face.confidence! * 100)
+                    faceVC.avatarMaidImage.image = image
+                    self.push(viewController: faceVC)
+                } else {
+                    faceVC.avatarMaidImage.image = image
+                    self.push(viewController: faceVC)
                 }
             })
             picker.dismiss(animated: true, completion: nil)
@@ -176,6 +173,10 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = AppColor.collection
+        
+        guard let urlString = self.taskAssigned.stakeholder?.receivced?.avatarUrl else { return }
+        guard let url = URL.init(string: urlString) else { return }
+        self.imageView.af_setImage(withURL: url)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

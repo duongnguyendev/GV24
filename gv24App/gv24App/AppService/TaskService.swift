@@ -35,7 +35,10 @@ class TaskService: APIService {
     }
     func deleteTask(task: Task,completion: @escaping (DeleteTaskCompletion)){
         let url = "task/delete"
-        let params : Dictionary<String,String> = ["id": task.id!]
+        var params = Dictionary<String,String>()
+        if let id = task.id {
+            params = ["id": id]
+        }
         deleteWithToken(url: url, parameters: params) { (json, message) in
             if json == nil{
                 completion(false)

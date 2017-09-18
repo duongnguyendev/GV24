@@ -25,7 +25,9 @@ class ProfileRatingButton: BaseButton{
     
     var str_Avatar: String?{
         didSet{
-            avatarImageView.loadImageUsingUrlString(urlString: str_Avatar!)
+            guard let urlString = str_Avatar else { return }
+            guard let url = URL.init(string: urlString) else { return }
+            avatarImageView.af_setImage(withURL: url)
         }
     }
     
@@ -34,8 +36,9 @@ class ProfileRatingButton: BaseButton{
             rattingView.point = ratingPoint
         }
     }
-    var avatarImageView : CustomImageView = {
-        var iv = CustomImageView(image: UIImage(named: "avatar"))
+    var avatarImageView : UIImageView = {
+        var iv = UIImageView(image: UIImage(named: "avatar"))
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 25
         

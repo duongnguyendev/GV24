@@ -61,8 +61,9 @@ class BaseMoreCell: BaseCollectionCell {
 
 class MoreUserCell: BaseMoreCell {
     
-    private let avatarImageView : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "avatar"))
+    private let avatarImageView : UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "avatar"))
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 25
         iv.layer.masksToBounds = true
@@ -110,7 +111,9 @@ class MoreUserCell: BaseMoreCell {
     private func showUserInfo(){
         let user = UserHelpers.currentUser
         if let imageUrl = user?.avatarUrl{
-            self.avatarImageView.loadImageUsingUrlString(urlString: imageUrl)
+            if let url = URL.init(string: imageUrl) {
+                self.avatarImageView.af_setImage(withURL: url)
+            }
         }
         
         self.labelName.text = user?.name

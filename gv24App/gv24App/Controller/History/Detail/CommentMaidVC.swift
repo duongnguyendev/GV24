@@ -15,15 +15,18 @@ class CommentMaidVC: BaseVC {
     var id: String?
     
     var maid : MaidProfile?{
-        didSet{
-            self.avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
+        didSet {
             self.labelName.text = maid?.name
             self.labelAddress.text = maid?.address?.name
+            
+            guard let urlString = self.maid?.avatarUrl else { return }
+            guard let url = URL.init(string: urlString) else { return }
+            self.avatarImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: "avatar"))
         }
     }
     
-    private let avatarImageView : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "avatar"))
+    private let avatarImageView : UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "avatar"))
         iv.heightAnchor.constraint(equalToConstant: 50).isActive = true
         iv.widthAnchor.constraint(equalToConstant: 50).isActive = true
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -180,8 +183,16 @@ class CommentMaidVC: BaseVC {
                     alertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
                         // TEAM LEAD FIX HERE
                         for vc in (self?.navigationController?.viewControllers ?? []) {
-                            guard vc is HistoryVC else { continue }
-                            _ = self?.navigationController?.popToViewController(vc, animated: true)
+                            if vc is HistoryVC {
+                                _ = self?.navigationController?.popToViewController(vc, animated: true)
+                                return
+                            } else if vc is ListTaskMaidVC {
+                                _ = self?.navigationController?.popToViewController(vc, animated: true)
+                                return
+                            } else if vc is TaskManagementVC {
+                                _ = self?.navigationController?.popToViewController(vc, animated: true)
+                                return
+                            }
                         }
                         //self.dismiss(animated: true, completion: nil)
                     })
@@ -190,6 +201,18 @@ class CommentMaidVC: BaseVC {
                     alertAction = UIAlertAction(title: LanguageManager.shared.localized(string: "OK"), style: .cancel, handler: { (nil) in
                         // MARK: - TEAM LEAD fix
                         //self.dismiss(animated: true, completion: nil)
+                        for vc in (self?.navigationController?.viewControllers ?? []) {
+                            if vc is HistoryVC {
+                                _ = self?.navigationController?.popToViewController(vc, animated: true)
+                                return
+                            } else if vc is ListTaskMaidVC {
+                                _ = self?.navigationController?.popToViewController(vc, animated: true)
+                                return
+                            } else if vc is TaskManagementVC {
+                                _ = self?.navigationController?.popToViewController(vc, animated: true)
+                                return
+                            }
+                        }
                     })
                 }
                 alert.addAction(alertAction)
@@ -209,6 +232,9 @@ class CommentMaidVC: BaseVC {
                 _ = self.navigationController?.popToViewController(vc, animated: true)
                 return
             } else if vc is ListTaskMaidVC {
+                _ = self.navigationController?.popToViewController(vc, animated: true)
+                return
+            } else if vc is TaskManagementVC {
                 _ = self.navigationController?.popToViewController(vc, animated: true)
                 return
             }

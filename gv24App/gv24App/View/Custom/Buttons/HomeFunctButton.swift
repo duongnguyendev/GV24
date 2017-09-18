@@ -45,8 +45,8 @@ class HomeFunctButton: BaseButton {
             iconView.af_setImage(withURL: url, placeholderImage: nil)
         }
     }
-    private let iconView : CustomImageView = {
-        let iv = CustomImageView()
+    private let iconView : UIImageView = {
+        let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
         return iv

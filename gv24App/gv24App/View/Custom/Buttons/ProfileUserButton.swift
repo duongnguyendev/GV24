@@ -25,8 +25,9 @@ class ProfileUserButton: BaseButton{
             avatarImageView.af_setImage(withURL: url, placeholderImage: UIImage(named: "avatar"))
         }
     }
-    private let avatarImageView : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "avatar"))
+    private let avatarImageView : UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "avatar"))
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 25
         iv.layer.masksToBounds = true

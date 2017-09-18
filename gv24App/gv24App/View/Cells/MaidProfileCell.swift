@@ -26,7 +26,9 @@ class MaidProfileCell: UserProfileCell {
             }else{
                 labelGender.text = LanguageManager.shared.localized(string: "Female")
             }
-            self.avatarImageView.loadImageUsingUrlString(urlString: (user?.avatarUrl)!)
+            guard let urlString = user?.avatarUrl else { return }
+            guard let url = URL.init(string: urlString) else { return }
+            self.avatarImageView.af_setImage(withURL: url)
         }
     }
     let labelAge : UILabel = {

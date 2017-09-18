@@ -32,33 +32,35 @@ class FaceRecognizalVC: BaseVC {
         }
     }
     
-    var value: Int = 0
+    var value: Int = 10
     
-    lazy var avatarMaidImage : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "face"))
-        iv.contentMode = .scaleToFill
+    let avatarMaidImage : UIImageView = {
+        let iv = UIImageView()
+        //iv.image = UIImage.init(named: "face")
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.clipsToBounds = true
+        iv.alpha = 0.5
         return iv
     }()
     
-    lazy var avatarPhotoImage : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "face"))
-        iv.contentMode = .scaleToFill
+    let avatarPhotoImage : UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.clipsToBounds = true
+        iv.alpha = 0.5
         return iv
     }()
     
     
-    lazy var resultFaceButton: CustomFaceButton = {
+    let resultFaceButton: CustomFaceButton = {
         let btn = CustomFaceButton()
-        btn.isHidden = true
-        btn.delegate = self
+        
         return btn
     }()
     
-    lazy var progressBar: ProgressBar = {
+    let progressBar: ProgressBar = {
         let progress = ProgressBar()
         progress.translatesAutoresizingMaskIntoConstraints = false
         progress.layer.borderColor = UIColor.lightGray.cgColor
@@ -79,6 +81,9 @@ class FaceRecognizalVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Face recognization"
+        
+        resultFaceButton.delegate = self
+        resultFaceButton.isHidden = true
         
         let options: [AnyHashable: Any] =
             [GMVDetectorFaceLandmarkType: GMVDetectorFaceLandmark.all.rawValue,
@@ -176,11 +181,15 @@ class FaceRecognizalVC: BaseVC {
     
     func handleFaceDetect(_ faceImageView: UIImageView){
         
+        guard faceImageView.image != nil else {
+            print("image is nil")
+            return
+        }
         let sizeImage = (screenWidth / 2) - 30
-        
         let resizeImage = faceImageView.image?.resizeImage(targetSize: CGSize(width: sizeImage, height: sizeImage))
         
-        let faces = self.faceGMVDetector.features(in: resizeImage, options: nil) as? [GMVFaceFeature]
+        faceImageView.image = resizeImage
+        let faces = self.faceGMVDetector.features(in: faceImageView.image, options: nil) as? [GMVFaceFeature]
         
         for face in faces! {
             // face

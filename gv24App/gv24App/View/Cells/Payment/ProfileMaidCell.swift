@@ -12,13 +12,17 @@ class ProfileMaidCell: BaseCollectionCell{
     let cellMargin: CGFloat = 20
     var maid: MaidProfile? {
         didSet{
-            avatarImageView.loadImageUsingUrlString(urlString: (maid?.avatarUrl)!)
             labelName.text = maid?.name
             labelAddress.text = maid?.address?.name
+            
+            guard let urlString = maid?.avatarUrl else { return }
+            guard let url = URL.init(string: urlString) else { return }
+            self.avatarImageView.af_setImage(withURL: url)
         }
     }
-    private let avatarImageView : CustomImageView = {
-        let iv = CustomImageView(image: UIImage(named: "avatar"))
+    private let avatarImageView : UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "avatar"))
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 25
         iv.layer.masksToBounds = true
