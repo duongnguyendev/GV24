@@ -191,11 +191,41 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
             let jobPostVC = JobPostedDetailVC()
             jobPostVC.task = task
             jobPostVC.delegate = self
+            loadApplicant(task: task)
             // MARK: TEAM LEAD - fix present to push here
-            push(viewController: jobPostVC)
+            //push(viewController: jobPostVC)
             //present(viewController: jobPostVC)
         }
     }
+    
+    
+    var data = [Applicant]()
+    
+    
+    func loadApplicant(task: Task) {
+        self.loadingView.show()
+        guard let id = task.id else {return}
+        TaskManageService.shared.fetchApplicants(id: id) { (applicants, error) in
+            if error == nil{
+                guard let app = applicants else {return}
+                self.loadingView.close()
+                //                let applicantVC = ApplicantsVC()
+                //                applicantVC.delegate = self.delegate
+                //                applicantVC.applicants = app
+                self.data = app
+                
+                self.collectionType.reloadData()
+                
+                let jobPostVC = JobPostedDetailVC()
+                jobPostVC.data = self.data
+                self.push(viewController: jobPostVC)
+                print("data in: \(self.data)")
+            }else{
+                
+            }
+        }
+    }
+    
     
     func selectedAssigned(deadline: Bool, task: Task) {
         let jobAssignedVC = JobAssignedDetailVC()

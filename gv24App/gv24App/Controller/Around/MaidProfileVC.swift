@@ -19,6 +19,7 @@ class MaidProfileVC: ProfileVC, MaidProfileDelegate {
             title = maid?.name
         }
     }
+    
     var selectable = false
     weak var delegate: MaidProfileVCDelegate?
     
