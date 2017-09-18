@@ -291,3 +291,10 @@ MaidReceivedMoney = "Cash received!";
 MaidNotReceivedMoney = "No cash received!";
 MaidBecomeApplicant = "You just got a new applicant";
 DefaultNotification = "You just received a new notification";
+
+//------PUSH LOC-KEY------//
+0 = "The applicant just refused your work";
+2 = "The applicant just accepted your request";
+10 = "Cash received!";
+11 = "No cash received!";
+88 = "You just got a new applicant";

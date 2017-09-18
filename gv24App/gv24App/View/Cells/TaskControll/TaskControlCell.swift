@@ -45,7 +45,7 @@ class TaskControlCell: BaseCollectionCell, UICollectionViewDelegate, UICollectio
     var type: Int? {
         didSet{
             if type == 0{
-                self.loadData(process: "000000000000000000000001&sortByTaskTime=true")
+                self.loadData(process: "000000000000000000000001")
             }else if type == 1{
                 self.loadData(process: "000000000000000000000003")
             }else{

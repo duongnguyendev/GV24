@@ -14,47 +14,11 @@ class NotificationHelpers {
     static let shared = NotificationHelpers()
     
     func handleNotification(userInfo: [AnyHashable : Any]) {
-        guard let aps = userInfo["aps"] as? [String: AnyObject] else { return }
         guard let status = userInfo["status"] as? String else { return }
-        guard let alert = aps["alert"] as? [String: AnyObject] else { return }
-        guard let title = alert["title"] as? String else { return }
         
         guard let destinationViewController = appDelegate?.window??.rootViewController as? UINavigationController else { return }
         
-        guard isWakeFromPush == false else {
-            self.handleNotification(destinationViewController: destinationViewController, status: status)
-            isWakeFromPush = false
-            return
-        }
-        
-        var announcement = Announcement(title: title, subtitle: self.getTitleForStatus(status: status), image: UIImage(named: "logo"))
-        announcement.action = handleAction(destinationViewController: destinationViewController, status: status)
-        announcement.duration = 5
-        Whisper.show(shout: announcement, to: destinationViewController, completion: nil)
-    }
-    
-    fileprivate func getTitleForStatus(status: String) -> String {
-        switch status {
-        case "0":
-            return LanguageManager.shared.localized(string: "MaidRefuseAcceptedWork")!
-        case "2":
-            return LanguageManager.shared.localized(string: "MaidAcceptWork")!
-        case "10":
-            return LanguageManager.shared.localized(string: "MaidReceivedMoney")!
-        case "11":
-            return LanguageManager.shared.localized(string: "MaidNotReceivedMoney")!
-        case "88":
-            return LanguageManager.shared.localized(string: "MaidBecomeApplicant")!
-        default:
-            return LanguageManager.shared.localized(string: "DefaultNotification")!
-        }
-    }
-    
-    fileprivate func handleAction(destinationViewController: UINavigationController, status: String) -> (() -> Void) {
-        func route() {
-            handleNotification(destinationViewController: destinationViewController, status: status)
-        }
-        return route
+        self.handleNotification(destinationViewController: destinationViewController, status: status)
     }
     
     fileprivate func handleNotification(destinationViewController: UINavigationController, status: String) {

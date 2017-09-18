@@ -17,6 +17,7 @@ class Language: NSObject {
         self.language = language
     }
 }
+
 class LanguageManager: NSObject {
     static let shared = LanguageManager()
     var listLanguage : [Language]{
@@ -27,15 +28,18 @@ class LanguageManager: NSObject {
     var current = 0
     
     var bundle : Bundle?
+    
     override init() {
         super.init()
         let languageCode = self.getCurrentLanguage().languageCode
         let bundlePath = Bundle.main.path(forResource: languageCode, ofType: "lproj")
         bundle = Bundle(path: bundlePath!)
     }
+    
     func localized(string: String) -> String?{
         return NSLocalizedString(string, bundle: bundle!, comment: "")
     }
+    
     func setCurrent(language : Language){
         UserDefaults.standard.set([language.languageCode], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()

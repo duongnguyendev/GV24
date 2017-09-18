@@ -125,8 +125,8 @@ class JobAssignedDetailVC: BaseVC,UINavigationControllerDelegate, UIImagePickerC
                     faceVC.progressValue = Int(face.confidence!)
                     faceVC.delegate = self.delegate
                     faceVC.avatarPhotoImage.image = imageResized
-                    faceVC.avatarMaidImage.af_setImage(withURL: <#T##URL#>, placeholderImage: <#T##UIImage?#>, filter: <#T##ImageFilter?#>, progress: <#T##ImageDownloader.ProgressHandler?##ImageDownloader.ProgressHandler?##(Progress) -> Void#>, progressQueue: <#T##DispatchQueue#>, imageTransition: <#T##UIImageView.ImageTransition#>, runImageTransitionIfCached: <#T##Bool#>, completion: <#T##((DataResponse<UIImage>) -> Void)?##((DataResponse<UIImage>) -> Void)?##(DataResponse<UIImage>) -> Void#>)
-                    faceVC.avatarMaidImage.af_setImage(withURL: url, placeholderImage: nil)
+//
+                    //faceVC.avatarMaidImage.af_setImage(withURL: url, placeholderImage: nil)
                     //faceVC.avatarMaidImage
                     self.push(viewController: faceVC)
                     /*self.showAlertWith(message: LanguageManager.shared.localized(string: "PartnerIdentifiedSuccessfully")!, completion: {

@@ -20,8 +20,6 @@ import FacebookLogin
 import Alamofire
 import IQKeyboardManagerSwift
 
-var isWakeFromPush = false
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate {
     
@@ -43,15 +41,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         
         // Configure Google Sign In
         self.configureGoogleSignIn()
-
+        
         // Override point for customization after application launch.
         self.routeMeToTheTheater()
         
         // Handle notifications
         if let _ = launchOptions?[.remoteNotification] as? [String: AnyObject] {
             Thread.sleep(forTimeInterval: 3)
-            isWakeFromPush = true
         }
+        
         return true
     }
     
@@ -64,47 +62,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         let token = tokenParts.joined()
         print("Raw Token: \(token)")
         
-        //Messaging
-        
-        //let token = FIRMessaging.messaging().tpken
+        // Adapt Firebase Push
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: .unknown)
-        //FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.prod)
     }
     
     fileprivate func registerForPushNotifications(application: UIApplication) {
-        //        if #available(iOS 10.0, *) {
-        //            // For iOS 10 display notification (sent via APNS)
-        //            UNUserNotificationCenter.current().delegate = self
-        //            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        //            UNUserNotificationCenter.current().requestAuthorization(
-        //                options: authOptions,
-        //                completionHandler: {_, _ in })
-        //            // For iOS 10 data message (sent via FCM
-        //            FIRMessaging.messaging().remoteMessageDelegate = self
-        //        } else {
-        let settings: UIUserNotificationSettings =
-            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-        application.registerUserNotificationSettings(settings)
-        //        }
-        application.registerForRemoteNotifications()
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+            // For iOS 10 data message (sent via FCM
+            FIRMessaging.messaging().remoteMessageDelegate = self
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+            //        }
+            application.registerForRemoteNotifications()
+        }
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register: \(error)")
     }
-
+    
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
         print(remoteMessage.appData)
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        NotificationHelpers.shared.handleNotification(userInfo: userInfo)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        print(userInfo)
         
-        completionHandler(.newData)
-    }
-
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         NotificationHelpers.shared.handleNotification(userInfo: userInfo)
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        print(userInfo)
+
+        completionHandler([.sound, .alert])
     }
     
     func applicationWillResignActive(_ application: UIApplication) {}

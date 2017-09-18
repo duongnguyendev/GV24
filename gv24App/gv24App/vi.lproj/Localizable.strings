@@ -291,5 +291,12 @@ MaidRefuseAcceptedWork = "Người giúp việc vừa hủy công việc đã nh
 MaidAcceptWork = "Người giúp việc vừa chấp nhận yêu cầu của bạn";
 MaidReceivedMoney = "Đã nhận được tiền mặt";
 MaidNotReceivedMoney = "Chưa nhận được tiền mặt";
-MaidBecomeApplicant = "Chưa nhận được tiền mặt";
+MaidBecomeApplicant = "Người giúp việc vừa ứng tuyển vào công việc của bạn";
 DefaultNotification = "Bạn vừa nhận được một thông báo";
+
+//------PUSH LOC-KEY------//
+0 = "Người giúp việc vừa hủy công việc đã nhận";
+2 = "Người giúp việc vừa chấp nhận yêu cầu của bạn";
+10 = "Đã nhận được tiền mặt";
+11 = "Chưa nhận được tiền mặt";
+88 = "Người giúp việc vừa ứng tuyển vào công việc của bạn";
