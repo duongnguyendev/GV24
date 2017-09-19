@@ -59,10 +59,7 @@ class JobDetailVC: BaseVC {
     
     override func setupView() {
         super.setupView()
-        
-      
-        
-        
+
         self.view.addSubview(mainScrollView)
         mainScrollView.addSubview(contentView)
         contentView.addSubview(descTaskView)

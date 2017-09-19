@@ -35,7 +35,7 @@ class UserProfileCell: BaseCollectionCell {
     let ratingView = RatingStartView()
     
     let imageBackGround : UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "top_bg"))
+        let iv = UIImageView()
         iv.contentMode = .scaleToFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv

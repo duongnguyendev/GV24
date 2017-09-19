@@ -11,7 +11,7 @@ import UIKit
 class ProfileVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = LanguageManager.shared.localized(string: "Profile")
+        title = LanguageManager.shared.localized(string: "ApplicantProfile")
         mainCollectionView.register(CellWithTitle.self, forCellWithReuseIdentifier: cellId)
         mainCollectionView.register(UserProfileCell.self, forCellWithReuseIdentifier: profileCellId)
         mainCollectionView.register(CommentCell.self, forCellWithReuseIdentifier: commentCellId)

@@ -8,11 +8,16 @@
 
 import Foundation
 import UIKit
+
+
+
 @objc protocol ApplicantControlDelegate {
     @objc optional func selectedProfile(maid : MaidProfile)
     @objc optional func selectedMaid(id: String,maid : MaidProfile)
 }
+
 class ApplicantCell: MaidCell{
+    
     weak var delegateApp: ApplicantControlDelegate?
     var idTask: String?
     override func setupView() {

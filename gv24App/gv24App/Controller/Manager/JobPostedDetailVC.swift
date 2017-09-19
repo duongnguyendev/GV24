@@ -76,8 +76,6 @@ class JobPostedDetailVC: JobDetailVC, UICollectionViewDataSource, UICollectionVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.descTaskView.task = task
-        //self.appListButton.status = "\((task.stakeholder?.request?.count)!)"
-        
     }
     
     override func setupRightNavButton() {

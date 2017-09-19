@@ -28,7 +28,6 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if UserHelpers.isLogin {
             self.checkAuthentication { [weak self] in
                 self?.loadTypeOfWork()
@@ -46,25 +45,17 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return iv
     }()
     
-    
-    let lableTitle: UILabel = {
-        let lb = UILabel()
-        lb.text = "Nguyen Tuan Huy"
-        lb.textColor = AppColor.white
-        return lb
-    
-    }()
-    
     let lbInfor: UILabel = {
         let lb = UILabel()
         lb.text = "Quick look for maid now"
+        lb.font = Fonts.by(name: .medium, size: 16)
         lb.textColor = AppColor.white
         return lb
     }()
     
     
     func corner(img: UIImageView) {
-        img.layer.cornerRadius = 25
+        img.layer.cornerRadius = 40
         img.clipsToBounds = true
         img.layer.borderColor = AppColor.white.cgColor
         img.layer.borderWidth = 2
@@ -130,7 +121,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
 
     let viewRadian: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor.rgbAlpha(red: 38, green: 38, blue: 38, alpha: 0.8)
+        v.backgroundColor = UIColor.rgbAlpha(red: 38, green: 38, blue: 38, alpha: 0.5)
         return v
     }()
     
@@ -158,31 +149,25 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         collectionViewTypeOfwork.dataSource = self
         
         view.addSubview(viewRadian)
+        view.addSubview(imageProfile)
         view.addSubview(imageView)
         view.addSubview(lbInfor)
         view.addSubview(collectionViewTypeOfwork)
         view.addSubview(aroundButton)
         view.addSubview(taskManagerButton)
         view.addSubview(historyButton)
-        //view.addSubview(lableTitle)
-        view.addSubview(imageProfile)
-        
         
         cornerButton(bt: aroundButton)
         cornerButton(bt: taskManagerButton)
         cornerButton(bt: historyButton)
         
-        viewRadian.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        viewRadian.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        viewRadian.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        viewRadian.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         view.addConstraintWithFormat(format: "H:|[v0]|", views: viewRadian)
         view.addConstraintWithFormat(format: "V:|[v0]|", views: viewRadian)
         
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 25).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
         view.addConstraintWithFormat(format: "H:[v0]", views: imageView)
         corner(img: imageView)
         
@@ -196,13 +181,8 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
         
         lbInfor.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        lbInfor.topAnchor.constraint(equalTo: imageProfile.bottomAnchor, constant: 10).isActive = true
+        lbInfor.topAnchor.constraint(equalTo: imageProfile.bottomAnchor, constant: 40).isActive = true
         view.addConstraintWithFormat(format: "V:[v0]", views: lbInfor)
-        
-        
-        //lableTitle.centerYAnchor.constraint(equalTo: imageProfile.centerYAnchor, constant: 0).isActive = true
-        //lableTitle.rightAnchor.constraint(equalTo: imageProfile.leftAnchor, constant: -20).isActive = true
-        //view.addConstraintWithFormat(format: "H:[v0]", views: lableTitle)
         
         
         let collectionHeight = (UIScreen.main.bounds.width) / 2
@@ -210,23 +190,22 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         view.addConstraintWithFormat(format: "H:|[v0]|", views: collectionViewTypeOfwork)
         collectionViewTypeOfwork.heightAnchor.constraint(equalToConstant: collectionHeight).isActive = true
         
-        view.addConstraintWithFormat(format: "V:[v0(64)]-20-[v1(64)]-20-[v2(64)]-30-|", views: aroundButton,taskManagerButton,historyButton)
+        view.addConstraintWithFormat(format: "V:[v0(50)]-20-[v1(50)]-20-[v2(50)]-40-|", views: aroundButton,taskManagerButton,historyButton)
         
         
-        aroundButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
-        aroundButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        aroundButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -32).isActive = true
+        aroundButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 32).isActive = true
 
         
-        taskManagerButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
-        taskManagerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        taskManagerButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -32).isActive = true
+        taskManagerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 32).isActive = true
 
         
-        historyButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
-        historyButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
-
-
+        historyButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -32).isActive = true
+        historyButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 32).isActive = true
         
-        
+        view.addConstraint(NSLayoutConstraint(item: aroundButton, attribute: .height, relatedBy: .equal, toItem: taskManagerButton, attribute: .height, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: taskManagerButton, attribute: .height, relatedBy: .equal, toItem: historyButton, attribute: .height, multiplier: 1, constant: 0))
     }
     
     
