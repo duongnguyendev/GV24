@@ -55,7 +55,7 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     
     func corner(img: UIImageView) {
-        img.layer.cornerRadius = 40
+        img.layer.cornerRadius = 35
         img.clipsToBounds = true
         img.layer.borderColor = AppColor.white.cgColor
         img.layer.borderWidth = 2
@@ -166,8 +166,8 @@ class HomeVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
         imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
         view.addConstraintWithFormat(format: "H:[v0]", views: imageView)
         corner(img: imageView)
         
