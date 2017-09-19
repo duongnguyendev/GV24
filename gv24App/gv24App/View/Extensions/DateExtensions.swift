@@ -88,8 +88,8 @@ extension Date {
     
     var hourMinute: String{
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: LanguageManager.shared.getCurrentLanguage().languageCode!)
-        formatter.dateFormat = "hh:mm a"
+        //formatter.locale = Locale(identifier: LanguageManager.shared.getCurrentLanguage().languageCode!)
+        formatter.dateFormat = "HH:mm"
         let hourMinute = formatter.string(from: self)
         return hourMinute
     }

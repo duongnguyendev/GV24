@@ -148,7 +148,9 @@ class JobPostedDetailVC: JobDetailVC, UICollectionViewDataSource, UICollectionVi
     }
     
     func handleButtonChoose(_ sender: UIButton) {
-        self.selectedMaid(id: self.data[0].id!, maid: selectedMaid!)
+        guard let id = data[0].id else {return}
+        guard let maid = selectedMaid else {return}
+        self.selectedMaid(id: id, maid: maid)
     }
     
     

@@ -76,6 +76,15 @@ class SelectApplicantCell: UICollectionViewCell {
         return avatarImageView
     }()
     
+    private let imageArrowRight : UIImageView = {
+        let arrow = UIImageView()
+        arrow.contentMode = .scaleToFill
+        arrow.isUserInteractionEnabled = true
+        arrow.image = #imageLiteral(resourceName: "ic_arrow_right")
+        arrow.translatesAutoresizingMaskIntoConstraints = false
+        return arrow
+    }()
+    
     private let nameLabel : UILabel = {
         let nameLabel = UILabel()
         nameLabel.font = UIFont.systemFont(ofSize: 11.0)
@@ -91,6 +100,7 @@ class SelectApplicantCell: UICollectionViewCell {
     private func addComponents() {
         self.contentView.addSubview(self.avatarImageView)
         self.contentView.addSubview(self.nameLabel)
+        self.contentView.addSubview(imageArrowRight)
         
         self.contentView.layer.cornerRadius = 10.0
         self.contentView.layer.masksToBounds = true
@@ -99,12 +109,14 @@ class SelectApplicantCell: UICollectionViewCell {
     }
     
     private func addConstraints() {
-        let views = ["avatar" : self.avatarImageView, "label": self.nameLabel]
+        let views = ["avatar" : self.avatarImageView, "label": self.nameLabel,"arrowRight": self.imageArrowRight]
         
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[avatar(62)]-10-[label]", options: [], metrics: nil, views: views))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-13-[label]-13-|", options: [], metrics: nil, views: views))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-13-[label]-[arrowRight(20)]-5-|", options: [], metrics: nil, views: views))
         self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[avatar(62)]", options: [], metrics: nil, views: views))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[arrowRight(20)]", options: [], metrics: nil, views: views))
         self.contentView.addConstraint(NSLayoutConstraint.init(item: self.avatarImageView, attribute: .centerX, relatedBy: .equal, toItem: self.contentView, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+       self.contentView.addConstraint(NSLayoutConstraint.init(item: self.nameLabel, attribute: .centerY, relatedBy: .equal, toItem: self.imageArrowRight, attribute: .centerY, multiplier: 1.0, constant: 0.0))
         
     }
     

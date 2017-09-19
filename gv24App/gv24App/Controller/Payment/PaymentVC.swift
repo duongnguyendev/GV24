@@ -194,7 +194,7 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
             self.loadingView.close()
             if let wallet = wallet{
                 self.wallet = wallet
-                let cell = self.collectionPayment.cellForItem(at: IndexPath(item: 0, section: 2)) as? BankOwnerCell
+                let cell = self.collectionPayment.cellForItem(at: IndexPath(item: 0, section: 1)) as? BankOwnerCell
                 cell?.date = Date().isoString
                 cell?.bank = wallet.wallet
             }else{
@@ -278,21 +278,21 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
             }
         case 1:
             if indexPath.item == 0{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: bankCellId, for: indexPath) as! BankOwnerCell
+                return cell
+            }else{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: totalCellId, for: indexPath) as! TotalMaidCell
+                cell.total = workSuccess?.price
+                return cell
+            }
+        case 2:
+            if indexPath.item == 0{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: profileCellId, for: indexPath) as! ProfileMaidCell
                 cell.maid = taskProgress?.stakeholder?.receivced
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: moneyCellId, for: indexPath) as! MoneyMaidCell
                 cell.price = taskProgress?.stakeholder?.receivced?.workInfo?.price
-                return cell
-            }
-        case 2:
-            if indexPath.item == 0{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: bankCellId, for: indexPath) as! BankOwnerCell
-                return cell
-            }else{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: totalCellId, for: indexPath) as! TotalMaidCell
-                cell.total = workSuccess?.price
                 return cell
             }
         default:
@@ -303,9 +303,9 @@ class PaymentVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 1 && indexPath.item == 1{
-            return CGSize(width: view.frame.size.width, height: 45)
-        }else if indexPath.section == 2 && indexPath.item == 1{
             return CGSize(width: view.frame.size.width, height: 30)
+        }else if indexPath.section == 2 && indexPath.item == 1{
+            return CGSize(width: view.frame.size.width, height: 45)
         }
         return CGSize(width: view.frame.size.width, height: 70)
     }
