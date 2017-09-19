@@ -27,10 +27,9 @@ class JobPostedDetailVC: JobDetailVC, UICollectionViewDataSource, UICollectionVi
             collectionApplicant.reloadData()
         }
     }
-    
+    var task = Task()
     var controllerToDismiss: BaseVC?
     var collecionviewCell = SelectApplicantCell()
-    var task = Task()
     weak var delegate: TaskManageDelegate?
     
     var collectionApplicant : UICollectionView = {
@@ -109,25 +108,6 @@ class JobPostedDetailVC: JobDetailVC, UICollectionViewDataSource, UICollectionVi
         print("Handle Remove Task")
     }
     
-    func loadApplicant() {
-        self.loadingView.show()
-        guard let id = task.id else {return}
-        TaskManageService.shared.fetchApplicants(id: id) { (applicants, error) in
-            if error == nil{
-                guard let app = applicants else {return}
-                self.loadingView.close()
-                //                let applicantVC = ApplicantsVC()
-                //                applicantVC.delegate = self.delegate
-                //                applicantVC.applicants = app
-                self.data = app
-                
-                self.collectionApplicant.reloadData()
-                print("data in: \(self.data)")
-            }else{
-                
-            }
-        }
-    }
     
     func handleAppListTask(_ sender: UIButton){
         self.loadingView.show()

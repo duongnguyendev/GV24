@@ -188,9 +188,9 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
             push(viewController: jobNewVC)
             //present(viewController: jobNewVC)
         }else{
-            let jobPostVC = JobPostedDetailVC()
+            /*let jobPostVC = JobPostedDetailVC()
             jobPostVC.task = task
-            jobPostVC.delegate = self
+            jobPostVC.delegate = self*/
             loadApplicant(task: task)
             // MARK: TEAM LEAD - fix present to push here
             //push(viewController: jobPostVC)
@@ -217,6 +217,7 @@ class TaskManagementVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSo
                 self.collectionType.reloadData()
                 
                 let jobPostVC = JobPostedDetailVC()
+                jobPostVC.task = task
                 jobPostVC.data = self.data
                 self.push(viewController: jobPostVC)
                 print("data in: \(self.data)")
