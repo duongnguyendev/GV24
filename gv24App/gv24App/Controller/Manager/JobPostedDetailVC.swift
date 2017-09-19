@@ -83,7 +83,7 @@ class JobPostedDetailVC: JobDetailVC, UICollectionViewDataSource, UICollectionVi
     override func setupRightNavButton() {
         super.setupRightNavButton()
         
-        let button = UIBarButtonItem.init(title: "Choose", style: .done, target: self, action: #selector(handleButtonChoose(_:)))
+        let button = UIBarButtonItem.init(title: LanguageManager.shared.localized(string: "choose"), style: .done, target: self, action: #selector(handleButtonChoose(_:)))
         button.tintColor = AppColor.backButton
         self.navigationItem.setRightBarButton(button, animated: true)
         self.navigationItem.rightBarButtonItem?.isEnabled = false

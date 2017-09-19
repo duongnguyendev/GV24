@@ -231,6 +231,7 @@ InvalidOtherRequestText = "Yêu cầu khác phải có ít nhất 10 ký tự";
 CancelTextForAlertView = "Huỷ";
 SettingTextForAlertView = "Cài đặt";
 EmailServicesUnavailable = "Vui lòng thiết lập tài khoản email trước khi sử dụng";
+choose = "Chọn";
 
 //===============
 SUCCESS = "Thành công";

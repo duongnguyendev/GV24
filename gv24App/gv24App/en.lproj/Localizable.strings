@@ -230,6 +230,8 @@ InvalidOtherRequestText = "Other requests must be at least 10 characters";
 CancelTextForAlertView = "Cancel";
 SettingTextForAlertView = "Settings";
 EmailServicesUnavailable = "Please setup email accounts in Settings before using";
+choose = "Choose";
+
 
 //===============
 SUCCESS = "Success!";
