@@ -1,11 +1,14 @@
-/*
-  Localizable.strings
-  gv24App
 
-  Created by Nguyen Duy Duong on 4/27/17.
-  Copyright © 2017 HBBs. All rights reserved.
-*/
+/*
+ Localizable.strings
+ gv24App
+ 
+ Created by Nguyen Duy Duong on 4/27/17.
+ Copyright © 2017 HBBs. All rights reserved.
+ */
 //domainGV24 = "https://yukotest123.herokuapp.com/en/";
+
+//--------IN APP-------------//
 domainGV24 = "http://api.ngv247.com/en/";
 English = "English";
 Back = "Back";
@@ -13,9 +16,9 @@ Home = "Home";
 More = "More";
 Around = "Maid\naround here";
 NearbyWorkers = "Nearby workers";
-TitleNearbyWorkers = "Nearby workers";
-SignIn = "Sign in";
-SignInUppercase = "Sign in";
+TitleNearbyWorkers = "Nearby\nworkers";
+SignIn = "Sign In";
+SignInUppercase = "Sign In";
 SingUp = "Sign up";
 NearbyJobs = "Nearby jobs";
 WorkManagement = "Work management";
@@ -30,7 +33,7 @@ Language = "Language";
 Login = "Login";
 Username = "Username";
 Password = "Password";
-ForgotPassword = "Forget password?";
+ForgotPassword = "Forgot password?";
 SignUpNow = "Sign up now";
 LoginWith = "Connect in one tap";
 ConfirmPassword = "Confirm password";
@@ -42,32 +45,32 @@ CompleteCheckout = "Complete";
 PostedWork = "Posted Work";
 PostedWork1 = "Posted Work";
 InProcess = "In-process";
-RunningWork = "Running";
+RunningWork = "Running work";
 Assigned = "Assigned ";
-JobsForApplications = "Awaiting applications";
+Posted = "Posted";
+JobsForApplications = "Jobs for applications";
 Description = "Description";
 ApplicantList = "Applicant list";
-SelectYourApplicants = "Select your applicant";
+SelectYourApplicants = "Select your applicants";
 PostYourWork = "Post your work";
 TypesOfWork = "Types of work";
 WorkDescription = "Other requests";
 Address = "Address";
-EnterTheSalary = "Enter the amount";
+EnterTheSalary = "Enter the salary";
 HourlyPay = "Hourly pay";
-TheStartDate = "Date";
-TimeOfWorking = "Time";
+TheStartDate = "The start date";
+TimeOfWorking = "Time of working";
 Evaluate = "Evaluate";
 ApplicantProfile = "Applicant profile";
-Profile = "My profile";
+Profile = "Profile";
 Addcomments = "Add comments";
 Comment = "Comment";
 Payment = "Payment ";
 NGV247Account = "NGV247 account";
-NGV247Payment = "NGV247\naccount";
-OnlinePayment = "Online\npayment";
-CashPayment = "Cash\npayment";
+OnlinePayment = "Online payment";
+CashPayment = "Cash Payment";
 AccountBalance = "Account balance: ";
-SelectYourPaymentMethods = "PAYMENT METHODS";
+SelectYourPaymentMethods = "Select your payment methods";
 DeleteWork = "Delete work";
 AreYouSureYouWantToDeleteThisWork = "Are you sure you want to delete this work?";
 Cancel = "Cancel";
@@ -75,7 +78,7 @@ Delete = "Delete ";
 OK = "OK";
 EditWork = "Edit work";
 ClickOktoConfirmTheTaskCompleted = "Click \"Ok\" to confirm the task completed";
-PleaseCompleteAllInformation = "Please, complete all information!";
+PleaseCompleteAllInformation = "Please, complete all information.";
 TheDateChosenIsunsuitable = "The date chosen is unsuitable.";
 WorkingTimeIsUnsuitable = "Working time is unsuitable.";
 PleaseDoubleCheckYourHomeAddress = "Please, double check your home address.";
@@ -84,9 +87,9 @@ PostUnsuccessfully = "Post unsuccessfully!";
 UpdateSuccessfully = "Update successfully!";
 UpdateUnsuccessfully = "Update unsuccessfully!";
 YouAccountHasBeenLoggedIntoFromANewDevice = "You account has been logged into from a new device";
-YourHelpers = "Former parters";
-UnpaidWork = "Unpaid";
-CompletedWork = "Work history";
+YourHelpers = "Your helpers";
+UnpaidWork = "Unpaid work";
+CompletedWork = "Completed";
 Recharge = "Recharge";
 Unpaid = "Unpaid";
 WorkInProcess = "Work-in-process";
@@ -94,18 +97,18 @@ Worklist = "Worklist";
 FollowUsOnFacebook = "Follow us on Facebook";
 AreYouSureToLogout = "Are you sure to log out?";
 GeneralStatistic = "General statistic";
-Notification = "Notification";
+Announcement = "Announcement";
 Contact = "Contact";
 NearbyWork = "Nearby work";
 YourPostsWouldBeWithinTen = "Your posts would be within ten!";
 BringYourCleaningSupplies = "Bring your cleaning supplies!";
-ExpiredToApply = "Expired to apply";
+Exceeded = "Exceeded";
 Post = "Post";
 Filter = "Filter";
 Gender = "Gender";
 Age = "Age";
 Request = "Request";
-Logout = "Sign out";
+Logout = "Sign Out";
 To = "To";
 WorkDone = "Work\nhistory";
 Male = "Male";
@@ -120,10 +123,9 @@ Search = "Search";
 Send = "Send";
 MonthBefore = "months before";
 1MonthBefore = "month before";
-DayBefore = "days ago";
-1DayBefore = "day ago";
-HourBefore = "hours ago";
-MinuteBefore = "minutes ago";
+DayBefore = "days before";
+HourBefore = "hours before";
+MinuteBefore = "minutes before";
 Description = "Description";
 Hour = "hour";
 PleaseDoubleCheckTimeChosen = "Please double check time chosen";
@@ -142,7 +144,7 @@ IdentifyYourPartners = "Identify your partners";
 AwaitingAssignment = "Awaiting assignment";
 PendingConfirmation = "Pending confirmation";
 ChooseThisWork = "Choose this work";
-Feedback = "Feedback ";
+Feedback = "Report ";
 TitleFeedback = "Report";
 PartnersNearby = "Partners nearby";
 Announcement = "Announcement";
@@ -169,9 +171,10 @@ InvalidPhoneNumber = "Phone number must be at least 10 characters";
 YourDescriptionIsTooShort = "Your description is too short";
 PleaseEnterYourGender = "Please enter your gender";
 PleaseChooseYourTypeOfWork = "Please choose your type of work";
+CashPayment = "Cash payment";
 APasswordResetLinkIsSentToYourEmail = "A password reset link is sent to your email";
 FailedPleaseDoubleCheckYourEmailAndAccount = "Failed! Please double check your email and account";
-Timework = "Hourly pay";
+Timework = "Timework";
 PleaseSignInBeforeUsingThisFeature = "Please sign in before using this feature";
 AddressNotFound = "Address not found!";
 PleaseFillInTheTitle = "Please fill in the title";
@@ -183,11 +186,13 @@ InvoiceNumber = "Invoice number";
 InvalidUsername = "Invalid username";
 InvalidConfirmPassword = "Invalid confirm password";
 YourPasswordIsTooShort = "Your password is too short";
+PaymentMethods = "Payment methods";
 Avatar = "Please set your avatar";
+DATA_NOT_EXIST = "DATA NOT EXIST";
 Million = "million";
 Skip = "Skip";
 Title = "Title";
-ExpiredTask = "Expired";
+ExceededTask = "Exceeded";
 PleaseEnterDescriptionForWork = "Please Enter Description For Work";
 SentDirectly = "Sent Directly";
 EditedSuccessfully = "Edited Successfully";
@@ -197,32 +202,10 @@ recharge.online.amount.error = "Please enter the amount";
 WorkYouChooseIsExpired = "Work you choose is expired";
 FailedToIdentify = "Failed to identify!";
 UserNotExist = "User not exist";
-TotalMoney = "Total:";
-//==============
-PartnerIdentifiedSuccessfully = "Partner identified successfully!";
-CongratsYouHaveYourRightPerson = "Congratulations! You have your right person!";
-FailedToChooseYourRightPerson = "Failed to choose your right person";
-CompletePayment = "Complete";
-PaymentFailed = "Payment failed!";
-PleaseClickToOKConfirmThePayment = "Please click to OK confirm the payment!";
-ThisWorkIsCompleted = "This work is completed.";
-CompleteWorkProgress = "Complete";
-ThereAreNotEnoughFundsInYourAccountToMakeThisPayment = "There are not enough funds in your account to make this payment";
-PaymentMoneyFailed = "Payment failed!";
-//==============
-PayerFullName = "Payer 's full name";
-TotalAmount = "Total amount";
-Email = "Email";
-Doer = "Doer";
-ReportSentSuccessfully = "Report sent successfully!";
-PaymentSuccessfully = "Payment successfully!";
-TitlePayment = "Payment";
-NearbyMaid = "Nearby maid";
 INVALID_PASSWORD = "Invalid password";
 RechargeSuccessful = "Recharge successful!";
-ShareApp = "Modern designs, unique features, extremely efficient performance are what you just experienced. Following the motto 'Quality builds Trust', we desire to bring our customers the best of the best. And now, let's share the NGV247 application to develop the greatest";
 NoInternetConnection = "No internet connection";
-TimeOfWorkingIsInvalid ="Time of working is invalid";
+TimeOfWorkingIsInvalid = "Time of working is invalid";
 InvalidReportTextCount = "Please enter your comment";
 PackageTypeText = "Hourly pay";
 InvalidPriceTextNumber = "The price must be at least 2000";
@@ -230,36 +213,30 @@ InvalidOtherRequestText = "Other requests must be at least 10 characters";
 CancelTextForAlertView = "Cancel";
 SettingTextForAlertView = "Settings";
 EmailServicesUnavailable = "Please setup email accounts in Settings before using";
-choose = "Choose";
 
-
-//===============
-SUCCESS = "Success!";
-FAILED = "Failed!";
-DUPLICATED = "Data duplicated!";
-DATA_NOT_EXIST = "Data not exist!";
-LANGUAGE_NOT_SUPPORT = "Language not supported!";
-INVALID_PASSWORD = "Invalid password!";
-TASK_UPDATE_FAILED  = "Failed to upade! (already chosen by NGV)";
+//========
+SUCCESS = "Thành công";
+FAILED = "Thất bại";
+DUPLICATED = "Dữ liệu đã tồn tại";
+DATA_NOT_EXIST = "Dữ liệu không tồn tại";
+LANGUAGE_NOT_SUPPORT = "Ngôn ngữ không hỗ trợ";
+INVALID_PASSWORD = "Sai mật khẩu";
+TASK_UPDATE_FAILED  = "Không thể cập nhật công việc (lý do: công việc đã được chọn bởi NGV)";
 TASK_OUT_OF_LIMIT = "Your posts would be within ten.";
-SCHEDULE_DUPLICATED = "This applicant has been assigned another task at the same time of working. Please choose another!";
-CHECK_IN_EXIST = "Check-in exists!";
-CHECK_OUT_EXIST = "Check-out exists!";
-NOT_CHECK_IN = "Checkout failed! (not yet checked in)";
-UNAUTHORIZED = "Unauthorized account!";
-DELETE_DENY = "Undeletable!";
-RESERVE_EXIST = "Work already assigned!";
-PUSH_NOTIFY_FAILED = "Push notification failed!";
-WALLET_NOT_ENOUGH = "Not enough funds for payment";
-FACE_IDENTICAL_FAILED = "Face recognition failed!";
+SCHEDULE_DUPLICATED = "Không thể nhận công việc (lý do: trùng thời gian làm việc)";
+CHECK_IN_EXIST = "Check in đã tồn tại";
+CHECK_OUT_EXIST = "Check out đã tồn tại";
+NOT_CHECK_IN = "Không thể check out (lý do: chưa check in)";
+UNAUTHORIZED = "Tài khoản không xác thực";
+DELETE_DENY = "Không thể xóa/hủy công việc";
+RESERVE_EXIST = "Công việc đã được đăng ký";
+PUSH_NOTIFY_FAILED = "Không thể push notification";
+WALLET_NOT_ENOUGH = "Ví tiền không đủ để thanh toán";
+FACE_IDENTICAL_FAILED = "Nhận diện khuôn mặt không chính xác";
 NGV247LimitedCompany = "NGV247, limited company";
-DUPLICATED_USERNAME = "Duplicated username";
-
-DUPLICATED_EMAIL = "Duplicated email";
-CommentSuccess = "Comment sent successfully";
-CommentFailed = "Failed to send comment";
-AlreadyComment = "You already commented on this";
 WorkDetail = "Work detail";
+DUPLICATED_USERNAME = "Tên đăng nhập đã tồn tại";
+DUPLICATED_EMAIL = "Email đã tồn tại";
 
 PayerFullName = "Full name";
 RechargeAmount = "Recharge amount";
@@ -268,13 +245,8 @@ PayerAddress = "Address";
 PayerEmail = "Email";
 AreYouSureYouWantToLogOut = "Are you sure you want to log out?";
 task.bringSuplier = "Bring your cleaning supplies";
-task.history.status.completed = "Completed";
-task.history.status.unpaid = "Unpaid";
-title.payment.date = "Payment date";
-title.payment.online = "Payment Online";
-error.task.post.exceed = "Your posts would be within ten!";
 
-H = "house";
+H = "Giờ";
 
 CommentInvalidMessage = "Please enter your comment";
 SkipBackButton = "Skip";
@@ -283,20 +255,23 @@ PaymentOK = "OK";
 NotEnoughMoneyInOnlinePayment = "Your account doesn't have enough money.";
 Postyourworkhere = "Post your work here";
 
+
+
+
 WarningTitle = "Warning";
 WarningDescription = "Your account was accessed from another device!";
 
 //--------PUSH NOTIFICATIONS---------
-MaidRefuseAcceptedWork = "The applicant just refused your work";
-MaidAcceptWork = "The applicant just accepted your request";
-MaidReceivedMoney = "Cash received!";
-MaidNotReceivedMoney = "No cash received!";
-MaidBecomeApplicant = "You just got a new applicant";
+MaidRefuseAcceptedWork = "Người giúp việc vừa hủy công việc đã nhận";
+MaidAcceptWork = "Người giúp việc vừa chấp nhận yêu cầu của bạn";
+MaidReceivedMoney = "Đã nhận được tiền mặt";
+MaidNotReceivedMoney = "Chưa nhận được tiền mặt";
+MaidBecomeApplicant = "Người giúp việc vừa ứng tuyển vào công việc của bạn";
 DefaultNotification = "You just received a new notification";
 
 //------PUSH LOC-KEY------//
-0 = "The applicant just refused your work";
-2 = "The applicant just accepted your request";
-10 = "Cash received!";
-11 = "No cash received!";
-88 = "You just got a new applicant";
+0 = "Người giúp việc vừa hủy công việc đã nhận";
+2 = "Người giúp việc vừa chấp nhận yêu cầu của bạn";
+10 = "Đã nhận được tiền mặt";
+11 = "Chưa nhận được tiền mặt";
+88 = "Người giúp việc vừa ứng tuyển vào công việc của bạn";

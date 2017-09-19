@@ -97,11 +97,13 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             case 0:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: switchCellId, for: indexPath) as! SwitchCell
                 cell.delegate = self
-                cell.text = "Announcement"
+                cell.icon = .androidNotifications
+                cell.text = "Notification"
                 return cell
             case 1:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
                 cell.text = "Language"
+                cell.icon = .iosWorld
                 return cell
             default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemCellId, for: indexPath) as! MoreItemCell
@@ -116,13 +118,15 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             {
             case 0:
                 cell.text = "AboutUs"
+                cell.icon = .iosPerson
                 break
             case 1:
                 cell.text = "TermsOfUse"
+                cell.icon = .androidList
                 break
             case 2:
                 cell.text = "Contact"
-    
+                cell.icon = .iosEmail
                 break
             default: break
                 
@@ -136,13 +140,11 @@ class MoreVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICo
             {
             case 0:
                 cell.text = "ShareNGV247"
-                //cell.icon = .androidShareAlt
-    
+                cell.icon = .androidShareAlt
                 break
             case 1:
                 cell.text = "FollowUsOnFacebook"
-                //cell.icon = .socialFacebook
-        
+                cell.icon = .androidPeople
                 break
             default: break
                 

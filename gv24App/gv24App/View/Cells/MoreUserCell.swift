@@ -7,10 +7,20 @@
 //
 
 import UIKit
+import IoniconsSwift
+
+
 
 class BaseMoreCell: BaseCollectionCell {
     
     let cellMargin : CGFloat = 20
+    
+    var icon: Ionicons?{
+        didSet{
+            iconImage.image = Icon.by(name: icon!, color: AppColor.homeButton3)
+        }
+    }
+
     
     let seqaratorView: UIView = {
         let view = UIView.horizontalLine()
@@ -24,11 +34,10 @@ class BaseMoreCell: BaseCollectionCell {
     }()
     let iconImage : UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = UIColor.blue
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
-    var constraintsWidthImage: NSLayoutConstraint?
+    //var constraintsWidthImage: NSLayoutConstraint?
     
     override func setupView() {
         backgroundColor = UIColor.white
@@ -42,8 +51,7 @@ class BaseMoreCell: BaseCollectionCell {
         
         iconImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         iconImage.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
-        constraintsWidthImage = iconImage.widthAnchor.constraint(equalToConstant: 20)
-        constraintsWidthImage?.isActive = true
+        iconImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
         iconImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         arrowRight.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true

@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 class JobNewDetailVC: JobDetailVC {
+    
     var task = Task()
+    
     let deleteButton: IconTextButton = {
         let button = IconTextButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +19,6 @@ class JobNewDetailVC: JobDetailVC {
         button.addTarget(self, action: #selector(handleRemoveTask(_:)), for: .touchUpInside)
         button.title = LanguageManager.shared.localized(string: "DeleteWork")
         button.sizeImage = 30
-       // button.iconName = .iosTrash
         return button
     }()
     

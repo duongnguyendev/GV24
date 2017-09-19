@@ -20,7 +20,7 @@ class MoreItemCell: BaseMoreCell {
     
     let labelView : UILabel = {
         let lb = UILabel()
-        lb.font = Fonts.by(name: .regular, size: 16)
+        lb.font = Fonts.by(name: .regular, size: 14)
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()
@@ -84,15 +84,16 @@ class MoreSocialCell: BaseMoreCell{
         }
     }
 
-     var icon: Ionicons?{
+     /*var icon: Ionicons?{
         didSet{
             iconView.image = Icon.by(name: icon!, color: AppColor.backButton)
         }
-    }
-    private let iconView : IconView = {
+    }*/
+    /*private let iconView : IconView = {
         let iv = IconView(size: 25)
         return iv
-    }()
+    }()*/
+    
     let labelView : UILabel = {
         let lb = UILabel()
         lb.font = Fonts.by(name: .regular, size: 16)
